@@ -11,19 +11,17 @@ use Piggy\Api\Models\Loyalty\Rewards\DigitalReward;
 class DigitalRewardMapper
 {
     /**
-     * @param $data
+     * @param object $data
      * @return DigitalReward
      */
-    public function map($data): DigitalReward
+    public function map(object $data): DigitalReward
     {
         $requiredCredits = property_exists($data, "required_credits") ? $data->required_credits : null;
         $meta = property_exists($data, "meta") ? $data->meta : null;
 
-        $digitalReward = new DigitalReward(
+        return new DigitalReward(
             $data->id,
             $data->title
         );
-
-        return $digitalReward;
     }
 }

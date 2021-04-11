@@ -12,10 +12,10 @@ use Piggy\Api\Models\Registers\Register;
 class RegisterMapper
 {
     /**
-     * @param $response
+     * @param object $response
      * @return Register
      */
-    public function map($response): Register
+    public function map(object $response): Register
     {
         $register = new Register();
         $physicalShopMapper = new PhysicalShopMapper();

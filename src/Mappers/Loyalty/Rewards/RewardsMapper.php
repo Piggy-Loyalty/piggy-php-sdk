@@ -9,30 +9,30 @@ namespace Piggy\Api\Mappers\Loyalty\Rewards;
 class RewardsMapper
 {
     /**
-     * @param $data
+     * @param array $rewards
      * @return array
      */
-    public function map($data): array
+    public function map(array $rewards): array
     {
         $physicalRewardsMapper = new PhysicalRewardsMapper();
         $externalRewardsMapper = new ExternalRewardsMapper();
         $digitalRewardsMapper = new DigitalRewardsMapper();
 
-        $rewards = [];
-        foreach ($data as $key => $item) {
-            if ($key == "physical") {
-                $rewards["physical"] = $physicalRewardsMapper->map($item);
+        $result = [];
+        foreach ($rewards as $rewardsType => $rewardsInType) {
+            if ($rewardsType == "physical") {
+                $rewards["physical"] = $physicalRewardsMapper->map($rewardsInType);
             }
 
-            if ($key == "external") {
-                $rewards["external"] = $externalRewardsMapper->map($item);
+            if ($rewardsType == "external") {
+                $rewards["external"] = $externalRewardsMapper->map($rewardsInType);
             }
 
-            if ($key == "digital") {
-                $rewards["digital"] = $digitalRewardsMapper->map($item);
+            if ($rewardsType == "digital") {
+                $rewards["digital"] = $digitalRewardsMapper->map($rewardsInType);
             }
         }
 
-        return $rewards;
+        return $result;
     }
 }

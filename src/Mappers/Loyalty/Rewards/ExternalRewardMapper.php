@@ -11,25 +11,23 @@ use Piggy\Api\Models\Loyalty\Rewards\ExternalReward;
 class ExternalRewardMapper
 {
     /**
-     * @param $data
+     * @param object $reward
      * @return ExternalReward
      */
-    public function map($data): ExternalReward
+    public function map(object $reward): ExternalReward
     {
-        $requiredCredits = property_exists($data, "required_credits") ? $data->required_credits : null;
-        $price = property_exists($data, "price") ? $data->price : null;
-        $active = property_exists($data, 'active') ? $data->active : true;
-        $stock = property_exists($data, 'stock') ? $data->stock : null;
+        $requiredCredits = property_exists($reward, "required_credits") ? $reward->required_credits : null;
+        $price = property_exists($reward, "price") ? $reward->price : null;
+        $active = property_exists($reward, 'active') ? $reward->active : true;
+        $stock = property_exists($reward, 'stock') ? $reward->stock : null;
 
-        $externalReward = new ExternalReward(
-            $data->id,
-            $data->title,
+        return new ExternalReward(
+            $reward->id,
+            $reward->title,
             $price,
             $active,
             $requiredCredits,
             $stock
         );
-
-        return $externalReward;
     }
 }

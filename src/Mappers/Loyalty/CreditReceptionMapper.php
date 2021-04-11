@@ -12,11 +12,11 @@ use Piggy\Api\Models\Loyalty\CreditReception;
 class CreditReceptionMapper
 {
     /**
-     * @param $data
+     * @param object $data
      * @return CreditReception
      * @throws Exception
      */
-    public function map($data): CreditReception
+    public function map(object $data): CreditReception
     {
         $memberMapper = new MemberMapper();
         $member = $memberMapper->map($data->member);

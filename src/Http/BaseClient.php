@@ -21,7 +21,7 @@ abstract class BaseClient
     /** @var GuzzleClient */
     private $httpClient;
 
-    /** @var $baseUrl */
+    /** @var string $baseUrl */
     private $baseUrl = "https://api.piggy.nl";
 
     /**
@@ -45,13 +45,13 @@ abstract class BaseClient
     }
 
     /**
-     * @param $method
-     * @param $endpoint
+     * @param string $method
+     * @param string $endpoint
      * @param array $queryOptions
      * @return Response
      * @throws RequestException
      */
-    public function request($method, $endpoint, $queryOptions = []): Response
+    public function request(string $method, string $endpoint, array $queryOptions = []): Response
     {
         if (!array_key_exists('Authorization', $this->headers)) {
             throw new RequestException('Authorization not set yet.');
@@ -98,13 +98,13 @@ abstract class BaseClient
     }
 
     /**
-     * @param $endpoint
+     * @param string $endpoint
      * @param array $queryOptions
      * @return AuthenticationResponse
      * @throws BadResponseException
      * @throws RequestException
      */
-    public function authenticationRequest($endpoint, $queryOptions = []): AuthenticationResponse
+    public function authenticationRequest(string $endpoint, array $queryOptions = []): AuthenticationResponse
     {
         $url = $this->baseUrl . $endpoint;
 
@@ -154,10 +154,10 @@ abstract class BaseClient
     }
 
     /**
-     * @param $key
-     * @param $value
+     * @param string $key
+     * @param mixed $value
      */
-    public function addHeader($key, $value): void
+    public function addHeader(string $key, $value): void
     {
         $this->headers[$key] = $value;
     }

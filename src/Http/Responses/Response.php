@@ -21,27 +21,27 @@ class Response
 
     /**
      * Response constructor.
-     * @param $data
-     * @param $meta
+     * @param object $data
+     * @param object $meta
      */
-    public function __construct($data, $meta)
+    public function __construct(object $data, object $meta)
     {
         $this->data = $data;
         $this->meta = $meta;
     }
 
     /**
-     * @return
+     * @return object
      */
-    public function getData()
+    public function getData(): object
     {
         return $this->data;
     }
 
     /**
-     * @return
+     * @return object
      */
-    public function getMeta()
+    public function getMeta(): object
     {
         return $this->meta;
     }

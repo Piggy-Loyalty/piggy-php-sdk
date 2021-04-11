@@ -13,10 +13,10 @@ use Piggy\Api\Models\Loyalty\RewardReceptions\PhysicalRewardReception;
 class PhysicalRewardReceptionsMapper
 {
     /**
-     * @param $data
+     * @param object $data
      * @return PhysicalRewardReception
      */
-    public function map($data): PhysicalRewardReception
+    public function map(object $data): PhysicalRewardReception
     {
         $memberMapper = new MemberMapper();
         $member = $memberMapper->map($data->member);
@@ -24,14 +24,12 @@ class PhysicalRewardReceptionsMapper
         $physicalRewardMapper = new PhysicalRewardMapper();
         $physicalReward = $physicalRewardMapper->map($data->physical_reward);
 
-        $physicalRewardReception = new PhysicalRewardReception(
+        return new PhysicalRewardReception(
             $data->id,
             $data->title,
             $data->credits,
             $member,
             $physicalReward
         );
-
-        return $physicalRewardReception;
     }
 }

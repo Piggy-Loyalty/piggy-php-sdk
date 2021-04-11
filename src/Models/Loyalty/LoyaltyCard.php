@@ -2,15 +2,15 @@
 
 namespace Piggy\Api\Models\Loyalty;
 
-use MyCLabs\Enum\Enum;
-
 /**
  * Class LoyaltyCard
  * @package Piggy\Api\Models\Loyalty
  */
 class LoyaltyCard
 {
-
+    /**
+     * @var int
+     */
     private $id;
 
     /**
@@ -35,13 +35,13 @@ class LoyaltyCard
 
     /**
      * LoyaltyCard constructor.
-     * @param $id
+     * @param int $id
      * @param string $hash
      * @param int $type
      * @param int $status
      * @param Member|null $member
      */
-    public function __construct($id, string $hash, int $type, int $status, Member $member = null)
+    public function __construct(int $id, string $hash, int $type, int $status, Member $member = null)
     {
         $this->id = $id;
         $this->hash = $hash;
@@ -51,9 +51,9 @@ class LoyaltyCard
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }

@@ -33,13 +33,13 @@ class StagedCreditReceptionsResource extends BaseResource
     }
 
     /**
-     * @param $hash
-     * @param $email
+     * @param string $hash
+     * @param string $email
      * @param null $locale
      * @return StagedCreditReception
      * @throws RequestException
      */
-    public function send($hash, $email, $locale = null): StagedCreditReception
+    public function send(string $hash, string $email, $locale = null): StagedCreditReception
     {
         $body = [
             "hash" => $hash,

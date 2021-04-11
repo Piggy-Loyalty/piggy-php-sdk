@@ -20,7 +20,7 @@ abstract class Shop
 
     /**
      * Shop constructor.
-     * @param $id
+     * @param int|string $id
      * @param string $name
      */
     public function __construct($id, string $name)

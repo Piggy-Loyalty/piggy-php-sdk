@@ -11,10 +11,10 @@ use Piggy\Api\Models\Shops\Webshop;
 class WebshopMapper
 {
     /**
-     * @param $data
+     * @param object $data
      * @return Webshop
      */
-    public function map($data): Webshop
+    public function map(object $data): Webshop
     {
         $webshop = new Webshop(
             $data->id,

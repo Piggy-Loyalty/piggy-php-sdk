@@ -11,10 +11,10 @@ use Piggy\Api\Models\Shops\PhysicalShop;
 class PhysicalShopMapper
 {
     /**
-     * @param $data
+     * @param object $data
      * @return PhysicalShop
      */
-    public function map($data): PhysicalShop
+    public function map(object $data): PhysicalShop
     {
         $physicalShop = new PhysicalShop(
             $data->id,

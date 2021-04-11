@@ -11,21 +11,19 @@ use Piggy\Api\Models\Loyalty\Rewards\PhysicalReward;
 class PhysicalRewardMapper
 {
     /**
-     * @param $data
+     * @param object $data
      * @return PhysicalReward
      */
-    public function map($data): PhysicalReward
+    public function map(object $data): PhysicalReward
     {
         $active = property_exists($data, 'active') ? $data->active : true;
         $requiredCredits = property_exists($data, 'required_credits') ? $data->required_credits : null;
 
-        $physicalReward = new PhysicalReward(
+        return new PhysicalReward(
             $data->id,
             $data->title,
             $active,
             $requiredCredits
         );
-
-        return $physicalReward;
     }
 }

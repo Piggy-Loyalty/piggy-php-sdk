@@ -23,11 +23,11 @@ class OAuthClient extends BaseClient
 
     /**
      * OAuthClient constructor.
-     * @param $clientId
+     * @param string $clientId
      * @param string $clientSecret
      * @param ClientInterface|null $client
      */
-    public function __construct($clientId, string $clientSecret, ?ClientInterface $client = null)
+    public function __construct(string $clientId, string $clientSecret, ?ClientInterface $client = null)
     {
         $this->clientId = $clientId;
         $this->clientSecret = $clientSecret;
@@ -68,10 +68,10 @@ class OAuthClient extends BaseClient
     }
 
     /**
-     * @param $accessToken
+     * @param string $accessToken
      * @return OAuthClient
      */
-    public function setAccessToken($accessToken): self
+    public function setAccessToken(string $accessToken): self
     {
         $this->addHeader("Authorization", "Bearer {$accessToken}");
         return $this;

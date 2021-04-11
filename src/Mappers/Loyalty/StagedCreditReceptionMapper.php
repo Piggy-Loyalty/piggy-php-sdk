@@ -11,10 +11,10 @@ use Piggy\Api\Models\Loyalty\StagedCreditReception;
 class StagedCreditReceptionMapper
 {
     /**
-     * @param $response
+     * @param object $response
      * @return StagedCreditReception
      */
-    public function map($response): StagedCreditReception
+    public function map(object $response): StagedCreditReception
     {
         $stagedCreditReception = new StagedCreditReception();
         $creditReceptionMapper = new CreditReceptionMapper();

@@ -9,15 +9,15 @@ namespace Piggy\Api\Mappers\Loyalty\Rewards;
 class PhysicalRewardsMapper
 {
     /**
-     * @param $data
+     * @param array $rewards
      * @return array
      */
-    public function map($data): array
+    public function map(array $rewards): array
     {
         $physicalRewardMapper = new PhysicalRewardMapper();
 
         $physicalRewards = [];
-        foreach ($data as $item) {
+        foreach ($rewards as $item) {
             $physicalRewards[] = $physicalRewardMapper->map($item);
         }
 

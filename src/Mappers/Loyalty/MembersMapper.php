@@ -9,10 +9,10 @@ namespace Piggy\Api\Mappers\Loyalty;
 class MembersMapper
 {
     /**
-     * @param $data
+     * @param array $data
      * @return array
      */
-    public function map($data): array
+    public function map(array $data): array
     {
         $memberMapper = new MemberMapper();
 

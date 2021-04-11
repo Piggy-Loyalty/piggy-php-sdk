@@ -74,7 +74,7 @@ class RequestException extends Exception
     }
 
     /**
-     * @param $response
+     * @param Response $response
      * @param Throwable|null $previous
      * @return RequestException
      * @throws RequestException

@@ -9,25 +9,23 @@ namespace Piggy\Api\Mappers\Shops;
 class ShopsMapper
 {
     /**
-     * @param $data
+     * @param array $shops
      * @return array
      */
-    public function map($data): array
+    public function map(array $shops): array
     {
         $physicalShopMapper = new PhysicalShopMapper();
         $webShopMapper = new WebshopMapper();
 
-        $shops = [];
-        foreach ($data as $item) {
-            if ($item->type == "physical") {
-                $shops[] = $physicalShopMapper->map($item);
-            }
+        return array_map(function (object $shop) use ($physicalShopMapper, $webShopMapper) {
+            if ($shop->type == "physical") {
 
-            if ($item->type == "web") {
-                $shops[] = $webShopMapper->map($item);
+                return $physicalShopMapper->map($shop);
             }
-        }
+            if ($shop->type == "web") {
 
-        return $shops;
+                return $webShopMapper->map($shop);
+            }
+        }, $shops);
     }
 }
