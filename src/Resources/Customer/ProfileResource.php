@@ -4,8 +4,8 @@ namespace Piggy\Api\Resources\Customer;
 
 use Exception;
 use Piggy\Api\Exceptions\RequestException;
-use Piggy\Api\Mappers\CustomerMapper;
-use Piggy\Api\Models\Customer;
+use Piggy\Api\Mappers\Customer\CustomerMapper;
+use Piggy\Api\Models\Customer\Customer;
 use Piggy\Api\Resources\BaseResource;
 
 /**
