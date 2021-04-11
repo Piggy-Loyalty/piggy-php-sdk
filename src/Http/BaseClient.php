@@ -18,7 +18,7 @@ use Throwable;
  */
 abstract class BaseClient
 {
-    /** @var GuzzleClient */
+    /** @var GuzzleClient|ClientInterface */
     private $httpClient;
 
     /** @var string $baseUrl */
