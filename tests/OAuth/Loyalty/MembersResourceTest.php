@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\OAuth\Loyalty;
+namespace Piggy\Api\Tests\OAuth\Loyalty;
 
 use Piggy\Api\Exceptions\RequestException;
 use Piggy\Api\Models\Loyalty\CreditBalance;

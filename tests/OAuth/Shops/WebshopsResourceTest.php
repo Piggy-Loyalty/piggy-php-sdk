@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\OAuth\Shops;
+namespace Piggy\Api\Tests\OAuth\Shops;
 
 use Piggy\Api\Exceptions\RequestException;
 use Piggy\Api\Models\Shops\Webshop;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Piggy\Api\Tests;
 
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Handler\MockHandler;

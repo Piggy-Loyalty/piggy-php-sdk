@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\OAuth\Loyalty\Rewards;
+namespace Piggy\Api\Tests\OAuth\Loyalty\Rewards;
 
 use Piggy\Api\Enum\CardStatus;
 use Piggy\Api\Enum\CardType;
