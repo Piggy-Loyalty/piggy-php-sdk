@@ -30,7 +30,7 @@ class ShopsResource extends BaseResource
 
         $mapper = new ShopsMapper();
 
-        return $mapper->map($response->getData());
+        return $mapper->map((array) $response->getData());
     }
 
     /**

@@ -32,6 +32,6 @@ class RewardsResource extends BaseResource
 
         $mapper = new RewardsMapper();
 
-        return $mapper->map($response->getData());
+        return $mapper->map((array) $response->getData());
     }
 }

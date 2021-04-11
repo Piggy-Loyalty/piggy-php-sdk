@@ -29,7 +29,7 @@ class WebshopsResource extends BaseResource
 
         $mapper = new WebshopsMapper();
 
-        return $mapper->map($response->getData());
+        return $mapper->map((array) $response->getData());
     }
 
     /**
