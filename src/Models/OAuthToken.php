@@ -33,8 +33,10 @@ class OAuthToken
 
     /**
      * @param string $access_token
+     *
+     * @return void
      */
-    public function setAccessToken(string $access_token)
+    public function setAccessToken(string $access_token): void
     {
         $this->access_token = $access_token;
     }
@@ -49,8 +51,10 @@ class OAuthToken
 
     /**
      * @param string $refresh_token
+     *
+     * @return void
      */
-    public function setRefreshToken(string $refresh_token)
+    public function setRefreshToken(string $refresh_token): void
     {
         $this->refresh_token = $refresh_token;
     }
@@ -65,8 +69,10 @@ class OAuthToken
 
     /**
      * @param string $expires_in
+     *
+     * @return void
      */
-    public function setExpiresIn(string $expires_in)
+    public function setExpiresIn(string $expires_in): void
     {
         $this->expires_in = $expires_in;
     }

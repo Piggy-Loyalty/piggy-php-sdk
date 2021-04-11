@@ -6,6 +6,7 @@ use Piggy\Api\Exceptions\RequestException;
 use Piggy\Api\Mappers\Loyalty\CreditReceptionMapper;
 use Piggy\Api\Mappers\Shops\ShopsMapper;
 use Piggy\Api\Models\Loyalty\CreditReception;
+use Piggy\Api\Models\Shops\Shop;
 use Piggy\Api\Resources\BaseResource;
 
 /**
@@ -23,6 +24,8 @@ class ShopsResource extends BaseResource
      * @param int $id
      * @return array
      * @throws RequestException
+     *
+     * @return Shop[]
      */
     public function get(int $id): array
     {

@@ -22,6 +22,8 @@ class WebshopsResource extends BaseResource
     /**
      * @return array
      * @throws RequestException
+     *
+     * @return Webshop[]
      */
     public function all(): array
     {

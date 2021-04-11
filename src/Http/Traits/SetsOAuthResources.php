@@ -67,7 +67,7 @@ trait SetsOAuthResources
     /**
      * @param BaseClient $client
      */
-    protected function setResources(BaseClient $client)
+    protected function setResources(BaseClient $client): void
     {
         $this->members = new MembersResource($client);
         $this->webshops = new WebshopsResource($client);
