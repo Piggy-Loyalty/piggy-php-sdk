@@ -32,6 +32,7 @@ class StagedCreditReceptionMapper extends BaseMapper
             $data->url,
             $data->hash,
             $data->credits,
+            $data->purchaseAmount,
             $data->created_at,
             $creditReception
         );

@@ -3,10 +3,14 @@
 namespace Piggy\Api\Resources\OAuth\Loyalty;
 
 use Exception;
+use GuzzleHttp\Exception\GuzzleException;
+use Piggy\Api\Exceptions\InputInvalidException;
+use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Exceptions\RequestException;
 use Piggy\Api\Mappers\Loyalty\StagedCreditReceptionMapper;
 use Piggy\Api\Models\Loyalty\StagedCreditReception;
 use Piggy\Api\Resources\BaseResource;
+use stdClass;
 
 /**
  * Class StagedCreditReceptionsResource
@@ -22,8 +26,8 @@ class StagedCreditReceptionsResource extends BaseResource
     /**
      * @param int $id
      * @return StagedCreditReception
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Piggy\Api\Exceptions\PiggyRequestException
+     * @throws GuzzleException
+     * @throws PiggyRequestException
      */
     public function get(int $id): StagedCreditReception
     {
@@ -36,17 +40,17 @@ class StagedCreditReceptionsResource extends BaseResource
 
     /**
      * @param int $shopId
-     * @param int $credits
+     * @param int|null $credits
      * @param float|null $purchaseAmount
-     *
      * @return StagedCreditReception
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Piggy\Api\Exceptions\PiggyRequestException
+     * @throws InputInvalidException
+     * @throws GuzzleException
+     * @throws PiggyRequestException
      */
     public function create(int $shopId, int $credits = null, float $purchaseAmount = null): StagedCreditReception
     {
         if(!$credits && !$purchaseAmount) {
-            throw new Exception('Either purchase amount or credits must be set');
+            throw new InputInvalidException("Purchase amount or credits is required");
         }
 
         $response = $this->client->post($this->resourceUri, [
@@ -54,7 +58,7 @@ class StagedCreditReceptionsResource extends BaseResource
             "credits" => $credits,
             "purchase_amount" => $purchaseAmount,
         ]);
-
+        
         $mapper = new StagedCreditReceptionMapper();
 
         return $mapper->map($response->getData());
@@ -65,9 +69,9 @@ class StagedCreditReceptionsResource extends BaseResource
      * @param string $email
      * @param null $locale
      *
-     * @return \stdClass
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Piggy\Api\Exceptions\PiggyRequestException
+     * @return stdClass
+     * @throws GuzzleException
+     * @throws PiggyRequestException
      */
     public function send(int $stagedCreditReceptionId, string $email, $locale = null)
     {

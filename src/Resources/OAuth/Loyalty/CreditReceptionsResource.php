@@ -2,7 +2,10 @@
 
 namespace Piggy\Api\Resources\OAuth\Loyalty;
 
+use Exception;
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\InputInvalidException;
+use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Loyalty\CreditReceptionMapper;
 use Piggy\Api\Models\Loyalty\CreditReception;
 use Piggy\Api\Resources\BaseResource;
@@ -21,8 +24,8 @@ class CreditReceptionsResource extends BaseResource
     /**
      * @param int $id
      * @return CreditReception
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Piggy\Api\Exceptions\PiggyRequestException
+     * @throws GuzzleException
+     * @throws PiggyRequestException
      */
     public function get(int $id): CreditReception
     {
@@ -42,8 +45,9 @@ class CreditReceptionsResource extends BaseResource
      *
      * @return CreditReception
      * @throws InputInvalidException
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Piggy\Api\Exceptions\PiggyRequestException
+     * @throws GuzzleException
+     * @throws PiggyRequestException
+     * @throws Exception
      */
     public function create(
         int $shopId,

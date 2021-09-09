@@ -3,6 +3,7 @@
 namespace Piggy\Api\Models\Loyalty;
 
 use DateTime;
+use Exception;
 
 /**
  * Class StagedCreditReception
@@ -22,9 +23,14 @@ class StagedCreditReception
     protected $hash;
 
     /**
-     * @var int
+     * @var int|null
      */
     protected $credits;
+
+    /**
+     * @var int|null
+     */
+    protected $purchaseAmount;
 
     /**
      * @var string
@@ -45,15 +51,19 @@ class StagedCreditReception
      * StagedCreditReception constructor.
      * @param int $id
      * @param string $url
-     * @param int $credits
+     * @param string $hash
+     * @param int|null $credits
+     * @param int|null $purchaseAmount
      * @param string $createdAt
      * @param CreditReception|null $creditReception
+     * @throws Exception
      */
     public function __construct(
         int $id,
         string $url,
         string $hash,
-        int $credits,
+        ?int $credits,
+        ?int $purchaseAmount,
         string $createdAt,
         ?CreditReception $creditReception = null
     ) {
@@ -61,7 +71,8 @@ class StagedCreditReception
         $this->url = $url;
         $this->hash = $hash;
         $this->credits = $credits;
-        $this->createdAt = $createdAt;
+        $this->purchaseAmount = $purchaseAmount;
+        $this->createdAt = new DateTime($createdAt);
         $this->creditReception = $creditReception;
     }
 
@@ -82,11 +93,19 @@ class StagedCreditReception
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getCredits(): int
+    public function getCredits(): ?int
     {
         return $this->credits;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getPurchaseAmount(): ?int
+    {
+        return $this->purchaseAmount;
     }
 
     /**
