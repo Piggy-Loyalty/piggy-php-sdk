@@ -2,6 +2,8 @@
 
 namespace Piggy\Api\Resources\OAuth\Loyalty;
 
+use Exception;
+use Piggy\Api\Exceptions\RequestException;
 use Piggy\Api\Mappers\Loyalty\StagedCreditReceptionMapper;
 use Piggy\Api\Models\Loyalty\StagedCreditReception;
 use Piggy\Api\Resources\BaseResource;
@@ -41,8 +43,12 @@ class StagedCreditReceptionsResource extends BaseResource
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Piggy\Api\Exceptions\PiggyRequestException
      */
-    public function create(int $shopId, int $credits, float $purchaseAmount = null): StagedCreditReception
+    public function create(int $shopId, int $credits = null, float $purchaseAmount = null): StagedCreditReception
     {
+        if(!$credits && !$purchaseAmount) {
+            throw new Exception('Either purchase amount or credits must be set');
+        }
+
         $response = $this->client->post($this->resourceUri, [
             "shop_id" => $shopId,
             "credits" => $credits,
