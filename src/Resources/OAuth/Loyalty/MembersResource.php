@@ -2,6 +2,8 @@
 
 namespace Piggy\Api\Resources\OAuth\Loyalty;
 
+use GuzzleHttp\Exception\GuzzleException;
+use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Loyalty\MemberAndCreditBalanceResponseMapper;
 use Piggy\Api\Mappers\Loyalty\MemberMapper;
 use Piggy\Api\Models\Loyalty\Member;
@@ -24,8 +26,8 @@ class MembersResource extends BaseResource
      * @param string $email
      *
      * @return Member
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Piggy\Api\Exceptions\PiggyRequestException
+     * @throws GuzzleException
+     * @throws PiggyRequestException
      */
     public function create(int $shopId, string $email): Member
     {
@@ -44,8 +46,8 @@ class MembersResource extends BaseResource
      * @param string $email
      *
      * @return MemberResponse
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Piggy\Api\Exceptions\PiggyRequestException
+     * @throws GuzzleException
+     * @throws PiggyRequestException
      */
     public function findOneBy(int $shopId, string $email): MemberResponse
     {
@@ -61,11 +63,31 @@ class MembersResource extends BaseResource
 
     /**
      * @param int $shopId
+     * @param int $loyaltyProgramId
+     * @param string $email
+     * @return MemberResponse
+     * @throws GuzzleException
+     * @throws PiggyRequestException
+     */
+    public function findOrCreate(int $loyaltyProgramId, int $shopId, string $email): MemberResponse
+    {
+        $response = $this->client->get("{$this->resourceUri}/$loyaltyProgramId/find-or-create", [
+            "shop_id" => $shopId,
+            "email" => $email,
+        ]);
+
+        $mapper = new MemberAndCreditBalanceResponseMapper();
+
+        return $mapper->map($response->getData());
+    }
+
+    /**
+     * @param int $shopId
      * @param int $memberId
      *
      * @return MemberResponse
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Piggy\Api\Exceptions\PiggyRequestException
+     * @throws GuzzleException
+     * @throws PiggyRequestException
      */
     public function get(int $shopId, int $memberId): MemberResponse
     {
