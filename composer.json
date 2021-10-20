@@ -23,8 +23,10 @@
     }
   },
   "require": {
-    "php": ">=7.2",
+    "php": ">=7.3",
     "ext-json": "*",
+    "ext-dom": "*",
+    "ext-mbstring": "*",
     "guzzlehttp/guzzle": "~5.3 || ~6.0 || ^7.0",
     "marc-mabe/php-enum": "^4.4"
   },
