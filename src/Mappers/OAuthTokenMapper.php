@@ -20,7 +20,6 @@ class OAuthTokenMapper
         $token = new OAuthToken();
 
         $token->setAccessToken($data->getAccessToken());
-        $token->setRefreshToken($data->getRefreshToken());
         $token->setExpiresIn($data->getExpiresIn());
 
         return $token;
