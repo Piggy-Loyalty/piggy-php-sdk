@@ -5,8 +5,16 @@
   "license": "MIT",
   "authors": [
     {
+      "name": "Technical Team Piggy",
+      "email": "techniek@piggy.nl"
+    },
+    {
       "name": "Mike Edinger",
       "email": "mike@piggy.nl"
+    },
+    {
+      "name": "Stefan Leenen",
+      "email": "stefan@piggy.nl"
     }
   ],
   "autoload": {
