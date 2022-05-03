@@ -19,55 +19,58 @@ class CreditReceptionsResource extends BaseResource
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v2/oauth/clients/credit-receptions";
+    protected $resourceUri = "/api/v3/oauth/clients/credit-receptions";
+
+    // @TODO remove this or implement if we have a get call on credit reception
+//    /**
+//     * @param int $id
+//     * @return CreditReception
+//     * @throws GuzzleException
+//     * @throws PiggyRequestException
+//     */
+//    public function get(int $id): CreditReception
+//    {
+//        $response = $this->client->get("{$this->resourceUri}/{$id}", []);
+//
+//        $mapper = new CreditReceptionMapper();
+//
+//        return $mapper->map($response->getData());
+//    }
 
     /**
-     * @param int $id
-     * @return CreditReception
-     * @throws GuzzleException
-     * @throws PiggyRequestException
-     */
-    public function get(int $id): CreditReception
-    {
-        $response = $this->client->get("{$this->resourceUri}/{$id}", []);
-
-        $mapper = new CreditReceptionMapper();
-
-        return $mapper->map($response->getData());
-    }
-
-    /**
-     * @param int $shopId
-     * @param int|null $memberId
-     * @param int|null $loyaltyCardId
-     * @param int|null $purchaseAmount
+     * @param string $shopUuid
+     * @param string|null $contactUuid
+     * @param string|null $contactIdentifier
+     * @param string|null $unitValue
+     * @param string|null $unitName
      * @param int|null $credits
      *
      * @return CreditReception
-     * @throws InputInvalidException
      * @throws GuzzleException
+     * @throws InputInvalidException
      * @throws PiggyRequestException
-     * @throws Exception
      */
     public function create(
-        int $shopId,
-        int $memberId = null,
-        int $loyaltyCardId = null,
-        int $purchaseAmount = null,
+        string $shopUuid,
+        string $contactUuid = null,
+        string $contactIdentifier = null,
+        string $unitValue = null,
+        string $unitName = null,
         int $credits = null
     ): CreditReception {
-        if(!$memberId && !$loyaltyCardId) {
-            throw new InputInvalidException("Member or LoyaltyCard is required");
+        if(!$contactUuid && !$contactIdentifier) {
+            throw new InputInvalidException("ContactUUID or ContactIdentifier is required");
         }
-        if(!$credits && !$purchaseAmount) {
-            throw new InputInvalidException("Purchase amount or credits is required");
+        if(!$credits && !$unitValue) {
+            throw new InputInvalidException("Unit value or credits is required");
         }
 
         $response = $this->client->post($this->resourceUri, [
-            "shop_id" => $shopId,
-            "member_id" => $memberId,
-            "loyalty_card_id" => $loyaltyCardId,
-            "purchase_amount" => $purchaseAmount,
+            "shop_uuid" => $shopUuid,
+            "contact_uuid" => $contactUuid,
+            "contact_identifier_value" => $contactIdentifier,
+            "unit_value" => $unitValue,
+            "unit_name" => $unitName,
             "credits" => $credits,
         ]);
 
