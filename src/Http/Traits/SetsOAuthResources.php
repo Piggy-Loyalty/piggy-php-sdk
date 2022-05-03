@@ -3,6 +3,7 @@
 namespace Piggy\Api\Http\Traits;
 
 use Piggy\Api\Http\BaseClient;
+use Piggy\Api\Resources\OAuth\Contacts\ContactsResource;
 use Piggy\Api\Resources\OAuth\Giftcards\GiftcardsResource;
 use Piggy\Api\Resources\OAuth\Giftcards\GiftcardTransactionsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\CreditReceptionsResource;
@@ -22,6 +23,11 @@ use Piggy\Api\Resources\OAuth\Shops\WebshopsResource;
  */
 trait SetsOAuthResources
 {
+    /**
+     * @var ContactsResource
+     */
+    public $contacts;
+
     /**
      * @var MembersResource
      */
@@ -87,6 +93,7 @@ trait SetsOAuthResources
      */
     protected function setResources(BaseClient $client)
     {
+        $this->contacts = new ContactsResource($client);
         $this->members = new MembersResource($client);
         $this->webshops = new WebshopsResource($client);
         $this->creditReceptions = new CreditReceptionsResource($client);
