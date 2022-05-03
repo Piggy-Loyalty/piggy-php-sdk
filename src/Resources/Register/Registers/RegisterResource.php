@@ -15,7 +15,7 @@ class RegisterResource extends BaseResource
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v1/register";
+    protected $resourceUri = "/api/v3/register";
 
     /**
      * @return Register
@@ -30,5 +30,4 @@ class RegisterResource extends BaseResource
 
         return $mapper->map($response->getData());
     }
-
 }
