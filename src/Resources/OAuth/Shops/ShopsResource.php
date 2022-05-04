@@ -2,6 +2,8 @@
 
 namespace Piggy\Api\Resources\OAuth\Shops;
 
+use GuzzleHttp\Exception\GuzzleException;
+use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Shops\ShopMapper;
 use Piggy\Api\Mappers\Shops\ShopsMapper;
 use Piggy\Api\Models\Shops\Shop;
@@ -16,12 +18,12 @@ class ShopsResource extends BaseResource
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v2/oauth/clients/shops";
+    protected $resourceUri = "/api/v3/oauth/clients/shops";
 
     /**
      * @return array
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Piggy\Api\Exceptions\PiggyRequestException
+     * @throws GuzzleException
+     * @throws PiggyRequestException
      */
     public function all(): array
     {
@@ -33,13 +35,13 @@ class ShopsResource extends BaseResource
     }
 
     /**
-     * @param int $id
+     * @param string $id
      *
      * @return Shop
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Piggy\Api\Exceptions\PiggyRequestException
+     * @throws GuzzleException
+     * @throws PiggyRequestException
      */
-    public function get(int $id): Shop
+    public function get(string $id): Shop
     {
         $response = $this->client->get("{$this->resourceUri}/{$id}", []);
 

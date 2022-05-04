@@ -11,7 +11,7 @@ use Piggy\Api\Models\Loyalty\LoyaltyProgram;
 abstract class Shop
 {
     /**
-     * @var int
+     * @var string
      */
     protected $id;
 
@@ -26,11 +26,11 @@ abstract class Shop
     protected $loyaltyProgram;
 
     /**
-     * Shop constructor.
-     * @param int $id
+     * @param string $id
      * @param string $name
+     * @param LoyaltyProgram|null $loyaltyProgram
      */
-    public function __construct(int $id, string $name, LoyaltyProgram $loyaltyProgram = null)
+    public function __construct(string $id, string $name, LoyaltyProgram $loyaltyProgram = null)
     {
         $this->id = $id;
         $this->name = $name;
@@ -38,9 +38,9 @@ abstract class Shop
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getId(): int
+    public function getId(): string
     {
         return $this->id;
     }
