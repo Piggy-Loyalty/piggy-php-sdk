@@ -14,7 +14,7 @@ use Piggy\Api\Models\Contacts\ContactIdentifier;
 class CreditReception
 {
     /**
-     * @var int
+     * @var string
      */
     protected $id;
 
@@ -44,16 +44,16 @@ class CreditReception
     private $unitValue;
 
     /**
-     * @param int $id
+     * @param string $id
      * @param int $credits
      * @param string $createdAt
-     * @param string|null $unitValue
      * @param Contact $contact
      * @param ContactIdentifier|null $identifier
+     * @param string|null $unitValue
      *
      * @throws Exception
      */
-    public function __construct(int $id, int $credits, string $createdAt, Contact $contact, ?ContactIdentifier $identifier, string $unitValue = null)
+    public function __construct(string $id, int $credits, string $createdAt, Contact $contact, ?ContactIdentifier $identifier, string $unitValue = null)
     {
         $this->id = $id;
         $this->credits = $credits;
