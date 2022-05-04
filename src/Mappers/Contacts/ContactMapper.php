@@ -15,7 +15,7 @@ class ContactMapper
     {
         $contact = new Contact(
             $data->uuid,
-            $data->email
+            $data->email ?? ""
         );
 
 //        $currentValues = new CurrentValuesMapper($data->currentValues);
