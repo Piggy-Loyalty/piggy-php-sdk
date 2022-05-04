@@ -4,6 +4,8 @@ namespace Piggy\Api\Models\Loyalty;
 
 use DateTime;
 use Exception;
+use Piggy\Api\Models\Contacts\Contact;
+use Piggy\Api\Models\Contacts\ContactIdentifier;
 
 /**
  * Class CreditReception
@@ -21,37 +23,44 @@ class CreditReception
      */
     protected $credits;
 
-    /**
-     * @var int|null
-     */
-    protected $purchaseAmount;
-
-    /**
-     * @var Member|null
-     */
-    protected $member;
-
     /**s
      * @var DateTime
      */
     protected $createdAt;
 
     /**
-     * CreditReception constructor.
+     * @var Contact|null
+     */
+    private $contact;
+
+    /**
+     * @var ContactIdentifier|null
+     */
+    private $identifier;
+
+    /**
+     * @var string|null
+     */
+    private $unitValue;
+
+    /**
      * @param int $id
      * @param int $credits
      * @param string $createdAt
-     * @param int|null $purchaseAmount
-     * @param Member|null $member
+     * @param string|null $unitValue
+     * @param Contact $contact
+     * @param ContactIdentifier|null $identifier
+     *
      * @throws Exception
      */
-    public function __construct(int $id, int $credits, string $createdAt,  int $purchaseAmount = null, Member $member = null)
+    public function __construct(int $id, int $credits, string $createdAt, Contact $contact, ?ContactIdentifier $identifier, string $unitValue = null)
     {
         $this->id = $id;
         $this->credits = $credits;
         $this->createdAt = new DateTime($createdAt);
-        $this->purchaseAmount = $purchaseAmount;
-        $this->member = $member;
+        $this->unitValue = $unitValue;
+        $this->contact = $contact;
+        $this->identifier = $identifier;
     }
 
     /**
@@ -79,10 +88,18 @@ class CreditReception
     }
 
     /**
-     * @return int|null
+     * @return string|null
      */
-    public function getPurchaseAmount(): ?int
+    public function getUnitValue(): ?string
     {
-        return $this->purchaseAmount;
+        return $this->unitValue;
+    }
+
+    /**
+     * @return Contact
+     */
+    public function getContact(): Contact
+    {
+        return $this->contact;
     }
 }

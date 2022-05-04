@@ -3,6 +3,7 @@
 namespace Piggy\Api\Mappers\Loyalty;
 
 use Exception;
+use Piggy\Api\Mappers\Contacts\ContactMapper;
 use Piggy\Api\Models\Loyalty\CreditReception;
 
 /**
@@ -13,24 +14,22 @@ class CreditReceptionMapper
 {
     /**
      * @param $data
+     *
      * @return CreditReception
      * @throws Exception
      */
     public function map($data): CreditReception
     {
-        if(isset($data->member)) {
-            $mapper = new MemberMapper();
-            $member = $mapper->map($data->member);
-        } else {
-            $member = null;
-        }
+        $mapper = new ContactMapper();
+        $contact = $mapper->map($data->contact);
 
         $creditReception = new CreditReception(
-            $data->id,
+            $data->uuid,
             $data->credits,
             $data->created_at,
-            $data->purchase_amount ?? null,
-            $member
+            $contact,
+            null,
+            $data->unit_value ?? null
         );
 
         return $creditReception;
