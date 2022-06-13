@@ -38,6 +38,6 @@ class OAuthTestCase extends BaseTestCase
     {
         $this->addExpectedResponse([], null, 503);
         $this->expectException(MaintenanceModeException::class);
-        $this->mockedClient->webshops->get(1);
+        $this->mockedClient->contacts->get(1);
     }
 }

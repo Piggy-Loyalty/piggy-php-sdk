@@ -13,9 +13,16 @@ class ContactAttributeMapper
      */
     public function map(object $data): ContactAttribute
     {
+        if ($data == null) {
+            $attribute = null;
+        } else {
+            $attributeMapper = new AttributeMapper();
+            $attribute = $attributeMapper->map($data->attribute);
+        }
+
         return new ContactAttribute(
-            $data->name,
-            $data->value
+            $data->value,
+            $attribute ?? []
         );
     }
 }

@@ -5,11 +5,17 @@ namespace Piggy\Api\Tests;
 use DateTime;
 use DateTimeInterface;
 use GuzzleHttp\Client as HttpClient;
-
+use GuzzleHttp\Handler\MockHandler;
 use PHPUnit\Framework\TestCase;
 use Piggy\Api\Enum\ShopType;
+use Piggy\Api\Mappers\Contacts\ContactAttributeMapper;
+use Piggy\Api\Mappers\Contacts\ContactAttributesMapper;
+use Piggy\Api\Models\Contacts\Attribute;
+use Piggy\Api\Models\Contacts\Contact;
+use Piggy\Api\Models\Contacts\ContactAttribute;
+use Piggy\Api\Models\Contacts\PrepaidBalance;
+use Piggy\Api\Models\Loyalty\CreditBalance;
 use Piggy\Api\Models\Loyalty\LoyaltyProgram;
-use Piggy\Api\Models\Loyalty\Member;
 use Piggy\Api\Models\Shops\PhysicalShop;
 use Piggy\Api\Models\Shops\Shop;
 use Piggy\Api\Models\Shops\Webshop;
@@ -64,7 +70,7 @@ class BaseTestCase extends TestCase
         ]);
 
         if (hasGuzzle5()) {
-            $stream = fopen('php://memory','r+');
+            $stream = fopen('php://memory', 'r+');
             fwrite($stream, $payload);
             rewind($stream);
 
@@ -103,13 +109,49 @@ class BaseTestCase extends TestCase
     }
 
     /**
-     * @return Member
+     * @return Contact
      */
-    public function createMember(): Member
+    public function createContact(): Contact
     {
-        $member = new Member(1, "piggy@piggy.nl");
+        $contact = new Contact(
+            1,
+            "new.piggy@piggy.nl",
+            new PrepaidBalance(200),
+            new CreditBalance(300),
+            [
+                new ContactAttribute(
+                    "Peter",
+                    new Attribute(
+                        "name",
+                        "label",
+                        "E-mail",
+                        "email",
+                        "email",
+                        false,
+                        false,
+                        true,
+                        []
+                    )
+            ),
+                new ContactAttribute(
+                "Henk",
+                new Attribute(
+                    "name",
+                    "label",
+                    "E-mail",
+                    "email",
+                    "email",
+                    false,
+                    false,
+                    true,
+                    []
+                )
+            )],
+            [],
+            []
+        );
 
-        return $member;
+        return $contact;
     }
 
     /**

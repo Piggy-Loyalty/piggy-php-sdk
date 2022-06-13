@@ -3,23 +3,31 @@
 namespace Piggy\Api\Models\Contacts;
 
 /**
- * Class ContactAttribute
+ * Class Subscription
  * @package Piggy\Api\Models
  */
-class ContactAttribute
+class Subscription
 {
-    /** @var string */
-    public $value;
+    /**
+     * @var SubscriptionType
+     */
+    protected $subscriptionType;
 
     /**
-     * @var Attribute
+     * @var boolean
      */
-    public $attribute;
+    protected $isSubscribed;
 
-    public function __construct($value, $attribute)
+    /**
+     * @var int
+     */
+    protected $status;
+
+    public function __construct($subscriptionType, $isSubscribed, $status)
     {
-        $this->value = $value;
-        $this->attribute = $attribute;
+        $this->subscriptionType = $subscriptionType;
+        $this->isSubscribed = $isSubscribed;
+        $this->status = $status;
     }
 
     /**

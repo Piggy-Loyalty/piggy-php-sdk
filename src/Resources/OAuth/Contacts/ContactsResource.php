@@ -3,8 +3,10 @@
 namespace Piggy\Api\Resources\OAuth\Contacts;
 
 use GuzzleHttp\Exception\GuzzleException;
+use phpDocumentor\Reflection\Types\Collection;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Contacts\ContactMapper;
+use Piggy\Api\Mappers\Contacts\ContactsMapper;
 use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\Resources\BaseResource;
 
@@ -24,9 +26,9 @@ class ContactsResource extends BaseResource
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Piggy\Api\Exceptions\PiggyRequestException
      */
-    public function get(): Contact
+    public function get($contactUuid): Contact
     {
-        $response = $this->client->get($this->resourceUri);
+        $response = $this->client->get("{$this->resourceUri}/{$contactUuid}");
 
         $mapper = new ContactMapper();
 
@@ -83,6 +85,27 @@ class ContactsResource extends BaseResource
         ]);
 
         $mapper = new ContactMapper();
+
+        return $mapper->map($response->getData());
+    }
+
+
+    /**
+     * @param $page
+     * @param $limit
+     *
+     * @return array
+     * @throws GuzzleException
+     * @throws PiggyRequestException
+     */
+    public function list($page = null, $limit = null): array
+    {
+        $response = $this->client->get("{$this->resourceUri}", [
+            "page" => $page,
+            "limit" => $limit
+        ]);
+
+        $mapper = new ContactsMapper();
 
         return $mapper->map($response->getData());
     }

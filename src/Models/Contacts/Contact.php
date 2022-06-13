@@ -2,6 +2,8 @@
 
 namespace Piggy\Api\Models\Contacts;
 
+use Piggy\Api\Models\Loyalty\CreditBalance;
+
 /**
  * Class Contact
  * @package Piggy\Api\Models
@@ -11,33 +13,63 @@ class Contact
     /**
      * @var string
      */
-    protected $id;
+    protected $uuid;
 
     /**
      * @var string
      */
     protected $email;
 
-    public function __construct($id, $email)
+    /**
+     * @var PrepaidBalance|null
+     */
+    protected $prepaidBalance;
+
+    /**
+     * @var CreditBalance|null
+     */
+    protected $creditBalance;
+
+    /**
+     * @var array
+     */
+    protected $subscriptions;
+
+    /**
+     * @var array|null
+     */
+    protected $attributes;
+
+    /**
+     * @var array
+     */
+    protected $currentValues;
+
+    public function __construct($uuid, $email, $prepaidBalance, $creditBalance, $attributes, $subscriptions, $currentValues)
     {
-        $this->id = $id;
+        $this->uuid = $uuid;
         $this->email = $email;
+        $this->prepaidBalance = $prepaidBalance;
+        $this->creditBalance = $creditBalance;
+        $this->subscriptions = $subscriptions;
+        $this->attributes = $attributes;
+        $this->currentValues = $currentValues;
     }
 
     /**
      * @return string
      */
-    public function getId(): string
+    public function getUuId(): string
     {
-        return $this->id;
+        return $this->uuid;
     }
 
     /**
-     * @param string $id
+     * @param string $uuid
      */
-    public function setId(string $id): void
+    public function setUuId(string $uuid): void
     {
-        $this->id = $id;
+        $this->uuid = $uuid;
     }
 
     /**
@@ -54,6 +86,86 @@ class Contact
     public function setEmail(?string $email): void
     {
         $this->email = $email;
+    }
+
+    /**
+     * @return PrepaidBalance
+     */
+    public function getPrepaidBalance(): ?PrepaidBalance
+    {
+        return $this->prepaidBalance;
+    }
+
+    /**
+     * @return CreditBalance
+     */
+    public function getCreditBalance(): ?CreditBalance
+    {
+        return $this->creditBalance;
+    }
+
+    /**
+     * @param CreditBalance|null $creditBalance
+     */
+    public function setCreditBalance(?CreditBalance $creditBalance): void
+    {
+        $this->creditBalance = $creditBalance;
+    }
+
+    /**
+     * @param PrepaidBalance|null $prepaidBalance
+     */
+    public function setPrepaidBalance(?PrepaidBalance $prepaidBalance): void
+    {
+        $this->prepaidBalance = $prepaidBalance;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAttributes(): ?array
+    {
+        return $this->attributes;
+    }
+
+    /**
+     * @param array|null $attributes
+     */
+    public function setAttributes(?array $attributes): void
+    {
+        $this->attributes = $attributes;
+    }
+
+    /**
+     * @return array
+     */
+    public function getSubscriptions(): array
+    {
+        return $this->subscriptions;
+    }
+
+    /**
+     * @param array $subscriptions
+     */
+    public function setSubscriptions(array $subscriptions): void
+    {
+        $this->subscriptions = $subscriptions;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCurrentValues(): array
+    {
+        return $this->currentValues;
+    }
+
+    /**
+     * @param array $currentValues
+     */
+    public function setCurrentValues(array $currentValues): void
+    {
+        $this->currentValues = $currentValues;
     }
 
 }

@@ -2,18 +2,14 @@
 
 namespace Piggy\Api\Models\Loyalty;
 
+use Piggy\Api\Models\Contacts\Contact;
+
 /**
  * Class CreditBalance
  * @package Piggy\Api\Models
  */
 class CreditBalance
 {
-
-    /**
-     * @var Member
-     */
-    protected $member;
-
     /**
      * @var int
      */
@@ -21,12 +17,10 @@ class CreditBalance
 
     /**
      * CreditBalance constructor.
-     * @param Member $member
      * @param int $balance
      */
-    public function __construct(Member $member, int $balance)
+    public function __construct(int $balance)
     {
-        $this->member = $member;
         $this->balance = $balance;
     }
 
