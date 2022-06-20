@@ -26,8 +26,10 @@ class WebshopMapper
         }
 
         $webshop = new Webshop(
+            $data->type,
             $data->uuid,
             $data->name,
+            $data->reference,
             $loyaltyProgram
         );
 

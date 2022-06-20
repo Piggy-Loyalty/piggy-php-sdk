@@ -2,6 +2,8 @@
 
 namespace Piggy\Api\Models\Loyalty\Rewards;
 
+use Piggy\Api\Models\Loyalty\Media;
+
 class DigitalReward extends Reward
 {
     /**
@@ -9,9 +11,9 @@ class DigitalReward extends Reward
      */
     protected $meta;
 
-    public function __construct(int $id, string $title, ?int $requiredCredits = null, array $meta = null)
+    public function __construct(string $uuid, string $title, int $requiredCredits, Media $media, ?string $description = "",  array $meta = null)
     {
-        parent::__construct($id, $title, $requiredCredits);
+        parent::__construct($uuid, $title, $requiredCredits, $media, $description );
 
         $this->meta = $meta;
     }

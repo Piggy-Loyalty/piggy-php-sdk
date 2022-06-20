@@ -9,7 +9,7 @@ class ContactsMapper
      *
      * @return array
      */
-    public function map(object $data): array
+    public function map(array $data): array
     {
         $contactMapper = new ContactMapper;
 

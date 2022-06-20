@@ -2,6 +2,7 @@
 
 namespace Piggy\Api\Mappers\Loyalty\Rewards;
 
+use Piggy\Api\Mappers\Loyalty\MediaMapper;
 use Piggy\Api\Models\Loyalty\Rewards\DigitalReward;
 
 /**
@@ -16,12 +17,15 @@ class DigitalRewardMapper
      */
     public function map($data): DigitalReward
     {
-        $requiredCredits = property_exists($data, "required_credits") ? $data->required_credits : null;
-        $meta = property_exists($data, "meta") ? $data->meta : null;
+        $mediaMapper = new MediaMapper();
+        $media = $mediaMapper->map($data->media);
 
         $digitalReward = new DigitalReward(
-            $data->id,
-            $data->title
+            $data->uuid,
+            $data->title,
+            $data->required_credits,
+            $media,
+            $data->description
         );
 
         return $digitalReward;

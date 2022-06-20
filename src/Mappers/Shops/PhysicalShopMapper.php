@@ -26,8 +26,10 @@ class PhysicalShopMapper
         }
 
         $physicalShop = new PhysicalShop(
+            $data->type,
             $data->uuid ,
             $data->name,
+            $data->reference,
             $loyaltyProgram
         );
 

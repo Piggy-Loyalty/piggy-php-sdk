@@ -11,9 +11,9 @@ use DateTime;
 class Giftcard
 {
     /**
-     * @var int
+     * @var string
      */
-    protected $id;
+    protected $uuid;
 
     /**
      * @var int
@@ -48,7 +48,7 @@ class Giftcard
     /**
      * Giftcard constructor.
      *
-     * @param int $id
+     * @param string $uuid
      * @param string $hash
      * @param int $type
      * @param bool $active
@@ -56,9 +56,9 @@ class Giftcard
      * @param GiftcardProgram|null $giftcardProgram
      * @param DateTime|null $expirationDate
      */
-    public function __construct(int $id, string $hash, int $type, bool $active, bool $upgradeable, ?GiftcardProgram $giftcardProgram, ?DateTime $expirationDate)
+    public function __construct(string $uuid, string $hash, int $type, bool $active, bool $upgradeable, ?GiftcardProgram $giftcardProgram, ?DateTime $expirationDate)
     {
-        $this->id = $id;
+        $this->uuid = $uuid;
         $this->hash = $hash;
         $this->type = $type;
         $this->active = $active;
@@ -68,11 +68,11 @@ class Giftcard
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getId(): int
+    public function getUuid(): string
     {
-        return $this->id;
+        return $this->uuid;
     }
 
     /**

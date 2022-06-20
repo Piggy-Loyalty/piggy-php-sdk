@@ -2,6 +2,8 @@
 
 namespace Piggy\Api\Resources\OAuth\Giftcards;
 
+use GuzzleHttp\Exception\GuzzleException;
+use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Giftcards\GiftcardMapper;
 use Piggy\Api\Models\Giftcards\Giftcard;
 use Piggy\Api\Resources\BaseResource;
@@ -15,20 +17,19 @@ class GiftcardsResource extends BaseResource
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v2/oauth/clients/giftcards";
+    protected $resourceUri = "/api/v3/oauth/clients/giftcards";
 
     /**
-     * @param int $shopId
+     * @param string $shopUuid
      * @param string $hash
-     *
      * @return Giftcard
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Piggy\Api\Exceptions\PiggyRequestException
+     * @throws GuzzleException
+     * @throws PiggyRequestException
      */
-    public function findOneBy(int $shopId, string $hash): Giftcard
+    public function findOneBy(string $shopUuid, string $hash): Giftcard
     {
         $response = $this->client->get("{$this->resourceUri}/find-one-by", [
-            "shop_id" => $shopId,
+            "shop_uuid" => $shopUuid,
             "hash" => $hash,
         ]);
 
@@ -38,19 +39,19 @@ class GiftcardsResource extends BaseResource
     }
 
     /**
-     * @param int $shopId
-     * @param int $giftcardProgramId
+     * @param string $shopUuid
+     * @param string $giftcardProgramUuid
      * @param int $type
      *
      * @return Giftcard
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Piggy\Api\Exceptions\PiggyRequestException
+     * @throws GuzzleException
+     * @throws PiggyRequestException
      */
-    public function create(int $shopId, int $giftcardProgramId, int $type): Giftcard
+    public function create(string $shopUuid, string $giftcardProgramUuid, int $type): Giftcard
     {
         $response = $this->client->post($this->resourceUri, [
-            "shop_id" => $shopId,
-            "giftcard_program_id" => $giftcardProgramId,
+            "shop_uuid" => $shopUuid,
+            "giftcard_program_uuid" => $giftcardProgramUuid,
             "type" => $type
         ]);
 

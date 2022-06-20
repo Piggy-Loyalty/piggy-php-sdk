@@ -17,7 +17,7 @@ class GiftcardProgramMapper
     public function map(object $data): GiftcardProgram
     {
         $giftcard = new GiftcardProgram(
-            $data->id,
+            $data->uuid,
             $data->name
         );
 

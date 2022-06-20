@@ -3,24 +3,25 @@
 namespace Piggy\Api\Mappers\Loyalty;
 
 use Piggy\Api\Models\Loyalty\LoyaltyProgram;
+use Piggy\Api\Models\Loyalty\Media;
 
 /**
  * Class LoyaltyProgramMapper
  * @package Piggy\Api\Mappers\Loyalty
  */
-class LoyaltyProgramMapper
+class MediaMapper
 {
     /**
      * @param object $data
-     * @return LoyaltyProgram
+     * @return Media
      */
-    public function map(object $data): LoyaltyProgram
+    public function map(object $data): Media
     {
-        $loyaltyCard = new LoyaltyProgram(
-            $data->id,
-            $data->name
+        $media = new Media(
+            $data->type,
+            $data->value
         );
 
-        return $loyaltyCard;
+        return $media;
     }
 }

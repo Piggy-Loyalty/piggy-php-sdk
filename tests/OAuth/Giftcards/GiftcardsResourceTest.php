@@ -26,26 +26,26 @@ class GiftcardsResourceTest extends OAuthTestCase
         $giftcard = new Giftcard(1, "giftcard123", GiftcardType::DIGITAL, true, true, $giftcardProgram, null);
 
         $this->addExpectedResponse([
-            "id" => $giftcard->getId(),
+            "id" => $giftcard->getUuid(),
             "hash" => $giftcard->getHash(),
             "type" => GiftcardType::get($giftcard->getType())->getName(),
             "active" => $giftcard->isActive(),
             "upgradeable" => $giftcard->isUpgradeable(),
             "expiration_date" => $giftcard->getExpirationDate(),
             "giftcard_program" => [
-                "id" => $giftcardProgram->getId(),
+                "id" => $giftcardProgram->getUuid(),
                 "name" => $giftcardProgram->getName()
             ]
         ]);
 
         $data = $this->mockedClient->giftcards->findOneBy(1, "giftcard123");
 
-        $this->assertEquals($data->getId(), $giftcard->getId());
+        $this->assertEquals($data->getUuid(), $giftcard->getUuid());
         $this->assertEquals($data->getHash(), $giftcard->getHash());
         $this->assertEquals($data->getType(), $giftcard->getType());
         $this->assertEquals($data->isActive(), $giftcard->isActive());
         $this->assertEquals($data->isUpgradeable(), $giftcard->isUpgradeable());
-        $this->assertEquals($data->getGiftcardProgram()->getId(), $giftcard->getGiftcardProgram()->getId());
+        $this->assertEquals($data->getGiftcardProgram()->getUuid(), $giftcard->getGiftcardProgram()->getUuid());
         $this->assertEquals($data->getGiftcardProgram()->getName(), $giftcard->getGiftcardProgram()->getName());
     }
 
@@ -60,26 +60,26 @@ class GiftcardsResourceTest extends OAuthTestCase
         $giftcard = new Giftcard(1, "giftcard123", GiftcardType::DIGITAL, true, true, $giftcardProgram, null);
 
         $this->addExpectedResponse([
-            "id" => $giftcard->getId(),
+            "id" => $giftcard->getUuid(),
             "hash" => $giftcard->getHash(),
             "type" => GiftcardType::get($giftcard->getType())->getName(),
             "active" => $giftcard->isActive(),
             "upgradeable" => $giftcard->isUpgradeable(),
             "expiration_date" => $giftcard->getExpirationDate(),
             "giftcard_program" => [
-                "id" => $giftcardProgram->getId(),
+                "id" => $giftcardProgram->getUuid(),
                 "name" => $giftcardProgram->getName()
             ]
         ]);
 
         $data = $this->mockedClient->giftcards->create(1, 2, GiftcardType::DIGITAL);
 
-        $this->assertEquals($data->getId(), $giftcard->getId());
+        $this->assertEquals($data->getUuid(), $giftcard->getUuid());
         $this->assertEquals($data->getHash(), $giftcard->getHash());
         $this->assertEquals($data->getType(), $giftcard->getType());
         $this->assertEquals($data->isActive(), $giftcard->isActive());
         $this->assertEquals($data->isUpgradeable(), $giftcard->isUpgradeable());
-        $this->assertEquals($data->getGiftcardProgram()->getId(), $giftcard->getGiftcardProgram()->getId());
+        $this->assertEquals($data->getGiftcardProgram()->getUuid(), $giftcard->getGiftcardProgram()->getUuid());
         $this->assertEquals($data->getGiftcardProgram()->getName(), $giftcard->getGiftcardProgram()->getName());
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Piggy\Api\Mappers\Loyalty\Rewards;
 
+use Piggy\Api\Mappers\Loyalty\MediaMapper;
 use Piggy\Api\Models\Loyalty\Rewards\PhysicalReward;
 
 /**
@@ -16,14 +17,18 @@ class PhysicalRewardMapper
      */
     public function map($data): PhysicalReward
     {
+        $mediaMapper = new MediaMapper();
+        $media = $mediaMapper->map($data->media);
+
         $active = property_exists($data, 'active') ? $data->active : true;
-        $requiredCredits = property_exists($data, 'required_credits') ? $data->required_credits : null;
 
         $physicalReward = new PhysicalReward(
-            $data->id,
+            $data->uuid,
             $data->title,
-            $active,
-            $requiredCredits
+            $data->required_credits,
+            $media,
+            $data->description ?? "",
+            $active
         );
 
         return $physicalReward;

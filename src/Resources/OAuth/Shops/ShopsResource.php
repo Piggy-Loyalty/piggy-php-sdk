@@ -35,15 +35,14 @@ class ShopsResource extends BaseResource
     }
 
     /**
-     * @param string $id
-     *
+     * @param string $uuid
      * @return Shop
      * @throws GuzzleException
      * @throws PiggyRequestException
      */
-    public function get(string $id): Shop
+    public function get(string $uuid): Shop
     {
-        $response = $this->client->get("{$this->resourceUri}/{$id}", []);
+        $response = $this->client->get("{$this->resourceUri}/{$uuid}", []);
 
         $mapper = new ShopMapper();
 

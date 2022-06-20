@@ -13,7 +13,12 @@ abstract class Shop
     /**
      * @var string
      */
-    protected $id;
+    protected $type;
+
+    /**
+     * @var string
+     */
+    protected $uuid;
 
     /**
      * @var string
@@ -21,20 +26,34 @@ abstract class Shop
     protected $name;
 
     /**
+     * @var string|null
+     */
+    protected $reference;
+
+    /**
      * @var LoyaltyProgram|null $loyaltyProgram
      */
     protected $loyaltyProgram;
 
     /**
-     * @param string $id
+     * @param string $type
+     * @param string $uuid
      * @param string $name
+     * @param string|null $reference
      * @param LoyaltyProgram|null $loyaltyProgram
      */
-    public function __construct(string $id, string $name, LoyaltyProgram $loyaltyProgram = null)
+    public function __construct(string $type, string $uuid, string $name, string $reference = null, LoyaltyProgram $loyaltyProgram = null)
     {
-        $this->id = $id;
+        $this->type = $type;
+        $this->uuid = $uuid;
         $this->name = $name;
+        $this->reference = $reference;
         $this->loyaltyProgram = $loyaltyProgram;
+    }
+
+    public function getType(): string
+    {
+        return $this->type;
     }
 
     /**
@@ -42,7 +61,7 @@ abstract class Shop
      */
     public function getId(): string
     {
-        return $this->id;
+        return $this->uuid;
     }
 
     /**
@@ -52,7 +71,15 @@ abstract class Shop
     {
         return $this->name;
     }
-    
+
+    /**
+     * @return string|null
+     */
+    public function getReference(): ?string
+    {
+        return $this->reference;
+    }
+
     /**
      * @return LoyaltyProgram|null
      */
