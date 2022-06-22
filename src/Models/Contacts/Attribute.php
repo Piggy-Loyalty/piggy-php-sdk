@@ -12,12 +12,12 @@ class Attribute
     public $name;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $label;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $description;
 
@@ -30,11 +30,11 @@ class Attribute
      */
     public $field_type;
     /**
-     * @var boolean
+     * @var boolean|null
      */
     public $is_soft_read_only;
     /**
-     * @var boolean
+     * @var boolean|null
      */
     public $is_hard_read_only;
     /**
@@ -42,11 +42,11 @@ class Attribute
      */
     public $is_piggy_defined;
     /**
-     * @var array
+     * @var array|null
      */
     public $options;
 
-    public function __construct($name, $label, $description, $type, $field_type, $is_soft_read_only, $is_hard_read_only, $is_piggy_defined, $options)
+    public function __construct(string $name, ?string $label, ?string $description, string $type, string $field_type, ?bool $is_soft_read_only, ?bool $is_hard_read_only, bool $is_piggy_defined, ?array $options)
     {
         $this->name = $name;
         $this->label = $label;
@@ -190,9 +190,9 @@ class Attribute
     }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getOptions(): array
+    public function getOptions(): ?array
     {
         return $this->options;
     }

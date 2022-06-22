@@ -62,6 +62,52 @@ class Subscription
         $this->attribute = $attribute;
     }
 
+    /**
+     * @return SubscriptionType
+     */
+    public function getSubscriptionType(): SubscriptionType
+    {
+        return $this->subscriptionType;
+    }
 
+    /**
+     * @param SubscriptionType $subscriptionType
+     */
+    public function setSubscriptionType(SubscriptionType $subscriptionType): void
+    {
+        $this->subscriptionType = $subscriptionType;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSubscribed(): bool
+    {
+        return $this->isSubscribed;
+    }
+
+    /**
+     * @param bool $isSubscribed
+     */
+    public function setIsSubscribed(bool $isSubscribed): void
+    {
+        $this->isSubscribed = $isSubscribed;
+    }
+
+    /**
+     * @return int
+     */
+    public function getStatus(): int
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param int $status
+     */
+    public function setStatus(int $status): void
+    {
+        $this->status = $status;
+    }
 
 }

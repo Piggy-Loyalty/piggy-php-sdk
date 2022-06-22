@@ -45,7 +45,7 @@ class Contact
      */
     protected $currentValues;
 
-    public function __construct($uuid, $email, $prepaidBalance, $creditBalance, $attributes, $subscriptions, $currentValues)
+    public function __construct($uuid, ?string $email, ?PrepaidBalance $prepaidBalance, ?CreditBalance $creditBalance, ?array $attributes, ?array $subscriptions, ?array $currentValues)
     {
         $this->uuid = $uuid;
         $this->email = $email;
@@ -121,7 +121,7 @@ class Contact
     }
 
     /**
-     * @return array
+     * @return array|null
      */
     public function getAttributes(): ?array
     {
@@ -137,7 +137,7 @@ class Contact
     }
 
     /**
-     * @return array
+     * @return array|null
      */
     public function getSubscriptions(): array
     {

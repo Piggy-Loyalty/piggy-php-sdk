@@ -2,7 +2,10 @@
 
 namespace Piggy\Api\Models\Loyalty\RewardReceptions;
 
+use Piggy\Api\Models\Contacts\Contact;
+use Piggy\Api\Models\Loyalty\CreditBalance;
 use Piggy\Api\Models\Loyalty\Member;
+use Piggy\Api\Models\Loyalty\Rewards\Reward;
 
 /**
  * Class RewardReception
@@ -21,28 +24,33 @@ class RewardReception
     protected $title;
 
     /**
-     * @var int
+     * @var CreditBalance
      */
     protected $credits;
 
     /**
-     * @var Member
+     * @var Contact
      */
-    protected $member;
+    protected $contact;
+
+    /**
+     * @var Reward
+     */
+    protected $reward;
 
     /**
      * RewardReception constructor.
      * @param int $id
      * @param string $title
      * @param int $credits
-     * @param Member $member
+     * @param Contact $contact
      */
-    public function __construct(int $id, string $title, int $credits, Member $member)
+    public function __construct(int $id, string $title, CreditBalance $credits, Contact $contact)
     {
         $this->id = $id;
         $this->title = $title;
         $this->credits = $credits;
-        $this->member = $member;
+        $this->contact = $contact;
     }
 
     /**
@@ -62,18 +70,18 @@ class RewardReception
     }
 
     /**
-     * @return int
+     * @return CreditBalance
      */
-    public function getCredits(): int
+    public function getCredits(): CreditBalance
     {
         return $this->credits;
     }
 
     /**
-     * @return Member
+     * @return Contact
      */
-    public function getMember(): Member
+    public function getContact(): Contact
     {
-        return $this->member;
+        return $this->contact;
     }
 }

@@ -13,10 +13,10 @@ class ContactAttributeMapper
      */
     public function map(object $data): ContactAttribute
     {
-        if ($data == null) {
-            $attribute = null;
-        } else {
+        $attribute = null;
+        if (property_exists($data,'attribute')) {
             $attributeMapper = new AttributeMapper();
+
             $attribute = $attributeMapper->map($data->attribute);
         }
 

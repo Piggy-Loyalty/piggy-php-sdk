@@ -4,13 +4,12 @@ namespace Piggy\Api\Tests\OAuth\Contacts;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\Models\Contacts\PrepaidBalance;
-use Piggy\Api\Models\Loyalty\CreditBalance;
-use Piggy\Api\OAuthClient;
+use Piggy\Api\Models\Contacts\Attribute;
+use Piggy\Api\Models\Contacts\ContactAttribute;
 use Piggy\Api\Tests\OAuthTestCase;
 
 /**
- * Class MembersResourceTest
+ * Class ContactsResourceTest
  * @package Piggy\Api\Tests\OAuth\Loyalty
  */
 class ContactsResourceTest extends OAuthTestCase
@@ -90,27 +89,56 @@ class ContactsResourceTest extends OAuthTestCase
         $this->assertEquals($email, $data->getEmail());
     }
 
-//    /** @test */
-//    public function it_returns_contact_when_contact_exists()
-//    {
-//        $lp = $this->createLoyaltyProgram();
-//
-//        $contact = $this->createContact();
-//
-//        $this->addExpectedResponse([
-//            "contact" => [
-//                "id" => $contact->getId(),
-//                "email" => $contact->getEmail(),
-//            ],
-//            "credit_balance" => [
-//                "id" => 1,
-//                "balance" => 100,
-//            ],
-//        ]);
-//
-//        $data = $this->mockedClient->contacts->findOrCreate($lp->getId(), 1, $contact->getEmail());
-//
-//        $this->assertEquals($contact->getEmail(), $data->getEmail());
-//        $this->assertEquals($creditBalance->getBalance(), $data->getCreditBalance()->getBalance());
-//    }
+    /** @test */
+    public function it_updates_a_contact()
+    {
+        $attributes = [
+            new ContactAttribute(
+                "Peter",
+                new Attribute(
+                    "name",
+                    "label",
+                    "E-mail",
+                    "email",
+                    "email",
+                    false,
+                    false,
+                    true,
+                    []
+                )
+            ),
+            new ContactAttribute(
+                "de Vries",
+                new Attribute(
+                    "name",
+                    "label",
+                    "E-mail",
+                    "email",
+                    "email",
+                    false,
+                    false,
+                    true,
+                    []
+                )
+            )
+        ];
+
+        $this->addExpectedResponse([
+            "uuid" => 1,
+            "email" => "",
+            "credit_balance" => null,
+            "prepaid_balance" => null,
+            "attributes" => $attributes,
+            "current_values" => null,
+            "subscriptions" => null,
+        ]);
+
+        $data = $this->mockedClient->contacts->update("1", [
+            "firstName" => "Peter",
+            "lastName" => "De Vries"]
+        );
+
+        $this->assertEquals("1", $data->getUuId());
+        $this->assertEquals($attributes, $data->getAttributes());
+    }
 }

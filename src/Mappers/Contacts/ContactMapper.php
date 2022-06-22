@@ -14,50 +14,44 @@ class ContactMapper
      */
     public function map(object $data): Contact
     {
-        if ($data->prepaid_balance == null) {
-            $prepaidBalance = null;
-        } else {
+        $prepaidBalance = null;
+        if (property_exists($data,'prepaid_balance')) {
             $prepaidBalanceMapper = new PrepaidBalanceMapper();
             $prepaidBalance = $prepaidBalanceMapper->map($data->prepaid_balance);
         }
 
-        if ($data->credit_balance == null) {
-            $creditBalance = null;
-        } else {
+        $creditBalance = null;
+        if (property_exists($data,'credit_balance')) {
             $creditBalanceMapper = new CreditBalanceMapper();
             $creditBalance = $creditBalanceMapper->map($data->credit_balance);
         }
 
-        if ($data->attributes == null) {
-            $attributes = null;
-        } else {
+        $attributes = null;
+        if (property_exists($data,'attributes')) {
             $attributesMapper = new ContactAttributesMapper();
             $attributes = $attributesMapper->map($data->attributes);
         }
 
-        if ($data->current_values == null) {
-            $currentValues = null;
-        } else {
+        $currentValues = null;
+        if (property_exists($data,'current_values')) {
             $currentValuesMapper = new CurrentValuesMapper();
             $currentValues = $currentValuesMapper->map($data->current_values);
         }
 
-        if ($data->subscriptions == null) {
-            $subscriptions = null;
-        } else {
+        $subscriptions = null;
+        if (property_exists($data,'subscriptions')) {
             $subscriptionsMapper = new SubscriptionsMapper();
             $subscriptions = $subscriptionsMapper->map($data->subscriptions);
         }
 
-
         $contact = new Contact(
             $data->uuid,
             $data->email ?? "",
-            $prepaidBalance ?? "",
-            $creditBalance ?? "",
-            $attributes ?? [],
-            $subscriptions ?? [],
-            $currentValues ?? []
+            $prepaidBalance,
+            $creditBalance,
+            $attributes,
+            $subscriptions,
+            $currentValues
         );
 
         return $contact;

@@ -3,7 +3,10 @@
 namespace Piggy\Api\Http\Traits;
 
 use Piggy\Api\Http\BaseClient;
+use Piggy\Api\Resources\OAuth\ContactIdentifiersResource;
 use Piggy\Api\Resources\OAuth\Contacts\ContactsResource;
+use Piggy\Api\Resources\OAuth\ContactSubscriptionsResource;
+use Piggy\Api\Resources\OAuth\ContactVerificationResource;
 use Piggy\Api\Resources\OAuth\Giftcards\GiftcardsResource;
 use Piggy\Api\Resources\OAuth\Giftcards\GiftcardTransactionsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\CreditReceptionsResource;
@@ -11,12 +14,13 @@ use Piggy\Api\Resources\OAuth\Loyalty\LoyaltyCardsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\MembersResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Rewards\DigitalRewardReceptionsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Rewards\ExternalRewardReceptionsResource;
-use Piggy\Api\Resources\OAuth\Loyalty\Rewards\PhysicalRewardReceptionsResource;
+use Piggy\Api\Resources\OAuth\Loyalty\Rewards\RewardReceptionsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Rewards\RewardsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\StagedCreditReceptionsResource;
 use Piggy\Api\Resources\OAuth\Marketing\MarketingRecipientsResource;
 use Piggy\Api\Resources\OAuth\Shops\ShopsResource;
 use Piggy\Api\Resources\OAuth\Shops\WebshopsResource;
+use Piggy\Api\Resources\OAuth\SubscriptionTypesResource;
 
 /**
  * Trait SetsOAuthResources
@@ -30,9 +34,24 @@ trait SetsOAuthResources
     public $contacts;
 
     /**
-     * @var MembersResource
+     * @var ContactIdentifiersResource
      */
-    public $members;
+    public $contactIdentifiers;
+
+    /**
+     * @var ContactVerificationResource
+     */
+    public $contactVerificationResource;
+
+    /**
+     * @var ContactSubscriptionsResource
+     */
+    public $contactSubscriptionsResource;
+
+    /**
+     * @var SubscriptionTypesResource
+     */
+    public $subscriptionTypesResource;
 
     /**
      * @var ShopsResource
@@ -50,11 +69,6 @@ trait SetsOAuthResources
     public $stagedCreditReceptions;
 
     /**
-     * @var LoyaltyCardsResource
-     */
-    public $loyaltyCards;
-
-    /**
      * @var RewardsResource
      */
     public $rewards;
@@ -70,7 +84,7 @@ trait SetsOAuthResources
     public $externalRewardReceptions;
 
     /**
-     * @var PhysicalRewardReceptionsResource
+     * @var RewardReceptionsResource
      */
     public $physicalRewardReceptions;
 
@@ -90,15 +104,17 @@ trait SetsOAuthResources
     protected function setResources(BaseClient $client)
     {
         $this->contacts = new ContactsResource($client);
-        $this->members = new MembersResource($client);
+        $this->contactIdentifiers = new ContactIdentifiersResource($client);
+        $this->contactVerificationResource = new ContactVerificationResource($client);
+        $this->contactSubscriptionsResource = new ContactSubscriptionsResource($client);
+        $this->subscriptionTypesResource = new SubscriptionTypesResource($client);
         $this->shops = new ShopsResource($client);
         $this->creditReceptions = new CreditReceptionsResource($client);
         $this->stagedCreditReceptions = new StagedCreditReceptionsResource($client);
-        $this->loyaltyCards = new LoyaltyCardsResource($client);
         $this->rewards = new RewardsResource($client);
         $this->digitalRewardReceptions = new DigitalRewardReceptionsResource($client);
         $this->externalRewardReceptions = new ExternalRewardReceptionsResource($client);
-        $this->physicalRewardReceptions = new PhysicalRewardReceptionsResource($client);
+        $this->physicalRewardReceptions = new RewardReceptionsResource($client);
         $this->giftcards = new GiftcardsResource($client);
         $this->giftcardTransactions = new GiftcardTransactionsResource($client);
     }
