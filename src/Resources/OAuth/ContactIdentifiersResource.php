@@ -17,17 +17,17 @@ class ContactIdentifiersResource extends BaseResource
     /**
      * @var string
      */
-    protected $resourceUri = "api/v3/oauth/clients/contact-identifiers";
+    protected $resourceUri = "/api/v3/oauth/clients/contact-identifiers";
 
     /**
-     * @param $contactIdentifierValue
+     * @param string $contactIdentifierValue
      * @return ContactIdentifier
      * @throws GuzzleException
      * @throws PiggyRequestException
      */
-    public function get($contactIdentifierValue): ContactIdentifier
+    public function get(string $contactIdentifierValue): ContactIdentifier
     {
-        $response = $this->client->get("{$this->resourceUri}/find", [
+        $response = $this->client->get("$this->resourceUri/find", [
             "contact_identifier_value" => $contactIdentifierValue
         ]);
 
@@ -37,38 +37,19 @@ class ContactIdentifiersResource extends BaseResource
     }
 
     /**
-     * @param $contactIdentifierValue
-     * @param $contactUuid
-     * @param $contactIdentifierName
-     *
+     * @param string $contactIdentifierValue
+     * @param string $contactUuid
+     * @param string|null $contactIdentifierName
      * @return ContactIdentifier
      * @throws GuzzleException
      * @throws PiggyRequestException
      */
-    public function create($contactIdentifierValue, $contactUuid, $contactIdentifierName): ContactIdentifier
+    public function create(string $contactIdentifierValue, string $contactUuid, ?string $contactIdentifierName = null): ContactIdentifier
     {
         $response = $this->client->post($this->resourceUri, [
-            "uuid" => $contactUuid,
+            "contact_uuid" => $contactUuid,
             "contact_identifier_value" => $contactIdentifierValue,
-            "contact_identifier_name" => $contactIdentifierName
-        ]);
-
-        $mapper = new ContactIdentifierMapper();
-
-        return $mapper->map($response->getData());
-    }
-
-    /**
-     * @param $contactIdentifierValue
-     *
-     * @return ContactIdentifier
-     * @throws GuzzleException
-     * @throws PiggyRequestException
-     */
-    public function createAnonymously($contactIdentifierValue): ContactIdentifier
-    {
-        $response = $this->client->post("{$this->resourceUri}/anonymous", [
-            "contact_identifier_value" => $contactIdentifierValue,
+            "contact_identifier_name" => $contactIdentifierName,
         ]);
 
         $mapper = new ContactIdentifierMapper();

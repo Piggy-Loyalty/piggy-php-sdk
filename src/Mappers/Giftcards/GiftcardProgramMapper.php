@@ -3,6 +3,7 @@
 namespace Piggy\Api\Mappers\Giftcards;
 
 use Piggy\Api\Models\Giftcards\GiftcardProgram;
+use stdClass;
 
 /**
  * Class GiftcardMapper
@@ -11,17 +12,15 @@ use Piggy\Api\Models\Giftcards\GiftcardProgram;
 class GiftcardProgramMapper
 {
     /**
-     * @param object $data
+     * @param stdClass $data
      * @return GiftcardProgram
      */
-    public function map(object $data): GiftcardProgram
+    public function map(stdClass $data): GiftcardProgram
     {
-        $giftcard = new GiftcardProgram(
+        return new GiftcardProgram(
             $data->uuid,
             $data->name
         );
-
-        return $giftcard;
     }
 
 }

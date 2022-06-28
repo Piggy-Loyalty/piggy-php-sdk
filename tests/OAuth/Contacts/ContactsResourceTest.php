@@ -19,22 +19,44 @@ class ContactsResourceTest extends OAuthTestCase
      * @throws GuzzleException
      * @throws PiggyRequestException
      */
+    public function it_gets_a_contact()
+    {
+        $this->addExpectedResponse([
+            "uuid" => 1,
+            "email" => "new@piggy.nl",
+            "prepaid_balance" => [
+                "balance_in_cents" => 100
+            ]
+        ]);
+//        $prepaidBalance,
+//            $creditBalance,
+//            $attributes,
+//            $subscriptions,
+//            $currentValues
+
+        $contact = $this->mockedClient->contacts->get('123-123');
+
+        $this->assertEquals(1, $contact->getUuId());
+        $this->assertEquals("new@piggy.nl", $contact->getEmail());
+        $this->assertEquals(1, $contact->getCreditBalance());
+    }
+
+    /**
+     * @test
+     * @throws GuzzleException
+     * @throws PiggyRequestException
+     */
     public function it_returns_the_contact_after_creation()
     {
         $this->addExpectedResponse([
             "uuid" => 1,
             "email" => "new@piggy.nl",
-            "prepaid_balance" => null,
-            "attributes" => null,
-            "credit_balance" => null,
-            "current_values" => null,
-            "subscriptions" => null,
         ]);
 
-        $data = $this->mockedClient->contacts->create("new@piggy.nl");
+        $contact = $this->mockedClient->contacts->create("new@piggy.nl");
 
-        $this->assertEquals(1, $data->getUuId());
-        $this->assertEquals("new@piggy.nl", $data->getEmail());
+        $this->assertEquals(1, $contact->getUuId());
+        $this->assertEquals("new@piggy.nl", $contact->getEmail());
     }
 
     /**
@@ -42,10 +64,8 @@ class ContactsResourceTest extends OAuthTestCase
      */
     public function it_returns_contact_by_email()
     {
-        $contact = $this->createContact();
-
         $this->addExpectedResponse([
-            "uuid" => $contact->getUuId(),
+            "uuid" => '§12345678',
             "email" => $contact->getEmail(),
             "prepaid_balance" => [
                 "balance_in_cents" => $contact->getPrepaidBalance()->getBalanceInCents(),
@@ -58,15 +78,15 @@ class ContactsResourceTest extends OAuthTestCase
             "subscriptions" => $contact->getSubscriptions(),
         ]);
 
-        $data = $this->mockedClient->contacts->findOneBy($contact->getEmail());
+        $contact = $this->mockedClient->contacts->findOneBy($contact->getEmail());
 
-        $this->assertEquals($contact->getEmail(), $data->getEmail());
-        $this->assertEquals($contact->getUuId(), $data->getUuId());
-        $this->assertEquals($contact->getPrepaidBalance(), $data->getPrepaidBalance());
-        $this->assertEquals($contact->getCreditBalance(), $data->getCreditBalance());
-        $this->assertEquals($contact->getAttributes(), $data->getAttributes());
-        $this->assertEquals($contact->getCurrentValues(), $data->getCurrentValues());
-        $this->assertEquals($contact->getSubscriptions(), $data->getSubscriptions());
+        $this->assertEquals($contact->getUuId(), '§12345678');
+//        $this->assertEquals($contact->getEmail(), $data->getEmail());
+//        $this->assertEquals($contact->getPrepaidBalance(), $data->getPrepaidBalance());
+//        $this->assertEquals($contact->getCreditBalance(), $data->getCreditBalance());
+//        $this->assertEquals($contact->getAttributes(), $data->getAttributes());
+//        $this->assertEquals($contact->getCurrentValues(), $data->getCurrentValues());
+//        $this->assertEquals($contact->getSubscriptions(), $data->getSubscriptions());
     }
 
     /** @test */
@@ -134,8 +154,8 @@ class ContactsResourceTest extends OAuthTestCase
         ]);
 
         $data = $this->mockedClient->contacts->update("1", [
-            "firstName" => "Peter",
-            "lastName" => "De Vries"]
+                "firstName" => "Peter",
+                "lastName" => "De Vries"]
         );
 
         $this->assertEquals("1", $data->getUuId());

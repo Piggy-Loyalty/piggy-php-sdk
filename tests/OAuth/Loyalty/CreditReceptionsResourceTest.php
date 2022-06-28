@@ -6,7 +6,7 @@ use Exception;
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\InputInvalidException;
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\Models\Loyalty\CreditReception;
+use Piggy\Api\Models\Loyalty\Receptions\CreditReception;
 use Piggy\Api\Tests\OAuthTestCase;
 
 /**

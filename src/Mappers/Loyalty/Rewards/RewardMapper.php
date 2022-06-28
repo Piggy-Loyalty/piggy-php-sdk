@@ -6,15 +6,16 @@ use Exception;
 use Piggy\Api\Enum\RewardType;
 use Piggy\Api\Models\Loyalty\Rewards\DigitalReward;
 use Piggy\Api\Models\Loyalty\Rewards\PhysicalReward;
+use stdClass;
 
 class RewardMapper
 {
     /**
-     * @param object $data
-     * @return PhysicalReward|DigitalReward
+     * @param stdClass $data
+     * @return DigitalReward|PhysicalReward
      * @throws Exception
      */
-    public function map(object $data)
+    public function map(stdClass $data)
     {
         $physicalMapper = new PhysicalRewardMapper();
         $digitalMapper = new DigitalRewardMapper();

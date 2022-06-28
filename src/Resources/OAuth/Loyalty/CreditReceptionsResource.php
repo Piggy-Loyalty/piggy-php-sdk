@@ -2,12 +2,11 @@
 
 namespace Piggy\Api\Resources\OAuth\Loyalty;
 
-use Exception;
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\InputInvalidException;
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\Mappers\Loyalty\CreditReceptionMapper;
-use Piggy\Api\Models\Loyalty\CreditReception;
+use Piggy\Api\Mappers\Loyalty\Receptions\CreditReceptionMapper;
+use Piggy\Api\Models\Loyalty\Receptions\CreditReception;
 use Piggy\Api\Resources\BaseResource;
 
 /**

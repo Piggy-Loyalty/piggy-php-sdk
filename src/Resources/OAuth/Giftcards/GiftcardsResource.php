@@ -42,7 +42,6 @@ class GiftcardsResource extends BaseResource
      * @param string $shopUuid
      * @param string $giftcardProgramUuid
      * @param int $type
-     *
      * @return Giftcard
      * @throws GuzzleException
      * @throws PiggyRequestException

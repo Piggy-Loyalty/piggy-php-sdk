@@ -2,24 +2,23 @@
 
 namespace Piggy\Api\Mappers\Loyalty;
 
-use Piggy\Api\Models\Loyalty\Media;
+use Piggy\Api\Models\Loyalty\Unit;
 use stdClass;
 
 /**
  * Class LoyaltyProgramMapper
  * @package Piggy\Api\Mappers\Loyalty
  */
-class MediaMapper
+class UnitMapper
 {
     /**
      * @param stdClass $data
-     * @return Media
+     * @return Unit
      */
-    public function map(stdClass $data): Media
+    public function map(stdClass $data): Unit
     {
-        return new Media(
-            $data->type,
-            $data->value
+        return new Unit(
+            $data->name
         );
     }
 }

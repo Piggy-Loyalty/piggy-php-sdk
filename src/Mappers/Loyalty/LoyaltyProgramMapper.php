@@ -3,6 +3,7 @@
 namespace Piggy\Api\Mappers\Loyalty;
 
 use Piggy\Api\Models\Loyalty\LoyaltyProgram;
+use stdClass;
 
 /**
  * Class LoyaltyProgramMapper
@@ -11,16 +12,14 @@ use Piggy\Api\Models\Loyalty\LoyaltyProgram;
 class LoyaltyProgramMapper
 {
     /**
-     * @param object $data
+     * @param stdClass $data
      * @return LoyaltyProgram
      */
-    public function map(object $data): LoyaltyProgram
+    public function map(stdClass $data): LoyaltyProgram
     {
-        $loyaltyCard = new LoyaltyProgram(
+        return new LoyaltyProgram(
             $data->id,
             $data->name
         );
-
-        return $loyaltyCard;
     }
 }

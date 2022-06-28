@@ -5,6 +5,7 @@ namespace Piggy\Api\Mappers\Giftcards;
 use Piggy\Api\Enum\GiftcardType;
 use Piggy\Api\Mappers\BaseMapper;
 use Piggy\Api\Models\Giftcards\Giftcard;
+use stdClass;
 
 /**
  * Class GiftcardMapper
@@ -13,10 +14,10 @@ use Piggy\Api\Models\Giftcards\Giftcard;
 class GiftcardMapper extends BaseMapper
 {
     /**
-     * @param object $data
+     * @param stdClass $data
      * @return Giftcard
      */
-    public function map(object $data): Giftcard
+    public function map(stdClass $data): Giftcard
     {
         if (isset($data->giftcard_program)) {
             $giftcardProgramMapper = new GiftcardProgramMapper();
@@ -27,7 +28,7 @@ class GiftcardMapper extends BaseMapper
             $expirationDate = $this->parseDate($data->expiration_date);
         }
 
-        $giftcard = new Giftcard(
+        return new Giftcard(
             $data->uuid,
             $data->hash,
             GiftcardType::byName($data->type)->getValue(),
@@ -36,7 +37,5 @@ class GiftcardMapper extends BaseMapper
             $giftcardProgram ?? null,
             $expirationDate ?? null
         );
-
-        return $giftcard;
     }
 }

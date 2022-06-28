@@ -31,7 +31,7 @@ class ContactSubscriptionsResource extends BaseResource
      */
     public function list($contactUuid): array
     {
-        $response = $this->client->get("{$this->resourceUri}/{$contactUuid}", [
+        $response = $this->client->get("$this->resourceUri/$contactUuid", [
             "contact_uuid" => $contactUuid
         ]);
 

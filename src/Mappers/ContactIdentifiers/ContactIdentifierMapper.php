@@ -4,15 +4,15 @@ namespace Piggy\Api\Mappers\ContactIdentifiers;
 
 use Piggy\Api\Mappers\Contacts\ContactMapper;
 use Piggy\Api\Models\Contacts\ContactIdentifier;
+use stdClass;
 
 class ContactIdentifierMapper
 {
     /**
-     * @param object $data
-     *
+     * @param stdClass $data
      * @return ContactIdentifier
      */
-    public function map(object $data): ContactIdentifier
+    public function map(stdClass $data): ContactIdentifier
     {
 
         $contact = null;
@@ -22,13 +22,11 @@ class ContactIdentifierMapper
             $contact = $contactMapper->map($data->contact);
         }
 
-        $contactIdentifier = new ContactIdentifier(
+        return new ContactIdentifier(
             $data->name,
             $data->value,
             $data->active,
             $contact
         );
-
-        return $contactIdentifier;
     }
 }

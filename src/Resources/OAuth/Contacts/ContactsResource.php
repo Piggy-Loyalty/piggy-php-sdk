@@ -6,8 +6,8 @@ use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Contacts\ContactMapper;
 use Piggy\Api\Mappers\Contacts\ContactsMapper;
-use Piggy\Api\Mappers\Contacts\PrepaidBalanceMapper;
 use Piggy\Api\Mappers\Loyalty\CreditBalanceMapper;
+use Piggy\Api\Mappers\Loyalty\PrepaidBalanceMapper;
 use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\Models\Contacts\PrepaidBalance;
 use Piggy\Api\Models\Loyalty\CreditBalance;
@@ -24,14 +24,13 @@ class ContactsResource extends BaseResource
      */
     protected $resourceUri = "/api/v3/oauth/clients/contacts";
 
-
     /**
-     * @param $contactUuid
+     * @param string $contactUuid
      * @return Contact
      * @throws GuzzleException
      * @throws PiggyRequestException
      */
-    public function get($contactUuid): Contact
+    public function get(string $contactUuid): Contact
     {
         $response = $this->client->get("{$this->resourceUri}/{$contactUuid}");
 
@@ -42,7 +41,6 @@ class ContactsResource extends BaseResource
 
     /**
      * @param string $email
-     *
      * @return Contact
      * @throws GuzzleException
      * @throws PiggyRequestException
@@ -60,7 +58,6 @@ class ContactsResource extends BaseResource
 
     /**
      * @param string $email
-     *
      * @return Contact
      * @throws GuzzleException
      * @throws PiggyRequestException
@@ -78,7 +75,6 @@ class ContactsResource extends BaseResource
 
     /**
      * @param string $email
-     *
      * @return Contact
      * @throws GuzzleException
      * @throws PiggyRequestException
@@ -95,14 +91,30 @@ class ContactsResource extends BaseResource
     }
 
     /**
-     * @param $page
-     * @param $limit
-     *
+     * @param string|null $contactIdentifierValue
+     * @return Contact
+     * @throws GuzzleException
+     * @throws PiggyRequestException
+     */
+    public function createAnonymously(?string $contactIdentifierValue = null): Contact
+    {
+        $response = $this->client->post("{$this->resourceUri}/anonymous", [
+            "contact_identifier_value" => $contactIdentifierValue,
+        ]);
+
+        $mapper = new ContactMapper();
+
+        return $mapper->map($response->getData());
+    }
+
+    /**
+     * @param int|null $page
+     * @param int|null $limit
      * @return array
      * @throws GuzzleException
      * @throws PiggyRequestException
      */
-    public function list($page = null, $limit = null): array
+    public function list(?int $page = null, ?int $limit = null): array
     {
         $response = $this->client->get("{$this->resourceUri}", [
             "page" => $page,
@@ -117,14 +129,13 @@ class ContactsResource extends BaseResource
     /**
      * @param string $contactUuid
      * @param array $attributes
-     *
      * @return Contact
      * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function update(string $contactUuid, array $attributes): Contact
     {
-        $response = $this->client->put("{$this->resourceUri}/{$contactUuid}", $attributes);
+        $response = $this->client->put("{$this->resourceUri}/{$contactUuid}", ['attributes' => $attributes]);
 
         $mapper = new ContactMapper();
 
@@ -139,8 +150,7 @@ class ContactsResource extends BaseResource
      */
     public function getPrepaidBalance($contactUuid): PrepaidBalance
     {
-        $response = $this->client->get("{$this->resourceUri}/{$contactUuid}/prepaid/balance");
-
+        $response = $this->client->get("{$this->resourceUri}/{$contactUuid}/prepaid-balance");
         $mapper = new PrepaidBalanceMapper();
 
         return $mapper->map($response->getData());
@@ -155,7 +165,6 @@ class ContactsResource extends BaseResource
     public function getCreditBalance($contactUuid): CreditBalance
     {
         $response = $this->client->get("{$this->resourceUri}/{$contactUuid}/credit-balance");
-
         $mapper = new CreditBalanceMapper();
 
         return $mapper->map($response->getData());

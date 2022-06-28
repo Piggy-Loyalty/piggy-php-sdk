@@ -3,16 +3,17 @@
 namespace Piggy\Api\Mappers\Contacts;
 
 use Piggy\Api\Mappers\Loyalty\CreditBalanceMapper;
+use Piggy\Api\Mappers\Loyalty\PrepaidBalanceMapper;
 use Piggy\Api\Models\Contacts\Contact;
+use stdClass;
 
 class ContactMapper
 {
     /**
-     * @param object $data
-     *
+     * @param stdClass $data
      * @return Contact
      */
-    public function map(object $data): Contact
+    public function map(stdClass $data): Contact
     {
         $prepaidBalance = null;
         if (property_exists($data,'prepaid_balance')) {
@@ -23,6 +24,7 @@ class ContactMapper
         $creditBalance = null;
         if (property_exists($data,'credit_balance')) {
             $creditBalanceMapper = new CreditBalanceMapper();
+
             $creditBalance = $creditBalanceMapper->map($data->credit_balance);
         }
 
@@ -44,7 +46,7 @@ class ContactMapper
             $subscriptions = $subscriptionsMapper->map($data->subscriptions);
         }
 
-        $contact = new Contact(
+        return new Contact(
             $data->uuid,
             $data->email ?? "",
             $prepaidBalance,
@@ -53,7 +55,5 @@ class ContactMapper
             $subscriptions,
             $currentValues
         );
-
-        return $contact;
     }
 }

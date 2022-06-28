@@ -4,7 +4,7 @@ namespace Piggy\Api\Mappers;
 
 use Exception;
 use Piggy\Api\Mappers\Loyalty\MemberMapper;
-use Piggy\Api\Models\Loyalty\CreditReception;
+use Piggy\Api\Models\Loyalty\Receptions\CreditReception;
 
 /**
  * Class CreditReceptionMapper

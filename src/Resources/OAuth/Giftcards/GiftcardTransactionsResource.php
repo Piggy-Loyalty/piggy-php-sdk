@@ -17,22 +17,36 @@ class GiftcardTransactionsResource extends BaseResource
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v2/oauth/clients/giftcard-transactions";
+    protected $resourceUri = "/api/v3/oauth/clients/giftcard-transactions";
 
     /**
-     * @param int $shopId
-     * @param int $giftcardId
-     * @param int $amountInCents
-     *
+     * @param string $giftcardTransactionUuid
      * @return GiftcardTransaction
      * @throws GuzzleException
      * @throws PiggyRequestException
      */
-    public function create(int $shopId, int $giftcardId, int $amountInCents): GiftcardTransaction
+    public function get(string $giftcardTransactionUuid): GiftcardTransaction
+    {
+        $response = $this->client->get("$this->resourceUri/$giftcardTransactionUuid");
+
+        $mapper = new GiftcardTransactionMapper();
+
+        return $mapper->map($response->getData());
+    }
+
+    /**
+     * @param string $shopUuid
+     * @param string $giftcardUuid
+     * @param int $amountInCents
+     * @return GiftcardTransaction
+     * @throws GuzzleException
+     * @throws PiggyRequestException
+     */
+    public function create(string $shopUuid, string $giftcardUuid, int $amountInCents): GiftcardTransaction
     {
         $response = $this->client->post($this->resourceUri, [
-            "shop_id" => $shopId,
-            "giftcard_id" => $giftcardId,
+            "shop_uuid" => $shopUuid,
+            "giftcard_uuid" => $giftcardUuid,
             "amount" => $amountInCents,
         ]);
 
@@ -42,15 +56,14 @@ class GiftcardTransactionsResource extends BaseResource
     }
 
     /**
-     * @param int $giftcardTransactionId
-     *
+     * @param string $giftcardTransactionUuid
      * @return GiftcardTransaction
      * @throws GuzzleException
      * @throws PiggyRequestException
      */
-    public function correct(int $giftcardTransactionId): GiftcardTransaction
+    public function correct(string $giftcardTransactionUuid): GiftcardTransaction
     {
-        $response = $this->client->post($this->resourceUri . "/correct/{$giftcardTransactionId}", []);
+        $response = $this->client->post("$this->resourceUri/$giftcardTransactionUuid/correct", []);
 
         $mapper = new GiftcardTransactionMapper();
 

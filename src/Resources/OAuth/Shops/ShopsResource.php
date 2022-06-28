@@ -2,6 +2,7 @@
 
 namespace Piggy\Api\Resources\OAuth\Shops;
 
+use Exception;
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Shops\ShopMapper;
@@ -24,6 +25,7 @@ class ShopsResource extends BaseResource
      * @return array
      * @throws GuzzleException
      * @throws PiggyRequestException
+     * @throws Exception
      */
     public function all(): array
     {
@@ -35,14 +37,14 @@ class ShopsResource extends BaseResource
     }
 
     /**
-     * @param string $uuid
+     * @param string $shopUuid
      * @return Shop
      * @throws GuzzleException
      * @throws PiggyRequestException
      */
-    public function get(string $uuid): Shop
+    public function get(string $shopUuid): Shop
     {
-        $response = $this->client->get("{$this->resourceUri}/{$uuid}", []);
+        $response = $this->client->get("$this->resourceUri/$shopUuid", []);
 
         $mapper = new ShopMapper();
 

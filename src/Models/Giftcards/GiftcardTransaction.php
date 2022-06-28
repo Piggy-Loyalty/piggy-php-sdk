@@ -12,9 +12,9 @@ class GiftcardTransaction
 {
 
     /**
-     * @var int
+     * @var string
      */
-    protected $id;
+    protected $uuid;
 
     /**
      * @var int
@@ -26,19 +26,19 @@ class GiftcardTransaction
      */
     protected $created_at;
 
-    public function __construct(int $id, int $amount, DateTime $created_at)
+    public function __construct(string $uuid, int $amount, DateTime $createdAt)
     {
-        $this->id = $id;
+        $this->uuid = $uuid;
         $this->amount = $amount;
-        $this->created_at = $created_at;
+        $this->created_at = $createdAt;
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getId(): int
+    public function getUuid(): string
     {
-        return $this->id;
+        return $this->uuid;
     }
 
     /**

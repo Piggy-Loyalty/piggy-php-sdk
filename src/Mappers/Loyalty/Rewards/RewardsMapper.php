@@ -2,6 +2,8 @@
 
 namespace Piggy\Api\Mappers\Loyalty\Rewards;
 
+use Exception;
+
 /**
  * Class RewardsMapper
  * @package Piggy\Api\Mappers\Loyalty\Rewards
@@ -11,7 +13,7 @@ class RewardsMapper
     /**
      * @param $data
      * @return array
-     * @throws \Exception
+     * @throws Exception
      */
     public function map($data): array
     {

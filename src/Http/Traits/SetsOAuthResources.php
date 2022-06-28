@@ -5,12 +5,13 @@ namespace Piggy\Api\Http\Traits;
 use Piggy\Api\Http\BaseClient;
 use Piggy\Api\Resources\OAuth\ContactIdentifiersResource;
 use Piggy\Api\Resources\OAuth\Contacts\ContactsResource;
+use Piggy\Api\Resources\OAuth\Contacts\ContactVerificationResource;
 use Piggy\Api\Resources\OAuth\ContactSubscriptionsResource;
-use Piggy\Api\Resources\OAuth\ContactVerificationResource;
 use Piggy\Api\Resources\OAuth\Giftcards\GiftcardsResource;
 use Piggy\Api\Resources\OAuth\Giftcards\GiftcardTransactionsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\CreditReceptionsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\LoyaltyCardsResource;
+use Piggy\Api\Resources\OAuth\Loyalty\LoyaltyTransactionsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\MembersResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Rewards\DigitalRewardReceptionsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Rewards\ExternalRewardReceptionsResource;
@@ -41,7 +42,7 @@ trait SetsOAuthResources
     /**
      * @var ContactVerificationResource
      */
-    public $contactVerificationResource;
+    public $contactVerification;
 
     /**
      * @var ContactSubscriptionsResource
@@ -74,16 +75,6 @@ trait SetsOAuthResources
     public $rewards;
 
     /**
-     * @var DigitalRewardReceptionsResource
-     */
-    public $digitalRewardReceptions;
-
-    /**
-     * @var ExternalRewardReceptionsResource
-     */
-    public $externalRewardReceptions;
-
-    /**
      * @var RewardReceptionsResource
      */
     public $physicalRewardReceptions;
@@ -101,21 +92,29 @@ trait SetsOAuthResources
     /**
      * @param BaseClient $client
      */
+
+    /**
+     * @var LoyaltyTransactionsResource
+     */
+    public $loyaltyTransactions;
+
+
     protected function setResources(BaseClient $client)
     {
         $this->contacts = new ContactsResource($client);
         $this->contactIdentifiers = new ContactIdentifiersResource($client);
-        $this->contactVerificationResource = new ContactVerificationResource($client);
-        $this->contactSubscriptionsResource = new ContactSubscriptionsResource($client);
-        $this->subscriptionTypesResource = new SubscriptionTypesResource($client);
-        $this->shops = new ShopsResource($client);
-        $this->creditReceptions = new CreditReceptionsResource($client);
-        $this->stagedCreditReceptions = new StagedCreditReceptionsResource($client);
-        $this->rewards = new RewardsResource($client);
-        $this->digitalRewardReceptions = new DigitalRewardReceptionsResource($client);
-        $this->externalRewardReceptions = new ExternalRewardReceptionsResource($client);
-        $this->physicalRewardReceptions = new RewardReceptionsResource($client);
         $this->giftcards = new GiftcardsResource($client);
         $this->giftcardTransactions = new GiftcardTransactionsResource($client);
+        $this->shops = new ShopsResource($client);
+        $this->rewards = new RewardsResource($client);
+        $this->contactVerification = new ContactVerificationResource($client);
+
+        $this->loyaltyTransactions = new LoyaltyTransactionsResource($client);
+
+
+        $this->contactSubscriptionsResource = new ContactSubscriptionsResource($client);
+        $this->subscriptionTypesResource = new SubscriptionTypesResource($client);
+        $this->creditReceptions = new CreditReceptionsResource($client);
+        $this->stagedCreditReceptions = new StagedCreditReceptionsResource($client);
     }
 }

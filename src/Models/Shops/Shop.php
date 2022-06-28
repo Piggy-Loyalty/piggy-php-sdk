@@ -8,13 +8,8 @@ use Piggy\Api\Models\Loyalty\LoyaltyProgram;
  * Class Shop
  * @package Piggy\Api\Models\Shops
  */
-abstract class Shop
+class Shop
 {
-    /**
-     * @var string
-     */
-    protected $type;
-
     /**
      * @var string
      */
@@ -36,24 +31,17 @@ abstract class Shop
     protected $loyaltyProgram;
 
     /**
-     * @param string $type
      * @param string $uuid
      * @param string $name
      * @param string|null $reference
      * @param LoyaltyProgram|null $loyaltyProgram
      */
-    public function __construct(string $type, string $uuid, string $name, string $reference = null, LoyaltyProgram $loyaltyProgram = null)
+    public function __construct(string $uuid, string $name, string $reference = null, LoyaltyProgram $loyaltyProgram = null)
     {
-        $this->type = $type;
         $this->uuid = $uuid;
         $this->name = $name;
         $this->reference = $reference;
         $this->loyaltyProgram = $loyaltyProgram;
-    }
-
-    public function getType(): string
-    {
-        return $this->type;
     }
 
     /**

@@ -2,10 +2,11 @@
 
 namespace Piggy\Api\Mappers\Shops;
 
-use Exception;
-use Piggy\Api\Enum\ShopType;
+use Piggy\Api\Mappers\Loyalty\LoyaltyProgramMapper;
 use Piggy\Api\Models\Shops\PhysicalShop;
+use Piggy\Api\Models\Shops\Shop;
 use Piggy\Api\Models\Shops\Webshop;
+use stdClass;
 
 /**
  * Class ShopMapper
@@ -14,29 +15,24 @@ use Piggy\Api\Models\Shops\Webshop;
 class ShopMapper
 {
     /**
-     * @param object $data
-     * @return PhysicalShop|Webshop
-     * @throws Exception
+     * @param stdClass $data
+     * @return Shop
      */
-    public function map(object $data)
+    public function map(stdClass $data)
     {
-        $physicalShopMapper = new PhysicalShopMapper();
-        $webShopMapper = new WebshopMapper();
+        $loyaltyProgramMapper = new LoyaltyProgramMapper();
 
-        $shop = null;
+        $loyaltyProgram = null;
 
-        if ($data->type == ShopType::PHYSICAL) {
-            $shop = $physicalShopMapper->map($data);
+        if ($data->loyalty_program) {
+            $loyaltyProgram = $loyaltyProgramMapper->map($data->loyalty_program);
         }
 
-        if ($data->type == ShopType::WEB) {
-            $shop = $webShopMapper->map($data);
-        }
-
-        if ($shop === null) {
-            throw new Exception("Shop could not be mapped. No shop type given");
-        }
-
-        return $shop;
+        return new Shop(
+            $data->uuid ,
+            $data->name,
+            $data->reference,
+            $loyaltyProgram
+        );
     }
 }
