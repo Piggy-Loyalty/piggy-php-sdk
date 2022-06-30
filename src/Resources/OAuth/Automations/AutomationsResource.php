@@ -4,8 +4,9 @@ namespace Piggy\Api\Resources\OAuth\Automations;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\Mappers\Shops\ShopMapper;
-use Piggy\Api\Models\Shops\Shop;
+use Piggy\Api\Mappers\Automations\AutomationMapper;
+use Piggy\Api\Mappers\Automations\AutomationsMapper;
+use Piggy\Api\Models\Automations\Automation;
 use Piggy\Api\Resources\BaseResource;
 
 /**
@@ -34,8 +35,9 @@ class AutomationsResource extends BaseResource
     }
 
     /**
-     * @param string $shopUuid
-     * @return Shop
+     * @param string $contactUuid
+     * @param string $automationUuid
+     * @return Automation
      * @throws GuzzleException
      * @throws PiggyRequestException
      */
@@ -46,7 +48,7 @@ class AutomationsResource extends BaseResource
             "automation_uuid" => $automationUuid
         ]);
 
-        $mapper = new ShopMapper();
+        $mapper = new AutomationMapper();
 
         return $mapper->map($response->getData());
     }

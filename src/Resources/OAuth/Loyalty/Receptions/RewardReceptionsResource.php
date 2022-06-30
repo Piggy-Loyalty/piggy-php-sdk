@@ -2,7 +2,6 @@
 
 namespace Piggy\Api\Resources\OAuth\Loyalty\Receptions;
 
-use Exception;
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Loyalty\Receptions\RewardReceptionMapper;
@@ -23,20 +22,18 @@ class RewardReceptionsResource extends BaseResource
 
     /**
      * @param string $contactUuid
-     * @param string $rewardUuid
      * @param string $shopUuid
-     * @param int $unitValue
+     * @param string $rewardUuid
      * @return DigitalRewardReception|PhysicalRewardReception|null
      * @throws GuzzleException
      * @throws PiggyRequestException
      */
-    public function create(string $contactUuid, string $rewardUuid, string $shopUuid, int $unitValue)
+    public function create(string $contactUuid, string $shopUuid, string $rewardUuid)
     {
         $response = $this->client->post($this->resourceUri, [
             "contact_uuid" => $contactUuid,
             "reward_uuid" => $rewardUuid,
             "shop_uuid" => $shopUuid,
-            "unit_value" => $unitValue
         ]);
 
         $mapper = new RewardReceptionMapper();

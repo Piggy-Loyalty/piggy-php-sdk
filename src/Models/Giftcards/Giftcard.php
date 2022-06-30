@@ -18,7 +18,7 @@ class Giftcard
     /**
      * @var int
      */
-    protected $type;
+    public $type;
 
     /**
      * @var string;

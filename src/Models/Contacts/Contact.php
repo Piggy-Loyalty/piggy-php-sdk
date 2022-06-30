@@ -32,7 +32,7 @@ class Contact
     protected $creditBalance;
 
     /**
-     * @var array
+     * @var array|null
      */
     protected $subscriptions;
 
@@ -131,6 +131,7 @@ class Contact
 
     /**
      * @param array|null $attributes
+     * @return void
      */
     public function setAttributes(?array $attributes): void
     {

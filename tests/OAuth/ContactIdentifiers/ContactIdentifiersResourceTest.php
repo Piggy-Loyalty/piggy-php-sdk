@@ -17,27 +17,16 @@ class ContactIdentifiersResourceTest extends OAuthTestCase
     public function it_returns_contact_identifier_by_value()
     {
         $this->addExpectedResponse([
-            "name" => "Loyalty Card",
             "value" => "1",
-            "active" => true,
-            "contact" => [
-                "uuid" => "11f1d2ef-0672-4d19-aa06-6dbed7c5c38b"
-            ]
+            "name" => 'Piggy',
+            "active" => true
         ]);
 
-        $data = $this->mockedClient->contactIdentifiers->get("1");
+        $contactIdentifier = $this->mockedClient->contactIdentifiers->get("1");
 
-        $this->assertEquals("Loyalty Card", $data->getName());
-        $this->assertEquals("1", $data->getValue());
-        $this->assertEquals(new Contact(
-            "11f1d2ef-0672-4d19-aa06-6dbed7c5c38b",
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
-        ), $data->getContact());
+        $this->assertEquals("Piggy", $contactIdentifier->getName());
+        $this->assertEquals("1", $contactIdentifier->getValue());
+        $this->assertEquals(true, $contactIdentifier->isActive());
     }
 
     /**
@@ -46,16 +35,16 @@ class ContactIdentifiersResourceTest extends OAuthTestCase
     public function it_creates_a_contact_identifier()
     {
         $this->addExpectedResponse([
-            "name" => "hash123",
-            "value" => "hash123",
-            "active" => true,
+            "value" => "1",
+            "name" => 'Piggy',
+            "active" => true
         ]);
 
-        $data = $this->mockedClient->contactIdentifiers->create("hash123", "3", "2");
+        $contactIdentifier = $this->mockedClient->contactIdentifiers->create("hash123", "3");
 
-        $this->assertEquals("hash123", $data->getName());
-        $this->assertEquals("hash123", $data->getValue());
-        $this->assertEquals(true, $data->isActive());
+        $this->assertEquals("Piggy", $contactIdentifier->getName());
+        $this->assertEquals("1", $contactIdentifier->getValue());
+        $this->assertEquals(true, $contactIdentifier->isActive());
     }
 
     /**

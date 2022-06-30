@@ -3,7 +3,8 @@
 namespace Piggy\Api\Http\Traits;
 
 use Piggy\Api\Http\BaseClient;
-use Piggy\Api\Resources\OAuth\ContactIdentifiersResource;
+use Piggy\Api\Resources\OAuth\Automations\AutomationsResource;
+use Piggy\Api\Resources\OAuth\Contacts\ContactIdentifiersResource;
 use Piggy\Api\Resources\OAuth\Contacts\ContactsResource;
 use Piggy\Api\Resources\OAuth\Contacts\ContactVerificationResource;
 use Piggy\Api\Resources\OAuth\ContactSubscriptionsResource;
@@ -97,6 +98,10 @@ trait SetsOAuthResources
      */
     public $rewardReceptions;
 
+    /**
+     * @var AutomationsResource
+     */
+    public $automations;
 
 
     protected function setResources(BaseClient $client)
@@ -109,14 +114,12 @@ trait SetsOAuthResources
         $this->rewards = new RewardsResource($client);
         $this->contactVerification = new ContactVerificationResource($client);
         $this->prepaidTransactions = new PrepaidTransactionResource($client);
-
         $this->rewardReceptions = new RewardReceptionsResource($client);
-
         $this->loyaltyTransactions = new LoyaltyTransactionsResource($client);
-
-
         $this->contactSubscriptionsResource = new ContactSubscriptionsResource($client);
         $this->subscriptionTypesResource = new SubscriptionTypesResource($client);
         $this->creditReceptions = new CreditReceptionsResource($client);
+
+        $this->automations = new AutomationsResource($client);
     }
 }

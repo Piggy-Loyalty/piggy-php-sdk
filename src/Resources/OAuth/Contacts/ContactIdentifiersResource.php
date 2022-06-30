@@ -1,6 +1,6 @@
 <?php
 
-namespace Piggy\Api\Resources\OAuth;
+namespace Piggy\Api\Resources\OAuth\Contacts;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\PiggyRequestException;

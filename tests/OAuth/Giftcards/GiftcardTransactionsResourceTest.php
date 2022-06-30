@@ -19,20 +19,58 @@ class GiftcardTransactionsResourceTest extends OAuthTestCase
      * @throws GuzzleException
      * @throws PiggyRequestException
      */
-    public function it_returns_giftcard_transaction_after_creation()
+    public function it_finds_a_giftcard_transaction()
     {
-        $giftcardTransaction = new GiftcardTransaction(1, 1000, $this->parseDate("2021-03-07T12:14:16+00:00"));
-
         $this->addExpectedResponse([
-            "id" => $giftcardTransaction->getId(),
-            "amount_in_cents" => $giftcardTransaction->getAmount(),
-            "created_at" => $giftcardTransaction->getCreatedAt()->format(DateTimeInterface::ATOM),
+            "uuid" => '123-123',
+            "amount_in_cents" => 420,
+            "created_at" => "2022-06-30T13:29:16+00:00",
         ]);
 
-        $data = $this->mockedClient->giftcardTransactions->create(1, 2, 100);
+        $giftcardTransaction = $this->mockedClient->giftcardTransactions->get('123-123');
 
-        $this->assertEquals($data->getId(), $giftcardTransaction->getId());
-        $this->assertEquals($data->getAmount(), $giftcardTransaction->getAmount());
-        $this->assertEquals($data->getCreatedAt(), $giftcardTransaction->getCreatedAt());
+        $this->assertEquals("123-123", $giftcardTransaction->getUuid());
+        $this->assertEquals(420, $giftcardTransaction->getAmount());
+        $this->assertEquals("2022-06-30T13:29:16+00:00", $giftcardTransaction->getCreatedAt()->format('c'));
+    }
+
+    /**
+     * @test
+     * @throws GuzzleException
+     * @throws PiggyRequestException
+     */
+    public function it_returns_giftcard_transaction_after_creation()
+    {
+        $this->addExpectedResponse([
+            "uuid" => '123-123',
+            "amount_in_cents" => 420,
+            "created_at" => "2022-06-30T13:29:16+00:00",
+        ]);
+
+        $giftcardTransaction = $this->mockedClient->giftcardTransactions->create(1, 2, 100);
+
+        $this->assertEquals("123-123", $giftcardTransaction->getUuid());
+        $this->assertEquals(420, $giftcardTransaction->getAmount());
+        $this->assertEquals("2022-06-30T13:29:16+00:00", $giftcardTransaction->getCreatedAt()->format('c'));
+    }
+
+    /**
+     * @test
+     * @throws GuzzleException
+     * @throws PiggyRequestException
+     */
+    public function it_corrects_a_giftcard_transaction()
+    {
+        $this->addExpectedResponse([
+            "uuid" => '123-123',
+            "amount_in_cents" => 420,
+            "created_at" => "2022-06-30T13:29:16+00:00",
+        ]);
+
+        $giftcardTransaction = $this->mockedClient->giftcardTransactions->correct('123-123');
+
+        $this->assertEquals("123-123", $giftcardTransaction->getUuid());
+        $this->assertEquals(420, $giftcardTransaction->getAmount());
+        $this->assertEquals("2022-06-30T13:29:16+00:00", $giftcardTransaction->getCreatedAt()->format('c'));
     }
 }

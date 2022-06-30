@@ -34,10 +34,9 @@ class ContactMapper
             $attributes = $attributesMapper->map($data->attributes);
         }
 
-        $currentValues = null;
+        $currentValues = [];
         if (property_exists($data,'current_values')) {
-            $currentValuesMapper = new CurrentValuesMapper();
-            $currentValues = $currentValuesMapper->map($data->current_values);
+            $currentValues = get_object_vars($data->current_values);
         }
 
         $subscriptions = null;

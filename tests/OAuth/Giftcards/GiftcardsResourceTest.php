@@ -5,8 +5,6 @@ namespace Piggy\Api\Tests\OAuth\Giftcards;
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Enum\GiftcardType;
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\Models\Giftcards\Giftcard;
-use Piggy\Api\Models\Giftcards\GiftcardProgram;
 use Piggy\Api\Tests\OAuthTestCase;
 
 /**
@@ -22,31 +20,28 @@ class GiftcardsResourceTest extends OAuthTestCase
      */
     public function it_finds_a_giftcard_by_hash()
     {
-        $giftcardProgram = new GiftcardProgram(1, "program for test");
-        $giftcard = new Giftcard(1, "giftcard123", GiftcardType::DIGITAL, true, true, $giftcardProgram, null);
-
         $this->addExpectedResponse([
-            "id" => $giftcard->getUuid(),
-            "hash" => $giftcard->getHash(),
-            "type" => GiftcardType::get($giftcard->getType())->getName(),
-            "active" => $giftcard->isActive(),
-            "upgradeable" => $giftcard->isUpgradeable(),
-            "expiration_date" => $giftcard->getExpirationDate(),
+            "uuid" =>'123-123',
+            "hash" => "GJ2P725oe",
+            "type" => "PHYSICAL",
+            "active" => true,
+            "upgradeable" => true,
+            "expiration_date" => "2130-06-13T12:09:00+00:00",
             "giftcard_program" => [
-                "id" => $giftcardProgram->getUuid(),
-                "name" => $giftcardProgram->getName()
+                "name" => "My Giftcards",
+                "uuid" => '32-32-lol'
             ]
         ]);
 
-        $data = $this->mockedClient->giftcards->findOneBy(1, "giftcard123");
+        $giftcard = $this->mockedClient->giftcards->findOneBy('GJ2P725oe');
 
-        $this->assertEquals($data->getUuid(), $giftcard->getUuid());
-        $this->assertEquals($data->getHash(), $giftcard->getHash());
-        $this->assertEquals($data->getType(), $giftcard->getType());
-        $this->assertEquals($data->isActive(), $giftcard->isActive());
-        $this->assertEquals($data->isUpgradeable(), $giftcard->isUpgradeable());
-        $this->assertEquals($data->getGiftcardProgram()->getUuid(), $giftcard->getGiftcardProgram()->getUuid());
-        $this->assertEquals($data->getGiftcardProgram()->getName(), $giftcard->getGiftcardProgram()->getName());
+        $this->assertEquals("123-123", $giftcard->getUuid());
+        $this->assertEquals("GJ2P725oe", $giftcard->getHash());
+        $this->assertEquals("PHYSICAL", GiftcardType::byValue($giftcard->getType())->getName());
+        $this->assertEquals(true, $giftcard->isActive());
+        $this->assertEquals(true, $giftcard->isUpgradeable());
+        $this->assertEquals("32-32-lol", $giftcard->getGiftcardProgram()->getUuid());
+        $this->assertEquals("My Giftcards", $giftcard->getGiftcardProgram()->getName());
     }
 
     /**
@@ -56,30 +51,27 @@ class GiftcardsResourceTest extends OAuthTestCase
      */
     public function it_returns_giftcard_after_creation()
     {
-        $giftcardProgram = new GiftcardProgram(2, "program for test");
-        $giftcard = new Giftcard(1, "giftcard123", GiftcardType::DIGITAL, true, true, $giftcardProgram, null);
-
         $this->addExpectedResponse([
-            "id" => $giftcard->getUuid(),
-            "hash" => $giftcard->getHash(),
-            "type" => GiftcardType::get($giftcard->getType())->getName(),
-            "active" => $giftcard->isActive(),
-            "upgradeable" => $giftcard->isUpgradeable(),
-            "expiration_date" => $giftcard->getExpirationDate(),
+            "uuid" =>'123-123',
+            "hash" => "GJ2P725oe",
+            "type" => "PHYSICAL",
+            "active" => true,
+            "upgradeable" => true,
+            "expiration_date" => "2130-06-13T12:09:00+00:00",
             "giftcard_program" => [
-                "id" => $giftcardProgram->getUuid(),
-                "name" => $giftcardProgram->getName()
+                "name" => "My Giftcards",
+                "uuid" => '32-32-lol'
             ]
         ]);
 
-        $data = $this->mockedClient->giftcards->create(1, 2, GiftcardType::DIGITAL);
+        $giftcard = $this->mockedClient->giftcards->create("32-32-lol", 2123123);
 
-        $this->assertEquals($data->getUuid(), $giftcard->getUuid());
-        $this->assertEquals($data->getHash(), $giftcard->getHash());
-        $this->assertEquals($data->getType(), $giftcard->getType());
-        $this->assertEquals($data->isActive(), $giftcard->isActive());
-        $this->assertEquals($data->isUpgradeable(), $giftcard->isUpgradeable());
-        $this->assertEquals($data->getGiftcardProgram()->getUuid(), $giftcard->getGiftcardProgram()->getUuid());
-        $this->assertEquals($data->getGiftcardProgram()->getName(), $giftcard->getGiftcardProgram()->getName());
+        $this->assertEquals("123-123", $giftcard->getUuid());
+        $this->assertEquals("GJ2P725oe", $giftcard->getHash());
+        $this->assertEquals("PHYSICAL", GiftcardType::byValue($giftcard->getType())->getName());
+        $this->assertEquals(true, $giftcard->isActive());
+        $this->assertEquals(true, $giftcard->isUpgradeable());
+        $this->assertEquals("32-32-lol", $giftcard->getGiftcardProgram()->getUuid());
+        $this->assertEquals("My Giftcards", $giftcard->getGiftcardProgram()->getName());
     }
 }

@@ -18,7 +18,8 @@ class UnitMapper
     public function map(stdClass $data): Unit
     {
         return new Unit(
-            $data->name
+            $data->name,
+            $data->label
         );
     }
 }

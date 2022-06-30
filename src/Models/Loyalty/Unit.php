@@ -14,11 +14,18 @@ class Unit
     protected $name;
 
     /**
-     * @param string $name
+     * @var string
      */
-    public function __construct(string $name)
+    protected $label;
+
+    /**
+     * @param string $name
+     * @param string $label
+     */
+    public function __construct(string $name, string $label)
     {
         $this->name = $name;
+        $this->label = $label;
     }
 
     /**
@@ -27,5 +34,13 @@ class Unit
     public function getName(): string
     {
         return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLabel(): string
+    {
+        return $this->label;
     }
 }

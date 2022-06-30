@@ -14,12 +14,10 @@ class ContactIdentifierMapper
      */
     public function map(stdClass $data): ContactIdentifier
     {
-
-
         return new ContactIdentifier(
             $data->value,
-            $data->name ?? '',
-            $data->active ?? null
+            $data->active ?? null,
+            $data->name ?? ''
         );
     }
 }

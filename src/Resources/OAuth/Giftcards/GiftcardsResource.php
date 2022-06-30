@@ -20,16 +20,14 @@ class GiftcardsResource extends BaseResource
     protected $resourceUri = "/api/v3/oauth/clients/giftcards";
 
     /**
-     * @param string $shopUuid
      * @param string $hash
      * @return Giftcard
      * @throws GuzzleException
      * @throws PiggyRequestException
      */
-    public function findOneBy(string $shopUuid, string $hash): Giftcard
+    public function findOneBy(string $hash): Giftcard
     {
         $response = $this->client->get("{$this->resourceUri}/find-one-by", [
-            "shop_uuid" => $shopUuid,
             "hash" => $hash,
         ]);
 
@@ -39,17 +37,15 @@ class GiftcardsResource extends BaseResource
     }
 
     /**
-     * @param string $shopUuid
      * @param string $giftcardProgramUuid
      * @param int $type
      * @return Giftcard
      * @throws GuzzleException
      * @throws PiggyRequestException
      */
-    public function create(string $shopUuid, string $giftcardProgramUuid, int $type): Giftcard
+    public function create( string $giftcardProgramUuid, int $type): Giftcard
     {
         $response = $this->client->post($this->resourceUri, [
-            "shop_uuid" => $shopUuid,
             "giftcard_program_uuid" => $giftcardProgramUuid,
             "type" => $type
         ]);

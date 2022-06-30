@@ -45,8 +45,8 @@ class CreditReceptionsResource extends BaseResource
      * @throws PiggyRequestException
      */
     public function create(
-        string $shopUuid,
         string $contactUuid,
+        string $shopUuid,
         int    $unitValue
     ): CreditReception
     {
