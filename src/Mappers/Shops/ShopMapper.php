@@ -3,9 +3,7 @@
 namespace Piggy\Api\Mappers\Shops;
 
 use Piggy\Api\Mappers\Loyalty\LoyaltyProgramMapper;
-use Piggy\Api\Models\Shops\PhysicalShop;
 use Piggy\Api\Models\Shops\Shop;
-use Piggy\Api\Models\Shops\Webshop;
 use stdClass;
 
 /**
@@ -18,20 +16,23 @@ class ShopMapper
      * @param stdClass $data
      * @return Shop
      */
-    public function map(stdClass $data)
+    public function map(stdClass $data): Shop
     {
         $loyaltyProgramMapper = new LoyaltyProgramMapper();
-
-        $loyaltyProgram = null;
-
-        if ($data->loyalty_program) {
+        if (isset($data->loyalty_program)) {
             $loyaltyProgram = $loyaltyProgramMapper->map($data->loyalty_program);
+        } else {
+            $loyaltyProgram = null;
+        }
+
+        if (isset($data->reference)) {
+            $reference = $data->reference;
         }
 
         return new Shop(
-            $data->uuid ,
+            $data->uuid,
             $data->name,
-            $data->reference,
+            $reference ?? null,
             $loyaltyProgram
         );
     }

@@ -16,7 +16,7 @@ class SubscriptionTypesResource extends BaseResource
     /**
      * @var string
      */
-    protected $resourceUri = "api/v3/oauth/clients/subscription-types";
+    protected $resourceUri = "/api/v3/oauth/clients/subscription-types";
 
     /**
      * @return array

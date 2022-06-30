@@ -1,6 +1,6 @@
 <?php
 
-namespace Piggy\Api\Resources\OAuth\Loyalty;
+namespace Piggy\Api\Resources\OAuth\Loyalty\Receptions;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\InputInvalidException;
@@ -38,39 +38,22 @@ class CreditReceptionsResource extends BaseResource
 
     /**
      * @param string $shopUuid
-     * @param string|null $contactUuid
-     * @param string|null $contactIdentifier
-     * @param string|null $unitValue
-     * @param string|null $unitName
-     * @param int|null $credits
-     *
+     * @param string $contactUuid
+     * @param int $unitValue
      * @return CreditReception
      * @throws GuzzleException
-     * @throws InputInvalidException
      * @throws PiggyRequestException
      */
     public function create(
         string $shopUuid,
-        string $contactUuid = null,
-        string $contactIdentifier = null,
-        string $unitValue = null,
-        string $unitName = null,
-        int $credits = null
-    ): CreditReception {
-        if(!$contactUuid && !$contactIdentifier) {
-            throw new InputInvalidException("ContactUUID or ContactIdentifier is required");
-        }
-        if(!$credits && !$unitValue) {
-            throw new InputInvalidException("Unit value or credits is required");
-        }
-
+        string $contactUuid,
+        int    $unitValue
+    ): CreditReception
+    {
         $response = $this->client->post($this->resourceUri, [
             "shop_uuid" => $shopUuid,
             "contact_uuid" => $contactUuid,
-            "contact_identifier_value" => $contactIdentifier,
-            "unit_value" => $unitValue,
-            "unit_name" => $unitName,
-            "credits" => $credits,
+            "unit_value" => $unitValue
         ]);
 
         $mapper = new CreditReceptionMapper();

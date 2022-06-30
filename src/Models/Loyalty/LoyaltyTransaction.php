@@ -32,17 +32,17 @@ class LoyaltyTransaction
     /**
      * @var Contact
      */
-    private $contact;
+    protected $contact;
 
     /**
      * @var Shop
      */
-    private $shop;
+    protected $shop;
 
     /**
      * @var ContactIdentifier|null
      */
-    private $contactIdentifier;
+    protected $contactIdentifier;
 
     /**s
      * @var DateTime
@@ -52,12 +52,12 @@ class LoyaltyTransaction
     /**
      * @var Reward
      */
-    private $reward;
+    protected $reward;
 
     /**
      * @var bool
      */
-    private $hasBeenCollected;
+    protected $hasBeenCollected;
 
     /**
      * @param string $type

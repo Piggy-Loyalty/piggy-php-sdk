@@ -3,15 +3,15 @@
 namespace Piggy\Api\Mappers\Contacts;
 
 use Piggy\Api\Models\Contacts\ContactAttributeValue;
+use stdClass;
 
 class ContactAttributeValueMapper
 {
     /**
-     * @param object $data
-     *
+     * @param stdClass $data
      * @return ContactAttributeValue
      */
-    public function map(object $data): ContactAttributeValue
+    public function map(stdClass $data): ContactAttributeValue
     {
         return new ContactAttributeValue(
             $data->name,

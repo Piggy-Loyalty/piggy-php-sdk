@@ -1,6 +1,6 @@
 <?php
 
-namespace Piggy\Api\Models\Contacts;
+namespace Piggy\Api\Models\Prepaid;
 
 /**
  * Class PrepaidBalance
@@ -14,7 +14,6 @@ class PrepaidBalance
     protected $balanceInCents;
 
     /**
-     * PrepaidBalance constructor.
      * @param int $balanceInCents
      */
     public function __construct(int $balanceInCents)

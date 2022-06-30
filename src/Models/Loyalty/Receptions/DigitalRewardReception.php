@@ -5,14 +5,16 @@ namespace Piggy\Api\Models\Loyalty\Receptions;
 use DateTime;
 use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\Models\Contacts\ContactIdentifier;
-use Piggy\Api\Models\Loyalty\Unit;
+use Piggy\Api\Models\Loyalty\Rewards\DigitalReward;
+use Piggy\Api\Models\Loyalty\Rewards\DigitalRewardCode;
+use Piggy\Api\Models\Loyalty\Rewards\Reward;
 use Piggy\Api\Models\Shops\Shop;
 
 /**
  * Class CreditReception
  * @package Piggy\Api\Models
  */
-class CreditReception
+class DigitalRewardReception
 {
     /**
      * @var string
@@ -32,28 +34,32 @@ class CreditReception
     /**
      * @var Contact
      */
-    private $contact;
+    protected $contact;
 
     /**
      * @var Shop
      */
-    private $shop;
+    protected $shop;
 
     /**
      * @var ContactIdentifier|null
      */
-    private $contactIdentifier;
+    protected $contactIdentifier;
 
     /**
      * @var DateTime
      */
     protected $createdAt;
 
-    /** @var int */
-    protected $unitValue;
+    /**
+     * @var DigitalReward
+     */
+    protected $digitalReward;
 
-    /** @var Unit */
-    protected $unit;
+    /**
+     * @var DigitalRewardCode
+     */
+    protected $digitalRewardCode;
 
     /**
      * @param string $type
@@ -63,10 +69,10 @@ class CreditReception
      * @param Shop $shop
      * @param ContactIdentifier|null $contactIdentifier
      * @param string $createdAt
-     * @param int|null $unitValue
-     * @param Unit|null $unit
+     * @param DigitalReward $digitalReward
+     * @param DigitalRewardCode $digitalRewardCode
      */
-    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, string $createdAt, ?int $unitValue = null, ?Unit $unit = null)
+    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, string $createdAt, DigitalReward $digitalReward, DigitalRewardCode $digitalRewardCode)
     {
         $this->type = $type;
         $this->credits = $credits;
@@ -75,8 +81,8 @@ class CreditReception
         $this->shop = $shop;
         $this->contactIdentifier = $contactIdentifier;
         $this->createdAt = $createdAt;
-        $this->unitValue = $unitValue;
-        $this->unit = $unit;
+        $this->digitalReward = $digitalReward;
+        $this->digitalRewardCode = $digitalRewardCode;
     }
 
     /**
@@ -136,18 +142,19 @@ class CreditReception
     }
 
     /**
-     * @return int|null
+     * @return DigitalReward
      */
-    public function getUnitValue(): ?int
+    public function getDigitalReward(): DigitalReward
     {
-        return $this->unitValue;
+        return $this->digitalReward;
     }
 
     /**
-     * @return Unit|null
+     * @return DigitalRewardCode
      */
-    public function getUnit(): ?Unit
+    public function getDigitalRewardCode(): DigitalRewardCode
     {
-        return $this->unit;
+        return $this->digitalRewardCode;
     }
+
 }

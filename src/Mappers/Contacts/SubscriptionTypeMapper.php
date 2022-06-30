@@ -4,18 +4,18 @@ namespace Piggy\Api\Mappers\Contacts;
 
 
 use Piggy\Api\Models\Contacts\SubscriptionType;
+use stdClass;
 
 class SubscriptionTypeMapper
 {
     /**
-     * @param object $data
-     *
+     * @param stdClass $data
      * @return SubscriptionType
      */
-    public function map(object $data): SubscriptionType
+    public function map(stdClass $data): SubscriptionType
     {
         return new SubscriptionType(
-            $data->id,
+            $data->uuid,
             $data->name,
             $data->description,
             $data->active,

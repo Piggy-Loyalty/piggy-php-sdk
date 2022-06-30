@@ -18,15 +18,18 @@ class PhysicalRewardMapper
     public function map($data): PhysicalReward
     {
         $mediaMapper = new MediaMapper();
-        $media = $mediaMapper->map($data->media);
+
+        if (isset($data->media)) {
+            $media = $mediaMapper->map($data->media);
+        }
 
         $active = property_exists($data, 'active') ? $data->active : true;
 
         return new PhysicalReward(
             $data->uuid,
-            $data->title,
-            $data->required_credits,
-            $media,
+            $data->title ?? '',
+            $data->required_credits ?? null,
+            $media ?? null,
             $data->description ?? "",
             $active
         );

@@ -36,7 +36,7 @@ class Shop
      * @param string|null $reference
      * @param LoyaltyProgram|null $loyaltyProgram
      */
-    public function __construct(string $uuid, string $name, string $reference = null, LoyaltyProgram $loyaltyProgram = null)
+    public function __construct(string $uuid, string $name, ?string $reference = null, ?LoyaltyProgram $loyaltyProgram = null)
     {
         $this->uuid = $uuid;
         $this->name = $name;
@@ -47,7 +47,7 @@ class Shop
     /**
      * @return string
      */
-    public function getId(): string
+    public function getUuid(): string
     {
         return $this->uuid;
     }

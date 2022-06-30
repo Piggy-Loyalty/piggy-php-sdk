@@ -6,7 +6,6 @@ class ContactAttributesMapper
 {
     /**
      * @param array $data
-     *
      * @return array
      */
     public function map(array $data): array

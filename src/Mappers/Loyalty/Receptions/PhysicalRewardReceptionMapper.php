@@ -4,36 +4,31 @@ namespace Piggy\Api\Mappers\Loyalty\Receptions;
 
 use Piggy\Api\Mappers\ContactIdentifiers\ContactIdentifierMapper;
 use Piggy\Api\Mappers\Contacts\ContactMapper;
-use Piggy\Api\Mappers\Loyalty\UnitMapper;
+use Piggy\Api\Mappers\Loyalty\Rewards\PhysicalRewardMapper;
 use Piggy\Api\Mappers\Shops\ShopMapper;
-use Piggy\Api\Models\Loyalty\Receptions\CreditReception;
+use Piggy\Api\Models\Loyalty\Receptions\PhysicalRewardReception;
 use stdClass;
 
 /**
  * Class CreditReceptionMapper
  * @package Piggy\Api\Mappers\Loyalty
  */
-class CreditReceptionMapper
+class PhysicalRewardReceptionMapper
 {
     /**
      * @param stdClass $data
-     * @return CreditReception
+     * @return PhysicalRewardReception
      */
-    public function map(stdClass $data): CreditReception
+    public function map(stdClass $data): PhysicalRewardReception
     {
         $contactMapper = new ContactMapper();
+        $physicalRewardMapper = new PhysicalRewardMapper();
         $shopMapper = new ShopMapper();
-        $unitMapper = new UnitMapper();
         $contactIdentifierMapper = new ContactIdentifierMapper();
 
         $contact = $contactMapper->map($data->contact);
         $shop = $shopMapper->map($data->shop);
-
-        if (isset($data->unit)) {
-            $unit = $unitMapper->map($data->unit);
-        } else {
-            $unit = null;
-        }
+        $physicalReward = $physicalRewardMapper->map($data->reward);
 
         if (isset($data->contact_identifier)) {
             $contactIdentifier = $contactIdentifierMapper->map($data->contact_identifier);
@@ -41,7 +36,7 @@ class CreditReceptionMapper
             $contactIdentifier = null;
         }
 
-        return new CreditReception(
+        return new PhysicalRewardReception(
             $data->type,
             $data->credits,
             $data->uuid,
@@ -49,8 +44,8 @@ class CreditReceptionMapper
             $shop,
             $contactIdentifier,
             $data->created_at,
-            $data->unit_value,
-            $unit
+            $physicalReward,
+            $data->has_been_collected
         );
     }
 }

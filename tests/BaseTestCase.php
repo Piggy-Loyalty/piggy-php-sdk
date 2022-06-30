@@ -7,17 +7,7 @@ use DateTimeInterface;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Handler\MockHandler;
 use PHPUnit\Framework\TestCase;
-use Piggy\Api\Enum\ShopType;
-use Piggy\Api\Mappers\Contacts\ContactAttributeMapper;
-use Piggy\Api\Mappers\Contacts\ContactAttributesMapper;
-use Piggy\Api\Models\Contacts\Attribute;
-use Piggy\Api\Models\Contacts\Contact;
-use Piggy\Api\Models\Contacts\ContactAttribute;
-use Piggy\Api\Models\Contacts\PrepaidBalance;
-use Piggy\Api\Models\Loyalty\CreditBalance;
-use Piggy\Api\Models\Loyalty\LoyaltyProgram;
 use Piggy\Api\Models\Shops\PhysicalShop;
-use Piggy\Api\Models\Shops\Shop;
 use Piggy\Api\Models\Shops\Webshop;
 use function Piggy\Api\hasGuzzle5;
 

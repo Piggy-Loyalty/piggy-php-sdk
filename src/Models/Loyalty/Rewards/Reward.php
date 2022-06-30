@@ -12,35 +12,39 @@ class Reward
     protected $uuid;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $title;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $description;
 
     /**
-     * @var int
+     * @var int|null
      */
     protected $requiredCredits;
 
-    /** @var Media */
+    /**
+     * @var Media|null
+     */
     protected $media;
 
-    /** @var bool */
+    /**
+     * @var bool|null
+     */
     protected $active;
 
     /**
      * @param string $uuid
-     * @param string $title
-     * @param int $requiredCredits
-     * @param Media $media
+     * @param string|null $title
+     * @param int|null $requiredCredits
+     * @param Media|null $media
      * @param string|null $description
-     * @param bool $active
+     * @param bool|null $active
      */
-    public function __construct(string $uuid, string $title, int $requiredCredits, Media $media, ?string $description = "", bool $active = true)
+    public function __construct(string $uuid, ?string $title = '', ?int $requiredCredits = null, ?Media $media = null, ?string $description = "", ?bool $active = true)
     {
         $this->uuid = $uuid;
         $this->title = $title;
@@ -59,17 +63,17 @@ class Reward
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getTitle(): string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getRequiredCredits(): int
+    public function getRequiredCredits(): ?int
     {
         return $this->requiredCredits;
     }
@@ -83,8 +87,10 @@ class Reward
         $this->requiredCredits = $requiredCredits;
     }
 
-    /** @return Media */
-    public function getMedia(): Media
+    /**
+     * @return Media|null
+     */
+    public function getMedia(): ?Media
     {
         return $this->getMedia();
     }
@@ -98,9 +104,9 @@ class Reward
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isActive(): bool
+    public function isActive(): ?bool
     {
         return $this->active;
     }

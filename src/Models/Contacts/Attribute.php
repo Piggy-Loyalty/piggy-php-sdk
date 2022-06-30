@@ -69,7 +69,6 @@ class Attribute
 
     /**
      * @param string $name
-     *
      * @return void
      */
     public function setName(string $name): void
@@ -87,6 +86,7 @@ class Attribute
 
     /**
      * @param string $label
+     * @return void
      */
     public function setLabel(string $label): void
     {
@@ -103,6 +103,7 @@ class Attribute
 
     /**
      * @param string $description
+     * @return void
      */
     public function setDescription(string $description): void
     {
@@ -119,6 +120,7 @@ class Attribute
 
     /**
      * @param string $type
+     * @return void
      */
     public function setType(string $type): void
     {
@@ -135,6 +137,7 @@ class Attribute
 
     /**
      * @param string $field_type
+     * @return void
      */
     public function setFieldType(string $field_type): void
     {
@@ -151,6 +154,7 @@ class Attribute
 
     /**
      * @param bool $is_soft_read_only
+     * @return void
      */
     public function setIsSoftReadOnly(bool $is_soft_read_only): void
     {
@@ -167,6 +171,7 @@ class Attribute
 
     /**
      * @param bool $is_hard_read_only
+     * @return void
      */
     public function setIsHardReadOnly(bool $is_hard_read_only): void
     {

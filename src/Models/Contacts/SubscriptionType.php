@@ -9,9 +9,9 @@ namespace Piggy\Api\Models\Contacts;
 class SubscriptionType
 {
     /**
-     * @var int
+     * @var string
      */
-    protected $id;
+    protected $uuid;
 
     /**
      * @var string
@@ -33,9 +33,9 @@ class SubscriptionType
      */
     protected $strategy;
 
-    public function __construct($id, $name, $description, $active, $strategy)
+    public function __construct(string $uuid, string $name, string $description, bool $active, string $strategy)
     {
-        $this->id = $id;
+        $this->uuid = $uuid;
         $this->name = $name;
         $this->description = $description;
         $this->active = $active;
@@ -43,19 +43,11 @@ class SubscriptionType
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getId(): int
+    public function getUuid(): string
     {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
-    {
-        $this->id = $id;
+        return $this->uuid;
     }
 
     /**

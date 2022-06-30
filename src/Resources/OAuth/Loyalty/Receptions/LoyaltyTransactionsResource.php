@@ -1,8 +1,10 @@
 <?php
 
-namespace Piggy\Api\Resources\OAuth\Loyalty;
+namespace Piggy\Api\Resources\OAuth\Loyalty\Receptions;
 
+use Exception;
 use GuzzleHttp\Exception\GuzzleException;
+use Piggy\Api\Enum\LoyaltyTransactionType;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Loyalty\LoyaltyTransactionMapper;
 use Piggy\Api\Models\Loyalty\LoyaltyTransaction;
@@ -21,15 +23,15 @@ class LoyaltyTransactionsResource extends BaseResource
 
     /**
      * @param int $page
-     * @param int $limit
      * @param string|null $contactUuid
-     * @param string|null $type
+     * @param LoyaltyTransactionType|null $type
      * @param string|null $shopUuid
-     * @return LoyaltyTransaction[]
+     * @param int $limit
+     * @return array
      * @throws GuzzleException
      * @throws PiggyRequestException
      */
-    public function list(int $page = 1, ?string $contactUuid = null, ?string $type = null, ?string $shopUuid = null, int $limit = 30): array
+    public function list(int $page = 1, ?string $contactUuid = null, ?LoyaltyTransactionType $type = null, ?string $shopUuid = null, int $limit = 30): array
     {
         $response = $this->client->get($this->resourceUri, [
             "limit" => $limit,

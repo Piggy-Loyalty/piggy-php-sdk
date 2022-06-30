@@ -2,8 +2,6 @@
 
 namespace Piggy\Api\Tests\OAuth\Loyalty\Rewards;
 
-use Piggy\Api\Enum\CardStatus;
-use Piggy\Api\Enum\CardType;
 use Piggy\Api\Models\Loyalty\LoyaltyCard;
 use Piggy\Api\Models\Loyalty\RewardReceptions\PhysicalRewardReception;
 use Piggy\Api\Models\Loyalty\Rewards\PhysicalReward;

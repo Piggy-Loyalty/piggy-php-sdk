@@ -1,17 +1,18 @@
 <?php
 
-namespace Piggy\Api\Resources\OAuth\Loyalty\Rewards;
+namespace Piggy\Api\Resources\OAuth\Loyalty\Receptions;
 
+use Exception;
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Loyalty\Receptions\RewardReceptionMapper;
-use Piggy\Api\Models\Loyalty\RewardReceptions\PhysicalRewardReception;
-use Piggy\Api\Models\Loyalty\RewardReceptions\RewardReception;
+use Piggy\Api\Models\Loyalty\Receptions\DigitalRewardReception;
+use Piggy\Api\Models\Loyalty\Receptions\PhysicalRewardReception;
 use Piggy\Api\Resources\BaseResource;
 
 /**
- * Class RewardReceptionsResource
- * @package Piggy\Api\Resources\OAuth\Loyalty\Rewards
+ * Class CreditReceptionsResource
+ * @package Piggy\Api\Resources\OAuth
  */
 class RewardReceptionsResource extends BaseResource
 {
@@ -22,20 +23,20 @@ class RewardReceptionsResource extends BaseResource
 
     /**
      * @param string $contactUuid
-     * @param string $contactIdentifierValue
      * @param string $rewardUuid
      * @param string $shopUuid
-     * @return RewardReception
+     * @param int $unitValue
+     * @return DigitalRewardReception|PhysicalRewardReception|null
      * @throws GuzzleException
      * @throws PiggyRequestException
      */
-    public function create(string $contactUuid, string $contactIdentifierValue, string $rewardUuid, string $shopUuid): RewardReception
+    public function create(string $contactUuid, string $rewardUuid, string $shopUuid, int $unitValue)
     {
         $response = $this->client->post($this->resourceUri, [
             "contact_uuid" => $contactUuid,
-            "contact_identifier_value" => $contactIdentifierValue,
             "reward_uuid" => $rewardUuid,
             "shop_uuid" => $shopUuid,
+            "unit_value" => $unitValue
         ]);
 
         $mapper = new RewardReceptionMapper();

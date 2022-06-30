@@ -8,30 +8,26 @@ namespace Piggy\Api\Models\Contacts;
  */
 class ContactIdentifier
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $value;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $name;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $active;
 
-    /**
-     * @var Contact
-     */
-    protected $contact;
-
-    public function __construct($name, $value, $active, ?Contact $contact)
+    public function __construct(string $value, bool $active, ?string $name = '')
     {
-        $this->name = $name;
         $this->value = $value;
+        $this->name = $name;
         $this->active = $active;
-        $this->contact = $contact;
     }
 
     /**
@@ -43,58 +39,18 @@ class ContactIdentifier
     }
 
     /**
-     * @param string $value
+     * @return string|null
      */
-    public function setValue(string $value): void
-    {
-        $this->value = $value;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $name
+     * @return bool|null
      */
-    public function setName(string $name): void
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isActive(): bool
+    public function isActive(): ?bool
     {
         return $this->active;
-    }
-
-    /**
-     * @param bool $active
-     */
-    public function setActive(bool $active): void
-    {
-        $this->active = $active;
-    }
-
-    /**
-     * @return Contact
-     */
-    public function getContact(): Contact
-    {
-        return $this->contact;
-    }
-
-    /**
-     * @param Contact $contact
-     */
-    public function setContact(Contact $contact): void
-    {
-        $this->contact = $contact;
     }
 }

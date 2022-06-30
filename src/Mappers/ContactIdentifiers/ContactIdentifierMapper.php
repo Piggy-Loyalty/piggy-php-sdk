@@ -15,18 +15,11 @@ class ContactIdentifierMapper
     public function map(stdClass $data): ContactIdentifier
     {
 
-        $contact = null;
-        if (property_exists($data,'contact')) {
-            $contactMapper = new ContactMapper();
-
-            $contact = $contactMapper->map($data->contact);
-        }
 
         return new ContactIdentifier(
-            $data->name,
             $data->value,
-            $data->active,
-            $contact
+            $data->name ?? '',
+            $data->active ?? null
         );
     }
 }

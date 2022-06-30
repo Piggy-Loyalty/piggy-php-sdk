@@ -11,7 +11,7 @@ class CreditBalance
     /**
      * @var int
      */
-    private $balance;
+    protected $balance;
 
     /**
      * @param int $balance

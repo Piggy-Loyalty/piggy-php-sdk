@@ -3,6 +3,7 @@
 namespace Piggy\Api\Models\Contacts;
 
 use Piggy\Api\Models\Loyalty\CreditBalance;
+use Piggy\Api\Models\Prepaid\PrepaidBalance;
 
 /**
  * Class Contact
@@ -59,7 +60,7 @@ class Contact
     /**
      * @return string
      */
-    public function getUuId(): string
+    public function getUuid(): string
     {
         return $this->uuid;
     }
@@ -67,7 +68,7 @@ class Contact
     /**
      * @param string $uuid
      */
-    public function setUuId(string $uuid): void
+    public function setUuid(string $uuid): void
     {
         $this->uuid = $uuid;
     }

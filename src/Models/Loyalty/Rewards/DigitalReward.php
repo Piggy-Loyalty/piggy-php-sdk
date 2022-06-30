@@ -11,9 +11,9 @@ class DigitalReward extends Reward
      */
     protected $meta;
 
-    public function __construct(string $uuid, string $title, int $requiredCredits, Media $media, ?string $description = "",  array $meta = null)
+    public function __construct(string $uuid, ?string $title = '', ?int $requiredCredits = null, ?Media $media = null, ?string $description = "", array $meta = null)
     {
-        parent::__construct($uuid, $title, $requiredCredits, $media, $description );
+        parent::__construct($uuid, $title, $requiredCredits, $media, $description);
 
         $this->meta = $meta;
     }

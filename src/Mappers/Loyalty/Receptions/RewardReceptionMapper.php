@@ -2,12 +2,9 @@
 
 namespace Piggy\Api\Mappers\Loyalty\Receptions;
 
-use Exception;
-use Piggy\Api\Mappers\ContactIdentifiers\ContactIdentifierMapper;
-use Piggy\Api\Mappers\Contacts\ContactMapper;
-use Piggy\Api\Mappers\Loyalty\Rewards\RewardMapper;
-use Piggy\Api\Mappers\Shops\ShopMapper;
-use Piggy\Api\Models\Loyalty\Receptions\RewardReception;
+use Piggy\Api\Enum\RewardReceptionType;
+use Piggy\Api\Models\Loyalty\Receptions\DigitalRewardReception;
+use Piggy\Api\Models\Loyalty\Receptions\PhysicalRewardReception;
 use stdClass;
 
 /**
@@ -18,38 +15,23 @@ class RewardReceptionMapper
 {
     /**
      * @param stdClass $data
-     * @return RewardReception
-     * @throws Exception
+     * @return DigitalRewardReception|PhysicalRewardReception|null
      */
-    public function map(stdClass $data): RewardReception
+    public function map(stdClass $data)
     {
+        $physicalRewardReceptionMapper = new PhysicalRewardReceptionMapper();
+        $digitalRewardReceptionMapper = new DigitalRewardReceptionMapper();
 
-        $mapper = new ContactMapper();
-        $contact = $mapper->map($data->contact);
+        $rewardReception = null;
 
-        $shopMapper = new ShopMapper();
-        $shop = $shopMapper->map($data->shop);
-
-        $rewardMapper = new RewardMapper();
-        $reward = $rewardMapper->map($data->reward);
-
-        $contactIdentifierMapper = new ContactIdentifierMapper();
-        if (isset($data->contact_identifier)) {
-            $contactIdentifier = $contactIdentifierMapper->map($data->contact_identifier);
-        } else {
-            $contactIdentifier = null;
+        if ($data->type === RewardReceptionType::PHYSICAL) {
+            $rewardReception = $physicalRewardReceptionMapper->map($data);
         }
 
-        return new RewardReception(
-            $data->type,
-            $data->credits,
-            $data->uuid,
-            $contact,
-            $shop,
-            $contactIdentifier,
-            $data->created_at,
-            $reward,
-            $data->hasBeenCollected
-        );
+        if ($data->type === RewardReceptionType::DIGITAL) {
+            $rewardReception = $digitalRewardReceptionMapper->map($data);
+        }
+
+        return $rewardReception;
     }
 }

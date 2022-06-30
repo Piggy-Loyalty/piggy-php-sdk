@@ -11,7 +11,7 @@ use Piggy\Api\Models\Loyalty\Media;
 class PhysicalReward extends Reward
 {
 
-    public function __construct(string $uuid, string $title, int $requiredCredits, Media $media, string $description = "", bool $active = true)
+    public function __construct(string $uuid, ?string $title = "", ?int $requiredCredits = null, ?Media $media = null, ?string $description = "", ?bool $active = true)
     {
         parent::__construct($uuid, $title, $requiredCredits, $media, $description, $active);
     }

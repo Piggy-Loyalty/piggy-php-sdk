@@ -18,14 +18,17 @@ class DigitalRewardMapper
     public function map($data): DigitalReward
     {
         $mediaMapper = new MediaMapper();
-        $media = $mediaMapper->map($data->media);
+
+        if (isset($data->media)) {
+            $media = $mediaMapper->map($data->media);
+        }
 
         return new DigitalReward(
             $data->uuid,
-            $data->title,
-            $data->required_credits,
-            $media,
-            $data->description
+            $data->title ?? '',
+            $data->required_credits ?? null,
+            $media ?? null,
+            $data->description ?? ''
         );
     }
 }

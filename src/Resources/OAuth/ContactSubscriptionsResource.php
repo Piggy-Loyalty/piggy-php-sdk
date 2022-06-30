@@ -4,10 +4,8 @@ namespace Piggy\Api\Resources\OAuth;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\Mappers\ContactIdentifiers\ContactIdentifierMapper;
 use Piggy\Api\Mappers\Contacts\SubscriptionMapper;
 use Piggy\Api\Mappers\Contacts\SubscriptionsMapper;
-use Piggy\Api\Models\Contacts\ContactIdentifier;
 use Piggy\Api\Models\Contacts\Subscription;
 use Piggy\Api\Resources\BaseResource;
 
@@ -20,16 +18,16 @@ class ContactSubscriptionsResource extends BaseResource
     /**
      * @var string
      */
-    protected $resourceUri = "api/v3/oauth/clients/contact-subscriptions";
+    protected $resourceUri = "/api/v3/oauth/clients/contact-subscriptions";
 
 
     /**
-     * @param $contactUuid
+     * @param string $contactUuid
      * @return array
      * @throws GuzzleException
      * @throws PiggyRequestException
      */
-    public function list($contactUuid): array
+    public function list(string $contactUuid): array
     {
         $response = $this->client->get("$this->resourceUri/$contactUuid", [
             "contact_uuid" => $contactUuid
@@ -41,10 +39,16 @@ class ContactSubscriptionsResource extends BaseResource
     }
 
 
-    public function subscribe($contactUuid, $subscriptionTypeUuid): Subscription
+    /**
+     * @param string $contactUuid
+     * @param string $subscriptionTypeUuid
+     * @return Subscription
+     * @throws GuzzleException
+     * @throws PiggyRequestException
+     */
+    public function subscribe(string $contactUuid, string $subscriptionTypeUuid): Subscription
     {
-        $response = $this->client->get("{$this->resourceUri}/{$contactUuid}/subscribe", [
-            "contact_uuid" => $contactUuid,
+        $response = $this->client->put("$this->resourceUri/$contactUuid/subscribe", [
             "subscription_type_uuid" => $subscriptionTypeUuid
         ]);
 
@@ -54,10 +58,16 @@ class ContactSubscriptionsResource extends BaseResource
     }
 
 
-    public function unsubscribe($contactUuid, $subscriptionTypeUuid): Subscription
+    /**
+     * @param string $contactUuid
+     * @param string $subscriptionTypeUuid
+     * @return Subscription
+     * @throws GuzzleException
+     * @throws PiggyRequestException
+     */
+    public function unsubscribe(string $contactUuid, string $subscriptionTypeUuid): Subscription
     {
-        $response = $this->client->get("{$this->resourceUri}/{$contactUuid}/unsubscribe", [
-            "contact_uuid" => $contactUuid,
+        $response = $this->client->put("$this->resourceUri/$contactUuid/unsubscribe", [
             "subscription_type_uuid" => $subscriptionTypeUuid
         ]);
 

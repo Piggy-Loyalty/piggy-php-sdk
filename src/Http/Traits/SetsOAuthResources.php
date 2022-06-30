@@ -9,18 +9,12 @@ use Piggy\Api\Resources\OAuth\Contacts\ContactVerificationResource;
 use Piggy\Api\Resources\OAuth\ContactSubscriptionsResource;
 use Piggy\Api\Resources\OAuth\Giftcards\GiftcardsResource;
 use Piggy\Api\Resources\OAuth\Giftcards\GiftcardTransactionsResource;
-use Piggy\Api\Resources\OAuth\Loyalty\CreditReceptionsResource;
-use Piggy\Api\Resources\OAuth\Loyalty\LoyaltyCardsResource;
-use Piggy\Api\Resources\OAuth\Loyalty\LoyaltyTransactionsResource;
-use Piggy\Api\Resources\OAuth\Loyalty\MembersResource;
-use Piggy\Api\Resources\OAuth\Loyalty\Rewards\DigitalRewardReceptionsResource;
-use Piggy\Api\Resources\OAuth\Loyalty\Rewards\ExternalRewardReceptionsResource;
-use Piggy\Api\Resources\OAuth\Loyalty\Rewards\RewardReceptionsResource;
+use Piggy\Api\Resources\OAuth\Loyalty\Receptions\CreditReceptionsResource;
+use Piggy\Api\Resources\OAuth\Loyalty\Receptions\LoyaltyTransactionsResource;
+use Piggy\Api\Resources\OAuth\Loyalty\Receptions\RewardReceptionsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Rewards\RewardsResource;
-use Piggy\Api\Resources\OAuth\Loyalty\StagedCreditReceptionsResource;
-use Piggy\Api\Resources\OAuth\Marketing\MarketingRecipientsResource;
+use Piggy\Api\Resources\OAuth\PrepaidTransactionResource;
 use Piggy\Api\Resources\OAuth\Shops\ShopsResource;
-use Piggy\Api\Resources\OAuth\Shops\WebshopsResource;
 use Piggy\Api\Resources\OAuth\SubscriptionTypesResource;
 
 /**
@@ -65,11 +59,6 @@ trait SetsOAuthResources
     public $creditReceptions;
 
     /**
-     * @var StagedCreditReceptionsResource
-     */
-    public $stagedCreditReceptions;
-
-    /**
      * @var RewardsResource
      */
     public $rewards;
@@ -98,6 +87,17 @@ trait SetsOAuthResources
      */
     public $loyaltyTransactions;
 
+    /**
+     * @var PrepaidTransactionResource
+     */
+    public $prepaidTransactions;
+
+    /**
+     * @var RewardReceptionsResource
+     */
+    public $rewardReceptions;
+
+
 
     protected function setResources(BaseClient $client)
     {
@@ -108,6 +108,9 @@ trait SetsOAuthResources
         $this->shops = new ShopsResource($client);
         $this->rewards = new RewardsResource($client);
         $this->contactVerification = new ContactVerificationResource($client);
+        $this->prepaidTransactions = new PrepaidTransactionResource($client);
+
+        $this->rewardReceptions = new RewardReceptionsResource($client);
 
         $this->loyaltyTransactions = new LoyaltyTransactionsResource($client);
 
@@ -115,6 +118,5 @@ trait SetsOAuthResources
         $this->contactSubscriptionsResource = new ContactSubscriptionsResource($client);
         $this->subscriptionTypesResource = new SubscriptionTypesResource($client);
         $this->creditReceptions = new CreditReceptionsResource($client);
-        $this->stagedCreditReceptions = new StagedCreditReceptionsResource($client);
     }
 }

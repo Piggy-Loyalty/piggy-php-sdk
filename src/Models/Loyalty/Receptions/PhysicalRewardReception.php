@@ -12,7 +12,7 @@ use Piggy\Api\Models\Shops\Shop;
  * Class CreditReception
  * @package Piggy\Api\Models
  */
-class RewardReception
+class PhysicalRewardReception
 {
     /**
      * @var string
@@ -32,17 +32,17 @@ class RewardReception
     /**
      * @var Contact
      */
-    private $contact;
+    protected $contact;
 
     /**
      * @var Shop
      */
-    private $shop;
+    protected $shop;
 
     /**
      * @var ContactIdentifier|null
      */
-    private $contactIdentifier;
+    protected $contactIdentifier;
 
     /**
      * @var DateTime

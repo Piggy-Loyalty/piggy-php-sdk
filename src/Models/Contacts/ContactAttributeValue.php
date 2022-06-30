@@ -14,7 +14,7 @@ class ContactAttributeValue
     /** @var string */
     protected $name;
 
-    public function __construct($name, $value)
+    public function __construct(string $name, string $value)
     {
         $this->name = $name;
         $this->value = $value;
@@ -30,7 +30,6 @@ class ContactAttributeValue
 
     /**
      * @param string $name
-     *
      * @return void
      */
     public function setName(string $name): void
@@ -48,7 +47,6 @@ class ContactAttributeValue
 
     /**
      * @param string $value
-     *
      * @return void
      */
     public function setValue(string $value): void
