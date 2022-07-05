@@ -2,7 +2,7 @@
 
 namespace Piggy\Api\Models\Registers;
 
-use Piggy\Api\Models\Shops\PhysicalShop;
+use Piggy\Api\Models\Shops\Shop;
 
 /**
  * Class Register
@@ -26,7 +26,7 @@ class Register
     protected $name;
 
     /**
-     * @var PhysicalShop
+     * @var Shop
      */
     protected $shop;
 
@@ -79,17 +79,17 @@ class Register
     }
 
     /**
-     * @return PhysicalShop
+     * @return Shop
      */
-    public function getShop(): PhysicalShop
+    public function getShop(): Shop
     {
         return $this->shop;
     }
 
     /**
-     * @param PhysicalShop $shop
+     * @param Shop $shop
      */
-    public function setShop(PhysicalShop $shop): void
+    public function setShop(Shop $shop): void
     {
         $this->shop = $shop;
     }

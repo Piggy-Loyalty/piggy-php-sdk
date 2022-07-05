@@ -2,6 +2,7 @@
 
 namespace Piggy\Api\Resources\Register\Registers;
 
+use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Registers\RegisterMapper;
 use Piggy\Api\Models\Registers\Register;
 use Piggy\Api\Resources\BaseResource;
@@ -19,8 +20,7 @@ class RegisterResource extends BaseResource
 
     /**
      * @return Register
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Piggy\Api\Exceptions\PiggyRequestException
+     * @throws PiggyRequestException
      */
     public function get(): Register
     {

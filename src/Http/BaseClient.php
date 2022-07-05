@@ -5,7 +5,6 @@ namespace Piggy\Api\Http;
 use Exception;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\ExceptionMapper;
 use Piggy\Api\Exceptions\MalformedResponseException;
 use Piggy\Api\Exceptions\PiggyRequestException;
@@ -81,9 +80,10 @@ abstract class BaseClient
     }
 
     /**
-     * @param Psr\Http\Message\ResponseInterface|\GuzzleHttp\Message\ResponseInterface $response
+     * @param $response
+     *
      * @return Response
-     * @throws Exception
+     * @throws MalformedResponseException
      */
     private function parseResponse($response): Response
     {
@@ -165,8 +165,8 @@ abstract class BaseClient
     /**
      * @param string $url
      * @param array $body
+     *
      * @return Response
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function post(string $url, array $body): Response
@@ -177,8 +177,8 @@ abstract class BaseClient
     /**
      * @param string $url
      * @param array $body
+     *
      * @return Response
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function put(string $url, array $body): Response
@@ -189,8 +189,8 @@ abstract class BaseClient
     /**
      * @param string $url
      * @param array $params
+     *
      * @return Response
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function get(string $url, array $params = []): Response

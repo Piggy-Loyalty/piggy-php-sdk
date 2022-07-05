@@ -2,7 +2,7 @@
 
 namespace Piggy\Api\Mappers\Registers;
 
-use Piggy\Api\Mappers\Shops\PhysicalShopMapper;
+use Piggy\Api\Mappers\Shops\ShopMapper;
 use Piggy\Api\Models\Registers\Register;
 
 /**
@@ -18,10 +18,10 @@ class RegisterMapper
     public function map($response): Register
     {
         $register = new Register();
-        $physicalShopMapper = new PhysicalShopMapper();
+        $shopMapper = new ShopMapper();
 
         $register->setName($response->name ?? null);
-        $register->setShop($physicalShopMapper->map($response->shop));
+        $register->setShop($shopMapper->map($response->shop));
         $register->setIdentifier($response->identifier);
 
         return $register;
