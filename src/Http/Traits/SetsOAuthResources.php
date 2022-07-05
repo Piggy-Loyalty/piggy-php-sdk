@@ -47,7 +47,7 @@ trait SetsOAuthResources
     /**
      * @var SubscriptionTypesResource
      */
-    public $subscriptionTypesResource;
+    public $subscriptionTypes;
 
     /**
      * @var ShopsResource
@@ -63,11 +63,6 @@ trait SetsOAuthResources
      * @var RewardsResource
      */
     public $rewards;
-
-    /**
-     * @var RewardReceptionsResource
-     */
-    public $physicalRewardReceptions;
 
     /**
      * @var GiftcardsResource;
@@ -117,9 +112,8 @@ trait SetsOAuthResources
         $this->rewardReceptions = new RewardReceptionsResource($client);
         $this->loyaltyTransactions = new LoyaltyTransactionsResource($client);
         $this->contactSubscriptions = new ContactSubscriptionsResource($client);
-        $this->subscriptionTypesResource = new SubscriptionTypesResource($client);
+        $this->subscriptionTypes = new SubscriptionTypesResource($client);
         $this->creditReceptions = new CreditReceptionsResource($client);
-
         $this->automations = new AutomationsResource($client);
     }
 }

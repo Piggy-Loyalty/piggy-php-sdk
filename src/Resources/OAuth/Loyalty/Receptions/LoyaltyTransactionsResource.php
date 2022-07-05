@@ -31,7 +31,7 @@ class LoyaltyTransactionsResource extends BaseResource
      * @throws GuzzleException
      * @throws PiggyRequestException
      */
-    public function list(int $page = 1, ?string $contactUuid = null, ?LoyaltyTransactionType $type = null, ?string $shopUuid = null, int $limit = 30): array
+    public function list(int $page = 1, ?string $contactUuid = null, ?LoyaltyTransactionType $type = null, ?string $shopUuid = null, int $limit = 10): array
     {
         $response = $this->client->get($this->resourceUri, [
             "limit" => $limit,

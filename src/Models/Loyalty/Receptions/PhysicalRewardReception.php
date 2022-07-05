@@ -75,10 +75,10 @@ class PhysicalRewardReception
      * @param string $createdAt
      * @param string $title
      * @param Reward $reward
-     * @param string $expiresAt
+     * @param string|null $expiresAt
      * @param bool $hasBeenCollected
      */
-    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, string $createdAt, string $title, Reward $reward, string $expiresAt, bool $hasBeenCollected)
+    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, string $createdAt, string $title, Reward $reward, ?string $expiresAt, bool $hasBeenCollected)
     {
         $this->type = $type;
         $this->credits = $credits;
@@ -166,9 +166,9 @@ class PhysicalRewardReception
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getExpiresAt(): string
+    public function getExpiresAt(): ?string
     {
         return $this->expiresAt;
     }

@@ -23,7 +23,9 @@ class PrepaidTransactionMapper
 
         return new PrepaidTransaction(
             $data->amount_in_cents,
-            $prepaidBalance
+            $prepaidBalance,
+            $data->uuid,
+            $data->created_at
         );
     }
 }

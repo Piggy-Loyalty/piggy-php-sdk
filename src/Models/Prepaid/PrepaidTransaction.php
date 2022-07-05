@@ -2,6 +2,8 @@
 
 namespace Piggy\Api\Models\Prepaid;
 
+use DateTime;
+
 /**
  * Class CreditBalance
  * @package Piggy\Api\Models
@@ -19,13 +21,27 @@ class PrepaidTransaction
     protected $prepaidBalance;
 
     /**
+     * @var string
+     */
+    protected $uuid;
+
+    /**
+     * @var string
+     */
+    protected $createdAt;
+
+    /**
      * @param int $amountInCents
      * @param PrepaidBalance $prepaidBalance
+     * @param string $uuid
+     * @param string $createdAt
      */
-    public function __construct(int $amountInCents, PrepaidBalance $prepaidBalance)
+    public function __construct(int $amountInCents, PrepaidBalance $prepaidBalance, string $uuid, string $createdAt)
     {
         $this->amountInCents = $amountInCents;
         $this->prepaidBalance = $prepaidBalance;
+        $this->uuid = $uuid;
+        $this->createdAt = $createdAt;
     }
 
     /**
@@ -42,5 +58,21 @@ class PrepaidTransaction
     public function getPrepaidBalance(): PrepaidBalance
     {
         return $this->prepaidBalance;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUuid(): string
+    {
+        return $this->uuid;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCreatedAt(): string
+    {
+        return $this->createdAt;
     }
 }

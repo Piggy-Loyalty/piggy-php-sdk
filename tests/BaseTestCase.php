@@ -7,11 +7,7 @@ use DateTimeInterface;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Message\Response;
-use GuzzleHttp\Stream\Stream;
 use PHPUnit\Framework\TestCase;
-use Piggy\Api\Models\Shops\PhysicalShop;
-use Piggy\Api\Models\Shops\Webshop;
 use function Piggy\Api\hasGuzzle5;
 
 /**

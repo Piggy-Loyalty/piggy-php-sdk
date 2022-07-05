@@ -114,7 +114,7 @@ class ContactsResource extends BaseResource
      * @throws GuzzleException
      * @throws PiggyRequestException
      */
-    public function list(?int $page = null, ?int $limit = null): array
+    public function list(?int $page = 1, ?int $limit = 30): array
     {
         $response = $this->client->get("$this->resourceUri", [
             "page" => $page,
