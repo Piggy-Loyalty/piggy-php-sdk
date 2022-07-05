@@ -2,7 +2,6 @@
 
 namespace Piggy\Api\Resources\OAuth\Giftcards;
 
-use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Giftcards\GiftcardMapper;
 use Piggy\Api\Models\Giftcards\Giftcard;
@@ -10,7 +9,7 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class GiftcardsResource
- * @package Piggy\Api\Resources\OAuth\Loyalty
+ * @package Piggy\Api\Resources\OAuth\Giftcards
  */
 class GiftcardsResource extends BaseResource
 {
@@ -21,8 +20,8 @@ class GiftcardsResource extends BaseResource
 
     /**
      * @param string $hash
+     *
      * @return Giftcard
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function findOneBy(string $hash): Giftcard
@@ -39,8 +38,8 @@ class GiftcardsResource extends BaseResource
     /**
      * @param string $giftcardProgramUuid
      * @param int $type
+     *
      * @return Giftcard
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function create(string $giftcardProgramUuid, int $type): Giftcard

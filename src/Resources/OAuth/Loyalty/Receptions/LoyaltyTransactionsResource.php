@@ -2,17 +2,14 @@
 
 namespace Piggy\Api\Resources\OAuth\Loyalty\Receptions;
 
-use Exception;
-use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Enum\LoyaltyTransactionType;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Loyalty\LoyaltyTransactionMapper;
-use Piggy\Api\Models\Loyalty\LoyaltyTransaction;
 use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class CreditReceptionsResource
- * @package Piggy\Api\Resources\OAuth
+ * @package Piggy\Api\Resources\OAuth\Loyalty\Receptions
  */
 class LoyaltyTransactionsResource extends BaseResource
 {
@@ -27,8 +24,8 @@ class LoyaltyTransactionsResource extends BaseResource
      * @param LoyaltyTransactionType|null $type
      * @param string|null $shopUuid
      * @param int $limit
+     *
      * @return array
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function list(int $page = 1, ?string $contactUuid = null, ?LoyaltyTransactionType $type = null, ?string $shopUuid = null, int $limit = 10): array

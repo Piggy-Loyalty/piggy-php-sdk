@@ -3,7 +3,6 @@
 namespace Piggy\Api\Resources\OAuth\Contacts;
 
 use Exception;
-use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Resources\BaseResource;
 
 /**
@@ -19,8 +18,8 @@ class ContactVerificationResource extends BaseResource
 
     /**
      * @param string $email
+     *
      * @return bool
-     * @throws GuzzleException
      */
     public function sendVerificationMail(string $email): bool
     {
@@ -35,12 +34,11 @@ class ContactVerificationResource extends BaseResource
         return true;
     }
 
-
     /**
      * @param string $code
      * @param string $email
+     *
      * @return bool
-     * @throws GuzzleException
      */
     public function verifyLoginCode(string $code, string $email): bool
     {

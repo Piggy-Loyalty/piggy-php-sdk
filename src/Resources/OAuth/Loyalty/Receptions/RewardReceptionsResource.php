@@ -2,7 +2,6 @@
 
 namespace Piggy\Api\Resources\OAuth\Loyalty\Receptions;
 
-use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Loyalty\Receptions\RewardReceptionMapper;
 use Piggy\Api\Models\Loyalty\Receptions\DigitalRewardReception;
@@ -11,7 +10,7 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class CreditReceptionsResource
- * @package Piggy\Api\Resources\OAuth
+ * @package Piggy\Api\Resources\OAuth\Loyalty\Receptions
  */
 class RewardReceptionsResource extends BaseResource
 {
@@ -24,8 +23,8 @@ class RewardReceptionsResource extends BaseResource
      * @param string $contactUuid
      * @param string $shopUuid
      * @param string $rewardUuid
+     *
      * @return DigitalRewardReception|PhysicalRewardReception|null
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function create(string $contactUuid, string $shopUuid, string $rewardUuid)

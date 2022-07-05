@@ -2,7 +2,6 @@
 
 namespace Piggy\Api\Resources\OAuth;
 
-use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Contacts\SubscriptionMapper;
 use Piggy\Api\Mappers\Contacts\SubscriptionsMapper;
@@ -20,11 +19,10 @@ class ContactSubscriptionsResource extends BaseResource
      */
     protected $resourceUri = "/api/v3/oauth/clients/contact-subscriptions";
 
-
     /**
      * @param string $contactUuid
+     *
      * @return array
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function list(string $contactUuid): array
@@ -38,12 +36,11 @@ class ContactSubscriptionsResource extends BaseResource
         return $mapper->map($response->getData());
     }
 
-
     /**
      * @param string $contactUuid
      * @param string $subscriptionTypeUuid
+     *
      * @return Subscription
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function subscribe(string $contactUuid, string $subscriptionTypeUuid): Subscription
@@ -57,12 +54,11 @@ class ContactSubscriptionsResource extends BaseResource
         return $mapper->map($response->getData());
     }
 
-
     /**
      * @param string $contactUuid
      * @param string $subscriptionTypeUuid
+     *
      * @return Subscription
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function unsubscribe(string $contactUuid, string $subscriptionTypeUuid): Subscription

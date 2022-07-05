@@ -2,7 +2,6 @@
 
 namespace Piggy\Api\Resources\OAuth\Contacts;
 
-use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\ContactIdentifiers\ContactIdentifierMapper;
 use Piggy\Api\Models\Contacts\ContactIdentifier;
@@ -10,7 +9,7 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class ContactIdentifiersResource
- * @package Piggy\Api\Resources\OAuth
+ * @package Piggy\Api\Resources\OAuth\Contacts
  */
 class ContactIdentifiersResource extends BaseResource
 {
@@ -21,8 +20,8 @@ class ContactIdentifiersResource extends BaseResource
 
     /**
      * @param string $contactIdentifierValue
+     *
      * @return ContactIdentifier
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function get(string $contactIdentifierValue): ContactIdentifier
@@ -40,8 +39,8 @@ class ContactIdentifiersResource extends BaseResource
      * @param string $contactIdentifierValue
      * @param string $contactUuid
      * @param string|null $contactIdentifierName
+     *
      * @return ContactIdentifier
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function create(string $contactIdentifierValue, string $contactUuid, ?string $contactIdentifierName = ''): ContactIdentifier

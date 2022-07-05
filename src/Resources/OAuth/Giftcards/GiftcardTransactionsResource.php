@@ -2,7 +2,6 @@
 
 namespace Piggy\Api\Resources\OAuth\Giftcards;
 
-use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Giftcards\GiftcardTransactionMapper;
 use Piggy\Api\Models\Giftcards\GiftcardTransaction;
@@ -21,8 +20,8 @@ class GiftcardTransactionsResource extends BaseResource
 
     /**
      * @param string $giftcardTransactionUuid
+     *
      * @return GiftcardTransaction
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function get(string $giftcardTransactionUuid): GiftcardTransaction
@@ -38,8 +37,8 @@ class GiftcardTransactionsResource extends BaseResource
      * @param string $shopUuid
      * @param string $giftcardUuid
      * @param int $amountInCents
+     *
      * @return GiftcardTransaction
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function create(string $shopUuid, string $giftcardUuid, int $amountInCents): GiftcardTransaction
@@ -57,8 +56,8 @@ class GiftcardTransactionsResource extends BaseResource
 
     /**
      * @param string $giftcardTransactionUuid
+     *
      * @return GiftcardTransaction
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function correct(string $giftcardTransactionUuid): GiftcardTransaction

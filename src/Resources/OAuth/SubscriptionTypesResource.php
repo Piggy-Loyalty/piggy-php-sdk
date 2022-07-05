@@ -2,7 +2,6 @@
 
 namespace Piggy\Api\Resources\OAuth;
 
-use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Contacts\SubscriptionTypesMapper;
 use Piggy\Api\Resources\BaseResource;
@@ -20,7 +19,6 @@ class SubscriptionTypesResource extends BaseResource
 
     /**
      * @return array
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function list(): array

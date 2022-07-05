@@ -2,7 +2,6 @@
 
 namespace Piggy\Api\Resources\OAuth\Automations;
 
-use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Automations\AutomationsMapper;
 use Piggy\Api\Resources\BaseResource;
@@ -20,7 +19,6 @@ class AutomationsResource extends BaseResource
 
     /**
      * @return array
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function list(): array
@@ -35,8 +33,8 @@ class AutomationsResource extends BaseResource
     /**
      * @param string $contactUuid
      * @param string $automationUuid
+     *
      * @return array
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function get(string $contactUuid, string $automationUuid): array

@@ -2,7 +2,6 @@
 
 namespace Piggy\Api\Resources\OAuth;
 
-use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Prepaid\PrepaidTransactionMapper;
 use Piggy\Api\Models\Prepaid\PrepaidTransaction;
@@ -23,8 +22,8 @@ class PrepaidTransactionResource extends BaseResource
      * @param string $contactUuid
      * @param int $amountInCents
      * @param string $shopUuid
+     *
      * @return PrepaidTransaction
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function create(string $contactUuid, int $amountInCents, string $shopUuid): PrepaidTransaction

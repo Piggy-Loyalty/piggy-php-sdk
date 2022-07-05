@@ -2,7 +2,6 @@
 
 namespace Piggy\Api\Resources\OAuth\Contacts;
 
-use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Contacts\ContactMapper;
 use Piggy\Api\Mappers\Contacts\ContactsMapper;
@@ -26,8 +25,8 @@ class ContactsResource extends BaseResource
 
     /**
      * @param string $contactUuid
+     *
      * @return Contact
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function get(string $contactUuid): Contact
@@ -41,8 +40,8 @@ class ContactsResource extends BaseResource
 
     /**
      * @param string $email
+     *
      * @return Contact
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function findOneBy(string $email): Contact
@@ -58,8 +57,8 @@ class ContactsResource extends BaseResource
 
     /**
      * @param string $email
+     *
      * @return Contact
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function findOrCreate(string $email): Contact
@@ -75,8 +74,8 @@ class ContactsResource extends BaseResource
 
     /**
      * @param string $email
+     *
      * @return Contact
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function create(string $email): Contact
@@ -92,8 +91,8 @@ class ContactsResource extends BaseResource
 
     /**
      * @param string|null $contactIdentifierValue
+     *
      * @return Contact
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function createAnonymously(?string $contactIdentifierValue = null): Contact
@@ -110,8 +109,8 @@ class ContactsResource extends BaseResource
     /**
      * @param int|null $page
      * @param int|null $limit
+     *
      * @return array
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function list(?int $page = 1, ?int $limit = 30): array
@@ -129,8 +128,8 @@ class ContactsResource extends BaseResource
     /**
      * @param string $contactUuid
      * @param array $attributes
+     *
      * @return Contact
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function update(string $contactUuid, array $attributes): Contact
@@ -146,8 +145,8 @@ class ContactsResource extends BaseResource
 
     /**
      * @param $contactUuid
+     *
      * @return PrepaidBalance
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function getPrepaidBalance($contactUuid): PrepaidBalance
@@ -161,8 +160,8 @@ class ContactsResource extends BaseResource
 
     /**
      * @param $contactUuid
+     *
      * @return CreditBalance
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function getCreditBalance($contactUuid): CreditBalance
