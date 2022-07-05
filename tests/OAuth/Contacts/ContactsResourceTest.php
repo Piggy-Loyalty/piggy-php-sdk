@@ -4,8 +4,6 @@ namespace Piggy\Api\Tests\OAuth\Contacts;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\Models\Contacts\Attribute;
-use Piggy\Api\Models\Contacts\ContactAttribute;
 use Piggy\Api\Tests\OAuthTestCase;
 
 /**
@@ -92,7 +90,6 @@ class ContactsResourceTest extends OAuthTestCase
 
     /**
      * @test
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function it_returns_the_contact_after_creation()
@@ -128,12 +125,6 @@ class ContactsResourceTest extends OAuthTestCase
         $contact = $this->mockedClient->contacts->findOneBy("hello@piggy.nl");
 
         $this->assertEquals($contact->getUuid(), '§12345678');
-//        $this->assertEquals($contact->getEmail(), $data->getEmail());
-//        $this->assertEquals($contact->getPrepaidBalance(), $data->getPrepaidBalance());
-//        $this->assertEquals($contact->getCreditBalance(), $data->getCreditBalance());
-//        $this->assertEquals($contact->getAttributes(), $data->getAttributes());
-//        $this->assertEquals($contact->getCurrentValues(), $data->getCurrentValues());
-//        $this->assertEquals($contact->getSubscriptions(), $data->getSubscriptions());
     }
 
     /** @test */
@@ -200,37 +191,6 @@ class ContactsResourceTest extends OAuthTestCase
     /** @test */
     public function it_updates_a_contact()
     {
-//        $attributes = [
-//            new ContactAttribute(
-//                "Peter",
-//                new Attribute(
-//                    "name",
-//                    "label",
-//                    "E-mail",
-//                    "email",
-//                    "email",
-//                    false,
-//                    false,
-//                    true,
-//                    []
-//                )
-//            ),
-//            new ContactAttribute(
-//                "de Vries",
-//                new Attribute(
-//                    "name",
-//                    "label",
-//                    "E-mail",
-//                    "email",
-//                    "email",
-//                    false,
-//                    false,
-//                    true,
-//                    []
-//                )
-//            )
-//        ];
-
         $this->addExpectedResponse([
             "uuid" => 'uuid-piggy-12',
             "email" => "new@piggy.nl",
@@ -279,12 +239,10 @@ class ContactsResourceTest extends OAuthTestCase
         $this->assertEquals("uuid-piggy-12", $contact->getUuId());
         $this->assertEquals("Henk", $contact->getAttributes()[0]->getValue());
 
-//        $this->assertEquals($attributes, $data->getAttributes());
     }
 
     /**
      * @test
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function it_returns_a_prepaid_balance()
@@ -300,7 +258,6 @@ class ContactsResourceTest extends OAuthTestCase
 
     /**
      * @test
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function it_returns_a_credit_balance()

@@ -4,8 +4,8 @@ namespace Piggy\Api\Mappers\Loyalty\Receptions;
 
 use Piggy\Api\Mappers\ContactIdentifiers\ContactIdentifierMapper;
 use Piggy\Api\Mappers\Contacts\ContactMapper;
-use Piggy\Api\Mappers\Loyalty\UnitMapper;
 use Piggy\Api\Mappers\Shops\ShopMapper;
+use Piggy\Api\Mappers\Units\UnitMapper;
 use Piggy\Api\Models\Loyalty\Receptions\CreditReception;
 use stdClass;
 

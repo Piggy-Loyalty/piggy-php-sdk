@@ -17,6 +17,7 @@ use Piggy\Api\Resources\OAuth\Loyalty\Rewards\RewardsResource;
 use Piggy\Api\Resources\OAuth\PrepaidTransactionResource;
 use Piggy\Api\Resources\OAuth\Shops\ShopsResource;
 use Piggy\Api\Resources\OAuth\SubscriptionTypesResource;
+use Piggy\Api\Resources\OAuth\Units\UnitsResource;
 
 /**
  * Trait SetsOAuthResources
@@ -98,6 +99,11 @@ trait SetsOAuthResources
      */
     public $automations;
 
+    /**
+     * @var UnitsResource
+     */
+    public $units;
+
 
     protected function setResources(BaseClient $client)
     {
@@ -115,5 +121,6 @@ trait SetsOAuthResources
         $this->subscriptionTypes = new SubscriptionTypesResource($client);
         $this->creditReceptions = new CreditReceptionsResource($client);
         $this->automations = new AutomationsResource($client);
+        $this->units = new UnitsResource($client);
     }
 }

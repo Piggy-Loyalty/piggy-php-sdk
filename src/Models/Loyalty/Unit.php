@@ -18,14 +18,19 @@ class Unit
      */
     protected $label;
 
+    /** @var bool|null */
+    protected $isDefault;
+
     /**
      * @param string $name
      * @param string|null $label
+     * @param bool|null $isDefault
      */
-    public function __construct(string $name, ?string $label)
+    public function __construct(string $name, ?string $label, ?bool $isDefault)
     {
         $this->name = $name;
         $this->label = $label;
+        $this->isDefault = $isDefault;
     }
 
     /**
@@ -42,5 +47,11 @@ class Unit
     public function getLabel(): ?string
     {
         return $this->label;
+    }
+
+    /** @return bool| null */
+    public function getIsDefault(): ?bool
+    {
+        return $this->isDefault;
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Piggy\Api\Mappers\Loyalty;
+namespace Piggy\Api\Mappers\Units;
 
 use Piggy\Api\Models\Loyalty\Unit;
 use stdClass;
@@ -19,7 +19,8 @@ class UnitMapper
     {
         return new Unit(
             $data->name,
-            $data->label ?? null
+            $data->label ?? null,
+            $data->is_default ?? null
         );
     }
 }
