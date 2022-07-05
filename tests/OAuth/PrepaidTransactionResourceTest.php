@@ -2,7 +2,6 @@
 
 namespace Piggy\Api\Tests\OAuth;
 
-use Piggy\Api\Models\Contacts\SubscriptionType;
 use Piggy\Api\Tests\OAuthTestCase;
 
 /**
@@ -22,12 +21,14 @@ class PrepaidTransactionResourceTest extends OAuthTestCase
                 "balance_in_cents" => 210
             ],
             "uuid" => '123-123',
-            "created_at" => '123'
+            "created_at" => '2022-07-05T10:27:17+00:00'
         ]);
 
         $data = $this->mockedClient->prepaidTransactions->create('123-123', 10, '321-321');
 
         $this->assertEquals(10, $data->getAmountInCents());
         $this->assertEquals(210, $data->getPrepaidBalance()->getBalanceInCents());
+        $this->assertEquals('123-123', $data->getUuid());
+        $this->assertEquals('2022-07-05T10:27:17+00:00', $data->getCreatedAt());
     }
 }
