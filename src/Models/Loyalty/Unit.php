@@ -14,15 +14,15 @@ class Unit
     protected $name;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $label;
 
     /**
      * @param string $name
-     * @param string $label
+     * @param string|null $label
      */
-    public function __construct(string $name, string $label)
+    public function __construct(string $name, ?string $label)
     {
         $this->name = $name;
         $this->label = $label;
@@ -37,9 +37,9 @@ class Unit
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getLabel(): string
+    public function getLabel(): ?string
     {
         return $this->label;
     }

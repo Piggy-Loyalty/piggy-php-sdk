@@ -32,7 +32,7 @@ class Contact
     protected $creditBalance;
 
     /**
-     * @var array|null
+     * @var array
      */
     protected $subscriptions;
 
@@ -42,17 +42,17 @@ class Contact
     protected $attributes;
 
     /**
-     * @var array
+     * @var array|null
      */
     protected $currentValues;
 
-    public function __construct($uuid, ?string $email, ?PrepaidBalance $prepaidBalance, ?CreditBalance $creditBalance, ?array $attributes, ?array $subscriptions, ?array $currentValues)
+    public function __construct($uuid, ?string $email, ?PrepaidBalance $prepaidBalance, ?CreditBalance $creditBalance, ?array $attributes, ?array $subscriptions, ?array $currentValues = null)
     {
         $this->uuid = $uuid;
         $this->email = $email;
         $this->prepaidBalance = $prepaidBalance;
         $this->creditBalance = $creditBalance;
-        $this->subscriptions = $subscriptions;
+        $this->subscriptions = $subscriptions ?? [];
         $this->attributes = $attributes;
         $this->currentValues = $currentValues;
     }
@@ -139,7 +139,7 @@ class Contact
     }
 
     /**
-     * @return array|null
+     * @return array
      */
     public function getSubscriptions(): array
     {
@@ -155,9 +155,9 @@ class Contact
     }
 
     /**
-     * @return array
+     * @return array|null
      */
-    public function getCurrentValues(): array
+    public function getCurrentValues(): ?array
     {
         return $this->currentValues;
     }

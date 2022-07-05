@@ -28,34 +28,34 @@ class Attribute
     /**
      * @var string
      */
-    public $field_type;
+    public $fieldType;
     /**
      * @var boolean|null
      */
-    public $is_soft_read_only;
+    public $isSoftReadOnly;
     /**
      * @var boolean|null
      */
-    public $is_hard_read_only;
+    public $isHardReadOnly;
     /**
      * @var boolean
      */
-    public $is_piggy_defined;
+    public $isPiggyDefined;
     /**
      * @var array|null
      */
     public $options;
 
-    public function __construct(string $name, ?string $label, ?string $description, string $type, string $field_type, ?bool $is_soft_read_only, ?bool $is_hard_read_only, bool $is_piggy_defined, ?array $options)
+    public function __construct(string $name, ?string $label, ?string $description, string $type, string $fieldType, ?bool $isSoftReadOnly, ?bool $isHardReadOnly, bool $isPiggyDefined, ?array $options)
     {
         $this->name = $name;
         $this->label = $label;
         $this->description = $description;
         $this->type = $type;
-        $this->field_type = $field_type;
-        $this->is_soft_read_only = $is_soft_read_only;
-        $this->is_hard_read_only = $is_hard_read_only;
-        $this->is_piggy_defined = $is_piggy_defined;
+        $this->fieldType = $fieldType;
+        $this->isSoftReadOnly = $isSoftReadOnly;
+        $this->isHardReadOnly = $isHardReadOnly;
+        $this->isPiggyDefined = $isPiggyDefined;
         $this->options = $options;
     }
 
@@ -132,66 +132,66 @@ class Attribute
      */
     public function getFieldType(): string
     {
-        return $this->field_type;
+        return $this->fieldType;
     }
 
     /**
-     * @param string $field_type
+     * @param string $fieldType
      * @return void
      */
-    public function setFieldType(string $field_type): void
+    public function setFieldType(string $fieldType): void
     {
-        $this->field_type = $field_type;
+        $this->fieldType = $fieldType;
     }
 
     /**
      * @return bool
      */
-    public function isIsSoftReadOnly(): bool
+    public function getIsSoftReadOnly(): bool
     {
-        return $this->is_soft_read_only;
+        return $this->isSoftReadOnly;
     }
 
     /**
-     * @param bool $is_soft_read_only
+     * @param bool $isSoftReadOnly
      * @return void
      */
-    public function setIsSoftReadOnly(bool $is_soft_read_only): void
+    public function setIsSoftReadOnly(bool $isSoftReadOnly): void
     {
-        $this->is_soft_read_only = $is_soft_read_only;
+        $this->isSoftReadOnly = $isSoftReadOnly;
     }
 
     /**
      * @return bool
      */
-    public function isIsHardReadOnly(): bool
+    public function getIsHardReadOnly(): bool
     {
-        return $this->is_hard_read_only;
+        return $this->isHardReadOnly;
     }
 
     /**
-     * @param bool $is_hard_read_only
+     * @param bool $isHardReadOnly
      * @return void
      */
-    public function setIsHardReadOnly(bool $is_hard_read_only): void
+    public function setIsHardReadOnly(bool $isHardReadOnly): void
     {
-        $this->is_hard_read_only = $is_hard_read_only;
+        $this->isHardReadOnly = $isHardReadOnly;
     }
 
     /**
      * @return bool
      */
-    public function isIsPiggyDefined(): bool
+    public function getIsPiggyDefined(): bool
     {
-        return $this->is_piggy_defined;
+        return $this->isPiggyDefined;
     }
 
     /**
-     * @param bool $is_piggy_defined
+     * @param bool $isPiggyDefined
      */
-    public function setIsPiggyDefined(bool $is_piggy_defined): void
+    public function setIsPiggyDefined(bool $isPiggyDefined): void
     {
-        $this->is_piggy_defined = $is_piggy_defined;
+        $this->isPiggyDefined = $isPiggyDefined;
     }
 
     /**

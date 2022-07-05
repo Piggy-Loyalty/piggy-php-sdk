@@ -13,10 +13,10 @@ use stdClass;
 class ShopMapper
 {
     /**
-     * @param stdClass $data
+     * @param $data
      * @return Shop
      */
-    public function map(stdClass $data): Shop
+    public function map($data): Shop
     {
         $loyaltyProgramMapper = new LoyaltyProgramMapper();
         if (isset($data->loyalty_program)) {

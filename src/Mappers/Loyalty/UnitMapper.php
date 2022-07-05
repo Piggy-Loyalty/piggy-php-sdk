@@ -19,7 +19,7 @@ class UnitMapper
     {
         return new Unit(
             $data->name,
-            $data->label
+            $data->label ?? null
         );
     }
 }

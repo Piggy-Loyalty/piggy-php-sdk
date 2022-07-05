@@ -45,9 +45,19 @@ class PhysicalRewardReception
     protected $contactIdentifier;
 
     /**
-     * @var DateTime
+     * @var string
      */
     protected $createdAt;
+
+    /**
+     * @var string
+     */
+    protected $title;
+
+    /**
+     * @var string
+     */
+    protected $expiresAt;
 
     /** @var Reward */
     protected $reward;
@@ -63,10 +73,12 @@ class PhysicalRewardReception
      * @param Shop $shop
      * @param ContactIdentifier|null $contactIdentifier
      * @param string $createdAt
+     * @param string $title
      * @param Reward $reward
+     * @param string $expiresAt
      * @param bool $hasBeenCollected
      */
-    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, string $createdAt, Reward $reward, bool $hasBeenCollected)
+    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, string $createdAt, string $title, Reward $reward, string $expiresAt, bool $hasBeenCollected)
     {
         $this->type = $type;
         $this->credits = $credits;
@@ -75,7 +87,9 @@ class PhysicalRewardReception
         $this->shop = $shop;
         $this->contactIdentifier = $contactIdentifier;
         $this->createdAt = $createdAt;
+        $this->title = $title;
         $this->reward = $reward;
+        $this->expiresAt = $expiresAt;
         $this->hasBeenCollected = $hasBeenCollected;
     }
 
@@ -128,11 +142,19 @@ class PhysicalRewardReception
     }
 
     /**
-     * @return DateTime
+     * @return string
      */
-    public function getCreatedAt(): DateTime
+    public function getCreatedAt(): string
     {
         return $this->createdAt;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
     }
 
     /**
@@ -141,6 +163,14 @@ class PhysicalRewardReception
     public function getReward(): Reward
     {
         return $this->reward;
+    }
+
+    /**
+     * @return string
+     */
+    public function getExpiresAt(): string
+    {
+        return $this->expiresAt;
     }
 
     /**

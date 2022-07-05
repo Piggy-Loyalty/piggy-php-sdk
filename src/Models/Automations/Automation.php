@@ -54,7 +54,7 @@ class Automation
      */
     public function getName(): string
     {
-        return $this->uuid;
+        return $this->name;
     }
 
     /**
@@ -62,7 +62,7 @@ class Automation
      */
     public function getStatus(): string
     {
-        return $this->reference;
+        return $this->status;
     }
 
     /**
@@ -70,7 +70,7 @@ class Automation
      */
     public function getEvent(): string
     {
-        return $this->reference;
+        return $this->event;
     }
 
     /**
@@ -78,7 +78,7 @@ class Automation
      */
     public function getCreatedAt(): string
     {
-        return $this->reference;
+        return $this->createdAt;
     }
 
     /**
@@ -86,6 +86,6 @@ class Automation
      */
     public function getUpdatedAt(): string
     {
-        return $this->reference;
+        return $this->updatedAt;
     }
 }

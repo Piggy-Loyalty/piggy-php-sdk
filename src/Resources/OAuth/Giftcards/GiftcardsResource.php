@@ -43,7 +43,7 @@ class GiftcardsResource extends BaseResource
      * @throws GuzzleException
      * @throws PiggyRequestException
      */
-    public function create( string $giftcardProgramUuid, int $type): Giftcard
+    public function create(string $giftcardProgramUuid, int $type): Giftcard
     {
         $response = $this->client->post($this->resourceUri, [
             "giftcard_program_uuid" => $giftcardProgramUuid,

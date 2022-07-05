@@ -4,9 +4,7 @@ namespace Piggy\Api\Resources\OAuth\Automations;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\Mappers\Automations\AutomationMapper;
 use Piggy\Api\Mappers\Automations\AutomationsMapper;
-use Piggy\Api\Models\Automations\Automation;
 use Piggy\Api\Resources\BaseResource;
 
 /**
@@ -37,18 +35,18 @@ class AutomationsResource extends BaseResource
     /**
      * @param string $contactUuid
      * @param string $automationUuid
-     * @return Automation
+     * @return array
      * @throws GuzzleException
      * @throws PiggyRequestException
      */
-    public function get(string $contactUuid, string $automationUuid): Automation
+    public function get(string $contactUuid, string $automationUuid): array
     {
         $response = $this->client->post("$this->resourceUri/runs", [
             "contact_uuid" => $contactUuid,
             "automation_uuid" => $automationUuid
         ]);
 
-        $mapper = new AutomationMapper();
+        $mapper = new AutomationsMapper();
 
         return $mapper->map($response->getData());
     }

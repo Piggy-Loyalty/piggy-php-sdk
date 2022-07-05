@@ -6,6 +6,9 @@ use DateTime;
 use DateTimeInterface;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Message\Response;
+use GuzzleHttp\Stream\Stream;
 use PHPUnit\Framework\TestCase;
 use Piggy\Api\Models\Shops\PhysicalShop;
 use Piggy\Api\Models\Shops\Webshop;
@@ -38,8 +41,8 @@ class BaseTestCase extends TestCase
             $mock = new MockHandlerAdapter();
             $httpClient = new HttpClient(['handler' => $mock]);
         } else {
-            $mock = new \GuzzleHttp\Handler\MockHandler();
-            $handlerStack = \GuzzleHttp\HandlerStack::create($mock);
+            $mock = new MockHandler();
+            $handlerStack = HandlerStack::create($mock);
             $httpClient = new HttpClient(['handler' => $handlerStack]);
         }
 
@@ -64,8 +67,8 @@ class BaseTestCase extends TestCase
             fwrite($stream, $payload);
             rewind($stream);
 
-            $streamWrapper = new \GuzzleHttp\Stream\Stream($stream);
-            $response = new \GuzzleHttp\Message\Response($code, [], $streamWrapper);
+            $streamWrapper = new Stream($stream);
+            $response = new Response($code, [], $streamWrapper);
         } else {
             $response = new \GuzzleHttp\Psr7\Response($code, [], $payload);
         }

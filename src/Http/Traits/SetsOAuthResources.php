@@ -42,7 +42,7 @@ trait SetsOAuthResources
     /**
      * @var ContactSubscriptionsResource
      */
-    public $contactSubscriptionsResource;
+    public $contactSubscriptions;
 
     /**
      * @var SubscriptionTypesResource
@@ -116,7 +116,7 @@ trait SetsOAuthResources
         $this->prepaidTransactions = new PrepaidTransactionResource($client);
         $this->rewardReceptions = new RewardReceptionsResource($client);
         $this->loyaltyTransactions = new LoyaltyTransactionsResource($client);
-        $this->contactSubscriptionsResource = new ContactSubscriptionsResource($client);
+        $this->contactSubscriptions = new ContactSubscriptionsResource($client);
         $this->subscriptionTypesResource = new SubscriptionTypesResource($client);
         $this->creditReceptions = new CreditReceptionsResource($client);
 

@@ -20,7 +20,7 @@ class ContactSubscriptionResourceTest extends OAuthTestCase
             [
                 "is_subscribed" => true,
                 "subscription_type" => [
-                    "id" => 3,
+                    "uuid" => '123-122',
                     "name" => "Marketing",
                     "description" => "Marketing emails for orders and updates",
                     "active" => false,
@@ -31,9 +31,9 @@ class ContactSubscriptionResourceTest extends OAuthTestCase
             [
                 "is_subscribed" => false,
                 "subscription_type" => [
-                    "id" => 2,
+                    "uuid" => '123-123',
                     "name" => "Functional",
-                    "description" => "Fcuntional emails for orders and updates",
+                    "description" => "Functional emails for orders and updates",
                     "active" => false,
                     "strategy" => "OPT_OUT"
                 ],
@@ -41,23 +41,23 @@ class ContactSubscriptionResourceTest extends OAuthTestCase
             ],
         ]);
 
-        $data = $this->mockedClient->contactSubscriptionsResource->list("1");
+        $data = $this->mockedClient->contactSubscriptions->list("1");
 
         $this->assertEquals(true, $data[0]->isSubscribed());
         $this->assertEquals(false, $data[1]->isSubscribed());
         $this->assertEquals(0, $data[0]->getStatus());
         $this->assertEquals(1, $data[1]->getStatus());
         $this->assertEquals(new SubscriptionType(
-            3,
+            '123-122',
             'Marketing',
             'Marketing emails for orders and updates',
             false,
-            'OPT_OUT',
+            'OPT_OUT'
         ), $data[0]->getSubscriptionType());
         $this->assertEquals(new SubscriptionType(
-            2,
+            '123-123',
             "Functional",
-            "Fcuntional emails for orders and updates",
+            "Functional emails for orders and updates",
             false,
             "OPT_OUT"
         ), $data[1]->getSubscriptionType());
@@ -71,26 +71,26 @@ class ContactSubscriptionResourceTest extends OAuthTestCase
         $this->addExpectedResponse([
             "is_subscribed" => true,
             "subscription_type" => [
-                "id" => 3,
+                "uuid" => '123-321',
                 "name" => "Marketing",
                 "description" => "Marketing emails for orders and updates",
                 "active" => true,
                 "strategy" => "OPT_OUT"
             ],
-            "status" => 1
+            "status" => 0
         ]);
 
-        $data = $this->mockedClient->contactSubscriptionsResource->subscribe("1", "1");
+        $contactSubscription = $this->mockedClient->contactSubscriptions->subscribe("1", "1");
 
-        $this->assertEquals(true, $data->isSubscribed());
-        $this->assertEquals(1, $data->getStatus());
+        $this->assertEquals(true, $contactSubscription->isSubscribed());
+        $this->assertEquals(0, $contactSubscription->getStatus());
         $this->assertEquals(new SubscriptionType(
-            3,
+            '123-321',
             'Marketing',
             'Marketing emails for orders and updates',
             true,
-            'OPT_OUT',
-        ), $data->getSubscriptionType());
+            'OPT_OUT'
+        ), $contactSubscription->getSubscriptionType());
     }
 
     /**
@@ -101,7 +101,7 @@ class ContactSubscriptionResourceTest extends OAuthTestCase
         $this->addExpectedResponse([
             "is_subscribed" => false,
             "subscription_type" => [
-                "id" => 3,
+                "uuid" => '123-321',
                 "name" => "Marketing",
                 "description" => "Marketing emails for orders and updates",
                 "active" => true,
@@ -110,16 +110,16 @@ class ContactSubscriptionResourceTest extends OAuthTestCase
             "status" => 0
         ]);
 
-        $data = $this->mockedClient->contactSubscriptionsResource->subscribe("1", "1");
+        $contactSubscription = $this->mockedClient->contactSubscriptions->unsubscribe("1", "1");
 
-        $this->assertEquals(false, $data->isSubscribed());
-        $this->assertEquals(0, $data->getStatus());
+        $this->assertEquals(false, $contactSubscription->isSubscribed());
+        $this->assertEquals(0, $contactSubscription->getStatus());
         $this->assertEquals(new SubscriptionType(
-            3,
+            '123-321',
             'Marketing',
             'Marketing emails for orders and updates',
             true,
-            'OPT_OUT',
-        ), $data->getSubscriptionType());
+            'OPT_OUT'
+        ), $contactSubscription->getSubscriptionType());
     }
 }

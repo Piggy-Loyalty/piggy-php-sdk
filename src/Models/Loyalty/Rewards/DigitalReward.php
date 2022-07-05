@@ -4,33 +4,16 @@ namespace Piggy\Api\Models\Loyalty\Rewards;
 
 use Piggy\Api\Models\Loyalty\Media;
 
+/**
+ * Class PhysicalReward
+ * @package Piggy\Api\Models\Loyalty\Rewards
+ */
 class DigitalReward extends Reward
 {
-    /**
-     * @var array|null
-     */
-    protected $meta;
 
-    public function __construct(string $uuid, ?string $title = '', ?int $requiredCredits = null, ?Media $media = null, ?string $description = "", array $meta = null)
+    public function __construct(string $uuid, ?string $title = "", ?int $requiredCredits = null, ?Media $media = null, ?string $description = "", ?bool $active = true, ?string $rewardType = null)
     {
-        parent::__construct($uuid, $title, $requiredCredits, $media, $description);
-
-        $this->meta = $meta;
+        parent::__construct($uuid, $title, $requiredCredits, $media, $description, $active, $rewardType);
     }
 
-    /**
-     * @return array|null
-     */
-    public function getMeta(): ?array
-    {
-        return $this->meta;
-    }
-
-    /**
-     * @param array|null $meta
-     */
-    public function setMeta(?array $meta): void
-    {
-        $this->meta = $meta;
-    }
 }

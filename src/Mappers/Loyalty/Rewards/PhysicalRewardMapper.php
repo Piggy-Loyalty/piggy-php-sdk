@@ -31,7 +31,8 @@ class PhysicalRewardMapper
             $data->required_credits ?? null,
             $media ?? null,
             $data->description ?? "",
-            $active
+            $active,
+            $data->reward_type ?? null
         );
     }
 }

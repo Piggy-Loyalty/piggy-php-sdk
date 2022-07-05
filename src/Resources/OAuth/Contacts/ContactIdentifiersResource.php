@@ -44,7 +44,7 @@ class ContactIdentifiersResource extends BaseResource
      * @throws GuzzleException
      * @throws PiggyRequestException
      */
-    public function create(string $contactIdentifierValue, string $contactUuid, ?string $contactIdentifierName = null): ContactIdentifier
+    public function create(string $contactIdentifierValue, string $contactUuid, ?string $contactIdentifierName = ''): ContactIdentifier
     {
         $response = $this->client->post($this->resourceUri, [
             "contact_uuid" => $contactUuid,

@@ -14,53 +14,22 @@ class Subscription
     protected $subscriptionType;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $isSubscribed;
 
     /**
-     * @var int
+     * @var string
      */
     protected $status;
 
-    public function __construct($subscriptionType, $isSubscribed, $status)
+    public function __construct(SubscriptionType $subscriptionType, bool $isSubscribed, string $status)
     {
         $this->subscriptionType = $subscriptionType;
         $this->isSubscribed = $isSubscribed;
         $this->status = $status;
     }
 
-    /**
-     * @return string
-     */
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-
-    /**
-     * @param string $value
-     */
-    public function setValue(string $value): void
-    {
-        $this->value = $value;
-    }
-
-    /**
-     * @return Attribute
-     */
-    public function getAttribute(): Attribute
-    {
-        return $this->attribute;
-    }
-
-    /**
-     * @param Attribute $attribute
-     */
-    public function setAttribute(Attribute $attribute): void
-    {
-        $this->attribute = $attribute;
-    }
 
     /**
      * @return SubscriptionType
@@ -95,17 +64,18 @@ class Subscription
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getStatus(): int
+    public function getStatus(): string
     {
         return $this->status;
     }
 
     /**
-     * @param int $status
+     * @param string $status
+     * @return void
      */
-    public function setStatus(int $status): void
+    public function setStatus(string $status): void
     {
         $this->status = $status;
     }

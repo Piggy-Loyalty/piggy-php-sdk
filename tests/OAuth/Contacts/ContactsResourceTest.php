@@ -38,7 +38,6 @@ class ContactsResourceTest extends OAuthTestCase
                 "is_subscribed" => true,
                 "status" => "SUBSCRIBED",
                 "subscription_type" => [
-                    "id" => 1,
                     "uuid" => "23-23-pi-gg-y",
                     "name" => "Functional",
                     "description" => "Functional emails",
@@ -46,36 +45,21 @@ class ContactsResourceTest extends OAuthTestCase
                     "strategy" => "OPT_OUT"
                 ]
             ]],
-            new ContactAttribute(
-                "de Vries",
-                new Attribute(
-                    "name",
-                    "label",
-                    "E-mail",
-                    "email",
-                    "email",
-                    false,
-                    false,
-                    true,
-                    []
-                )
-            )
-//            "attributes" => [[
-//                "value" => "Henk",
-//                "attribute" => [
-//                    "name" => "firstName",
-//                    "label" => "Nombre",
-//                    "description" => "Voornaam",
-//                    "type" => "text",
-//                    "field_type" => "text",
-//                    "is_soft_read_only" => false,
-//                    "is_hard_read_only" => false,
-//                    "is_piggy_defined" => true,
-//                    "options" => []
-//                ]
-//            ]]
+            "attributes" => [[
+                "value" => "Henk",
+                "attribute" => [
+                    "name" => "firstName",
+                    "label" => "Nombre",
+                    "description" => "Voornaam",
+                    "type" => "text",
+                    "field_type" => "text",
+                    "is_soft_read_only" => false,
+                    "is_hard_read_only" => false,
+                    "is_piggy_defined" => true,
+                    "options" => []
+                ]
+            ]]
         ]);
-
 
         $contact = $this->mockedClient->contacts->get('uuid-piggy-12');
 
@@ -87,38 +71,23 @@ class ContactsResourceTest extends OAuthTestCase
             'city' => "Maarssen"
         ], $contact->getCurrentValues());
         $this->assertEquals(99, $contact->getCreditBalance()->getBalance());
-//        $this->assertEquals([
-//            "is_subscribed" => true,
-//            "status" => "SUBSCRIBED",
-//            "subscription_type" => [
-//                "id" => 1,
-//                "uuid" => "23-23-pi-gg-y",
-//                "name" => "Functional",
-//                "description" => "Functional emails",
-//                "active" => true,
-//                "strategy" => "OPT_OUT"
-//            ]
-//        ], $contact->getSubscriptions());
-        $this->assertEquals(new ContactAttribute(
-            "de Vries",
-            new Attribute(
-                "name",
-                "label",
-                "E-mail",
-                "email",
-                "email",
-                false,
-                false,
-                true,
-                []
-            )
-        ), $contact->getAttributes());
-
-        //        $prepaidBalance,
-//            $creditBalance,
-//            $attributes,
-//            $subscriptions,
-//            $currentValues
+        $this->assertEquals("SUBSCRIBED", $contact->getSubscriptions()[0]->getStatus());
+        $this->assertEquals(true, $contact->getSubscriptions()[0]->isSubscribed());
+        $this->assertEquals('23-23-pi-gg-y', $contact->getSubscriptions()[0]->getSubscriptionType()->getUuid());
+        $this->assertEquals('Functional', $contact->getSubscriptions()[0]->getSubscriptionType()->getName());
+        $this->assertEquals('Functional emails', $contact->getSubscriptions()[0]->getSubscriptionType()->getDescription());
+        $this->assertEquals(true, $contact->getSubscriptions()[0]->getSubscriptionType()->isActive());
+        $this->assertEquals('OPT_OUT', $contact->getSubscriptions()[0]->getSubscriptionType()->getStrategy());
+        $this->assertEquals("Henk", $contact->getAttributes()[0]->getValue());
+        $this->assertEquals("firstName", $contact->getAttributes()[0]->getAttribute()->getName());
+        $this->assertEquals("Nombre", $contact->getAttributes()[0]->getAttribute()->getLabel());
+        $this->assertEquals("Voornaam", $contact->getAttributes()[0]->getAttribute()->getDescription());
+        $this->assertEquals("text", $contact->getAttributes()[0]->getAttribute()->getType());
+        $this->assertEquals("text", $contact->getAttributes()[0]->getAttribute()->getFieldType());
+        $this->assertEquals(false, $contact->getAttributes()[0]->getAttribute()->getIsSoftReadOnly());
+        $this->assertEquals(false, $contact->getAttributes()[0]->getAttribute()->getIsHardReadOnly());
+        $this->assertEquals(true, $contact->getAttributes()[0]->getAttribute()->getIsPiggyDefined());
+        $this->assertEquals([], $contact->getAttributes()[0]->getAttribute()->getOptions());
     }
 
     /**
@@ -129,19 +98,18 @@ class ContactsResourceTest extends OAuthTestCase
     public function it_returns_the_contact_after_creation()
     {
         $this->addExpectedResponse([
-            "uuid" => 1,
-            "email" => "new@piggy.nl",
+            "uuid" => '123-123',
         ]);
 
         $contact = $this->mockedClient->contacts->create("new@piggy.nl");
 
-        $this->assertEquals(1, $contact->getUuId());
+        $this->assertEquals('123-123', $contact->getUuId());
     }
 
     /**
      * @test
      */
-    public function it_returns_contact_by_email()
+    public function it_finds_contact_by_email()
     {
         $this->addExpectedResponse([
             "uuid" => '§12345678',
@@ -152,14 +120,14 @@ class ContactsResourceTest extends OAuthTestCase
             "credit_balance" => [
                 "balance" => 13,
             ],
-            "attributes" =>[],
-            "current_values" => [],
-            "subscriptions" =>[],
+            "attributes" => [],
+            "current_values" => ['hallo' => '1'],  //can't be an empty array, should this be possible?
+            "subscriptions" => [],
         ]);
 
         $contact = $this->mockedClient->contacts->findOneBy("hello@piggy.nl");
 
-        $this->assertEquals($contact->getUuId(), '§12345678');
+        $this->assertEquals($contact->getUuid(), '§12345678');
 //        $this->assertEquals($contact->getEmail(), $data->getEmail());
 //        $this->assertEquals($contact->getPrepaidBalance(), $data->getPrepaidBalance());
 //        $this->assertEquals($contact->getCreditBalance(), $data->getCreditBalance());
@@ -169,75 +137,180 @@ class ContactsResourceTest extends OAuthTestCase
     }
 
     /** @test */
-    public function it_creates_and_returns_contact()
+    public function it_creates_a_contact_anonymously()
     {
-        $email = "piggy@piggy.nl";
-
         $this->addExpectedResponse([
-            "uuid" => 1,
-            "email" => $email,
-            "credit_balance" => null,
-            "prepaid_balance" => null,
-            "attributes" => null,
-            "current_values" => null,
-            "subscriptions" => null,
+            "uuid" => '123-123',
         ]);
 
-        $data = $this->mockedClient->contacts->findOrCreate($email);
+        $data = $this->mockedClient->contacts->createAnonymously();
 
-        $this->assertEquals($email, $data->getEmail());
+        $this->assertEquals("123-123", $data->getUuid());
+    }
+
+    /** @test */
+    public function it_creates_and_returns_contact()
+    {
+
+        $this->addExpectedResponse([
+            "uuid" => 'uuid-piggy-12',
+            "email" => "new@piggy.nl",
+            "prepaid_balance" => [
+                "balance_in_cents" => 100
+            ],
+            "current_values" => [
+                "age" => 20,
+                "city" => "Maarssen"
+            ],
+            "credit_balance" => [
+                "balance" => 99
+            ],
+            "subscriptions" => [[
+                "is_subscribed" => true,
+                "status" => "SUBSCRIBED",
+                "subscription_type" => [
+                    "uuid" => "23-23-pi-gg-y",
+                    "name" => "Functional",
+                    "description" => "Functional emails",
+                    "active" => true,
+                    "strategy" => "OPT_OUT"
+                ]
+            ]],
+            "attributes" => [[
+                "value" => "Henk",
+                "attribute" => [
+                    "name" => "firstName",
+                    "label" => "Nombre",
+                    "description" => "Voornaam",
+                    "type" => "text",
+                    "field_type" => "text",
+                    "is_soft_read_only" => false,
+                    "is_hard_read_only" => false,
+                    "is_piggy_defined" => true,
+                    "options" => []
+                ]
+            ]]
+        ]);
+
+        $data = $this->mockedClient->contacts->findOrCreate("new@piggy.nl");
+
+        $this->assertEquals("new@piggy.nl", $data->getEmail());
     }
 
     /** @test */
     public function it_updates_a_contact()
     {
-        $attributes = [
-            new ContactAttribute(
-                "Peter",
-                new Attribute(
-                    "name",
-                    "label",
-                    "E-mail",
-                    "email",
-                    "email",
-                    false,
-                    false,
-                    true,
-                    []
-                )
-            ),
-            new ContactAttribute(
-                "de Vries",
-                new Attribute(
-                    "name",
-                    "label",
-                    "E-mail",
-                    "email",
-                    "email",
-                    false,
-                    false,
-                    true,
-                    []
-                )
-            )
-        ];
+//        $attributes = [
+//            new ContactAttribute(
+//                "Peter",
+//                new Attribute(
+//                    "name",
+//                    "label",
+//                    "E-mail",
+//                    "email",
+//                    "email",
+//                    false,
+//                    false,
+//                    true,
+//                    []
+//                )
+//            ),
+//            new ContactAttribute(
+//                "de Vries",
+//                new Attribute(
+//                    "name",
+//                    "label",
+//                    "E-mail",
+//                    "email",
+//                    "email",
+//                    false,
+//                    false,
+//                    true,
+//                    []
+//                )
+//            )
+//        ];
 
         $this->addExpectedResponse([
-            "uuid" => 1,
-            "email" => "",
-            "credit_balance" => null,
-            "prepaid_balance" => null,
-            "attributes" => $attributes,
-            "current_values" => null,
-            "subscriptions" => null,
+            "uuid" => 'uuid-piggy-12',
+            "email" => "new@piggy.nl",
+            "prepaid_balance" => [
+                "balance_in_cents" => 100
+            ],
+            "current_values" => [
+                "age" => 20,
+                "city" => "Maarssen"
+            ],
+            "credit_balance" => [
+                "balance" => 99
+            ],
+            "subscriptions" => [[
+                "is_subscribed" => true,
+                "status" => "SUBSCRIBED",
+                "subscription_type" => [
+                    "uuid" => "23-23-pi-gg-y",
+                    "name" => "Functional",
+                    "description" => "Functional emails",
+                    "active" => true,
+                    "strategy" => "OPT_OUT"
+                ]
+            ]],
+            "attributes" => [[
+                "value" => "Henk",
+                "attribute" => [
+                    "name" => "firstName",
+                    "label" => "Nombre",
+                    "description" => "Voornaam",
+                    "type" => "text",
+                    "field_type" => "text",
+                    "is_soft_read_only" => false,
+                    "is_hard_read_only" => false,
+                    "is_piggy_defined" => true,
+                    "options" => []
+                ]
+            ]]
         ]);
 
-        $data = $this->mockedClient->contacts->update("1", [
+        $contact = $this->mockedClient->contacts->update("uuid-piggy-12", [
                 "firstName" => "Peter",
-                "lastName" => "De Vries"]
+                "lastName" => "Pan"]
         );
 
-        $this->assertEquals("1", $data->getUuId());
-        $this->assertEquals($attributes, $data->getAttributes());
+        $this->assertEquals("uuid-piggy-12", $contact->getUuId());
+        $this->assertEquals("Henk", $contact->getAttributes()[0]->getValue());
+
+//        $this->assertEquals($attributes, $data->getAttributes());
+    }
+
+    /**
+     * @test
+     * @throws GuzzleException
+     * @throws PiggyRequestException
+     */
+    public function it_returns_a_prepaid_balance()
+    {
+        $this->addExpectedResponse([
+            "balance_in_cents" => 10
+        ]);
+
+        $prepaidBalance = $this->mockedClient->contacts->getPrepaidBalance('123-123');
+
+        $this->assertEquals(10, $prepaidBalance->getBalanceInCents());
+    }
+
+    /**
+     * @test
+     * @throws GuzzleException
+     * @throws PiggyRequestException
+     */
+    public function it_returns_a_credit_balance()
+    {
+        $this->addExpectedResponse([
+            "balance" => 10
+        ]);
+
+        $prepaidBalance = $this->mockedClient->contacts->getCreditBalance('123-123');
+
+        $this->assertEquals(10, $prepaidBalance->getBalance());
     }
 }

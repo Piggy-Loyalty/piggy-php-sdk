@@ -37,14 +37,20 @@ class Reward
     protected $active;
 
     /**
+     * @var
+     */
+    protected $rewardType;
+
+    /**
      * @param string $uuid
      * @param string|null $title
      * @param int|null $requiredCredits
      * @param Media|null $media
      * @param string|null $description
      * @param bool|null $active
+     * @param string|null $rewardType
      */
-    public function __construct(string $uuid, ?string $title = '', ?int $requiredCredits = null, ?Media $media = null, ?string $description = "", ?bool $active = true)
+    public function __construct(string $uuid, ?string $title = '', ?int $requiredCredits = null, ?Media $media = null, ?string $description = "", ?bool $active = true, ?string $rewardType = null)
     {
         $this->uuid = $uuid;
         $this->title = $title;
@@ -52,6 +58,7 @@ class Reward
         $this->requiredCredits = $requiredCredits;
         $this->media = $media;
         $this->active = $active;
+        $this->rewardType = $rewardType;
     }
 
     /**
@@ -92,7 +99,7 @@ class Reward
      */
     public function getMedia(): ?Media
     {
-        return $this->getMedia();
+        return $this->media;
     }
 
     /**
@@ -109,5 +116,13 @@ class Reward
     public function isActive(): ?bool
     {
         return $this->active;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getRewardType(): ?string
+    {
+        return $this->rewardType;
     }
 }

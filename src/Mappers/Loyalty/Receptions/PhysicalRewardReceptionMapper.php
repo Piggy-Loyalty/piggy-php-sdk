@@ -44,7 +44,9 @@ class PhysicalRewardReceptionMapper
             $shop,
             $contactIdentifier,
             $data->created_at,
+            $data->title,
             $physicalReward,
+            $data->expires_at,
             $data->has_been_collected
         );
     }

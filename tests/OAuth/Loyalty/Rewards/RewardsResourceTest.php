@@ -19,7 +19,7 @@ class RewardsResourceTest extends OAuthTestCase
      */
     public function it_returns_all_rewards()
     {
-        $this->addExpectedResponse([
+        $this->addExpectedResponse([[
             "uuid" => "123-123",
             "title" => 'rewardTitle',
             "description" => 'description',
@@ -27,14 +27,34 @@ class RewardsResourceTest extends OAuthTestCase
                 "value" => 'www.afbeelding.nl',
                 "type" => "image"
             ],
-            "active" => false
-        ]);
+            "active" => true,
+            "reward_type" => "DIGITAL"
+        ], [
+            "uuid" => "123-126",
+            "title" => 'Physical Reward',
+            "description" => 'Good Reward',
+            "media" => [
+                "value" => 'www.afbeelding.nl',
+                "type" => "image"
+            ],
+            "active" => true,
+            "reward_type" => "PHYSICAL"
+        ]]);
 
-        $reward = $this->mockedClient->rewards->get('123-123');
-//        $creditReception = $this->mockedClient->creditReceptions->create('123-312', '123-123', 10);
+        $reward = $this->mockedClient->rewards->get('123-1231');
 
-        $this->assertEquals("uuid", $reward->getUuid());
-//        $this->assertEquals($rewards["digital"], $reward);
-//        $this->assertEquals($rewards["external"], $reward);
+        $this->assertEquals("123-123", $reward[0]->getUuid());
+        $this->assertEquals("rewardTitle", $reward[0]->getTitle());
+        $this->assertEquals("description", $reward[0]->getDescription());
+        $this->assertEquals("www.afbeelding.nl", $reward[0]->getMedia()->getValue());
+        $this->assertEquals("image", $reward[0]->getMedia()->getType());
+        $this->assertEquals(true, $reward[0]->isActive());
+
+        $this->assertEquals("123-126", $reward[1]->getUuid());
+        $this->assertEquals("Physical Reward", $reward[1]->getTitle());
+        $this->assertEquals("Good Reward", $reward[1]->getDescription());
+        $this->assertEquals("www.afbeelding.nl", $reward[1]->getMedia()->getValue());
+        $this->assertEquals("image", $reward[1]->getMedia()->getType());
+        $this->assertEquals(true, $reward[1]->isActive());
     }
 }

@@ -17,14 +17,14 @@ class SubscriptionTypesResourceTest extends OAuthTestCase
     {
         $this->addExpectedResponse([
             [
-                "id" => 2,
+                "uuid" => '123-122',
                 "name" => "Functional",
                 "description" => "Functional emails for orders and updates",
                 "active" => true,
                 "strategy" => "OPT_OUT"
             ],
             [
-                "id" => 3,
+                "uuid" => '123-123',
                 "name" => "Marketing",
                 "description" => "Marketing emails for orders and updates",
                 "active" => false,
@@ -32,18 +32,17 @@ class SubscriptionTypesResourceTest extends OAuthTestCase
             ]
         ]);
 
-        $data = $this->mockedClient->subscriptionTypesResource->list();
+        $subscriptionTypes = $this->mockedClient->subscriptionTypesResource->list();
 
-        $this->assertEquals("2", $data[0]->getId());
-        $this->assertEquals("3", $data[1]->getId());
-        $this->assertEquals("Functional", $data[0]->getName());
-        $this->assertEquals("Marketing", $data[1]->getName());
-        $this->assertEquals("Functional emails for orders and updates", $data[0]->getDescription());
-        $this->assertEquals("Marketing emails for orders and updates", $data[1]->getDescription());
-        $this->assertEquals(true, $data[0]->isActive());
-        $this->assertEquals(false, $data[1]->isActive());
-        $this->assertEquals("OPT_OUT", $data[0]->getStrategy());
-        $this->assertEquals("OPT_OUT", $data[1]->getStrategy());
-
+        $this->assertEquals("123-122", $subscriptionTypes[0]->getUuid());
+        $this->assertEquals("123-123", $subscriptionTypes[1]->getUuid());
+        $this->assertEquals("Functional", $subscriptionTypes[0]->getName());
+        $this->assertEquals("Marketing", $subscriptionTypes[1]->getName());
+        $this->assertEquals("Functional emails for orders and updates", $subscriptionTypes[0]->getDescription());
+        $this->assertEquals("Marketing emails for orders and updates", $subscriptionTypes[1]->getDescription());
+        $this->assertEquals(true, $subscriptionTypes[0]->isActive());
+        $this->assertEquals(false, $subscriptionTypes[1]->isActive());
+        $this->assertEquals("OPT_OUT", $subscriptionTypes[0]->getStrategy());
+        $this->assertEquals("OPT_OUT", $subscriptionTypes[1]->getStrategy());
     }
 }

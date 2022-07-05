@@ -15,35 +15,38 @@ class ContactMapper
      */
     public function map(stdClass $data): Contact
     {
+
         $prepaidBalance = null;
-        if (property_exists($data,'prepaid_balance')) {
+        if (property_exists($data, 'prepaid_balance')) {
             $prepaidBalanceMapper = new PrepaidBalanceMapper();
             $prepaidBalance = $prepaidBalanceMapper->map($data->prepaid_balance);
         }
 
         $creditBalance = null;
-        if (property_exists($data,'credit_balance')) {
+        if (property_exists($data, 'credit_balance')) {
             $creditBalanceMapper = new CreditBalanceMapper();
-
             $creditBalance = $creditBalanceMapper->map($data->credit_balance);
         }
 
         $attributes = null;
-        if (property_exists($data,'attributes')) {
+        if (property_exists($data, 'attributes')) {
             $attributesMapper = new ContactAttributesMapper();
             $attributes = $attributesMapper->map($data->attributes);
         }
 
         $currentValues = [];
-        if (property_exists($data,'current_values')) {
+        if (property_exists($data, 'current_values')) {
             $currentValues = get_object_vars($data->current_values);
         }
 
-        $subscriptions = null;
-        if (property_exists($data,'subscriptions')) {
-            $subscriptionsMapper = new SubscriptionsMapper();
-            $subscriptions = $subscriptionsMapper->map($data->subscriptions);
+        $subscriptionMapper = new SubscriptionsMapper();
+
+        if (isset($data->subscriptions)) {
+            $subscriptions = $subscriptionMapper->map($data->subscriptions);
+        } else {
+            $subscriptions = null;
         }
+
 
         return new Contact(
             $data->uuid,

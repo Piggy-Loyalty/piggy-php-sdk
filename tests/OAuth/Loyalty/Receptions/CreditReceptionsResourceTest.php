@@ -1,6 +1,6 @@
 <?php
 
-namespace Piggy\Api\Tests\OAuth\Loyalty;
+namespace Piggy\Api\Tests\OAuth\Loyalty\Receptions;
 
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
@@ -48,7 +48,7 @@ class CreditReceptionsResourceTest extends OAuthTestCase
         $this->assertEquals("123-123", $creditReception->getContact()->getUuid());
         $this->assertEquals("123-312", $creditReception->getShop()->getUuid());
         $this->assertEquals("shopName", $creditReception->getShop()->getName());
-//        $this->assertEquals("2022-06-30T13:42:04+00:00", $creditReception->getCreatedAt()->format('c'));
+        $this->assertEquals("2022-06-30T13:42:04+00:00", $creditReception->getCreatedAt()); //Make DateTime?
         $this->assertEquals(1011, $creditReception->getUnitValue());
         $this->assertEquals('bonkers', $creditReception->getUnit()->getName());
         $this->assertEquals("Bonkers", $creditReception->getUnit()->getLabel());

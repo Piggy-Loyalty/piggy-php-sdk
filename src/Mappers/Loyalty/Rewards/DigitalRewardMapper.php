@@ -23,12 +23,17 @@ class DigitalRewardMapper
             $media = $mediaMapper->map($data->media);
         }
 
+        $active = property_exists($data, 'active') ? $data->active : true;
+
+
         return new DigitalReward(
             $data->uuid,
             $data->title ?? '',
             $data->required_credits ?? null,
             $media ?? null,
-            $data->description ?? ''
+            $data->description ?? "",
+            $active,
+            $data->reward_type ?? null
         );
     }
 }

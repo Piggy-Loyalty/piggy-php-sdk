@@ -19,7 +19,7 @@ class ContactVerificationResourceTest extends OAuthTestCase
             true
         ]);
 
-        $data = $this->mockedClient->contactVerificationResource->sendVerificationMail("newpiggy@piggy.nl");
+        $data = $this->mockedClient->contactVerification->sendVerificationMail('test@piggy.nl');
 
         $this->assertEquals(true, $data);
     }
@@ -29,11 +29,35 @@ class ContactVerificationResourceTest extends OAuthTestCase
      */
     public function it_returns_false_when_email_is_not_send()
     {
+        $this->addExpectedResponse([], [], 400);
+
+        $data = $this->mockedClient->contactVerification->sendVerificationMail("geenEmail");
+
+        $this->assertEquals(false, $data);
+    }
+
+    /**
+     * @test
+     */
+    public function it_verifies_a_login_code()
+    {
         $this->addExpectedResponse([
-            false
+            true
         ]);
 
-        $data = $this->mockedClient->contactVerificationResource->sendVerificationMail("");
+        $data = $this->mockedClient->contactVerification->verifyLoginCode('code', "test@piggy.nl");
+
+        $this->assertEquals(true, $data);
+    }
+
+    /**
+     * @test
+     */
+    public function it_returns_false_when_it_gets_an_exception()
+    {
+        $this->addExpectedResponse([], [], 400);
+
+        $data = $this->mockedClient->contactVerification->verifyLoginCode('wrong', "geenEmail");
 
         $this->assertEquals(false, $data);
     }

@@ -47,6 +47,7 @@ class DigitalRewardReceptionMapper
             $shop,
             $contactIdentifier,
             $data->created_at,
+            $data->title,
             $digitalReward,
             $digitalRewardCode
         );
