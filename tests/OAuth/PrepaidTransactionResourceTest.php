@@ -20,7 +20,9 @@ class PrepaidTransactionResourceTest extends OAuthTestCase
             "amount_in_cents" => 10,
             "prepaid_balance" => [
                 "balance_in_cents" => 210
-            ]
+            ],
+            "uuid" => '123-123',
+            "created_at" => '123'
         ]);
 
         $data = $this->mockedClient->prepaidTransactions->create('123-123', 10, '321-321');

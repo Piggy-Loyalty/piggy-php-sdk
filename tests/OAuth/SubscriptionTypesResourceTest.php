@@ -32,7 +32,7 @@ class SubscriptionTypesResourceTest extends OAuthTestCase
             ]
         ]);
 
-        $subscriptionTypes = $this->mockedClient->subscriptionTypesResource->list();
+        $subscriptionTypes = $this->mockedClient->subscriptionTypes->list();
 
         $this->assertEquals("123-122", $subscriptionTypes[0]->getUuid());
         $this->assertEquals("123-123", $subscriptionTypes[1]->getUuid());
