@@ -33,7 +33,6 @@ class AutomationsResource extends BaseResource
     /**
      * @param string $contactUuid
      * @param string $automationUuid
-     *
      * @return array
      * @throws PiggyRequestException
      */

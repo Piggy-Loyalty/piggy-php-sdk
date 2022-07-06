@@ -2,6 +2,7 @@
 
 namespace Piggy\Api\Mappers\Loyalty\Rewards;
 
+use Piggy\Api\Enum\RewardType;
 use Piggy\Api\Mappers\Loyalty\MediaMapper;
 use Piggy\Api\Models\Loyalty\Rewards\DigitalReward;
 
@@ -33,7 +34,8 @@ class DigitalRewardMapper
             $media ?? null,
             $data->description ?? "",
             $active,
-            $data->reward_type ?? null
+            RewardType::byName($data->reward_type)->getValue() ?? null
+
         );
     }
 }

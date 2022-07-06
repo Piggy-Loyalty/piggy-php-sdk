@@ -25,7 +25,6 @@ class ContactsResource extends BaseResource
 
     /**
      * @param string $contactUuid
-     *
      * @return Contact
      * @throws PiggyRequestException
      */
@@ -40,7 +39,6 @@ class ContactsResource extends BaseResource
 
     /**
      * @param string $email
-     *
      * @return Contact
      * @throws PiggyRequestException
      */
@@ -57,7 +55,6 @@ class ContactsResource extends BaseResource
 
     /**
      * @param string $email
-     *
      * @return Contact
      * @throws PiggyRequestException
      */
@@ -74,7 +71,6 @@ class ContactsResource extends BaseResource
 
     /**
      * @param string $email
-     *
      * @return Contact
      * @throws PiggyRequestException
      */
@@ -91,7 +87,6 @@ class ContactsResource extends BaseResource
 
     /**
      * @param string|null $contactIdentifierValue
-     *
      * @return Contact
      * @throws PiggyRequestException
      */
@@ -109,7 +104,6 @@ class ContactsResource extends BaseResource
     /**
      * @param int|null $page
      * @param int|null $limit
-     *
      * @return array
      * @throws PiggyRequestException
      */
@@ -119,6 +113,10 @@ class ContactsResource extends BaseResource
             "page" => $page,
             "limit" => $limit
         ]);
+
+        var_dump($response->getMeta());
+        die;
+
 
         $mapper = new ContactsMapper();
 
