@@ -2,12 +2,14 @@
 
 namespace Piggy\Api\Tests\OAuth\Units;
 
+use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
 
 class UnitsResourceTest extends OAuthTestCase
 {
     /**
      * @test
+     * @throws PiggyRequestException
      */
     public function it_returns_a_list_with_units()
     {
@@ -37,6 +39,7 @@ class UnitsResourceTest extends OAuthTestCase
 
     /**
      * @test
+     * @throws PiggyRequestException
      */
     public function it_returns_a_unit()
     {

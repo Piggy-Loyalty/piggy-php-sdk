@@ -2,12 +2,14 @@
 
 namespace Piggy\Api\Tests\OAuth\Shops;
 
+use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
 
 class ShopsResourceTest extends OAuthTestCase
 {
     /**
      * @test
+     * @throws PiggyRequestException
      */
     public function it_returns_a_list_with_shops()
     {
@@ -33,6 +35,7 @@ class ShopsResourceTest extends OAuthTestCase
 
     /**
      * @test
+     * @throws PiggyRequestException
      */
     public function it_returns_a_shop()
     {

@@ -3,6 +3,7 @@
 namespace Piggy\Api\Tests;
 
 use Piggy\Api\Exceptions\MaintenanceModeException;
+use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\OAuthClient;
 
 /**
@@ -33,7 +34,9 @@ class OAuthTestCase extends BaseTestCase
         $this->mockHandler->reset();
     }
 
-    /** @test */
+    /** @test
+     * @throws PiggyRequestException
+     */
     public function throws_maintenance_mode_exception()
     {
         $this->addExpectedResponse([], null, 503);

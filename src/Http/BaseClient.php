@@ -5,11 +5,13 @@ namespace Piggy\Api\Http;
 use Exception;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\ExceptionMapper;
 use Piggy\Api\Exceptions\MalformedResponseException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Http\Responses\AuthenticationResponse;
 use Piggy\Api\Http\Responses\Response;
+use Psr\Http\Message\ResponseInterface;
 use Throwable;
 use function Piggy\Api\hasGuzzle5;
 
@@ -70,9 +72,7 @@ abstract class BaseClient
                 "form_params" => $queryOptions,
             ]);
 
-            $response = $this->parseResponse($rawResponse);
-
-            return $response;
+            return $this->parseResponse($rawResponse);
         } catch (Exception $e) {
             $exceptionMapper = new ExceptionMapper();
             throw $exceptionMapper->map($e);
@@ -165,7 +165,6 @@ abstract class BaseClient
     /**
      * @param string $url
      * @param array $body
-     *
      * @return Response
      * @throws PiggyRequestException
      */
@@ -204,7 +203,10 @@ abstract class BaseClient
         return $this->request('GET', $url);
     }
 
-    private function getResponse($method, $url, $options = [])
+    /**
+     * @throws GuzzleException
+     */
+    private function getResponse($method, $url, $options = []): ResponseInterface
     {
         if (hasGuzzle5()) {
             // v5 does not have form_params, so we need to apply a trick.

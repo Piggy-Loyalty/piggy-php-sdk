@@ -7,6 +7,7 @@ use DateTimeInterface;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 use function Piggy\Api\hasGuzzle5;
 
@@ -27,7 +28,7 @@ class BaseTestCase extends TestCase
     protected $mockHandler;
 
     /**
-     *
+     * @return void
      */
     protected function setUp(): void
     {
@@ -66,7 +67,7 @@ class BaseTestCase extends TestCase
             $streamWrapper = new Stream($stream);
             $response = new Response($code, [], $streamWrapper);
         } else {
-            $response = new \GuzzleHttp\Psr7\Response($code, [], $payload);
+            $response = new Response($code, [], $payload);
         }
 
         $this->mockHandler->append($response);
@@ -92,7 +93,7 @@ class BaseTestCase extends TestCase
     /**
      * @return MockHandler
      */
-    public function getMockHandler()
+    public function getMockHandler(): MockHandler
     {
         return $this->mockHandler;
     }

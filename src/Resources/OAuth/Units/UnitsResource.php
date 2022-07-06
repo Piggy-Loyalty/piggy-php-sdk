@@ -25,7 +25,7 @@ class UnitsResource extends BaseResource
      */
     public function list(): array
     {
-        $response = $this->client->get("{$this->resourceUri}", []);
+        $response = $this->client->get("$this->resourceUri", []);
 
         $mapper = new UnitsMapper();
 

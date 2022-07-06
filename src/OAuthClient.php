@@ -48,9 +48,7 @@ class OAuthClient extends BaseClient
      */
     public function ping()
     {
-        $response = $this->get("/api/v2/oauth/clients");
-
-        return $response;
+        return $this->get("/api/v2/oauth/clients");
     }
 
     /**
@@ -75,7 +73,7 @@ class OAuthClient extends BaseClient
      */
     public function setAccessToken(string $accessToken): self
     {
-        $this->addHeader("Authorization", "Bearer {$accessToken}");
+        $this->addHeader("Authorization", "Bearer $accessToken");
         return $this;
     }
 }

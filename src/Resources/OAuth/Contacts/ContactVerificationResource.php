@@ -24,7 +24,7 @@ class ContactVerificationResource extends BaseResource
     public function sendVerificationMail(string $email): bool
     {
         try {
-            $this->client->post("{$this->resourceUri}/send", [
+            $this->client->post("$this->resourceUri/send", [
                 "email" => $email
             ]);
         } catch (Exception $exception) {
@@ -43,7 +43,7 @@ class ContactVerificationResource extends BaseResource
     public function verifyLoginCode(string $code, string $email): bool
     {
         try {
-            $this->client->post("{$this->resourceUri}/verify", [
+            $this->client->post("$this->resourceUri/verify", [
                 "email" => $email,
                 "code" => $code
             ]);

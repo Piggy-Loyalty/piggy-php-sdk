@@ -2,6 +2,7 @@
 
 namespace Piggy\Api\Resources\OAuth\Loyalty\Rewards;
 
+use Exception;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Loyalty\Rewards\RewardsMapper;
 use Piggy\Api\Resources\BaseResource;
@@ -20,9 +21,9 @@ class RewardsResource extends BaseResource
     /**
      * @param string|null $contactUuid
      * @param string|null $shop_uuid
-     *
      * @return array
      * @throws PiggyRequestException
+     * @throws Exception
      */
     public function get(?string $contactUuid = null, ?string $shop_uuid = null): array
     {

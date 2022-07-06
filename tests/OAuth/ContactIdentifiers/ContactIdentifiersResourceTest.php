@@ -2,6 +2,7 @@
 
 namespace Piggy\Api\Tests\OAuth\ContactIdentifiers;
 
+use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
 
 /**
@@ -12,6 +13,7 @@ class ContactIdentifiersResourceTest extends OAuthTestCase
 {
     /**
      * @test
+     * @throws PiggyRequestException
      */
     public function it_returns_contact_identifier_by_value()
     {
@@ -30,6 +32,7 @@ class ContactIdentifiersResourceTest extends OAuthTestCase
 
     /**
      * @test
+     * @throws PiggyRequestException
      */
     public function it_creates_a_contact_identifier()
     {

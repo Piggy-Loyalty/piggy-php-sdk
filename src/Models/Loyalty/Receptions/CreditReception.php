@@ -2,7 +2,6 @@
 
 namespace Piggy\Api\Models\Loyalty\Receptions;
 
-use Cassandra\Date;
 use DateTime;
 use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\Models\Contacts\ContactIdentifier;

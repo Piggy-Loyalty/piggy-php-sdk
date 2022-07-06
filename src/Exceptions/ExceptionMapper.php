@@ -17,8 +17,9 @@ class ExceptionMapper
      * @param Exception $exception
      * @return Exception
      * @throws PiggyRequestException
+     * @throws MaintenanceModeException
      */
-    public function map(Exception $exception)
+    public function map(Exception $exception): Exception
     {
         if (method_exists($exception, 'hasResponse') && method_exists($exception, 'getResponse')) {
 
@@ -75,14 +76,12 @@ class ExceptionMapper
             $errorBag = null;
         }
 
-        $exception = new PiggyRequestException(
+        return new PiggyRequestException(
             $message,
             $code,
             $statusCode,
             $errorBag,
             $previous
         );
-
-        return $exception;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Piggy\Api\Tests\OAuth;
 
+use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
 
 /**
@@ -12,6 +13,7 @@ class PrepaidTransactionResourceTest extends OAuthTestCase
 {
     /**
      * @test
+     * @throws PiggyRequestException
      */
     public function it_returns_a_list_of_subscription_types_of_an_account()
     {

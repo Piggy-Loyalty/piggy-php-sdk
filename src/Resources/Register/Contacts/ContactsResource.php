@@ -2,6 +2,7 @@
 
 namespace Piggy\Api\Resources\Register\Contacts;
 
+use Exception;
 use Piggy\Api\Enum\LoyaltyTransactionType;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Contacts\ContactMapper;
@@ -27,7 +28,6 @@ class ContactsResource extends BaseResource
 
     /**
      * @param string $contactUuid
-     *
      * @return Contact
      * @throws PiggyRequestException
      */
@@ -42,13 +42,12 @@ class ContactsResource extends BaseResource
 
     /**
      * @param string $email
-     *
      * @return Contact
      * @throws PiggyRequestException
      */
     public function findOneBy(string $email): Contact
     {
-        $response = $this->client->get("{$this->resourceUri}/find-one-by", [
+        $response = $this->client->get("$this->resourceUri/find-one-by", [
             "email" => $email,
         ]);
 
@@ -59,13 +58,12 @@ class ContactsResource extends BaseResource
 
     /**
      * @param string $email
-     *
      * @return Contact
      * @throws PiggyRequestException
      */
     public function findOrCreate(string $email): Contact
     {
-        $response = $this->client->get("{$this->resourceUri}/find-or-create", [
+        $response = $this->client->get("$this->resourceUri/find-or-create", [
             "email" => $email,
         ]);
 
@@ -76,13 +74,12 @@ class ContactsResource extends BaseResource
 
     /**
      * @param string $email
-     *
      * @return Contact
      * @throws PiggyRequestException
      */
     public function create(string $email): Contact
     {
-        $response = $this->client->post("{$this->resourceUri}", [
+        $response = $this->client->post("$this->resourceUri", [
             "email" => $email,
         ]);
 
@@ -93,7 +90,6 @@ class ContactsResource extends BaseResource
 
     /**
      * @param string|null $contactIdentifierValue
-     *
      * @return Contact
      * @throws PiggyRequestException
      */
@@ -111,7 +107,6 @@ class ContactsResource extends BaseResource
     /**
      * @param string $contactUuid
      * @param array $attributes
-     *
      * @return Contact
      * @throws PiggyRequestException
      */
@@ -128,7 +123,6 @@ class ContactsResource extends BaseResource
 
     /**
      * @param $contactUuid
-     *
      * @return PrepaidBalance
      * @throws PiggyRequestException
      */
@@ -162,9 +156,9 @@ class ContactsResource extends BaseResource
      * @param string|null $shopUuid
      * @param LoyaltyTransactionType|null $type
      * @param int $limit
-     *
-     * @return LoyaltyTransaction[]
+     * @return array
      * @throws PiggyRequestException
+     * @throws Exception
      */
     public function getTransactions(string $contactUuid, int $page = 1, ?string $shopUuid = null, ?LoyaltyTransactionType $type = null, int $limit = 30): array
     {

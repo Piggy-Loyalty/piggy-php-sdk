@@ -2,6 +2,7 @@
 
 namespace Piggy\Api\Tests\OAuth\Automations;
 
+use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
 
 /**
@@ -12,6 +13,7 @@ class AutomationsResourceTest extends OAuthTestCase
 {
     /**
      * @test
+     * @throws PiggyRequestException
      */
     public function it_returns_contact_identifier_by_value()
     {
@@ -36,6 +38,7 @@ class AutomationsResourceTest extends OAuthTestCase
 
     /**
      * @test
+     * @throws PiggyRequestException
      */
     public function it_creates_an_automations_run()
     {

@@ -105,6 +105,7 @@ class ContactsResourceTest extends OAuthTestCase
 
     /**
      * @test
+     * @throws PiggyRequestException
      */
     public function it_finds_contact_by_email()
     {
@@ -127,7 +128,9 @@ class ContactsResourceTest extends OAuthTestCase
         $this->assertEquals($contact->getUuid(), '§12345678');
     }
 
-    /** @test */
+    /** @test
+     * @throws PiggyRequestException
+     */
     public function it_creates_a_contact_anonymously()
     {
         $this->addExpectedResponse([
@@ -139,7 +142,9 @@ class ContactsResourceTest extends OAuthTestCase
         $this->assertEquals("123-123", $data->getUuid());
     }
 
-    /** @test */
+    /** @test
+     * @throws PiggyRequestException
+     */
     public function it_creates_and_returns_contact()
     {
 
@@ -188,7 +193,9 @@ class ContactsResourceTest extends OAuthTestCase
         $this->assertEquals("new@piggy.nl", $data->getEmail());
     }
 
-    /** @test */
+    /** @test
+     * @throws PiggyRequestException
+     */
     public function it_updates_a_contact()
     {
         $this->addExpectedResponse([
