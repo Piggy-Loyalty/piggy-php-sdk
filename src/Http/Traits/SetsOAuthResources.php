@@ -76,10 +76,6 @@ trait SetsOAuthResources
     public $giftcardTransactions;
 
     /**
-     * @param BaseClient $client
-     */
-
-    /**
      * @var LoyaltyTransactionsResource
      */
     public $loyaltyTransactions;
@@ -104,7 +100,11 @@ trait SetsOAuthResources
      */
     public $units;
 
-
+    /**
+     * @param BaseClient $client
+     *
+     * @return void
+     */
     protected function setResources(BaseClient $client)
     {
         $this->contacts = new ContactsResource($client);

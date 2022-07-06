@@ -26,7 +26,7 @@ class GiftcardTransactionsResourceTest extends OAuthTestCase
         $giftcardTransaction = $this->mockedClient->giftcardTransactions->get('123-123');
 
         $this->assertEquals("123-123", $giftcardTransaction->getUuid());
-        $this->assertEquals(420, $giftcardTransaction->getAmount());
+        $this->assertEquals(420, $giftcardTransaction->getAmountInCents());
         $this->assertEquals("2022-06-30T13:29:16+00:00", $giftcardTransaction->getCreatedAt()->format('c'));
     }
 
@@ -45,7 +45,7 @@ class GiftcardTransactionsResourceTest extends OAuthTestCase
         $giftcardTransaction = $this->mockedClient->giftcardTransactions->create(1, 2, 100);
 
         $this->assertEquals("123-123", $giftcardTransaction->getUuid());
-        $this->assertEquals(420, $giftcardTransaction->getAmount());
+        $this->assertEquals(420, $giftcardTransaction->getAmountInCents());
         $this->assertEquals("2022-06-30T13:29:16+00:00", $giftcardTransaction->getCreatedAt()->format('c'));
     }
 
@@ -64,7 +64,7 @@ class GiftcardTransactionsResourceTest extends OAuthTestCase
         $giftcardTransaction = $this->mockedClient->giftcardTransactions->correct('123-123');
 
         $this->assertEquals("123-123", $giftcardTransaction->getUuid());
-        $this->assertEquals(420, $giftcardTransaction->getAmount());
+        $this->assertEquals(420, $giftcardTransaction->getAmountInCents());
         $this->assertEquals("2022-06-30T13:29:16+00:00", $giftcardTransaction->getCreatedAt()->format('c'));
     }
 }

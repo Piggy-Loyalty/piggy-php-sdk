@@ -10,7 +10,6 @@ use DateTime;
  */
 class GiftcardTransaction
 {
-
     /**
      * @var string
      */
@@ -19,17 +18,17 @@ class GiftcardTransaction
     /**
      * @var int
      */
-    protected $amount;
+    protected $amount_in_cents;
 
     /**
      * @var DateTime
      */
     protected $created_at;
 
-    public function __construct(string $uuid, int $amount, DateTime $createdAt)
+    public function __construct(string $uuid, int $amountInCents, DateTime $createdAt)
     {
         $this->uuid = $uuid;
-        $this->amount = $amount;
+        $this->amount_in_cents = $amountInCents;
         $this->created_at = $createdAt;
     }
 
@@ -44,9 +43,9 @@ class GiftcardTransaction
     /**
      * @return int
      */
-    public function getAmount(): int
+    public function getAmountInCents(): int
     {
-        return $this->amount;
+        return $this->amount_in_cents;
     }
 
     /**

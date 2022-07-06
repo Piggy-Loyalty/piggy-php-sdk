@@ -20,6 +20,7 @@ class RegisterMapper
         $register = new Register();
         $shopMapper = new ShopMapper();
 
+        $register->setId($response->id);
         $register->setName($response->name ?? null);
         $register->setShop($shopMapper->map($response->shop));
         $register->setIdentifier($response->identifier);
