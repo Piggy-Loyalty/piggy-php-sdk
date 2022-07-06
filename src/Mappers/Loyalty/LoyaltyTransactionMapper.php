@@ -33,7 +33,8 @@ class LoyaltyTransactionMapper
                     $mapper = $creditReceptionMapper;
                     break;
 
-                case LoyaltyTransactionType::REWARD_RECEPTION:
+                case LoyaltyTransactionType::PHYSICAL_REWARD_RECEPTION:
+                case LoyaltyTransactionType::DIGITAL_REWARD_RECEPTION:
                     $mapper = $rewardReceptionMapper;
                     break;
 

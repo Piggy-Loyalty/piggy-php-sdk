@@ -3,7 +3,6 @@
 namespace Piggy\Api\Resources\Register\Contacts;
 
 use Exception;
-use Piggy\Api\Enum\LoyaltyTransactionType;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Contacts\ContactMapper;
 use Piggy\Api\Mappers\Loyalty\CreditBalanceMapper;
@@ -153,13 +152,13 @@ class ContactsResource extends BaseResource
      * @param string $contactUuid
      * @param int $page
      * @param string|null $shopUuid
-     * @param LoyaltyTransactionType|null $type
+     * @param string|null $type
      * @param int $limit
      * @return array
      * @throws PiggyRequestException
      * @throws Exception
      */
-    public function getTransactions(string $contactUuid, int $page = 1, ?string $shopUuid = null, ?LoyaltyTransactionType $type = null, int $limit = 30): array
+    public function getTransactions(string $contactUuid, int $page = 1, ?string $shopUuid = null, ?string $type = null, int $limit = 30): array
     {
         $response = $this->client->get("$this->resourceUri/$contactUuid/loyalty-transactions", [
             "limit" => $limit,
