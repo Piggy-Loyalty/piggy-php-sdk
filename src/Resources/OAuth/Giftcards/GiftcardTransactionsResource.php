@@ -44,7 +44,7 @@ class GiftcardTransactionsResource extends BaseResource
         $response = $this->client->post($this->resourceUri, [
             "shop_uuid" => $shopUuid,
             "giftcard_uuid" => $giftcardUuid,
-            "amount" => $amountInCents,
+            "amount_in_cents" => $amountInCents,
         ]);
 
         $mapper = new GiftcardTransactionMapper();
