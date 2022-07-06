@@ -2,6 +2,7 @@
 
 namespace Piggy\Api\Mappers\Automations;
 
+use Piggy\Api\Mappers\BaseMapper;
 use Piggy\Api\Models\Automations\Automation;
 use stdClass;
 
@@ -9,7 +10,7 @@ use stdClass;
  * Class ShopMapper
  * @package Piggy\Api\Mappers\Shops
  */
-class AutomationMapper
+class AutomationMapper extends BaseMapper
 {
     /**
      * @param stdClass $data
@@ -21,8 +22,8 @@ class AutomationMapper
             $data->name,
             $data->status,
             $data->event,
-            $data->created_at,
-            $data->updated_at
+            $this->parseDate($data->created_at),
+            $this->parseDate($data->updated_at)
         );
     }
 }

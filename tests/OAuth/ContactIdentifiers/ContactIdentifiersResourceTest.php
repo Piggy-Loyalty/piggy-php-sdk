@@ -2,7 +2,6 @@
 
 namespace Piggy\Api\Tests\OAuth\ContactIdentifiers;
 
-use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\Tests\OAuthTestCase;
 
 /**

@@ -2,6 +2,8 @@
 
 namespace Piggy\Api\Models\Automations;
 
+use DateTime;
+
 /**
  * Class Shop
  * @package Piggy\Api\Models\Shops
@@ -24,12 +26,12 @@ class Automation
     protected $event;
 
     /**
-     * @var string
+     * @var DateTime
      */
     protected $createdAt;
 
     /**
-     * @var string
+     * @var DateTime
      */
     protected $updatedAt;
 
@@ -37,10 +39,10 @@ class Automation
      * @param string $name
      * @param string $status
      * @param string $event
-     * @param string $createdAt
-     * @param string $updatedAt
+     * @param DateTime $createdAt
+     * @param DateTime $updatedAt
      */
-    public function __construct(string $name, string $status, string $event, string $createdAt, string $updatedAt)
+    public function __construct(string $name, string $status, string $event, DateTime $createdAt, DateTime $updatedAt)
     {
         $this->name = $name;
         $this->status = $status;
@@ -74,17 +76,17 @@ class Automation
     }
 
     /**
-     * @return string
+     * @return DateTime
      */
-    public function getCreatedAt(): string
+    public function getCreatedAt(): DateTime
     {
         return $this->createdAt;
     }
 
     /**
-     * @return string
+     * @return DateTime
      */
-    public function getUpdatedAt(): string
+    public function getUpdatedAt(): DateTime
     {
         return $this->updatedAt;
     }

@@ -47,7 +47,7 @@ class DigitalRewardReception
     protected $contactIdentifier;
 
     /**
-     * @var string
+     * @var DateTime
      */
     protected $createdAt;
 
@@ -73,12 +73,12 @@ class DigitalRewardReception
      * @param Contact $contact
      * @param Shop $shop
      * @param ContactIdentifier|null $contactIdentifier
-     * @param string $createdAt
+     * @param DateTime $createdAt
      * @param string $title
      * @param DigitalReward $digitalReward
      * @param DigitalRewardCode $digitalRewardCode
      */
-    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, string $createdAt, string $title, DigitalReward $digitalReward, DigitalRewardCode $digitalRewardCode)
+    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, string $title, DigitalReward $digitalReward, DigitalRewardCode $digitalRewardCode)
     {
         $this->type = $type;
         $this->credits = $credits;
@@ -141,9 +141,9 @@ class DigitalRewardReception
     }
 
     /**
-     * @return string
+     * @return DateTime
      */
-    public function getCreatedAt(): string
+    public function getCreatedAt(): DateTime
     {
         return $this->createdAt;
     }

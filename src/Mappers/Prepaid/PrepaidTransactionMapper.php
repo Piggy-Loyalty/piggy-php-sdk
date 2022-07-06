@@ -3,13 +3,14 @@
 namespace Piggy\Api\Mappers\Prepaid;
 
 use Piggy\Api\Models\Prepaid\PrepaidTransaction;
+use Piggy\Api\Mappers\BaseMapper;
 use stdClass;
 
 /**
  * Class ShopMapper
  * @package Piggy\Api\Mappers\Shops
  */
-class PrepaidTransactionMapper
+class PrepaidTransactionMapper extends BaseMapper
 {
     /**
      * @param stdClass $data
@@ -25,7 +26,7 @@ class PrepaidTransactionMapper
             $data->amount_in_cents,
             $prepaidBalance,
             $data->uuid,
-            $data->created_at
+            $this->parseDate($data->created_at)
         );
     }
 }

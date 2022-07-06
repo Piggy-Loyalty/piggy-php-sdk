@@ -29,6 +29,6 @@ class PrepaidTransactionResourceTest extends OAuthTestCase
         $this->assertEquals(10, $data->getAmountInCents());
         $this->assertEquals(210, $data->getPrepaidBalance()->getBalanceInCents());
         $this->assertEquals('123-123', $data->getUuid());
-        $this->assertEquals('2022-07-05T10:27:17+00:00', $data->getCreatedAt());
+        $this->assertEquals('2022-07-05T10:27:17+00:00', $data->getCreatedAt()->format('c'));
     }
 }

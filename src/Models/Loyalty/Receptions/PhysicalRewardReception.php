@@ -45,7 +45,7 @@ class PhysicalRewardReception
     protected $contactIdentifier;
 
     /**
-     * @var string
+     * @var DateTime
      */
     protected $createdAt;
 
@@ -55,14 +55,18 @@ class PhysicalRewardReception
     protected $title;
 
     /**
-     * @var string
+     * @var DateTime|null
      */
     protected $expiresAt;
 
-    /** @var Reward */
+    /**
+     * @var Reward
+     */
     protected $reward;
 
-    /** @var bool */
+    /**
+     * @var bool
+     */
     protected $hasBeenCollected;
 
     /**
@@ -72,13 +76,13 @@ class PhysicalRewardReception
      * @param Contact $contact
      * @param Shop $shop
      * @param ContactIdentifier|null $contactIdentifier
-     * @param string $createdAt
+     * @param DateTime $createdAt
      * @param string $title
      * @param Reward $reward
-     * @param string|null $expiresAt
+     * @param DateTime|null $expiresAt
      * @param bool $hasBeenCollected
      */
-    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, string $createdAt, string $title, Reward $reward, ?string $expiresAt, bool $hasBeenCollected)
+    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, string $title, Reward $reward, ?DateTime $expiresAt, bool $hasBeenCollected)
     {
         $this->type = $type;
         $this->credits = $credits;
@@ -142,9 +146,9 @@ class PhysicalRewardReception
     }
 
     /**
-     * @return string
+     * @return DateTime
      */
-    public function getCreatedAt(): string
+    public function getCreatedAt(): DateTime
     {
         return $this->createdAt;
     }
@@ -166,9 +170,9 @@ class PhysicalRewardReception
     }
 
     /**
-     * @return string|null
+     * @return DateTime |null
      */
-    public function getExpiresAt(): ?string
+    public function getExpiresAt(): ?DateTime
     {
         return $this->expiresAt;
     }

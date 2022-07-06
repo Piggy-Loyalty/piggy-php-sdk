@@ -3,7 +3,6 @@
 namespace Piggy\Api\Tests\OAuth\Loyalty\Receptions;
 
 use Exception;
-use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
 
@@ -15,7 +14,6 @@ class RewardReceptionsResourceTest extends OAuthTestCase
 {
     /**
      * @test
-     * @throws GuzzleException
      * @throws PiggyRequestException
      * @throws Exception
      */
@@ -50,17 +48,16 @@ class RewardReceptionsResourceTest extends OAuthTestCase
         $this->assertEquals("123-123", $rewardReception->getContact()->getUuid());
         $this->assertEquals("123-312", $rewardReception->getShop()->getUuid());
         $this->assertEquals("shopName", $rewardReception->getShop()->getName());
-        $this->assertEquals("2022-06-30T13:42:04+00:00", $rewardReception->getCreatedAt()); //Make it DateTime
+        $this->assertEquals("2022-06-30T13:42:04+00:00", $rewardReception->getCreatedAt()->format('c'));
         $this->assertEquals("reward title", $rewardReception->getTitle());
         $this->assertEquals("PHYSICAL", $rewardReception->getReward()->getRewardType());
         $this->assertEquals('332-3232', $rewardReception->getReward()->getUuid());
-        $this->assertEquals("2022-06-30T15:11:57+00:00", $rewardReception->getExpiresAt());
+        $this->assertEquals("2022-06-30T15:11:57+00:00", $rewardReception->getExpiresAt()->format('c'));
         $this->assertEquals(false, $rewardReception->getHasBeenCollected());
     }
 
     /**
      * @test
-     * @throws GuzzleException
      * @throws PiggyRequestException
      * @throws Exception
      */
@@ -96,7 +93,7 @@ class RewardReceptionsResourceTest extends OAuthTestCase
         $this->assertEquals("123-123", $rewardReception->getContact()->getUuid());
         $this->assertEquals("123-312", $rewardReception->getShop()->getUuid());
         $this->assertEquals("shopName", $rewardReception->getShop()->getName());
-        $this->assertEquals("2022-06-30T13:42:04+00:00", $rewardReception->getCreatedAt()); //Make it DateTime
+        $this->assertEquals("2022-06-30T13:42:04+00:00", $rewardReception->getCreatedAt()->format('c'));
         $this->assertEquals("digital reward title", $rewardReception->getTitle());
         $this->assertEquals("DIGITAL", $rewardReception->getDigitalReward()->getRewardType());
         $this->assertEquals('332-3232', $rewardReception->getDigitalReward()->getUuid());

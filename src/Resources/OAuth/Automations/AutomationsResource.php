@@ -37,7 +37,7 @@ class AutomationsResource extends BaseResource
      * @return array
      * @throws PiggyRequestException
      */
-    public function get(string $contactUuid, string $automationUuid): array
+    public function create(string $contactUuid, string $automationUuid): array
     {
         $response = $this->client->post("$this->resourceUri/runs", [
             "contact_uuid" => $contactUuid,

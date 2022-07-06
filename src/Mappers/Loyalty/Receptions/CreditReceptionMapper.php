@@ -2,6 +2,7 @@
 
 namespace Piggy\Api\Mappers\Loyalty\Receptions;
 
+use Piggy\Api\Mappers\BaseMapper;
 use Piggy\Api\Mappers\ContactIdentifiers\ContactIdentifierMapper;
 use Piggy\Api\Mappers\Contacts\ContactMapper;
 use Piggy\Api\Mappers\Shops\ShopMapper;
@@ -13,7 +14,7 @@ use stdClass;
  * Class CreditReceptionMapper
  * @package Piggy\Api\Mappers\Loyalty
  */
-class CreditReceptionMapper
+class CreditReceptionMapper extends BaseMapper
 {
     /**
      * @param stdClass $data
@@ -48,7 +49,7 @@ class CreditReceptionMapper
             $contact,
             $shop,
             $contactIdentifier,
-            $data->created_at,
+            $this->parseDate($data->created_at),
             $data->unit_value,
             $unit
         );

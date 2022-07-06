@@ -1,6 +1,6 @@
 <?php
 
-namespace Piggy\Api\Tests\OAuth\ContactIdentifiers;
+namespace Piggy\Api\Tests\OAuth\Automations;
 
 use Piggy\Api\Tests\OAuthTestCase;
 
@@ -30,7 +30,19 @@ class AutomationsResourceTest extends OAuthTestCase
         $this->assertEquals("credit_reception_created", $automations[0]->getEvent());
         $this->assertEquals("Stuur een e-mail wanneer een contactpersoon voor het eerst deelneemt aan uw loyaliteitsprogramma.", $automations[0]->getName());
         $this->assertEquals("inactive", $automations[0]->getStatus());
-        $this->assertEquals("2022-01-26T14:59:35+00:00", $automations[0]->getCreatedAt());
-        $this->assertEquals("2022-01-26T14:59:35+00:00", $automations[0]->getUpdatedAt());
+        $this->assertEquals("2022-01-26T14:59:35+00:00", $automations[0]->getCreatedAt()->format('c'));
+        $this->assertEquals("2022-01-26T14:59:35+00:00", $automations[0]->getUpdatedAt()->format('c'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_creates_an_automations_run()
+    {
+        $this->addExpectedResponse([]);
+
+        $automations = $this->mockedClient->automations->create('123-123', '123-321');
+
+        $this->assertEquals([], $automations);
     }
 }

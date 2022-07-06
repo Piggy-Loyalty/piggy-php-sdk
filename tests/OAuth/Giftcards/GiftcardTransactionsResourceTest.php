@@ -14,7 +14,6 @@ class GiftcardTransactionsResourceTest extends OAuthTestCase
 {
     /**
      * @test
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function it_finds_a_giftcard_transaction()
@@ -34,7 +33,6 @@ class GiftcardTransactionsResourceTest extends OAuthTestCase
 
     /**
      * @test
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function it_returns_giftcard_transaction_after_creation()
@@ -54,7 +52,6 @@ class GiftcardTransactionsResourceTest extends OAuthTestCase
 
     /**
      * @test
-     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public function it_corrects_a_giftcard_transaction()

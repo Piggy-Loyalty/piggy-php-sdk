@@ -2,6 +2,7 @@
 
 namespace Piggy\Api\Mappers\Loyalty\Receptions;
 
+use Piggy\Api\Mappers\BaseMapper;
 use Piggy\Api\Mappers\ContactIdentifiers\ContactIdentifierMapper;
 use Piggy\Api\Mappers\Contacts\ContactMapper;
 use Piggy\Api\Mappers\Loyalty\Rewards\DigitalRewardCodeMapper;
@@ -14,7 +15,7 @@ use stdClass;
  * Class CreditReceptionMapper
  * @package Piggy\Api\Mappers\Loyalty
  */
-class DigitalRewardReceptionMapper
+class DigitalRewardReceptionMapper extends BaseMapper
 {
     /**
      * @param stdClass $data
@@ -46,7 +47,7 @@ class DigitalRewardReceptionMapper
             $contact,
             $shop,
             $contactIdentifier,
-            $data->created_at,
+            $this->parseDate($data->created_at),
             $data->title,
             $digitalReward,
             $digitalRewardCode

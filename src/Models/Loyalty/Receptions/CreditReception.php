@@ -2,6 +2,7 @@
 
 namespace Piggy\Api\Models\Loyalty\Receptions;
 
+use Cassandra\Date;
 use DateTime;
 use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\Models\Contacts\ContactIdentifier;
@@ -62,11 +63,11 @@ class CreditReception
      * @param Contact $contact
      * @param Shop $shop
      * @param ContactIdentifier|null $contactIdentifier
-     * @param string $createdAt
+     * @param DateTime $createdAt
      * @param int|null $unitValue
      * @param Unit|null $unit
      */
-    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, string $createdAt, ?int $unitValue = null, ?Unit $unit = null)
+    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, ?int $unitValue = null, ?Unit $unit = null)
     {
         $this->type = $type;
         $this->credits = $credits;
@@ -128,9 +129,9 @@ class CreditReception
     }
 
     /**
-     * @return string
+     * @return DateTime
      */
-    public function getCreatedAt(): string
+    public function getCreatedAt(): DateTime
     {
         return $this->createdAt;
     }

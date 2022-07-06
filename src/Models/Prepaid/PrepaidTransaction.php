@@ -34,9 +34,9 @@ class PrepaidTransaction
      * @param int $amountInCents
      * @param PrepaidBalance $prepaidBalance
      * @param string $uuid
-     * @param string $createdAt
+     * @param DateTime $createdAt
      */
-    public function __construct(int $amountInCents, PrepaidBalance $prepaidBalance, string $uuid, string $createdAt)
+    public function __construct(int $amountInCents, PrepaidBalance $prepaidBalance, string $uuid, DateTime $createdAt)
     {
         $this->amountInCents = $amountInCents;
         $this->prepaidBalance = $prepaidBalance;
@@ -69,9 +69,9 @@ class PrepaidTransaction
     }
 
     /**
-     * @return string
+     * @return DateTime
      */
-    public function getCreatedAt(): string
+    public function getCreatedAt(): DateTime
     {
         return $this->createdAt;
     }

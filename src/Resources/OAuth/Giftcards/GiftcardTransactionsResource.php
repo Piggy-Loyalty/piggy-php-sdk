@@ -20,7 +20,6 @@ class GiftcardTransactionsResource extends BaseResource
 
     /**
      * @param string $giftcardTransactionUuid
-     *
      * @return GiftcardTransaction
      * @throws PiggyRequestException
      */
@@ -37,7 +36,6 @@ class GiftcardTransactionsResource extends BaseResource
      * @param string $shopUuid
      * @param string $giftcardUuid
      * @param int $amountInCents
-     *
      * @return GiftcardTransaction
      * @throws PiggyRequestException
      */
@@ -56,7 +54,6 @@ class GiftcardTransactionsResource extends BaseResource
 
     /**
      * @param string $giftcardTransactionUuid
-     *
      * @return GiftcardTransaction
      * @throws PiggyRequestException
      */
