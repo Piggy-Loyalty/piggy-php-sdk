@@ -2,8 +2,6 @@
 
 namespace Piggy\Api\Models\Shops;
 
-use Piggy\Api\Models\Loyalty\LoyaltyProgram;
-
 /**
  * Class Shop
  * @package Piggy\Api\Models\Shops

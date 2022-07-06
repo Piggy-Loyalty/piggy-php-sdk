@@ -7,7 +7,6 @@ use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\Models\Contacts\ContactIdentifier;
 use Piggy\Api\Models\Loyalty\Rewards\DigitalReward;
 use Piggy\Api\Models\Loyalty\Rewards\DigitalRewardCode;
-use Piggy\Api\Models\Loyalty\Rewards\Reward;
 use Piggy\Api\Models\Shops\Shop;
 
 /**

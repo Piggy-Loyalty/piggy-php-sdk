@@ -2,8 +2,8 @@
 
 namespace Piggy\Api\Mappers\Prepaid;
 
-use Piggy\Api\Models\Prepaid\PrepaidTransaction;
 use Piggy\Api\Mappers\BaseMapper;
+use Piggy\Api\Models\Prepaid\PrepaidTransaction;
 use stdClass;
 
 /**

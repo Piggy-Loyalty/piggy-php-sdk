@@ -11,7 +11,6 @@ use Piggy\Api\Mappers\Loyalty\LoyaltyTransactionMapper;
 use Piggy\Api\Mappers\Prepaid\PrepaidBalanceMapper;
 use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\Models\Loyalty\CreditBalance;
-use Piggy\Api\Models\Loyalty\LoyaltyTransaction;
 use Piggy\Api\Models\Prepaid\PrepaidBalance;
 use Piggy\Api\Resources\BaseResource;
 

@@ -2,7 +2,6 @@
 
 namespace Piggy\Api\Mappers\ContactIdentifiers;
 
-use Piggy\Api\Mappers\Contacts\ContactMapper;
 use Piggy\Api\Models\Contacts\ContactIdentifier;
 use stdClass;
 

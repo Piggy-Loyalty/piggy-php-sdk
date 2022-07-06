@@ -3,7 +3,6 @@
 namespace Piggy\Api\Mappers;
 
 use Piggy\Api\Models\OAuthToken;
-use stdClass;
 
 /**
  * Class OAuthTokenMapper

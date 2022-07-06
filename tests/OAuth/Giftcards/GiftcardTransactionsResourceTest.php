@@ -2,7 +2,6 @@
 
 namespace Piggy\Api\Tests\OAuth\Giftcards;
 
-use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
 

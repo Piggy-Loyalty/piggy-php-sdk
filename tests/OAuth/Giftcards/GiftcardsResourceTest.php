@@ -2,7 +2,6 @@
 
 namespace Piggy\Api\Tests\OAuth\Giftcards;
 
-use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Enum\GiftcardType;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
@@ -16,7 +15,6 @@ class GiftcardsResourceTest extends OAuthTestCase
     /**
      * @test
      * @throws PiggyRequestException
-     * @throws GuzzleException
      */
     public function it_finds_a_giftcard_by_hash()
     {
@@ -47,7 +45,6 @@ class GiftcardsResourceTest extends OAuthTestCase
     /**
      * @test
      * @throws PiggyRequestException
-     * @throws GuzzleException
      */
     public function it_returns_giftcard_after_creation()
     {

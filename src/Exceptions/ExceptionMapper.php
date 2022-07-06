@@ -3,7 +3,6 @@
 namespace Piggy\Api\Exceptions;
 
 use Exception;
-use GuzzleHttp\Exception\GuzzleException;
 use stdClass;
 use Throwable;
 

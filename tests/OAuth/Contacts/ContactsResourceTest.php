@@ -125,7 +125,7 @@ class ContactsResourceTest extends OAuthTestCase
 
         $contact = $this->mockedClient->contacts->findOneBy("hello@piggy.nl");
 
-        $this->assertEquals($contact->getUuid(), '§12345678');
+        $this->assertEquals('§12345678', $contact->getUuid());
     }
 
     /** @test
