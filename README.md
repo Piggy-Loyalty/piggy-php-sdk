@@ -6,6 +6,10 @@ You can use this package to connect your application / POS-system (Register) to 
 
 Full documentation about our API can be found here https://docs.piggy.eu/
 
+## Versions
+
+You should use v3 of this SDK. However this is *not* backward compatible with v1.* of this SDK. 
+
 ## Setup ##  
 
 **Composer:**
@@ -21,11 +25,11 @@ $apiKey = 'xxxx-xxxx-xxxx';
 $client = new Piggy\Api\RegisterClient($apiKey);
 
 try {
-    $member = $client->members->findOneBy(123, 'test@domain.com'); // Example call to find a member by email address
+    $contact = $client->contacts->findOneBy('test@domain.com'); // Example call to find a Contact by e-mail address
 } catch(Piggy\Api\Exceptions\MaintenanceModeException $e) {
     // Catch maintenance mode specific.
 } catch(Piggy\Api\Exceptions\PiggyRequestException $e) {
-    // If no member is found for instance, you'd know that from this exception
+    // If no Contact is found, you'd know that from this exception
 } catch(\Exception $) {
     // Handle any other exceptions 
 }
@@ -41,11 +45,11 @@ $access_token = $client->getAccessToken();
 $client->setAccessToken($access_token);
 
 try {
-    $member = $client->members->findOneBy(123, 'test@domain.com'); // Example call to find a member by email address
+    $contact = $client->contacts->findOneBy('test@domain.com'); // Example call to find a Contact by e-mail address
 } catch(Piggy\Api\Exceptions\MaintenanceModeException $e) {
     // Catch maintenance mode specific.
 } catch(Piggy\Api\Exceptions\PiggyRequestException $e) {
-    // If no member is found for instance, you'd know that from this exception
+    // If no Contact is found, you'd know that from this exception
 } catch(\Exception $) {
     // Handle any other exceptions 
 }
