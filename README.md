@@ -10,6 +10,11 @@ Full documentation about our API can be found here https://docs.piggy.eu/
 
 You should use v3 of this SDK. However this is *not* backward compatible with v1.* of this SDK. 
 
+## Requirements
+
+This SDK requires PHP 7.2 or higher.
+Currently our test suite runs against PHP 7.2, 7.3, 7.4, 8.0, 8.1
+
 ## Setup ##  
 
 **Composer:**
