@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.0.2
+
+- potential breaking: at time of fix, no clients were found using the create credit reception api call without using the Contact UUID. Create credit reception call now requires the Contact UUID, while the Contact Identifier value is now optional.
+- fix: unit value is now a float for create credit reception
+- feat: option to send pos transactions uuid with create credit reception, to link them
+
 ## 3.0.1
 
 - fix: Giftcards were missing the amount in cents. That is fixed now.
