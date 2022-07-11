@@ -21,7 +21,11 @@ class CreditReceptionsResource extends BaseResource
     /**
      * @param string $contactUuid
      * @param string $shopUuid
-     * @param int $unitValue
+     * @param float|null $unitValue
+     * @param int|null $credits
+     * @param string|null $contactIdentifierValue
+     * @param string|null $unitName
+     * @param string|null $posTransactionUuid
      *
      * @return CreditReception
      * @throws PiggyRequestException
@@ -29,13 +33,21 @@ class CreditReceptionsResource extends BaseResource
     public function create(
         string $contactUuid,
         string $shopUuid,
-        int    $unitValue
+        ?float $unitValue = null,
+        ?int $credits = null,
+        ?string $contactIdentifierValue = null,
+        ?string $unitName = null,
+        ?string $posTransactionUuid = null
     ): CreditReception
     {
         $response = $this->client->post($this->resourceUri, [
             "shop_uuid" => $shopUuid,
             "contact_uuid" => $contactUuid,
-            "unit_value" => $unitValue
+            "unit_value" => $unitValue,
+            "credits" => $credits,
+            "contact_identifier_value" => $contactIdentifierValue,
+            "unit_name" => $unitName,
+            "pos_transaction_id" => $posTransactionUuid,
         ]);
 
         $mapper = new CreditReceptionMapper();
