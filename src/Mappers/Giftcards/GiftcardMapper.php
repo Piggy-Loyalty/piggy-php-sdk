@@ -31,6 +31,7 @@ class GiftcardMapper extends BaseMapper
         return new Giftcard(
             $data->uuid,
             $data->hash,
+            $data->amount_in_cents,
             GiftcardType::byName($data->type)->getValue(),
             $data->active,
             $data->upgradeable,

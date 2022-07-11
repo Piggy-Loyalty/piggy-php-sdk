@@ -21,6 +21,7 @@ class GiftcardsResourceTest extends OAuthTestCase
         $this->addExpectedResponse([
             "uuid" =>'123-123',
             "hash" => "GJ2P725oe",
+            "amount_in_cents" => 321,
             "type" => "PHYSICAL",
             "active" => true,
             "upgradeable" => true,
@@ -35,6 +36,7 @@ class GiftcardsResourceTest extends OAuthTestCase
 
         $this->assertEquals("123-123", $giftcard->getUuid());
         $this->assertEquals("GJ2P725oe", $giftcard->getHash());
+        $this->assertEquals(321, $giftcard->getAmountInCents());
         $this->assertEquals("PHYSICAL", GiftcardType::byValue($giftcard->getType())->getName());
         $this->assertEquals(true, $giftcard->isActive());
         $this->assertEquals(true, $giftcard->isUpgradeable());
@@ -51,6 +53,7 @@ class GiftcardsResourceTest extends OAuthTestCase
         $this->addExpectedResponse([
             "uuid" =>'123-123',
             "hash" => "GJ2P725oe",
+            "amount_in_cents" => 321,
             "type" => "PHYSICAL",
             "active" => true,
             "upgradeable" => true,
@@ -65,6 +68,7 @@ class GiftcardsResourceTest extends OAuthTestCase
 
         $this->assertEquals("123-123", $giftcard->getUuid());
         $this->assertEquals("GJ2P725oe", $giftcard->getHash());
+        $this->assertEquals(321, $giftcard->getAmountInCents());
         $this->assertEquals("PHYSICAL", GiftcardType::byValue($giftcard->getType())->getName());
         $this->assertEquals(true, $giftcard->isActive());
         $this->assertEquals(true, $giftcard->isUpgradeable());
