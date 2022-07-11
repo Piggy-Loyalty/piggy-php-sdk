@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.0.1
+
+- fix: Giftcards were missing the amount in cents. That is fixed now.
+
+## 3.0.0
+
+Release version
+
 ## 3.0.0-beta2
 
 - breaking: Giftcard transactions (OAuth Client) now uses `amount_in_cents` input
