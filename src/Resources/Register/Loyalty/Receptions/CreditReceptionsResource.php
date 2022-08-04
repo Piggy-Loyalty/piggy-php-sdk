@@ -25,6 +25,7 @@ class CreditReceptionsResource extends BaseResource
      * @param string|null $contactIdentifierValue
      * @param string|null $unitName
      * @param string|null $posTransactionUuid
+     * @param array|null $attributes
      *
      * @return CreditReception
      * @throws PiggyRequestException
@@ -35,16 +36,20 @@ class CreditReceptionsResource extends BaseResource
         ?int $credits = null,
         ?string $contactIdentifierValue = null,
         ?string $unitName = null,
-        ?string $posTransactionUuid = null
+        ?string $posTransactionUuid = null,
+        ?array $attributes = []
     ): CreditReception {
-        $response = $this->client->post($this->resourceUri, [
+
+        $data = [
             "contact_uuid" => $contactUuid,
             "unit_value" => $unitValue,
             "credits" => $credits,
             "contact_identifier_value" => $contactIdentifierValue,
             "unit_name" => $unitName,
             "pos_transaction_id" => $posTransactionUuid,
-        ]);
+        ] + $attributes;
+
+        $response = $this->client->post($this->resourceUri, $data);
 
         $mapper = new CreditReceptionMapper();
 

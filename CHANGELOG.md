@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.0.3
+- feat: option to send loyalty transaction custom attributes with the create credit reception requests for both oauth and register client 
+
 ## 3.0.2
 
 - potential breaking: at time of fix, no clients were found using the create credit reception api call without using the Contact UUID. Create credit reception call now requires the Contact UUID, while the Contact Identifier value is now optional.
