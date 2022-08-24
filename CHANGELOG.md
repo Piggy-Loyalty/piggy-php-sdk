@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.0.4
+- feat: option to get Loyalty Program (and see settings)
+
 ## 3.0.3
 - feat: option to send loyalty transaction custom attributes with the create credit reception requests for both oauth and register client 
 
