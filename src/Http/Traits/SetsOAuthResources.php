@@ -10,6 +10,7 @@ use Piggy\Api\Resources\OAuth\Contacts\ContactVerificationResource;
 use Piggy\Api\Resources\OAuth\ContactSubscriptionsResource;
 use Piggy\Api\Resources\OAuth\Giftcards\GiftcardsResource;
 use Piggy\Api\Resources\OAuth\Giftcards\GiftcardTransactionsResource;
+use Piggy\Api\Resources\OAuth\Loyalty\Program\LoyaltyProgramResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Receptions\CreditReceptionsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Receptions\LoyaltyTransactionsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Receptions\RewardReceptionsResource;
@@ -100,6 +101,9 @@ trait SetsOAuthResources
      */
     public $units;
 
+    /** @var LoyaltyProgramResource */
+    public $loyaltyProgram;
+
     /**
      * @param BaseClient $client
      *
@@ -122,5 +126,6 @@ trait SetsOAuthResources
         $this->creditReceptions = new CreditReceptionsResource($client);
         $this->automations = new AutomationsResource($client);
         $this->units = new UnitsResource($client);
+        $this->loyaltyProgram = new LoyaltyProgramResource($client);
     }
 }

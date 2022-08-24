@@ -19,7 +19,9 @@ class LoyaltyProgramMapper
     {
         return new LoyaltyProgram(
             $data->id,
-            $data->name
+            $data->name,
+            $data->max_amount ?? "",
+            $data->custom_credit_name ?? ""
         );
     }
 }

@@ -3,7 +3,6 @@
 namespace Piggy\Api;
 
 use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Http\BaseClient;
 use Piggy\Api\Http\Traits\SetsOAuthResources as OAuthResources;
 
@@ -44,7 +43,6 @@ class OAuthClient extends BaseClient
     /**
      * @return Http\Responses\Response
      * @throws Exceptions\PiggyRequestException
-     * @throws GuzzleException
      */
     public function ping()
     {
@@ -54,7 +52,6 @@ class OAuthClient extends BaseClient
     /**
      * @return string
      * @throws Exceptions\PiggyRequestException
-     * @throws GuzzleException
      */
     public function getAccessToken(): string
     {

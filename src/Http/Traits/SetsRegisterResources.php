@@ -7,6 +7,7 @@ use Piggy\Api\Resources\Register\ContactIdentifiersResource;
 use Piggy\Api\Resources\Register\Contacts\ContactsResource;
 use Piggy\Api\Resources\Register\Giftcards\GiftcardsResource;
 use Piggy\Api\Resources\Register\Giftcards\GiftcardTransactionsResource;
+use Piggy\Api\Resources\Register\Loyalty\Program\LoyaltyProgramResource;
 use Piggy\Api\Resources\Register\Loyalty\Receptions\CreditReceptionsResource;
 use Piggy\Api\Resources\Register\Loyalty\Receptions\RewardReceptionsResource;
 use Piggy\Api\Resources\Register\Loyalty\Rewards\RewardsResource;
@@ -64,6 +65,9 @@ trait SetsRegisterResources
      */
     public $creditReceptions;
 
+    /** @var LoyaltyProgramResource */
+    public $loyaltyProgram;
+
 
     /**
      * @param BaseClient $client
@@ -79,5 +83,6 @@ trait SetsRegisterResources
         $this->prepaidTransactions = new PrepaidTransactionResource($client);
         $this->rewardReceptions = new RewardReceptionsResource($client);
         $this->creditReceptions = new CreditReceptionsResource($client);
+        $this->loyaltyProgram = new LoyaltyProgramResource($client);
     }
 }
