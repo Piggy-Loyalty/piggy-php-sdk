@@ -37,9 +37,14 @@ class Reward
     protected $active;
 
     /**
-     * @var
+     * @var string
      */
     protected $rewardType;
+
+    /**
+     * @var array
+     */
+    protected $attributes = [];
 
     /**
      * @param string $uuid
@@ -49,8 +54,9 @@ class Reward
      * @param string|null $description
      * @param bool|null $active
      * @param string|null $rewardType
+     * @param array $attributes
      */
-    public function __construct(string $uuid, ?string $title = '', ?int $requiredCredits = null, ?Media $media = null, ?string $description = "", ?bool $active = true, ?string $rewardType = null)
+    public function __construct(string $uuid, ?string $title = '', ?int $requiredCredits = null, ?Media $media = null, ?string $description = "", ?bool $active = true, ?string $rewardType = null, array $attributes = [])
     {
         $this->uuid = $uuid;
         $this->title = $title;
@@ -59,6 +65,7 @@ class Reward
         $this->media = $media;
         $this->active = $active;
         $this->rewardType = $rewardType;
+        $this->attributes = $attributes;
     }
 
     /**
@@ -124,5 +131,24 @@ class Reward
     public function getRewardType(): ?string
     {
         return $this->rewardType;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAttributes(): array
+    {
+        return $this->attributes;
+    }
+
+    /**
+     * @param string $name
+     * @param $value
+     *
+     * @return void
+     */
+    public function setAttribute(string $name, $value)
+    {
+        $this->attributes[$name] = $value;
     }
 }
