@@ -15,7 +15,6 @@ class ContactMapper
      */
     public function map(stdClass $data): Contact
     {
-
         $prepaidBalance = null;
         if (property_exists($data, 'prepaid_balance')) {
             $prepaidBalanceMapper = new PrepaidBalanceMapper();
@@ -46,7 +45,6 @@ class ContactMapper
         } else {
             $subscriptions = null;
         }
-
 
         return new Contact(
             $data->uuid,

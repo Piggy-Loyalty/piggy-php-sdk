@@ -114,10 +114,6 @@ class ContactsResource extends BaseResource
             "limit" => $limit
         ]);
 
-        var_dump($response->getMeta());
-        die;
-
-
         $mapper = new ContactsMapper();
 
         return $mapper->map($response->getData());

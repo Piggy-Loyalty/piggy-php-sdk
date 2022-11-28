@@ -111,7 +111,7 @@ class ContactsResourceTest extends OAuthTestCase
     {
         $this->addExpectedResponse([
             "uuid" => '§12345678',
-            "email" => 'hello@piggy.nl',
+            "email" => 'henk@piggy.nl',
             "prepaid_balance" => [
                 "balance_in_cents" => 12,
             ],
@@ -123,9 +123,10 @@ class ContactsResourceTest extends OAuthTestCase
             "subscriptions" => [],
         ]);
 
-        $contact = $this->mockedClient->contacts->findOneBy("hello@piggy.nl");
+        $contact = $this->mockedClient->contacts->findOneBy("henk@piggy.nl");
 
         $this->assertEquals('§12345678', $contact->getUuid());
+        $this->assertEquals('henk@piggy.nl', $contact->getEmail());
     }
 
     /** @test

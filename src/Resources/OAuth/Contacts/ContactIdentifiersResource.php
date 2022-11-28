@@ -51,6 +51,26 @@ class ContactIdentifiersResource extends BaseResource
             "contact_identifier_name" => $contactIdentifierName,
         ]);
 
+        // todo let stefan check lines 55-59
+//        if($contactIdentifierValue != '' ){
+//            $response = $this->client->post($this->resourceUri, [
+//                "contact_uuid" => $contactUuid,
+//            ]);
+//        }
+
+        $mapper = new ContactIdentifierMapper();
+
+        return $mapper->map($response->getData());
+
+    }
+
+    public function link(string $contactIdentifierValue, string $contactUuid): ContactIdentifier
+    {
+        $response = $this->client->put("$this->resourceUri/link", [
+            "contact_identifier_value" => $contactIdentifierValue,
+            "contact_uuid" => $contactUuid,
+        ]);
+
         $mapper = new ContactIdentifierMapper();
 
         return $mapper->map($response->getData());

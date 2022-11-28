@@ -36,7 +36,7 @@ class GiftcardsResource extends BaseResource
     }
 
     /**
-     * @param string $giftcardProgramUuid
+     * @param string $giftcardProgramUuide
      * @param int $type
      *
      * @return Giftcard

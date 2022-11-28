@@ -51,4 +51,9 @@ class CreditReceptionsResourceTest extends OAuthTestCase
         $this->assertEquals('bonkers', $creditReception->getUnit()->getName());
         $this->assertEquals("Bonkers", $creditReception->getUnit()->getLabel());
     }
+
+    public function it_returns_a_calculation()
+    {
+
+    }
 }

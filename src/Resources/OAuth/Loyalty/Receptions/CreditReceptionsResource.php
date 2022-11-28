@@ -18,6 +18,7 @@ class CreditReceptionsResource extends BaseResource
      */
     protected $resourceUri = "/api/v3/oauth/clients/credit-receptions";
 
+
     /**
      * @param string $contactUuid
      * @param string $shopUuid
@@ -57,5 +58,32 @@ class CreditReceptionsResource extends BaseResource
         $mapper = new CreditReceptionMapper();
 
         return $mapper->map($response->getData());
+    }
+
+
+    /**
+     * @param string $shopUuid
+     * @param float|null $unitValue
+     *
+     * @return CreditReception
+     * @throws PiggyRequestException
+     */
+    public function calculate(string $shopUuid, float $unitValue, string $accountId) : CreditReception
+    {
+
+        $data = [
+
+            "shop_uuid" => $shopUuid,
+            "unit_value" => $unitValue,
+            "account_id" => $accountId,
+
+        ];
+
+        $response = $this->client->get($this->resourceUri, $data);
+
+        $mapper = new CreditReceptionMapper();
+
+        return $mapper->map($response->getData());
+
     }
 }

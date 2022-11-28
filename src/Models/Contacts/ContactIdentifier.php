@@ -19,15 +19,21 @@ class ContactIdentifier
     protected $name;
 
     /**
+     * @var Contact|null
+     */
+    protected $contact;
+
+    /**
      * @var bool
      */
     protected $active;
 
-    public function __construct(string $value, bool $active, ?string $name = '')
+    public function __construct(string $value, bool $active, ?string $name = '', ?Contact $contact = null)
     {
         $this->value = $value;
         $this->name = $name;
         $this->active = $active;
+        $this->contact = $contact;
     }
 
     /**
@@ -52,5 +58,13 @@ class ContactIdentifier
     public function isActive(): ?bool
     {
         return $this->active;
+    }
+
+    /**
+     * @return Contact|null
+     */
+    public function getContact(): ?Contact
+    {
+        return $this->contact;
     }
 }
