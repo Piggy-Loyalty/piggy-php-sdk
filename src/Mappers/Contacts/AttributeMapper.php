@@ -13,6 +13,15 @@ class AttributeMapper
      */
     public function map(stdClass $data): Attribute
     {
+
+        $options = [];
+        if (property_exists($data, 'options')) {
+            var_dump('options?', $options);
+            die;
+            $options = get_object_vars($data->current_values);
+        }
+
+        var_dump('$data', $data);
         return new Attribute(
             $data->name,
             $data->label,
@@ -22,7 +31,7 @@ class AttributeMapper
             $data->is_soft_read_only,
             $data->is_hard_read_only,
             $data->is_piggy_defined,
-            $data->options
+//            $data-> new Options()
         );
     }
 }

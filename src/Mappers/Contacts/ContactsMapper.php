@@ -17,6 +17,8 @@ class ContactsMapper
             $contacts[] = $contactMapper->map($item);
         }
 
+
+
         return $contacts;
     }
 }

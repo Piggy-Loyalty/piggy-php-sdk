@@ -52,8 +52,19 @@ class CreditReceptionsResourceTest extends OAuthTestCase
         $this->assertEquals("Bonkers", $creditReception->getUnit()->getLabel());
     }
 
+    /**
+     * @test
+     * @throws PiggyRequestException
+     * @throws Exception
+     */
     public function it_returns_a_calculation()
     {
+        $this->addExpectedResponse([
+            "credits" => 100,
+        ]);
 
+        $points = $this->mockedClient->creditReceptions->calculate('1', 100);
+
+        $this->assertEquals(100, $points);
     }
 }

@@ -19,14 +19,21 @@ class GiftcardProgram
     protected $name;
 
     /**
+     * @var bool
+     */
+    protected $active;
+
+    /**
      * GiftcardProgram constructor.
      * @param string $uuid
      * @param string $name
+     * @param bool $active
      */
-    public function __construct(string $uuid, string $name)
+    public function __construct(string $uuid, string $name, bool $active)
     {
         $this->uuid = $uuid;
         $this->name = $name;
+        $this->active = $active;
     }
 
     /**
@@ -43,5 +50,13 @@ class GiftcardProgram
     public function getName(): string
     {
         return $this->name;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isActive(): bool
+    {
+        return $this->active;
     }
 }

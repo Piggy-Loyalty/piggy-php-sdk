@@ -37,31 +37,29 @@ class ContactIdentifiersResource extends BaseResource
 
     /**
      * @param string $contactIdentifierValue
-     * @param string $contactUuid
+     * @param string|null $contactUuid
      * @param string|null $contactIdentifierName
-     *
      * @return ContactIdentifier
      * @throws PiggyRequestException
      */
-    public function create(string $contactIdentifierValue, string $contactUuid, ?string $contactIdentifierName = ''): ContactIdentifier
+    public function create(string $contactIdentifierValue, ?string $contactUuid = null, ?string $contactIdentifierName = ''): ContactIdentifier
     {
-        $response = $this->client->post($this->resourceUri, [
-            "contact_uuid" => $contactUuid,
+        $data = [
             "contact_identifier_value" => $contactIdentifierValue,
-            "contact_identifier_name" => $contactIdentifierName,
-        ]);
+        ];
 
-        // todo let stefan check lines 55-59
-//        if($contactIdentifierValue != '' ){
-//            $response = $this->client->post($this->resourceUri, [
-//                "contact_uuid" => $contactUuid,
-//            ]);
-//        }
+        if ($contactUuid != null) {
+            $data['contact_uuid'] = $contactUuid;
+        }
 
+        if ($contactIdentifierName != null) {
+            $data['contact_identifier_name'] = $contactIdentifierName;
+        }
+
+        $response = $this->client->post($this->resourceUri, $data);
         $mapper = new ContactIdentifierMapper();
 
         return $mapper->map($response->getData());
-
     }
 
     public function link(string $contactIdentifierValue, string $contactUuid): ContactIdentifier

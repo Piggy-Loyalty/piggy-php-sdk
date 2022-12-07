@@ -30,11 +30,27 @@ class ContactIdentifiersResourceTest extends OAuthTestCase
         $this->assertEquals(true, $contactIdentifier->isActive());
     }
 
-    /**
-     * @test
-     * @throws PiggyRequestException
-     */
-    public function it_creates_a_contact_identifier()
+    public function it_returns_contact_identifier_by_value_with_contact()
+    {
+        $this->addExpectedResponse([
+            "value" => "1",
+            "name" => 'Piggy',
+            "active" => true,
+            "contact" => [
+                "uuid" => 'uuid'
+            ],
+        ]);
+
+        $contactIdentifier = $this->mockedClient->contactIdentifiers->get("1");
+
+        $this->assertEquals("1", $contactIdentifier->getValue());
+        $this->assertEquals("Piggy", $contactIdentifier->getName());
+        $this->assertEquals(true, $contactIdentifier->isActive());
+        $this->assertEquals('uuid', $contactIdentifier->getContact()->getUuid());
+    }
+
+    /** @test */
+    public function it_creates_a_contact_identifier_without_contact()
     {
         $this->addExpectedResponse([
             "value" => "hash123",
@@ -42,24 +58,35 @@ class ContactIdentifiersResourceTest extends OAuthTestCase
             "active" => true
         ]);
 
-        $contactIdentifier = $this->mockedClient->contactIdentifiers->create("hash123", "3");
+        $contactIdentifier = $this->mockedClient->contactIdentifiers->create("hash123");
 
+        $this->assertEquals("hash123", $contactIdentifier->getValue());
         $this->assertEquals("Piggy", $contactIdentifier->getName());
-        $this->assertEquals("1", $contactIdentifier->getValue());
         $this->assertEquals(true, $contactIdentifier->isActive());
-
-        $this->addExpectedResponse([
-            "value" => "hash123",
-            "name" => "",
-            "active" => true,
-
-        ]);
+        $this->assertEquals(null, $contactIdentifier->getContact());
     }
 
-    /**
-     * @test
-     * @throws PiggyRequestException
-     */
+    /** @test */
+    public function it_creates_a_contact_identifier_with_contact()
+    {
+        $this->addExpectedResponse([
+            "value" => "hash123",
+            "name" => 'Piggy',
+            "active" => true,
+            "contact" => [
+                "uuid" => 'my-uuid',
+            ],
+        ]);
+
+        $contactIdentifier = $this->mockedClient->contactIdentifiers->create("hash123", 'my-uuid');
+
+        $this->assertEquals("hash123", $contactIdentifier->getValue());
+        $this->assertEquals("Piggy", $contactIdentifier->getName());
+        $this->assertEquals(true, $contactIdentifier->isActive());
+        $this->assertEquals('my-uuid', $contactIdentifier->getContact()->getUuid());
+    }
+
+    /** @test */
     public function it_links_contact_uuid_with_contact_identifier()
     {
         $this->addExpectedResponse([
@@ -79,34 +106,7 @@ class ContactIdentifiersResourceTest extends OAuthTestCase
         $this->assertEquals('mijn-uuid', $contactIdentifier->getContact()->getUuid());
 
     }
-
-//    public function it_returns_contact_with_given_contact_identifier()
-//    {
-//        $this->addExpectedResponse([
-//
-//        ]);
-//    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

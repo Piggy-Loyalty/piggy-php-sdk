@@ -1,6 +1,6 @@
 <?php
 
-namespace Piggy\Api\Models\Loyalty;
+namespace Piggy\Api\Models\Loyalty\Transaction;
 
 use DateTime;
 use Piggy\Api\Models\Contacts\Contact;

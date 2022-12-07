@@ -53,7 +53,4 @@ class ContactAttribute
     {
         $this->attribute = $attribute;
     }
-
-
-
 }

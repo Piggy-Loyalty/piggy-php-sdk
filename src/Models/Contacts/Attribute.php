@@ -42,7 +42,7 @@ class Attribute
      */
     public $isPiggyDefined;
     /**
-     * @var array|null
+     * @var Options
      */
     public $options;
 
@@ -195,17 +195,18 @@ class Attribute
     }
 
     /**
-     * @return array|null
+     * @return Options
      */
-    public function getOptions(): ?array
+    public function getOptions(): ?Options
     {
+        var_dump('hiero');
         return $this->options;
     }
 
     /**
-     * @param array $options
+     * @param Options $options
      */
-    public function setOptions(array $options): void
+    public function setOptions(Options $options): void
     {
         $this->options = $options;
     }

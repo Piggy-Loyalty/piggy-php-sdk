@@ -26,7 +26,6 @@ class CreditReceptionMapper extends BaseMapper
         $shopMapper = new ShopMapper();
         $unitMapper = new UnitMapper();
         $contactIdentifierMapper = new ContactIdentifierMapper();
-
         $contact = $contactMapper->map($data->contact);
         $shop = $shopMapper->map($data->shop);
 

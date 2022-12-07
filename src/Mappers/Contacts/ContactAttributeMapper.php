@@ -14,16 +14,14 @@ class ContactAttributeMapper
     public function map(stdClass $data): ContactAttribute
     {
         $attribute = null;
-        if (property_exists($data,'attribute')) {
-            $attributeMapper = new AttributeMapper();
 
+        if (property_exists($data, 'attribute')) {
+
+            $attributeMapper = new OptionMapper();
             $attribute = $attributeMapper->map($data->attribute);
+
         }
 
-
-        return new ContactAttribute(
-            $data->value,
-            $attribute ?? []
-        );
+        return new ContactAttribute($data, $attribute ?? []);
     }
 }
