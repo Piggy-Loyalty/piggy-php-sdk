@@ -28,7 +28,6 @@ class UnitsResourceTest extends OAuthTestCase
 
         $units = $this->mockedClient->units->list();
 
-        var_dump('units', $units);
 
         $this->assertEquals("calorieeen", $units[0]->getName());
         $this->assertEquals("kcal", $units[0]->getLabel());

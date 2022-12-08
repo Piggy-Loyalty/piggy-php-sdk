@@ -8,14 +8,14 @@ use stdClass;
 class OptionMapper
 {
     /**
-     * @param stdClass $data
+     * @param stdClass $options
      * @return Options
      */
-    public function map(stdClass $data): Options
+    public function map(stdClass $options): Options
     {
         return new Options(
-            $data->label,
-            $data->value
+            $options->label,
+            $options->value
         );
     }
 }

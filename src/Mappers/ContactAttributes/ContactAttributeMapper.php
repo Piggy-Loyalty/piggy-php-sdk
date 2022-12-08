@@ -15,10 +15,8 @@ class ContactAttributeMapper
      */
     public function map(stdClass $contactAttribute): ContactAttribute
     {
-        var_dump('contactattribute', $contactAttribute);
         $options = null;
         if (property_exists($contactAttribute, 'options') && $contactAttribute->options != null) {
-            var_dump('options', $options);
             $optionsMapper = new OptionMapper();
             $options = $optionsMapper->map($contactAttribute->options);
         }

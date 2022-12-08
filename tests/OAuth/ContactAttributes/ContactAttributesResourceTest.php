@@ -22,6 +22,7 @@ class ContactAttributesResourceTest extends OAuthTestCase
                 "is_soft_read_only" => false,
                 "is_hard_read_only" => false,
                 "is_piggy_defined" => true,
+                "options" => []
             ],
             [
                 "name" => "another_first_name",
@@ -36,6 +37,9 @@ class ContactAttributesResourceTest extends OAuthTestCase
         ]);
 
         $contactAttributes = $this->mockedClient->contactAttributes->list();
+
+//        var_dump('pietje', $contactAttributes);
+//        die;
 
         $this->assertEquals("first_name", $contactAttributes[0]->getName());
         $this->assertEquals("some_label", $contactAttributes[0]->getLabel());
@@ -53,7 +57,7 @@ class ContactAttributesResourceTest extends OAuthTestCase
         $this->assertEquals(true, $contactAttributes[1]->getIsHardReadOnly());
         $this->assertEquals(false, $contactAttributes[1]->getIsPiggyDefined());
         $this->assertEquals('some_label', $contactAttributes[1]->getOptions()->getLabel());
-        $this->assertEquals(1, $contactAttributes[1]->getOptions()[1]->getValue()[1]);
+        $this->assertEquals(1, $contactAttributes[1]->getOptions()->getValue());
 
 
 //        $this->assertEquals(99, $contact->getCreditBalance()->getBalance());
