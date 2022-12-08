@@ -1,13 +1,16 @@
 <?php
 
-namespace Piggy\Api\Models\Contacts;
+namespace Piggy\Api\Models\ContactAttributes;
+
+use Piggy\Api\Models\Loyalty\CreditBalance;
 
 /**
- * Class Attribute
+ * Class ContactAttribute
  * @package Piggy\Api\Models
  */
-class Attribute
+class ContactAttribute
 {
+
     /** @var string */
     public $name;
 
@@ -25,34 +28,33 @@ class Attribute
      * @var string
      */
     public $type;
-    /**
-     * @var string
-     */
-    public $fieldType;
+
     /**
      * @var boolean|null
      */
     public $isSoftReadOnly;
+
     /**
      * @var boolean|null
      */
     public $isHardReadOnly;
+
     /**
      * @var boolean
      */
     public $isPiggyDefined;
+
     /**
-     * @var Options
+     * @var Options|null
      */
     public $options;
 
-    public function __construct(string $name, ?string $label, ?string $description, string $type, string $fieldType, ?bool $isSoftReadOnly, ?bool $isHardReadOnly, bool $isPiggyDefined, ?array $options)
+    public function __construct(string $name, ?string $label, ?string $description, string $type, bool $isSoftReadOnly, bool $isHardReadOnly, bool $isPiggyDefined, ?Options $options)
     {
         $this->name = $name;
         $this->label = $label;
         $this->description = $description;
         $this->type = $type;
-        $this->fieldType = $fieldType;
         $this->isSoftReadOnly = $isSoftReadOnly;
         $this->isHardReadOnly = $isHardReadOnly;
         $this->isPiggyDefined = $isPiggyDefined;
@@ -128,23 +130,6 @@ class Attribute
     }
 
     /**
-     * @return string
-     */
-    public function getFieldType(): string
-    {
-        return $this->fieldType;
-    }
-
-    /**
-     * @param string $fieldType
-     * @return void
-     */
-    public function setFieldType(string $fieldType): void
-    {
-        $this->fieldType = $fieldType;
-    }
-
-    /**
      * @return bool
      */
     public function getIsSoftReadOnly(): bool
@@ -199,15 +184,17 @@ class Attribute
      */
     public function getOptions(): ?Options
     {
-        var_dump('hiero');
         return $this->options;
     }
 
     /**
-     * @param Options $options
+     * @param Options|null $options
      */
-    public function setOptions(Options $options): void
+    public function setOptions(?Options $options): void
     {
         $this->options = $options;
     }
+
+
+
 }

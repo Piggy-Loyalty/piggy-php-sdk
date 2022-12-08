@@ -43,8 +43,8 @@ class ContactsResourceTest extends OAuthTestCase
                     "strategy" => "OPT_OUT"
                 ]
             ]],
-            "attributes" => [[
-                "value" => "Henk",
+            "attributes" => [
+//                "value" => "Henk",
                 "attribute" => [
                     "name" => "firstName",
                     "label" => "Nombre",
@@ -56,7 +56,7 @@ class ContactsResourceTest extends OAuthTestCase
                     "is_piggy_defined" => true,
                     "options" => []
                 ]
-            ]]
+            ]
         ]);
 
         $contact = $this->mockedClient->contacts->get('uuid-piggy-12');
@@ -76,7 +76,7 @@ class ContactsResourceTest extends OAuthTestCase
         $this->assertEquals('Functional emails', $contact->getSubscriptions()[0]->getSubscriptionType()->getDescription());
         $this->assertEquals(true, $contact->getSubscriptions()[0]->getSubscriptionType()->isActive());
         $this->assertEquals('OPT_OUT', $contact->getSubscriptions()[0]->getSubscriptionType()->getStrategy());
-        $this->assertEquals("Henk", $contact->getAttributes()[0]->getValue());
+//        $this->assertEquals("Henk", $contact->getAttributes()[0]->getValue());
         $this->assertEquals("firstName", $contact->getAttributes()[0]->getAttribute()->getName());
         $this->assertEquals("Nombre", $contact->getAttributes()[0]->getAttribute()->getLabel());
         $this->assertEquals("Voornaam", $contact->getAttributes()[0]->getAttribute()->getDescription());
@@ -173,8 +173,8 @@ class ContactsResourceTest extends OAuthTestCase
                     "strategy" => "OPT_OUT"
                 ]
             ]],
-            "attributes" => [[
-                "value" => "Henk",
+            "attributes" => [
+//                "value" => "Henk",
                 "attribute" => [
                     "name" => "firstName",
                     "label" => "Nombre",
@@ -186,7 +186,7 @@ class ContactsResourceTest extends OAuthTestCase
                     "is_piggy_defined" => true,
                     "options" => []
                 ]
-            ]]
+            ]
         ]);
 
         $data = $this->mockedClient->contacts->findOrCreate("new@piggy.nl");

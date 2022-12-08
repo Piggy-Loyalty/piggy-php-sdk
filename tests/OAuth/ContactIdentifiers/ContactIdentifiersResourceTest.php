@@ -55,7 +55,8 @@ class ContactIdentifiersResourceTest extends OAuthTestCase
         $this->addExpectedResponse([
             "value" => "hash123",
             "name" => 'Piggy',
-            "active" => true
+            "active" => true,
+            "contact" => null,
         ]);
 
         $contactIdentifier = $this->mockedClient->contactIdentifiers->create("hash123");

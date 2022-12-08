@@ -1,9 +1,9 @@
 <?php
 
-namespace Piggy\Api\Resources\OAuth\Contacts;
+namespace Piggy\Api\Resources\OAuth\ContactAttributes;
 
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\Mappers\Contacts\AttributesMapper;
+use Piggy\Api\Mappers\ContactAttributes\ContactAttributesMapper;
 use Piggy\Api\Resources\BaseResource;
 
 /**
@@ -30,7 +30,7 @@ class ContactAttributesResource extends BaseResource
             "limit" => $limit,
         ]);
 
-        $mapper = new AttributesMapper();
+        $mapper = new ContactAttributesMapper();
 
         return $mapper->map($response->getData());
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Piggy\Api\Models\Contacts;
+namespace Piggy\Api\Models\ContactAttributes;
 
 /**
  * Class Options
@@ -14,7 +14,7 @@ class Options
     protected $label;
 
     /**
-     * @var int|null
+     * @var string|null
      */
     protected $value;
 
@@ -27,7 +27,7 @@ class Options
     /**
      * @return string|null
      */
-    public function getLabel(): ?string
+    public function getLabel(): string
     {
         return $this->label;
     }
@@ -36,28 +36,27 @@ class Options
      * @param string|null $label
      * @return void
      */
-    public function setLabel(?string $label): void
+    public function setLabel(string $label): void
     {
         $this->label = $label;
     }
 
     /**
-     * @return int|null
+     * @return string|null
      */
-    public function getValue(): ?int
+    public function getValue(): string
     {
         return $this->value;
     }
 
     /**
-     * @param int|null $value
+     * @param string|null $value
      * @return void
      */
-    public function setValue(?int $value): void
+    public function setValue(string $value): void
     {
         $this->value = $value;
     }
 
-    //todo ask stefan if we really need the setters for our sdk
 
 }
