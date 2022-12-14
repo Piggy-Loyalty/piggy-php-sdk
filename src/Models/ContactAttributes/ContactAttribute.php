@@ -15,7 +15,7 @@ class ContactAttribute
     public $name;
 
     /**
-     * @var string|null
+     * @var string
      */
     public $label;
 
@@ -27,7 +27,7 @@ class ContactAttribute
     /**
      * @var string
      */
-    public $type;
+    public $dataType;
 
     /**
      * @var boolean|null
@@ -40,7 +40,7 @@ class ContactAttribute
     public $isHardReadOnly;
 
     /**
-     * @var boolean
+     * @var boolean|null
      */
     public $isPiggyDefined;
 
@@ -49,12 +49,12 @@ class ContactAttribute
      */
     public $options;
 
-    public function __construct(string $name, ?string $label, ?string $description, string $type, bool $isSoftReadOnly, bool $isHardReadOnly, bool $isPiggyDefined, ?Options $options)
+    public function __construct(string $name, string $label, ?string $description, string $dataType, ?bool $isSoftReadOnly, ?bool $isHardReadOnly, ?bool $isPiggyDefined, ?Options $options)
     {
         $this->name = $name;
         $this->label = $label;
         $this->description = $description;
-        $this->type = $type;
+        $this->dataType = $dataType;
         $this->isSoftReadOnly = $isSoftReadOnly;
         $this->isHardReadOnly = $isHardReadOnly;
         $this->isPiggyDefined = $isPiggyDefined;
@@ -96,9 +96,9 @@ class ContactAttribute
     }
 
     /**
-     * @return string
+     * @return string | null
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -117,7 +117,7 @@ class ContactAttribute
      */
     public function getType(): string
     {
-        return $this->type;
+        return $this->dataType;
     }
 
     /**
@@ -130,9 +130,9 @@ class ContactAttribute
     }
 
     /**
-     * @return bool
+     * @return bool | null
      */
-    public function getIsSoftReadOnly(): bool
+    public function getIsSoftReadOnly(): ?bool
     {
         return $this->isSoftReadOnly;
     }
@@ -147,9 +147,9 @@ class ContactAttribute
     }
 
     /**
-     * @return bool
+     * @return bool | null
      */
-    public function getIsHardReadOnly(): bool
+    public function getIsHardReadOnly(): ?bool
     {
         return $this->isHardReadOnly;
     }
@@ -164,9 +164,9 @@ class ContactAttribute
     }
 
     /**
-     * @return bool
+     * @return bool | null
      */
-    public function getIsPiggyDefined(): bool
+    public function getIsPiggyDefined(): ?bool
     {
         return $this->isPiggyDefined;
     }
@@ -180,7 +180,7 @@ class ContactAttribute
     }
 
     /**
-     * @return Options
+     * @return Options | null
      */
     public function getOptions(): ?Options
     {
@@ -188,13 +188,10 @@ class ContactAttribute
     }
 
     /**
-     * @param Options|null $options
+     * @param Options | null $options
      */
     public function setOptions(?Options $options): void
     {
         $this->options = $options;
     }
-
-
-
 }
