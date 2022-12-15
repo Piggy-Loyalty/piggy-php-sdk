@@ -21,8 +21,6 @@ class ContactAttributeMapper
             $options = $optionsMapper->map($contactAttribute->options);
         }
 
-
-//        $description = property_exists($contactAttribute, "description") && $contactAttribute->description;
         $isSoftReadOnly = property_exists($contactAttribute, 'is_soft_read_only') && $contactAttribute->is_soft_read_only;
         $isHardReadOnly = property_exists($contactAttribute, 'is_hard_read_only') && $contactAttribute->is_hard_read_only;
         $isPiggyDefined = property_exists($contactAttribute, 'is_piggy_defined') && $contactAttribute->is_piggy_defined;

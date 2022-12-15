@@ -5,10 +5,10 @@ namespace Piggy\Api\Enum;
 use MabeEnum\Enum;
 
 /**
- * Class GiftcardType
+ * Class ContactAttributeDataTypes
  * @package Piggy\Api\Enum
  */
-abstract class CustomAttributeDataTypes extends Enum
+class ContactAttributeDataTypes extends Enum  # todo or asbtract?
 {
     const URL = "url";
     const TEXT = "text";

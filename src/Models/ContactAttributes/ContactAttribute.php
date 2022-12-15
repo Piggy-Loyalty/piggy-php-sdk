@@ -96,7 +96,7 @@ class ContactAttribute
     }
 
     /**
-     * @return string | null
+     * @return string|null
      */
     public function getDescription(): ?string
     {
@@ -178,7 +178,6 @@ class ContactAttribute
     {
         $this->isPiggyDefined = $isPiggyDefined;
     }
-
     /**
      * @return Options | null
      */

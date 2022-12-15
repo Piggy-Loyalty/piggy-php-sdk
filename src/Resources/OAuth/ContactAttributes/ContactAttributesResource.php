@@ -2,7 +2,7 @@
 
 namespace Piggy\Api\Resources\OAuth\ContactAttributes;
 
-use Piggy\Api\Enum\CustomAttributeDataTypes;
+use Piggy\Api\Enum\ContactAttributeDataTypes;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\ContactAttributes\ContactAttributeMapper;
 use Piggy\Api\Mappers\ContactAttributes\ContactAttributesMapper;
@@ -27,7 +27,7 @@ class ContactAttributesResource extends BaseResource
      * @return array
      * @throws PiggyRequestException
      */
-    public function list(int $page = 2, int $limit = 30): array
+    public function list(int $page = 1, int $limit = 30): array
     {
         $response = $this->client->get($this->resourceUri, [
             "page" => $page,
@@ -40,18 +40,19 @@ class ContactAttributesResource extends BaseResource
     }
 
     /**
-     * @param string $label
      * @param string $name
+     * @param string $label
      * @param string $dataType
-     * @param string | null $description
-     * @param array | null $options
-     * @return void
+     * @param null|string $description
+     * @param array|null $options
+     * @return ContactAttribute
      * @throws PiggyRequestException
      */
-    public function create(string $label, string $name, string $dataType, ?string $description, ?array $options): ContactAttribute
-    {
+    public function create(string $name, string $label, string $dataType, ?string $description = null, ?array $options = null): ContactAttribute
+
+        {
         // Check datatype exists
-        if (!CustomAttributeDataTypes::has($dataType)) {
+        if (!ContactAttributeDataTypes::has($dataType)) {
             throw new \Exception("DataType {$dataType} invalid");
         }
 

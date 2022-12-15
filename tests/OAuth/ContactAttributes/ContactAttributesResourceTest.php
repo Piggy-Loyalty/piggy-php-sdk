@@ -32,7 +32,7 @@ class ContactAttributesResourceTest extends OAuthTestCase
                 "is_soft_read_only" => true,
                 "is_hard_read_only" => true,
                 "is_piggy_defined" => false,
-                "options" => ["label" => "some_option_label", "value" => "1"] # todo vraag aan stefan of het boeit als mijn test ook een int als correct beschouwd wanneer die zowel hier als beneden wordt doorgevoerd 
+                "options" => ["label" => "some_option_label", "value" => "1"] # todo vraag aan stefan of het boeit als mijn test ook een int als correct beschouwd wanneer die zowel hier als beneden wordt doorgevoerd
             ],
         ]);
 
@@ -63,22 +63,81 @@ class ContactAttributesResourceTest extends OAuthTestCase
      */
     public function it_creates_a_contact_attribute()
     {
-        $this->addExpectedResponse([
-            "name" => "some_name",
-            "label" => "some_label",
-            "data_type" => "url",
+        $this->addExpectedResponse(
+            [
+                "name" => "some_name",
+                "label" => "some_label",
+                "data_type" => "url",
+                "description" => null,
+                "options" => null
+            ],
+        );
 
-            "description" => "some_description",
-            "options" => []
-        ]);
-
-        $contactAttribute = $this->mockedClient->contactAttributes->create('something', '22', 'url');
+        $contactAttribute = $this->mockedClient->contactAttributes->create('some_name', 'some_label', 'url');
 
         $this->assertEquals("some_name", $contactAttribute->getName());
         $this->assertEquals("some_label", $contactAttribute->getLabel());
         $this->assertEquals("url", $contactAttribute->getType());
+        $this->assertEquals(null, $contactAttribute->getDescription());
+        $this->assertEquals(null, $contactAttribute->getOptions());
+
+        $this->addExpectedResponse(
+            [
+                "name" => "some_phone_number",
+                "label" => "some_label_for_phone_number",
+                "data_type" => "phone",
+                "description" => 'some_description',
+                "options" => null
+            ]
+        );
+
+        $contactAttribute = $this->mockedClient->contactAttributes->create('some_phone_number', 'some_label_for_phone_number', 'phone');
+
+        $this->assertEquals("some_phone_number", $contactAttribute->getName());
+        $this->assertEquals("some_label_for_phone_number", $contactAttribute->getLabel());
+        $this->assertEquals("phone", $contactAttribute->getType());
         $this->assertEquals("some_description", $contactAttribute->getDescription());
         $this->assertEquals(null, $contactAttribute->getOptions());
 
+
+        $this->addExpectedResponse(
+            [
+                "name" => "henkie_name",
+                "label" => "henkie_label",
+                "data_type" => "license_plate",
+                "description" => 'henkie_description',
+                "options" => null
+            ]
+        );
+
+        $contactAttribute = $this->mockedClient->contactAttributes->create('henkie_name', 'henkie_label', 'license_plate');
+
+        $this->assertEquals("henkie_name", $contactAttribute->getName());
+        $this->assertEquals("henkie_label", $contactAttribute->getLabel());
+        $this->assertEquals("license_plate", $contactAttribute->getType());
+        $this->assertEquals("henkie_description", $contactAttribute->getDescription());
+        $this->assertEquals(null, $contactAttribute->getOptions());
+
+
+        $this->addExpectedResponse(
+            [
+                "name" => "pietje_name",
+                "label" => "pietje_label",
+                "data_type" => "multi_select",
+                "description" => 'pietje_description',
+                "options" => ["label" => "pietje_option_label", "value" => "1"] # todo vraag aan stefan of het boeit als mijn test ook een int als correct beschouwd wanneer die zowel hier als beneden wordt doorgevoerd
+            ]
+        );
+
+        $contactAttribute = $this->mockedClient->contactAttributes->create('pietje_name', 'pietje_label', 'license_plate');
+
+        $this->assertEquals("pietje_name", $contactAttribute->getName());
+        $this->assertEquals("pietje_label", $contactAttribute->getLabel());
+        $this->assertEquals("multi_select", $contactAttribute->getType());
+        $this->assertEquals("pietje_description", $contactAttribute->getDescription());
+        $this->assertEquals('pietje_option_label', $contactAttribute->getOptions()->getLabel());
+        $this->assertEquals(1, $contactAttribute->getOptions()->getValue());
+
     }
+
 }
