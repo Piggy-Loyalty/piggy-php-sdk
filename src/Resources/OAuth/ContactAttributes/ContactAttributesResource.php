@@ -47,7 +47,7 @@ class ContactAttributesResource extends BaseResource
      * @return ContactAttribute
      * @throws PiggyRequestException
      */
-    public function create(string $name, string $label, string $dataType, ?string $description = null, ?array $options = null): ContactAttribute
+    public function create(string $name, string $label, string $dataType, ?string $description = "", ?array $options = null): ContactAttribute
 
         {
         // Check datatype exists
@@ -61,7 +61,7 @@ class ContactAttributesResource extends BaseResource
             "data_type" => $dataType
         ];
 
-        if ($description != null) {
+        if ($description != "") {
             $contactAttributes['description'] = $description;
         }
 

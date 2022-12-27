@@ -17,50 +17,52 @@ class RewardAttributesResourceTest extends OAuthTestCase
             [
                 "name" => "eennaam",
                 "label" => "testNaam",
+                "type" => "color",
                 "description" => "someOmschrijving",
-                "type" => "asdf",
-                "placeholder" => "somePlaceholder",
                 "is_soft_read_only" => false,
                 "is_hard_read_only" => false,
                 "is_piggy_defined" => false,
-                "options" => []
+                "options" => null,
+                "placeholder" => "somePlaceholder",
+
             ],
-//            [
-//                "name"=> "eennaam",
-//                "label"=> "testNaam ",
-//                "description"=> "someOmschrijving",
-//                "type"=> "boolean",
-//                "field_type"=> "default",
-//                "placeholder"=> "somePlaceholder",
-//                "is_soft_read_only"=> false,
-//                "is_hard_read_only"=> false,
-//                "is_piggy_defined"=> false,
-//                "options"=> ["label" => "some_option_label", "value" => "1"]
-//            ],
+            [
+                "name" => "another_first_name",
+                "label" => "another_label",
+                "type" => "multi_select",
+                "description" => "another_description",
+                "is_soft_read_only" => true,
+                "is_hard_read_only" => true,
+                "is_piggy_defined" => false,
+                "options" => ["label" => "some_option_label", "value" => "2"],
+                "placeholder" => "someOtherPlaceholder",
+
+            ],
         ]);
 
         $rewardAttributes = $this->mockedClient->rewardAttributes->list();
-        var_dump($rewardAttributes);
-        die;
+
         $this->assertEquals("eennaam", $rewardAttributes[0]->getName());
         $this->assertEquals("testNaam", $rewardAttributes[0]->getLabel());
+        $this->assertEquals("color", $rewardAttributes[0]->getType());
         $this->assertEquals("someOmschrijving", $rewardAttributes[0]->getDescription());
-        $this->assertEquals("asdf", $rewardAttributes[0]->getType());
-        $this->assertEquals('somePlaceholder', $rewardAttributes[0]->getPlaceholder());
         $this->assertEquals(false, $rewardAttributes[0]->getIsSoftReadOnly());
         $this->assertEquals(false, $rewardAttributes[0]->getIsHardReadOnly());
         $this->assertEquals(false, $rewardAttributes[0]->getIsPiggyDefined());
-        $this->assertEquals(null, $rewardAttributes[1]->getOptions());
+        $this->assertEquals(null, $rewardAttributes[0]->getOptions());
+        $this->assertEquals('somePlaceholder', $rewardAttributes[0]->getPlaceholder());
 
-//        $this->assertEquals("another_first_name", $rewardAttributes[1]->getName());
-//        $this->assertEquals("another_label", $rewardAttributes[1]->getLabel());
-//        $this->assertEquals("another_description", $rewardAttributes[1]->getDescription());
-//        $this->assertEquals("multi_select", $rewardAttributes[1]->getType());
-//        $this->assertEquals(true, $rewardAttributes[1]->getIsSoftReadOnly());
-//        $this->assertEquals(true, $rewardAttributes[1]->getIsHardReadOnly());
-//        $this->assertEquals(false, $rewardAttributes[1]->getIsPiggyDefined());
-//        $this->assertEquals('some_option_label', $rewardAttributes[1]->getOptions()->getLabel());
-//        $this->assertEquals("1", $rewardAttributes[1]->getOptions()->getValue());
+
+        $this->assertEquals("another_first_name", $rewardAttributes[1]->getName());
+        $this->assertEquals("another_label", $rewardAttributes[1]->getLabel());
+        $this->assertEquals("multi_select", $rewardAttributes[1]->getType());
+        $this->assertEquals("another_description", $rewardAttributes[1]->getDescription());
+        $this->assertEquals(true, $rewardAttributes[1]->getIsSoftReadOnly());
+        $this->assertEquals(true, $rewardAttributes[1]->getIsHardReadOnly());
+        $this->assertEquals(false, $rewardAttributes[1]->getIsPiggyDefined());
+        $this->assertEquals('some_option_label', $rewardAttributes[1]->getOptions()->getLabel());
+        $this->assertEquals("2", $rewardAttributes[1]->getOptions()->getValue());
+        $this->assertEquals('someOtherPlaceholder', $rewardAttributes[1]->getPlaceholder());
 
     }
 
@@ -74,8 +76,6 @@ class RewardAttributesResourceTest extends OAuthTestCase
                 "name" => "some_name",
                 "label" => "some_label",
                 "data_type" => "url",
-                "description" => null,
-                "options" => null
             ]
         );
 

@@ -24,7 +24,6 @@ class RewardAttributeMapper
         $isSoftReadOnly = property_exists($rewardAttribute, 'is_soft_read_only') && $rewardAttribute->is_soft_read_only;
         $isHardReadOnly = property_exists($rewardAttribute, 'is_hard_read_only') && $rewardAttribute->is_hard_read_only;
         $isPiggyDefined = property_exists($rewardAttribute, 'is_piggy_defined') && $rewardAttribute->is_piggy_defined;
-        $placeholder = property_exists($rewardAttribute, 'placeholder') && $rewardAttribute->placeholder;
 
         return new RewardAttribute(
             $rewardAttribute->name,
@@ -35,7 +34,8 @@ class RewardAttributeMapper
             $isHardReadOnly,
             $isPiggyDefined,
             $options,
-            $placeholder
+            $rewardAttribute->placeholder
+
         );
     }
 

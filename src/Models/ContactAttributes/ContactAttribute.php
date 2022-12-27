@@ -2,8 +2,6 @@
 
 namespace Piggy\Api\Models\ContactAttributes;
 
-use Piggy\Api\Models\Loyalty\CreditBalance;
-
 /**
  * Class ContactAttribute
  * @package Piggy\Api\Models
@@ -20,14 +18,14 @@ class ContactAttribute
     public $label;
 
     /**
-     * @var string|null
-     */
-    public $description;
-
-    /**
      * @var string
      */
     public $dataType;
+
+    /**
+     * @var string|null
+     */
+    public $description;
 
     /**
      * @var boolean|null
@@ -49,12 +47,12 @@ class ContactAttribute
      */
     public $options;
 
-    public function __construct(string $name, string $label, string $dataType, ?string $description, ?bool $isSoftReadOnly, ?bool $isHardReadOnly, ?bool $isPiggyDefined, ?Options $options)
+    public function __construct(string $name, string $label, string $dataType, ?string $description = null, ?bool $isSoftReadOnly = null, ?bool $isHardReadOnly = null, ?bool $isPiggyDefined = null, ?Options $options = null)
     {
         $this->name = $name;
         $this->label = $label;
-        $this->description = $description;
         $this->dataType = $dataType;
+        $this->description = $description;
         $this->isSoftReadOnly = $isSoftReadOnly;
         $this->isHardReadOnly = $isHardReadOnly;
         $this->isPiggyDefined = $isPiggyDefined;
@@ -96,23 +94,6 @@ class ContactAttribute
     }
 
     /**
-     * @return string|null
-     */
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    /**
-     * @param string $description
-     * @return void
-     */
-    public function setDescription(string $description): void
-    {
-        $this->description = $description;
-    }
-
-    /**
      * @return string
      */
     public function getType(): string
@@ -127,6 +108,23 @@ class ContactAttribute
     public function setType(string $type): void
     {
         $this->type = $type;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     * @return void
+     */
+    public function setDescription(string $description): void
+    {
+        $this->description = $description;
     }
 
     /**

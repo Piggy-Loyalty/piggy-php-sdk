@@ -17,8 +17,8 @@ class ContactAttributesResourceTest extends OAuthTestCase
             [
                 "name" => "first_name",
                 "label" => "some_label",
-                "description" => null,
                 "data_type" => "some_type",
+                "description" => null,
                 "is_soft_read_only" => false,
                 "is_hard_read_only" => false,
                 "is_piggy_defined" => true,
@@ -27,34 +27,38 @@ class ContactAttributesResourceTest extends OAuthTestCase
             [
                 "name" => "another_first_name",
                 "label" => "another_label",
-                "description" => "another_description",
                 "data_type" => "multi_select",
+                "description" => "another_description",
                 "is_soft_read_only" => true,
                 "is_hard_read_only" => true,
                 "is_piggy_defined" => false,
-                "options" => ["label" => "some_option_label", "value" => "1"]
+                "options" => ["label" => "some_option_label", "value" => "3"]
             ],
         ]);
 
         $contactAttributes = $this->mockedClient->contactAttributes->list();
 
+//        var_dump($contactAttributes);
+//        die();
+
         $this->assertEquals("first_name", $contactAttributes[0]->getName());
         $this->assertEquals("some_label", $contactAttributes[0]->getLabel());
-        $this->assertEquals(null, $contactAttributes[0]->getDescription());
         $this->assertEquals("some_type", $contactAttributes[0]->getType());
+        $this->assertEquals(null, $contactAttributes[0]->getDescription());
         $this->assertEquals(false, $contactAttributes[0]->getIsSoftReadOnly());
         $this->assertEquals(false, $contactAttributes[0]->getIsHardReadOnly());
         $this->assertEquals(true, $contactAttributes[0]->getIsPiggyDefined());
 
         $this->assertEquals("another_first_name", $contactAttributes[1]->getName());
         $this->assertEquals("another_label", $contactAttributes[1]->getLabel());
-        $this->assertEquals("another_description", $contactAttributes[1]->getDescription());
         $this->assertEquals("multi_select", $contactAttributes[1]->getType());
         $this->assertEquals(true, $contactAttributes[1]->getIsSoftReadOnly());
         $this->assertEquals(true, $contactAttributes[1]->getIsHardReadOnly());
         $this->assertEquals(false, $contactAttributes[1]->getIsPiggyDefined());
         $this->assertEquals('some_option_label', $contactAttributes[1]->getOptions()->getLabel());
-        $this->assertEquals("1", $contactAttributes[1]->getOptions()->getValue());
+        $this->assertEquals("another_description", $contactAttributes[1]->getDescription());
+
+        $this->assertEquals("3", $contactAttributes[1]->getOptions()->getValue());
 
     }
 
@@ -91,7 +95,7 @@ class ContactAttributesResourceTest extends OAuthTestCase
             ]
         );
 
-        $contactAttribute = $this->mockedClient->contactAttributes->create('some_phone_number', 'some_label_for_phone_number', 'phone');
+        $contactAttribute = $this->mockedClient->contactAttributes->create('some_phone_number', 'some_label_for_phone_number', 'phone' );
 
         $this->assertEquals("some_phone_number", $contactAttribute->getName());
         $this->assertEquals("some_label_for_phone_number", $contactAttribute->getLabel());
