@@ -35,7 +35,6 @@ class ContactAttributeMapper
             $isHardReadOnly,
             $isPiggyDefined,
             $options
-
         );
     }
 

@@ -49,7 +49,7 @@ class RewardAttributesResource extends BaseResource
      * @return RewardAttribute
      * @throws PiggyRequestException
      */
-    public function create(string $name, string $label, string $dataType,?string $description = "", ?array $options = null, ?string $placeholder = null ): RewardAttribute
+    public function create(string $name, string $label, string $dataType, ?string $description = "", ?array $options = null, ?string $placeholder = null ): RewardAttribute
 
     {
         // Check datatype exists
@@ -60,10 +60,11 @@ class RewardAttributesResource extends BaseResource
         $rewardAttributes = [
             "name" => $name,
             "label" => $label,
-            "type" => $dataType
+            "dataType" => $dataType
         ];
 
-        if ($description != null) {
+
+        if ($description != "") {
             $rewardAttributes['description'] = $description;
         }
 

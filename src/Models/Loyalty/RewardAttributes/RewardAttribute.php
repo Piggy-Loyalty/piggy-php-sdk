@@ -56,8 +56,8 @@ class RewardAttribute
     {
         $this->name = $name;
         $this->label = $label;
-        $this->description = $description;
         $this->dataType = $dataType;
+        $this->description = $description;
         $this->isSoftReadOnly = $isSoftReadOnly;
         $this->isHardReadOnly = $isHardReadOnly;
         $this->isPiggyDefined = $isPiggyDefined;
@@ -125,12 +125,12 @@ class RewardAttribute
     }
 
     /**
-     * @param string $type
+     * @param string $dataType
      * @return void
      */
-    public function setType(string $type): void
+    public function setType(string $dataType): void
     {
-        $this->type = $type;
+        $this->dataType = $dataType;
     }
 
     /**

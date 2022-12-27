@@ -102,12 +102,12 @@ class ContactAttribute
     }
 
     /**
-     * @param string $type
+     * @param string $dataType
      * @return void
      */
-    public function setType(string $type): void
+    public function setType(string $dataType): void
     {
-        $this->type = $type;
+        $this->dataType = $dataType;
     }
 
     /**

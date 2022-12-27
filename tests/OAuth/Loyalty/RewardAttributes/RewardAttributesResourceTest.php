@@ -17,7 +17,7 @@ class RewardAttributesResourceTest extends OAuthTestCase
             [
                 "name" => "eennaam",
                 "label" => "testNaam",
-                "type" => "color",
+                "dataType" => "color",
                 "description" => "someOmschrijving",
                 "is_soft_read_only" => false,
                 "is_hard_read_only" => false,
@@ -29,7 +29,7 @@ class RewardAttributesResourceTest extends OAuthTestCase
             [
                 "name" => "another_first_name",
                 "label" => "another_label",
-                "type" => "multi_select",
+                "dataType" => "multi_select",
                 "description" => "another_description",
                 "is_soft_read_only" => true,
                 "is_hard_read_only" => true,
@@ -75,7 +75,7 @@ class RewardAttributesResourceTest extends OAuthTestCase
             [
                 "name" => "some_name",
                 "label" => "some_label",
-                "data_type" => "url",
+                "dataType" => "url",
             ]
         );
 
@@ -84,14 +84,28 @@ class RewardAttributesResourceTest extends OAuthTestCase
         $this->assertEquals("some_name", $rewardAttribute->getName());
         $this->assertEquals("some_label", $rewardAttribute->getLabel());
         $this->assertEquals("url", $rewardAttribute->getType());
-        $this->assertEquals(null, $rewardAttribute->getDescription());
-        $this->assertEquals(null, $rewardAttribute->getOptions());
+
+        $this->addExpectedResponse(
+            [
+                "name" => "some_name",
+                "label" => "some_label",
+                "dataType" => "url",
+                "description" => "henkie"
+            ]
+        );
+
+        $rewardAttribute = $this->mockedClient->rewardAttributes->create('some_name', 'some_label', 'url', 'henkie');
+
+        $this->assertEquals("some_name", $rewardAttribute->getName());
+        $this->assertEquals("some_label", $rewardAttribute->getLabel());
+        $this->assertEquals("url", $rewardAttribute->getType());
+        $this->assertEquals('henkie', $rewardAttribute->getDescription());
 
         $this->addExpectedResponse(
             [
                 "name" => "some_phone_number",
                 "label" => "some_label_for_phone_number",
-                "data_type" => "phone",
+                "dataType" => "phone",
                 "description" => 'some_description',
                 "options" => null
             ]
@@ -105,12 +119,11 @@ class RewardAttributesResourceTest extends OAuthTestCase
         $this->assertEquals("some_description", $rewardAttribute->getDescription());
         $this->assertEquals(null, $rewardAttribute->getOptions());
 
-
         $this->addExpectedResponse(
             [
                 "name" => "henkie_name",
                 "label" => "henkie_label",
-                "data_type" => "license_plate",
+                "dataType" => "license_plate",
                 "description" => 'henkie_description',
                 "options" => null
             ]
@@ -129,7 +142,7 @@ class RewardAttributesResourceTest extends OAuthTestCase
             [
                 "name" => "pietje_name",
                 "label" => "pietje_label",
-                "data_type" => "multi_select",
+                "dataType" => "multi_select",
                 "description" => 'pietje_description',
                 "options" => ["label" => "pietje_option_label", "value" => "1"]
             ]
@@ -144,7 +157,7 @@ class RewardAttributesResourceTest extends OAuthTestCase
 
         $this->assertEquals('pietje_option_label', $rewardAttribute->getOptions()->getLabel());
         $this->assertEquals(1, $rewardAttribute->getOptions()->getValue());
-
+//
     }
 
 }
