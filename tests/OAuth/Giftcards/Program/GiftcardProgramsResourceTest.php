@@ -36,5 +36,3 @@ class GiftcardProgramsResourceTest extends OAuthTestCase
         $this->assertEquals("321321", $giftcardPrograms[1]->getUuid());
     }
 }
-
-

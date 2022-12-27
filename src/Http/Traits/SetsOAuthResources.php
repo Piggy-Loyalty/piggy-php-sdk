@@ -22,6 +22,7 @@ use Piggy\Api\Resources\OAuth\PrepaidTransactionResource;
 use Piggy\Api\Resources\OAuth\Shops\ShopsResource;
 use Piggy\Api\Resources\OAuth\SubscriptionTypesResource;
 use Piggy\Api\Resources\OAuth\Units\UnitsResource;
+use Piggy\Api\Resources\OAuth\Loyalty\RewardAttributes\RewardAttributesResource;
 
 /**
  * Trait SetsOAuthResources
@@ -116,6 +117,9 @@ trait SetsOAuthResources
     public $contactAttributes;
 
     /**
+     * @var RewardAttributesResource */
+    public $rewardAttributes;
+    /**
      * @param BaseClient $client
      *
      * @return void
@@ -143,6 +147,7 @@ trait SetsOAuthResources
         $this->units = new UnitsResource($client);
         $this->loyaltyProgram = new LoyaltyProgramResource($client);
         $this->loyaltyTokens = new LoyaltyTokensResource($client);
+        $this->rewardAttributes = new RewardAttributesResource($client);
 
     }
 }

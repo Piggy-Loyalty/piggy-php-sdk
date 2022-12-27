@@ -1,14 +1,12 @@
 <?php
 
-namespace Piggy\Api\Models\ContactAttributes;
-
-use Piggy\Api\Models\Loyalty\CreditBalance;
+namespace Piggy\Api\Models\Loyalty\RewardAttributes;
 
 /**
- * Class ContactAttribute
+ * Class RewardAttribute
  * @package Piggy\Api\Models
  */
-class ContactAttribute
+class RewardAttribute
 {
 
     /** @var string */
@@ -20,14 +18,14 @@ class ContactAttribute
     public $label;
 
     /**
-     * @var string|null
-     */
-    public $description;
-
-    /**
      * @var string
      */
     public $dataType;
+
+    /**
+     * @var string|null
+     */
+    public $description;
 
     /**
      * @var boolean|null
@@ -49,7 +47,12 @@ class ContactAttribute
      */
     public $options;
 
-    public function __construct(string $name, string $label, string $dataType, ?string $description, ?bool $isSoftReadOnly, ?bool $isHardReadOnly, ?bool $isPiggyDefined, ?Options $options)
+    /**
+     * @var string|null
+     */
+    public $placeholder;
+
+    public function __construct(string $name, string $label, string $dataType, ?string $description, ?bool $isSoftReadOnly, ?bool $isHardReadOnly, ?bool $isPiggyDefined, ?Options $options, ?string $placeholder)
     {
         $this->name = $name;
         $this->label = $label;
@@ -59,6 +62,7 @@ class ContactAttribute
         $this->isHardReadOnly = $isHardReadOnly;
         $this->isPiggyDefined = $isPiggyDefined;
         $this->options = $options;
+        $this->placeholder = $placeholder;
     }
 
     /**
@@ -192,5 +196,22 @@ class ContactAttribute
     public function setOptions(?Options $options): void
     {
         $this->options = $options;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPlaceholder(): ?string
+    {
+        return $this->placeholder;
+    }
+
+    /**
+     * @param string|null $placeholder
+     * @return void
+     */
+    public function setPlaceholder(?string $placeholder): void
+    {
+        $this->placeholder = $placeholder;
     }
 }

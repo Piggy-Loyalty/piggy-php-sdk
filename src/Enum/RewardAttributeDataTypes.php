@@ -5,10 +5,10 @@ namespace Piggy\Api\Enum;
 use MabeEnum\Enum;
 
 /**
- * Class ContactAttributeDataTypes
+ * Class rewardAttributeDataTypes
  * @package Piggy\Api\Enum
  */
-class ContactAttributeDataTypes extends Enum  # todo or asbtract?
+class RewardAttributeDataTypes extends Enum  # todo or asbtract?
 {
 
     const URL = "url";

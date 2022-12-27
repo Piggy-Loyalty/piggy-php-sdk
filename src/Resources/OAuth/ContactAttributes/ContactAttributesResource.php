@@ -7,7 +7,6 @@ use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\ContactAttributes\ContactAttributeMapper;
 use Piggy\Api\Mappers\ContactAttributes\ContactAttributesMapper;
 use Piggy\Api\Models\ContactAttributes\ContactAttribute;
-use Piggy\Api\Models\ContactAttributes\Options;
 use Piggy\Api\Resources\BaseResource;
 
 /**
@@ -36,7 +35,7 @@ class ContactAttributesResource extends BaseResource
 
         $mapper = new ContactAttributesMapper();
 
-        return $mapper->map($response->getData());
+        return $mapper->map((array)$response->getData());
     }
 
     /**

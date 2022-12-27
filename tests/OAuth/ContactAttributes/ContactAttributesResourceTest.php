@@ -32,7 +32,7 @@ class ContactAttributesResourceTest extends OAuthTestCase
                 "is_soft_read_only" => true,
                 "is_hard_read_only" => true,
                 "is_piggy_defined" => false,
-                "options" => ["label" => "some_option_label", "value" => "1"] # todo vraag aan stefan of het boeit als mijn test ook een int als correct beschouwd wanneer die zowel hier als beneden wordt doorgevoerd
+                "options" => ["label" => "some_option_label", "value" => "1"]
             ],
         ]);
 
@@ -70,7 +70,7 @@ class ContactAttributesResourceTest extends OAuthTestCase
                 "data_type" => "url",
                 "description" => null,
                 "options" => null
-            ],
+            ]
         );
 
         $contactAttribute = $this->mockedClient->contactAttributes->create('some_name', 'some_label', 'url');
@@ -135,6 +135,7 @@ class ContactAttributesResourceTest extends OAuthTestCase
         $this->assertEquals("pietje_label", $contactAttribute->getLabel());
         $this->assertEquals("multi_select", $contactAttribute->getType());
         $this->assertEquals("pietje_description", $contactAttribute->getDescription());
+
         $this->assertEquals('pietje_option_label', $contactAttribute->getOptions()->getLabel());
         $this->assertEquals(1, $contactAttribute->getOptions()->getValue());
 
