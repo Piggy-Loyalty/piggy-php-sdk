@@ -157,7 +157,7 @@ class RewardAttributesResourceTest extends OAuthTestCase
 
         $this->assertEquals('pietje_option_label', $rewardAttribute->getOptions()->getLabel());
         $this->assertEquals(1, $rewardAttribute->getOptions()->getValue());
-//
+
     }
 
 }
