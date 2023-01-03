@@ -35,10 +35,11 @@ class CreditReceptionsResourceTest extends OAuthTestCase
             "unit" => [
                 "name" => 'bonkers',
                 "label" => "Bonkers"
-            ]
+            ],
+            'foo' => 'bar'
         ]);
 
-        $creditReception = $this->mockedClient->creditReceptions->create('123-312', '123-123', 10);
+        $creditReception = $this->mockedClient->creditReceptions->create('123-312', '123-123', 10, null, null, null, null, ['foo' => 'bar']);
 
         $this->assertEquals("credit_reception", $creditReception->getType());
         $this->assertEquals(101, $creditReception->getCredits());
@@ -50,6 +51,7 @@ class CreditReceptionsResourceTest extends OAuthTestCase
         $this->assertEquals(1011, $creditReception->getUnitValue());
         $this->assertEquals('bonkers', $creditReception->getUnit()->getName());
         $this->assertEquals("Bonkers", $creditReception->getUnit()->getLabel());
+        $this->assertEquals(['foo' => 'bar'], $creditReception->getAttributes());
     }
 
     /**
