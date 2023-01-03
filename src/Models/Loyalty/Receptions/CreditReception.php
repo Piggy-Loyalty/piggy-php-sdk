@@ -55,6 +55,9 @@ class CreditReception
     /** @var Unit */
     protected $unit;
 
+    /** @var array */
+    protected $attributes;
+
     /**
      * @param string $type
      * @param int $credits
@@ -66,7 +69,7 @@ class CreditReception
      * @param int|null $unitValue
      * @param Unit|null $unit
      */
-    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, ?int $unitValue = null, ?Unit $unit = null)
+    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, ?int $unitValue = null, ?Unit $unit = null, $attributes = [])
     {
         $this->type = $type;
         $this->credits = $credits;
@@ -77,6 +80,7 @@ class CreditReception
         $this->createdAt = $createdAt;
         $this->unitValue = $unitValue;
         $this->unit = $unit;
+        $this->attributes = $attributes;
     }
 
     /**
@@ -149,5 +153,13 @@ class CreditReception
     public function getUnit(): ?Unit
     {
         return $this->unit;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAttributes(): array
+    {
+        return $this->attributes;
     }
 }
