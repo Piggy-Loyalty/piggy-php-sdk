@@ -17,7 +17,7 @@ use Piggy\Api\Resources\OAuth\Loyalty\Receptions\CreditReceptionsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Receptions\LoyaltyTransactionsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Receptions\RewardReceptionsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Rewards\RewardsResource;
-use Piggy\Api\Resources\OAuth\Loyalty\Tokens\LoyaltyTokensResource;
+use Piggy\Api\Resources\OAuth\Loyalty\Tokens\LoyaltyTokenResource;
 use Piggy\Api\Resources\OAuth\PrepaidTransactionResource;
 use Piggy\Api\Resources\OAuth\Shops\ShopsResource;
 use Piggy\Api\Resources\OAuth\SubscriptionTypesResource;
@@ -119,6 +119,12 @@ trait SetsOAuthResources
     /**
      * @var RewardAttributesResource */
     public $rewardAttributes;
+
+    /**
+     * @var LoyaltyTokenResource */
+    public $loyaltyToken;
+
+
     /**
      * @param BaseClient $client
      *
@@ -146,8 +152,8 @@ trait SetsOAuthResources
         $this->automations = new AutomationsResource($client);
         $this->units = new UnitsResource($client);
         $this->loyaltyProgram = new LoyaltyProgramResource($client);
-        $this->loyaltyTokens = new LoyaltyTokensResource($client);
         $this->rewardAttributes = new RewardAttributesResource($client);
+        $this->loyaltyToken = new LoyaltyTokenResource($client);
 
     }
 }

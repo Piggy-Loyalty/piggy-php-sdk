@@ -38,9 +38,6 @@ class ContactAttributesResourceTest extends OAuthTestCase
 
         $contactAttributes = $this->mockedClient->contactAttributes->list();
 
-//        var_dump($contactAttributes);
-//        die();
-
         $this->assertEquals("first_name", $contactAttributes[0]->getName());
         $this->assertEquals("some_label", $contactAttributes[0]->getLabel());
         $this->assertEquals("some_type", $contactAttributes[0]->getType());

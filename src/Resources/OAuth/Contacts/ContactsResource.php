@@ -166,4 +166,6 @@ class ContactsResource extends BaseResource
 
         return $mapper->map($response->getData());
     }
+
+//    public function claimAnonymousContact()
 }

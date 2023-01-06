@@ -53,4 +53,5 @@ class GiftcardsResource extends BaseResource
 
         return $mapper->map($response->getData());
     }
+
 }

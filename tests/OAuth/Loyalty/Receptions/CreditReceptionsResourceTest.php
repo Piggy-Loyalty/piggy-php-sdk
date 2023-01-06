@@ -60,11 +60,11 @@ class CreditReceptionsResourceTest extends OAuthTestCase
     public function it_returns_a_calculation()
     {
         $this->addExpectedResponse([
-            "credits" => 100,
+            "credits" => 234,
         ]);
 
-        $points = $this->mockedClient->creditReceptions->calculate('1', 100);
+        $points = $this->mockedClient->creditReceptions->calculate('1', 15);
 
-        $this->assertEquals(100, $points);
+        $this->assertEquals(234, $points);
     }
 }

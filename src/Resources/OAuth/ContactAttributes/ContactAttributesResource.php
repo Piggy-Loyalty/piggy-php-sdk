@@ -21,17 +21,12 @@ class ContactAttributesResource extends BaseResource
     protected $resourceUri = "/api/v3/oauth/clients/contact-attributes";
 
     /**
-     * @param int $page
-     * @param int $limit
      * @return array
      * @throws PiggyRequestException
      */
-    public function list(int $page = 1, int $limit = 30): array
+    public function list(): array
     {
-        $response = $this->client->get($this->resourceUri, [
-            "page" => $page,
-            "limit" => $limit,
-        ]);
+        $response = $this->client->get($this->resourceUri);
 
         $mapper = new ContactAttributesMapper();
 

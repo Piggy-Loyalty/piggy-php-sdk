@@ -42,18 +42,18 @@ class ContactIdentifiersResource extends BaseResource
      * @return ContactIdentifier
      * @throws PiggyRequestException
      */
-    public function create(string $contactIdentifierValue, ?string $contactUuid = null, ?string $contactIdentifierName = ''): ContactIdentifier
+    public function create(string $contactIdentifierValue, ?string $contactIdentifierName = '', ?string $contactUuid = null): ContactIdentifier
     {
         $data = [
             "contact_identifier_value" => $contactIdentifierValue,
         ];
 
-        if ($contactUuid != null) {
-            $data['contact_uuid'] = $contactUuid;
-        }
-
         if ($contactIdentifierName != null) {
             $data['contact_identifier_name'] = $contactIdentifierName;
+        }
+
+        if ($contactUuid != null) {
+            $data['contact_uuid'] = $contactUuid;
         }
 
         $response = $this->client->post($this->resourceUri, $data);

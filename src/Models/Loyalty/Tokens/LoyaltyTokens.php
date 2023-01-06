@@ -1,6 +1,7 @@
 <?php
 
-namespace Piggy\Api\Models\Loyalty;
+namespace Piggy\Api\Models\Loyalty\Tokens;
+
 use App\Piggy\Models\Interfaces\ShopInterface;
 use DateTime;
 use Piggy\Api\Models\Shops\Shop;
@@ -10,7 +11,6 @@ use Piggy\Api\Models\Shops\Shop;
  * @package Piggy\Api\Models\Loyalty
  */
 class LoyaltyTokens
-
 {
     /**
      * @var string
@@ -92,7 +92,5 @@ class LoyaltyTokens
     {
         return $this->createdAt;
     }
-
-    //todo loyalty class is volgensmij oke nu, even resource file schrijven en dan mapper, of andersom ?
 
 }

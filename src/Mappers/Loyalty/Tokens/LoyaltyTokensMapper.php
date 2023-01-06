@@ -1,6 +1,6 @@
 <?php
 
-namespace Piggy\Api\Mappers\Loyalty;
+namespace Piggy\Api\Mappers\Loyalty\Tokens;
 
 use Piggy\Api\Mappers\BaseMapper;
 use Piggy\Api\Mappers\Shops\ShopMapper;
