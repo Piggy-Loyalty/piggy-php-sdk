@@ -21,27 +21,35 @@ class LoyaltyToken
     protected $uniqueId;
 
     /**
-     * @var int
+     * @var int | null
      */
     protected $credits;
 
     /**
      * @var string | null
      */
-    protected $url;
+    protected $unitName;
+
+    /**
+     * @var float | null
+     */
+    protected $unitValue;
+
 
     /**
      * @param Shop $shop
      * @param string $uniqueId
-     * @param int $credits
-     * @param string | null $url
+     * @param int | null $credits
+     * @param string | null $unitName
+     * @param float | null $unitValue
      */
-    public function __construct(Shop $shop, string $uniqueId, int $credits, string $url = null)
+    public function __construct(Shop $shop, string $uniqueId, ?int $credits = null, ?string $unitName = null, ?float $unitValue = null)
     {
         $this->shop = $shop;
         $this->uniqueId = $uniqueId;
-        $this->credit = $credits;
-        $this->url = $url;
+        $this->credits = $credits;
+        $this->unitName = $unitName;
+        $this->unitValue = $unitValue;
     }
 
     /**
@@ -68,13 +76,7 @@ class LoyaltyToken
         return $this->credits;
     }
 
-    /**
-     * @return string | null
-     */
-    public function getUrl(): string
-    {
-        return $this->url;
-    }
+
 
 
 }

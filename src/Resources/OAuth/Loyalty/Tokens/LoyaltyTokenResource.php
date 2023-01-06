@@ -18,19 +18,23 @@ class LoyaltyTokenResource extends BaseResource
     /**
      * @param string $shopId
      * @param string $uniqueId
-     * @param int $credits
+     * @param int | null $credits
+     * @param string | null $unitName
+     * @param float | null $unitValue
      * @return string
      * @throws PiggyRequestException
      */
-    public function create(string $shopId, string $uniqueId, int $credits): string
+    public function create(string $shopId, string $uniqueId, ?int $credits = null, ?string $unitName = null, ?float $unitValue = null): string
     {
         $inputValues = [
             "shop_id" => $shopId,
             "unique_id" => $uniqueId,
-            "credits" => $credits
+            "credits" => $credits,
+            "unit_name" => $unitName,
+            "unit_value" => $unitValue
         ];
 
-        $response = $this->client->post($this->resourceUri."/create", $inputValues);
+        $response = $this->client->post($this->resourceUri . "/create", $inputValues);
 
         return $response->getData()->data;
     }
@@ -48,13 +52,13 @@ class LoyaltyTokenResource extends BaseResource
     public function claim($version, string $shopId, string $uniqueId, string $timeStamp, string $hash, string $contactUuid): LoyaltyToken
     {
         $inputValues = [
-                "version" => "required|string",
-                "shop_id" => "required",
-                "unique_id" => "required",
-                "timestamp" => "required",
-                "hash" => "required|string",
-                "contact_uuid" => "required'"
-            ];
+            "version" => "required|string",
+            "shop_id" => "required",
+            "unique_id" => "required",
+            "timestamp" => "required",
+            "hash" => "required|string",
+            "contact_uuid" => "required'"
+        ];
 
         $response = $this->client->post($this->resourceUri, $inputValues);
 
