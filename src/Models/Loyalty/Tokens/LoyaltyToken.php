@@ -2,23 +2,22 @@
 
 namespace Piggy\Api\Models\Loyalty\Tokens;
 
+use DateTime;
+use Piggy\Api\Models\Contacts\Contact;
+use Piggy\Api\Models\Contacts\ContactIdentifier;
+use Piggy\Api\Models\Loyalty\Unit;
 use Piggy\Api\Models\Shops\Shop;
 
 /**
- * Class LoyaltyTokens
+ * Class LoyaltyToken
  * @package Piggy\Api\Models\Loyalty
  */
 class LoyaltyToken
 {
     /**
-     * @var Shop
-     */
-    protected $shop;
-
-    /**
      * @var string
      */
-    protected $uniqueId;
+    protected $type;
 
     /**
      * @var int | null
@@ -26,46 +25,72 @@ class LoyaltyToken
     protected $credits;
 
     /**
-     * @var string | null
+     * @var Contact
      */
-    protected $unitName;
+    private $contact;
 
     /**
-     * @var float | null
+     * @var Shop
+     */
+    private $shop;
+
+//    /**
+//     * @var ContactIdentifier | null
+//     */
+//    private $contactIdentifier;
+
+    /**
+     * @var DateTime
+     */
+    protected $createdAt;
+
+    /**
+     * @var string
+     */
+    protected $uuid;
+
+    /**
+     * @var float
      */
     protected $unitValue;
 
+    /**
+     * @var Unit
+     */
+    protected $unit;
 
     /**
+     * @param string $type
+     * @param int $credits
+     * @param Contact $contact
      * @param Shop $shop
-     * @param string $uniqueId
-     * @param int | null $credits
-     * @param string | null $unitName
+     * @param string $uuid
+     * @param DateTime $createdAt
      * @param float | null $unitValue
+//     * @param ContactIdentifier | null $contactIdentifier
+     * @param Unit| null $unit
      */
-    public function __construct(Shop $shop, string $uniqueId, ?int $credits = null, ?string $unitName = null, ?float $unitValue = null)
+    public function __construct(string $type, int $credits, Contact $contact, Shop $shop, string $uuid, DateTime $createdAt, ?Unit $unit = null, ?float $unitValue = null
+//                                ?ContactIdentifier $contactIdentifier = null
+    )
     {
-        $this->shop = $shop;
-        $this->uniqueId = $uniqueId;
+        $this->type = $type;
         $this->credits = $credits;
-        $this->unitName = $unitName;
+        $this->contact = $contact;
+        $this->shop = $shop;
+//        $this->contactIdentifier = $contactIdentifier;
+        $this->createdAt = $createdAt;
+        $this->uuid = $uuid;
         $this->unitValue = $unitValue;
-    }
-
-    /**
-     * @return Shop
-     */
-    public function getShopId(): Shop
-    {
-        return $this->shop;
+        $this->unit = $unit;
     }
 
     /**
      * @return string
      */
-    public function getUniqueId(): string
+    public function getType(): string
     {
-        return $this->uniqueId;
+        return $this->type;
     }
 
     /**
@@ -76,7 +101,60 @@ class LoyaltyToken
         return $this->credits;
     }
 
+    /**
+     * @return Contact
+     */
+    public function getContact(): Contact
+    {
+        return $this->contact;
+    }
 
+    /**
+     * @return Shop
+     */
+    public function getShop(): Shop
+    {
+        return $this->shop;
+    }
 
+//    /**
+//     * @return ContactIdentifier | null
+//     */
+//    public function getContactIdentifier(): ?ContactIdentifier
+//    {
+//        return $this->contactIdentifier;
+//    }
+
+    /**
+     * @return DateTime
+     */
+    public function getCreatedAt(): DateTime
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUuid(): string
+    {
+        return $this->uuid;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getUnitValue(): float
+    {
+        return $this->unitValue;
+    }
+
+    /**
+     * @return Unit|null
+     */
+    public function getUnit(): ?Unit
+    {
+        return $this->unit;
+    }
 
 }

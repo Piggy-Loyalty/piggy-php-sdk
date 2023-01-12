@@ -3,8 +3,10 @@
 namespace Piggy\Api\Resources\OAuth\Loyalty\Tokens;
 
 use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\Mappers\Loyalty\Receptions\CreditReceptionMapper;
 use Piggy\Api\Mappers\Loyalty\Tokens\LoyaltyTokenMapper;
 use Piggy\Api\Mappers\Loyalty\Tokens\LoyaltyTokensMapper;
+use Piggy\Api\Models\Loyalty\Receptions\CreditReception;
 use Piggy\Api\Models\Loyalty\Tokens\LoyaltyToken;
 use Piggy\Api\Resources\BaseResource;
 
@@ -16,6 +18,7 @@ class LoyaltyTokenResource extends BaseResource
     protected $resourceUri = "/api/v3/oauth/clients/loyalty-tokens";
 
     /**
+     * @param string $version
      * @param string $shopId
      * @param string $uniqueId
      * @param int | null $credits
@@ -24,9 +27,11 @@ class LoyaltyTokenResource extends BaseResource
      * @return string
      * @throws PiggyRequestException
      */
-    public function create(string $shopId, string $uniqueId, ?int $credits = null, ?string $unitName = null, ?float $unitValue = null): string
+    public function create(string $version, string $shopId, string $uniqueId, ?int $credits = null, ?string $unitName = null, ?float $unitValue = null): string
     {
+        // todo add version key
         $inputValues = [
+            "version" => $version,
             "shop_id" => $shopId,
             "unique_id" => $uniqueId,
             "credits" => $credits,
@@ -34,7 +39,7 @@ class LoyaltyTokenResource extends BaseResource
             "unit_value" => $unitValue
         ];
 
-        $response = $this->client->post($this->resourceUri . "/create", $inputValues);
+        $response = $this->client->post($this->resourceUri, $inputValues);
 
         return $response->getData()->data;
     }
@@ -49,22 +54,23 @@ class LoyaltyTokenResource extends BaseResource
      * @return LoyaltyToken
      * @throws PiggyRequestException
      */
-    public function claim($version, string $shopId, string $uniqueId, string $timeStamp, string $hash, string $contactUuid): LoyaltyToken
+    public function claim(string $version, string $shopId, string $uniqueId, string $timeStamp, string $hash, string $contactUuid, int $credits): LoyaltyToken
     {
         $inputValues = [
-            "version" => "required|string",
+            "version" => "required",
             "shop_id" => "required",
             "unique_id" => "required",
             "timestamp" => "required",
-            "hash" => "required|string",
-            "contact_uuid" => "required'"
+            "hash" => "required",
+            "contact_uuid" => "required",
+            "credits" => "required"
         ];
 
-        $response = $this->client->post($this->resourceUri, $inputValues);
+        $response = $this->client->post($this->resourceUri . "/claim", $inputValues);
 
-        $mapper = new LoyaltyTokensMapper();
+        $mapper = new LoyaltyTokenMapper();
 
-        return $response->getData()->loyaltyToken;
+        return $mapper->map($response->getData());
     }
 }
 
