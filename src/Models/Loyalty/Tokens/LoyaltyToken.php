@@ -4,7 +4,6 @@ namespace Piggy\Api\Models\Loyalty\Tokens;
 
 use DateTime;
 use Piggy\Api\Models\Contacts\Contact;
-use Piggy\Api\Models\Contacts\ContactIdentifier;
 use Piggy\Api\Models\Loyalty\Unit;
 use Piggy\Api\Models\Shops\Shop;
 
@@ -20,7 +19,7 @@ class LoyaltyToken
     protected $type;
 
     /**
-     * @var int | null
+     * @var int
      */
     protected $credits;
 
@@ -33,11 +32,6 @@ class LoyaltyToken
      * @var Shop
      */
     private $shop;
-
-//    /**
-//     * @var ContactIdentifier | null
-//     */
-//    private $contactIdentifier;
 
     /**
      * @var DateTime
@@ -67,18 +61,14 @@ class LoyaltyToken
      * @param string $uuid
      * @param DateTime $createdAt
      * @param float | null $unitValue
-//     * @param ContactIdentifier | null $contactIdentifier
      * @param Unit| null $unit
      */
-    public function __construct(string $type, int $credits, Contact $contact, Shop $shop, string $uuid, DateTime $createdAt, ?Unit $unit = null, ?float $unitValue = null
-//                                ?ContactIdentifier $contactIdentifier = null
-    )
+    public function __construct(string $type, int $credits, Contact $contact, Shop $shop, string $uuid, DateTime $createdAt, ?Unit $unit = null, ?float $unitValue = null)
     {
         $this->type = $type;
         $this->credits = $credits;
         $this->contact = $contact;
         $this->shop = $shop;
-//        $this->contactIdentifier = $contactIdentifier;
         $this->createdAt = $createdAt;
         $this->uuid = $uuid;
         $this->unitValue = $unitValue;
@@ -117,14 +107,6 @@ class LoyaltyToken
         return $this->shop;
     }
 
-//    /**
-//     * @return ContactIdentifier | null
-//     */
-//    public function getContactIdentifier(): ?ContactIdentifier
-//    {
-//        return $this->contactIdentifier;
-//    }
-
     /**
      * @return DateTime
      */
@@ -142,9 +124,9 @@ class LoyaltyToken
     }
 
     /**
-     * @return float|null
+     * @return float | null
      */
-    public function getUnitValue(): float
+    public function getUnitValue(): ?float
     {
         return $this->unitValue;
     }

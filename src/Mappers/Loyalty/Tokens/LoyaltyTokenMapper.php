@@ -3,7 +3,6 @@
 namespace Piggy\Api\Mappers\Loyalty\Tokens;
 
 use Piggy\Api\Mappers\BaseMapper;
-use Piggy\Api\Mappers\ContactIdentifiers\ContactIdentifierMapper;
 use Piggy\Api\Mappers\Contacts\ContactMapper;
 use Piggy\Api\Mappers\Shops\ShopMapper;
 use Piggy\Api\Mappers\Units\UnitMapper;
@@ -40,12 +39,6 @@ class LoyaltyTokenMapper extends BaseMapper
             $unit = $unitMapper->map($data->unit);
         }
 
-//        $contactIdentifier = null;
-//        if (property_exists($data, 'contact_identifier') && $data->contactIdentifier != null) {
-//            $contactIdentifierMapper = new ContactIdentifierMapper();
-//            $contactIdentifier = $contactIdentifierMapper->map($data->contactIdentifier);
-//        }
-
         return new LoyaltyToken(
             $data->type,
             $data->credits,
@@ -54,19 +47,8 @@ class LoyaltyTokenMapper extends BaseMapper
             $data->uuid,
             $this->parseDate($data->created_at),
             $unit,
-            $data->unit_value,
-//            $contactIdentifier
+            $data->unit_value
         );
-
-
-//        return new LoyaltyToken(
-//
-//            $data->type,
-//            $data->credits,
-//            $data->uuid,
-//            $shop,
-//            $this->parseDate($data->created_at)
-//        );
     }
 }
 
