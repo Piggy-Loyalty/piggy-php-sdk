@@ -34,7 +34,6 @@ class RewardAttributeMapper
         if (property_exists($rewardAttribute, 'placeholder') && $rewardAttribute->placeholder != "") {
             $placeholder = $rewardAttribute->placeholder;
         }
-        var_dump($rewardAttribute);
 
         return new RewardAttribute(
             $rewardAttribute->name,

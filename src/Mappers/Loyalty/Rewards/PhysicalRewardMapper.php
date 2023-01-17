@@ -30,9 +30,6 @@ class PhysicalRewardMapper
         $attributesNamesToDelete = ['uuid', 'title', 'description', 'required_credits', 'reward_type', 'media', 'active', 'is_active', 'id', 'stock', 'cost_price'];
         $attributes = array_diff_key(get_object_vars($data), array_flip($attributesNamesToDelete));
 
-        var_dump('atttrrriibuuuutje', $attributes);
-
-//        $attributes = null;
         if (property_exists($data, 'attributes')) {
             $attributesMapper = new RewardAttributesMapper();
             $attributes = $attributesMapper->map($data->$attributes);

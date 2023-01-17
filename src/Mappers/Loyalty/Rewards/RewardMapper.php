@@ -27,15 +27,9 @@ class RewardMapper
             $reward = $physicalMapper->map($data);
         }
 
-        var_dump('fysiek rewaardje:', $reward);
-        var_dump(' ' );
-
         if ($data->reward_type === RewardType::DIGITAL) {
             $reward = $digitalMapper->map($data);
         }
-
-        var_dump('digitaal rewaardje:', $reward);
-        var_dump(' ' );
 
         if ($reward === null) {
             throw new Exception("Reward could not be mapped. No valid reward type given");
