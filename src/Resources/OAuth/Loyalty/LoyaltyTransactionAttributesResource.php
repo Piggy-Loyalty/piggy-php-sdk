@@ -29,9 +29,11 @@ class LoyaltyTransactionAttributesResource extends BaseResource
             "limit" => $limit,
         ]);
 
-        $mapper = new LoyaltyTransactionAttributesMapper;
+        $mapper = new LoyaltyTransactionAttributesMapper();
 
         return $mapper->map($response->getData());
     }
+
+
 
 }

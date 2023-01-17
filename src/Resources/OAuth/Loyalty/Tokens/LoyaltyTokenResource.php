@@ -3,8 +3,8 @@
 namespace Piggy\Api\Resources\OAuth\Loyalty\Tokens;
 
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\Mappers\Loyalty\Tokens\LoyaltyTokenMapper;
-use Piggy\Api\Models\Loyalty\Tokens\LoyaltyToken;
+use Piggy\Api\Mappers\Loyalty\Receptions\CreditReceptionMapper;
+use Piggy\Api\Models\Loyalty\Receptions\CreditReception;
 use Piggy\Api\Resources\BaseResource;
 
 class LoyaltyTokenResource extends BaseResource
@@ -50,10 +50,10 @@ class LoyaltyTokenResource extends BaseResource
      * @param int | null $credits
      * @param string | null $unitName
      * @param float | null $unitValue
-     * @return LoyaltyToken
+     * @return CreditReception
      * @throws PiggyRequestException
      */
-    public function claim(string $version, string $shopId, string $uniqueId, string $timeStamp, string $hash, string $contactUuid, ?int $credits = null, ?string $unitName = null, ?float $unitValue = null): LoyaltyToken
+    public function claim(string $version, string $shopId, string $uniqueId, string $timeStamp, string $hash, string $contactUuid, ?int $credits = null, ?string $unitName = null, ?float $unitValue = null): CreditReception
     {
         $inputValues = [
             "version" => $version,
@@ -69,7 +69,7 @@ class LoyaltyTokenResource extends BaseResource
 
         $response = $this->client->post($this->resourceUri . "/claim", $inputValues);
 
-        $mapper = new LoyaltyTokenMapper();
+        $mapper = new CreditReceptionMapper();
 
         return $mapper->map($response->getData());
     }

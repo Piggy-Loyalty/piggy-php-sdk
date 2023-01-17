@@ -23,9 +23,9 @@ class LoyaltyTokenResourceTest extends OAuthTestCase
             "data" => 'https://customer.piggy.nl/l?version=v1&shop_id=15&credits=20&unique_id=my_unique_id&timestamp=1672931049&hash=a9d8163cfb19b0b46d6ded40c0817de11be48bbf'
         ]);
 
-        $loyaltyToken = $this->mockedClient->loyaltyToken->create('v1', '15', 'my_unique_id', 20);
+        $creditReception = $this->mockedClient->loyaltyToken->create('v1', '15', 'my_unique_id', 20);
 
-        $this->assertEquals('https://customer.piggy.nl/l?version=v1&shop_id=15&credits=20&unique_id=my_unique_id&timestamp=1672931049&hash=a9d8163cfb19b0b46d6ded40c0817de11be48bbf', $loyaltyToken);
+        $this->assertEquals('https://customer.piggy.nl/l?version=v1&shop_id=15&credits=20&unique_id=my_unique_id&timestamp=1672931049&hash=a9d8163cfb19b0b46d6ded40c0817de11be48bbf', $creditReception);
     }
 
     /**
@@ -39,12 +39,12 @@ class LoyaltyTokenResourceTest extends OAuthTestCase
             'data' => 'https://customer.piggy.nl/l?version=v2&shop_id=15&unique_id=my_unique_id&timestamp=1672997328&unit_name=purchase_amount&unit_value=10&hash=def61056136472eac549b6d5a5f0c242f23b4146'
         ]);
 
-        $loyaltyToken = $this->mockedClient->loyaltyToken->create('v2', '15', 'my_unique_id',
+        $creditReception = $this->mockedClient->loyaltyToken->create('v2', '15', 'my_unique_id',
             null, 'purchase_amount', 10);
 
-        $this->assertEquals('https://customer.piggy.nl/l?version=v2&shop_id=15&unique_id=my_unique_id&timestamp=1672997328&unit_name=purchase_amount&unit_value=10&hash=def61056136472eac549b6d5a5f0c242f23b4146', $loyaltyToken);
+        $this->assertEquals('https://customer.piggy.nl/l?version=v2&shop_id=15&unique_id=my_unique_id&timestamp=1672997328&unit_name=purchase_amount&unit_value=10&hash=def61056136472eac549b6d5a5f0c242f23b4146', $creditReception);
     }
-
+ 
     /**
      * @test
      * @throws PiggyRequestException
@@ -72,19 +72,19 @@ class LoyaltyTokenResourceTest extends OAuthTestCase
             "unit" => null
         ]);
 
-        $loyaltyToken = $this->mockedClient->loyaltyToken->claim('v1', '15', "my_unique_id_31", '1673433447', "ca856e5c8d8fa43bf4651209335a0d259bedb3db", "aacfe5dd-5fac-46b4-aa1b-c6f695bf3ed8", 10);
+        $creditReception = $this->mockedClient->loyaltyToken->claim('v1', '15', "my_unique_id_31", '1673433447', "ca856e5c8d8fa43bf4651209335a0d259bedb3db", "aacfe5dd-5fac-46b4-aa1b-c6f695bf3ed8", 10);
 
-        $this->assertEquals('credit_reception', $loyaltyToken->getType());
-        $this->assertEquals('10', $loyaltyToken->getCredits());
-        $this->assertEquals(973, $loyaltyToken->getContact()->getCreditBalance()->getBalance());
-        $this->assertEquals("aacfe5dd-5fac-46b4-aa1b-c6f695bf3ed8", $loyaltyToken->getContact()->getUuid());
-        $this->assertEquals('Visjes', $loyaltyToken->getShop()->getName());
-        $this->assertEquals('1', $loyaltyToken->getShop()->getUuid());
+        $this->assertEquals('credit_reception', $creditReception->getType());
+        $this->assertEquals('10', $creditReception->getCredits());
+        $this->assertEquals(973, $creditReception->getContact()->getCreditBalance()->getBalance());
+        $this->assertEquals("aacfe5dd-5fac-46b4-aa1b-c6f695bf3ed8", $creditReception->getContact()->getUuid());
+        $this->assertEquals('Visjes', $creditReception->getShop()->getName());
+        $this->assertEquals('1', $creditReception->getShop()->getUuid());
 
-        $this->assertEquals('2023-01-10T15:59:58+00:00', $loyaltyToken->getCreatedAt()->format('c'));
-        $this->assertEquals('0c655a10-7980-4fdb-ac11-2caca19f2329', $loyaltyToken->getUuid());
-        $this->assertEquals(null, $loyaltyToken->getUnitValue());
-        $this->assertEquals(null, $loyaltyToken->getUnit());
+        $this->assertEquals('2023-01-10T15:59:58+00:00', $creditReception->getCreatedAt()->format('c'));
+        $this->assertEquals('0c655a10-7980-4fdb-ac11-2caca19f2329', $creditReception->getUuid());
+        $this->assertEquals(null, $creditReception->getUnitValue());
+        $this->assertEquals(null, $creditReception->getUnit());
 
     }
 
@@ -118,19 +118,19 @@ class LoyaltyTokenResourceTest extends OAuthTestCase
             ]
         ]);
 
-        $loyaltyToken = $this->mockedClient->loyaltyToken->claim('v2', '15', 'my_unique_id_32', '1673433447', 'a3a9fbfb1e91bea9dea10dc592eb550804485347', 'aacfe5dd-5fac-46b4-aa1b-c6f695bf3ed8', null, 'test', 200.0);
+        $creditReception = $this->mockedClient->loyaltyToken->claim('v2', '15', 'my_unique_id_32', '1673433447', 'a3a9fbfb1e91bea9dea10dc592eb550804485347', 'aacfe5dd-5fac-46b4-aa1b-c6f695bf3ed8', null, 'test', 200.0);
 
-        $this->assertEquals('credit_reception', $loyaltyToken->getType());
-        $this->assertEquals(400, $loyaltyToken->getCredits());
-        $this->assertEquals(1373, $loyaltyToken->getContact()->getCreditBalance()->getBalance());
-        $this->assertEquals("aacfe5dd-5fac-46b4-aa1b-c6f695bf3ed8", $loyaltyToken->getContact()->getUuid());
-        $this->assertEquals('Visjes', $loyaltyToken->getShop()->getName());
-        $this->assertEquals('1', $loyaltyToken->getShop()->getUuid());
-        $this->assertEquals('2023-01-12T14:59:03+00:00', $loyaltyToken->getCreatedAt()->format('c'));
-        $this->assertEquals('0c655a10-7980-4fdb-ac11-2caca19f2329', $loyaltyToken->getUuid());
-        $this->assertEquals(200.0, $loyaltyToken->getUnitValue());
-        $this->assertEquals("test", $loyaltyToken->getUnit()->getName());
-        $this->assertEquals("Calories", $loyaltyToken->getUnit()->getLabel());
+        $this->assertEquals('credit_reception', $creditReception->getType());
+        $this->assertEquals(400, $creditReception->getCredits());
+        $this->assertEquals(1373, $creditReception->getContact()->getCreditBalance()->getBalance());
+        $this->assertEquals("aacfe5dd-5fac-46b4-aa1b-c6f695bf3ed8", $creditReception->getContact()->getUuid());
+        $this->assertEquals('Visjes', $creditReception->getShop()->getName());
+        $this->assertEquals('1', $creditReception->getShop()->getUuid());
+        $this->assertEquals('2023-01-12T14:59:03+00:00', $creditReception->getCreatedAt()->format('c'));
+        $this->assertEquals('0c655a10-7980-4fdb-ac11-2caca19f2329', $creditReception->getUuid());
+        $this->assertEquals(200.0, $creditReception->getUnitValue());
+        $this->assertEquals("test", $creditReception->getUnit()->getName());
+        $this->assertEquals("Calories", $creditReception->getUnit()->getLabel());
 
     }
 }
