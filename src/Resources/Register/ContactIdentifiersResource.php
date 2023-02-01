@@ -36,21 +36,18 @@ class ContactIdentifiersResource extends BaseResource
         return $mapper->map($response->getData());
     }
 
-//Route::put('/link', [ContactIdentifiersController::class, 'link']);
+    public function link(string $contactIdentifierValue, string $contactUuid): ContactIdentifier
+    {
+        $response = $this->client->put("$this->resourceUri/link", [
+            "contact_identifier_value" => $contactIdentifierValue,
+            "contact_uuid" => $contactUuid,
+        ]);
 
+        $mapper = new ContactIdentifierMapper();
 
-//    public function link(string $contactIdentifierValue, string $contactUuid): ContactIdentifier
-//    {
-//        $response = $this->client->put("$this->resourceUri/link", [
-//            "contact_identifier_value" => $contactIdentifierValue,
-//            "contact_uuid" => $contactUuid,
-//        ]);
-//
-//        $mapper = new ContactIdentifierMapper();
-//
-//        return $mapper->map($response->getData());
-//
-//    }
+        return $mapper->map($response->getData());
+
+    }
 
     /**
      * @param string $contactIdentifierValue

@@ -108,13 +108,3 @@ class ContactIdentifiersResourceTest extends OAuthTestCase
 
     }
 }
-
-
-
-
-
-
-
-
-
-

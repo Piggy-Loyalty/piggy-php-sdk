@@ -22,7 +22,6 @@ class LoyaltyTokenResource extends BaseResource
      * @param string | null $unitName
      * @param float | null $unitValue
      * @return string
-     * @throws PiggyRequestException
      */
     public function create(string $version, string $shopId, string $uniqueId, ?int $credits = null, ?string $unitName = null, ?float $unitValue = null): string
     {
