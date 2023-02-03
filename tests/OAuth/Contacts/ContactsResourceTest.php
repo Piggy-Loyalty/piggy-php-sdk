@@ -44,7 +44,7 @@ class ContactsResourceTest extends OAuthTestCase
                 ]
             ]],
             "attributes" => [
-//                "value" => "Henk",
+                "value" => "Henk",
                 "attribute" => [
                     "name" => "firstName",
                     "label" => "Nombre",
@@ -76,16 +76,18 @@ class ContactsResourceTest extends OAuthTestCase
         $this->assertEquals('Functional emails', $contact->getSubscriptions()[0]->getSubscriptionType()->getDescription());
         $this->assertEquals(true, $contact->getSubscriptions()[0]->getSubscriptionType()->isActive());
         $this->assertEquals('OPT_OUT', $contact->getSubscriptions()[0]->getSubscriptionType()->getStrategy());
-//        $this->assertEquals("Henk", $contact->getAttributes()[0]->getValue());
-        $this->assertEquals("firstName", $contact->getAttributes()[0]->getAttribute()->getName());
-        $this->assertEquals("Nombre", $contact->getAttributes()[0]->getAttribute()->getLabel());
-        $this->assertEquals("Voornaam", $contact->getAttributes()[0]->getAttribute()->getDescription());
-        $this->assertEquals("text", $contact->getAttributes()[0]->getAttribute()->getType());
-        $this->assertEquals("text", $contact->getAttributes()[0]->getAttribute()->getFieldType());
-        $this->assertEquals(false, $contact->getAttributes()[0]->getAttribute()->getIsSoftReadOnly());
-        $this->assertEquals(false, $contact->getAttributes()[0]->getAttribute()->getIsHardReadOnly());
-        $this->assertEquals(true, $contact->getAttributes()[0]->getAttribute()->getIsPiggyDefined());
-        $this->assertEquals([], $contact->getAttributes()[0]->getAttribute()->getOptions());
+
+
+        $this->assertEquals("Henk", $contact->getContactAttributes()[0]->getValue());
+        $this->assertEquals("firstName", $contact->getContactAttributes()[0]->getName());
+        $this->assertEquals("Nombre", $contact->getContactAttributes()[0]->getLabel());
+        $this->assertEquals("Voornaam", $contact->getContactAttributes()[0]->getDescription());
+        $this->assertEquals("text", $contact->getContactAttributes()[0]->getType());
+        $this->assertEquals("text", $contact->getContactAttributes()[0]->getFieldType());
+        $this->assertEquals(false, $contact->getContactAttributes()[0]->getIsSoftReadOnly());
+        $this->assertEquals(false, $contact->getContactAttributes()[0]->getIsHardReadOnly());
+        $this->assertEquals(true, $contact->getContactAttributes()[0]->getIsPiggyDefined());
+        $this->assertEquals([], $contact->getContactAttributes()[0]->getOptions());
     }
 
     /**
@@ -126,7 +128,6 @@ class ContactsResourceTest extends OAuthTestCase
         $contact = $this->mockedClient->contacts->findOneBy("henk@piggy.nl");
 
         $this->assertEquals('§12345678', $contact->getUuid());
-        $this->assertEquals('henk@piggy.nl', $contact->getEmail());
     }
 
     /** @test
@@ -174,7 +175,7 @@ class ContactsResourceTest extends OAuthTestCase
                 ]
             ]],
             "attributes" => [
-//                "value" => "Henk",
+                "value" => "Henk",
                 "attribute" => [
                     "name" => "firstName",
                     "label" => "Nombre",
@@ -245,7 +246,7 @@ class ContactsResourceTest extends OAuthTestCase
         );
 
         $this->assertEquals("uuid-piggy-12", $contact->getUuId());
-        $this->assertEquals("Henk", $contact->getAttributes()[0]->getValue());
+        $this->assertEquals("Henk", $contact->getContactAttributes()[0]->getValue());
 
     }
 

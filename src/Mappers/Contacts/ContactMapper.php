@@ -2,7 +2,6 @@
 
 namespace Piggy\Api\Mappers\Contacts;
 
-use Piggy\Api\Mappers\ContactAttributes\ContactAttributesMapper;
 use Piggy\Api\Mappers\Loyalty\CreditBalanceMapper;
 use Piggy\Api\Mappers\Prepaid\PrepaidBalanceMapper;
 use Piggy\Api\Models\Contacts\Contact;
@@ -28,10 +27,11 @@ class ContactMapper
             $creditBalance = $creditBalanceMapper->map($data->credit_balance);
         }
 
-        $contactAttributes = null;
+        $contactAttributes = [];
         if (property_exists($data, 'attributes')) {
+
             $contactAttributesMapper = new ContactAttributesMapper();
-            $contactAttributes = $contactAttributesMapper->map($data->contactAttributes);
+            $contactAttributes = $contactAttributesMapper->map(array($data->attributes));
         }
 
         $currentValues = [];

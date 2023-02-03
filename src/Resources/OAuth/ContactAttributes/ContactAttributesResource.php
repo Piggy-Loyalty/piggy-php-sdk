@@ -4,8 +4,8 @@ namespace Piggy\Api\Resources\OAuth\ContactAttributes;
 
 use Piggy\Api\Enum\ContactAttributeDataTypes;
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\Mappers\ContactAttributes\ContactAttributeMapper;
-use Piggy\Api\Mappers\ContactAttributes\ContactAttributesMapper;
+use Piggy\Api\Mappers\Contacts\ContactAttributeMapper;
+use Piggy\Api\Mappers\Contacts\ContactAttributesMapper;
 use Piggy\Api\Models\ContactAttributes\ContactAttribute;
 use Piggy\Api\Resources\BaseResource;
 
@@ -26,6 +26,8 @@ class ContactAttributesResource extends BaseResource
      */
     public function list(): array
     {
+
+
         $response = $this->client->get($this->resourceUri);
 
         $mapper = new ContactAttributesMapper();
@@ -36,24 +38,24 @@ class ContactAttributesResource extends BaseResource
     /**
      * @param string $name
      * @param string $label
-     * @param string $dataType
+     * @param string $type
      * @param null|string $description
      * @param array|null $options
      * @return ContactAttribute
      * @throws PiggyRequestException
      */
-    public function create(string $name, string $label, string $dataType, ?string $description = "", ?array $options = null): ContactAttribute
+    public function create(string $name, string $label, string $type, ?string $description = "", ?array $options = null): ContactAttribute
 
         {
-        // Check datatype exists
-        if (!ContactAttributeDataTypes::has($dataType)) {
-            throw new \Exception("DataType {$dataType} invalid");
+        // Check type exists
+        if (!ContactAttributeDataTypes::has($type)) {
+            throw new \Exception("type {$type} invalid");
         }
 
         $contactAttributes = [
             "name" => $name,
             "label" => $label,
-            "data_type" => $dataType
+            "data_type" => $type // todo check if 'data_type' is okay
         ];
 
         if ($description != "") {

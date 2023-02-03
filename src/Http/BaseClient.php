@@ -200,6 +200,7 @@ abstract class BaseClient
             $url = "{$url}?{$query}";
         }
 
+
         return $this->request('GET', $url);
     }
 

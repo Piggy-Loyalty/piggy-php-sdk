@@ -20,7 +20,7 @@ class ContactAttribute
     /**
      * @var string
      */
-    public $dataType;
+    public $type;
 
     /**
      * @var string|null
@@ -47,11 +47,12 @@ class ContactAttribute
      */
     public $options;
 
-    public function __construct(string $name, string $label, string $dataType, ?string $description = null, ?bool $isSoftReadOnly = null, ?bool $isHardReadOnly = null, ?bool $isPiggyDefined = null, ?Options $options = null)
+    public function __construct(string $name, string $label, string $type, ?string $description = null, ?bool $isSoftReadOnly = null, ?bool $isHardReadOnly = null, ?bool $isPiggyDefined = null, ?Options $options = null)
     {
+
         $this->name = $name;
         $this->label = $label;
-        $this->dataType = $dataType;
+        $this->type = $type;
         $this->description = $description;
         $this->isSoftReadOnly = $isSoftReadOnly;
         $this->isHardReadOnly = $isHardReadOnly;
@@ -98,16 +99,16 @@ class ContactAttribute
      */
     public function getType(): string
     {
-        return $this->dataType;
+        return $this->type;
     }
 
     /**
-     * @param string $dataType
+     * @param string $type
      * @return void
      */
-    public function setType(string $dataType): void
+    public function setType(string $type): void
     {
-        $this->dataType = $dataType;
+        $this->type = $type;
     }
 
     /**

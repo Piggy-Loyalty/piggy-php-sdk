@@ -1,6 +1,6 @@
 <?php
 
-namespace Piggy\Api\Mappers\ContactAttributes;
+namespace Piggy\Api\Mappers\Contacts;
 
 class ContactAttributesMapper
 {
@@ -10,6 +10,8 @@ class ContactAttributesMapper
      */
     public function map(array $data): array
     {
+
+
         $contactAttributeMapper = new ContactAttributeMapper;
         $contactAttributes = [];
 
