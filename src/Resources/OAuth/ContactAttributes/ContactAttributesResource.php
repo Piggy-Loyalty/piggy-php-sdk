@@ -4,7 +4,7 @@ namespace Piggy\Api\Resources\OAuth\ContactAttributes;
 
 use Piggy\Api\Enum\ContactAttributeDataTypes;
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\Mappers\Contacts\ContactAttributeMapper;
+use Piggy\Api\Mappers\Contacts\AttributeMapper;
 use Piggy\Api\Mappers\Contacts\ContactAttributesMapper;
 use Piggy\Api\Models\Contacts\Attribute;
 use Piggy\Api\Resources\BaseResource;
@@ -27,12 +27,11 @@ class ContactAttributesResource extends BaseResource
     public function list(): array
     {
 
-
         $response = $this->client->get($this->resourceUri);
 
         $mapper = new ContactAttributesMapper();
 
-        return $mapper->map((array)$response->getData());
+        return $mapper->map($response->getData());
     }
 
     /**
@@ -46,7 +45,9 @@ class ContactAttributesResource extends BaseResource
      */
     public function create(string $name, string $label, string $type, ?string $description = "", ?array $options = null): Attribute
 
-        {
+    {
+
+        var_dump('create');
         // Check type exists
         if (!ContactAttributeDataTypes::has($type)) {
             throw new \Exception("type {$type} invalid");

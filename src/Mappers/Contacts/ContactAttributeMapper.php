@@ -20,6 +20,7 @@ class ContactAttributeMapper
             $attribute = $attributeMapper->map($data->attribute);
         }
 
+        var_dump('data3', $data);
         return new ContactAttribute(
             $data->value,
             $attribute ?? []

@@ -12,7 +12,7 @@ class AttributeMapper
      * @param stdClass $data
      * @return Attribute
      */
-    public function map(stdClass $data): Attribute
+    public function map(array $data): Attribute
     {
         $isSoftReadOnly = property_exists($data, 'is_soft_read_only') && $data->is_soft_read_only;
         $isHardReadOnly = property_exists($data, 'is_hard_read_only') && $data->is_hard_read_only;
