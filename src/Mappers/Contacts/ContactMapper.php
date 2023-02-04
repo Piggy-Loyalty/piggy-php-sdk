@@ -15,6 +15,7 @@ class ContactMapper
      */
     public function map(stdClass $data): Contact
     {
+
         $prepaidBalance = null;
         if (property_exists($data, 'prepaid_balance')) {
             $prepaidBalanceMapper = new PrepaidBalanceMapper();
@@ -27,7 +28,7 @@ class ContactMapper
             $creditBalance = $creditBalanceMapper->map($data->credit_balance);
         }
 
-        $contactAttributes = [];
+        $contactAttributes = null;
         if (property_exists($data, 'attributes')) {
 
             $contactAttributesMapper = new ContactAttributesMapper();
