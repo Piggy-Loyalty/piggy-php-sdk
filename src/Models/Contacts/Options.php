@@ -1,6 +1,6 @@
 <?php
 
-namespace Piggy\Api\Models\ContactAttributes;
+namespace Piggy\Api\Models\Contacts;
 
 /**
  * Class Options

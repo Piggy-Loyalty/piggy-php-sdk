@@ -39,21 +39,21 @@ class Contact
     /**
      * @var array|null
      */
-    protected $contactAttributes;
+    protected $attributes;
 
     /**
      * @var array|null
      */
     protected $currentValues;
 
-    public function __construct($uuid, ?string $email, ?PrepaidBalance $prepaidBalance, ?CreditBalance $creditBalance, ?array $contactAttributes, ?array $subscriptions, ?array $currentValues = null)
+    public function __construct($uuid, ?string $email, ?PrepaidBalance $prepaidBalance, ?CreditBalance $creditBalance, ?array $attributes, ?array $subscriptions, ?array $currentValues = null)
     {
         $this->uuid = $uuid;
         $this->email = $email;
         $this->prepaidBalance = $prepaidBalance;
         $this->creditBalance = $creditBalance;
         $this->subscriptions = $subscriptions ?? [];
-        $this->contactAttributes = $contactAttributes;
+        $this->attributes = $attributes;
         $this->currentValues = $currentValues;
     }
 
@@ -124,18 +124,18 @@ class Contact
     /**
      * @return array|null
      */
-    public function getContactAttributes(): ?array
+    public function getAttributes(): ?array
     {
-        return $this->contactAttributes;
+        return $this->attributes;
     }
 
     /**
-     * @param array|null $contactAttributes
+     * @param array|null $attributes
      * @return void
      */
-    public function setContactAttributes(?array $contactAttributes): void
+    public function setAttributes(?array $attributes): void
     {
-        $this->contactAttributes = $contactAttributes;
+        $this->attributes = $attributes;
     }
 
     /**

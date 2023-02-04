@@ -6,7 +6,7 @@ use Piggy\Api\Enum\ContactAttributeDataTypes;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Contacts\ContactAttributeMapper;
 use Piggy\Api\Mappers\Contacts\ContactAttributesMapper;
-use Piggy\Api\Models\ContactAttributes\ContactAttribute;
+use Piggy\Api\Models\Contacts\Attribute;
 use Piggy\Api\Resources\BaseResource;
 
 /**
@@ -41,10 +41,10 @@ class ContactAttributesResource extends BaseResource
      * @param string $type
      * @param null|string $description
      * @param array|null $options
-     * @return ContactAttribute
+     * @return Attribute
      * @throws PiggyRequestException
      */
-    public function create(string $name, string $label, string $type, ?string $description = "", ?array $options = null): ContactAttribute
+    public function create(string $name, string $label, string $type, ?string $description = "", ?array $options = null): Attribute
 
         {
         // Check type exists

@@ -2,7 +2,7 @@
 
 namespace Piggy\Api\Mappers\Contacts;
 
-use Piggy\Api\Models\ContactAttributes\Options;
+use Piggy\Api\Models\Contacts\Options;
 use stdClass;
 
 class OptionMapper

@@ -2,37 +2,21 @@
 
 namespace Piggy\Api\Mappers\Contacts;
 
-use Piggy\Api\Models\ContactAttributes\ContactAttributeWithValue;
-
 class ContactAttributesMapper
 {
     /**
-     * @param ContactAttributeWithValue $data
-     * @return ContactAttributeWithValue
+     * @param array $data
+     * @return array
      */
-    public function map(ContactAttributeWithValue $data): ContactAttributeWithValue
+    public function map(array $data): array
     {
-//        $contactAttributeMapper = new ContactAttributeMapper;
-//        $contactAttributes = [];
-//
-//        foreach ($data as $item) {
-//            $contactAttributes[] = $contactAttributeMapper->map($item);
-//        }
-//
-//        return $contactAttributes;
-//    }
+        $contactAttributeMapper = new ContactAttributeMapper;
+        $contactAttributes = [];
 
-        $contactAttributeWithValue = null;
-        if (property_exists($data, 'attribute')) {
-            $contactAttributeWithValueMapper = new ContactAttributeWithValueMapper();
-
-            $contactAttributeWithValue = $contactAttributeWithValueMapper->map($data->attribute);
+        foreach ($data as $item) {
+            $contactAttributes[] = $contactAttributeMapper->map($item);
         }
 
-
-        return new ContactAttributeWithValue(
-            $data->value,
-            $data->attribute ?? []
-        );
+        return $contactAttributes;
     }
 }

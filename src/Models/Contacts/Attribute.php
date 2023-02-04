@@ -1,12 +1,12 @@
 <?php
 
-namespace Piggy\Api\Models\ContactAttributes;
+namespace Piggy\Api\Models\Contacts;
 
 /**
- * Class ContactAttribute
+ * Class Attribute
  * @package Piggy\Api\Models
  */
-class ContactAttribute
+class Attribute
 {
 
     /** @var string */
@@ -21,6 +21,11 @@ class ContactAttribute
      * @var string
      */
     public $type;
+
+    /**
+     * @var string
+     */
+    public $fieldType;
 
     /**
      * @var string|null
@@ -43,16 +48,16 @@ class ContactAttribute
     public $isPiggyDefined;
 
     /**
-     * @var Options|null
+     * @var array|null
      */
     public $options;
 
-    public function __construct(string $name, string $label, string $type, ?string $description = null, ?bool $isSoftReadOnly = null, ?bool $isHardReadOnly = null, ?bool $isPiggyDefined = null, ?Options $options = null)
+    public function __construct(string $name, string $label, string $type, string $fieldType, ?string $description = null, ?bool $isSoftReadOnly = null, ?bool $isHardReadOnly = null, ?bool $isPiggyDefined = null, ?array $options = null)
     {
-
         $this->name = $name;
         $this->label = $label;
         $this->type = $type;
+        $this->fieldType = $fieldType;
         $this->description = $description;
         $this->isSoftReadOnly = $isSoftReadOnly;
         $this->isHardReadOnly = $isHardReadOnly;
@@ -109,6 +114,23 @@ class ContactAttribute
     public function setType(string $type): void
     {
         $this->type = $type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFieldType(): string
+    {
+        return $this->fieldType;
+    }
+
+    /**
+     * @param string $fieldType
+     * @return void
+     */
+    public function setFieldType(string $fieldType): void
+    {
+        $this->fieldType = $fieldType;
     }
 
     /**
@@ -178,17 +200,17 @@ class ContactAttribute
         $this->isPiggyDefined = $isPiggyDefined;
     }
     /**
-     * @return Options | null
+     * @return array | null
      */
-    public function getOptions(): ?Options
+    public function getOptions(): ?array
     {
         return $this->options;
     }
 
     /**
-     * @param Options | null $options
+     * @param array | null $options
      */
-    public function setOptions(?Options $options): void
+    public function setOptions(?array $options): void
     {
         $this->options = $options;
     }

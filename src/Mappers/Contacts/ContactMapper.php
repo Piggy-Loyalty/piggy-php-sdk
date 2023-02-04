@@ -15,8 +15,6 @@ class ContactMapper
      */
     public function map(stdClass $data): Contact
     {
-
-
         $prepaidBalance = null;
         if (property_exists($data, 'prepaid_balance')) {
             $prepaidBalanceMapper = new PrepaidBalanceMapper();
@@ -29,11 +27,10 @@ class ContactMapper
             $creditBalance = $creditBalanceMapper->map($data->credit_balance);
         }
 
-        $contactAttributes = null;
+        $attributes = null;
         if (property_exists($data, 'attributes')) {
-
-            $contactAttributesMapper = new ContactAttributesMapper();
-            $contactAttributes = $contactAttributesMapper->map(array($data->attributes));
+            $attributesMapper = new ContactAttributesMapper();
+            $attributes = $attributesMapper->map($data->attributes);
         }
 
         $currentValues = [];
@@ -55,7 +52,7 @@ class ContactMapper
             $data->email ?? "",
             $prepaidBalance,
             $creditBalance,
-            $contactAttributes,
+            $attributes,
             $subscriptions,
             $currentValues
         );
