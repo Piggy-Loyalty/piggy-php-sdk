@@ -23,7 +23,7 @@ class Attribute
     public $type;
 
     /**
-     * @var string
+     * @var string|null
      */
     public $fieldType;
 
@@ -52,7 +52,7 @@ class Attribute
      */
     public $options;
 
-    public function __construct(string $name, string $label, string $type, string $fieldType, ?string $description = null, ?bool $isSoftReadOnly = null, ?bool $isHardReadOnly = null, ?bool $isPiggyDefined = null, ?array $options = null)
+    public function __construct(string $name, string $label, string $type, ?string $fieldType = null, ?string $description = null, ?bool $isSoftReadOnly = null, ?bool $isHardReadOnly = null, ?bool $isPiggyDefined = null, ?array $options = null)
     {
         $this->name = $name;
         $this->label = $label;
@@ -117,9 +117,9 @@ class Attribute
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getFieldType(): string
+    public function getFieldType(): ?string
     {
         return $this->fieldType;
     }

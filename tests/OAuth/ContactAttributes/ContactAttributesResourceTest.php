@@ -58,8 +58,8 @@ class ContactAttributesResourceTest extends OAuthTestCase
         $this->assertEquals(true, $contactAttributes[1]->getIsSoftReadOnly());
         $this->assertEquals(true, $contactAttributes[1]->getIsHardReadOnly());
         $this->assertEquals(false, $contactAttributes[1]->getIsPiggyDefined());
-        $this->assertEquals('some_option_label', $contactAttributes[1]->getOptions()->getLabel());
-        $this->assertEquals('3', $contactAttributes[1]->getOptions()->geValue());
+        $this->assertEquals('some_option_label', $contactAttributes[1]->getOptions()[0]->getLabel());
+        $this->assertEquals('3', $contactAttributes[1]->getOptions()[0]->getValue());
 
 
     }
@@ -73,9 +73,10 @@ class ContactAttributesResourceTest extends OAuthTestCase
             [
                 "name" => "some_name",
                 "label" => "some_label",
-                "data_type" => "url",
+                "type" => "url",
+                "field_type" => "text",
                 "description" => null,
-                "options" => null
+                "options" => []
             ]
         );
 
@@ -84,14 +85,15 @@ class ContactAttributesResourceTest extends OAuthTestCase
         $this->assertEquals("some_name", $contactAttribute->getName());
         $this->assertEquals("some_label", $contactAttribute->getLabel());
         $this->assertEquals("url", $contactAttribute->getType());
+        $this->assertEquals("text", $contactAttribute->getFieldType());
         $this->assertEquals(null, $contactAttribute->getDescription());
-        $this->assertEquals(null, $contactAttribute->getOptions());
+        $this->assertEquals([], $contactAttribute->getOptions()[0]);
 
         $this->addExpectedResponse(
             [
                 "name" => "some_phone_number",
                 "label" => "some_label_for_phone_number",
-                "data_type" => "phone",
+                "type" => "phone",
                 "description" => 'some_description',
                 "options" => null
             ]
@@ -110,7 +112,7 @@ class ContactAttributesResourceTest extends OAuthTestCase
             [
                 "name" => "henkie_name",
                 "label" => "henkie_label",
-                "data_type" => "license_plate",
+                "type" => "license_plate",
                 "description" => 'henkie_description',
                 "options" => null
             ]
@@ -129,7 +131,7 @@ class ContactAttributesResourceTest extends OAuthTestCase
             [
                 "name" => "pietje_name",
                 "label" => "pietje_label",
-                "data_type" => "multi_select",
+                "type" => "multi_select",
                 "description" => 'pietje_description',
                 "options" => ["label" => "pietje_option_label", "value" => "1"] # todo vraag aan stefan of het boeit als mijn test ook een int als correct beschouwd wanneer die zowel hier als beneden wordt doorgevoerd
             ]

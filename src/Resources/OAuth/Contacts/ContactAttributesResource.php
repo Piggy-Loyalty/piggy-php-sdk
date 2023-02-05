@@ -4,6 +4,7 @@ namespace Piggy\Api\Resources\OAuth\Contacts;
 
 use Piggy\Api\Enum\ContactAttributeDataTypes;
 use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\Mappers\Contacts\AttributeMapper;
 use Piggy\Api\Mappers\Contacts\AttributesMapper;
 use Piggy\Api\Mappers\Contacts\ContactAttributesMapper;
 use Piggy\Api\Models\Contacts\Attribute;
@@ -67,7 +68,7 @@ class ContactAttributesResource extends BaseResource
 
         $response = $this->client->post($this->resourceUri, $contactAttributes);
 
-        $mapper = new ContactAttributeMapper();
+        $mapper = new AttributeMapper();
 
         return $mapper->map($response->getData());
     }

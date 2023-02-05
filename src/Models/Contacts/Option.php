@@ -11,12 +11,12 @@ class Option
     /**
      * @var string|null
      */
-    protected $label;
+    public $label;
 
     /**
      * @var string|null
      */
-    protected $value;
+    public $value;
 
     public function __construct(?string $label, ?string $value)
     {

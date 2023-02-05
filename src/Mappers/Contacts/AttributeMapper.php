@@ -21,9 +21,11 @@ class AttributeMapper extends BaseMapper
         $options = [];
 
         if (property_exists($data, 'options') && $data->options != null) {
-            $optionsMapper = new OptionsMapper();
-            $options = $optionsMapper->map($data->options);
+            $optionMapper = new OptionMapper();
+            $options[] = $optionMapper->map($data->options);
         }
+
+//        var_dump('fieldtype', $data->field_type);
 
         return new Attribute(
             $data->name,
