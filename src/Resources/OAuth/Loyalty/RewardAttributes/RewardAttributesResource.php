@@ -33,8 +33,6 @@ class RewardAttributesResource extends BaseResource
             "limit" => $limit,
         ]);
 
-        var_dump('hwl3ifjsdkl', $response);
-
         $mapper = new RewardAttributesMapper();
 
         return $mapper->map((array)$response->getData());

@@ -29,6 +29,7 @@ class ContactAttributesResourceTest extends OAuthTestCase
                 "name" => "another_first_name",
                 "label" => "another_label",
                 "type" => "multi_select",
+                "field_type" => "multi_select",
                 "description" => "another_description",
                 "is_soft_read_only" => true,
                 "is_hard_read_only" => true,
@@ -40,9 +41,16 @@ class ContactAttributesResourceTest extends OAuthTestCase
 
         $contactAttributes = $this->mockedClient->contactAttributes->list();
 
-        $this->assertEquals("asdf", $contactAttributes[0]->getName());
+        var_dump('JESKDKFO;SEFJIEJS, ', $contactAttributes[0]);
+
+
+        $this->assertEquals("asdf", $contactAttributes[0]->getAttribute()->getName());
+
+
+        $this->assertEquals("asdf", $contactAttributes[0]->getAttribute()->getName());
         $this->assertEquals("some_label", $contactAttributes[0]->getLabel());
         $this->assertEquals("text", $contactAttributes[0]->getType());
+        $this->assertEquals("text", $contactAttributes[0]->getFieldType());
         $this->assertEquals(null, $contactAttributes[0]->getDescription());
         $this->assertEquals(false, $contactAttributes[0]->getIsSoftReadOnly());
         $this->assertEquals(false, $contactAttributes[0]->getIsHardReadOnly());

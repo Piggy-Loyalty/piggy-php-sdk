@@ -10,7 +10,6 @@ class ContactAttributesMapper
      */
     public function map(array $data): array
     {
-        var_dump('data2', $data);
         $contactAttributeMapper = new ContactAttributeMapper;
         $contactAttributes = [];
 

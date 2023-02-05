@@ -1,10 +1,10 @@
 <?php
 
-namespace Piggy\Api\Resources\OAuth\ContactAttributes;
+namespace Piggy\Api\Resources\OAuth\Contacts;
 
 use Piggy\Api\Enum\ContactAttributeDataTypes;
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\Mappers\Contacts\AttributeMapper;
+use Piggy\Api\Mappers\Contacts\AttributesMapper;
 use Piggy\Api\Mappers\Contacts\ContactAttributesMapper;
 use Piggy\Api\Models\Contacts\Attribute;
 use Piggy\Api\Resources\BaseResource;
@@ -26,10 +26,9 @@ class ContactAttributesResource extends BaseResource
      */
     public function list(): array
     {
+        $response = $this->client->get($this->resourceUri, []); // todo make it work with list here and then try to remove it
 
-        $response = $this->client->get($this->resourceUri);
-
-        $mapper = new ContactAttributesMapper();
+        $mapper = new AttributesMapper();
 
         return $mapper->map($response->getData());
     }
@@ -47,7 +46,6 @@ class ContactAttributesResource extends BaseResource
 
     {
 
-        var_dump('create');
         // Check type exists
         if (!ContactAttributeDataTypes::has($type)) {
             throw new \Exception("type {$type} invalid");

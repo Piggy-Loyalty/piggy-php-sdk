@@ -4,7 +4,7 @@ namespace Piggy\Api\Http\Traits;
 
 use Piggy\Api\Http\BaseClient;
 use Piggy\Api\Resources\OAuth\Automations\AutomationsResource;
-use Piggy\Api\Resources\OAuth\ContactAttributes\ContactAttributesResource;
+use Piggy\Api\Resources\OAuth\Contacts\ContactAttributesResource;
 use Piggy\Api\Resources\OAuth\Contacts\ContactIdentifiersResource;
 use Piggy\Api\Resources\OAuth\Contacts\ContactsResource;
 use Piggy\Api\Resources\OAuth\Contacts\ContactVerificationResource;
@@ -16,13 +16,13 @@ use Piggy\Api\Resources\OAuth\Loyalty\Program\LoyaltyProgramResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Receptions\CreditReceptionsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Receptions\LoyaltyTransactionsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Receptions\RewardReceptionsResource;
+use Piggy\Api\Resources\OAuth\Loyalty\RewardAttributes\RewardAttributesResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Rewards\RewardsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Tokens\LoyaltyTokenResource;
 use Piggy\Api\Resources\OAuth\PrepaidTransactionResource;
 use Piggy\Api\Resources\OAuth\Shops\ShopsResource;
 use Piggy\Api\Resources\OAuth\SubscriptionTypesResource;
 use Piggy\Api\Resources\OAuth\Units\UnitsResource;
-use Piggy\Api\Resources\OAuth\Loyalty\RewardAttributes\RewardAttributesResource;
 
 /**
  * Trait SetsOAuthResources
@@ -134,6 +134,7 @@ trait SetsOAuthResources
     {
         $this->contacts = new ContactsResource($client);
         $this->contactIdentifiers = new ContactIdentifiersResource($client);
+
         $this->contactAttributes = new ContactAttributesResource($client);
 
         $this->giftcards = new GiftcardsResource($client);
