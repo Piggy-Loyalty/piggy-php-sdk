@@ -31,7 +31,7 @@ class AttributeMapper extends BaseMapper
             $data->name,
             $data->label,
             $data->type,
-            $data->field_type,
+            $data->field_type ?? "",
             $data->description,
             $isSoftReadOnly,
             $isHardReadOnly,
