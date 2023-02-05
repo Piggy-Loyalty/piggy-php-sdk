@@ -21,7 +21,7 @@ class AttributeMapper extends BaseMapper
         $options = [];
 
         if (property_exists($data, 'options') && $data->options != null) {
-            $optionsMapper = new OptionMapper();
+            $optionsMapper = new OptionsMapper();
             $options = $optionsMapper->map($data->options);
         }
 

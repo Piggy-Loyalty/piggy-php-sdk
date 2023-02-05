@@ -2,18 +2,18 @@
 
 namespace Piggy\Api\Mappers\Contacts;
 
-use Piggy\Api\Models\Contacts\Options;
+use Piggy\Api\Models\Contacts\Option;
 use stdClass;
 
 class OptionMapper
 {
     /**
      * @param stdClass $options
-     * @return Options
+     * @return Option
      */
-    public function map(stdClass $options): Options
+    public function map(stdClass $options): Option
     {
-        return new Options(
+        return new Option(
             $options->label,
             $options->value
         );

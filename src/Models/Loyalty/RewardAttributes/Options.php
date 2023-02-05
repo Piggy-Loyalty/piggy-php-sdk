@@ -3,7 +3,7 @@
 namespace Piggy\Api\Models\Loyalty\RewardAttributes;
 
 /**
- * Class Options
+ * Class Option
  * @package Piggy\Api\Models
  */
 class Options

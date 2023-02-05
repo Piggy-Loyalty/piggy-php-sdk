@@ -3,10 +3,10 @@
 namespace Piggy\Api\Models\Contacts;
 
 /**
- * Class Options
+ * Class Option
  * @package Piggy\Api\Models
  */
-class Options
+class Option
 {
     /**
      * @var string|null

@@ -38,16 +38,9 @@ class ContactAttributesResourceTest extends OAuthTestCase
             ],
         ]);
 
-
         $contactAttributes = $this->mockedClient->contactAttributes->list();
 
-        var_dump('JESKDKFO;SEFJIEJS, ', $contactAttributes[0]);
-
-
-        $this->assertEquals("asdf", $contactAttributes[0]->getAttribute()->getName());
-
-
-        $this->assertEquals("asdf", $contactAttributes[0]->getAttribute()->getName());
+        $this->assertEquals("asdf", $contactAttributes[0]->getName());
         $this->assertEquals("some_label", $contactAttributes[0]->getLabel());
         $this->assertEquals("text", $contactAttributes[0]->getType());
         $this->assertEquals("text", $contactAttributes[0]->getFieldType());
@@ -55,27 +48,19 @@ class ContactAttributesResourceTest extends OAuthTestCase
         $this->assertEquals(false, $contactAttributes[0]->getIsSoftReadOnly());
         $this->assertEquals(false, $contactAttributes[0]->getIsHardReadOnly());
         $this->assertEquals(true, $contactAttributes[0]->getIsPiggyDefined());
+        $this->assertEquals([], $contactAttributes[0]->getOptions());
 
-//        $this->assertEquals("another_first_name", $contactAttributes[1]->getName());
-//        $this->assertEquals("another_label", $contactAttributes[1]->getLabel());
-//        $this->assertEquals("multi_select", $contactAttributes[1]->getType());
-//        $this->assertEquals(true, $contactAttributes[1]->getIsSoftReadOnly());
-//        $this->assertEquals(true, $contactAttributes[1]->getIsHardReadOnly());
-//        $this->assertEquals(false, $contactAttributes[1]->getIsPiggyDefined());
-//        $this->assertEquals('some_option_label', $contactAttributes[1]->getOptions()->getLabel());
-//        $this->assertEquals("another_description", $contactAttributes[1]->getDescription());
+        $this->assertEquals("another_first_name", $contactAttributes[1]->getName());
+        $this->assertEquals("another_label", $contactAttributes[1]->getLabel());
+        $this->assertEquals("multi_select", $contactAttributes[1]->getType());
+        $this->assertEquals("multi_select", $contactAttributes[1]->getFieldType());
+        $this->assertEquals("another_description", $contactAttributes[1]->getDescription());
+        $this->assertEquals(true, $contactAttributes[1]->getIsSoftReadOnly());
+        $this->assertEquals(true, $contactAttributes[1]->getIsHardReadOnly());
+        $this->assertEquals(false, $contactAttributes[1]->getIsPiggyDefined());
+        $this->assertEquals('some_option_label', $contactAttributes[1]->getOptions()->getLabel());
+        $this->assertEquals('3', $contactAttributes[1]->getOptions()->geValue());
 
-//        $this->assertEquals("3", $contactAttributes[1]->getOptions()->getValue());
-
-
-//        $this->assertEquals("firstName", $contact->getAttributes()[0]->getAttribute()->getName());
-//        $this->assertEquals("Nombre", $contact->getAttributes()[0]->getAttribute()->getLabel());
-//        $this->assertEquals("Voornaam", $contact->getAttributes()[0]->getAttribute()->getDescription());
-//        $this->assertEquals("text", $contact->getAttributes()[0]->getAttribute()->getType());
-//        $this->assertEquals("text", $contact->getAttributes()[0]->getAttribute()->getFieldType());
-//        $this->assertEquals(false, $contact->getAttributes()[0]->getAttribute()->getIsSoftReadOnly());
-//        $this->assertEquals(false, $contact->getAttributes()[0]->getAttribute()->getIsHardReadOnly());
-//        $this->assertEquals(true, $contact->getAttributes()[0]->getAttribute()->getIsPiggyDefined());
 
     }
 
