@@ -21,8 +21,6 @@ class AttributeMapper extends BaseMapper
 
         $options = [];
 
-//        var_dump('ingrid', $data->options);
-
         if (property_exists($data, 'options') && $data->options != null) {
             foreach ($data->options as $item) {
 //                var_dump('item var dump', get_object_vars($item));
