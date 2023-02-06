@@ -70,7 +70,6 @@ class Attribute
      */
     public function getName(): string
     {
-        var_dump('123', $this->name);
         return $this->name;
     }
 

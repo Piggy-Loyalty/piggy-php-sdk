@@ -8,14 +8,23 @@ use stdClass;
 class OptionMapper
 {
     /**
-     * @param stdClass $options
+     * @param array $options
      * @return Option
      */
-    public function map(stdClass $options): Option
+    public function map(array $options): Option
     {
+        $label = null;
+        $value = null;
+        foreach ($options as $item) {
+            $label = $item->label;
+//            var_dump($label);
+            $value = $item->value;
+//            var_dump($value);
+        }
+
         return new Option(
-            $options->label,
-            $options->value
+            $label,
+            $value
         );
     }
 }

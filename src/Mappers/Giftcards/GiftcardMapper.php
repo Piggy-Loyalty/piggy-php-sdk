@@ -29,7 +29,6 @@ class GiftcardMapper extends BaseMapper
             $expirationDate = $this->parseDate($data->expiration_date);
         }
 
-        var_dump($data);
 
         return new Giftcard(
             $data->uuid,

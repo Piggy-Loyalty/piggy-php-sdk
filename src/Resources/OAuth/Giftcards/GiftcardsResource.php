@@ -31,7 +31,6 @@ class GiftcardsResource extends BaseResource
             "hash" => $hash,
         ]);
 
-        var_dump($response);
 
         $mapper = new GiftcardMapper();
 
