@@ -50,7 +50,7 @@ class Attribute
     /**
      * @var array|null
      */
-    public $options;
+    public $options = [];
 
     public function __construct(string $name, string $label, string $type, ?string $fieldType = null, ?string $description = null, ?bool $isSoftReadOnly = null, ?bool $isHardReadOnly = null, ?bool $isPiggyDefined = null, ?array $options = null)
     {
@@ -70,6 +70,7 @@ class Attribute
      */
     public function getName(): string
     {
+        var_dump('123', $this->name);
         return $this->name;
     }
 

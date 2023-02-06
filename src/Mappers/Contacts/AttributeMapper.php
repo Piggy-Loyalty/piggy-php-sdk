@@ -19,13 +19,13 @@ class AttributeMapper extends BaseMapper
         $isHardReadOnly = property_exists($data, 'is_hard_read_only') && $data->is_hard_read_only;
         $isPiggyDefined = property_exists($data, 'is_piggy_defined') && $data->is_piggy_defined;
         $options = [];
-
+        var_dump('gert', $data);
+        var_dump('gerrie data', $data->options);
         if (property_exists($data, 'options') && $data->options != null) {
             $optionMapper = new OptionMapper();
             $options[] = $optionMapper->map($data->options);
         }
-
-//        var_dump('fieldtype', $data->field_type);
+//        var_dump('gerrie options' ,$options);
 
         return new Attribute(
             $data->name,
