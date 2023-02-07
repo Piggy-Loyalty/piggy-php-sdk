@@ -2,7 +2,7 @@
 
 namespace Piggy\Api\Resources\OAuth\Contacts;
 
-use Piggy\Api\Enum\ContactAttributeDataTypes;
+use Piggy\Api\Enum\CustomAttributeTypes;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Contacts\AttributeMapper;
 use Piggy\Api\Mappers\Contacts\AttributesMapper;
@@ -42,21 +42,22 @@ class ContactAttributesResource extends BaseResource
      * @param array|null $options
      * @return Attribute
      * @throws PiggyRequestException
+     * @throws \Exception
      */
     public function create(string $name, string $label, string $type, ?string $description = "", ?array $options = null): Attribute
-
     {
-
-        // Check type exists
-        if (!ContactAttributeDataTypes::has($type)) {
-            throw new \Exception("type {$type} invalid");
-        }
-
         $contactAttributes = [
             "name" => $name,
             "label" => $label,
-            "data_type" => $type // todo check if 'data_type' is okay
+            "data_type" => $type
         ];
+        
+        var_dump('data type hier:', $type);
+
+        // Check type exists
+        if (!CustomAttributeTypes::has($type)) {
+            throw new \Exception("type {$type} invalid");
+        }
 
         if ($description != "") {
             $contactAttributes['description'] = $description;

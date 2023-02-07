@@ -43,7 +43,7 @@ class RewardAttribute
     public $isPiggyDefined;
 
     /**
-     * @var Options|null
+     * @var array|null
      */
     public $options;
 
@@ -52,7 +52,7 @@ class RewardAttribute
      */
     public $placeholder;
 
-    public function __construct(string $name, string $label, string $dataType, ?string $description = null, ?bool $isSoftReadOnly = null, ?bool $isHardReadOnly = null, ?bool $isPiggyDefined = null, ?Options $options = null, ?string $placeholder = null)
+    public function __construct(string $name, string $label, string $dataType, ?string $description = null, ?bool $isSoftReadOnly = null, ?bool $isHardReadOnly = null, ?bool $isPiggyDefined = null, ?array $options = null, ?string $placeholder = null)
     {
         $this->name = $name;
         $this->label = $label;
@@ -183,17 +183,17 @@ class RewardAttribute
         $this->isPiggyDefined = $isPiggyDefined;
     }
     /**
-     * @return Options | null
+     * @return array | null
      */
-    public function getOptions(): ?Options
+    public function getOptions(): ?array
     {
         return $this->options;
     }
 
     /**
-     * @param Options | null $options
+     * @param array | null $options
      */
-    public function setOptions(?Options $options): void
+    public function setOptions(?array $options): void
     {
         $this->options = $options;
     }

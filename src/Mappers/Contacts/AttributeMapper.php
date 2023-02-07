@@ -23,18 +23,10 @@ class AttributeMapper extends BaseMapper
 
         if (property_exists($data, 'options') && $data->options != null) {
             foreach ($data->options as $item) {
-//                var_dump('item var dump', get_object_vars($item));
                 $options[] = get_object_vars($item);
             }
 
-//                $optionMapper = new OptionMapper();
-//            var_dump('pietjepuk', $optionMapper->map($data->options));
-//            $options[] = $optionMapper->map($data->options);
-
         }
-
-//        var_dump('options', $options);
-
 
         return new Attribute(
             $data->name,

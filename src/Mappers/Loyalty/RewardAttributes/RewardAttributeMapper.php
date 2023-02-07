@@ -19,15 +19,18 @@ class RewardAttributeMapper
         $isHardReadOnly = property_exists($rewardAttribute, 'is_hard_read_only') && $rewardAttribute->is_hard_read_only;
         $isPiggyDefined = property_exists($rewardAttribute, 'is_piggy_defined') && $rewardAttribute->is_piggy_defined;
 
-        $options = null;
-        if (property_exists($rewardAttribute, 'options') && $rewardAttribute->options != null) {
-            $optionsMapper = new OptionMapper();
-            $options = $optionsMapper->map($rewardAttribute->options);
-        }
-
         $description = null;
         if (property_exists($rewardAttribute, 'description') && $rewardAttribute->description != "") {
             $description = $rewardAttribute->description;
+        }
+
+        $options = [];
+        if (property_exists($rewardAttribute, 'options') && $rewardAttribute->options != null) {
+
+            foreach ($rewardAttribute->options as $item) {
+                $options[] = get_object_vars($item);
+            }
+
         }
 
         $placeholder = null;
@@ -47,5 +50,4 @@ class RewardAttributeMapper
             $placeholder
         );
     }
-
 }

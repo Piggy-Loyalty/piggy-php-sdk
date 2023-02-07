@@ -43,7 +43,7 @@ class RewardAttributesResource extends BaseResource
      * @param string $label
      * @param string $dataType
      * @param null|string $description
-     * @param array|null $options
+     * @param null|array $options
      * @param null|string $placeholder
 
      * @return RewardAttribute
@@ -52,23 +52,23 @@ class RewardAttributesResource extends BaseResource
     public function create(string $name, string $label, string $dataType, ?string $description = "", ?array $options = null, ?string $placeholder = null ): RewardAttribute
 
     {
-        // Check datatype exists
-        if (!RewardAttributeDataTypes::has($dataType)) {
-            throw new \Exception("DataType {$dataType} invalid");
-        }
-
         $rewardAttributes = [
             "name" => $name,
             "label" => $label,
             "dataType" => $dataType
         ];
 
+        // Check datatype exists
+        if (!RewardAttributeDataTypes::has($dataType)) {
+            throw new \Exception("DataType {$dataType} invalid");
+        }
+
 
         if ($description != "") {
             $rewardAttributes['description'] = $description;
         }
 
-        if ($options != null) {
+        if ($options != []) {
             $rewardAttributes['options'] = $options;
         }
 
