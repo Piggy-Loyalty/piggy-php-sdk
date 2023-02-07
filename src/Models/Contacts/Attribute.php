@@ -57,7 +57,7 @@ class Attribute
         $this->name = $name;
         $this->label = $label;
         $this->type = $type;
-        $this->fieldType = $fieldType;
+        $this->fieldType = $fieldType ?? "";
         $this->description = $description;
         $this->isSoftReadOnly = $isSoftReadOnly;
         $this->isHardReadOnly = $isHardReadOnly;
