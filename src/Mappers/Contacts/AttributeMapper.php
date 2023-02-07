@@ -6,7 +6,6 @@ use Piggy\Api\Mappers\BaseMapper;
 use Piggy\Api\Models\Contacts\Attribute;
 use stdClass;
 
-
 class AttributeMapper extends BaseMapper
 {
     /**
@@ -31,13 +30,12 @@ class AttributeMapper extends BaseMapper
             $data->name,
             $data->label,
             $data->type,
-            $data->field_type,
-            $data->description,
+            $data->field_type ?? null,
+            $data->description ?? null,
             $isSoftReadOnly,
             $isHardReadOnly,
             $isPiggyDefined,
             $options
         );
     }
-
 }

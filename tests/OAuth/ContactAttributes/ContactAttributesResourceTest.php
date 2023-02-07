@@ -5,7 +5,6 @@ namespace Piggy\Api\Tests\OAuth\ContactAttributes;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
 
-
 class ContactAttributesResourceTest extends OAuthTestCase
 {
 
@@ -166,7 +165,6 @@ class ContactAttributesResourceTest extends OAuthTestCase
                 "name" => "pietje_name",
                 "label" => "pietje_label",
                 "type" => "multi_select",
-                "field_type" => null,
                 "description" => 'pietje_description',
                 "options" =>
                     [
@@ -176,13 +174,13 @@ class ContactAttributesResourceTest extends OAuthTestCase
             ]
         );
 
-        $contactAttribute = $this->mockedClient->contactAttributes->create('pietje_name', 'pietje_label', 'multi_select', null, 'pietje_description', [["label" => "some_option_label", "value" => "3"],["label" => 'some_second_option_label', "value" => "4"]]);
+        $contactAttribute = $this->mockedClient->contactAttributes->create('pietje_name', 'pietje_label', 'multi_select', null, 'pietje_description', [["label" => "some_option_label", "value" => "3"], ["label" => 'some_second_option_label', "value" => "4"]]);
 
         $this->assertEquals("pietje_name", $contactAttribute->getName());
         $this->assertEquals("pietje_label", $contactAttribute->getLabel());
         $this->assertEquals("multi_select", $contactAttribute->getType());
         $this->assertEquals("pietje_description", $contactAttribute->getDescription());
-        $this->assertEquals([["label" => "some_option_label", "value" => "3"],["label" => 'some_second_option_label', "value" => "4"]], $contactAttribute->getOptions());
+        $this->assertEquals([["label" => "some_option_label", "value" => "3"], ["label" => 'some_second_option_label', "value" => "4"]], $contactAttribute->getOptions());
     }
 
 }

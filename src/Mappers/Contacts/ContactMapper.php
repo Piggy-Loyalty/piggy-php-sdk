@@ -46,7 +46,6 @@ class ContactMapper
             $subscriptions = null;
         }
 
-
         return new Contact(
             $data->uuid,
             $data->email ?? "",

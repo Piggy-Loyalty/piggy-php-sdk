@@ -17,7 +17,6 @@ class SubscriptionTypesMapper
             $subscriptionTypes[] = $mapper->map($item);
         }
 
-        return
-            $subscriptionTypes;
+        return $subscriptionTypes;
     }
 }

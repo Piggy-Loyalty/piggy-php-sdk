@@ -19,7 +19,5 @@ class GiftcardProgramsMapper
         }
 
         return $giftcardPrograms;
-
     }
-
 }

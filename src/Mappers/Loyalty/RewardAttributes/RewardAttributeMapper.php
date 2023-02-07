@@ -14,15 +14,9 @@ class RewardAttributeMapper
      */
     public function map(stdClass $rewardAttribute): RewardAttribute
     {
-
         $isSoftReadOnly = property_exists($rewardAttribute, 'is_soft_read_only') && $rewardAttribute->is_soft_read_only;
         $isHardReadOnly = property_exists($rewardAttribute, 'is_hard_read_only') && $rewardAttribute->is_hard_read_only;
         $isPiggyDefined = property_exists($rewardAttribute, 'is_piggy_defined') && $rewardAttribute->is_piggy_defined;
-
-//        $description = null;
-//        if (property_exists($rewardAttribute, 'description') && $rewardAttribute->description != "") {
-//            $description = $rewardAttribute->description;
-//        }
 
         $options = [];
         if (property_exists($rewardAttribute, 'options') && $rewardAttribute->options != null) {
@@ -32,22 +26,17 @@ class RewardAttributeMapper
             }
         }
 
-//        $placeholder = null;
-//        if (property_exists($rewardAttribute, 'placeholder') && $rewardAttribute->placeholder != "") {
-//            $placeholder = $rewardAttribute->placeholder;
-//        }
-
         return new RewardAttribute(
             $rewardAttribute->name,
             $rewardAttribute->label,
             $rewardAttribute->data_type,
-            $rewardAttribute->field_type,
-            $rewardAttribute->description,
+            $rewardAttribute->field_type ?? null,
+            $rewardAttribute->description ?? null,
             $isSoftReadOnly,
             $isHardReadOnly,
             $isPiggyDefined,
             $options,
-            $rewardAttribute->placeholder
+            $rewardAttribute->placeholder ?? null
         );
     }
 }

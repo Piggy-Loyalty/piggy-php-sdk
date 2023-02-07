@@ -151,7 +151,6 @@ class RewardAttributesResourceTest extends OAuthTestCase
         );
 
         $rewardAttribute = $this->mockedClient->rewardAttributes->create("some_name", "some_label", "url");
-
         $this->assertEquals("some_name", $rewardAttribute->getName());
         $this->assertEquals("some_label", $rewardAttribute->getLabel());
         $this->assertEquals("url", $rewardAttribute->getType());
@@ -168,19 +167,19 @@ class RewardAttributesResourceTest extends OAuthTestCase
                 "name" => "phone_number",
                 "label" => "Phone Number",
                 "data_type" => "phone",
-                "field_type" => null,
                 "description" => "Please fill in your personal phone number",
-                "options" => null,
-                "placeholder" => null
+                "placeholder" => "+31 6 12345678"
             ]
         );
 
-        $rewardAttribute = $this->mockedClient->rewardAttributes->create("some_phone_number", "some_label_for_phone_number", "phone", null, "Please fill in your personal phone number", null, null);
+        $rewardAttribute = $this->mockedClient->rewardAttributes->create("some_phone_number", "some_label_for_phone_number", "phone", null, "Please fill in your personal phone number", null, '+31 6 12345678');
 
         $this->assertEquals("phone_number", $rewardAttribute->getName());
         $this->assertEquals("Phone Number", $rewardAttribute->getLabel());
         $this->assertEquals("phone", $rewardAttribute->getType());
         $this->assertEquals("Please fill in your personal phone number", $rewardAttribute->getDescription());
+        $this->assertEquals("+31 6 12345678", $rewardAttribute->getPlaceholder());
+
     }
 
     /** @test

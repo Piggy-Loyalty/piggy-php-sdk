@@ -19,7 +19,6 @@ class GiftcardMapper extends BaseMapper
      */
     public function map(stdClass $data): Giftcard
     {
-
         if (isset($data->giftcard_program)) {
             $giftcardProgramMapper = new GiftcardProgramMapper();
             $giftcardProgram = $giftcardProgramMapper->map($data->giftcard_program);
@@ -28,7 +27,6 @@ class GiftcardMapper extends BaseMapper
         if (isset($data->expiration_date) && !empty($data->expiration_date)) {
             $expirationDate = $this->parseDate($data->expiration_date);
         }
-
 
         return new Giftcard(
             $data->uuid,

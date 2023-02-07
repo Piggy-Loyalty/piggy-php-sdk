@@ -14,13 +14,9 @@ class RewardAttributesMapper
         $rewardAttributes = [];
 
         foreach ($data as $item) {
-
             $rewardAttributes[] = $rewardAttributeMapper->map($item);
-
         }
 
         return $rewardAttributes;
-
     }
-
 }
