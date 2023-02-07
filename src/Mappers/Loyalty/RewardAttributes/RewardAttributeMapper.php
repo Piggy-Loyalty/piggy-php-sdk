@@ -40,7 +40,8 @@ class RewardAttributeMapper
         return new RewardAttribute(
             $rewardAttribute->name,
             $rewardAttribute->label,
-            $rewardAttribute->dataType,
+            $rewardAttribute->data_type,
+            $rewardAttribute->field_type,
             $rewardAttribute->description,
             $isSoftReadOnly,
             $isHardReadOnly,

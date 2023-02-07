@@ -8,7 +8,6 @@ namespace Piggy\Api\Models\Loyalty\RewardAttributes;
  */
 class RewardAttribute
 {
-
     /** @var string */
     public $name;
 
@@ -21,6 +20,11 @@ class RewardAttribute
      * @var string
      */
     public $dataType;
+
+    /**
+     * @var string|null
+     */
+    public $fieldType;
 
     /**
      * @var string|null
@@ -52,11 +56,12 @@ class RewardAttribute
      */
     public $placeholder;
 
-    public function __construct(string $name, string $label, string $dataType, ?string $description = null, ?bool $isSoftReadOnly = null, ?bool $isHardReadOnly = null, ?bool $isPiggyDefined = null, ?array $options = null, ?string $placeholder = null)
+    public function __construct(string $name, string $label, string $dataType, ?string $fieldType = null, ?string $description = null, ?bool $isSoftReadOnly = null, ?bool $isHardReadOnly = null, ?bool $isPiggyDefined = null, ?array $options = null, ?string $placeholder = null)
     {
         $this->name = $name;
         $this->label = $label;
         $this->dataType = $dataType;
+        $this->fieldType = $fieldType;
         $this->description = $description;
         $this->isSoftReadOnly = $isSoftReadOnly;
         $this->isHardReadOnly = $isHardReadOnly;
@@ -131,6 +136,23 @@ class RewardAttribute
     public function setType(string $dataType): void
     {
         $this->dataType = $dataType;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFieldType(): ?string
+    {
+        return $this->fieldType;
+    }
+
+    /**
+     * @param string $fieldType
+     * @return void
+     */
+    public function setFieldType(string $fieldType): void
+    {
+        $this->fieldType = $fieldType;
     }
 
     /**

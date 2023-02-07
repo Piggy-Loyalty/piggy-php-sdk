@@ -42,6 +42,7 @@ class RewardAttributesResource extends BaseResource
      * @param string $name
      * @param string $label
      * @param string $dataType
+     * @param null|string $fieldType,
      * @param null|string $description
      * @param null|array $options
      * @param null|string $placeholder
@@ -49,31 +50,18 @@ class RewardAttributesResource extends BaseResource
      * @return RewardAttribute
      * @throws PiggyRequestException
      */
-    public function create(string $name, string $label, string $dataType, ?string $description = "", ?array $options = null, ?string $placeholder = null ): RewardAttribute
-
+    public function create(string $name, string $label, string $dataType, ?string $fieldType = null, ?string $description = null, ?array $options = null, ?string $placeholder = null ): RewardAttribute
     {
         $rewardAttributes = [
             "name" => $name,
             "label" => $label,
-            "dataType" => $dataType
+            "data_type" => $dataType
         ];
 
         // Check datatype exists
         if (!RewardAttributeDataTypes::has($dataType)) {
             throw new \Exception("DataType {$dataType} invalid");
         }
-
-//        if ($description != "") {
-//            $rewardAttributes['description'] = $description;
-//        }
-//
-//        if ($options != []) {
-//            $rewardAttributes['options'] = $options;
-//        }
-//
-//        if ($placeholder != null) {
-//            $rewardAttributes['placeholder'] = $placeholder;
-//        }
 
         $response = $this->client->post($this->resourceUri, $rewardAttributes);
 

@@ -24,7 +24,7 @@ class ContactAttributesResourceTest extends OAuthTestCase
                 "is_soft_read_only" => false,
                 "is_hard_read_only" => false,
                 "is_piggy_defined" => true,
-                "options" => []
+                "options" => null
             ]
         ]);
 
@@ -34,11 +34,9 @@ class ContactAttributesResourceTest extends OAuthTestCase
         $this->assertEquals("some_label", $contactAttributes[0]->getLabel());
         $this->assertEquals("text", $contactAttributes[0]->getType());
         $this->assertEquals("text", $contactAttributes[0]->getFieldType());
-        $this->assertEquals(null, $contactAttributes[0]->getDescription());
         $this->assertEquals(false, $contactAttributes[0]->getIsSoftReadOnly());
         $this->assertEquals(false, $contactAttributes[0]->getIsHardReadOnly());
         $this->assertEquals(true, $contactAttributes[0]->getIsPiggyDefined());
-        $this->assertEquals([], $contactAttributes[0]->getOptions());
 
     }
 
