@@ -19,10 +19,10 @@ class RewardAttributeMapper
         $isHardReadOnly = property_exists($rewardAttribute, 'is_hard_read_only') && $rewardAttribute->is_hard_read_only;
         $isPiggyDefined = property_exists($rewardAttribute, 'is_piggy_defined') && $rewardAttribute->is_piggy_defined;
 
-        $description = null;
-        if (property_exists($rewardAttribute, 'description') && $rewardAttribute->description != "") {
-            $description = $rewardAttribute->description;
-        }
+//        $description = null;
+//        if (property_exists($rewardAttribute, 'description') && $rewardAttribute->description != "") {
+//            $description = $rewardAttribute->description;
+//        }
 
         $options = [];
         if (property_exists($rewardAttribute, 'options') && $rewardAttribute->options != null) {
@@ -30,24 +30,23 @@ class RewardAttributeMapper
             foreach ($rewardAttribute->options as $item) {
                 $options[] = get_object_vars($item);
             }
-
         }
 
-        $placeholder = null;
-        if (property_exists($rewardAttribute, 'placeholder') && $rewardAttribute->placeholder != "") {
-            $placeholder = $rewardAttribute->placeholder;
-        }
+//        $placeholder = null;
+//        if (property_exists($rewardAttribute, 'placeholder') && $rewardAttribute->placeholder != "") {
+//            $placeholder = $rewardAttribute->placeholder;
+//        }
 
         return new RewardAttribute(
             $rewardAttribute->name,
             $rewardAttribute->label,
             $rewardAttribute->dataType,
-            $description,
+            $rewardAttribute->description,
             $isSoftReadOnly,
             $isHardReadOnly,
             $isPiggyDefined,
             $options,
-            $placeholder
+            $rewardAttribute->placeholder
         );
     }
 }

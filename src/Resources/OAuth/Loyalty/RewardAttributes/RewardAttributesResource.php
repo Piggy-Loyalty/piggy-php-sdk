@@ -63,18 +63,17 @@ class RewardAttributesResource extends BaseResource
             throw new \Exception("DataType {$dataType} invalid");
         }
 
-
-        if ($description != "") {
-            $rewardAttributes['description'] = $description;
-        }
-
-        if ($options != []) {
-            $rewardAttributes['options'] = $options;
-        }
-
-        if ($placeholder != null) {
-            $rewardAttributes['placeholder'] = $placeholder;
-        }
+//        if ($description != "") {
+//            $rewardAttributes['description'] = $description;
+//        }
+//
+//        if ($options != []) {
+//            $rewardAttributes['options'] = $options;
+//        }
+//
+//        if ($placeholder != null) {
+//            $rewardAttributes['placeholder'] = $placeholder;
+//        }
 
         $response = $this->client->post($this->resourceUri, $rewardAttributes);
 

@@ -25,14 +25,13 @@ class AttributeMapper extends BaseMapper
             foreach ($data->options as $item) {
                 $options[] = get_object_vars($item);
             }
-
         }
 
         return new Attribute(
             $data->name,
             $data->label,
             $data->type,
-            $data->field_type ?? "",
+            $data->field_type,
             $data->description,
             $isSoftReadOnly,
             $isHardReadOnly,

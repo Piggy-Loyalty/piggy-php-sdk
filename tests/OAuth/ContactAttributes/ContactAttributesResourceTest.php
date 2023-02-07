@@ -8,6 +8,7 @@ use Piggy\Api\Tests\OAuthTestCase;
 
 class ContactAttributesResourceTest extends OAuthTestCase
 {
+
     /** @test
      * @throws PiggyRequestException
      */
@@ -81,8 +82,6 @@ class ContactAttributesResourceTest extends OAuthTestCase
         $this->assertEquals('some_second_option_label', $contactAttributes[0]->getOptions()[1]['label']);
         $this->assertEquals('4', $contactAttributes[0]->getOptions()[1]['value']);
 
-
-
     }
 
     /** @test
@@ -94,19 +93,19 @@ class ContactAttributesResourceTest extends OAuthTestCase
             [
                 "name" => "some_name",
                 "label" => "some_label",
-                "type" => "url",
-                "field_type" => "text",
+                "type" => "text",
+                "field_type" => null,
                 "description" => null,
                 "options" => []
             ]
         );
 
-        $contactAttribute = $this->mockedClient->contactAttributes->create('some_name', 'some_label', 'url');
+        $contactAttribute = $this->mockedClient->contactAttributes->create('some_name', 'some_label', 'text', null, null, []);
 
         $this->assertEquals("some_name", $contactAttribute->getName());
         $this->assertEquals("some_label", $contactAttribute->getLabel());
-        $this->assertEquals("url", $contactAttribute->getType());
-        $this->assertEquals("text", $contactAttribute->getFieldType());
+        $this->assertEquals("text", $contactAttribute->getType());
+        $this->assertEquals(null, $contactAttribute->getFieldType());
         $this->assertEquals(null, $contactAttribute->getDescription());
         $this->assertEquals([], $contactAttribute->getOptions());
 
@@ -123,16 +122,17 @@ class ContactAttributesResourceTest extends OAuthTestCase
                 "name" => "some_phone_number",
                 "label" => "some_label_for_phone_number",
                 "type" => "phone",
+                "field_type" => null,
                 "description" => 'some_description',
-                "options" => []
             ]
         );
 
-        $contactAttribute = $this->mockedClient->contactAttributes->create('some_phone_number', 'some_label_for_phone_number', 'phone');
+        $contactAttribute = $this->mockedClient->contactAttributes->create('some_phone_number', 'some_label_for_phone_number', 'phone', null, 'some_description');
 
         $this->assertEquals("some_phone_number", $contactAttribute->getName());
         $this->assertEquals("some_label_for_phone_number", $contactAttribute->getLabel());
         $this->assertEquals("phone", $contactAttribute->getType());
+        $this->assertEquals(null, $contactAttribute->getFieldType());
         $this->assertEquals("some_description", $contactAttribute->getDescription());
         $this->assertEquals([], $contactAttribute->getOptions());
 
@@ -148,18 +148,18 @@ class ContactAttributesResourceTest extends OAuthTestCase
                 "name" => "henkie_name",
                 "label" => "henkie_label",
                 "type" => "license_plate",
-                "description" => 'henkie_description',
-                "options" => []
+                "field_type" => null,
+                "description" => 'henkie description',
             ]
         );
 
-        $contactAttribute = $this->mockedClient->contactAttributes->create('henkie_name', 'henkie_label', 'license_plate');
+        $contactAttribute = $this->mockedClient->contactAttributes->create('henkie_name', 'henkie_label', 'license_plate', null, 'henkie description');
 
         $this->assertEquals("henkie_name", $contactAttribute->getName());
         $this->assertEquals("henkie_label", $contactAttribute->getLabel());
         $this->assertEquals("license_plate", $contactAttribute->getType());
-        $this->assertEquals("henkie_description", $contactAttribute->getDescription());
-        $this->assertEquals([], $contactAttribute->getOptions());
+        $this->assertEquals(null, $contactAttribute->getFieldType());
+        $this->assertEquals("henkie description", $contactAttribute->getDescription());
 
     }
 
@@ -168,12 +168,12 @@ class ContactAttributesResourceTest extends OAuthTestCase
      */
     public function it_creates_a_multi_select_contact_attribute()
     {
-
         $this->addExpectedResponse(
             [
                 "name" => "pietje_name",
                 "label" => "pietje_label",
                 "type" => "multi_select",
+                "field_type" => null,
                 "description" => 'pietje_description',
                 "options" =>
                     [
@@ -183,14 +183,14 @@ class ContactAttributesResourceTest extends OAuthTestCase
             ]
         );
 
-        $contactAttribute = $this->mockedClient->contactAttributes->create('pietje_name', 'pietje_label', 'multi_select', 'pietje_description', [["label" => "some_option_label", "value" => "3"],["label" => 'some_second_option_label', "value" => "4"]]);
+        $contactAttribute = $this->mockedClient->contactAttributes->create('pietje_name', 'pietje_label', 'multi_select', null, 'pietje_description', [["label" => "some_option_label", "value" => "3"],["label" => 'some_second_option_label', "value" => "4"]]);
 
         $this->assertEquals("pietje_name", $contactAttribute->getName());
         $this->assertEquals("pietje_label", $contactAttribute->getLabel());
         $this->assertEquals("multi_select", $contactAttribute->getType());
+        $this->assertEquals(null, $contactAttribute->getFieldType());
         $this->assertEquals("pietje_description", $contactAttribute->getDescription());
         $this->assertEquals([["label" => "some_option_label", "value" => "3"],["label" => 'some_second_option_label', "value" => "4"]], $contactAttribute->getOptions());
-
     }
 
 }

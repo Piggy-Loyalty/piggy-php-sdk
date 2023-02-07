@@ -6,7 +6,6 @@ use Piggy\Api\Enum\CustomAttributeTypes;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Contacts\AttributeMapper;
 use Piggy\Api\Mappers\Contacts\AttributesMapper;
-use Piggy\Api\Mappers\Contacts\ContactAttributesMapper;
 use Piggy\Api\Models\Contacts\Attribute;
 use Piggy\Api\Resources\BaseResource;
 
@@ -38,33 +37,23 @@ class ContactAttributesResource extends BaseResource
      * @param string $name
      * @param string $label
      * @param string $type
+     * @param null|string $fieldType
      * @param null|string $description
      * @param array|null $options
      * @return Attribute
      * @throws PiggyRequestException
      * @throws \Exception
      */
-    public function create(string $name, string $label, string $type, ?string $description = "", ?array $options = null): Attribute
+    public function create(string $name, string $label, string $type, ?string $fieldType = null, ?string $description = null, ?array $options = null): Attribute
     {
         $contactAttributes = [
             "name" => $name,
             "label" => $label,
             "data_type" => $type
         ];
-        
-        var_dump('data type hier:', $type);
 
-        // Check type exists
         if (!CustomAttributeTypes::has($type)) {
             throw new \Exception("type {$type} invalid");
-        }
-
-        if ($description != "") {
-            $contactAttributes['description'] = $description;
-        }
-
-        if ($options != null) {
-            $contactAttributes['options'] = $options;
         }
 
         $response = $this->client->post($this->resourceUri, $contactAttributes);

@@ -138,18 +138,23 @@ class RewardAttributesResourceTest extends OAuthTestCase
                 "name" => "some_name",
                 "label" => "some_label",
                 "dataType" => "url",
+                "description" => null,
+                "options" => [],
+                "placeholder" => null
             ]
         );
 
-        $rewardAttribute = $this->mockedClient->rewardAttributes->create("some_name", "some_label", "url");
+        $rewardAttribute = $this->mockedClient->rewardAttributes->create("some_name", "some_label", "url", null, [], null);
 
         $this->assertEquals("some_name", $rewardAttribute->getName());
         $this->assertEquals("some_label", $rewardAttribute->getLabel());
         $this->assertEquals("url", $rewardAttribute->getType());
+        $this->assertEquals(null, $rewardAttribute->getDescription());
+        $this->assertEquals([], $rewardAttribute->getOptions());
+        $this->assertEquals(null, $rewardAttribute->getPlaceholder());
+
+
     }
-    /** @test
-     * @throws PiggyRequestException
-     */
 
     /** @test
      * @throws PiggyRequestException
