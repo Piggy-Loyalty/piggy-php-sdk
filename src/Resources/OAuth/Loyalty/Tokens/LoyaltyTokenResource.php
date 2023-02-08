@@ -23,7 +23,7 @@ class LoyaltyTokenResource extends BaseResource
      * @param float | null $unitValue
      * @return string
      */
-    public function create(string $version, string $shopId, string $uniqueId, ?int $credits = null, ?string $unitName = null, ?float $unitValue = null): string
+    public function create(string $version, string $shopId, string $uniqueId, ?int $credits = null, ?string $unitName = null, ?float $unitValue = null): \stdClass
     {
         $inputValues = [
             "version" => $version,
@@ -36,7 +36,7 @@ class LoyaltyTokenResource extends BaseResource
 
         $response = $this->client->post($this->resourceUri, $inputValues);
 
-        return $response->getData()->data;
+        return $response->getData();
     }
 
     /**

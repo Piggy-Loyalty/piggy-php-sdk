@@ -2,6 +2,7 @@
 
 namespace Piggy\Api\Resources\OAuth\Loyalty\RewardAttributes;
 
+use Piggy\Api\Enum\CustomAttributeTypes;
 use Piggy\Api\Enum\RewardAttributeDataTypes;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Loyalty\RewardAttributes\RewardAttributeMapper;
@@ -57,7 +58,7 @@ class RewardAttributesResource extends BaseResource
             "data_type" => $dataType
         ];
 
-        if (!RewardAttributeDataTypes::has($dataType)) {
+        if (!CustomAttributeTypes::has($dataType)) {
             throw new \Exception("DataType {$dataType} invalid");
         }
 

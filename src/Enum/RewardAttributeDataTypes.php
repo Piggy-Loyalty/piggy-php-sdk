@@ -8,9 +8,8 @@ use MabeEnum\Enum;
  * Class rewardAttributeDataTypes
  * @package Piggy\Api\Enum
  */
-class RewardAttributeDataTypes extends Enum  # todo or asbtract?
+class RewardAttributeDataTypes extends Enum
 {
-
     const URL = "url";
     const TEXT = "text";
     const DATE = "date";
@@ -33,4 +32,3 @@ class RewardAttributeDataTypes extends Enum  # todo or asbtract?
     const MULTI_SELECT = "multi_select";
     const LICENSE_PLATE = "license_plate";
 }
-

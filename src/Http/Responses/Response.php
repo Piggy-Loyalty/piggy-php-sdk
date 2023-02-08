@@ -11,7 +11,7 @@ use stdClass;
 class Response
 {
     /**
-     * @var stdClass
+     * @var stdClass|string
      */
     private $data;
     /**
@@ -31,7 +31,7 @@ class Response
     }
 
     /**
-     * @return
+     * @return stdClass|string
      */
     public function getData()
     {
@@ -39,7 +39,7 @@ class Response
     }
 
     /**
-     * @return
+     * @return stdClass
      */
     public function getMeta()
     {
