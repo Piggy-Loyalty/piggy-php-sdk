@@ -46,7 +46,6 @@ class RewardAttributesResource extends BaseResource
      * @param null|string $description
      * @param null|array $options
      * @param null|string $placeholder
-
      * @return RewardAttribute
      * @throws PiggyRequestException
      */
@@ -58,7 +57,6 @@ class RewardAttributesResource extends BaseResource
             "data_type" => $dataType
         ];
 
-        // Check datatype exists
         if (!RewardAttributeDataTypes::has($dataType)) {
             throw new \Exception("DataType {$dataType} invalid");
         }

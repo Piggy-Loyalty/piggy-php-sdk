@@ -30,6 +30,10 @@ class ContactIdentifiersResourceTest extends OAuthTestCase
         $this->assertEquals(true, $contactIdentifier->isActive());
     }
 
+    /**
+     * @test
+     * @throws PiggyRequestException
+     */
     public function it_returns_contact_identifier_by_value_with_contact()
     {
         $this->addExpectedResponse([
@@ -37,7 +41,7 @@ class ContactIdentifiersResourceTest extends OAuthTestCase
             "name" => 'Piggy',
             "active" => true,
             "contact" => [
-                "uuid" => 'uuid'
+                "uuid" => '1234-uuid'
             ],
         ]);
 
@@ -46,10 +50,13 @@ class ContactIdentifiersResourceTest extends OAuthTestCase
         $this->assertEquals("1", $contactIdentifier->getValue());
         $this->assertEquals("Piggy", $contactIdentifier->getName());
         $this->assertEquals(true, $contactIdentifier->isActive());
-        $this->assertEquals('uuid', $contactIdentifier->getContact()->getUuid());
+        $this->assertEquals('1234-uuid', $contactIdentifier->getContact()->getUuid());
     }
 
-    /** @test */
+    /**
+     * @test
+     * @throws PiggyRequestException
+     */
     public function it_creates_a_contact_identifier_without_contact()
     {
         $this->addExpectedResponse([
@@ -67,7 +74,10 @@ class ContactIdentifiersResourceTest extends OAuthTestCase
         $this->assertEquals(null, $contactIdentifier->getContact());
     }
 
-    /** @test */
+    /**
+     * @test
+     * @throws PiggyRequestException
+     */
     public function it_creates_a_contact_identifier_with_contact()
     {
         $this->addExpectedResponse([
@@ -87,7 +97,10 @@ class ContactIdentifiersResourceTest extends OAuthTestCase
         $this->assertEquals('my-uuid', $contactIdentifier->getContact()->getUuid());
     }
 
-    /** @test */
+    /**
+     * @test
+     * @throws PiggyRequestException
+     */
     public function it_links_contact_uuid_with_contact_identifier()
     {
         $this->addExpectedResponse([
@@ -105,6 +118,5 @@ class ContactIdentifiersResourceTest extends OAuthTestCase
         $this->assertEquals("hash123", $contactIdentifier->getValue());
         $this->assertEquals(true, $contactIdentifier->isActive());
         $this->assertEquals('mijn-uuid', $contactIdentifier->getContact()->getUuid());
-
     }
 }

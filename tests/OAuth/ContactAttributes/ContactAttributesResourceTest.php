@@ -19,11 +19,9 @@ class ContactAttributesResourceTest extends OAuthTestCase
                 "label" => "some_label",
                 "type" => "text",
                 "field_type" => "text",
-                "description" => null,
                 "is_soft_read_only" => false,
                 "is_hard_read_only" => false,
                 "is_piggy_defined" => true,
-                "options" => null,
             ]
         ]);
 
@@ -72,13 +70,10 @@ class ContactAttributesResourceTest extends OAuthTestCase
         $this->assertEquals(true, $contactAttributes[0]->getIsSoftReadOnly());
         $this->assertEquals(true, $contactAttributes[0]->getIsHardReadOnly());
         $this->assertEquals(false, $contactAttributes[0]->getIsPiggyDefined());
-
         $this->assertEquals('some_option_label', $contactAttributes[0]->getOptions()[0]['label']);
         $this->assertEquals('3', $contactAttributes[0]->getOptions()[0]['value']);
-
         $this->assertEquals('some_second_option_label', $contactAttributes[0]->getOptions()[1]['label']);
         $this->assertEquals('4', $contactAttributes[0]->getOptions()[1]['value']);
-
     }
 
     /** @test
@@ -91,9 +86,6 @@ class ContactAttributesResourceTest extends OAuthTestCase
                 "name" => "some_name",
                 "label" => "some_label",
                 "type" => "text",
-                "field_type" => null,
-                "description" => null,
-
             ]
         );
 
@@ -102,7 +94,6 @@ class ContactAttributesResourceTest extends OAuthTestCase
         $this->assertEquals("some_name", $contactAttribute->getName());
         $this->assertEquals("some_label", $contactAttribute->getLabel());
         $this->assertEquals("text", $contactAttribute->getType());
-
     }
 
     /** @test
@@ -110,13 +101,11 @@ class ContactAttributesResourceTest extends OAuthTestCase
      */
     public function it_creates_a_phone_number_contact_attribute()
     {
-
         $this->addExpectedResponse(
             [
                 "name" => "some_phone_number",
                 "label" => "some_label_for_phone_number",
                 "type" => "phone",
-                "field_type" => null,
                 "description" => 'some_description',
             ]
         );
@@ -128,7 +117,6 @@ class ContactAttributesResourceTest extends OAuthTestCase
         $this->assertEquals("phone", $contactAttribute->getType());
         $this->assertEquals("some_description", $contactAttribute->getDescription());
         $this->assertEquals([], $contactAttribute->getOptions());
-
     }
 
     /** @test

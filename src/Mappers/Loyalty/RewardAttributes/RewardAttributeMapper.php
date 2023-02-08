@@ -18,7 +18,7 @@ class RewardAttributeMapper
         $isHardReadOnly = property_exists($rewardAttribute, 'is_hard_read_only') && $rewardAttribute->is_hard_read_only;
         $isPiggyDefined = property_exists($rewardAttribute, 'is_piggy_defined') && $rewardAttribute->is_piggy_defined;
 
-        $options = [];
+        $options = null;
         if (property_exists($rewardAttribute, 'options') && $rewardAttribute->options != null) {
 
             foreach ($rewardAttribute->options as $item) {

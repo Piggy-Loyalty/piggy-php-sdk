@@ -68,8 +68,6 @@ class LoyaltyTokenResourceTest extends OAuthTestCase
             "contact_identifier" => null,
             "created_at" => "2023-01-10T15:59:58+00:00",
             "uuid" => "0c655a10-7980-4fdb-ac11-2caca19f2329",
-            "unit_value" => null,
-            "unit" => null
         ]);
 
         $creditReception = $this->mockedClient->loyaltyToken->claim('v1', '15', "my_unique_id_31", '1673433447', "ca856e5c8d8fa43bf4651209335a0d259bedb3db", "aacfe5dd-5fac-46b4-aa1b-c6f695bf3ed8", 10);
@@ -83,8 +81,6 @@ class LoyaltyTokenResourceTest extends OAuthTestCase
 
         $this->assertEquals('2023-01-10T15:59:58+00:00', $creditReception->getCreatedAt()->format('c'));
         $this->assertEquals('0c655a10-7980-4fdb-ac11-2caca19f2329', $creditReception->getUuid());
-        $this->assertEquals(null, $creditReception->getUnitValue());
-        $this->assertEquals(null, $creditReception->getUnit());
 
     }
 
@@ -108,7 +104,6 @@ class LoyaltyTokenResourceTest extends OAuthTestCase
                 "name" => "Visjes",
                 "uuid" => "1"
             ],
-            "contact_identifier" => null,
             "created_at" => "2023-01-12T14:59:03+00:00",
             "uuid" => "0c655a10-7980-4fdb-ac11-2caca19f2329",
             "unit_value" => 200.0,

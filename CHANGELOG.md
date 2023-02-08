@@ -2,7 +2,7 @@
 
 ## 3.1.0
 ### Oauth
-- feat: option to calculate the number of credits would be issued with the given values without creating a Credit Reception. 
+- feat: option to calculate the number of credits that would be issued with the given values without creating a Credit Reception. 
 - feat: able to show al Giftcard Programs for an account.
 - feat: option to link an existing, unlinked Contact Identifier to an existing Contact.
 - feat: option to create and claim both unit-based and credit-based Loyalty Token. 

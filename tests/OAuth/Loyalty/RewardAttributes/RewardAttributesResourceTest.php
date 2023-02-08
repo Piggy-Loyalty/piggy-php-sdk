@@ -18,12 +18,10 @@ class RewardAttributesResourceTest extends OAuthTestCase
                 "name" => "eennaam",
                 "label" => "testNaam",
                 "data_type" => "color",
-                "field_type" => null,
                 "description" => "someOmschrijving",
                 "is_soft_read_only" => false,
                 "is_hard_read_only" => false,
                 "is_piggy_defined" => false,
-                "options" => null,
                 "placeholder" => "somePlaceholder",
 
             ],
@@ -142,10 +140,6 @@ class RewardAttributesResourceTest extends OAuthTestCase
                 "name" => "some_name",
                 "label" => "some_label",
                 "data_type" => "url",
-                "field_type" => null,
-                "description" => null,
-                "options" => null,
-                "placeholder" => null
 
             ]
         );
@@ -192,7 +186,6 @@ class RewardAttributesResourceTest extends OAuthTestCase
                 "name" => "province",
                 "label" => "Province",
                 "data_type" => "select",
-                "field_type" => null,
                 "description" => "Please select the province you're living in",
                 "options" => [
                     ["label" => "Noord-Holland", "value" => 'noord_holland'],
@@ -208,7 +201,6 @@ class RewardAttributesResourceTest extends OAuthTestCase
                     ["label" => "Gelderland", "value" => "gelderland"],
                     ["label" => "Limburg", "value" => "limburg"],
                 ],
-                "placeholder" => null
             ]
         );
 
