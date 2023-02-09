@@ -22,8 +22,6 @@ class LoyaltyTransactionMapper
     public function map($data): array
     {
         $creditReceptionMapper = new CreditReceptionMapper();
-
-        //todo if no contact do loyaltytokenmapper()???
         $rewardReceptionMapper = new RewardReceptionMapper();
 
         $transactions = [];

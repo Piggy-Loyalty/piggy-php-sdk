@@ -48,11 +48,11 @@ class BaseTestCase extends TestCase
     }
 
     /**
-     * @param array $data
+     * @param mixed $data
      * @param array|null $meta
      * @param int $code
      */
-    protected function addExpectedResponse(array $data, array $meta = null, int $code = 200)
+    protected function addExpectedResponse($data, array $meta = null, int $code = 200)
     {
         $payload = json_encode([
             "data" => $data,

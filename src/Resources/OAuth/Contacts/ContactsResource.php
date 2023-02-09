@@ -21,7 +21,7 @@ class ContactsResource extends BaseResource
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/oauth/clients/contacts";
+        protected $resourceUri = "/api/v3/oauth/clients/contacts";
 
     /**
      * @param string $contactUuid
@@ -30,14 +30,12 @@ class ContactsResource extends BaseResource
      */
     public function get(string $contactUuid): Contact
     {
-
-
-
         $response = $this->client->get("$this->resourceUri/$contactUuid");
 
         $mapper = new ContactMapper();
 
         return $mapper->map($response->getData());
+
     }
 
     /**

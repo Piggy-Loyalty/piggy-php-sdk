@@ -26,11 +26,9 @@ class GiftcardsResource extends BaseResource
      */
     public function findOneBy(string $hash): Giftcard
     {
-
         $response = $this->client->get("$this->resourceUri/find-one-by", [
             "hash" => $hash,
         ]);
-
 
         $mapper = new GiftcardMapper();
 

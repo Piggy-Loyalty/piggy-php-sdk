@@ -42,27 +42,28 @@ class RewardAttributesResource extends BaseResource
     /**
      * @param string $name
      * @param string $label
+     * @param null|string $description
      * @param string $dataType
      * @param null|string $fieldType,
-     * @param null|string $description
      * @param null|array $options
      * @param null|string $placeholder
      * @return RewardAttribute
      * @throws PiggyRequestException
      */
-    public function create(string $name, string $label, string $dataType, ?string $fieldType = null, ?string $description = null, ?array $options = null, ?string $placeholder = null ): RewardAttribute
+    public function create(string $name, string $label, string $description, string $dataType, ?string $fieldType = null, ?array $options = null, ?string $placeholder = null ): RewardAttribute
     {
         $rewardAttributes = [
             "name" => $name,
             "label" => $label,
-            "data_type" => $dataType
+            "description" => $description,
+            "type" => $dataType
         ];
 
         if (!CustomAttributeTypes::has($dataType)) {
             throw new \Exception("DataType {$dataType} invalid");
         }
 
-        $response = $this->client->post($this->resourceUri, $rewardAttributes);
+        $response = $this->client->post($this->resourceUri, $rewardAttributes, []);
 
         $mapper = new RewardAttributeMapper();
 

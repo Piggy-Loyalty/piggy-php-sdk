@@ -21,7 +21,7 @@ class GiftcardProgramsResource extends BaseResource
      * @return array
      * @throws PiggyRequestException
      */
-    public function list()
+    public function list(): array
     {
         $response = $this->client->get($this->resourceUri);
 

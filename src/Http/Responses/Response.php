@@ -10,10 +10,8 @@ use stdClass;
  */
 class Response
 {
-    /**
-     * @var stdClass|string
-     */
     private $data;
+
     /**
      * @var stdClass
      */
@@ -30,9 +28,6 @@ class Response
         $this->meta = $meta;
     }
 
-    /**
-     * @return stdClass|string
-     */
     public function getData()
     {
         return $this->data;

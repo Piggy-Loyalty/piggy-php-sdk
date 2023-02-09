@@ -20,7 +20,7 @@ class GiftcardProgramMapper
         return new GiftcardProgram(
             $data->uuid,
             $data->name,
-            $data->active
+            $data->active ?? true
         );
     }
 

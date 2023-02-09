@@ -63,6 +63,8 @@ class CreditReceptionsResourceTest extends OAuthTestCase
             "credits" => 234,
         ]);
 
+
+
         $points = $this->mockedClient->creditReceptions->calculate('1', 15);
 
         $this->assertEquals(234, $points);

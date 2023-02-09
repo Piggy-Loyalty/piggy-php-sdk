@@ -19,13 +19,15 @@ class LoyaltyTokenResourceTest extends OAuthTestCase
      */
     public function it_returns_a_credit_based_loyalty_token_url()
     {
-        $this->addExpectedResponse([
-            "data" => "https://customer.piggy.nl/l?version=v1&shop_id=15&credits=20&unique_id=my_unique_id&timestamp=1672931049&hash=a9d8163cfb19b0b46d6ded40c0817de11be48bbf"
-        ]);
+        $this->addExpectedResponse(
+            "https://customer.piggy.nl/l?version=v1&shop_id=15&credits=20&unique_id=my_unique_id&timestamp=1672931049&hash=a9d8163cfb19b0b46d6ded40c0817de11be48bbf"
+        );
 
-         = $this->mockedClient->loyaltyToken->create("v1", "15", "my_unique_id", 20);
+        $loyaltyToken = $this->mockedClient->loyaltyToken->create("v1", "15", "my_unique_id", 20);
 
-        $this->assertEquals("https://customer.piggy.nl/l?version=v1&shop_id=15&credits=20&unique_id=my_unique_id&timestamp=1672931049&hash=a9d8163cfb19b0b46d6ded40c0817de11be48bbf", $creditReception);
+        $this->assertEquals(
+            "https://customer.piggy.nl/l?version=v1&shop_id=15&credits=20&unique_id=my_unique_id&timestamp=1672931049&hash=a9d8163cfb19b0b46d6ded40c0817de11be48bbf"
+        , $loyaltyToken);
     }
 
     /**
@@ -35,9 +37,8 @@ class LoyaltyTokenResourceTest extends OAuthTestCase
      */
     public function it_returns_a_unit_based_loyalty_token_url()
     {
-        $this->addExpectedResponse([
-            "data" => "https://customer.piggy.nl/l?version=v2&shop_id=15&unique_id=my_unique_id&timestamp=1672997328&unit_name=purchase_amount&unit_value=10&hash=def61056136472eac549b6d5a5f0c242f23b4146"
-        ]);
+        $this->addExpectedResponse("https://customer.piggy.nl/l?version=v2&shop_id=15&unique_id=my_unique_id&timestamp=1672997328&unit_name=purchase_amount&unit_value=10&hash=def61056136472eac549b6d5a5f0c242f23b4146"
+        );
 
         $creditReception = $this->mockedClient->loyaltyToken->create("v2", "15", "my_unique_id",
             null, "purchase_amount", 10);
@@ -126,6 +127,5 @@ class LoyaltyTokenResourceTest extends OAuthTestCase
         $this->assertEquals(200.0, $creditReception->getUnitValue());
         $this->assertEquals("test", $creditReception->getUnit()->getName());
         $this->assertEquals("Calories", $creditReception->getUnit()->getLabel());
-
     }
 }

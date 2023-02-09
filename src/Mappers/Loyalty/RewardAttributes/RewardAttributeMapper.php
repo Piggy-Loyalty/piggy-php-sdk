@@ -29,9 +29,9 @@ class RewardAttributeMapper
         return new RewardAttribute(
             $rewardAttribute->name,
             $rewardAttribute->label,
-            $rewardAttribute->data_type,
+            $rewardAttribute->description,
+            $rewardAttribute->type,
             $rewardAttribute->field_type ?? null,
-            $rewardAttribute->description ?? null,
             $isSoftReadOnly,
             $isHardReadOnly,
             $isPiggyDefined,

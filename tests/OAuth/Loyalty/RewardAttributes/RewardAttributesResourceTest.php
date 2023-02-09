@@ -17,8 +17,8 @@ class RewardAttributesResourceTest extends OAuthTestCase
             [
                 "name" => "eennaam",
                 "label" => "testNaam",
-                "data_type" => "color",
                 "description" => "someOmschrijving",
+                "type" => "color",
                 "is_soft_read_only" => false,
                 "is_hard_read_only" => false,
                 "is_piggy_defined" => false,
@@ -49,9 +49,9 @@ class RewardAttributesResourceTest extends OAuthTestCase
             [
                 "name" => "another_first_name",
                 "label" => "another_label",
-                "data_type" => "select",
-                "field_type" => "select",
                 "description" => "another_description",
+                "type" => "select",
+                "field_type" => "select",
                 "is_soft_read_only" => true,
                 "is_hard_read_only" => true,
                 "is_piggy_defined" => false,
@@ -68,9 +68,9 @@ class RewardAttributesResourceTest extends OAuthTestCase
 
         $this->assertEquals("another_first_name", $rewardAttributes[0]->getName());
         $this->assertEquals("another_label", $rewardAttributes[0]->getLabel());
+        $this->assertEquals("another_description", $rewardAttributes[0]->getDescription());
         $this->assertEquals("select", $rewardAttributes[0]->getType());
         $this->assertEquals("select", $rewardAttributes[0]->getFieldType());
-        $this->assertEquals("another_description", $rewardAttributes[0]->getDescription());
         $this->assertEquals(true, $rewardAttributes[0]->getIsSoftReadOnly());
         $this->assertEquals(true, $rewardAttributes[0]->getIsHardReadOnly());
         $this->assertEquals(false, $rewardAttributes[0]->getIsPiggyDefined());
@@ -90,9 +90,9 @@ class RewardAttributesResourceTest extends OAuthTestCase
             [
                 "name" => "another_first_name",
                 "label" => "another_label",
-                "data_type" => "multi_select",
-                "field_type" => "multi_select",
                 "description" => "another_description",
+                "type" => "multi_select",
+                "field_type" => "multi_select",
                 "is_soft_read_only" => true,
                 "is_hard_read_only" => true,
                 "is_piggy_defined" => false,
@@ -111,9 +111,9 @@ class RewardAttributesResourceTest extends OAuthTestCase
 
         $this->assertEquals("another_first_name", $rewardAttributes[0]->getName());
         $this->assertEquals("another_label", $rewardAttributes[0]->getLabel());
+        $this->assertEquals("another_description", $rewardAttributes[0]->getDescription());
         $this->assertEquals("multi_select", $rewardAttributes[0]->getType());
         $this->assertEquals("multi_select", $rewardAttributes[0]->getFieldType());
-        $this->assertEquals("another_description", $rewardAttributes[0]->getDescription());
         $this->assertEquals(true, $rewardAttributes[0]->getIsSoftReadOnly());
         $this->assertEquals(true, $rewardAttributes[0]->getIsHardReadOnly());
         $this->assertEquals(false, $rewardAttributes[0]->getIsPiggyDefined());
@@ -139,15 +139,17 @@ class RewardAttributesResourceTest extends OAuthTestCase
             [
                 "name" => "some_name",
                 "label" => "some_label",
-                "data_type" => "url",
+                "description" => "a description",
+                "type" => "text",
 
             ]
         );
 
-        $rewardAttribute = $this->mockedClient->rewardAttributes->create("some_name", "some_label", "url");
+        $rewardAttribute = $this->mockedClient->rewardAttributes->create("some_name", "some_label", "a description", "text");
         $this->assertEquals("some_name", $rewardAttribute->getName());
         $this->assertEquals("some_label", $rewardAttribute->getLabel());
-        $this->assertEquals("url", $rewardAttribute->getType());
+        $this->assertEquals("a description", $rewardAttribute->getDescription());
+        $this->assertEquals("text", $rewardAttribute->getType());
 
     }
 
@@ -160,18 +162,18 @@ class RewardAttributesResourceTest extends OAuthTestCase
             [
                 "name" => "phone_number",
                 "label" => "Phone Number",
-                "data_type" => "phone",
                 "description" => "Please fill in your personal phone number",
+                "type" => "phone",
                 "placeholder" => "+31 6 12345678"
             ]
         );
 
-        $rewardAttribute = $this->mockedClient->rewardAttributes->create("some_phone_number", "some_label_for_phone_number", "phone", null, "Please fill in your personal phone number", null, '+31 6 12345678');
+        $rewardAttribute = $this->mockedClient->rewardAttributes->create("some_phone_number", "some_label_for_phone_number", "Please fill in your personal phone number", "phone", null, null, '+31 6 12345678');
 
         $this->assertEquals("phone_number", $rewardAttribute->getName());
         $this->assertEquals("Phone Number", $rewardAttribute->getLabel());
-        $this->assertEquals("phone", $rewardAttribute->getType());
         $this->assertEquals("Please fill in your personal phone number", $rewardAttribute->getDescription());
+        $this->assertEquals("phone", $rewardAttribute->getType());
         $this->assertEquals("+31 6 12345678", $rewardAttribute->getPlaceholder());
 
     }
@@ -185,8 +187,8 @@ class RewardAttributesResourceTest extends OAuthTestCase
             [
                 "name" => "province",
                 "label" => "Province",
-                "data_type" => "select",
                 "description" => "Please select the province you're living in",
+                "type" => "select",
                 "options" => [
                     ["label" => "Noord-Holland", "value" => 'noord_holland'],
                     ["label" => "Zuid-Holland", "value" => "zuid_holland"],
@@ -207,9 +209,9 @@ class RewardAttributesResourceTest extends OAuthTestCase
         $rewardAttribute = $this->mockedClient->rewardAttributes->create(
             "province",
             "Province",
-            "select",
-            null,
             "Please select the province you're living in",
+            "select",
+            "select",
             [["label" => "Noord-Holland", "value" => 'noord_holland'],
                 ["label" => "Zuid-Holland", "value" => "zuid_holland"],
                 ["label" => "Zeeland", "value" => "zeeland"],

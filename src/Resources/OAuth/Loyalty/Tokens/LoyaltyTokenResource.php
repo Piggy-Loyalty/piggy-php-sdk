@@ -18,12 +18,13 @@ class LoyaltyTokenResource extends BaseResource
      * @param string $version
      * @param string $shopId
      * @param string $uniqueId
-     * @param int | null $credits
-     * @param string | null $unitName
-     * @param float | null $unitValue
+     * @param int|null $credits
+     * @param string|null $unitName
+     * @param float|null $unitValue
      * @return string
+     * @throws PiggyRequestException
      */
-    public function create(string $version, string $shopId, string $uniqueId, ?int $credits = null, ?string $unitName = null, ?float $unitValue = null): \stdClass
+    public function create(string $version, string $shopId, string $uniqueId, ?int $credits = null, ?string $unitName = null, ?float $unitValue = null): string
     {
         $inputValues = [
             "version" => $version,
@@ -35,6 +36,8 @@ class LoyaltyTokenResource extends BaseResource
         ];
 
         $response = $this->client->post($this->resourceUri, $inputValues);
+
+//        var_dump($response->getData());
 
         return $response->getData();
     }

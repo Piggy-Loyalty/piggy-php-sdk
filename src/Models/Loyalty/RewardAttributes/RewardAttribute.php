@@ -19,17 +19,17 @@ class RewardAttribute
     /**
      * @var string
      */
+    public $description;
+
+    /**
+     * @var string
+     */
     public $dataType;
 
     /**
      * @var string|null
      */
     public $fieldType;
-
-    /**
-     * @var string|null
-     */
-    public $description;
 
     /**
      * @var boolean|null
@@ -56,13 +56,13 @@ class RewardAttribute
      */
     public $placeholder;
 
-    public function __construct(string $name, string $label, string $dataType, ?string $fieldType = null, ?string $description = null, ?bool $isSoftReadOnly = null, ?bool $isHardReadOnly = null, ?bool $isPiggyDefined = null, ?array $options = null, ?string $placeholder = null)
+    public function __construct(string $name, string $label, string $description, string $dataType, ?string $fieldType = null, ?bool $isSoftReadOnly = null, ?bool $isHardReadOnly = null, ?bool $isPiggyDefined = null, ?array $options = null, ?string $placeholder = null)
     {
         $this->name = $name;
         $this->label = $label;
+        $this->description = $description;
         $this->dataType = $dataType;
         $this->fieldType = $fieldType;
-        $this->description = $description;
         $this->isSoftReadOnly = $isSoftReadOnly;
         $this->isHardReadOnly = $isHardReadOnly;
         $this->isPiggyDefined = $isPiggyDefined;
@@ -105,9 +105,9 @@ class RewardAttribute
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getDescription(): ?string
+    public function getDescription(): string
     {
         return $this->description;
     }

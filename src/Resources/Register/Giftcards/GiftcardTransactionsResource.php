@@ -20,7 +20,6 @@ class GiftcardTransactionsResource extends BaseResource
 
     /**
      * @param string $giftcardTransactionUuid
-     *
      * @return GiftcardTransaction
      * @throws PiggyRequestException
      */
@@ -31,6 +30,7 @@ class GiftcardTransactionsResource extends BaseResource
         $mapper = new GiftcardTransactionMapper();
 
         return $mapper->map($response->getData());
+
     }
 
     /**
@@ -54,7 +54,6 @@ class GiftcardTransactionsResource extends BaseResource
 
     /**
      * @param string $giftcardTransactionUuid
-     *
      * @return GiftcardTransaction
      * @throws PiggyRequestException
      */
