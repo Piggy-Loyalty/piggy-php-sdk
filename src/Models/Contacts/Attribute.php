@@ -52,12 +52,12 @@ class Attribute
      */
     public $options;
 
-    public function __construct(string $name, string $label, string $type, ?string $fieldType = null, ?string $description = null, ?bool $isSoftReadOnly = null, ?bool $isHardReadOnly = null, ?bool $isPiggyDefined = null, ?array $options = null)
+    public function __construct(string $name, string $label, string $type, ?string $fieldType, ?string $description = null, ?bool $isSoftReadOnly = null, ?bool $isHardReadOnly = null, ?bool $isPiggyDefined = null, ?array $options = null)
     {
         $this->name = $name;
         $this->label = $label;
         $this->type = $type;
-        $this->fieldType = $fieldType ?? "";
+        $this->fieldType = $fieldType;
         $this->description = $description;
         $this->isSoftReadOnly = $isSoftReadOnly;
         $this->isHardReadOnly = $isHardReadOnly;
@@ -121,16 +121,16 @@ class Attribute
      */
     public function getFieldType(): ?string
     {
-        return $this->fieldType;
+        return $this->type;
     }
 
     /**
-     * @param string $fieldType
+     * @param string $type
      * @return void
      */
-    public function setFieldType(string $fieldType): void
+    public function setFieldType(string $type): void
     {
-        $this->fieldType = $fieldType;
+        $this->type = $type;
     }
 
     /**

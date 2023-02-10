@@ -50,7 +50,6 @@ class ContactsResourceTest extends OAuthTestCase
                     "label" => "Nombre",
                     "description" => "Voornaam",
                     "type" => "text",
-                    "field_type" => "text",
                     "is_soft_read_only" => false,
                     "is_hard_read_only" => false,
                     "is_piggy_defined" => true,

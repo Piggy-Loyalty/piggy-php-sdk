@@ -14,6 +14,7 @@ class AttributeMapper extends BaseMapper
      */
     public function map(stdClass $data): Attribute
     {
+        $fieldType = $data->type;
         $isSoftReadOnly = property_exists($data, 'is_soft_read_only') && $data->is_soft_read_only;
         $isHardReadOnly = property_exists($data, 'is_hard_read_only') && $data->is_hard_read_only;
         $isPiggyDefined = property_exists($data, 'is_piggy_defined') && $data->is_piggy_defined;
@@ -25,13 +26,12 @@ class AttributeMapper extends BaseMapper
                 $options[] = get_object_vars($item);
             }
         }
-//        var_dump('options', $options);
 
         return new Attribute(
             $data->name,
             $data->label,
             $data->type,
-            $data->field_type ?? null,
+            $fieldType,
             $data->description ?? null,
             $isSoftReadOnly,
             $isHardReadOnly,

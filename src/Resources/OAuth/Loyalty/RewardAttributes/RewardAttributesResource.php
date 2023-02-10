@@ -44,13 +44,12 @@ class RewardAttributesResource extends BaseResource
      * @param string $label
      * @param null|string $description
      * @param string $dataType
-     * @param null|string $fieldType,
      * @param null|array $options
      * @param null|string $placeholder
      * @return RewardAttribute
      * @throws PiggyRequestException
      */
-    public function create(string $name, string $label, string $description, string $dataType, ?string $fieldType = null, ?array $options = null, ?string $placeholder = null ): RewardAttribute
+    public function create(string $name, string $label, string $description, string $dataType, ?array $options = null, ?string $placeholder = null ): RewardAttribute
     {
         $rewardAttributes = [
             "name" => $name,

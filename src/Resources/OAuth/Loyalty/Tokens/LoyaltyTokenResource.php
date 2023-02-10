@@ -37,8 +37,6 @@ class LoyaltyTokenResource extends BaseResource
 
         $response = $this->client->post($this->resourceUri, $inputValues);
 
-//        var_dump($response->getData());
-
         return $response->getData();
     }
 

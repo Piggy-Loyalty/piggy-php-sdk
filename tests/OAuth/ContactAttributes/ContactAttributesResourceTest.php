@@ -17,7 +17,6 @@ class ContactAttributesResourceTest extends OAuthTestCase
                 "name" => "asdf",
                 "label" => "some_label",
                 "type" => "text",
-                "field_type" => "text",
                 "is_soft_read_only" => false,
                 "is_hard_read_only" => false,
                 "is_piggy_defined" => true,
@@ -29,7 +28,6 @@ class ContactAttributesResourceTest extends OAuthTestCase
         $this->assertEquals("asdf", $contactAttributes[0]->getName());
         $this->assertEquals("some_label", $contactAttributes[0]->getLabel());
         $this->assertEquals("text", $contactAttributes[0]->getType());
-        $this->assertEquals("text", $contactAttributes[0]->getFieldType());
         $this->assertEquals(false, $contactAttributes[0]->getIsSoftReadOnly());
         $this->assertEquals(false, $contactAttributes[0]->getIsHardReadOnly());
         $this->assertEquals(true, $contactAttributes[0]->getIsPiggyDefined());
@@ -46,7 +44,6 @@ class ContactAttributesResourceTest extends OAuthTestCase
                 "name" => "another_first_name",
                 "label" => "another_label",
                 "type" => "select",
-                "field_type" => "select",
                 "description" => "another_description",
                 "is_soft_read_only" => true,
                 "is_hard_read_only" => true,
@@ -61,12 +58,9 @@ class ContactAttributesResourceTest extends OAuthTestCase
 
         $contactAttributes = $this->mockedClient->contactAttributes->list();
 
-        var_dump($contactAttributes);
-
         $this->assertEquals("another_first_name", $contactAttributes[0]->getName());
         $this->assertEquals("another_label", $contactAttributes[0]->getLabel());
         $this->assertEquals("select", $contactAttributes[0]->getType());
-        $this->assertEquals("select", $contactAttributes[0]->getFieldType());
         $this->assertEquals("another_description", $contactAttributes[0]->getDescription());
         $this->assertEquals(true, $contactAttributes[0]->getIsSoftReadOnly());
         $this->assertEquals(true, $contactAttributes[0]->getIsHardReadOnly());
@@ -111,7 +105,7 @@ class ContactAttributesResourceTest extends OAuthTestCase
             ]
         );
 
-        $contactAttribute = $this->mockedClient->contactAttributes->create('some_phone_number', 'some_label_for_phone_number', 'phone', null, 'some_description');
+        $contactAttribute = $this->mockedClient->contactAttributes->create('some_phone_number', 'some_label_for_phone_number', 'phone', 'some_description');
 
         $this->assertEquals("some_phone_number", $contactAttribute->getName());
         $this->assertEquals("some_label_for_phone_number", $contactAttribute->getLabel());
@@ -130,12 +124,11 @@ class ContactAttributesResourceTest extends OAuthTestCase
                 "name" => "henkie_name",
                 "label" => "henkie_label",
                 "type" => "license_plate",
-                "field_type" => null,
                 "description" => 'henkie description',
             ]
         );
 
-        $contactAttribute = $this->mockedClient->contactAttributes->create('henkie_name', 'henkie_label', 'license_plate', null, 'henkie description');
+        $contactAttribute = $this->mockedClient->contactAttributes->create('henkie_name', 'henkie_label', 'license_plate', 'henkie description');
 
         $this->assertEquals("henkie_name", $contactAttribute->getName());
         $this->assertEquals("henkie_label", $contactAttribute->getLabel());
@@ -163,7 +156,7 @@ class ContactAttributesResourceTest extends OAuthTestCase
             ]
         );
 
-        $contactAttribute = $this->mockedClient->contactAttributes->create('pietje_name', 'pietje_label', 'multi_select', null, 'pietje_description', [["name" => "some_option_label", "value" => "3"], ["name" => 'some_second_option_label', "value" => "4"]]);
+        $contactAttribute = $this->mockedClient->contactAttributes->create('pietje_name', 'pietje_label', 'multi_select', 'pietje_description', [["name" => "some_option_label", "value" => "3"], ["name" => 'some_second_option_label', "value" => "4"]]);
 
         $this->assertEquals("pietje_name", $contactAttribute->getName());
         $this->assertEquals("pietje_label", $contactAttribute->getLabel());

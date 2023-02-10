@@ -56,7 +56,7 @@ class RewardAttribute
      */
     public $placeholder;
 
-    public function __construct(string $name, string $label, string $description, string $dataType, ?string $fieldType = null, ?bool $isSoftReadOnly = null, ?bool $isHardReadOnly = null, ?bool $isPiggyDefined = null, ?array $options = null, ?string $placeholder = null)
+    public function __construct(string $name, string $label, string $description, string $dataType, ?string $fieldType, ?bool $isSoftReadOnly = null, ?bool $isHardReadOnly = null, ?bool $isPiggyDefined = null, ?array $options = null, ?string $placeholder = null)
     {
         $this->name = $name;
         $this->label = $label;

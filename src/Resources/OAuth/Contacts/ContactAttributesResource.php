@@ -26,7 +26,7 @@ class ContactAttributesResource extends BaseResource
      */
     public function list(): array
     {
-        $response = $this->client->get($this->resourceUri, []); // todo make it work with list here and then try to remove it
+        $response = $this->client->get($this->resourceUri, []);
 
         $mapper = new AttributesMapper();
 
@@ -37,20 +37,18 @@ class ContactAttributesResource extends BaseResource
      * @param string $name
      * @param string $label
      * @param string $type
-     * @param null|string $fieldType
      * @param null|string $description
      * @param array|null $options
      * @return Attribute
      * @throws PiggyRequestException
      * @throws \Exception
      */
-    public function create(string $name, string $label, string $type, ?string $fieldType = null, ?string $description = null, ?array $options = null): Attribute
+    public function create(string $name, string $label, string $type, ?string $description = null, ?array $options = null): Attribute
     {
         $contactAttributes = [
             "name" => $name,
             "label" => $label,
             "data_type" => $type,
-            "field_type" => $fieldType,
             "description" => $description,
             "options" => $options
         ];

@@ -51,7 +51,6 @@ class RewardAttributesResourceTest extends OAuthTestCase
                 "label" => "another_label",
                 "description" => "another_description",
                 "type" => "select",
-                "field_type" => "select",
                 "is_soft_read_only" => true,
                 "is_hard_read_only" => true,
                 "is_piggy_defined" => false,
@@ -70,7 +69,6 @@ class RewardAttributesResourceTest extends OAuthTestCase
         $this->assertEquals("another_label", $rewardAttributes[0]->getLabel());
         $this->assertEquals("another_description", $rewardAttributes[0]->getDescription());
         $this->assertEquals("select", $rewardAttributes[0]->getType());
-        $this->assertEquals("select", $rewardAttributes[0]->getFieldType());
         $this->assertEquals(true, $rewardAttributes[0]->getIsSoftReadOnly());
         $this->assertEquals(true, $rewardAttributes[0]->getIsHardReadOnly());
         $this->assertEquals(false, $rewardAttributes[0]->getIsPiggyDefined());
@@ -92,7 +90,6 @@ class RewardAttributesResourceTest extends OAuthTestCase
                 "label" => "another_label",
                 "description" => "another_description",
                 "type" => "multi_select",
-                "field_type" => "multi_select",
                 "is_soft_read_only" => true,
                 "is_hard_read_only" => true,
                 "is_piggy_defined" => false,
@@ -113,7 +110,6 @@ class RewardAttributesResourceTest extends OAuthTestCase
         $this->assertEquals("another_label", $rewardAttributes[0]->getLabel());
         $this->assertEquals("another_description", $rewardAttributes[0]->getDescription());
         $this->assertEquals("multi_select", $rewardAttributes[0]->getType());
-        $this->assertEquals("multi_select", $rewardAttributes[0]->getFieldType());
         $this->assertEquals(true, $rewardAttributes[0]->getIsSoftReadOnly());
         $this->assertEquals(true, $rewardAttributes[0]->getIsHardReadOnly());
         $this->assertEquals(false, $rewardAttributes[0]->getIsPiggyDefined());
@@ -210,7 +206,6 @@ class RewardAttributesResourceTest extends OAuthTestCase
             "province",
             "Province",
             "Please select the province you're living in",
-            "select",
             "select",
             [["label" => "Noord-Holland", "value" => 'noord_holland'],
                 ["label" => "Zuid-Holland", "value" => "zuid_holland"],
