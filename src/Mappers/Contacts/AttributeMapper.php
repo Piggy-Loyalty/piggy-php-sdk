@@ -25,6 +25,7 @@ class AttributeMapper extends BaseMapper
                 $options[] = get_object_vars($item);
             }
         }
+//        var_dump('options', $options);
 
         return new Attribute(
             $data->name,

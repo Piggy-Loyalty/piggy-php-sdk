@@ -7,7 +7,6 @@ use Piggy\Api\Tests\OAuthTestCase;
 
 class ContactAttributesResourceTest extends OAuthTestCase
 {
-
     /** @test
      * @throws PiggyRequestException
      */
@@ -54,13 +53,15 @@ class ContactAttributesResourceTest extends OAuthTestCase
                 "is_piggy_defined" => false,
                 "options" =>
                     [
-                        ["label" => "some_option_label", "value" => "3"],
-                        ["label" => 'some_second_option_label', "value" => "4"]
+                        ["name" => "some_option_label", "value" => "3"],
+                        ["name" => 'some_second_option_label', "value" => "4"]
                     ]
             ],
         ]);
 
         $contactAttributes = $this->mockedClient->contactAttributes->list();
+
+        var_dump($contactAttributes);
 
         $this->assertEquals("another_first_name", $contactAttributes[0]->getName());
         $this->assertEquals("another_label", $contactAttributes[0]->getLabel());
@@ -70,9 +71,9 @@ class ContactAttributesResourceTest extends OAuthTestCase
         $this->assertEquals(true, $contactAttributes[0]->getIsSoftReadOnly());
         $this->assertEquals(true, $contactAttributes[0]->getIsHardReadOnly());
         $this->assertEquals(false, $contactAttributes[0]->getIsPiggyDefined());
-        $this->assertEquals('some_option_label', $contactAttributes[0]->getOptions()[0]['label']);
+        $this->assertEquals('some_option_label', $contactAttributes[0]->getOptions()[0]['name']);
         $this->assertEquals('3', $contactAttributes[0]->getOptions()[0]['value']);
-        $this->assertEquals('some_second_option_label', $contactAttributes[0]->getOptions()[1]['label']);
+        $this->assertEquals('some_second_option_label', $contactAttributes[0]->getOptions()[1]['name']);
         $this->assertEquals('4', $contactAttributes[0]->getOptions()[1]['value']);
     }
 
@@ -156,19 +157,19 @@ class ContactAttributesResourceTest extends OAuthTestCase
                 "description" => 'pietje_description',
                 "options" =>
                     [
-                        ["label" => "some_option_label", "value" => "3"],
-                        ["label" => 'some_second_option_label', "value" => "4"]
+                        ["name" => "some_option_label", "value" => "3"],
+                        ["name" => 'some_second_option_label', "value" => "4"]
                     ]
             ]
         );
 
-        $contactAttribute = $this->mockedClient->contactAttributes->create('pietje_name', 'pietje_label', 'multi_select', null, 'pietje_description', [["label" => "some_option_label", "value" => "3"], ["label" => 'some_second_option_label', "value" => "4"]]);
+        $contactAttribute = $this->mockedClient->contactAttributes->create('pietje_name', 'pietje_label', 'multi_select', null, 'pietje_description', [["name" => "some_option_label", "value" => "3"], ["name" => 'some_second_option_label', "value" => "4"]]);
 
         $this->assertEquals("pietje_name", $contactAttribute->getName());
         $this->assertEquals("pietje_label", $contactAttribute->getLabel());
         $this->assertEquals("multi_select", $contactAttribute->getType());
         $this->assertEquals("pietje_description", $contactAttribute->getDescription());
-        $this->assertEquals([["label" => "some_option_label", "value" => "3"], ["label" => 'some_second_option_label', "value" => "4"]], $contactAttribute->getOptions());
+        $this->assertEquals([["name" => "some_option_label", "value" => "3"], ["name" => 'some_second_option_label', "value" => "4"]], $contactAttribute->getOptions());
     }
 
 }

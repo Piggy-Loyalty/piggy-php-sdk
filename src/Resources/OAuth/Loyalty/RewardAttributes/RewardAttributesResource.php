@@ -56,7 +56,9 @@ class RewardAttributesResource extends BaseResource
             "name" => $name,
             "label" => $label,
             "description" => $description,
-            "type" => $dataType
+            "type" => $dataType,
+            "options" => $options,
+            "placeholder" => $placeholder
         ];
 
         if (!CustomAttributeTypes::has($dataType)) {

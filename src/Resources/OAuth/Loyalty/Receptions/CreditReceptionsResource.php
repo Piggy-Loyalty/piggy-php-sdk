@@ -80,8 +80,6 @@ class CreditReceptionsResource extends BaseResource
 
         $response = $this->client->get($this->resourceUri . "/calculate", $data);
 
-        var_dump('calc responsie', $response);
-
         return (int)$response->getData()->credits;
     }
 }

@@ -49,7 +49,10 @@ class ContactAttributesResource extends BaseResource
         $contactAttributes = [
             "name" => $name,
             "label" => $label,
-            "data_type" => $type
+            "data_type" => $type,
+            "field_type" => $fieldType,
+            "description" => $description,
+            "options" => $options
         ];
 
         if (!CustomAttributeTypes::has($type)) {
