@@ -1,6 +1,6 @@
 <?php
 
-namespace Piggy\Api\Tests\OAuth\ContactIdentifiers;
+namespace Piggy\Api\Tests\OAuth\Contacts;
 
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;

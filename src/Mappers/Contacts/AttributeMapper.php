@@ -26,7 +26,7 @@ class AttributeMapper extends BaseMapper
                 $options[] = get_object_vars($item);
             }
         }
-
+        
         return new Attribute(
             $data->name,
             $data->label,

@@ -15,13 +15,14 @@ class RewardAttributeMapper
     public function map(stdClass $rewardAttribute): RewardAttribute
     {
         $fieldType = $rewardAttribute->type;
+
         $isSoftReadOnly = property_exists($rewardAttribute, 'is_soft_read_only') && $rewardAttribute->is_soft_read_only;
         $isHardReadOnly = property_exists($rewardAttribute, 'is_hard_read_only') && $rewardAttribute->is_hard_read_only;
         $isPiggyDefined = property_exists($rewardAttribute, 'is_piggy_defined') && $rewardAttribute->is_piggy_defined;
 
-        $options = null;
-        if (property_exists($rewardAttribute, 'options') && $rewardAttribute->options != null) {
+        $options = [];
 
+        if (property_exists($rewardAttribute, 'options') && $rewardAttribute->options != null) {
             foreach ($rewardAttribute->options as $item) {
                 $options[] = get_object_vars($item);
             }

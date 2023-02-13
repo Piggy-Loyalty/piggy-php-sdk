@@ -11,6 +11,7 @@ class RewardAttributesMapper
     public function map(array $data): array
     {
         $rewardAttributeMapper = new RewardAttributeMapper;
+
         $rewardAttributes = [];
 
         foreach ($data as $item) {
