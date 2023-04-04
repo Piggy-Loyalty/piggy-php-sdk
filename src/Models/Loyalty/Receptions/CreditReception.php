@@ -66,10 +66,10 @@ class CreditReception
      * @param Shop $shop
      * @param ContactIdentifier|null $contactIdentifier
      * @param DateTime $createdAt
-     * @param int|null $unitValue
+     * @param float|null $unitValue
      * @param Unit|null $unit
      */
-    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, ?int $unitValue = null, ?Unit $unit = null, $attributes = [])
+    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, ?float $unitValue = null, ?Unit $unit = null, $attributes = [])
     {
         $this->type = $type;
         $this->credits = $credits;
@@ -140,9 +140,9 @@ class CreditReception
     }
 
     /**
-     * @return int|null
+     * @return float|null
      */
-    public function getUnitValue(): ?int
+    public function getUnitValue(): ?float
     {
         return $this->unitValue;
     }

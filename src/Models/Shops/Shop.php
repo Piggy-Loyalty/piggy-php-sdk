@@ -19,13 +19,21 @@ class Shop
     protected $name;
 
     /**
+     * @var string
+     */
+    protected $id;
+
+    /**
      * @param string $uuid
      * @param string $name
+     * @param string | null $id
      */
-    public function __construct(string $uuid, string $name)
+    public function __construct(string $uuid, string $name, ?string $id = null)
     {
         $this->uuid = $uuid;
         $this->name = $name;
+        $this->id = $id;
+
     }
 
     /**
@@ -43,4 +51,16 @@ class Shop
     {
         return $this->name;
     }
+
+    /**
+     * @return string
+     */
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+
+
+
 }

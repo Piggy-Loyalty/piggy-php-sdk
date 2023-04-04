@@ -50,7 +50,6 @@ class ContactsResourceTest extends OAuthTestCase
                     "label" => "Nombre",
                     "description" => "Voornaam",
                     "type" => "text",
-                    "field_type" => "text",
                     "is_soft_read_only" => false,
                     "is_hard_read_only" => false,
                     "is_piggy_defined" => true,
@@ -85,6 +84,7 @@ class ContactsResourceTest extends OAuthTestCase
         $this->assertEquals(false, $contact->getAttributes()[0]->getAttribute()->getIsSoftReadOnly());
         $this->assertEquals(false, $contact->getAttributes()[0]->getAttribute()->getIsHardReadOnly());
         $this->assertEquals(true, $contact->getAttributes()[0]->getAttribute()->getIsPiggyDefined());
+
         $this->assertEquals([], $contact->getAttributes()[0]->getAttribute()->getOptions());
     }
 

@@ -26,7 +26,6 @@ class CreditReceptionMapper extends BaseMapper
         $shopMapper = new ShopMapper();
         $unitMapper = new UnitMapper();
         $contactIdentifierMapper = new ContactIdentifierMapper();
-
         $contact = $contactMapper->map($data->contact);
         $shop = $shopMapper->map($data->shop);
 
@@ -53,13 +52,13 @@ class CreditReceptionMapper extends BaseMapper
 
         return new CreditReception(
             $data->type,
-            $data->credits,
+            $data->credits ?? null,
             $data->uuid,
             $contact,
             $shop,
             $contactIdentifier,
             $this->parseDate($data->created_at),
-            $data->unit_value,
+            $data->unit_value ?? null,
             $unit,
             $attributes
         );

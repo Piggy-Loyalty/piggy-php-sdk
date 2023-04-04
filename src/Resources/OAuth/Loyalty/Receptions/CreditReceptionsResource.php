@@ -32,30 +32,54 @@ class CreditReceptionsResource extends BaseResource
      * @throws PiggyRequestException
      */
     public function create(
-        string $contactUuid,
-        string $shopUuid,
-        ?float $unitValue = null,
-        ?int $credits = null,
+        string  $contactUuid,
+        string  $shopUuid,
+        ?float  $unitValue = null,
+        ?int    $credits = null,
         ?string $contactIdentifierValue = null,
         ?string $unitName = null,
         ?string $posTransactionUuid = null,
-        ?array $attributes = []
+        ?array  $attributes = []
     ): CreditReception
     {
         $data = [
-            "shop_uuid" => $shopUuid,
-            "contact_uuid" => $contactUuid,
-            "unit_value" => $unitValue,
-            "credits" => $credits,
-            "contact_identifier_value" => $contactIdentifierValue,
-            "unit_name" => $unitName,
-            "pos_transaction_id" => $posTransactionUuid,
-        ] + $attributes;
+                "contact_uuid" => $contactUuid,
+                "shop_uuid" => $shopUuid,
+                "credits" => $credits,
+                "unit_value" => $unitValue,
+                "contact_identifier_value" => $contactIdentifierValue,
+                "pos_transaction_id" => $posTransactionUuid,
+                "unit_name" => $unitName,
 
-        $response = $this->client->post($this->resourceUri,$data);
+            ] + $attributes;
+
+        $response = $this->client->post($this->resourceUri, $data);
 
         $mapper = new CreditReceptionMapper();
 
         return $mapper->map($response->getData());
+    }
+
+    /**
+     * @param string $shopUuid
+     * @param float $unitValue
+     * @param string|null $contactUuid
+     * @return int
+     * @throws PiggyRequestException
+     */
+    public function calculate(string $shopUuid, float $unitValue, ?string $contactUuid = null): int
+    {
+        $data = [
+            "shop_uuid" => $shopUuid,
+            "unit_value" => $unitValue,
+        ];
+
+        if ($contactUuid != null) {
+            $data['contact_uuid'] = $contactUuid;
+        }
+
+        $response = $this->client->get($this->resourceUri . "/calculate", $data);
+
+        return (int)$response->getData()->credits;
     }
 }

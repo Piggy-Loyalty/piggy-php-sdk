@@ -1,14 +1,13 @@
 <?php
 
-namespace Piggy\Api\Models\Contacts;
+namespace Piggy\Api\Models\Loyalty\RewardAttributes;
 
 /**
- * Class Attribute
+ * Class RewardAttribute
  * @package Piggy\Api\Models
  */
-class Attribute
+class RewardAttribute
 {
-
     /** @var string */
     public $name;
 
@@ -20,17 +19,17 @@ class Attribute
     /**
      * @var string
      */
-    public $type;
+    public $description;
+
+    /**
+     * @var string
+     */
+    public $dataType;
 
     /**
      * @var string|null
      */
     public $fieldType;
-
-    /**
-     * @var string|null
-     */
-    public $description;
 
     /**
      * @var boolean|null
@@ -52,17 +51,23 @@ class Attribute
      */
     public $options;
 
-    public function __construct(string $name, string $label, string $type, ?string $fieldType, ?string $description = null, ?bool $isSoftReadOnly = null, ?bool $isHardReadOnly = null, ?bool $isPiggyDefined = null, ?array $options = null)
+    /**
+     * @var string|null
+     */
+    public $placeholder;
+
+    public function __construct(string $name, string $label, string $description, string $dataType, ?string $fieldType, ?bool $isSoftReadOnly = null, ?bool $isHardReadOnly = null, ?bool $isPiggyDefined = null, ?array $options = null, ?string $placeholder = null)
     {
         $this->name = $name;
         $this->label = $label;
-        $this->type = $type;
-        $this->fieldType = $fieldType;
         $this->description = $description;
+        $this->dataType = $dataType;
+        $this->fieldType = $fieldType;
         $this->isSoftReadOnly = $isSoftReadOnly;
         $this->isHardReadOnly = $isHardReadOnly;
         $this->isPiggyDefined = $isPiggyDefined;
         $this->options = $options;
+        $this->placeholder = $placeholder;
     }
 
     /**
@@ -102,41 +107,7 @@ class Attribute
     /**
      * @return string
      */
-    public function getType(): string
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param string $type
-     * @return void
-     */
-    public function setType(string $type): void
-    {
-        $this->type = $type;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getFieldType(): ?string
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param string $type
-     * @return void
-     */
-    public function setFieldType(string $type): void
-    {
-        $this->type = $type;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getDescription(): ?string
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -148,6 +119,40 @@ class Attribute
     public function setDescription(string $description): void
     {
         $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->dataType;
+    }
+
+    /**
+     * @param string $dataType
+     * @return void
+     */
+    public function setType(string $dataType): void
+    {
+        $this->dataType = $dataType;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFieldType(): ?string
+    {
+        return $this->fieldType;
+    }
+
+    /**
+     * @param string $fieldType
+     * @return void
+     */
+    public function setFieldType(string $fieldType): void
+    {
+        $this->fieldType = $fieldType;
     }
 
     /**
@@ -213,5 +218,22 @@ class Attribute
     public function setOptions(?array $options): void
     {
         $this->options = $options;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPlaceholder(): ?string
+    {
+        return $this->placeholder;
+    }
+
+    /**
+     * @param string|null $placeholder
+     * @return void
+     */
+    public function setPlaceholder(?string $placeholder): void
+    {
+        $this->placeholder = $placeholder;
     }
 }

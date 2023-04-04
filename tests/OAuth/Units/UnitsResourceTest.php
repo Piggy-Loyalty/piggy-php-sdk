@@ -15,7 +15,7 @@ class UnitsResourceTest extends OAuthTestCase
     {
         $this->addExpectedResponse([
             [
-                "name" => "calorien",
+                "name" => "calorieeen",
                 "label" => "kcal",
                 "is_default" => true
             ],
@@ -28,7 +28,8 @@ class UnitsResourceTest extends OAuthTestCase
 
         $units = $this->mockedClient->units->list();
 
-        $this->assertEquals("calorien", $units[0]->getName());
+
+        $this->assertEquals("calorieeen", $units[0]->getName());
         $this->assertEquals("kcal", $units[0]->getLabel());
         $this->assertEquals(true, $units[0]->getIsDefault());
         $this->assertEquals("euros", $units[1]->getName());

@@ -6,7 +6,7 @@ use Exception;
 use Piggy\Api\Enum\LoyaltyTransactionType;
 use Piggy\Api\Mappers\Loyalty\Receptions\CreditReceptionMapper;
 use Piggy\Api\Mappers\Loyalty\Receptions\RewardReceptionMapper;
-use Piggy\Api\Models\Loyalty\LoyaltyTransaction;
+use Piggy\Api\Models\Loyalty\Transaction\LoyaltyTransaction;
 
 /**
  * Class CreditReceptionMapper

@@ -16,10 +16,8 @@ class ContactAttributeMapper
         $attribute = null;
         if (property_exists($data,'attribute')) {
             $attributeMapper = new AttributeMapper();
-
             $attribute = $attributeMapper->map($data->attribute);
         }
-
 
         return new ContactAttribute(
             $data->value,

@@ -55,4 +55,25 @@ class CreditReceptionsResource extends BaseResource
 
         return $mapper->map($response->getData());
     }
+
+    public function calculate(string $contactUuid, string $shopUuid, array $unitValue, string $accountUuid) : CreditReception
+    {
+
+        $inputValues = [
+
+                "contact_uuid" => $contactUuid,
+                "shop_uuid" => $shopUuid,
+                "unit_value" => $unitValue,
+                "account_uuid" => $accountUuid,
+
+            ];
+
+        $response = $this->client->get($this->resourceUri, $inputValues);
+
+        $mapper = new CreditReceptionMapper();
+
+        return $mapper->map($response->getData());
+
+    }
+
 }

@@ -3,7 +3,7 @@
 namespace Piggy\Api\Models\Contacts;
 
 /**
- * Class ContactAttribute
+ * Class Attribute
  * @package Piggy\Api\Models
  */
 class ContactAttribute
@@ -11,9 +11,7 @@ class ContactAttribute
     /** @var string */
     public $value;
 
-    /**
-     * @var Attribute
-     */
+    /** @var Attribute */
     public $attribute;
 
     public function __construct($value, $attribute)
@@ -53,7 +51,5 @@ class ContactAttribute
     {
         $this->attribute = $attribute;
     }
-
-
 
 }

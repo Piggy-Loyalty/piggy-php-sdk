@@ -21,7 +21,7 @@ class ContactsResource extends BaseResource
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/oauth/clients/contacts";
+        protected $resourceUri = "/api/v3/oauth/clients/contacts";
 
     /**
      * @param string $contactUuid
@@ -35,6 +35,7 @@ class ContactsResource extends BaseResource
         $mapper = new ContactMapper();
 
         return $mapper->map($response->getData());
+
     }
 
     /**
@@ -114,10 +115,6 @@ class ContactsResource extends BaseResource
             "limit" => $limit
         ]);
 
-        var_dump($response->getMeta());
-        die;
-
-
         $mapper = new ContactsMapper();
 
         return $mapper->map($response->getData());
@@ -125,15 +122,15 @@ class ContactsResource extends BaseResource
 
     /**
      * @param string $contactUuid
-     * @param array $attributes
+     * @param array $contactAttributes
      *
      * @return Contact
      * @throws PiggyRequestException
      */
-    public function update(string $contactUuid, array $attributes): Contact
+    public function update(string $contactUuid, array $contactAttributes): Contact
     {
         $response = $this->client->put("$this->resourceUri/$contactUuid", [
-            'attributes' => $attributes
+            'attributes' => $contactAttributes
         ]);
 
         $mapper = new ContactMapper();
@@ -170,4 +167,5 @@ class ContactsResource extends BaseResource
 
         return $mapper->map($response->getData());
     }
+
 }

@@ -17,7 +17,7 @@ class Contact
     protected $uuid;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $email;
 
@@ -74,9 +74,9 @@ class Contact
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -169,5 +169,4 @@ class Contact
     {
         $this->currentValues = $currentValues;
     }
-
 }

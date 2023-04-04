@@ -28,6 +28,7 @@ class GiftcardsResourceTest extends OAuthTestCase
             "expiration_date" => "2130-06-13T12:09:00+00:00",
             "giftcard_program" => [
                 "name" => "My Giftcards",
+                "active" => "true",
                 "uuid" => '32-32-lol'
             ]
         ]);
@@ -60,6 +61,7 @@ class GiftcardsResourceTest extends OAuthTestCase
             "expiration_date" => "2130-06-13T12:09:00+00:00",
             "giftcard_program" => [
                 "name" => "My Giftcards",
+                "active" => "true",
                 "uuid" => '32-32-lol'
             ]
         ]);
