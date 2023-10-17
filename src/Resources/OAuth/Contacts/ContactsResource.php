@@ -87,22 +87,6 @@ class ContactsResource extends BaseResource
     }
 
     /**
-     * @param string|null $contactIdentifierValue
-     * @return Contact
-     * @throws PiggyRequestException
-     */
-    public function createAnonymously(?string $contactIdentifierValue = null): Contact
-    {
-        $response = $this->client->post("$this->resourceUri/anonymous", [
-            "contact_identifier_value" => $contactIdentifierValue,
-        ]);
-
-        $mapper = new ContactMapper();
-
-        return $mapper->map($response->getData());
-    }
-
-    /**
      * @param int|null $page
      * @param int|null $limit
      * @return array
@@ -116,6 +100,22 @@ class ContactsResource extends BaseResource
         ]);
 
         $mapper = new ContactsMapper();
+
+        return $mapper->map($response->getData());
+    }
+
+    /**
+     * @param string|null $contactIdentifierValue
+     * @return Contact
+     * @throws PiggyRequestException
+     */
+    public function createAnonymously(?string $contactIdentifierValue = null): Contact
+    {
+        $response = $this->client->post("$this->resourceUri/anonymous", [
+            "contact_identifier_value" => $contactIdentifierValue,
+        ]);
+
+        $mapper = new ContactMapper();
 
         return $mapper->map($response->getData());
     }

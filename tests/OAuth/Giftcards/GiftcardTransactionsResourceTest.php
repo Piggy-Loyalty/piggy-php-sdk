@@ -19,14 +19,14 @@ class GiftcardTransactionsResourceTest extends OAuthTestCase
     {
         $this->addExpectedResponse([
             "uuid" => '123-123',
-            "amount_in_cents" => 420,
+            "amount_in_cents" => 180,
             "created_at" => "2022-06-30T13:29:16+00:00",
         ]);
 
         $giftcardTransaction = $this->mockedClient->giftcardTransactions->get('123-123');
 
         $this->assertEquals("123-123", $giftcardTransaction->getUuid());
-        $this->assertEquals(420, $giftcardTransaction->getAmountInCents());
+        $this->assertEquals(180, $giftcardTransaction->getAmountInCents());
         $this->assertEquals("2022-06-30T13:29:16+00:00", $giftcardTransaction->getCreatedAt()->format('c'));
     }
 
@@ -38,14 +38,14 @@ class GiftcardTransactionsResourceTest extends OAuthTestCase
     {
         $this->addExpectedResponse([
             "uuid" => '123-123',
-            "amount_in_cents" => 420,
+            "amount_in_cents" => 180,
             "created_at" => "2022-06-30T13:29:16+00:00",
         ]);
 
         $giftcardTransaction = $this->mockedClient->giftcardTransactions->create(1, 2, 100);
 
         $this->assertEquals("123-123", $giftcardTransaction->getUuid());
-        $this->assertEquals(420, $giftcardTransaction->getAmountInCents());
+        $this->assertEquals(180, $giftcardTransaction->getAmountInCents());
         $this->assertEquals("2022-06-30T13:29:16+00:00", $giftcardTransaction->getCreatedAt()->format('c'));
     }
 
@@ -57,14 +57,46 @@ class GiftcardTransactionsResourceTest extends OAuthTestCase
     {
         $this->addExpectedResponse([
             "uuid" => '123-123',
-            "amount_in_cents" => 420,
+            "amount_in_cents" => 180,
             "created_at" => "2022-06-30T13:29:16+00:00",
         ]);
 
         $giftcardTransaction = $this->mockedClient->giftcardTransactions->correct('123-123');
 
         $this->assertEquals("123-123", $giftcardTransaction->getUuid());
-        $this->assertEquals(420, $giftcardTransaction->getAmountInCents());
+        $this->assertEquals(180, $giftcardTransaction->getAmountInCents());
         $this->assertEquals("2022-06-30T13:29:16+00:00", $giftcardTransaction->getCreatedAt()->format('c'));
+    }
+
+    /**
+     * @test
+     * @throws PiggyRequestException
+     */
+    public function it_returns_a_list_of_giftcard_transactions()
+    {
+        $this->addExpectedResponse([
+                [
+                    "uuid" => '123-123',
+                    "amount_in_cents" => 180,
+                    "created_at" => "2022-06-30T13:29:16+00:00"
+                ],
+                [
+                    "uuid" => '123-123',
+                    "amount_in_cents" => 360,
+                    "created_at" => "2022-06-30T13:29:16+00:00"
+                ]
+            ]
+        );
+
+        $giftcardTransactions = $this->mockedClient->giftcardTransactions->list();
+
+        $this->assertEquals('123-123', $giftcardTransactions[0]->getUuid());
+        $this->assertEquals(180, $giftcardTransactions[0]->getAmountInCents());
+        $this->assertEquals("2022-06-30T13:29:16+00:00", $giftcardTransactions[0]->getCreatedAt()->format('c'));
+
+        $this->assertEquals('123-123', $giftcardTransactions[1]->getUuid());
+        $this->assertEquals(360, $giftcardTransactions[1]->getAmountInCents());
+        $this->assertEquals("2022-06-30T13:29:16+00:00", $giftcardTransactions[1]->getCreatedAt()->format('c'));
+
     }
 }

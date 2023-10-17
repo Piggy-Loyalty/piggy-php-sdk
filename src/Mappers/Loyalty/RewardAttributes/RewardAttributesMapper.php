@@ -14,6 +14,9 @@ class RewardAttributesMapper
 
         $rewardAttributes = [];
 
+        var_dump($data);
+        die;
+
         foreach ($data as $item) {
             $rewardAttributes[] = $rewardAttributeMapper->map($item);
         }

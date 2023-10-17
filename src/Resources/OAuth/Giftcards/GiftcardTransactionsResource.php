@@ -4,6 +4,9 @@ namespace Piggy\Api\Resources\OAuth\Giftcards;
 
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Giftcards\GiftcardTransactionMapper;
+use Piggy\Api\Mappers\Giftcards\GiftcardTransactionMapperNew;
+use Piggy\Api\Mappers\Giftcards\GiftcardTransactionsMapper;
+use Piggy\Api\Mappers\Loyalty\RewardAttributes\RewardAttributesMapper;
 use Piggy\Api\Models\Giftcards\GiftcardTransaction;
 use Piggy\Api\Resources\BaseResource;
 
@@ -26,8 +29,7 @@ class GiftcardTransactionsResource extends BaseResource
     public function get(string $giftcardTransactionUuid): GiftcardTransaction
     {
         $response = $this->client->get("$this->resourceUri/$giftcardTransactionUuid");
-
-        $mapper = new GiftcardTransactionMapper();
+        $mapper = new GiftcardTransactionMapperNew();
 
         return $mapper->map($response->getData());
     }
@@ -64,5 +66,20 @@ class GiftcardTransactionsResource extends BaseResource
         $mapper = new GiftcardTransactionMapper();
 
         return $mapper->map($response->getData());
+    }
+
+    /**
+     * @throws PiggyRequestException
+     */
+    public function list(int $page = 1, int $limit = 30): array
+    {
+        $response = $this->client->get($this->resourceUri, [
+            "page" => $page,
+            "limit" => $limit,
+        ]);
+
+        $mapper = new GiftcardTransactionsMapper();
+
+        return $mapper->map((array)$response->getData());
     }
 }
