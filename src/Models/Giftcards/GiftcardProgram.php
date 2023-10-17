@@ -23,7 +23,7 @@ class GiftcardProgram
      */
     public $active;
 
-    /**`
+    /**
      * GiftcardProgram constructor.
      * @param string $uuid
      * @param string $name

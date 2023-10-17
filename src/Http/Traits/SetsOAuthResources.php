@@ -3,6 +3,7 @@
 namespace Piggy\Api\Http\Traits;
 
 use Piggy\Api\Http\BaseClient;
+use Piggy\Api\Models\Vouchers\Promotion;
 use Piggy\Api\Resources\OAuth\Automations\AutomationsResource;
 use Piggy\Api\Resources\OAuth\Contacts\ContactAttributesResource;
 use Piggy\Api\Resources\OAuth\Contacts\ContactIdentifiersResource;
@@ -23,6 +24,7 @@ use Piggy\Api\Resources\OAuth\PrepaidTransactionResource;
 use Piggy\Api\Resources\OAuth\Shops\ShopsResource;
 use Piggy\Api\Resources\OAuth\SubscriptionTypesResource;
 use Piggy\Api\Resources\OAuth\Units\UnitsResource;
+use Piggy\Api\Resources\OAuth\Vouchers\PromotionResource;
 
 /**
  * Trait SetsOAuthResources
@@ -124,6 +126,9 @@ trait SetsOAuthResources
      * @var LoyaltyTokenResource */
     public $loyaltyToken;
 
+    /**
+     * @var PromotionResource */
+    public $promotion;
 
     /**
      * @param BaseClient $client
@@ -155,6 +160,7 @@ trait SetsOAuthResources
         $this->loyaltyProgram = new LoyaltyProgramResource($client);
         $this->rewardAttributes = new RewardAttributesResource($client);
         $this->loyaltyToken = new LoyaltyTokenResource($client);
+        $this->promotion = new PromotionResource($client);
 
     }
 }

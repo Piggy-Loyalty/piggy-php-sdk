@@ -14,8 +14,6 @@ class GiftcardTransactionsMapper
 
         $giftcardTransactions = [];
 
-        var_dump($data);
-
         foreach ($data as $item) {
             $giftcardTransactions[] = $giftcardTransactionsMapper->map($item);
         }
