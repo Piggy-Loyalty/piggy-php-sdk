@@ -24,6 +24,7 @@ use Piggy\Api\Resources\OAuth\Loyalty\Tokens\LoyaltyTokenResource;
 use Piggy\Api\Resources\OAuth\PrepaidTransactionResource;
 use Piggy\Api\Resources\OAuth\Shops\ShopsResource;
 use Piggy\Api\Resources\OAuth\SubscriptionTypesResource;
+use Piggy\Api\Resources\OAuth\Tiers\TiersResource;
 use Piggy\Api\Resources\OAuth\Units\UnitsResource;
 use Piggy\Api\Resources\OAuth\Vouchers\PromotionAttributesResource;
 use Piggy\Api\Resources\OAuth\Vouchers\PromotionResource;
@@ -142,6 +143,14 @@ trait SetsOAuthResources
     public $voucher;
 
     /**
+     * @var BrandkitResource */
+    public $brandkit;
+
+    /**
+     * @var TiersResource */
+    public $tier;
+
+    /**
      * @param BaseClient $client
      *
      * @return void
@@ -175,6 +184,6 @@ trait SetsOAuthResources
         $this->promotionAttributes = new PromotionAttributesResource($client);
         $this->voucher = new VoucherResource($client);
         $this->brandkit = new BrandkitResource($client);
-
+        $this->tier = new TiersResource($client);
     }
 }
