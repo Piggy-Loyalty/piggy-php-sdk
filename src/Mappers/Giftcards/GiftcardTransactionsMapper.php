@@ -10,7 +10,7 @@ class GiftcardTransactionsMapper
      */
     public function map(array $data): array
     {
-        $giftcardTransactionsMapper = new GiftcardTransactionMapperNew;
+        $giftcardTransactionsMapper = new GiftcardTransactionMapper;
 
         $giftcardTransactions = [];
 

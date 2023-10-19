@@ -33,7 +33,6 @@ class Shop
         $this->uuid = $uuid;
         $this->name = $name;
         $this->id = $id;
-
     }
 
     /**

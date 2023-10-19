@@ -9,10 +9,10 @@ namespace Piggy\Api\Models\Contacts;
 class ContactAttribute
 {
     /** @var string */
-    public $value;
+    private $value;
 
     /** @var Attribute */
-    public $attribute;
+    private $attribute;
 
     public function __construct($value, $attribute)
     {

@@ -50,6 +50,11 @@ class Giftcard
     protected $amount_in_cents;
 
     /**
+     * @var int
+     */
+    protected $id;
+
+    /**
      * @param string $uuid
      * @param string $hash
      * @param int $amountInCents
@@ -58,8 +63,10 @@ class Giftcard
      * @param bool $upgradeable
      * @param GiftcardProgram|null $giftcardProgram
      * @param DateTime|null $expirationDate
+     * @param int|null $id
+     * @param string|null $name
      */
-    public function __construct(string $uuid, string $hash, int $amountInCents, int $type, bool $active, bool $upgradeable, ?GiftcardProgram $giftcardProgram, ?DateTime $expirationDate)
+    public function __construct(string $uuid, string $hash, int $amountInCents, int $type, bool $active, bool $upgradeable, ?GiftcardProgram $giftcardProgram, ?DateTime $expirationDate, ?int $id, ?string $name)
     {
         $this->uuid = $uuid;
         $this->hash = $hash;
@@ -69,6 +76,7 @@ class Giftcard
         $this->upgradeable = $upgradeable;
         $this->giftcardProgram = $giftcardProgram;
         $this->expirationDate = $expirationDate;
+        $this->id = $id;
     }
 
     /**
@@ -134,4 +142,12 @@ class Giftcard
     {
         return $this->amount_in_cents;
     }
+
+    public function getId(): int
+    {
+        var_dump($this->id);
+        die();
+        return $this->id;
+    }
+
 }

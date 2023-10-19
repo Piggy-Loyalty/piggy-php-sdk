@@ -26,7 +26,6 @@ class PromotionsResourceTest extends OAuthTestCase
             "uuid" => "1234-abcd-5678-efgh",
             "name" => "Free Pizza",
             "description" => "Get your free pizza slice!",
-
         ]);
 
         $promotion = $this->mockedClient->promotion->create("1234-abcd-5678-efgh", "Free Pizza", "Get your free pizza slice!");
