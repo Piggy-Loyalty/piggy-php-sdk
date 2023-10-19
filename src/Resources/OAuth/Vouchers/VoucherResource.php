@@ -11,7 +11,7 @@ use Piggy\Api\Models\Vouchers\VoucherLockDTO;
 use Piggy\Api\Resources\BaseResource;
 
 /**
- * Class GiftcardProgramResource
+ * Class VoucherResource
  * @package Piggy\Api\Resources\OAuth
  */
 class VoucherResource extends BaseResource
@@ -149,23 +149,4 @@ class VoucherResource extends BaseResource
 
         return $mapper->map($response->getData());
     }
-
-
-
-
-//    /**
-//     * @param string $code
-//     * @return Voucher
-//     * @throws PiggyRequestException
-//     */
-//    public function findByCode(string $code): Voucher
-//    {
-//        $response = $this->client->get($this->resourceUri, [
-//            "code" => $code,
-//        ]);
-//
-//        $mapper = new VoucherMapper();
-//
-//        return $mapper->map($response->getData());
-//    }
 }

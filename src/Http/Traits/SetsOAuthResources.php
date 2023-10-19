@@ -5,6 +5,7 @@ namespace Piggy\Api\Http\Traits;
 use Piggy\Api\Http\BaseClient;
 use Piggy\Api\Models\Vouchers\Promotion;
 use Piggy\Api\Resources\OAuth\Automations\AutomationsResource;
+use Piggy\Api\Resources\OAuth\Brandkit\BrandkitResource;
 use Piggy\Api\Resources\OAuth\Contacts\ContactAttributesResource;
 use Piggy\Api\Resources\OAuth\Contacts\ContactIdentifiersResource;
 use Piggy\Api\Resources\OAuth\Contacts\ContactsResource;
@@ -173,6 +174,7 @@ trait SetsOAuthResources
         $this->promotion = new PromotionResource($client);
         $this->promotionAttributes = new PromotionAttributesResource($client);
         $this->voucher = new VoucherResource($client);
+        $this->brandkit = new BrandkitResource($client);
 
     }
 }
