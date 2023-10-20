@@ -145,8 +145,6 @@ class Giftcard
 
     public function getId(): int
     {
-        var_dump($this->id);
-        die();
         return $this->id;
     }
 

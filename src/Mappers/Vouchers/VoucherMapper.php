@@ -17,6 +17,8 @@ class VoucherMapper
      */
     public function map($data): Voucher
     {
+        // todo miss even een std class forceren?
+        var_dump($data);
         if(isset($data->promotion)){
             $promotionMapper = new PromotionMapper();
             $promotion = $promotionMapper->map($data->promotion);

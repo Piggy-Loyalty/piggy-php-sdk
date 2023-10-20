@@ -11,16 +11,19 @@ use Piggy\Api\Resources\OAuth\Contacts\ContactIdentifiersResource;
 use Piggy\Api\Resources\OAuth\Contacts\ContactsResource;
 use Piggy\Api\Resources\OAuth\Contacts\ContactVerificationResource;
 use Piggy\Api\Resources\OAuth\ContactSubscriptionsResource;
+use Piggy\Api\Resources\OAuth\Forms\FormsResource;
 use Piggy\Api\Resources\OAuth\Giftcards\GiftcardsResource;
 use Piggy\Api\Resources\OAuth\Giftcards\GiftcardTransactionsResource;
 use Piggy\Api\Resources\OAuth\Giftcards\Program\GiftcardProgramsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Program\LoyaltyProgramResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Receptions\CreditReceptionsResource;
+use Piggy\Api\Resources\OAuth\Loyalty\Receptions\LoyaltyTransactionAttributesResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Receptions\LoyaltyTransactionsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Receptions\RewardReceptionsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\RewardAttributes\RewardAttributesResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Rewards\RewardsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Tokens\LoyaltyTokenResource;
+use Piggy\Api\Resources\OAuth\PortalSessions\PortalSessionsResource;
 use Piggy\Api\Resources\OAuth\PrepaidTransactionResource;
 use Piggy\Api\Resources\OAuth\Shops\ShopsResource;
 use Piggy\Api\Resources\OAuth\SubscriptionTypesResource;
@@ -29,6 +32,7 @@ use Piggy\Api\Resources\OAuth\Units\UnitsResource;
 use Piggy\Api\Resources\OAuth\Vouchers\PromotionAttributesResource;
 use Piggy\Api\Resources\OAuth\Vouchers\PromotionResource;
 use Piggy\Api\Resources\OAuth\Vouchers\VoucherResource;
+use Piggy\Api\Tests\OAuth\FormsResourceTest;
 
 /**
  * Trait SetsOAuthResources
@@ -151,6 +155,21 @@ trait SetsOAuthResources
     public $tier;
 
     /**
+     * @var PortalSessionsResource
+     */
+    public $portalSessions;
+
+    /**
+     * @var FormsResource
+     */
+    public $forms;
+
+    /**
+     * @var LoyaltyTransactionAttributesResource
+     */
+    public $loyaltyTransactionAttributes;
+
+    /**
      * @param BaseClient $client
      *
      * @return void
@@ -185,5 +204,8 @@ trait SetsOAuthResources
         $this->voucher = new VoucherResource($client);
         $this->brandkit = new BrandkitResource($client);
         $this->tier = new TiersResource($client);
+        $this->portalSessions = new PortalSessionsResource($client);
+        $this->forms = new FormsResource($client);
+        $this->loyaltyTransactionAttributes = new LoyaltyTransactionAttributesResource($client);
     }
 }

@@ -3,7 +3,6 @@
 namespace Piggy\Api\Mappers\Giftcards;
 
 use Piggy\Api\Mappers\BaseMapper;
-use Piggy\Api\Mappers\Shops\ShopMapper;
 use Piggy\Api\Models\Giftcards\GiftcardTransaction;
 use stdClass;
 
