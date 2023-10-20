@@ -4,6 +4,7 @@ namespace Piggy\Api\Http\Traits;
 
 use Piggy\Api\Http\BaseClient;
 use Piggy\Api\Models\Vouchers\Promotion;
+use Piggy\Api\Models\WebhookSubscriptions\WebhookSubscription;
 use Piggy\Api\Resources\OAuth\Automations\AutomationsResource;
 use Piggy\Api\Resources\OAuth\Brandkit\BrandkitResource;
 use Piggy\Api\Resources\OAuth\Contacts\ContactAttributesResource;
@@ -32,6 +33,7 @@ use Piggy\Api\Resources\OAuth\Units\UnitsResource;
 use Piggy\Api\Resources\OAuth\Vouchers\PromotionAttributesResource;
 use Piggy\Api\Resources\OAuth\Vouchers\PromotionResource;
 use Piggy\Api\Resources\OAuth\Vouchers\VoucherResource;
+use Piggy\Api\Resources\OAuth\WebhookSubscriptions\WebhookSubscriptionsResource;
 use Piggy\Api\Tests\OAuth\FormsResourceTest;
 
 /**
@@ -170,6 +172,11 @@ trait SetsOAuthResources
     public $loyaltyTransactionAttributes;
 
     /**
+     * @var WebhookSubscriptionsResource
+     */
+    public $webhookSubscriptions;
+
+    /**
      * @param BaseClient $client
      *
      * @return void
@@ -207,5 +214,7 @@ trait SetsOAuthResources
         $this->portalSessions = new PortalSessionsResource($client);
         $this->forms = new FormsResource($client);
         $this->loyaltyTransactionAttributes = new LoyaltyTransactionAttributesResource($client);
+        $this->webhookSubscriptions = new WebhookSubscriptionsResource($client);
+
     }
 }

@@ -200,8 +200,25 @@ abstract class BaseClient
             $url = "{$url}?{$query}";
         }
 
-
         return $this->request('GET', $url);
+    }
+
+    /**
+     * @param string $url
+     * @param array $params
+     *
+     * @return Response
+     * @throws PiggyRequestException
+     */
+    public function destroy(string $url, array $params = []): Response
+    {
+        $query = http_build_query($params);
+
+        if ($query) {
+            $url = "{$url}?{$query}";
+        }
+
+        return $this->request('DELETE', $url);
     }
 
     /**
