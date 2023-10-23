@@ -37,7 +37,7 @@ class GiftcardMapper extends BaseMapper
             $data->upgradeable,
             $giftcardProgram ?? null,
             $expirationDate ?? null,
-            $id ?? null,
+            $id ?? null
         );
     }
 }
