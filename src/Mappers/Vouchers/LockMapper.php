@@ -21,7 +21,7 @@ class LockMapper extends BaseMapper
             $data->release_key,
             $this->parseDate($data->locked_at),
             isset($data->unlocked_at) ? $this->parseDate($data->unlocked_at) : null,
-            isset($data->system_release_at) ? $this->parseDate($data->system_release_at) : null,
+            isset($data->system_release_at) ? $this->parseDate($data->system_release_at) : null
         );
     }
 }
