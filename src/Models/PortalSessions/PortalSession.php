@@ -12,6 +12,7 @@ class PortalSession
     protected $url;
     protected $contact;
     protected $shop;
+
     /**
      * @var DateTime
      */
@@ -55,5 +56,4 @@ class PortalSession
     {
         return $this->created_at;
     }
-
 }

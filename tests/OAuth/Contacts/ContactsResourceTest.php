@@ -277,4 +277,64 @@ class ContactsResourceTest extends OAuthTestCase
 
         $this->assertEquals(10, $prepaidBalance->getBalance());
     }
+
+    /**
+     * @test
+     * @throws PiggyRequestException
+     */
+    public function it_creates_a_contact_async()
+    {
+        $this->addExpectedResponse([
+            "uuid" => '7306f0ac-008a-4ab6-b10f-2e5a25c56829',
+        ]);
+
+        $contact = $this->mockedClient->contacts->createAsync("new_contact@piggy.eu");
+
+        $this->assertEquals('7306f0ac-008a-4ab6-b10f-2e5a25c56829', $contact->getUuId());
+    }
+
+    /**
+     * @test
+     * @throws PiggyRequestException
+     */
+    public function it_finds_or_creates_a_contact_async()
+    {
+        $this->addExpectedResponse([
+            "uuid" => '7306f0ac-008a-4ab6-b10f-2e5a25c56829',
+        ]);
+
+        $contact = $this->mockedClient->contacts->findOrCreateAsync("new_contact@piggy.eu");
+
+        $this->assertEquals('7306f0ac-008a-4ab6-b10f-2e5a25c56829', $contact->getUuId());
+    }
+
+    /**
+     * @test
+     * @throws PiggyRequestException
+     */
+    public function it_deletes_a_contact()
+    {
+        $this->addExpectedResponse(null);
+
+        $contact = $this->mockedClient->contacts->destroy("aa4e7ce5-8505-4bc9-a1d3-d4676bdd4410", "GDPR");
+
+        $this->assertNull($contact);
+    }
+
+    /**
+     * @test
+     * @throws PiggyRequestException
+     */
+    public function it_can_claim_anonymously()
+    {
+        $this->addExpectedResponse([
+            "uuid" => '7306f0ac-008a-4ab6-b10f-2e5a25c56829',
+            "email" => "new_contact@piggy.eu",
+        ]);
+
+        $contact = $this->mockedClient->contacts->claimAnonymousContact("7306f0ac-008a-4ab6-b10f-2e5a25c56829", "new_contact@piggy.eu");
+
+        $this->assertEquals("7306f0ac-008a-4ab6-b10f-2e5a25c56829", $contact->getUuid());
+        $this->assertEquals("new_contact@piggy.eu", $contact->getEmail());
+    }
 }

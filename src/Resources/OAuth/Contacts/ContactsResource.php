@@ -25,7 +25,7 @@ class ContactsResource extends BaseResource
 
     /**
      * @param string $contactUuid
-     * @return Contact
+     * @return Contact]
      * @throws PiggyRequestException
      */
     public function get(string $contactUuid): Contact
@@ -168,4 +168,61 @@ class ContactsResource extends BaseResource
         return $mapper->map($response->getData());
     }
 
+    /**
+     * @throws PiggyRequestException
+     */
+    public function createAsync($email): Contact
+    {
+        $response = $this->client->post("$this->resourceUri/async", [
+            "email" => $email
+        ]);
+
+        $mapper = new ContactMapper();
+
+        return $mapper->map($response->getData());
+    }
+
+    /**
+     * @throws PiggyRequestException
+     */
+    public function findOrCreateAsync($email): Contact
+    {
+        $response = $this->client->get("$this->resourceUri/find-or-create/async", [
+            "email" => $email
+        ]);
+
+        $mapper = new ContactMapper();
+
+        return $mapper->map($response->getData());
+    }
+
+    /**
+     * @param string $contactUuid
+     * @param string $type
+     * @throws PiggyRequestException
+     */
+    public function destroy(string $contactUuid, string $type)
+    {
+        $response = $this->client->post("$this->resourceUri/$contactUuid/delete", [
+            "type" => $type
+        ]);
+
+        return $response->getData();
+    }
+
+    /**
+     * @param string $contactUuid
+     * @param string $email
+     * @throws PiggyRequestException
+     */
+    public function claimAnonymousContact(string $contactUuid, string $email)
+    {
+        $response = $this->client->put("$this->resourceUri/$contactUuid/claim", [
+            "email" => $email
+        ]);
+
+        $mapper = new ContactMapper();
+
+        return $mapper->map($response->getData());
+    }
 }

@@ -3,7 +3,9 @@
 namespace Piggy\Api\Resources\OAuth\Tiers;
 
 use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\Mappers\Tiers\TierMapper;
 use Piggy\Api\Mappers\Tiers\TiersMapper;
+use Piggy\Api\Models\Tiers\Tier;
 use Piggy\Api\Resources\BaseResource;
 
 /**
@@ -28,5 +30,21 @@ class TiersResource extends BaseResource
         $mapper = new TiersMapper();
 
         return $mapper->map((array)$response->getData());
+    }
+
+    /**
+     * @param string $contactUuid
+     * @return Tier
+     * @throws PiggyRequestException
+     */
+    public function getTierForContact(string $contactUuid): Tier
+    {
+        $resourceUri =  "/api/v3/oauth/clients/contacts";
+
+        $response = $this->client->get("$resourceUri/$contactUuid/tier");
+
+        $mapper = new TierMapper();
+
+        return $mapper->map($response->getData());
     }
 }

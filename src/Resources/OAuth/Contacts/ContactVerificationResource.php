@@ -3,6 +3,7 @@
 namespace Piggy\Api\Resources\OAuth\Contacts;
 
 use Exception;
+use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Resources\BaseResource;
 
 /**
@@ -52,5 +53,16 @@ class ContactVerificationResource extends BaseResource
         }
 
         return true;
+    }
+
+    /**
+     * @throws PiggyRequestException
+     */
+    public function getAuthToken(string $contactUuid): string
+    {
+        $response = $this->client->get("$this->resourceUri/auth-token/$contactUuid");
+
+        return $response->getData();
+
     }
 }

@@ -61,4 +61,19 @@ class ContactVerificationResourceTest extends OAuthTestCase
 
         $this->assertEquals(false, $data);
     }
+
+    /**
+     * @test
+     */
+    public function it_returns_an_auth_token()
+    {
+        $this->addExpectedResponse(
+            "eyJpdiI6IjduK1pwWFR4WW94S0xUTHRkN2JtUnc9PSIsInZhbHVlIjoibUdVcXQ1T2FxeitYS2Jab0xSNTJ5SllxK1M1bHRBdDZmdjBHcEc2dStFVStFU3JHZ2wzSDd1UUNQai9MMDBqdWo4N1IxdlI0blRPL0J3d1FHTGU1Y05oZmE5eXdMUndnQTdJNFJUOHE1ZUxYYXY2N0UxZTNUNEtCWTZaMU1hZE9uM09FRnpCWjg3OHA2VWZxY0JWUFdsWkcybGhxUkVuQXhDS0JpTk4vVm5vPSIsIm1hYyI6Ijg2OWQ5ZDFhYjhlZmUyYjIxNjE5OTlhMzZkY2Q4NzE0Mjc4ZjFkNmY0ZjMyMDkzZjZjNjNjMGQ2Y2I3NGE0YTUiLCJ0YWciOiIifQ=="
+        );
+
+        $authToken = $this->mockedClient->contactVerification->getAuthToken('123');
+
+        $this->assertEquals("eyJpdiI6IjduK1pwWFR4WW94S0xUTHRkN2JtUnc9PSIsInZhbHVlIjoibUdVcXQ1T2FxeitYS2Jab0xSNTJ5SllxK1M1bHRBdDZmdjBHcEc2dStFVStFU3JHZ2wzSDd1UUNQai9MMDBqdWo4N1IxdlI0blRPL0J3d1FHTGU1Y05oZmE5eXdMUndnQTdJNFJUOHE1ZUxYYXY2N0UxZTNUNEtCWTZaMU1hZE9uM09FRnpCWjg3OHA2VWZxY0JWUFdsWkcybGhxUkVuQXhDS0JpTk4vVm5vPSIsIm1hYyI6Ijg2OWQ5ZDFhYjhlZmUyYjIxNjE5OTlhMzZkY2Q4NzE0Mjc4ZjFkNmY0ZjMyMDkzZjZjNjNjMGQ2Y2I3NGE0YTUiLCJ0YWciOiIifQ=="
+            , $authToken);
+    }
 }

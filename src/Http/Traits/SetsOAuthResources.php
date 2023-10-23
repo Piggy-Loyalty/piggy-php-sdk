@@ -11,6 +11,7 @@ use Piggy\Api\Resources\OAuth\Contacts\ContactAttributesResource;
 use Piggy\Api\Resources\OAuth\Contacts\ContactIdentifiersResource;
 use Piggy\Api\Resources\OAuth\Contacts\ContactsResource;
 use Piggy\Api\Resources\OAuth\Contacts\ContactVerificationResource;
+use Piggy\Api\Resources\OAuth\ContactsPortal\ContactsPortalAuthUrlResource;
 use Piggy\Api\Resources\OAuth\ContactSubscriptionsResource;
 use Piggy\Api\Resources\OAuth\Forms\FormsResource;
 use Piggy\Api\Resources\OAuth\Giftcards\GiftcardsResource;
@@ -35,7 +36,6 @@ use Piggy\Api\Resources\OAuth\Vouchers\PromotionResource;
 use Piggy\Api\Resources\OAuth\Vouchers\VoucherResource;
 use Piggy\Api\Resources\OAuth\WebhookSubscriptions\WebhookSubscriptionsResource;
 use Piggy\Api\Resources\OAuth\Zapier\ZapierWebhookResource;
-use Piggy\Api\Tests\OAuth\FormsResourceTest;
 
 /**
  * Trait SetsOAuthResources
@@ -183,6 +183,11 @@ trait SetsOAuthResources
     public $zapierWebhook;
 
     /**
+     * @var ContactsPortalAuthUrlResource
+     */
+    public $contactsPortalAuthUrl;
+
+    /**
      * @param BaseClient $client
      *
      * @return void
@@ -222,5 +227,6 @@ trait SetsOAuthResources
         $this->loyaltyTransactionAttributes = new LoyaltyTransactionAttributesResource($client);
         $this->webhookSubscriptions = new WebhookSubscriptionsResource($client);
         $this->zapierWebhook = new ZapierWebhookResource($client);
+        $this->contactsPortalAuthUrl = new ContactsPortalAuthUrlResource($client);
     }
 }

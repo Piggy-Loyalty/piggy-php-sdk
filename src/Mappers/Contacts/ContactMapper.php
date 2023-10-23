@@ -4,6 +4,7 @@ namespace Piggy\Api\Mappers\Contacts;
 
 use Piggy\Api\Mappers\Loyalty\CreditBalanceMapper;
 use Piggy\Api\Mappers\Prepaid\PrepaidBalanceMapper;
+use Piggy\Api\Mappers\Tiers\TierMapper;
 use Piggy\Api\Models\Contacts\Contact;
 use stdClass;
 
