@@ -50,13 +50,11 @@ class GiftcardTransactionsResourceTest extends OAuthTestCase
      */
     public function it_returns_giftcard_transaction_after_creation()
     {
-        $this->addExpectedResponse(
-            [
+        $this->addExpectedResponse([
                 "uuid" => '123-123',
                 "amount_in_cents" => 420,
                 "created_at" => "2022-06-30T13:29:16+00:00",
-            ]
-        );
+            ]);
 
         $giftcardTransaction = $this->mockedClient->giftcardTransactions->create(1, 2, 100);
 
@@ -71,13 +69,11 @@ class GiftcardTransactionsResourceTest extends OAuthTestCase
      */
     public function it_corrects_a_giftcard_transaction()
     {
-        $this->addExpectedResponse(
-            [
+        $this->addExpectedResponse([
                 "uuid" => '123-123',
                 "amount_in_cents" => 420,
                 "created_at" => "2022-06-30T13:29:16+00:00",
-            ]
-        );
+            ]);
 
         $giftcardTransaction = $this->mockedClient->giftcardTransactions->correct('123-123');
 
