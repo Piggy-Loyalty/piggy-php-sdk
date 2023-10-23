@@ -30,7 +30,6 @@ class PromotionAttributeMapper
             $options,
             $data->id ?? null,
             $data->placeholder ?? null
-
         );
     }
 }

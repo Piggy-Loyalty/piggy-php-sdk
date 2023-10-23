@@ -30,7 +30,7 @@ class WebhookSubscriptionsResourceTest extends OAuthTestCase
             ]
         );
 
-        $webhookSubscription = $this->mockedClient->webhookSubscriptions->create('someWebhookSubscription', 'http://192.168.100.151:3000/piggy/floepsie2', 'contact_created');
+        $webhookSubscription = $this->mockedClient->webhookSubscriptions->create('someWebhookSubscription', 'http://192.123.123.123:3000/piggy/floepsie2', 'contact_created');
 
         $this->assertEquals("865cf015-84ed-4058-bf79-17eb9eabd3d8", $webhookSubscription->getUuid());
         $this->assertEquals("someWebhookSubscription", $webhookSubscription->getName());
@@ -138,7 +138,7 @@ class WebhookSubscriptionsResourceTest extends OAuthTestCase
                 "uuid" => "29df6287-80b7-4ef5-a099-a96f6a38ba84",
                 "name" => "someUpdatedName",
                 "event_type" => "credit_reception_created",
-                "url" => "http://192.168.100.151:3000/piggy/floepsieupdated",
+                "url" => "http://192.123.123.123:3000/piggy/floepsieupdated",
                 "properties" => [],
                 "status" => "INACTIVE",
                 "version" => "V1",
@@ -146,12 +146,12 @@ class WebhookSubscriptionsResourceTest extends OAuthTestCase
             ]
         );
 
-        $webhookSubscription = $this->mockedClient->webhookSubscriptions->update('29df6287-80b7-4ef5-a099-a96f6a38ba84', 'someUpdatedName', 'http://192.168.100.151:3000/piggy/floepsieupdated', [], 'INACTIVE');
+        $webhookSubscription = $this->mockedClient->webhookSubscriptions->update('29df6287-80b7-4ef5-a099-a96f6a38ba84', 'someUpdatedName', 'http://192.123.123.123:3000/piggy/floepsieupdated', [], 'INACTIVE');
 
         $this->assertEquals("29df6287-80b7-4ef5-a099-a96f6a38ba84", $webhookSubscription->getUuid());
         $this->assertEquals("someUpdatedName", $webhookSubscription->getName());
         $this->assertEquals("credit_reception_created", $webhookSubscription->getEventType());
-        $this->assertEquals("http://192.168.100.151:3000/piggy/floepsieupdated", $webhookSubscription->getUrl());
+        $this->assertEquals("http://192.123.123.123:3000/piggy/floepsieupdated", $webhookSubscription->getUrl());
         $this->assertEquals([], $webhookSubscription->getProperties());
         $this->assertEquals("INACTIVE", $webhookSubscription->getStatus());
         $this->assertEquals("V1", $webhookSubscription->getVersion());
@@ -174,6 +174,8 @@ class WebhookSubscriptionsResourceTest extends OAuthTestCase
                 "status" => "INACTIVE",
                 "version" => "V1",
                 "created_at" => "2022-06-30T13:29:16+00:00",
+                "updated_at" => "2022-06-30T13:29:16+00:00",
+
             ]
         );
 

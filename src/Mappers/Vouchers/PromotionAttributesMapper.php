@@ -2,8 +2,6 @@
 
 namespace Piggy\Api\Mappers\Vouchers;
 
-use Piggy\Api\Models\Vouchers\PromotionAttribute;
-
 class PromotionAttributesMapper
 {
     /**

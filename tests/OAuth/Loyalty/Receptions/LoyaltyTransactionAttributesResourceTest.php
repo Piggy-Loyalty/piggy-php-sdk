@@ -37,27 +37,27 @@ class LoyaltyTransactionAttributesResourceTest extends OAuthTestCase
             ]
         ]);
 
-        $LoyaltyTransactionAttributes = $this->mockedClient->loyaltyTransactionAttributes->list();
+        $loyaltyTransactionAttributes = $this->mockedClient->loyaltyTransactionAttributes->list();
 
-        $this->assertEquals('someAttribute', $LoyaltyTransactionAttributes[0]->getName());
-        $this->assertEquals('Some Attribute', $LoyaltyTransactionAttributes[0]->getLabel());
-        $this->assertNull($LoyaltyTransactionAttributes[0]->getPlaceholder());
-        $this->assertEquals('text', $LoyaltyTransactionAttributes[0]->getType());
-        $this->assertEquals('text', $LoyaltyTransactionAttributes[0]->getFieldType());
-        $this->assertEmpty($LoyaltyTransactionAttributes[0]->getOptions());
-        $this->assertFalse($LoyaltyTransactionAttributes[0]->isPiggyDefined());
-        $this->assertFalse($LoyaltyTransactionAttributes[0]->isSoftReadOnly());
-        $this->assertFalse($LoyaltyTransactionAttributes[0]->isHardReadOnly());
+        $this->assertEquals('someAttribute', $loyaltyTransactionAttributes[0]->getName());
+        $this->assertEquals('Some Attribute', $loyaltyTransactionAttributes[0]->getLabel());
+        $this->assertNull($loyaltyTransactionAttributes[0]->getPlaceholder());
+        $this->assertEquals('text', $loyaltyTransactionAttributes[0]->getType());
+        $this->assertEquals('text', $loyaltyTransactionAttributes[0]->getFieldType());
+        $this->assertEmpty($loyaltyTransactionAttributes[0]->getOptions());
+        $this->assertFalse($loyaltyTransactionAttributes[0]->isPiggyDefined());
+        $this->assertFalse($loyaltyTransactionAttributes[0]->isSoftReadOnly());
+        $this->assertFalse($loyaltyTransactionAttributes[0]->isHardReadOnly());
 
-        $this->assertEquals('someAttribute2', $LoyaltyTransactionAttributes[1]->getName());
-        $this->assertEquals('Some Attribute 2', $LoyaltyTransactionAttributes[1]->getLabel());
-        $this->assertNull($LoyaltyTransactionAttributes[1]->getPlaceholder());
-        $this->assertEquals('text', $LoyaltyTransactionAttributes[1]->getType());
-        $this->assertEquals('text', $LoyaltyTransactionAttributes[1]->getFieldType());
-        $this->assertEmpty($LoyaltyTransactionAttributes[1]->getOptions());
-        $this->assertFalse($LoyaltyTransactionAttributes[1]->isPiggyDefined());
-        $this->assertFalse($LoyaltyTransactionAttributes[1]->isSoftReadOnly());
-        $this->assertFalse($LoyaltyTransactionAttributes[1]->isHardReadOnly());
+        $this->assertEquals('someAttribute2', $loyaltyTransactionAttributes[1]->getName());
+        $this->assertEquals('Some Attribute 2', $loyaltyTransactionAttributes[1]->getLabel());
+        $this->assertNull($loyaltyTransactionAttributes[1]->getPlaceholder());
+        $this->assertEquals('text', $loyaltyTransactionAttributes[1]->getType());
+        $this->assertEquals('text', $loyaltyTransactionAttributes[1]->getFieldType());
+        $this->assertEmpty($loyaltyTransactionAttributes[1]->getOptions());
+        $this->assertFalse($loyaltyTransactionAttributes[1]->isPiggyDefined());
+        $this->assertFalse($loyaltyTransactionAttributes[1]->isSoftReadOnly());
+        $this->assertFalse($loyaltyTransactionAttributes[1]->isHardReadOnly());
     }
 
     /** @test
@@ -77,17 +77,17 @@ class LoyaltyTransactionAttributesResourceTest extends OAuthTestCase
             "is_hard_read_only" => false
         ]);
 
-        $LoyaltyTransactionAttributes = $this->mockedClient->loyaltyTransactionAttributes->create('someAttribute', 'text');
+        $loyaltyTransactionAttributes = $this->mockedClient->loyaltyTransactionAttributes->create('someAttribute', 'text');
 
-        $this->assertEquals('someAttribute', $LoyaltyTransactionAttributes->getName());
-        $this->assertEquals('Some Attribute', $LoyaltyTransactionAttributes->getLabel());
-        $this->assertNull($LoyaltyTransactionAttributes->getPlaceholder());
-        $this->assertEquals('text', $LoyaltyTransactionAttributes->getType());
-        $this->assertEquals('text', $LoyaltyTransactionAttributes->getFieldType());
-        $this->assertEmpty($LoyaltyTransactionAttributes->getOptions());
-        $this->assertFalse($LoyaltyTransactionAttributes->isPiggyDefined());
-        $this->assertFalse($LoyaltyTransactionAttributes->isSoftReadOnly());
-        $this->assertFalse($LoyaltyTransactionAttributes->isHardReadOnly());
+        $this->assertEquals('someAttribute', $loyaltyTransactionAttributes->getName());
+        $this->assertEquals('Some Attribute', $loyaltyTransactionAttributes->getLabel());
+        $this->assertNull($loyaltyTransactionAttributes->getPlaceholder());
+        $this->assertEquals('text', $loyaltyTransactionAttributes->getType());
+        $this->assertEquals('text', $loyaltyTransactionAttributes->getFieldType());
+        $this->assertEmpty($loyaltyTransactionAttributes->getOptions());
+        $this->assertFalse($loyaltyTransactionAttributes->isPiggyDefined());
+        $this->assertFalse($loyaltyTransactionAttributes->isSoftReadOnly());
+        $this->assertFalse($loyaltyTransactionAttributes->isHardReadOnly());
     }
 
 }

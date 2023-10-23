@@ -11,7 +11,7 @@ class PortalSession
     protected $uuid;
     protected $url;
     protected $contact;
-    public $shop;
+    protected $shop;
     /**
      * @var DateTime
      */

@@ -39,12 +39,12 @@ class Voucher
     protected $expiration_date;
 
     /**
-     * @var DateTime
+     * @var DateTime|null
      */
     protected $activation_date;
 
     /**
-     * @var ?DateTime
+     * @var DateTime|null
      */
     protected $redeemed_at;
 

@@ -44,7 +44,15 @@ class PromotionAttribute
      */
     protected $placeholder;
 
-    public function __construct(string $name, string $description, string $label, string $type, array $options, ?int $id, ?string $placeholder = null)
+    public function __construct(
+        string  $name,
+        string  $description,
+        string  $label,
+        string  $type,
+        array   $options,
+        ?int    $id = null,
+        ?string $placeholder = null
+    )
     {
         $this->name = $name;
         $this->description = $description;

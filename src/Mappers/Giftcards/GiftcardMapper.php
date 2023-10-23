@@ -38,7 +38,6 @@ class GiftcardMapper extends BaseMapper
             $giftcardProgram ?? null,
             $expirationDate ?? null,
             $id ?? null,
-            $name ?? null
         );
     }
 }

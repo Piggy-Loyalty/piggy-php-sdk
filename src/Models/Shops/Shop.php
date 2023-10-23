@@ -19,7 +19,7 @@ class Shop
     protected $name;
 
     /**
-     * @var int
+     * @var null|int
      */
     protected $id;
 

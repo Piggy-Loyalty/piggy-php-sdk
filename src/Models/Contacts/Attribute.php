@@ -10,47 +10,47 @@ class Attribute
 {
 
     /** @var string */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      */
-    private $label;
+    protected $label;
 
     /**
      * @var string
      */
-    private $type;
+    protected $type;
 
     /**
      * @var string|null
      */
-    private $fieldType;
+    protected $fieldType;
 
     /**
      * @var string|null
      */
-    private $description;
+    protected $description;
 
     /**
      * @var boolean|null
      */
-    private $isSoftReadOnly;
+    protected $isSoftReadOnly;
 
     /**
      * @var boolean|null
      */
-    private $isHardReadOnly;
+    protected $isHardReadOnly;
 
     /**
      * @var boolean|null
      */
-    private $isPiggyDefined;
+    protected $isPiggyDefined;
 
     /**
      * @var array|null
      */
-    private $options;
+    protected $options;
 
     public function __construct(string $name, string $label, string $type, ?string $fieldType, ?string $description = null, ?bool $isSoftReadOnly = null, ?bool $isHardReadOnly = null, ?bool $isPiggyDefined = null, ?array $options = null)
     {

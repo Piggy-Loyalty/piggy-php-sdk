@@ -2,8 +2,6 @@
 
 namespace Piggy\Api\Models\Loyalty\Transaction;
 
-use DateTime;
-
 class LoyaltyTransactionAttribute
 {
     protected $name;

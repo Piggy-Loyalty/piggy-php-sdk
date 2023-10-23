@@ -4,12 +4,12 @@ namespace Piggy\Api\Models\Vouchers;
 
 class Promotion
 {
-    public $uuid;
-    public $name;
-    public $description;
-    public $voucher_limit;
-    public $limit_per_contact;
-    public $expiration_duration;
+    protected $uuid;
+    protected $name;
+    protected $description;
+    protected $voucher_limit;
+    protected $limit_per_contact;
+    protected $expiration_duration;
 
     public function __construct(
         string $uuid,
@@ -38,7 +38,7 @@ class Promotion
         return $this->description;
     }
 
-    public function getVoucherLimit(): int
+    public function getVoucherLimit(): ?int
     {
         return $this->voucher_limit;
     }

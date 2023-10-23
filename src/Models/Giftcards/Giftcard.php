@@ -64,9 +64,8 @@ class Giftcard
      * @param GiftcardProgram|null $giftcardProgram
      * @param DateTime|null $expirationDate
      * @param int|null $id
-     * @param string|null $name
      */
-    public function __construct(string $uuid, string $hash, int $amountInCents, int $type, bool $active, bool $upgradeable, ?GiftcardProgram $giftcardProgram, ?DateTime $expirationDate, ?int $id, ?string $name)
+    public function __construct(string $uuid, string $hash, int $amountInCents, int $type, bool $active, bool $upgradeable, ?GiftcardProgram $giftcardProgram, ?DateTime $expirationDate, ?int $id)
     {
         $this->uuid = $uuid;
         $this->hash = $hash;

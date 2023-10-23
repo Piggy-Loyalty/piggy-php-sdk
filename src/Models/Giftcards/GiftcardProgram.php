@@ -11,17 +11,17 @@ class GiftcardProgram
     /**
      * @var string
      */
-    private $uuid;
+    protected $uuid;
 
     /**
      * @var string
      */
-    private $name;
+    protected $name;
 
     /**
      * @var bool
      */
-    private $active;
+    protected $active;
 
     /**
      * GiftcardProgram constructor.

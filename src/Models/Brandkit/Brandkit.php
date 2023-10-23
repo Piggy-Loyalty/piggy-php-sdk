@@ -62,12 +62,12 @@ class Brandkit
         return $this->cover_image_url;
     }
 
-    public function getPrimaryColor(): string
+    public function getPrimaryColor(): ?string
     {
         return $this->primary_color;
     }
 
-    public function getSecondaryColor(): string
+    public function getSecondaryColor(): ?string
     {
         return $this->secondary_color;
     }

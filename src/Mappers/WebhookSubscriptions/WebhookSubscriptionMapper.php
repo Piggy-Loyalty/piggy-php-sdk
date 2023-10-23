@@ -21,10 +21,10 @@ class WebhookSubscriptionMapper extends BaseMapper
             $data->uuid,
             $data->name,
             $data->event_type,
-            $data->url ?? null,
+            $data->url,
             $data->properties ?? [],
-            $data->status ?? null,
-            $data->version ?? null,
+            $data->status,
+            $data->version,
             $this->parseDate($data->created_at)
         );
     }

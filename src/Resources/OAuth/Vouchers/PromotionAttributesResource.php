@@ -37,7 +37,7 @@ class PromotionAttributesResource extends BaseResource
      * @param string $label
      * @param string $type
      * @param null|string $description
-     * @param array|null $options
+     * @param array $options
      * @return PromotionAttribute
      * @throws PiggyRequestException
      * @throws \Exception

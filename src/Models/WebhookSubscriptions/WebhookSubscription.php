@@ -29,7 +29,7 @@ class WebhookSubscription
         string   $eventType,
         string   $url,
         array    $properties,
-        ?string  $status,
+        string  $status,
         string   $version,
         DateTime $createdAt
     )

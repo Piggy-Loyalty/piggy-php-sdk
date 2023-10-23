@@ -46,11 +46,26 @@ class GiftcardTransaction
     protected $type;
 
     /**
-     * @var array[]
+     * @var GiftcardTransactionSettlement[]
      */
-    protected $settlements;
+    protected $settlements = [];
 
-    public function __construct(string $uuid, int $amountInCents, DateTime $createdAt, ?string $type = null, ?bool $settled = null, ?int $cardId = null, ?int $shopId = null, ?array $settlements = null, ?int $id)
+    /**
+     * @var int|null
+     */
+    protected $id;
+
+    public function __construct(
+        string   $uuid,
+        int      $amountInCents,
+        DateTime $createdAt,
+        ?string  $type = null,
+        ?bool    $settled = null,
+        ?int     $cardId = null,
+        ?int     $shopId = null,
+        array    $settlements = [],
+        ?int     $id = null
+    )
     {
         $this->uuid = $uuid;
         $this->amount_in_cents = $amountInCents;
@@ -95,7 +110,6 @@ class GiftcardTransaction
         return $this->card_id;
     }
 
-
     /**
      * @return int
      */
@@ -118,14 +132,17 @@ class GiftcardTransaction
     }
 
     /**
-     * @return GiftcardTransactionSettlement[]
+     * @return array
      */
     public function getSettlements(): array
     {
         return $this->settlements;
     }
 
-    public function getId(): int
+    /**
+     * @return int | null
+     */
+    public function getId(): ?int
     {
         return $this->id;
     }
