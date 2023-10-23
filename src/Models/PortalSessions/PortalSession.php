@@ -2,6 +2,7 @@
 
 namespace Piggy\Api\Models\PortalSessions;
 
+use DateTime;
 use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\Models\Shops\Shop;
 
@@ -11,20 +12,22 @@ class PortalSession
     protected $url;
     protected $contact;
     public $shop;
-    protected $createdAt;
-
+    /**
+     * @var DateTime
+     */
+    protected $created_at;
     public function __construct(
         string   $url,
         string   $uuid,
         Shop     $shop,
-        string $createdAt,
+        DateTime $createdAt,
         ?Contact  $contact
     )
     {
         $this->url = $url;
         $this->uuid = $uuid;
         $this->shop = $shop;
-        $this->createdAt = $createdAt;
+        $this->created_at = $createdAt;
         $this->contact = $contact;
     }
 
@@ -48,9 +51,9 @@ class PortalSession
         return $this->shop;
     }
 
-    public function getCreatedAt(): string
+    public function getCreatedAt(): DateTime
     {
-        return $this->createdAt;
+        return $this->created_at;
     }
 
 }

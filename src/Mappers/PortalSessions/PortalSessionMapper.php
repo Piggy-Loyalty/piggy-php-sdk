@@ -31,7 +31,7 @@ class PortalSessionMapper extends BaseMapper
             $data->url,
             $data->uuid,
             $shop,
-            $data->created_at,
+            $this->parseDate($data->created_at),
             $contact ?? null
         );
     }

@@ -4,6 +4,8 @@ namespace Piggy\Api\Models\Vouchers;
 
 use Piggy\Api\Models\Contacts\Contact;
 
+use DateTime;
+
 class Voucher
 {
     /**
@@ -32,12 +34,12 @@ class Voucher
     protected $description;
 
     /**
-     * @var string
+     * @var DateTime
      */
     protected $expiration_date;
 
     /**
-     * @var string
+     * @var DateTime
      */
     protected $activation_date;
 
@@ -69,10 +71,10 @@ class Voucher
         ?string    $description,
         ?Promotion $promotion,
         ?Contact   $contact,
-        ?string   $redeemedAt,
+        ?DateTime   $redeemedAt,
         ?bool     $isRedeemed,
-        ?string   $activationDate,
-        ?string   $expirationDate
+        ?DateTime   $activationDate,
+        ?DateTime   $expirationDate
     )
     {
         $this->uuid = $uuid;
@@ -118,17 +120,17 @@ class Voucher
         return $this->promotion;
     }
 
-    public function getExpirationDate(): ?string
+    public function getExpirationDate(): ?DateTime
     {
         return $this->expiration_date;
     }
 
-    public function getActivationDate(): ?string
+    public function getActivationDate(): ?DateTime
     {
         return $this->activation_date;
     }
 
-    public function getRedeemedAt(): ?string
+    public function getRedeemedAt(): ?DateTime
     {
         return $this->redeemed_at;
     }

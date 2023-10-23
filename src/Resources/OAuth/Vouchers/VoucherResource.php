@@ -9,6 +9,7 @@ use Piggy\Api\Mappers\Vouchers\VouchersMapper;
 use Piggy\Api\Models\Vouchers\Voucher;
 use Piggy\Api\Models\Vouchers\VoucherLockDTO;
 use Piggy\Api\Resources\BaseResource;
+use DateTime;
 
 /**
  * Class VoucherResource
@@ -25,12 +26,12 @@ class VoucherResource extends BaseResource
      * @param string $promotionUuid
      * @param string|null $code
      * @param string|null $contactUuid
-     * @param string|null $activationDate
-     * @param string|null $expirationDate
+     * @param DateTime|null $activationDate
+     * @param DateTime|null $expirationDate
      * @return Voucher
      * @throws PiggyRequestException
      */
-    public function create(string $promotionUuid, ?string $code = null, ?string $contactUuid = null, ?string $activationDate = null, ?string $expirationDate = null): Voucher
+    public function create(string $promotionUuid, ?string $code = null, ?string $contactUuid = null, ?DateTime $activationDate = null, ?DateTime $expirationDate = null): Voucher
     {
         $response = $this->client->post($this->resourceUri, [
             "promotion_uuid" => $promotionUuid,
@@ -47,14 +48,14 @@ class VoucherResource extends BaseResource
 
     /**
      * @param string $promotionUuid
-     * @param string|null $code
+     * @param DateTime|null $code
      * @param string|null $contactUuid
-     * @param string|null $activationDate
-     * @param string|null $expirationDate
+     * @param DateTime|null $activationDate
+     * @param DateTime|null $expirationDate
      * @return Voucher
      * @throws PiggyRequestException
      */
-    public function batch(string $promotionUuid, string $quantity, ?string $contactUuid = null, ?string $activationDate = null, ?string $expirationDate = null): string
+    public function batch(string $promotionUuid, string $quantity, ?string $contactUuid = null, ?DateTime $activationDate = null, ?DateTime $expirationDate = null): string
     {
         $this->client->post($this->resourceUri, [
             "promotion_uuid" => $promotionUuid,

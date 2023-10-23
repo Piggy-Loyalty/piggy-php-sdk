@@ -26,10 +26,11 @@ class PromotionAttributeMapper
             $data->name,
             $data->description,
             $data->label,
-            $data->placeholder,
             $data->type,
             $options,
-            $data->id ?? null
+            $data->id ?? null,
+            $data->placeholder ?? null
+
         );
     }
 }

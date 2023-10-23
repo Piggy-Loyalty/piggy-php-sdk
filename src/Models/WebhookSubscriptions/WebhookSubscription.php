@@ -2,6 +2,8 @@
 
 namespace Piggy\Api\Models\WebhookSubscriptions;
 
+use DateTime;
+
 /**
  * Class WebhookSubscription
  * @package Piggy\Api\Models
@@ -15,9 +17,22 @@ class WebhookSubscription
     protected $properties;
     protected $status;
     protected $version;
+
+    /**
+     * @var DateTime
+     */
     protected $created_at;
 
-    public function __construct(string $uuid, string $name, string $eventType, string $url, array $properties, ?string $status, string $version, string $createdAt)
+    public function __construct(
+        string   $uuid,
+        string   $name,
+        string   $eventType,
+        string   $url,
+        array    $properties,
+        ?string  $status,
+        string   $version,
+        DateTime $createdAt
+    )
     {
         $this->uuid = $uuid;
         $this->name = $name;
@@ -64,7 +79,10 @@ class WebhookSubscription
         return $this->version;
     }
 
-    public function getCreatedAt(): string
+    /**
+     * @return DateTime
+     */
+    public function getCreatedAt(): DateTime
     {
         return $this->created_at;
     }

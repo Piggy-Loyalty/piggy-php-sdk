@@ -2,13 +2,14 @@
 
 namespace Piggy\Api\Mappers\WebhookSubscriptions;
 
+use Piggy\Api\Mappers\BaseMapper;
 use Piggy\Api\Models\WebhookSubscriptions\WebhookSubscription;
 
 /**
  * Class WebhookSubscriptionMapper
  * @package Piggy\Api\Mappers\WebhookSubscriptions
  */
-class WebhookSubscriptionMapper
+class WebhookSubscriptionMapper extends BaseMapper
 {
     /**
      * @param $data
@@ -24,7 +25,7 @@ class WebhookSubscriptionMapper
             $data->properties ?? [],
             $data->status ?? null,
             $data->version ?? null,
-            $data->created_at ?? null
+            $this->parseDate($data->created_at)
         );
     }
 }

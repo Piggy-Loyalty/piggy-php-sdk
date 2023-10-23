@@ -23,7 +23,6 @@ class PromotionAttributesResourceTest extends OAuthTestCase
         );
 
         $promotionAttribute = $this->mockedClient->promotionAttributes->create("someName", "someDescription", "someLabel", "text", []);
-
         $this->assertEquals("someName", $promotionAttribute->getName());
         $this->assertEquals("someDescription", $promotionAttribute->getDescription());
         $this->assertEquals("someLabel", $promotionAttribute->getLabel());

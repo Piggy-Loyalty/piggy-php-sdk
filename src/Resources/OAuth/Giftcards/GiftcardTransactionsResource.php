@@ -81,14 +81,6 @@ class GiftcardTransactionsResource extends BaseResource
             $params["giftcard_program__uuid"] = $giftcardProgramUuid;
         }
 
-//        if ($shopUuid !== null) {
-//            $params["shop_uuid"] = $shopUuid;
-//        }
-//
-//        if ($giftcardHash !== null) {
-//            $params["giftcard_hash"] = $giftcardHash;
-//        }
-
         $response = $this->client->get($this->resourceUri, $params);
 
         $mapper = new GiftcardTransactionsMapper();

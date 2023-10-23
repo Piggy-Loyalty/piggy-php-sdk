@@ -88,20 +88,4 @@ class PromotionAttributesResource extends BaseResource
 
         return $mapper->map($response->getData());
     }
-
-//    public function update(Reward $reward): Reward
-//    {
-//        $data = array_merge([
-//            'title' => $reward->getTitle(),
-//            'description' => $reward->getDescription(),
-//            'required_credits' => $reward->getRequiredCredits(),
-//        ], $reward->getAttributes());
-//
-//        $response = $this->client->put("$this->resourceUri/{$reward->getUuid()}", $data);
-//        $mapper = new RewardMapper();
-//
-//        return $mapper->map($response->getData());
-//    }
-
-
 }

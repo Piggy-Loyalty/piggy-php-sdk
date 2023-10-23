@@ -19,7 +19,7 @@ class ShopMapper
         return new Shop(
             $data->uuid,
             $data->name,
-            $data->id
+            $data->id ?? null
         );
     }
 }

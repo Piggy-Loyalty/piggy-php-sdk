@@ -39,20 +39,5 @@ class ZapierWebhookResource extends BaseResource
         $response = $this->client->destroy("$this->resourceUri/webhook/$id");
 
         return $response->getData();
-
-//        return "Zapier webhook with id " . $id . " deleted";
     }
-
-//    public function batch(string $promotionUuid, string $quantity, ?string $contactUuid = null, ?string $activationDate = null, ?string $expirationDate = null): string
-//    {
-//        $this->client->post($this->resourceUri, [
-//            "promotion_uuid" => $promotionUuid,
-//            "quantity" => $quantity,
-//            "contact_uuid" => $contactUuid,
-//            "activation_date" => $activationDate,
-//            "expiration_date" => $expirationDate
-//        ]);
-//
-//        return "Voucher generation successfully started in background.";
-//    }
 }

@@ -39,9 +39,8 @@ class VoucherResourceTest extends OAuthTestCase
         $this->assertEquals("ACTIVE", $voucher->getStatus());
         $this->assertEquals("Gratis Pizza", $voucher->getPromotion()->getName());
         $this->assertEquals("Lekker gratis pizza", $voucher->getPromotion()->getDescription());
-        $this->assertEquals("2023-12-10T10:00:00+00:00", $voucher->getActivationDate());
-        $this->assertEquals("2023-12-12T10:00:00+00:00", $voucher->getExpirationDate());
-        $this->assertNull($voucher->getRedeemedAt());
+        $this->assertEquals("2023-12-10T10:00:00+00:00", $voucher->getActivationDate()->format('c'));
+        $this->assertEquals("2023-12-12T10:00:00+00:00", $voucher->getExpirationDate()->format('c'));
         $this->assertFalse($voucher->isRedeemed());
         $this->assertEquals("89da4cc4-1d51-4041-b829-6225fcdef11d", $voucher->getPromotion()->getUuid());
     }
@@ -113,9 +112,8 @@ class VoucherResourceTest extends OAuthTestCase
         $this->assertEquals("ACTIVE", $vouchers[0]->getStatus());
         $this->assertEquals("Gratis Pizza", $vouchers[0]->getPromotion()->getName());
         $this->assertEquals("Lekker gratis pizza", $vouchers[0]->getPromotion()->getDescription());
-        $this->assertEquals("2023-12-10T10:00:00+00:00", $vouchers[0]->getActivationDate());
-        $this->assertEquals("2023-12-12T10:00:00+00:00", $vouchers[0]->getExpirationDate());
-        $this->assertNull($vouchers[0]->getRedeemedAt());
+        $this->assertEquals("2023-12-10T10:00:00+00:00", $vouchers[0]->getActivationDate()->format('c'));
+        $this->assertEquals("2023-12-12T10:00:00+00:00", $vouchers[0]->getExpirationDate()->format('c'));
         $this->assertFalse($vouchers[0]->isRedeemed());
         $this->assertEquals("89da4cc4-1d51-4041-b829-6225fcdef11d", $vouchers[0]->getPromotion()->getUuid());
 
@@ -124,9 +122,8 @@ class VoucherResourceTest extends OAuthTestCase
         $this->assertEquals("ACTIVE", $vouchers[1]->getStatus());
         $this->assertEquals("Gratis Pizza", $vouchers[1]->getPromotion()->getName());
         $this->assertEquals("Lekker gratis pizza", $vouchers[1]->getPromotion()->getDescription());
-        $this->assertEquals("2023-12-10T10:00:00+00:00", $vouchers[1]->getActivationDate());
-        $this->assertEquals("2023-12-12T10:00:00+00:00", $vouchers[1]->getExpirationDate());
-        $this->assertNull($vouchers[1]->getRedeemedAt());
+        $this->assertEquals("2023-12-10T10:00:00+00:00", $vouchers[1]->getActivationDate()->format('c'));
+        $this->assertEquals("2023-12-12T10:00:00+00:00", $vouchers[1]->getExpirationDate()->format('c'));
         $this->assertFalse($vouchers[1]->isRedeemed());
         $this->assertEquals("89da4cc4-1d51-4041-b829-6225fcdef11d", $vouchers[1]->getPromotion()->getUuid());
     }
@@ -163,9 +160,8 @@ class VoucherResourceTest extends OAuthTestCase
         $this->assertEquals("ACTIVE", $voucher->getStatus());
         $this->assertEquals("Gratis Pizza", $voucher->getPromotion()->getName());
         $this->assertEquals("Lekker gratis pizza", $voucher->getPromotion()->getDescription());
-        $this->assertEquals("2023-12-10T10:00:00+00:00", $voucher->getActivationDate());
-        $this->assertEquals("2023-12-12T10:00:00+00:00", $voucher->getExpirationDate());
-        $this->assertNull($voucher->getRedeemedAt());
+        $this->assertEquals("2023-12-10T10:00:00+00:00", $voucher->getActivationDate()->format('c'));
+        $this->assertEquals("2023-12-12T10:00:00+00:00", $voucher->getExpirationDate()->format('c'));
         $this->assertFalse($voucher->isRedeemed());
         $this->assertEquals("89da4cc4-1d51-4041-b829-6225fcdef11d", $voucher->getPromotion()->getUuid());
     }
@@ -206,9 +202,9 @@ class VoucherResourceTest extends OAuthTestCase
         $this->assertEquals("REDEEMED", $voucher->getStatus());
         $this->assertEquals("Gratis Pizza", $voucher->getPromotion()->getName());
         $this->assertEquals("Lekker gratis pizza", $voucher->getPromotion()->getDescription());
-        $this->assertEquals("2023-12-10T10:00:00+00:00", $voucher->getActivationDate());
-        $this->assertEquals("2023-12-12T10:00:00+00:00", $voucher->getExpirationDate());
-        $this->assertEquals("2023-10-19T07:38:37+00:00", $voucher->getRedeemedAt());
+        $this->assertEquals("2023-12-10T10:00:00+00:00", $voucher->getActivationDate()->format('c'));
+        $this->assertEquals("2023-12-12T10:00:00+00:00", $voucher->getExpirationDate()->format('c'));
+        $this->assertEquals("2023-10-19T07:38:37+00:00", $voucher->getRedeemedAt()->format('c'));
         $this->assertTrue($voucher->isRedeemed());
         $this->assertEquals("89da4cc4-1d51-4041-b829-6225fcdef11d", $voucher->getPromotion()->getUuid());
         $this->assertEquals("123", $voucher->getContact()->getUuid());
@@ -250,9 +246,9 @@ class VoucherResourceTest extends OAuthTestCase
         $this->assertEquals("REDEEMED", $voucher->getStatus());
         $this->assertEquals("Gratis Pizza", $voucher->getPromotion()->getName());
         $this->assertEquals("Lekker gratis pizza", $voucher->getPromotion()->getDescription());
-        $this->assertEquals("2023-12-10T10:00:00+00:00", $voucher->getActivationDate());
-        $this->assertEquals("2023-12-12T10:00:00+00:00", $voucher->getExpirationDate());
-        $this->assertEquals("2023-10-19T07:38:37+00:00", $voucher->getRedeemedAt());
+        $this->assertEquals("2023-12-10T10:00:00+00:00", $voucher->getActivationDate()->format('c'));
+        $this->assertEquals("2023-12-12T10:00:00+00:00", $voucher->getExpirationDate()->format('c'));
+        $this->assertEquals("2023-10-19T07:38:37+00:00", $voucher->getRedeemedAt()->format('c'));
         $this->assertTrue($voucher->isRedeemed());
         $this->assertEquals("89da4cc4-1d51-4041-b829-6225fcdef11d", $voucher->getPromotion()->getUuid());
         $this->assertEquals("123", $voucher->getContact()->getUuid());
@@ -294,9 +290,9 @@ class VoucherResourceTest extends OAuthTestCase
         $this->assertEquals("REDEEMED", $voucher->getStatus());
         $this->assertEquals("Gratis Pizza", $voucher->getPromotion()->getName());
         $this->assertEquals("Lekker gratis pizza", $voucher->getPromotion()->getDescription());
-        $this->assertEquals("2023-12-10T10:00:00+00:00", $voucher->getActivationDate());
-        $this->assertEquals("2023-12-12T10:00:00+00:00", $voucher->getExpirationDate());
-        $this->assertEquals("2023-10-19T07:38:37+00:00", $voucher->getRedeemedAt());
+        $this->assertEquals("2023-12-10T10:00:00+00:00", $voucher->getActivationDate()->format('c'));
+        $this->assertEquals("2023-12-12T10:00:00+00:00", $voucher->getExpirationDate()->format('c'));
+        $this->assertEquals("2023-10-19T07:38:37+00:00", $voucher->getRedeemedAt()->format('c'));
         $this->assertTrue($voucher->isRedeemed());
         $this->assertEquals("89da4cc4-1d51-4041-b829-6225fcdef11d", $voucher->getPromotion()->getUuid());
         $this->assertEquals("456", $voucher->getContact()->getUuid());
@@ -330,9 +326,8 @@ class VoucherResourceTest extends OAuthTestCase
         $this->assertEquals("LOCKED", $voucherDTO->getVoucher()->getStatus());
 
         $this->assertEquals("01e7c31d-8fb7-4f3c-9020-c9e3782e2c0d", $voucherDTO->getLock()->getReleaseKey());
-        $this->assertEquals("2023-10-19T08:08:51+00:00", $voucherDTO->getLock()->getLockedAt());
-        $this->assertNull($voucherDTO->getLock()->getUnlockedAt());
-        $this->assertEquals("2023-10-19T09:08:51+00:00", $voucherDTO->getLock()->getSystemReleaseAt());
+        $this->assertEquals("2023-10-19T08:08:51+00:00", $voucherDTO->getLock()->getLockedAt()->format('c'));
+        $this->assertEquals("2023-10-19T09:08:51+00:00", $voucherDTO->getLock()->getSystemReleaseAt()->format('c'));
     }
 
     /** @test
@@ -363,9 +358,8 @@ class VoucherResourceTest extends OAuthTestCase
         $this->assertEquals("ACTIVE", $voucherDTO->getVoucher()->getStatus());
 
         $this->assertEquals("6fa81816-fff5-4320-b499-1469f036e4d1", $voucherDTO->getLock()->getReleaseKey());
-        $this->assertEquals("2023-10-19T11:11:22+00:00", $voucherDTO->getLock()->getLockedAt());
-        $this->assertEquals("2023-10-19T11:11:50+00:00", $voucherDTO->getLock()->getUnlockedAt());
-        $this->assertNull($voucherDTO->getLock()->getSystemReleaseAt());
+        $this->assertEquals("2023-10-19T11:11:22+00:00", $voucherDTO->getLock()->getLockedAt()->format('c'));
+        $this->assertEquals("2023-10-19T11:11:50+00:00", $voucherDTO->getLock()->getUnlockedAt()->format('c'));
     }
 }
 

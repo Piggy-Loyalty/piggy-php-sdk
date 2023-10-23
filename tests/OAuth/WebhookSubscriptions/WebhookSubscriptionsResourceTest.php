@@ -26,7 +26,7 @@ class WebhookSubscriptionsResourceTest extends OAuthTestCase
                 "properties" => [],
                 "status" => "ACTIVE",
                 "version" => "V1",
-                "created_at" => "2023-10-20T12:22:57+00:00",
+                "created_at" => "2022-06-30T13:29:16+00:00",
             ]
         );
 
@@ -39,7 +39,8 @@ class WebhookSubscriptionsResourceTest extends OAuthTestCase
         $this->assertEquals([], $webhookSubscription->getProperties());
         $this->assertEquals("ACTIVE", $webhookSubscription->getStatus());
         $this->assertEquals("V1", $webhookSubscription->getVersion());
-        $this->assertEquals("2023-10-20T12:22:57+00:00", $webhookSubscription->getCreatedAt());
+        $this->assertEquals("2022-06-30T13:29:16+00:00", $webhookSubscription->getCreatedAt()->format('c'));
+
     }
 
     /**
@@ -58,7 +59,7 @@ class WebhookSubscriptionsResourceTest extends OAuthTestCase
                     "properties" => [],
                     "status" => "ACTIVE",
                     "version" => "V1",
-                    "created_at" => "2023-10-20T11:46:22+00:00",
+                    "created_at" => "2022-06-30T13:29:16+00:00",
                 ],
                 [
                     "uuid" => "5062eeac-bbeb-4903-b81e-2422793ff151",
@@ -68,7 +69,7 @@ class WebhookSubscriptionsResourceTest extends OAuthTestCase
                     "properties" => [],
                     "status" => "ACTIVE",
                     "version" => "V1",
-                    "created_at" => "2023-10-20T11:48:43+00:00",
+                    "created_at" => "2022-06-30T13:29:16+00:00",
                 ]
             ]
         );
@@ -82,7 +83,7 @@ class WebhookSubscriptionsResourceTest extends OAuthTestCase
         $this->assertEquals([], $webhookSubscriptions[0]->getProperties());
         $this->assertEquals("ACTIVE", $webhookSubscriptions[0]->getStatus());
         $this->assertEquals("V1", $webhookSubscriptions[0]->getVersion());
-        $this->assertEquals("2023-10-20T11:46:22+00:00", $webhookSubscriptions[0]->getCreatedAt());
+        $this->assertEquals("2022-06-30T13:29:16+00:00", $webhookSubscriptions[0]->getCreatedAt()->format('c'));
 
         $this->assertEquals("5062eeac-bbeb-4903-b81e-2422793ff151", $webhookSubscriptions[1]->getUuid());
         $this->assertEquals("someWebhookSubscription", $webhookSubscriptions[1]->getName());
@@ -91,7 +92,8 @@ class WebhookSubscriptionsResourceTest extends OAuthTestCase
         $this->assertEquals([], $webhookSubscriptions[1]->getProperties());
         $this->assertEquals("ACTIVE", $webhookSubscriptions[1]->getStatus());
         $this->assertEquals("V1", $webhookSubscriptions[1]->getVersion());
-        $this->assertEquals("2023-10-20T11:48:43+00:00", $webhookSubscriptions[1]->getCreatedAt());
+        $this->assertEquals("2022-06-30T13:29:16+00:00", $webhookSubscriptions[1]->getCreatedAt()->format('c'));
+
     }
 
     /**
@@ -109,7 +111,7 @@ class WebhookSubscriptionsResourceTest extends OAuthTestCase
                 "properties" => [],
                 "status" => "ACTIVE",
                 "version" => "V1",
-                "created_at" => "2023-10-20T12:22:57+00:00",
+                "created_at" => "2022-06-30T13:29:16+00:00",
             ]
         );
 
@@ -122,7 +124,7 @@ class WebhookSubscriptionsResourceTest extends OAuthTestCase
         $this->assertEquals([], $webhookSubscription->getProperties());
         $this->assertEquals("ACTIVE", $webhookSubscription->getStatus());
         $this->assertEquals("V1", $webhookSubscription->getVersion());
-        $this->assertEquals("2023-10-20T12:22:57+00:00", $webhookSubscription->getCreatedAt());
+        $this->assertEquals("2022-06-30T13:29:16+00:00", $webhookSubscription->getCreatedAt()->format('c'));
     }
 
     /**
@@ -140,7 +142,7 @@ class WebhookSubscriptionsResourceTest extends OAuthTestCase
                 "properties" => [],
                 "status" => "INACTIVE",
                 "version" => "V1",
-                "created_at" => "2023-10-20T13:29:10+00:00",
+                "created_at" => "2022-06-30T13:29:16+00:00",
             ]
         );
 
@@ -153,7 +155,7 @@ class WebhookSubscriptionsResourceTest extends OAuthTestCase
         $this->assertEquals([], $webhookSubscription->getProperties());
         $this->assertEquals("INACTIVE", $webhookSubscription->getStatus());
         $this->assertEquals("V1", $webhookSubscription->getVersion());
-        $this->assertEquals("2023-10-20T13:29:10+00:00", $webhookSubscription->getCreatedAt());
+        $this->assertEquals("2022-06-30T13:29:16+00:00", $webhookSubscription->getCreatedAt()->format('c'));
     }
 
     /**
@@ -171,7 +173,7 @@ class WebhookSubscriptionsResourceTest extends OAuthTestCase
                 "properties" => ["firstname", "lastname"],
                 "status" => "INACTIVE",
                 "version" => "V1",
-                "created_at" => "2023-10-20T12:54:23+00:00",
+                "created_at" => "2022-06-30T13:29:16+00:00",
             ]
         );
 
@@ -184,7 +186,7 @@ class WebhookSubscriptionsResourceTest extends OAuthTestCase
         $this->assertEquals(["firstname", "lastname"], $webhookSubscription->getProperties());
         $this->assertEquals("INACTIVE", $webhookSubscription->getStatus());
         $this->assertEquals("V1", $webhookSubscription->getVersion());
-        $this->assertEquals("2023-10-20T12:54:23+00:00", $webhookSubscription->getCreatedAt());
+        $this->assertEquals("2022-06-30T13:29:16+00:00", $webhookSubscription->getCreatedAt()->format('c'));
     }
 
     /**

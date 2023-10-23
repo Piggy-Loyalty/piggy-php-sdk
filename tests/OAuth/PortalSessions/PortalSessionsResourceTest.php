@@ -29,7 +29,7 @@ class PortalSessionsResourceTest extends OAuthTestCase
                     "uuid" => "2222e1242t3324535",
                     "name" => "30MLfd"
                 ],
-                "created_at" => "2023-10-19T15:11:13+00:00"
+                "created_at" => "2022-06-30T13:29:16+00:00",
             ]
         );
 
@@ -41,7 +41,8 @@ class PortalSessionsResourceTest extends OAuthTestCase
         $this->assertEquals("243", $portalSessions->getShop()->getId());
         $this->assertEquals("2222e1242t3324535", $portalSessions->getShop()->getUuid());
         $this->assertEquals("30MLfd", $portalSessions->getShop()->getName());
-        $this->assertEquals("2023-10-19T15:11:13+00:00", $portalSessions->getCreatedAt());
+        $this->assertEquals("2022-06-30T13:29:16+00:00", $portalSessions->getCreatedAt()->format('c'));
+
     }
 
     /**
@@ -62,7 +63,7 @@ class PortalSessionsResourceTest extends OAuthTestCase
                     "uuid" => "2222e1242t3324535",
                     "name" => "30MLfd"
                 ],
-                "created_at" => "2023-10-19T15:11:13+00:00"
+                "created_at" => "2022-06-30T13:29:16+00:00",
             ]
         );
 
@@ -74,6 +75,6 @@ class PortalSessionsResourceTest extends OAuthTestCase
         $this->assertEquals("243", $portalSessions->getShop()->getId());
         $this->assertEquals("2222e1242t3324535", $portalSessions->getShop()->getUuid());
         $this->assertEquals("30MLfd", $portalSessions->getShop()->getName());
-        $this->assertEquals("2023-10-19T15:11:13+00:00", $portalSessions->getCreatedAt());
+        $this->assertEquals("2022-06-30T13:29:16+00:00", $portalSessions->getCreatedAt()->format('c'));
     }
 }

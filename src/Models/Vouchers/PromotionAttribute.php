@@ -40,19 +40,19 @@ class PromotionAttribute
     protected $id;
 
     /**
-     * @var string
+     * @var ?string
      */
     protected $placeholder;
 
-    public function __construct(string $name, string $description, string $label, string $placeholder, string $type, array $options, ?int $id)
+    public function __construct(string $name, string $description, string $label, string $type, array $options, ?int $id, ?string $placeholder = null)
     {
         $this->name = $name;
         $this->description = $description;
         $this->label = $label;
-        $this->placeholder = $placeholder;
         $this->type = $type;
         $this->options = $options;
         $this->id = $id;
+        $this->placeholder = $placeholder;
     }
 
     public function getId(): int
@@ -65,7 +65,7 @@ class PromotionAttribute
         return $this->name;
     }
 
-    public function getPlaceholder(): string
+    public function getPlaceholder(): ?string
     {
         return $this->placeholder;
     }

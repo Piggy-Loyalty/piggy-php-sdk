@@ -1,6 +1,7 @@
 <?php
 
 namespace Piggy\Api\Models\Vouchers;
+use DateTime;
 
 class Lock
 {
@@ -10,25 +11,25 @@ class Lock
     protected $release_key;
 
     /**
-     * @var string
+     * @var DateTime
      */
     protected $locked_at;
 
     /**
-     * @var string|null
+     * @var DateTime|null
      */
     protected $unlocked_at;
 
     /**
-     * @var string|null
+     * @var DateTime|null
      */
     protected $system_release_at;
 
     public function __construct(
         string $release_key,
-        string $locked_at,
-        ?string $unlocked_at = null,
-        ?string $system_release_at = null
+        DateTime $locked_at,
+        ?DateTime $unlocked_at = null,
+        ?DateTime $system_release_at = null
     ) {
         $this->release_key = $release_key;
         $this->locked_at = $locked_at;
@@ -41,17 +42,17 @@ class Lock
         return $this->release_key;
     }
 
-    public function getLockedAt(): string
+    public function getLockedAt(): DateTime
     {
         return $this->locked_at;
     }
 
-    public function getUnlockedAt(): ?string
+    public function getUnlockedAt(): ?DateTime
     {
         return $this->unlocked_at;
     }
 
-    public function getSystemReleaseAt(): ?string
+    public function getSystemReleaseAt(): ?DateTime
     {
         return $this->system_release_at;
     }
