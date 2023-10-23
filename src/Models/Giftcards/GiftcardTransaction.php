@@ -3,7 +3,6 @@
 namespace Piggy\Api\Models\Giftcards;
 
 use DateTime;
-use Piggy\Api\Models\Shops\Shop;
 
 /**
  * Class GiftcardTransaction

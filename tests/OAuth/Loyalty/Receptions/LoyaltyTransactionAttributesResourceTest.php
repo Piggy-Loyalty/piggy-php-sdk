@@ -10,7 +10,7 @@ class LoyaltyTransactionAttributesResourceTest extends OAuthTestCase
     /** @test
      * @throws PiggyRequestException
      */
-    public function it_returns_a_list_of_LoyaltyTransactionAttributes()
+    public function it_returns_a_list_of_loyalty_transaction_attributes()
     {
         $this->addExpectedResponse([
             [

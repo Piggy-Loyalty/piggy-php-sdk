@@ -33,20 +33,9 @@ class Tier
     {
         return $this->uuid;
     }
-
-    public function setUuid(?string $uuid): void
-    {
-        $this->uuid = $uuid;
-    }
-
     public function getName(): string
     {
         return $this->name;
-    }
-
-    public function setName(string $name): void
-    {
-        $this->name = $name;
     }
 
     public function getDescription(): ?string
@@ -54,28 +43,13 @@ class Tier
         return $this->description;
     }
 
-    public function setDescription(?string $description): void
-    {
-        $this->description = $description;
-    }
-
     public function getMedia(): ?array
     {
         return $this->media;
     }
 
-    public function setMedia(?array $media): void
-    {
-        $this->media = $media;
-    }
-
     public function getPosition(): int
     {
         return $this->position;
-    }
-
-    public function setPosition(int $position): void
-    {
-        $this->position = $position;
     }
 }

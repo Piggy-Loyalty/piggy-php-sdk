@@ -2,8 +2,6 @@
 
 namespace Piggy\Api\Models\Brandkit;
 
-use App\Piggy\UI\Navigation\Colors\Color;
-
 /**
  * Class Brandkit
  * @package Piggy\Api\Models\Brandkit
@@ -54,19 +52,9 @@ class Brandkit
         return $this->large_logo_url;
     }
 
-    public function setLargeLogoUrl(?string $largeLogoUrl): void
-    {
-        $this->large_logo_url = $largeLogoUrl;
-    }
-
     public function getSmallLogoUrl(): ?string
     {
         return $this->small_logo_url;
-    }
-
-    public function setSmallLogoUrl(?string $smallLogoUrl): void
-    {
-        $this->small_logo_url = $smallLogoUrl;
     }
 
     public function getCoverImageUrl(): ?string
@@ -74,29 +62,14 @@ class Brandkit
         return $this->cover_image_url;
     }
 
-    public function setCoverImageUrl(?string $coverImageUrl): void
-    {
-        $this->cover_image_url = $coverImageUrl;
-    }
-
     public function getPrimaryColor(): string
     {
-        return $this->primary_color ?? Color::PRIMARY;
-    }
-
-    public function setPrimaryColor(?string $primaryColor): void
-    {
-        $this->primary_color = $primaryColor;
+        return $this->primary_color;
     }
 
     public function getSecondaryColor(): string
     {
-        return $this->secondary_color ?? Color::DEFAULT_SECONDARY;
-    }
-
-    public function setSecondaryColor(?string $secondaryColor): void
-    {
-        $this->secondary_color = $secondaryColor;
+        return $this->secondary_color;
     }
 
     public function getTertiaryColor(): ?string
@@ -104,29 +77,14 @@ class Brandkit
         return $this->tertiary_color;
     }
 
-    public function setTertiaryColor(?string $tertiaryColor): void
-    {
-        $this->tertiary_color = $tertiaryColor;
-    }
-
     public function getQuaternaryColor(): ?string
     {
         return $this->quaternary_color;
     }
 
-    public function setQuaternaryColor(?string $quaternaryColor): void
-    {
-        $this->quaternary_color = $quaternaryColor;
-    }
-
     public function getFontColor(): ?string
     {
         return $this->font_color;
-    }
-
-    public function setFontColor(?string $fontColor): void
-    {
-        $this->font_color = $fontColor;
     }
 
     public function getDescription(): ?string
@@ -144,20 +102,8 @@ class Brandkit
         return $this->corner_theme;
     }
 
-    public function setCornerTheme(?string $cornerTheme): void
-    {
-        $this->corner_theme = $cornerTheme;
-    }
-
     public function getFontFamily(): ?string
     {
         return $this->font_family;
     }
-
-    public function setFontFamily(?string $fontFamily): void
-    {
-        $this->font_family = $fontFamily;
-    }
-
-
 }

@@ -70,24 +70,9 @@ class PromotionAttribute
         return $this->placeholder;
     }
 
-    public function setPlaceholder(string $placeholder): void
-    {
-        $this->placeholder = $placeholder;
-    }
-
-    public function setName(string $name): void
-    {
-        $this->name = $name;
-    }
-
     public function getDescription(): string
     {
         return $this->description;
-    }
-
-    public function setDescription(string $description): void
-    {
-        $this->description = $description;
     }
 
     public function getLabel(): string
@@ -95,30 +80,14 @@ class PromotionAttribute
         return $this->label;
     }
 
-    public function setLabel(string $label): void
-    {
-        $this->label = $label;
-    }
-
     public function getType(): string
     {
         return $this->type;
-    }
-
-    public function setType(string $type): void
-    {
-        $this->type = $type;
     }
 
     public function getOptions(): array
     {
         return $this->options;
     }
-
-    public function setOptions(array $options): void
-    {
-        $this->options = $options;
-    }
-
 }
 

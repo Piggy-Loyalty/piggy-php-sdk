@@ -93,19 +93,9 @@ class Voucher
         return $this->uuid;
     }
 
-    public function setUuid(string $uuid): void
-    {
-        $this->uuid = $uuid;
-    }
-
     public function getCode(): ?string
     {
         return $this->code;
-    }
-
-    public function setCode(string $code): void
-    {
-        $this->code = $code;
     }
 
     public function getStatus(): string
@@ -113,29 +103,14 @@ class Voucher
         return $this->status;
     }
 
-    public function setStatus(string $status): void
-    {
-        $this->status = $status;
-    }
-
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): void
-    {
-        $this->name = $name;
-    }
-
     public function getDescription(): ?string
     {
         return $this->description;
-    }
-
-    public function setDescription(string $description): void
-    {
-        $this->description = $description;
     }
 
     public function getPromotion(): ?Promotion
@@ -148,19 +123,9 @@ class Voucher
         return $this->expiration_date;
     }
 
-    public function setExpirationDate(string $expiration_date): void
-    {
-        $this->expiration_date = $expiration_date;
-    }
-
     public function getActivationDate(): ?string
     {
         return $this->activation_date;
-    }
-
-    public function setActivationDate(string $activation_date): void
-    {
-        $this->activation_date = $activation_date;
     }
 
     public function getRedeemedAt(): ?string
@@ -168,24 +133,13 @@ class Voucher
         return $this->redeemed_at;
     }
 
-    public function setRedeemedAt(?string $redeemed_at): void
-    {
-        $this->redeemed_at = $redeemed_at;
-    }
-
     public function isRedeemed(): ?bool
     {
         return $this->is_redeemed;
-    }
-
-    public function setIsRedeemed(bool $is_redeemed): void
-    {
-        $this->is_redeemed = $is_redeemed;
     }
 
     public function getContact(): ?Contact
     {
         return $this->contact;
     }
-
 }

@@ -2,8 +2,6 @@
 
 namespace Piggy\Api\Resources\OAuth\Loyalty\Receptions;
 
-use Piggy\Api\Enum\CustomAttributeTypes;
-use Piggy\Api\Enum\RewardAttributeDataTypes;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Loyalty\LoyaltyTransactionAttributes\LoyaltyTransactionAttributeMapper;
 use Piggy\Api\Mappers\Loyalty\LoyaltyTransactionAttributes\LoyaltyTransactionAttributesMapper;

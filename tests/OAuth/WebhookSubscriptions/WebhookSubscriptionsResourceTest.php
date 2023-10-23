@@ -1,6 +1,6 @@
 <?php
 
-namespace Piggy\Api\Tests\OAuth\webhookSubscriptions;
+namespace Piggy\Api\Tests\OAuth\WebhookSubscriptions;
 
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
@@ -9,7 +9,7 @@ use Piggy\Api\Tests\OAuthTestCase;
  * Class webhookSubscriptionsResourceTest
  * @package Piggy\Api\Tests\OAuth\Giftcards
  */
-class webhookSubscriptionsResourceTest extends OAuthTestCase
+class WebhookSubscriptionsResourceTest extends OAuthTestCase
 {
     /**
      * @test
@@ -46,7 +46,7 @@ class webhookSubscriptionsResourceTest extends OAuthTestCase
      * @test
      * @throws PiggyRequestException
      */
-    public function it_returns_a_list_of_giftcard_transactions_when_giving_a_giftcard_program_uuid()
+    public function it_returns_a_list_of_webhook_subscriptions()
     {
         $this->addExpectedResponse(
             [
