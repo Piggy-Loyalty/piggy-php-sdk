@@ -34,6 +34,7 @@ use Piggy\Api\Resources\OAuth\Vouchers\PromotionAttributesResource;
 use Piggy\Api\Resources\OAuth\Vouchers\PromotionResource;
 use Piggy\Api\Resources\OAuth\Vouchers\VoucherResource;
 use Piggy\Api\Resources\OAuth\WebhookSubscriptions\WebhookSubscriptionsResource;
+use Piggy\Api\Resources\OAuth\Zapier\ZapierWebhookResource;
 use Piggy\Api\Tests\OAuth\FormsResourceTest;
 
 /**
@@ -177,6 +178,11 @@ trait SetsOAuthResources
     public $webhookSubscriptions;
 
     /**
+     * @var ZapierWebhookResource
+     */
+    public $zapierWebhook;
+
+    /**
      * @param BaseClient $client
      *
      * @return void
@@ -215,6 +221,6 @@ trait SetsOAuthResources
         $this->forms = new FormsResource($client);
         $this->loyaltyTransactionAttributes = new LoyaltyTransactionAttributesResource($client);
         $this->webhookSubscriptions = new WebhookSubscriptionsResource($client);
-
+        $this->zapierWebhook = new ZapierWebhookResource($client);
     }
 }
