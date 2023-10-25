@@ -7,8 +7,8 @@ use Piggy\Api\Mappers\Automations\AutomationsMapper;
 use Piggy\Api\Resources\BaseResource;
 
 /**
- * Class ShopsResource
- * @package Piggy\Api\Resources\OAuth\Shops
+ * Class AutomationsResource
+ * @package Piggy\Api\Resources\OAuth\Automations
  */
 class AutomationsResource extends BaseResource
 {

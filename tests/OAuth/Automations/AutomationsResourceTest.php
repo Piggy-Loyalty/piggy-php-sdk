@@ -6,8 +6,8 @@ use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
 
 /**
- * Class ContactIdentifiersResourceTest
- * @package Piggy\Api\Tests\OAuth\ContactIdentifiers
+ * Class AutomationsResourceTest
+ * @package Piggy\Api\Tests\OAuth\Automations
  */
 class AutomationsResourceTest extends OAuthTestCase
 {

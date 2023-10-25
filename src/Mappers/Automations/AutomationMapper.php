@@ -8,7 +8,7 @@ use stdClass;
 
 /**
  * Class AutomationMapper
- * @package Piggy\Api\Mappers\Shops
+ * @package Piggy\Api\Mappers\Automations
  */
 class AutomationMapper extends BaseMapper
 {

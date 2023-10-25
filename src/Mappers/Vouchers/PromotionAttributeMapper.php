@@ -3,8 +3,6 @@
 namespace Piggy\Api\Mappers\Vouchers;
 
 use Piggy\Api\Models\Vouchers\PromotionAttribute;
-use stdClass;
-
 
 class PromotionAttributeMapper
 {

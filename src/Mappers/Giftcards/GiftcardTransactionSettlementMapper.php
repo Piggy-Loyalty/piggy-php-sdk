@@ -6,8 +6,8 @@ use Piggy\Api\Models\Giftcards\GiftcardTransactionSettlement;
 use stdClass;
 
 /**
- * Class ShopMapper
- * @package Piggy\Api\Mappers\Shops
+ * Class GiftcardTransactionSettlementMapper
+ * @package Piggy\Api\Mappers\Giftards
  */
 class GiftcardTransactionSettlementMapper
 {

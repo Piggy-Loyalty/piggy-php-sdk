@@ -5,8 +5,8 @@ namespace Piggy\Api\Mappers\Brandkit;
 use Piggy\Api\Models\Brandkit\Brandkit;
 
 /**
- * Class ShopMapper
- * @package Piggy\Api\Mappers\Shops
+ * Class BrandkitMapper
+ * @package Piggy\Api\Mappers\Brandkit
  */
 class BrandkitMapper
 {

@@ -6,7 +6,7 @@ use Piggy\Api\Models\Vouchers\Voucher;
 
 /**
  * Class PromotionsMapper
- * @package Piggy\Api\Mappers\Promotions
+ * @package Piggy\Api\Mappers\Vouchers
  */
 class VouchersMapper
 {

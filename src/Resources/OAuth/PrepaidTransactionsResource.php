@@ -8,7 +8,7 @@ use Piggy\Api\Models\Prepaid\PrepaidTransaction;
 use Piggy\Api\Resources\BaseResource;
 
 /**
- * Class ContactIdentifiersResource
+ * Class PrepaidTransactionsResource
  * @package Piggy\Api\Resources\OAuth
  */
 class PrepaidTransactionsResource extends BaseResource

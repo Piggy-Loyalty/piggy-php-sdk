@@ -5,10 +5,10 @@ namespace Piggy\Api\Mappers\Vouchers;
 use Piggy\Api\Models\Vouchers\VoucherLock;
 
 /**
- * Class ShopMapper
- * @package Piggy\Api\Mappers\Promotion
+ * Class VoucherLockMapper
+ * @package Piggy\Api\Mappers\Vouchers
  */
-class VoucherLockDTOMapper
+class VoucherLockMapper
 {
     /**
      * @param $data

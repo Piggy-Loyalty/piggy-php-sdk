@@ -5,8 +5,8 @@ namespace Piggy\Api\Mappers\ContactsPortal;
 use Piggy\Api\Models\ContactsPortal\ContactsPortalAuthUrl;
 
 /**
- * Class ShopMapper
- * @package Piggy\Api\Mappers\Shops
+ * Class ContactsPortalAuthUrlMapper
+ * @package Piggy\Api\Mappers\ContactsPortal
  */
 class ContactsPortalAuthUrlMapper
 {

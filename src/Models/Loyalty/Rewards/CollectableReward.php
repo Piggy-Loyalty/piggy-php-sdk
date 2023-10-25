@@ -6,8 +6,8 @@ use DateTime;
 use Piggy\Api\Models\Contacts\Contact;
 
 /**
- * Class Shop
- * @package Piggy\Api\Models\Shops
+ * Class CollectableReward
+ * @package Piggy\Api\Models\Rewards
  */
 class CollectableReward
 {

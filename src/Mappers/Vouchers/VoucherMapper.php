@@ -7,8 +7,8 @@ use Piggy\Api\Mappers\Contacts\ContactMapper;
 use Piggy\Api\Models\Vouchers\Voucher;
 
 /**
- * Class ShopMapper
- * @package Piggy\Api\Mappers\Promotion
+ * Class VoucherMapper
+ * @package Piggy\Api\Mappers\Vouchers
  */
 class VoucherMapper extends BaseMapper
 {

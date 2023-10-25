@@ -5,7 +5,7 @@ namespace Piggy\Api\Models\Prepaid;
 use DateTime;
 
 /**
- * Class CreditBalance
+ * Class PrepaidTransaction
  * @package Piggy\Api\Models
  */
 class PrepaidTransaction

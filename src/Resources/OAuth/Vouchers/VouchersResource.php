@@ -3,7 +3,7 @@
 namespace Piggy\Api\Resources\OAuth\Vouchers;
 
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\Mappers\Vouchers\VoucherLockDTOMapper;
+use Piggy\Api\Mappers\Vouchers\VoucherLockMapper;
 use Piggy\Api\Mappers\Vouchers\VoucherMapper;
 use Piggy\Api\Mappers\Vouchers\VouchersMapper;
 use Piggy\Api\Models\Vouchers\Voucher;
@@ -130,7 +130,7 @@ class VouchersResource extends BaseResource
     {
         $response = $this->client->post("$this->resourceUri/$voucherUuid/lock/", []);
 
-        $mapper = new VoucherLockDTOMapper();
+        $mapper = new VoucherLockMapper();
 
         return $mapper->map($response->getData());
     }
@@ -146,7 +146,7 @@ class VouchersResource extends BaseResource
             "release_key" => $releaseKey
         ]);
 
-        $mapper = new VoucherLockDTOMapper();
+        $mapper = new VoucherLockMapper();
 
         return $mapper->map($response->getData());
     }

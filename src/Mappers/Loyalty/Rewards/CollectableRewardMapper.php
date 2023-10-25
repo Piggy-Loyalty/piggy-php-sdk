@@ -9,8 +9,8 @@ use Piggy\Api\Models\Loyalty\Rewards\CollectableReward;
 use stdClass;
 
 /**
- * Class ShopMapper
- * @package Piggy\Api\Mappers\Rewards
+ * Class CollectableRewardMapper
+ * @package Piggy\Api\Mappers\Loyalty\Rewards
  */
 class CollectableRewardMapper extends BaseMapper
 {

@@ -34,7 +34,6 @@ use Piggy\Api\Resources\OAuth\Vouchers\PromotionAttributesResource;
 use Piggy\Api\Resources\OAuth\Vouchers\PromotionsResource;
 use Piggy\Api\Resources\OAuth\Vouchers\VouchersResource;
 use Piggy\Api\Resources\OAuth\WebhookSubscriptions\WebhookSubscriptionsResource;
-use Piggy\Api\Resources\OAuth\Zapier\ZapierWebhookResource;
 
 /**
  * Trait SetsOAuthResources
@@ -185,11 +184,6 @@ trait SetsOAuthResources
     public $webhookSubscriptions;
 
     /**
-     * @var ZapierWebhookResource
-     */
-    public $zapierWebhook;
-
-    /**
      * @var ContactsPortalAuthUrlResource
      */
     public $contactsPortalAuthUrl;
@@ -235,7 +229,6 @@ trait SetsOAuthResources
         $this->forms = new FormsResource($client);
         $this->loyaltyTransactionAttributes = new LoyaltyTransactionAttributesResource($client);
         $this->webhookSubscriptions = new WebhookSubscriptionsResource($client);
-        $this->zapierWebhook = new ZapierWebhookResource($client);
         $this->contactsPortalAuthUrl = new ContactsPortalAuthUrlResource($client);
         $this->collectableRewards = new CollectableRewardsResource($client);
     }

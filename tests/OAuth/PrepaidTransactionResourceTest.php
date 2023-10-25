@@ -6,7 +6,7 @@ use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
 
 /**
- * Class ContactSubscriptionResourceTest
+ * Class PrepaidTransactionResourceTest
  * @package Piggy\Api\Tests\OAuth
  */
 class PrepaidTransactionResourceTest extends OAuthTestCase
