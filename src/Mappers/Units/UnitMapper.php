@@ -6,8 +6,8 @@ use Piggy\Api\Models\Loyalty\Unit;
 use stdClass;
 
 /**
- * Class LoyaltyProgramMapper
- * @package Piggy\Api\Mappers\Loyalty
+ * Class UnitMapper
+ * @package Piggy\Api\Mappers\Units
  */
 class UnitMapper
 {

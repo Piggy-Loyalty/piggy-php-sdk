@@ -3,8 +3,8 @@
 namespace Piggy\Api\Models\Loyalty\Rewards;
 
 /**
- * Class LoyaltyProgram
- * @package Piggy\Api\Models\Loyalty
+ * Class DigitalRewardCode
+ * @package Piggy\Api\Models\Loyalty\Rewards
  */
 class DigitalRewardCode
 {

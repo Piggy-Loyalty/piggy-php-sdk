@@ -7,7 +7,7 @@ use Piggy\Api\Models\Automations\Automation;
 use stdClass;
 
 /**
- * Class ShopMapper
+ * Class AutomationMapper
  * @package Piggy\Api\Mappers\Shops
  */
 class AutomationMapper extends BaseMapper

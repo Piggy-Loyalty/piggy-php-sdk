@@ -5,8 +5,8 @@ namespace Piggy\Api\Mappers\Loyalty\Rewards;
 use Piggy\Api\Models\Loyalty\Rewards\DigitalRewardCode;
 
 /**
- * Class DigitalRewardMapper
- * @package Piggy\Api\Mappers\Shops
+ * Class DigitalRewardCodeMapper
+ * @package Piggy\Api\Mappers\Loyalty\Rewards
  */
 class DigitalRewardCodeMapper
 {

@@ -12,7 +12,7 @@ use Piggy\Api\Models\Loyalty\Receptions\DigitalRewardReception;
 use stdClass;
 
 /**
- * Class CreditReceptionMapper
+ * Class DigitalRewardReceptionMapper
  * @package Piggy\Api\Mappers\Loyalty
  */
 class DigitalRewardReceptionMapper extends BaseMapper

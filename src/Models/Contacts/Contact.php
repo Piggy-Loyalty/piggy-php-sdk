@@ -4,11 +4,10 @@ namespace Piggy\Api\Models\Contacts;
 
 use Piggy\Api\Models\Loyalty\CreditBalance;
 use Piggy\Api\Models\Prepaid\PrepaidBalance;
-use Piggy\Api\Models\Tiers\Tier;
 
 /**
  * Class Contact
- * @package Piggy\Api\Models
+ * @package Piggy\Api\Models\Contacts
  */
 class Contact
 {

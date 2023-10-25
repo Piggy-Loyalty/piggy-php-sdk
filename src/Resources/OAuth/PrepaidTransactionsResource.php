@@ -11,7 +11,7 @@ use Piggy\Api\Resources\BaseResource;
  * Class ContactIdentifiersResource
  * @package Piggy\Api\Resources\OAuth
  */
-class PrepaidTransactionResource extends BaseResource
+class PrepaidTransactionsResource extends BaseResource
 {
     /**
      * @var string

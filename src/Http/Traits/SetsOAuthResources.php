@@ -15,7 +15,7 @@ use Piggy\Api\Resources\OAuth\Forms\FormsResource;
 use Piggy\Api\Resources\OAuth\Giftcards\GiftcardsResource;
 use Piggy\Api\Resources\OAuth\Giftcards\GiftcardTransactionsResource;
 use Piggy\Api\Resources\OAuth\Giftcards\Program\GiftcardProgramsResource;
-use Piggy\Api\Resources\OAuth\Loyalty\Program\LoyaltyProgramResource;
+use Piggy\Api\Resources\OAuth\Loyalty\Program\LoyaltyProgramsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Receptions\CreditReceptionsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Receptions\LoyaltyTransactionAttributesResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Receptions\LoyaltyTransactionsResource;
@@ -23,16 +23,16 @@ use Piggy\Api\Resources\OAuth\Loyalty\Receptions\RewardReceptionsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Rewards\CollectableRewardsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Rewards\RewardAttributesResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Rewards\RewardsResource;
-use Piggy\Api\Resources\OAuth\Loyalty\Tokens\LoyaltyTokenResource;
+use Piggy\Api\Resources\OAuth\Loyalty\Tokens\LoyaltyTokensResource;
 use Piggy\Api\Resources\OAuth\PortalSessions\PortalSessionsResource;
-use Piggy\Api\Resources\OAuth\PrepaidTransactionResource;
+use Piggy\Api\Resources\OAuth\PrepaidTransactionsResource;
 use Piggy\Api\Resources\OAuth\Shops\ShopsResource;
 use Piggy\Api\Resources\OAuth\SubscriptionTypesResource;
 use Piggy\Api\Resources\OAuth\Tiers\TiersResource;
 use Piggy\Api\Resources\OAuth\Units\UnitsResource;
 use Piggy\Api\Resources\OAuth\Vouchers\PromotionAttributesResource;
-use Piggy\Api\Resources\OAuth\Vouchers\PromotionResource;
-use Piggy\Api\Resources\OAuth\Vouchers\VoucherResource;
+use Piggy\Api\Resources\OAuth\Vouchers\PromotionsResource;
+use Piggy\Api\Resources\OAuth\Vouchers\VouchersResource;
 use Piggy\Api\Resources\OAuth\WebhookSubscriptions\WebhookSubscriptionsResource;
 use Piggy\Api\Resources\OAuth\Zapier\ZapierWebhookResource;
 
@@ -98,7 +98,7 @@ trait SetsOAuthResources
     public $loyaltyTransactions;
 
     /**
-     * @var PrepaidTransactionResource
+     * @var PrepaidTransactionsResource
      */
     public $prepaidTransactions;
 
@@ -117,7 +117,7 @@ trait SetsOAuthResources
      */
     public $units;
 
-    /** @var LoyaltyProgramResource */
+    /** @var LoyaltyProgramsResource */
     public $loyaltyProgram;
 
 
@@ -135,12 +135,12 @@ trait SetsOAuthResources
     public $rewardAttributes;
 
     /**
-     * @var LoyaltyTokenResource
+     * @var LoyaltyTokensResource
      */
     public $loyaltyToken;
 
     /**
-     * @var PromotionResource
+     * @var PromotionsResource
      */
     public $promotion;
 
@@ -150,7 +150,7 @@ trait SetsOAuthResources
     public $promotionAttributes;
 
     /**
-     * @var VoucherResource
+     * @var VouchersResource
      */
     public $voucher;
 
@@ -215,7 +215,7 @@ trait SetsOAuthResources
         $this->shops = new ShopsResource($client);
         $this->rewards = new RewardsResource($client);
         $this->contactVerification = new ContactVerificationResource($client);
-        $this->prepaidTransactions = new PrepaidTransactionResource($client);
+        $this->prepaidTransactions = new PrepaidTransactionsResource($client);
         $this->rewardReceptions = new RewardReceptionsResource($client);
         $this->loyaltyTransactions = new LoyaltyTransactionsResource($client);
         $this->contactSubscriptions = new ContactSubscriptionsResource($client);
@@ -223,12 +223,12 @@ trait SetsOAuthResources
         $this->creditReceptions = new CreditReceptionsResource($client);
         $this->automations = new AutomationsResource($client);
         $this->units = new UnitsResource($client);
-        $this->loyaltyProgram = new LoyaltyProgramResource($client);
+        $this->loyaltyProgram = new LoyaltyProgramsResource($client);
         $this->rewardAttributes = new RewardAttributesResource($client);
-        $this->loyaltyToken = new LoyaltyTokenResource($client);
-        $this->promotion = new PromotionResource($client);
+        $this->loyaltyToken = new LoyaltyTokensResource($client);
+        $this->promotion = new PromotionsResource($client);
         $this->promotionAttributes = new PromotionAttributesResource($client);
-        $this->voucher = new VoucherResource($client);
+        $this->voucher = new VouchersResource($client);
         $this->brandkit = new BrandkitResource($client);
         $this->tier = new TiersResource($client);
         $this->portalSessions = new PortalSessionsResource($client);

@@ -3,8 +3,8 @@
 namespace Piggy\Api\Models\Contacts;
 
 /**
- * Class Attribute
- * @package Piggy\Api\Models
+ * Class ContactAttribute
+ * @package Piggy\Api\Models\Contacts
  */
 class ContactAttribute
 {

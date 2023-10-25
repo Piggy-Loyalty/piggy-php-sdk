@@ -9,7 +9,7 @@ use Piggy\Api\Models\Loyalty\Rewards\DigitalReward;
 
 /**
  * Class DigitalRewardMapper
- * @package Piggy\Api\Mappers\Shops
+ * @package Piggy\Api\Mappers\Loyalty\Rewards
  */
 class DigitalRewardMapper
 {

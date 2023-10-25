@@ -5,7 +5,7 @@ namespace Piggy\Api\Tests\OAuth\Forms;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
 
-class FormsResourceTest extends OAuthTestCase
+class FormResourceTest extends OAuthTestCase
 {
     /** @test
      * @throws PiggyRequestException

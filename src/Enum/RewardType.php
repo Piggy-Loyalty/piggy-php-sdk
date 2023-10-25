@@ -5,7 +5,7 @@ namespace Piggy\Api\Enum;
 use MabeEnum\Enum;
 
 /**
- * Class ShopType
+ * Class RewardType
  * @package Piggy\Api\Enum
  */
 class RewardType extends Enum

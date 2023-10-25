@@ -9,10 +9,10 @@ use Piggy\Api\Models\Vouchers\Promotion;
 use Piggy\Api\Resources\BaseResource;
 
 /**
- * Class GiftcardProgramResource
+ * Class PromotionsResource
  * @package Piggy\Api\Resources\OAuth\Vouchers
  */
-class PromotionResource extends BaseResource
+class PromotionsResource extends BaseResource
 {
     /**
      * @var string

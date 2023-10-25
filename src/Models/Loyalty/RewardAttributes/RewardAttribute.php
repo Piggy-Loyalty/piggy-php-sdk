@@ -4,7 +4,7 @@ namespace Piggy\Api\Models\Loyalty\RewardAttributes;
 
 /**
  * Class RewardAttribute
- * @package Piggy\Api\Models
+ * @package Piggy\Api\Models\Loyalty\RewardAttributes
  */
 class RewardAttribute
 {

@@ -9,8 +9,8 @@ use Piggy\Api\Models\Loyalty\Rewards\Reward;
 use Piggy\Api\Models\Shops\Shop;
 
 /**
- * Class CreditReception
- * @package Piggy\Api\Models
+ * Class PhysicalRewardReception
+ * @package Piggy\Api\Models\Loyalty\Receptions
  */
 class PhysicalRewardReception
 {

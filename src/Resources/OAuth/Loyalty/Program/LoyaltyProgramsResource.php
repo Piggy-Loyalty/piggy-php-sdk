@@ -11,7 +11,7 @@ use Piggy\Api\Resources\BaseResource;
  * Class LoyaltyProgramResource
  * @package Piggy\Api\Resources\OAuth\Loyalty\Program
  */
-class LoyaltyProgramResource extends BaseResource
+class LoyaltyProgramsResource extends BaseResource
 {
     /**
      * @var string

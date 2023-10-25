@@ -4,7 +4,7 @@ namespace Piggy\Api\Models\Contacts;
 
 /**
  * Class ContactIdentifier
- * @package Piggy\Api\Models
+ * @package Piggy\Api\Models\Contacts
  */
 class ContactIdentifier
 {

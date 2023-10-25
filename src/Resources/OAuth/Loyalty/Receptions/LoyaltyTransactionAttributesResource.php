@@ -5,7 +5,7 @@ namespace Piggy\Api\Resources\OAuth\Loyalty\Receptions;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Loyalty\LoyaltyTransactionAttributes\LoyaltyTransactionAttributeMapper;
 use Piggy\Api\Mappers\Loyalty\LoyaltyTransactionAttributes\LoyaltyTransactionAttributesMapper;
-use Piggy\Api\Models\Loyalty\Transaction\LoyaltyTransactionAttribute;
+use Piggy\Api\Models\Loyalty\Transactions\LoyaltyTransactionAttribute;
 use Piggy\Api\Resources\BaseResource;
 
 /**

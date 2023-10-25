@@ -10,7 +10,7 @@ use Piggy\Api\Models\Shops\Shop;
 
 /**
  * Class CreditReception
- * @package Piggy\Api\Models
+ * @package Piggy\Api\Models\Loyalty\Receptions
  */
 class CreditReception
 {

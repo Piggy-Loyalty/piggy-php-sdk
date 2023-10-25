@@ -5,7 +5,7 @@ namespace Piggy\Api\Enum;
 use MabeEnum\Enum;
 
 /**
- * Class rewardAttributeDataTypes
+ * Class RewardAttributeDataTypes
  * @package Piggy\Api\Enum
  */
 class RewardAttributeDataTypes extends Enum

@@ -3,7 +3,7 @@
 namespace Piggy\Api\Mappers\Automations;
 
 /**
- * Class ShopsMapper
+ * Class AutomationsMapper
  * @package Piggy\Api\Mappers\Shops
  */
 class AutomationsMapper

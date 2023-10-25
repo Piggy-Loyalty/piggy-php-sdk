@@ -2,7 +2,7 @@
 
 namespace Piggy\Api\Mappers\Loyalty\LoyaltyTransactionAttributes;
 
-use Piggy\Api\Models\Loyalty\Transaction\LoyaltyTransactionAttribute;
+use Piggy\Api\Models\Loyalty\Transactions\LoyaltyTransactionAttribute;
 
 /**
  * Class LoyaltyTransactionAttributeMapper

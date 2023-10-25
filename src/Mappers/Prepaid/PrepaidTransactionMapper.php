@@ -7,8 +7,8 @@ use Piggy\Api\Models\Prepaid\PrepaidTransaction;
 use stdClass;
 
 /**
- * Class ShopMapper
- * @package Piggy\Api\Mappers\Shops
+ * Class PrepaidTransactionMapper
+ * @package Piggy\Api\Mappers\Prepaid
  */
 class PrepaidTransactionMapper extends BaseMapper
 {

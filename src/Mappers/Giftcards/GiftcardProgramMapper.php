@@ -6,7 +6,7 @@ use Piggy\Api\Models\Giftcards\GiftcardProgram;
 use stdClass;
 
 /**
- * Class GiftcardMapper
+ * Class GiftcardProgramMapper
  * @package Piggy\Api\Mappers\Giftcards
  */
 class GiftcardProgramMapper

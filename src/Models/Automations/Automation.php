@@ -5,8 +5,8 @@ namespace Piggy\Api\Models\Automations;
 use DateTime;
 
 /**
- * Class Shop
- * @package Piggy\Api\Models\Shops
+ * Class Automation
+ * @package Piggy\Api\Models\Automations
  */
 class Automation
 {

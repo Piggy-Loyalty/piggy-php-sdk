@@ -3,8 +3,8 @@
 namespace Piggy\Api\Mappers\Units;
 
 /**
- * Class ShopsMapper
- * @package Piggy\Api\Mappers\Shops
+ * Class UnitsMapper
+ * @package Piggy\Api\Mappers\Units
  */
 class UnitsMapper
 {

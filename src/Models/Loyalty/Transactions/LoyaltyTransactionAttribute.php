@@ -1,6 +1,6 @@
 <?php
 
-namespace Piggy\Api\Models\Loyalty\Transaction;
+namespace Piggy\Api\Models\Loyalty\Transactions;
 
 class LoyaltyTransactionAttribute
 {

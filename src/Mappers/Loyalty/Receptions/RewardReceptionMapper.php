@@ -8,7 +8,7 @@ use Piggy\Api\Models\Loyalty\Receptions\PhysicalRewardReception;
 use stdClass;
 
 /**
- * Class CreditReceptionMapper
+ * Class RewardReceptionMapper
  * @package Piggy\Api\Mappers\Loyalty
  */
 class RewardReceptionMapper

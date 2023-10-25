@@ -11,7 +11,7 @@ use Piggy\Api\Models\Loyalty\Receptions\PhysicalRewardReception;
 use stdClass;
 
 /**
- * Class CreditReceptionMapper
+ * Class PhysicalRewardReceptionMapper
  * @package Piggy\Api\Mappers\Loyalty
  */
 class PhysicalRewardReceptionMapper extends BaseMapper

@@ -6,7 +6,7 @@ use Piggy\Api\Models\Loyalty\Media;
 use stdClass;
 
 /**
- * Class LoyaltyProgramMapper
+ * Class MediaMapper
  * @package Piggy\Api\Mappers\Loyalty
  */
 class MediaMapper

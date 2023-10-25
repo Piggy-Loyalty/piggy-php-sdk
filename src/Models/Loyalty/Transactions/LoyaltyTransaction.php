@@ -1,6 +1,6 @@
 <?php
 
-namespace Piggy\Api\Models\Loyalty\Transaction;
+namespace Piggy\Api\Models\Loyalty\Transactions;
 
 use DateTime;
 use Piggy\Api\Models\Contacts\Contact;
@@ -9,8 +9,8 @@ use Piggy\Api\Models\Loyalty\Rewards\Reward;
 use Piggy\Api\Models\Shops\Shop;
 
 /**
- * Class CreditReception
- * @package Piggy\Api\Models
+ * Class LoyaltyTransaction
+ * @package Piggy\Api\Models\Loyalty\Transaction
  */
 class LoyaltyTransaction
 {

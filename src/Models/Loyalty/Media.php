@@ -3,7 +3,7 @@
 namespace Piggy\Api\Models\Loyalty;
 
 /**
- * Class LoyaltyProgram
+ * Class Media
  * @package Piggy\Api\Models\Loyalty
  */
 class Media

@@ -10,8 +10,8 @@ use Piggy\Api\Models\Loyalty\Rewards\DigitalRewardCode;
 use Piggy\Api\Models\Shops\Shop;
 
 /**
- * Class CreditReception
- * @package Piggy\Api\Models
+ * Class DigitalRewardReception
+ * @package Piggy\Api\Models\Loyalty\Receptions
  */
 class DigitalRewardReception
 {
