@@ -2,6 +2,8 @@
 
 namespace Piggy\Api\Models\Loyalty\Rewards;
 
+use DateTime;
+use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\Models\Loyalty\Media;
 
 class Reward
@@ -47,6 +49,18 @@ class Reward
     protected $attributes = [];
 
     /**
+     * @var Contact
+     */
+    protected $contact;
+
+    /**
+     * @var DateTime
+     */
+    protected $expiresAt;
+
+    protected $hasBeenCollected;
+
+    /**
      * @param string $uuid
      * @param string|null $title
      * @param int|null $requiredCredits
@@ -55,8 +69,12 @@ class Reward
      * @param bool|null $active
      * @param string|null $rewardType
      * @param array $attributes
+     * @param Contact|null $contact
+     * @param DateTime|null $expiresAt
+     * @param bool $hasBeenCollected
+
      */
-    public function __construct(string $uuid, ?string $title = '', ?int $requiredCredits = null, ?Media $media = null, ?string $description = "", ?bool $active = true, ?string $rewardType = null, array $attributes = [])
+    public function __construct(string $uuid, ?string $title = '', ?int $requiredCredits = null, ?Media $media = null, ?string $description = "", ?bool $active = true, ?string $rewardType = null, array $attributes = [], ?Contact $contact = null, ?DateTime $expiresAt = null, ?bool $hasBeenCollected = false)
     {
         $this->uuid = $uuid;
         $this->title = $title;
@@ -66,6 +84,9 @@ class Reward
         $this->active = $active;
         $this->rewardType = $rewardType;
         $this->attributes = $attributes;
+        $this->contact = $contact;
+        $this->expiresAt = $expiresAt;
+        $this->hasBeenCollected = $hasBeenCollected;
     }
 
     /**
@@ -150,5 +171,10 @@ class Reward
     public function setAttribute(string $name, $value)
     {
         $this->attributes[$name] = $value;
+    }
+
+    public function getContact(): Contact
+    {
+        return $this->contact;
     }
 }

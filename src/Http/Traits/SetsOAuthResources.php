@@ -3,8 +3,6 @@
 namespace Piggy\Api\Http\Traits;
 
 use Piggy\Api\Http\BaseClient;
-use Piggy\Api\Models\Vouchers\Promotion;
-use Piggy\Api\Models\WebhookSubscriptions\WebhookSubscription;
 use Piggy\Api\Resources\OAuth\Automations\AutomationsResource;
 use Piggy\Api\Resources\OAuth\Brandkit\BrandkitResource;
 use Piggy\Api\Resources\OAuth\Contacts\ContactAttributesResource;
@@ -23,6 +21,7 @@ use Piggy\Api\Resources\OAuth\Loyalty\Receptions\LoyaltyTransactionAttributesRes
 use Piggy\Api\Resources\OAuth\Loyalty\Receptions\LoyaltyTransactionsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Receptions\RewardReceptionsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\RewardAttributes\RewardAttributesResource;
+use Piggy\Api\Resources\OAuth\Loyalty\Rewards\CollectableRewardsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Rewards\RewardsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Tokens\LoyaltyTokenResource;
 use Piggy\Api\Resources\OAuth\PortalSessions\PortalSessionsResource;
@@ -126,35 +125,43 @@ trait SetsOAuthResources
     public $giftcardProgram;
 
     /**
-     * @var ContactAttributesResource */
+     * @var ContactAttributesResource
+     */
     public $contactAttributes;
 
     /**
-     * @var RewardAttributesResource */
+     * @var RewardAttributesResource
+     */
     public $rewardAttributes;
 
     /**
-     * @var LoyaltyTokenResource */
+     * @var LoyaltyTokenResource
+     */
     public $loyaltyToken;
 
     /**
-     * @var PromotionResource */
+     * @var PromotionResource
+     */
     public $promotion;
 
     /**
-     * @var PromotionAttributesResource */
+     * @var PromotionAttributesResource
+     */
     public $promotionAttributes;
 
     /**
-     * @var VoucherResource */
+     * @var VoucherResource
+     */
     public $voucher;
 
     /**
-     * @var BrandkitResource */
+     * @var BrandkitResource
+     */
     public $brandkit;
 
     /**
-     * @var TiersResource */
+     * @var TiersResource
+     */
     public $tier;
 
     /**
@@ -188,6 +195,11 @@ trait SetsOAuthResources
     public $contactsPortalAuthUrl;
 
     /**
+     * @var CollectableRewardsResource
+     */
+    public $collectableRewards;
+
+    /**
      * @param BaseClient $client
      *
      * @return void
@@ -196,13 +208,10 @@ trait SetsOAuthResources
     {
         $this->contacts = new ContactsResource($client);
         $this->contactIdentifiers = new ContactIdentifiersResource($client);
-
         $this->contactAttributes = new ContactAttributesResource($client);
-
         $this->giftcards = new GiftcardsResource($client);
         $this->giftcardTransactions = new GiftcardTransactionsResource($client);
         $this->giftcardProgram = new GiftcardProgramsResource($client);
-
         $this->shops = new ShopsResource($client);
         $this->rewards = new RewardsResource($client);
         $this->contactVerification = new ContactVerificationResource($client);
@@ -228,5 +237,6 @@ trait SetsOAuthResources
         $this->webhookSubscriptions = new WebhookSubscriptionsResource($client);
         $this->zapierWebhook = new ZapierWebhookResource($client);
         $this->contactsPortalAuthUrl = new ContactsPortalAuthUrlResource($client);
+        $this->collectableRewards = new CollectableRewardsResource($client);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Piggy\Api\Tests\OAuth;
+namespace Piggy\Api\Tests\OAuth\Forms;
 
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
@@ -42,6 +42,5 @@ class FormsResourceTest extends OAuthTestCase
         $this->assertEquals("45cd914e-96f9-4749-80cb-e5950d08327a", $forms[1]->getUuid());
         $this->assertEquals("http://something.eu/forms/7dc3f9be-5ce0-4d5a-bc82-4a1a092d21ab", $forms[1]->getUrl());
         $this->assertEquals("PUBLIC", $forms[1]->getType());
-
     }
 }

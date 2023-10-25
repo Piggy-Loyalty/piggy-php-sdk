@@ -25,7 +25,7 @@ class ContactsResource extends BaseResource
 
     /**
      * @param string $contactUuid
-     * @return Contact]
+     * @return Contact
      * @throws PiggyRequestException
      */
     public function get(string $contactUuid): Contact

@@ -17,20 +17,18 @@ class GiftcardTransactionsResourceTest extends OAuthTestCase
      */
     public function it_finds_a_giftcard_transaction()
     {
-        $this->addExpectedResponse(
-            [
-                "uuid" => '123-123',
-                "amount_in_cents" => 420,
-                "type" => "STANDARD",
-                "settled" => false,
-                "card_id" => 30215,
-                "shop_id" => 15,
-                "settlements" => [[
-                    "id" => 1,
-                ]],
-                "created_at" => "2022-06-30T13:29:16+00:00",
-            ]
-        );
+        $this->addExpectedResponse([
+            "uuid" => '123-123',
+            "amount_in_cents" => 420,
+            "type" => "STANDARD",
+            "settled" => false,
+            "card_id" => 30215,
+            "shop_id" => 15,
+            "settlements" => [[
+                "id" => 1,
+            ]],
+            "created_at" => "2022-06-30T13:29:16+00:00",
+        ]);
 
         $giftcardTransaction = $this->mockedClient->giftcardTransactions->get('123-123');
 
@@ -51,10 +49,10 @@ class GiftcardTransactionsResourceTest extends OAuthTestCase
     public function it_returns_giftcard_transaction_after_creation()
     {
         $this->addExpectedResponse([
-                "uuid" => '123-123',
-                "amount_in_cents" => 420,
-                "created_at" => "2022-06-30T13:29:16+00:00",
-            ]);
+            "uuid" => '123-123',
+            "amount_in_cents" => 420,
+            "created_at" => "2022-06-30T13:29:16+00:00",
+        ]);
 
         $giftcardTransaction = $this->mockedClient->giftcardTransactions->create(1, 2, 100);
 
@@ -70,10 +68,10 @@ class GiftcardTransactionsResourceTest extends OAuthTestCase
     public function it_corrects_a_giftcard_transaction()
     {
         $this->addExpectedResponse([
-                "uuid" => '123-123',
-                "amount_in_cents" => 420,
-                "created_at" => "2022-06-30T13:29:16+00:00",
-            ]);
+            "uuid" => '123-123',
+            "amount_in_cents" => 420,
+            "created_at" => "2022-06-30T13:29:16+00:00",
+        ]);
 
         $giftcardTransaction = $this->mockedClient->giftcardTransactions->correct('123-123');
 
@@ -90,31 +88,28 @@ class GiftcardTransactionsResourceTest extends OAuthTestCase
     {
         $giftcardProgramUuid = '8fb59dcf-fb5b-4cee-88d8-35e361e55a12';
 
-        $this->addExpectedResponse(
+        $this->addExpectedResponse([
             [
-                [
-                    "id" => 2140,
-                    "uuid" => '0893a934-fa97-4ae9-8b96-90da9753ecae',
-                    "amount_in_cents" => 2,
-                    "type" => "STANDARD",
-                    "settled" => false,
-                    "card_id" => 30215,
-                    "shop_id" => 15,
-                    "created_at" => "2023-08-23T11:14:49+00:00"
-                ],
-                [
-                    "id" => 2141,
-                    "uuid" => '80c7f417-e65d-48ea-b102-a2ea17c85c02',
-                    "amount_in_cents" => 2,
-                    "type" => "STANDARD",
-                    "settled" => false,
-                    "card_id" => 30216,
-                    "shop_id" => 15,
-                    "created_at" => "2023-08-23T11:14:49+00:00"
-                ]
+                "id" => 2140,
+                "uuid" => '0893a934-fa97-4ae9-8b96-90da9753ecae',
+                "amount_in_cents" => 2,
+                "type" => "STANDARD",
+                "settled" => false,
+                "card_id" => 30215,
+                "shop_id" => 15,
+                "created_at" => "2023-08-23T11:14:49+00:00"
+            ],
+            [
+                "id" => 2141,
+                "uuid" => '80c7f417-e65d-48ea-b102-a2ea17c85c02',
+                "amount_in_cents" => 2,
+                "type" => "STANDARD",
+                "settled" => false,
+                "card_id" => 30216,
+                "shop_id" => 15,
+                "created_at" => "2023-08-23T11:14:49+00:00"
             ]
-
-        );
+        ]);
 
         $giftcardTransactions = $this->mockedClient->giftcardTransactions->list($giftcardProgramUuid);
 
