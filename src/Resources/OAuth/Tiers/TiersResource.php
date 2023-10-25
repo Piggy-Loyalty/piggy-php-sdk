@@ -10,7 +10,7 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class Tiers
- * @package Piggy\Api\Resources\OAuth
+ * @package Piggy\Api\Resources\OAuth\Tiers
  */
 class TiersResource extends BaseResource
 {

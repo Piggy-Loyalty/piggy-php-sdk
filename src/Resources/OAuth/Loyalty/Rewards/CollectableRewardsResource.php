@@ -10,7 +10,7 @@ use Piggy\Api\Models\Loyalty\Rewards\CollectableReward;
 use Piggy\Api\Resources\BaseResource;
 
 /**
- * Class RewardsResource
+ * Class CollectableRewardsResource
  * @package Piggy\Api\Resources\OAuth\Loyalty\Rewards
  */
 class CollectableRewardsResource extends BaseResource

@@ -10,7 +10,7 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class PortalSessionsResource
- * @package Piggy\Api\Resources\OAuth
+ * @package Piggy\Api\Resources\OAuth\PortalSessions
  */
 class PortalSessionsResource extends BaseResource
 {

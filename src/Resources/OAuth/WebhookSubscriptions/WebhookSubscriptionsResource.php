@@ -10,7 +10,7 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class WebhookSubscriptionsResource
- * @package Piggy\Api\Resources\OAuth\Giftcards
+ * @package Piggy\Api\Resources\OAuth\WebhookSubscriptions
  */
 class WebhookSubscriptionsResource extends BaseResource
 {

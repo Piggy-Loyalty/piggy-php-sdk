@@ -9,7 +9,7 @@ use Piggy\Api\Models\Loyalty\Receptions\PhysicalRewardReception;
 use Piggy\Api\Resources\BaseResource;
 
 /**
- * Class CreditReceptionsResource
+ * Class RewardReceptionsResource
  * @package Piggy\Api\Resources\OAuth\Loyalty\Receptions
  */
 class RewardReceptionsResource extends BaseResource

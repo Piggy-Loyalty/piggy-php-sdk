@@ -9,8 +9,8 @@ use Piggy\Api\Models\Forms\Form;
 use Piggy\Api\Resources\BaseResource;
 
 /**
- * Class GiftcardProgramResource
- * @package Piggy\Api\Resources\OAuth
+ * Class FormsResource
+ * @package Piggy\Api\Resources\OAuth\Forms
  */
 class FormsResource extends BaseResource
 {

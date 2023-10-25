@@ -10,7 +10,7 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class LoyaltyTransactionAttributesResource
- * @package Piggy\Api\Resources\OAuth
+ * @package Piggy\Api\Resources\OAuth\Loyalty\Receptions
  */
 class LoyaltyTransactionAttributesResource extends BaseResource
 {

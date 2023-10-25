@@ -7,6 +7,10 @@ use Piggy\Api\Mappers\Loyalty\LoyaltyProgramMapper;
 use Piggy\Api\Models\Loyalty\LoyaltyProgram;
 use Piggy\Api\Resources\BaseResource;
 
+/**
+ * Class LoyaltyProgramResource
+ * @package Piggy\Api\Resources\OAuth\Loyalty\Program
+ */
 class LoyaltyProgramResource extends BaseResource
 {
     /**

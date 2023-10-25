@@ -7,6 +7,10 @@ use Piggy\Api\Mappers\Loyalty\Receptions\CreditReceptionMapper;
 use Piggy\Api\Models\Loyalty\Receptions\CreditReception;
 use Piggy\Api\Resources\BaseResource;
 
+/**
+ * Class LoyaltyTokenResource
+ * @package Piggy\Api\Resources\OAuth\Loyalty\Tokens
+ */
 class LoyaltyTokenResource extends BaseResource
 {
     /**

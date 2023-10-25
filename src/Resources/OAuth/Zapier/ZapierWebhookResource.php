@@ -9,7 +9,7 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class ZapierWebhookResource
- * @package Piggy\Api\Resources\OAuth\Giftcards
+ * @package Piggy\Api\Resources\OAuth\Zapier
  */
 class ZapierWebhookResource extends BaseResource
 {
@@ -32,6 +32,7 @@ class ZapierWebhookResource extends BaseResource
 
     /**
      * @param int $id
+     * @return string
      * @throws PiggyRequestException
      */
     public function destroy(int $id): string

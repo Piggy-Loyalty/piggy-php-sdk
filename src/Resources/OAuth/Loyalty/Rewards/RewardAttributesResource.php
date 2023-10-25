@@ -1,9 +1,8 @@
 <?php
 
-namespace Piggy\Api\Resources\OAuth\Loyalty\RewardAttributes;
+namespace Piggy\Api\Resources\OAuth\Loyalty\Rewards;
 
 use Piggy\Api\Enum\CustomAttributeTypes;
-use Piggy\Api\Enum\RewardAttributeDataTypes;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Loyalty\RewardAttributes\RewardAttributeMapper;
 use Piggy\Api\Mappers\Loyalty\RewardAttributes\RewardAttributesMapper;
@@ -12,7 +11,7 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class RewardAttributesResource
- * @package Piggy\Api\Resources\OAuth
+ * @package Piggy\Api\Resources\OAuth\Rewards
  */
 class RewardAttributesResource extends BaseResource
 {

@@ -7,13 +7,13 @@ use Piggy\Api\Mappers\Vouchers\VoucherLockDTOMapper;
 use Piggy\Api\Mappers\Vouchers\VoucherMapper;
 use Piggy\Api\Mappers\Vouchers\VouchersMapper;
 use Piggy\Api\Models\Vouchers\Voucher;
-use Piggy\Api\Models\Vouchers\VoucherLockDTO;
+use Piggy\Api\Models\Vouchers\VoucherLock;
 use Piggy\Api\Resources\BaseResource;
 use DateTime;
 
 /**
  * Class VoucherResource
- * @package Piggy\Api\Resources\OAuth
+ * @package Piggy\Api\Resources\OAuth\Vouchers
  */
 class VoucherResource extends BaseResource
 {
@@ -123,10 +123,10 @@ class VoucherResource extends BaseResource
 
     /**
      * @param string $voucherUuid
-     * @return VoucherLockDTO
+     * @return VoucherLock
      * @throws PiggyRequestException
      */
-    public function lock(string $voucherUuid): VoucherLockDTO
+    public function lock(string $voucherUuid): VoucherLock
     {
         $response = $this->client->post("$this->resourceUri/$voucherUuid/lock/", []);
 
@@ -137,10 +137,10 @@ class VoucherResource extends BaseResource
 
     /**
      * @param string $voucherUuid
-     * @return VoucherLockDTO
+     * @return VoucherLock
      * @throws PiggyRequestException
      */
-    public function release(string $voucherUuid, string $releaseKey): VoucherLockDTO
+    public function release(string $voucherUuid, string $releaseKey): VoucherLock
     {
         $response = $this->client->post("$this->resourceUri/$voucherUuid/release/", [
             "release_key" => $releaseKey
