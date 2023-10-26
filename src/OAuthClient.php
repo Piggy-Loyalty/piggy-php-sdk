@@ -73,4 +73,23 @@ class OAuthClient extends BaseClient
         $this->addHeader("Authorization", "Bearer $accessToken");
         return $this;
     }
+
+    public function getApiKeyForAuth(): string
+    {
+        $response = $this->authenticationRequest("/oauth/api-key", [
+            "client_id" => $this->clientId
+        ]);
+
+        return $response->getApiKeyForAuth();
+    }
+
+    /**
+     * @param string $apiKey
+     * @return $this
+     */
+    public function setApiKey(string $apiKey): self
+    {
+        $this->addHeader("Authorization", "Bearer $apiKey");
+        return $this;
+    }
 }

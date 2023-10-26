@@ -3,6 +3,7 @@
 namespace Piggy\Api\Http\Traits;
 
 use Piggy\Api\Http\BaseClient;
+use Piggy\Api\Resources\OAuth\ApiKeys\ApiKeysResource;
 use Piggy\Api\Resources\OAuth\Automations\AutomationsResource;
 use Piggy\Api\Resources\OAuth\Brandkit\BrandkitResource;
 use Piggy\Api\Resources\OAuth\Contacts\ContactAttributesResource;
@@ -194,6 +195,11 @@ trait SetsOAuthResources
     public $collectableRewards;
 
     /**
+     * @var ApiKeysResource
+     */
+    public $apiKeys;
+
+    /**
      * @param BaseClient $client
      *
      * @return void
@@ -231,5 +237,6 @@ trait SetsOAuthResources
         $this->webhookSubscriptions = new WebhookSubscriptionsResource($client);
         $this->contactsPortalAuthUrl = new ContactsPortalAuthUrlResource($client);
         $this->collectableRewards = new CollectableRewardsResource($client);
+        $this->apiKeys = new ApiKeysResource($client);
     }
 }
