@@ -1,5 +1,59 @@
 # Changelog
 
+## 3.2.0
+
+### Oauth
+
+**NEW Domains**:
+
+- **Authentication**:
+    - feat: New way to authenticate using the API key generated from our business dashboard. Use `OAuthClientApiKey` class to pass the API key as an argument.
+
+- **Collectable Rewards**:
+    - feat: Added `list` and `collect` calls.
+  
+- **Portal Sessions**:
+  - feat: Added `create` and `get` calls.
+
+- **Webhook Subscriptions**:
+  - feat: Added `list`, `create`, `get` (show), `update`, and `delete` calls.
+
+- **Vouchers**:
+  - feat: Added `create`, `list`, `findByCode`, `redeem`, `lock`, `release`, and `batch` methods.
+
+- **Promotions**:
+  - feat: Added `list` and `create` calls.
+  
+- **Promotion Attributes**:
+  - feat: Added `list`, `get`, `create`, and `update` calls.
+
+- **Forms**:
+  - feat: Added `list` call.
+
+- **Tiers**:
+  - feat: Added `list` call.
+
+- **BrandKit**:
+  - feat: Added `get` call.
+
+- **Contacts Portal**:
+  - feat: Added `get` call.
+
+- **Loyalty Transaction Attributes**:
+  - feat: Added `list` and `create` calls.
+
+**Existing Domains**:
+
+- **Contacts**:
+    - feat: Added `createAsync`, `findOrCreateAsync`, `delete`, `claimAnonymousContact`, and `getTier`.
+
+- **Contact Verification**:
+  - feat: Added `getAuthToken` for contact verification.
+
+- **Giftcard Transactions**:
+  - feat: Added `list` call.
+
+  
 ## 3.1.0
 ### Oauth
 - feat: option to calculate the number of credits that would be issued with the given values without creating a Credit Reception. 
