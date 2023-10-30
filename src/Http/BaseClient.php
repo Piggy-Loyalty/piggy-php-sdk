@@ -11,6 +11,7 @@ use Piggy\Api\Exceptions\MalformedResponseException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Http\Responses\AuthenticationResponse;
 use Piggy\Api\Http\Responses\Response;
+use Piggy\Api\Http\Traits\SetsOAuthResources as OAuthResources;
 use Psr\Http\Message\ResponseInterface;
 use Throwable;
 use function Piggy\Api\hasGuzzle5;
@@ -21,6 +22,8 @@ use function Piggy\Api\hasGuzzle5;
  */
 abstract class BaseClient
 {
+    use OAuthResources;
+
     /**
      * @var ClientInterface
      */
@@ -44,6 +47,8 @@ abstract class BaseClient
      */
     public function __construct(?ClientInterface $client = null)
     {
+        $this->setResources($this);
+
         if ($client) {
             $this->httpClient = $client;
         } else {

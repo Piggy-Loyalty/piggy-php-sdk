@@ -10,14 +10,17 @@ class AuthenticationResponse
      * @var string
      */
     private $tokenType;
+
     /**
      * @var string
      */
     private $expiresIn;
+
     /**
      * @var string
      */
     private $accessToken;
+
     /**
      * AuthenticationResponse constructor.
      * @param object $data
@@ -28,6 +31,7 @@ class AuthenticationResponse
         $this->expiresIn = $data->expires_in;
         $this->accessToken = $data->access_token;
     }
+
     /**
      * @return string
      */
@@ -42,6 +46,7 @@ class AuthenticationResponse
     {
         return $this->expiresIn;
     }
+
     /**
      * @return string
      */
