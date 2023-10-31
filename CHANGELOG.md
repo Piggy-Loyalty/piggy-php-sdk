@@ -4,10 +4,7 @@
 
 ### Oauth
 
-**NEW Domains**:
-
-- **Authentication**:
-    - feat: New way to authenticate using the API key generated from our business dashboard. Use `OAuthClientApiKey` class to pass the API key as an argument.
+**NEW Resources**:
 
 - **Collectable Rewards**:
     - feat: Added `list` and `collect` calls.
@@ -42,7 +39,10 @@
 - **Loyalty Transaction Attributes**:
   - feat: Added `list` and `create` calls.
 
-**Existing Domains**:
+**Existing Resources**:
+
+- **Authentication**:
+  - feat: New way to authenticate using the API key generated from our business dashboard. Use `OAuthClientApiKey` class to pass the API key as an argument.
 
 - **Contacts**:
     - feat: Added `createAsync`, `findOrCreateAsync`, `delete`, `claimAnonymousContact`, and `getTier`.
