@@ -1,160 +1,34 @@
 <?php
 
-namespace Piggy\Api\Models\Giftcards;
+namespace Piggy\Api\Models;
 
-use DateTime;
-
-/**
- *
- */
 class Model
 {
-    protected $allowed = [
-        "id",
-        "uuid",
-        "type",
-        "hash",
-        "expiration_date",
-        "activate",
-        "giftcard_program",
-        "upgradeable",
-    ];
-
-    /**
-     * @var string
-     */
-    protected $uuid;
-
-    /**
-     * @var int
-     */
-    public $type;
-
-    /**
-     * @var string;
-     */
-    protected $hash;
-
-    /**
-     * @var DateTime|null
-     */
-    protected $expirationDate;
-
-    /**
-     * @var bool
-     */
-    protected $active;
-
-    /**
-     * @var bool
-     */
-    protected $upgradeable;
-
-    /**
-     * @var GiftcardProgram
-     */
-    protected $giftcardProgram;
-    /**
-     * @var int
-     */
-    protected $amount_in_cents;
-
-    /**
-     * @var int
-     */
-    protected $id;
-
-    /**
-     * @param string $uuid
-     * @param string $hash
-     * @param int $amountInCents
-     * @param int $type
-     * @param bool $active
-     * @param bool $upgradeable
-     * @param GiftcardProgram|null $giftcardProgram
-     * @param DateTime|null $expirationDate
-     * @param int|null $id
-     */
-    public function __construct(string $uuid, string $hash, int $amountInCents, int $type, bool $active, bool $upgradeable, ?GiftcardProgram $giftcardProgram, ?DateTime $expirationDate, ?int $id)
+    public static function parseResponse($response, $class): Model
     {
-        $this->uuid = $uuid;
-        $this->hash = $hash;
-        $this->amount_in_cents = $amountInCents;
-        $this->type = $type;
-        $this->active = $active;
-        $this->upgradeable = $upgradeable;
-        $this->giftcardProgram = $giftcardProgram;
-        $this->expirationDate = $expirationDate;
-        $this->id = $id;
+        $response = json_decode(json_encode($response->getData()), true);
+
+        return self::map($response, $class);
     }
 
-    /**
-     * @return string
-     */
-    public function getUuid(): string
+    public static function map(array $data, $class): Model
     {
-        return $this->uuid;
-    }
+        foreach ($data as $k => $v) {
+            if (array_key_exists($k, $class->dependencies)) {
+                $dependencyClass = $class->dependencies[$k];
 
-    /**
-     * @return int
-     */
-    public function getType(): int
-    {
-        return $this->type;
-    }
+                $model = new $dependencyClass();
 
-    /**
-     * @return string
-     */
-    public function getHash(): string
-    {
-        return $this->hash;
-    }
+                $data = $data[$k];
 
-    /**
-     * @return DateTime|null
-     */
-    public function getExpirationDate(): ?DateTime
-    {
-        return $this->expirationDate;
-    }
+                $model = self::map($data, $model);
 
-    /**
-     * @return bool
-     */
-    public function isActive(): bool
-    {
-        return $this->active;
-    }
+                $class->{$k} = $model;
+            } else {
+                $class->{$k} = $v;
+            }
+        }
 
-    /**
-     * @return bool
-     */
-    public function isUpgradeable(): bool
-    {
-        return $this->upgradeable;
+        return $class;
     }
-
-    /**
-     * @return GiftcardProgram|null
-     */
-    public function getGiftcardProgram(): ?GiftcardProgram
-    {
-        return $this->giftcardProgram;
-    }
-
-    /**
-     * @return int
-     */
-    public function getAmountInCents(): int
-    {
-        return $this->amount_in_cents;
-    }
-
-    public function getId(): int
-    {
-        return $this->id;
-    }
-
 }

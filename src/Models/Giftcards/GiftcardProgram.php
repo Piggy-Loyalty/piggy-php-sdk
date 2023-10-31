@@ -2,39 +2,42 @@
 
 namespace Piggy\Api\Models\Giftcards;
 
+use Piggy\Api\Models\Model;
+
 /**
  * Class GiftcardProgram
  * @package Piggy\Api\Models\Giftcards
  */
-class GiftcardProgram
+class GiftcardProgram extends Model
 {
     /**
      * @var string
      */
-    protected $uuid;
+    public $uuid;
 
     /**
      * @var string
      */
-    protected $name;
+    public $name;
 
     /**
      * @var bool
      */
-    protected $active;
+    public $active;
 
-    /**
-     * GiftcardProgram constructor.
-     * @param string $uuid
-     * @param string $name
-     * @param bool $active
-     */
-    public function __construct(string $uuid, string $name, bool $active)
-    {
-        $this->uuid = $uuid;
-        $this->name = $name;
-        $this->active = $active;
-    }
+//
+//    /**
+//     * GiftcardProgram constructor.
+//     * @param string $uuid
+//     * @param string $name
+//     * @param bool $active
+//     */
+//    public function __construct(string $uuid, string $name, bool $active)
+//    {
+//        $this->uuid = $uuid;
+//        $this->name = $name;
+//        $this->active = $active;
+//    }
 
     /**
      * @return string
