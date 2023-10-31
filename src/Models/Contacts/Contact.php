@@ -2,6 +2,9 @@
 
 namespace Piggy\Api\Models\Contacts;
 
+use Piggy\Api\Environment;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\Mappers\Contacts\ContactMapper;
 use Piggy\Api\Models\Loyalty\CreditBalance;
 use Piggy\Api\Models\Prepaid\PrepaidBalance;
 
@@ -46,6 +49,10 @@ class Contact
      */
     protected $currentValues;
 
+    protected static $staticResourceUri = "/api/v3/oauth/clients/contacts";
+
+    protected static $mapper = ContactMapper::class;
+
     public function __construct($uuid, ?string $email, ?PrepaidBalance $prepaidBalance, ?CreditBalance $creditBalance, ?array $attributes, ?array $subscriptions, ?array $currentValues = null)
     {
         $this->uuid = $uuid;
@@ -58,115 +65,151 @@ class Contact
     }
 
     /**
-     * @return string
+     * @param string $contactUuid
+     * @return Contact
+     * @throws PiggyRequestException
      */
-    public function getUuid(): string
+    public static function get(string $contactUuid): Contact
     {
-        return $this->uuid;
+        $response = Environment::get(self::$staticResourceUri . "/$contactUuid");
+
+        $mapper = new self::$mapper();
+
+        return $mapper->map($response->getData());
     }
 
     /**
-     * @param string $uuid
+     * @param string $email
+     * @return Contact
+     * @throws PiggyRequestException
      */
-    public function setUuid(string $uuid): void
+    public static function findOrCreate(string $email): Contact
     {
-        $this->uuid = $uuid;
+        $response = Environment::get(self::$staticResourceUri . "/find-or-create", [
+            "email" => $email
+        ]);
+
+        $mapper = new self::$mapper();
+
+        return $mapper->map($response->getData());
     }
 
-    /**
-     * @return string|null
-     */
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
+//    public function findOneBy(string $email): Contact
+//    {
+//        $response = $this->client->get("$this->resourceUri/find-one-by", [
+//            "email" => $email,
+//        ]);
+//
+//        $mapper = new ContactMapper();
+//
+//        return $mapper->map($response->getData());
+//    }
+//
+//    public function create(string $email): Contact
+//    {
+//        $response = $this->client->post("$this->resourceUri", [
+//            "email" => $email,
+//        ]);
+//
+//        $mapper = new ContactMapper();
+//
+//        return $mapper->map($response->getData());
+//    }
+//
+//    public function list(?int $page = 1, ?int $limit = 30): array
+//    {
+//        $response = $this->client->get("$this->resourceUri", [
+//            "page" => $page,
+//            "limit" => $limit
+//        ]);
+//
+//        $mapper = new ContactsMapper();
+//
+//        return $mapper->map($response->getData());
+//    }
+//
+//    public function createAnonymously(?string $contactIdentifierValue = null): Contact
+//    {
+//        $response = $this->client->post("$this->resourceUri/anonymous", [
+//            "contact_identifier_value" => $contactIdentifierValue,
+//        ]);
+//
+//        $mapper = new ContactMapper();
+//
+//        return $mapper->map($response->getData());
+//    }
+//
+//    public function update(string $contactUuid, array $contactAttributes): Contact
+//    {
+//        $response = $this->client->put("$this->resourceUri/$contactUuid", [
+//            'attributes' => $contactAttributes
+//        ]);
+//
+//        $mapper = new ContactMapper();
+//
+//        return $mapper->map($response->getData());
+//    }
+//
+//    public function getPrepaidBalance($contactUuid): PrepaidBalance
+//    {
+//        $response = $this->client->get("$this->resourceUri/$contactUuid/prepaid-balance");
+//
+//        $mapper = new PrepaidBalanceMapper();
+//
+//        return $mapper->map($response->getData());
+//    }
+//
+//    public function getCreditBalance($contactUuid): CreditBalance
+//    {
+//        $response = $this->client->get("$this->resourceUri/$contactUuid/credit-balance");
+//
+//        $mapper = new CreditBalanceMapper();
+//
+//        return $mapper->map($response->getData());
+//    }
+//
+//    public function createAsync($email): Contact
+//    {
+//        $response = $this->client->post("$this->resourceUri/async", [
+//            "email" => $email
+//        ]);
+//
+//        $mapper = new ContactMapper();
+//
+//        return $mapper->map($response->getData());
+//    }
+//
+//    public function findOrCreateAsync($email): Contact
+//    {
+//        $response = $this->client->get("$this->resourceUri/find-or-create/async", [
+//            "email" => $email
+//        ]);
+//
+//        $mapper = new ContactMapper();
+//
+//        return $mapper->map($response->getData());
+//    }
+//
+//    public function destroy(string $contactUuid, string $type)
+//    {
+//        $response = $this->client->post("$this->resourceUri/$contactUuid/delete", [
+//            "type" => $type
+//        ]);
+//
+//        return $response->getData();
+//    }
+//
+//    public function claimAnonymousContact(string $contactUuid, string $email)
+//    {
+//        $response = $this->client->put("$this->resourceUri/$contactUuid/claim", [
+//            "email" => $email
+//        ]);
+//
+//        $mapper = new ContactMapper();
+//
+//        return $mapper->map($response->getData());
+//    }
 
-    /**
-     * @param string|null $email
-     */
-    public function setEmail(?string $email): void
-    {
-        $this->email = $email;
-    }
 
-    /**
-     * @return PrepaidBalance
-     */
-    public function getPrepaidBalance(): ?PrepaidBalance
-    {
-        return $this->prepaidBalance;
-    }
 
-    /**
-     * @return CreditBalance
-     */
-    public function getCreditBalance(): ?CreditBalance
-    {
-        return $this->creditBalance;
-    }
-
-    /**
-     * @param CreditBalance|null $creditBalance
-     */
-    public function setCreditBalance(?CreditBalance $creditBalance): void
-    {
-        $this->creditBalance = $creditBalance;
-    }
-
-    /**
-     * @param PrepaidBalance|null $prepaidBalance
-     */
-    public function setPrepaidBalance(?PrepaidBalance $prepaidBalance): void
-    {
-        $this->prepaidBalance = $prepaidBalance;
-    }
-
-    /**
-     * @return array|null
-     */
-    public function getAttributes(): ?array
-    {
-        return $this->attributes;
-    }
-
-    /**
-     * @param array|null $attributes
-     * @return void
-     */
-    public function setAttributes(?array $attributes): void
-    {
-        $this->attributes = $attributes;
-    }
-
-    /**
-     * @return array
-     */
-    public function getSubscriptions(): array
-    {
-        return $this->subscriptions;
-    }
-
-    /**
-     * @param array $subscriptions
-     */
-    public function setSubscriptions(array $subscriptions): void
-    {
-        $this->subscriptions = $subscriptions;
-    }
-
-    /**
-     * @return array|null
-     */
-    public function getCurrentValues(): ?array
-    {
-        return $this->currentValues;
-    }
-
-    /**
-     * @param array $currentValues
-     */
-    public function setCurrentValues(array $currentValues): void
-    {
-        $this->currentValues = $currentValues;
-    }
 }

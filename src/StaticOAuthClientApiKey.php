@@ -3,12 +3,13 @@
 namespace Piggy\Api;
 
 use Piggy\Api\Http\BaseClient;
+use Piggy\Api\Http\StaticBaseClient;
 
 /**
  * Class OAuthClient
  * @package Piggy\Api
  */
-class OAuthClientApiKey extends BaseClient
+class StaticOAuthClientApiKey extends StaticBaseClient
 {
     /**
      * @var string
@@ -24,17 +25,12 @@ class OAuthClientApiKey extends BaseClient
 
         parent::__construct();
 
-        $this->setApiKey($apiKey);
+        $this->staticSetApiKey($apiKey);
     }
 
-    /**
-     * @param string $apiKey
-     * @return $this
-     */
-    public function setApiKey(string $apiKey): self
+    public static function staticSetApiKey(string $apiKey)
     {
-        $this->addHeader("Authorization", "Bearer $apiKey");
-
-        return $this;
+        self::addHeader("Authorization", "Bearer $apiKey");
     }
 }
+

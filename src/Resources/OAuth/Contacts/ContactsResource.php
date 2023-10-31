@@ -21,7 +21,7 @@ class ContactsResource extends BaseResource
     /**
      * @var string
      */
-        protected $resourceUri = "/api/v3/oauth/clients/contacts";
+    protected $resourceUri = "/api/v3/oauth/clients/contacts";
 
     /**
      * @param string $contactUuid
@@ -36,6 +36,17 @@ class ContactsResource extends BaseResource
 
         return $mapper->map($response->getData());
 
+    }
+
+    protected static $staticResourceUri = "/api/v3/oauth/clients/contacts";
+
+    public static function staticGet($client, string $contactUuid): Contact
+    {
+        $response = $client->get(self::$staticResourceUri . "/$contactUuid");
+
+        $mapper = new ContactMapper();
+
+        return $mapper->map($response->getData());
     }
 
     /**
@@ -201,11 +212,9 @@ class ContactsResource extends BaseResource
      * @param string $type
      * @throws PiggyRequestException
      */
-    public function destroy(string $contactUuid, string $type)
+    public function destroy(string $contactUuid, array $params)
     {
-        $response = $this->client->post("$this->resourceUri/$contactUuid/delete", [
-            "type" => $type
-        ]);
+        $response = $this->client->post("$this->resourceUri/$contactUuid/delete", $params);
 
         return $response->getData();
     }
