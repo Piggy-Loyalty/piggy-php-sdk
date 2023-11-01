@@ -12,7 +12,7 @@ use Piggy\Api\Models\Model;
  * Class Giftcard
  * @package Piggy\Api\Models\Giftcards
  */
-class Giftcard extends Model
+class Giftcard
 {
     protected $dependencies = [
         "giftcard_program" => GiftcardProgram::class
@@ -164,17 +164,17 @@ class Giftcard extends Model
 
     protected static $staticResourceUri = "/api/v3/oauth/clients/giftcards";
 
-    /**
-     * @param array $params
-     * @return Giftcard
-     * @throws PiggyRequestException
-     */
-    public static function create(array $params): Giftcard
-    {
-        $response = Environment::post(self::$staticResourceUri, $params);
-
-        $instance = new self();
-
-        return self::parseResponse($response, $instance);
-    }
+//    /**
+//     * @param array $params
+//     * @return Giftcard
+//     * @throws PiggyRequestException
+//     */
+//    public static function create(array $params): Giftcard
+//    {
+//        $response = Environment::post(self::$staticResourceUri, $params);
+//
+//        $instance = new self();
+//
+//        return self::parseResponse($response, $instance);
+//    }
 }
