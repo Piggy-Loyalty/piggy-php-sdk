@@ -118,8 +118,6 @@ class Automation
     }
 
     /**
-     * "contact_uuid" => $contactUuid,
-     * "automation_uuid" => $automationUuid
      * @param $params
      * @return array
      * @throws PiggyRequestException

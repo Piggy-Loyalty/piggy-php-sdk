@@ -6,7 +6,6 @@ use DateTime;
 use Piggy\Api\Environment;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Giftcards\GiftcardMapper;
-use Piggy\Api\Models\Model;
 
 /**
  * Class Giftcard

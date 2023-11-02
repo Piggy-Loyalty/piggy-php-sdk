@@ -77,5 +77,4 @@ class GiftcardProgram
 
         return $mapper->map($response->getData());
     }
-
 }

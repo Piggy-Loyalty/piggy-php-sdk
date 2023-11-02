@@ -42,6 +42,12 @@ class ContactIdentifier
      */
     protected static $mapper = ContactIdentifierMapper::class;
 
+    /**
+     * @param string $value
+     * @param bool $active
+     * @param string|null $name
+     * @param Contact|null $contact
+     */
     public function __construct(string $value, bool $active, ?string $name = '', ?Contact $contact = null)
     {
         $this->value = $value;
@@ -82,9 +88,7 @@ class ContactIdentifier
         return $this->contact;
     }
 
-
     /**
-     * @param string $contactIdentifierValue
      * @param array $params
      * @return ContactIdentifier
      * @throws PiggyRequestException
@@ -99,9 +103,7 @@ class ContactIdentifier
     }
 
     /**
-     * @param string $contactIdentifierValue
-     * @param string|null $contactUuid
-     * @param string|null $contactIdentifierName
+     * @param array $body
      * @return ContactIdentifier
      * @throws PiggyRequestException
      */
@@ -114,6 +116,11 @@ class ContactIdentifier
         return $mapper->map($response->getData());
     }
 
+    /**
+     * @param array $body
+     * @return ContactIdentifier
+     * @throws PiggyRequestException
+     */
     public static function link(array $body): ContactIdentifier
     {
         $response = Environment::put(self::$resourceUri . "/link", $body);

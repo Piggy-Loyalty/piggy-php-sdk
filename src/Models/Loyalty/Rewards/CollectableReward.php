@@ -3,7 +3,6 @@
 namespace Piggy\Api\Models\Loyalty\Rewards;
 
 use DateTime;
-use Exception;
 use Piggy\Api\Environment;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Loyalty\Rewards\CollectableRewardMapper;

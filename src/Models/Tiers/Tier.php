@@ -128,7 +128,7 @@ class Tier
      */
     public static function getTierForContact(string $contactUuid, array $params = []): Tier
     {
-        $response = Environment::get( "/api/v3/oauth/clients/contacts" . "/$contactUuid/tier", $params);
+        $response = Environment::get("/api/v3/oauth/clients/contacts" . "/$contactUuid/tier", $params);
 
         $mapper = new self::$mapper();
 

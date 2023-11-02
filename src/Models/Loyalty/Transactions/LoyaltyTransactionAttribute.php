@@ -190,6 +190,4 @@ class LoyaltyTransactionAttribute
 
         return $mapper->map($response->getData());
     }
-
-
 }

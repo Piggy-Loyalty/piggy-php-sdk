@@ -3,7 +3,6 @@
 namespace Piggy\Api\Models\ContactsPortal;
 
 use Piggy\Api\Environment;
-use Piggy\Api\Mappers\ContactIdentifiers\ContactIdentifierMapper;
 use Piggy\Api\Mappers\ContactsPortal\ContactsPortalAuthUrlMapper;
 
 /**
@@ -31,6 +30,9 @@ class ContactsPortalAuthUrl
      */
     protected static $mapper = ContactsPortalAuthUrlMapper::class;
 
+    /**
+     * @param string $url
+     */
     public function __construct(string $url)
     {
         $this->url = $url;
@@ -44,6 +46,11 @@ class ContactsPortalAuthUrl
         return $this->url;
     }
 
+    /**
+     * @param array $params
+     * @return ContactsPortalAuthUrl
+     * @throws \Piggy\Api\Exceptions\PiggyRequestException
+     */
     public static function get(array $params): ContactsPortalAuthUrl
     {
         $response = Environment::get(self::$resourceUri . "/auth-url", $params);
