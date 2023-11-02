@@ -5,7 +5,7 @@ namespace Piggy\Api\Models\Giftcards;
 use DateTime;
 use Piggy\Api\Environment;
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\Models\Contacts\Contact;
+use Piggy\Api\Mappers\Giftcards\GiftcardMapper;
 use Piggy\Api\Models\Model;
 
 /**
@@ -63,36 +63,37 @@ class Giftcard
      */
     public $amount_in_cents;
 
-    public $amount;
+    /**
+     * @var string
+     */
+    protected static $resourceUri = "/api/v3/oauth/clients/giftcards";
 
-    public $url;
+    protected static $mapper = GiftcardMapper::class;
 
-    public $display_amount;
+    /**
+     * @param string $uuid
+     * @param string $hash
+     * @param int $amountInCents
+     * @param int $type
+     * @param bool $active
+     * @param bool $upgradeable
+     * @param GiftcardProgram|null $giftcardProgram
+     * @param DateTime|null $expirationDate
+     * @param int|null $id
+     */
+    public function __construct(string $uuid, string $hash, int $amountInCents, int $type, bool $active, bool $upgradeable, ?GiftcardProgram $giftcardProgram, ?DateTime $expirationDate, ?int $id)
+    {
+        $this->uuid = $uuid;
+        $this->hash = $hash;
+        $this->amount_in_cents = $amountInCents;
+        $this->type = $type;
+        $this->active = $active;
+        $this->upgradeable = $upgradeable;
+        $this->giftcardProgram = $giftcardProgram;
+        $this->expirationDate = $expirationDate;
+        $this->id = $id;
+    }
 
-//
-//    /**
-//     * @param string $uuid
-//     * @param string $hash
-//     * @param int $amountInCents
-//     * @param int $type
-//     * @param bool $active
-//     * @param bool $upgradeable
-//     * @param GiftcardProgram|null $giftcardProgram
-//     * @param DateTime|null $expirationDate
-//     * @param int|null $id
-//     */
-//    public function __construct(string $uuid, string $hash, int $amountInCents, int $type, bool $active, bool $upgradeable, ?GiftcardProgram $giftcardProgram, ?DateTime $expirationDate, ?int $id)
-//    {
-//        $this->uuid = $uuid;
-//        $this->hash = $hash;
-//        $this->amount_in_cents = $amountInCents;
-//        $this->type = $type;
-//        $this->active = $active;
-//        $this->upgradeable = $upgradeable;
-//        $this->giftcardProgram = $giftcardProgram;
-//        $this->expirationDate = $expirationDate;
-//        $this->id = $id;
-//    }
     /**
      * @return string
      */
@@ -157,24 +158,39 @@ class Giftcard
         return $this->amount_in_cents;
     }
 
+    /**
+     * @return int
+     */
     public function getId(): int
     {
         return $this->id;
     }
 
-    protected static $staticResourceUri = "/api/v3/oauth/clients/giftcards";
+    /**
+     * @param array $params
+     * @return Giftcard
+     * @throws PiggyRequestException
+     */
+    public static function findOneBy(array $params): Giftcard
+    {
+        $response = Environment::get(self::$resourceUri . "/find-one-by", $params);
 
-//    /**
-//     * @param array $params
-//     * @return Giftcard
-//     * @throws PiggyRequestException
-//     */
-//    public static function create(array $params): Giftcard
-//    {
-//        $response = Environment::post(self::$staticResourceUri, $params);
-//
-//        $instance = new self();
-//
-//        return self::parseResponse($response, $instance);
-//    }
+        $mapper = new self::$mapper;
+
+        return $mapper->map($response->getData());
+    }
+
+    /**
+     * @param array $body
+     * @return Giftcard
+     * @throws PiggyRequestException
+     */
+    public static function create(array $body): Giftcard
+    {
+        $response = Environment::post(self::$resourceUri, $body);
+
+        $mapper = new self::$mapper;
+
+        return $mapper->map($response->getData());
+    }
 }

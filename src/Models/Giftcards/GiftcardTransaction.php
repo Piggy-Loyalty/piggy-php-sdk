@@ -3,6 +3,11 @@
 namespace Piggy\Api\Models\Giftcards;
 
 use DateTime;
+use Piggy\Api\Environment;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\Mappers\Giftcards\GiftcardMapper;
+use Piggy\Api\Mappers\Giftcards\GiftcardTransactionMapper;
+use Piggy\Api\Mappers\Giftcards\GiftcardTransactionsMapper;
 
 /**
  * Class GiftcardTransaction
@@ -54,6 +59,15 @@ class GiftcardTransaction
      * @var int|null
      */
     protected $id;
+
+    /**
+     * @var string
+     */
+    protected static $resourceUri = "/api/v3/oauth/clients/giftcard-transactions";
+
+
+    protected static $mapper = GiftcardTransactionMapper::class;
+
 
     public function __construct(
         string   $uuid,
@@ -145,5 +159,41 @@ class GiftcardTransaction
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public static function get(string $giftcardTransactionUuid, array $params = []): GiftcardTransaction
+    {
+        $response = Environment::get(self::$resourceUri . "/$giftcardTransactionUuid", $params);
+
+        $mapper = new self::$mapper;
+
+        return $mapper->map($response->getData());
+    }
+
+    public static function create(array $body): GiftcardTransaction
+    {
+        $response = Environment::post(self::$resourceUri, $body);
+
+        $mapper = new self::$mapper;
+
+        return $mapper->map($response->getData());
+    }
+
+    public static function correct(string $giftcardTransactionUuid, array $body = []): GiftcardTransaction
+    {
+        $response = Environment::post(self::$resourceUri . "/$giftcardTransactionUuid/correct", $body);
+
+        $mapper = new self::$mapper;
+
+        return $mapper->map($response->getData());
+    }
+
+    public static function list(array $params): array
+    {
+        $response = Environment::get(self::$resourceUri, $params);
+
+        $mapper = new GiftcardTransactionsMapper();
+
+        return $mapper->map((array)$response->getData());
     }
 }

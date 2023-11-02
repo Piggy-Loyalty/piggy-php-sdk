@@ -177,9 +177,9 @@ class Environment
      * @return Response
      * @throws PiggyRequestException
      */
-    public static function destroy(string $url, array $params = []): Response
+    public static function destroy(string $url, array $body = []): Response
     {
-        $query = http_build_query($params);
+        $query = http_build_query($body);
 
         if ($query) {
             $url = "{$url}?{$query}";

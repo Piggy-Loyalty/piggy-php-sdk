@@ -2,7 +2,6 @@
 
 namespace Piggy\Api\Models\Contacts;
 
-use InvalidArgumentException;
 use Piggy\Api\Environment;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Contacts\ContactMapper;
@@ -53,8 +52,11 @@ class Contact
      */
     protected $currentValues;
 
-//    protected static $staticResourceUri = "/api/v3/oauth/clients/contacts";
+    protected static $staticResourceUri = "/api/v3/oauth/clients/contacts";
 
+    /**
+     * @var string
+     */
     protected static $mapper = ContactMapper::class;
 
     public function __construct($uuid, ?string $email, ?PrepaidBalance $prepaidBalance, ?CreditBalance $creditBalance, ?array $attributes, ?array $subscriptions, ?array $currentValues = null)
@@ -181,66 +183,43 @@ class Contact
         $this->currentValues = $currentValues;
     }
 
-    protected static $staticResourceUri = "/api/v3/oauth/clients/contacts";
+    /**
+     * @param string $contactUuid
+     * @param array $params
+     * @return Contact
+     * @throws PiggyRequestException
+     */
+    public static function get(string $contactUuid, array $params = []): Contact
+    {
+        $response = Environment::get(self::$staticResourceUri . '/' . $contactUuid, $params);
 
+        $mapper = new self::$mapper();
+
+        return $mapper->map($response->getData());
+    }
 
     /**
      * @param array $params
      * @return Contact
      * @throws PiggyRequestException
      */
-    public static function get(array $params): Contact
+    public static function findOrCreate(array $params): Contact
     {
-//        $response = Environment::get(self::$staticResourceUri . "/$contactUuid");
-//
-//        $mapper = new self::$mapper();t
-//
-//        return $mapper->map($response->getData());
-
-
-        $endpoint = self::$staticResourceUri . "/" . implode('/', array_values($params));
-
-        $response = Environment::get($endpoint);
+        $response = Environment::get(self::$staticResourceUri . "/find-or-create", $params);
 
         $mapper = new self::$mapper();
 
         return $mapper->map($response->getData());
-
-
     }
 
     /**
-     * @param string $email
+     * @param array $params
      * @return Contact
      * @throws PiggyRequestException
      */
-    public static function findOrCreate(string $email): Contact
+    public static function findOneBy(array $params): Contact
     {
-        $response = Environment::get(self::$staticResourceUri . "/find-or-create", [
-            "email" => $email
-        ]);
-
-        $mapper = new self::$mapper();
-
-        return $mapper->map($response->getData());
-    }
-
-    public static function findOneBy(string $email): Contact
-    {
-        $response = Environment::get(self::$staticResourceUri . "/find-one-by", [
-            "email" => $email
-        ]);
-
-        $mapper = new self::$mapper();
-
-        return $mapper->map($response->getData());
-    }
-
-    public static function create(string $email): Contact
-    {
-        $response = Environment::post(self::$staticResourceUri, [
-            "email" => $email
-        ]);
+        $response = Environment::get(self::$staticResourceUri . "/find-one-by", $params);
 
         $mapper = new self::$mapper();
 
@@ -248,100 +227,148 @@ class Contact
     }
 
 
-    public static function list(?int $page = 1, ?int $limit = 30): array
+    /**
+     * @throws PiggyRequestException
+     */
+    public static function list(array $params = []): array
     {
-        $response = Environment::get(self::$staticResourceUri, [
-            "page" => $page,
-            "limit" => $limit
-        ]);
+        $response = Environment::get(self::$staticResourceUri, $params);
 
         $mapper = new ContactsMapper();
 
         return $mapper->map($response->getData());
     }
 
-    public static function createAnonymously(?string $contactIdentifierValue = null): Contact
+    /**
+     * @param string $contactUuid
+     * @param array $params
+     * @return PrepaidBalance
+     * @throws PiggyRequestException
+     */
+    public static function showPrepaidBalance(string $contactUuid, array $params = []): PrepaidBalance
     {
-        $response = Environment::post( self::$staticResourceUri. "/anonymous", [
-            "contact_identifier_value" => $contactIdentifierValue,
-        ]);
-
-        $mapper = new self::$mapper();;
-
-        return $mapper->map($response->getData());
-    }
-
-    public static function update(string $contactUuid, array $contactAttributes): Contact
-    {
-        $response = Environment::put( self::$staticResourceUri. "/$contactUuid", [
-            'attributes' => $contactAttributes
-        ]);
-
-        $mapper = new self::$mapper();;
-
-        return $mapper->map($response->getData());
-    }
-
-    public static function showPrepaidBalance($contactUuid): PrepaidBalance
-    {
-        $response = Environment::get( self::$staticResourceUri. "/$contactUuid/prepaid-balance");
+        $response = Environment::get(self::$staticResourceUri . "/" . $contactUuid . '/prepaid-balance');
 
         $mapper = new PrepaidBalanceMapper();
 
         return $mapper->map($response->getData());
     }
 
-    public static function showCreditBalance($contactUuid): CreditBalance
+    /**
+     * @param string $contactUuid
+     * @param array $params
+     * @return CreditBalance
+     * @throws PiggyRequestException
+     */
+    public static function showCreditBalance(string $contactUuid, array $params = []): CreditBalance
     {
-        $response = Environment::get( self::$staticResourceUri. "/$contactUuid/credit-balance");
+        $response = Environment::get(self::$staticResourceUri . "/" . $contactUuid . '/credit-balance', $params);
 
         $mapper = new CreditBalanceMapper();
 
         return $mapper->map($response->getData());
     }
 
-    public static function createAsync($email): Contact
+    /**
+     * @param array $params
+     * @return Contact
+     * @throws PiggyRequestException
+     */
+    public static function findOrCreateAsync(array $params): Contact
     {
-        $response = Environment::post( self::$staticResourceUri. "/async", [
-            "email" => $email
-        ]);
+        $response = Environment::get(self::$staticResourceUri . "/find-or-create/async", $params);
 
         $mapper = new self::$mapper();;
 
         return $mapper->map($response->getData());
     }
 
-    public static function findOrCreateAsync($email): Contact
+    /**
+     * @param array $body
+     * @return Contact
+     * @throws PiggyRequestException
+     */
+    public static function create(array $body): Contact
     {
-        $response = Environment::get( self::$staticResourceUri. "/find-or-create/async", [
-            "email" => $email
-        ]);
+        $response = Environment::post(self::$staticResourceUri, $body);
+
+        $mapper = new self::$mapper();
+
+        return $mapper->map($response->getData());
+    }
+
+    /**
+     * @param array $body
+     * @return Contact
+     * @throws PiggyRequestException
+     */
+    public static function createAnonymously(array $body = []): Contact
+    {
+        $response = Environment::post(self::$staticResourceUri . "/anonymous", $body);
 
         $mapper = new self::$mapper();;
 
         return $mapper->map($response->getData());
     }
 
-    public static function destroy(string $contactUuid, string $type)
+    /**
+     * @param string $contactUuid
+     * @param array $body
+     * @return Contact
+     * @throws PiggyRequestException
+     */
+    public static function update(string $contactUuid, array $body): Contact
     {
-        $response = Environment::post( self::$staticResourceUri. "/$contactUuid/delete", [
-            "type" => $type
-        ]);
+        $response = Environment::put(self::$staticResourceUri . "/" . $contactUuid, $body);
+
+        $mapper = new self::$mapper();;
+
+        return $mapper->map($response->getData());
+    }
+
+    /**
+     * @param array $body
+     * @return Contact
+     * @throws PiggyRequestException
+     */
+    public static function createAsync(array $body): Contact
+    {
+        $response = Environment::post(self::$staticResourceUri . "/async", $body);
+
+        $mapper = new self::$mapper();;
+
+        return $mapper->map($response->getData());
+    }
+
+    // todo werkt niet
+
+    /**
+     * @param string $contactUuid
+     * @param array
+     * @return mixed
+     * @throws PiggyRequestException
+     */
+    public static function destroy(string $contactUuid, array $body = [])
+    {
+        $response = Environment::post(self::$staticResourceUri . "/" . $contactUuid . '/delete', $body);
 
         return $response->getData();
     }
 
-    public static function claimAnonymousContact(string $contactUuid, string $email)
+    /**
+     * @param string $contactUuid
+     * @param array
+     * @return mixed
+     * @throws PiggyRequestException
+     */
+    public static function claimAnonymousContact(string $contactUuid, array $body = [])
     {
-        $response = Environment::put( self::$staticResourceUri. "/$contactUuid/claim", [
-            "email" => $email
-        ]);
+        $response = Environment::put(self::$staticResourceUri . "/" . $contactUuid . '/claim', $body);
 
-        $mapper = new self::$mapper();;
+        $mapper = new self::$mapper();
 
         return $mapper->map($response->getData());
     }
-
 
 
 }

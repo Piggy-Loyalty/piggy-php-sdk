@@ -3,6 +3,11 @@
 namespace Piggy\Api\Models\Loyalty\Rewards;
 
 use DateTime;
+use Exception;
+use Piggy\Api\Environment;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\Mappers\Loyalty\Rewards\CollectableRewardMapper;
+use Piggy\Api\Mappers\Loyalty\Rewards\CollectableRewardsMapper;
 use Piggy\Api\Models\Contacts\Contact;
 
 /**
@@ -45,6 +50,12 @@ class CollectableReward
      * @var bool
      */
     protected $hasBeenCollected;
+
+    /**
+     * @var string
+     */
+    protected static $resourceUri = "/api/v3/oauth/clients/collectable-rewards";
+
 
     /**
      * @param Contact $contact
@@ -128,5 +139,34 @@ class CollectableReward
     public function hasBeenCollected(): bool
     {
         return $this->hasBeenCollected;
+    }
+
+    /**
+     * @param array $params
+     * @return array
+     * @throws PiggyRequestException
+     */
+    public static function list(array $params = []): array
+    {
+        $response = Environment::get(self::$resourceUri, $params);
+
+        $mapper = new CollectableRewardsMapper();
+
+        return $mapper->map($response->getData());
+    }
+
+    /**
+     * @param string $loyaltyTransactionUuid
+     * @param array $body
+     * @return CollectableReward
+     * @throws PiggyRequestException
+     */
+    public static function collect(string $loyaltyTransactionUuid, array $body = []): CollectableReward
+    {
+        $response = Environment::put(self::$resourceUri . "/collect/" . $loyaltyTransactionUuid, $body);
+
+        $mapper = new CollectableRewardMapper();
+
+        return $mapper->map($response->getData());
     }
 }

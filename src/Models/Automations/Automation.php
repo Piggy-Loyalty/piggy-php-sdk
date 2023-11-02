@@ -3,6 +3,9 @@
 namespace Piggy\Api\Models\Automations;
 
 use DateTime;
+use Piggy\Api\Environment;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\Mappers\Automations\AutomationsMapper;
 
 /**
  * Class Automation
@@ -34,6 +37,16 @@ class Automation
      * @var DateTime
      */
     protected $updatedAt;
+
+    /**
+     * @var string
+     */
+    protected static $resourceUri = "/api/v3/oauth/clients/automations";
+
+    /**
+     * @var string
+     */
+    protected static $mapper = AutomationsMapper::class;
 
     /**
      * @param string $name
@@ -90,4 +103,34 @@ class Automation
     {
         return $this->updatedAt;
     }
+
+    /**
+     * @return array
+     * @throws PiggyRequestException
+     */
+    public static function list(): array
+    {
+        $response = Environment::get(self::$resourceUri, []);
+
+        $mapper = new self::$mapper();;
+
+        return $mapper->map($response->getData());
+    }
+
+    /**
+     * "contact_uuid" => $contactUuid,
+     * "automation_uuid" => $automationUuid
+     * @param $params
+     * @return array
+     * @throws PiggyRequestException
+     */
+    public static function create($params): array
+    {
+        $response = Environment::post(self::$resourceUri . '/' . 'runs', $params);
+
+        $mapper = new self::$mapper();;
+
+        return $mapper->map($response->getData());
+    }
+
 }

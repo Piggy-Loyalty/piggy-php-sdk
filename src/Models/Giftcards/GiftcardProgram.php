@@ -2,13 +2,11 @@
 
 namespace Piggy\Api\Models\Giftcards;
 
-use Piggy\Api\Models\Model;
+use Piggy\Api\Environment;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\Mappers\Giftcards\GiftcardProgramsMapper;
 
-/**
- * Class GiftcardProgram
- * @package Piggy\Api\Models\Giftcards
- */
-class GiftcardProgram extends Model
+class GiftcardProgram
 {
     /**
      * @var string
@@ -25,19 +23,23 @@ class GiftcardProgram extends Model
      */
     public $active;
 
-//
-//    /**
-//     * GiftcardProgram constructor.
-//     * @param string $uuid
-//     * @param string $name
-//     * @param bool $active
-//     */
-//    public function __construct(string $uuid, string $name, bool $active)
-//    {
-//        $this->uuid = $uuid;
-//        $this->name = $name;
-//        $this->active = $active;
-//    }
+    protected static $resourceUri = "/api/v3/oauth/clients/giftcard-programs";
+
+    protected static $mapper = GiftcardProgramsMapper::class;
+
+    /**
+     * GiftcardProgram constructor.
+     * @param string $uuid
+     * @param string $name
+     * @param bool $active
+     */
+    public function __construct(string $uuid, string $name, bool $active)
+    {
+        $this->uuid = $uuid;
+        $this->name = $name;
+        $this->active = $active;
+    }
+
 
     /**
      * @return string
@@ -62,4 +64,18 @@ class GiftcardProgram extends Model
     {
         return $this->active;
     }
+
+    /**
+     * @return array
+     * @throws PiggyRequestException
+     */
+    public static function list(): array
+    {
+        $response = Environment::get(self::$resourceUri);
+
+        $mapper = new self::$mapper;
+
+        return $mapper->map($response->getData());
+    }
+
 }

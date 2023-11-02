@@ -2,6 +2,9 @@
 
 namespace Piggy\Api\Models\Brandkit;
 
+use Piggy\Api\Environment;
+use Piggy\Api\Mappers\Brandkit\BrandkitMapper;
+
 /**
  * Class Brandkit
  * @package Piggy\Api\Models\Brandkit
@@ -19,6 +22,12 @@ class Brandkit
     protected $description;
     protected $corner_theme;
     protected $font_family;
+
+    protected static $resourceUri = "/api/v3/oauth/clients/brand-kit";
+
+    protected static $mapper = BrandkitMapper::class;
+
+
 
     public function __construct(
         ?string $small_logo_url = null,
@@ -105,5 +114,14 @@ class Brandkit
     public function getFontFamily(): ?string
     {
         return $this->font_family;
+    }
+
+    public static function get(): Brandkit
+    {
+        $response = Environment::get(self::$resourceUri);
+
+        $mapper = new self::$mapper;
+
+        return $mapper->map($response->getData());
     }
 }

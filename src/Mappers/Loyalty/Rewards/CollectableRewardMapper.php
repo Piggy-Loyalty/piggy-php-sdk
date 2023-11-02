@@ -21,10 +21,15 @@ class CollectableRewardMapper extends BaseMapper
      */
     public function map(stdClass $data): CollectableReward
     {
-        $contactMapper = new ContactMapper();
-        $contact = $contactMapper->map($data->contact);
-        $rewardMapper = new RewardMapper();
-        $reward = $rewardMapper->map($data->reward);
+        if (property_exists($data, 'contact')) {
+            $contactMapper = new ContactMapper();
+            $contact = $contactMapper->map($data->contact);
+        }
+
+        if (property_exists($data, 'reward')) {
+            $rewardMapper = new RewardMapper();
+            $reward = $rewardMapper->map($data->reward);
+        }
 
         return new CollectableReward(
             $contact,

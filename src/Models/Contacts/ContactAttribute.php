@@ -2,6 +2,12 @@
 
 namespace Piggy\Api\Models\Contacts;
 
+use Piggy\Api\Enum\CustomAttributeTypes;
+use Piggy\Api\Environment;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\Mappers\Contacts\AttributeMapper;
+use Piggy\Api\Mappers\Contacts\AttributesMapper;
+
 /**
  * Class ContactAttribute
  * @package Piggy\Api\Models\Contacts
@@ -13,6 +19,11 @@ class ContactAttribute
 
     /** @var Attribute */
     protected $attribute;
+
+    /**
+     * @var string
+     */
+    protected static $resourceUri = "/api/v3/oauth/clients/contact-attributes";
 
     public function __construct($value, $attribute)
     {
@@ -50,6 +61,34 @@ class ContactAttribute
     public function setAttribute(Attribute $attribute): void
     {
         $this->attribute = $attribute;
+    }
+
+    /**
+     * @param array $params
+     * @return array
+     * @throws PiggyRequestException
+     */
+    public static function list(array $params = []): array
+    {
+        $response = Environment::get(self::$resourceUri, $params);
+
+        $mapper = new AttributesMapper();
+
+        return $mapper->map($response->getData());
+    }
+
+    /**
+     * @param array $body
+     * @return Attribute
+     * @throws PiggyRequestException
+     */
+    public static function create(array $body): Attribute
+    {
+        $response = Environment::post(self::$resourceUri, $body);
+
+        $mapper = new AttributeMapper();
+
+        return $mapper->map($response->getData());
     }
 
 }

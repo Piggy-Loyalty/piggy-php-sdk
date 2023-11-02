@@ -2,6 +2,10 @@
 
 namespace Piggy\Api\Models\Forms;
 
+use Piggy\Api\Environment;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\Mappers\Forms\FormsMapper;
+
 /**
  * Class Form
  * @package Piggy\Api\Models\Forms
@@ -32,6 +36,10 @@ class Form
      * @var int
      */
     public $type;
+
+    protected static $resourceUri = "/api/v3/oauth/clients/forms";
+
+    protected static $mapper = FormsMapper::class;
 
     /**
      * @param string $uuid
@@ -87,5 +95,18 @@ class Form
     public function getUrl(): string
     {
         return $this->url;
+    }
+
+    /**
+     * @return array[]
+     * @throws PiggyRequestException
+     */
+    public static function list(array $params = []): array
+    {
+        $response = Environment::get(self::$resourceUri, $params);
+
+        $mapper = new self::$mapper();
+
+        return $mapper->map((array)$response->getData());
     }
 }
