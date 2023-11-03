@@ -2,6 +2,10 @@
 
 namespace Piggy\Api\Models\Contacts;
 
+use Piggy\Api\Environment;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\Mappers\Contacts\SubscriptionTypesMapper;
+
 /**
  * Class SubscriptionType
  * @package Piggy\Api\Models\Contacts
@@ -33,6 +37,18 @@ class SubscriptionType
      */
     protected $strategy;
 
+    /**
+     * @var string
+     */
+    protected static $resourceUri = "/api/v3/oauth/clients/subscription-types";
+
+    /**
+     * @param string $uuid
+     * @param string $name
+     * @param string $description
+     * @param bool $active
+     * @param string $strategy
+     */
     public function __construct(string $uuid, string $name, string $description, bool $active, string $strategy)
     {
         $this->uuid = $uuid;
@@ -112,5 +128,19 @@ class SubscriptionType
     public function setStrategy(string $strategy): void
     {
         $this->strategy = $strategy;
+    }
+
+    /**
+     * @param array $params
+     * @return array
+     * @throws PiggyRequestException
+     */
+    public function list(array $params = []): array
+    {
+        $response = Environment::get(self::$resourceUri);
+
+        $mapper = new SubscriptionTypesMapper();
+
+        return $mapper->map($response->getData());
     }
 }

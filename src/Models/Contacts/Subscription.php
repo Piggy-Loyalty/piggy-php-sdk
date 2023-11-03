@@ -2,6 +2,11 @@
 
 namespace Piggy\Api\Models\Contacts;
 
+use Piggy\Api\Environment;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\Mappers\Contacts\SubscriptionMapper;
+use Piggy\Api\Mappers\Contacts\SubscriptionsMapper;
+
 /**
  * Class Subscription
  * @package Piggy\Api\Models\Contacts
@@ -23,13 +28,27 @@ class Subscription
      */
     protected $status;
 
+    /**
+     * @var string
+     */
+    protected static $resourceUri = "/api/v3/oauth/clients/contact-subscriptions";
+
+    /**
+     * @var string
+     */
+    protected static $mapper = SubscriptionMapper::class;
+
+    /**
+     * @param SubscriptionType $subscriptionType
+     * @param bool $isSubscribed
+     * @param string $status
+     */
     public function __construct(SubscriptionType $subscriptionType, bool $isSubscribed, string $status)
     {
         $this->subscriptionType = $subscriptionType;
         $this->isSubscribed = $isSubscribed;
         $this->status = $status;
     }
-
 
     /**
      * @return SubscriptionType
@@ -80,4 +99,48 @@ class Subscription
         $this->status = $status;
     }
 
+    /**
+     * @param string $contactUuid
+     * @param array $params
+     * @return array
+     * @throws PiggyRequestException
+     */
+    public static function list(string $contactUuid, array $params = []): array
+    {
+        $response = Environment::get(self::$resourceUri/$contactUuid, $params);
+
+        $mapper = new SubscriptionsMapper();
+
+        return $mapper->map($response->getData());
+    }
+
+    /**
+     * @param string $contactUuid
+     * @param array $body
+     * @return Subscription
+     * @throws PiggyRequestException
+     */
+    public static function subscribe(string $contactUuid, array $body): Subscription
+    {
+        $response = Environment::put(self::$resourceUri . "/$contactUuid/subscribe", $body);
+
+        $mapper = new self::$mapper;
+
+        return $mapper->map($response->getData());
+    }
+
+    /**
+     * @param string $contactUuid
+     * @param array $body
+     * @return Subscription
+     * @throws PiggyRequestException
+     */
+    public static function unsubscribe(string $contactUuid, array $body): Subscription
+    {
+        $response = Environment::put(self::$resourceUri . "/$contactUuid/unsubscribe", $body);
+
+        $mapper = new self::$mapper;
+
+        return $mapper->map($response->getData());
+    }
 }

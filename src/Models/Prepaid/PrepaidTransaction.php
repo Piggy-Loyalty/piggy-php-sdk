@@ -3,6 +3,8 @@
 namespace Piggy\Api\Models\Prepaid;
 
 use DateTime;
+use Piggy\Api\Environment;
+use Piggy\Api\Mappers\Prepaid\PrepaidTransactionMapper;
 
 /**
  * Class PrepaidTransaction
@@ -29,6 +31,14 @@ class PrepaidTransaction
      * @var string
      */
     protected $createdAt;
+
+    /**
+     * @var string
+     */
+    protected static $resourceUri = "/api/v3/register/prepaid-transactions";
+
+
+    protected static $mapper = PrepaidTransactionMapper::class;
 
     /**
      * @param int $amountInCents
@@ -74,5 +84,14 @@ class PrepaidTransaction
     public function getCreatedAt(): DateTime
     {
         return $this->createdAt;
+    }
+
+    public function create(array $body): PrepaidTransaction
+    {
+        $response = Environment::post(self::$resourceUri, $body);
+
+        $mapper = new self::$mapper;
+
+        return $mapper->map($response->getData());
     }
 }

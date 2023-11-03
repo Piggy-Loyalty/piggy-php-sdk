@@ -3,6 +3,9 @@
 namespace Piggy\Api\Models\Loyalty\Transactions;
 
 use DateTime;
+use Piggy\Api\Environment;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\Mappers\Loyalty\LoyaltyTransactionMapper;
 use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\Models\Contacts\ContactIdentifier;
 use Piggy\Api\Models\Loyalty\Rewards\Reward;
@@ -58,6 +61,16 @@ class LoyaltyTransaction
      * @var bool
      */
     protected $hasBeenCollected;
+
+    /**
+     * @var string
+     */
+    protected static $resourceUri = "/api/v3/oauth/clients/loyalty-transactions";
+
+    /**
+     * @var string
+     */
+    protected static $mapper = LoyaltyTransactionMapper::class;
 
     /**
      * @param string $type
@@ -153,5 +166,19 @@ class LoyaltyTransaction
     public function getHasBeenCollected(): bool
     {
         return $this->hasBeenCollected;
+    }
+
+    /**
+     * @param array $params
+     * @return array
+     * @throws PiggyRequestException
+     */
+    public static function list(array $params = []): array
+    {
+        $response = Environment::get(self::$resourceUri, $params);
+
+        $mapper = new self::$mapper;
+
+        return $mapper->map($response->getData());
     }
 }

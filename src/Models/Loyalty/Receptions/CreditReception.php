@@ -3,6 +3,9 @@
 namespace Piggy\Api\Models\Loyalty\Receptions;
 
 use DateTime;
+use Piggy\Api\Environment;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\Mappers\Loyalty\Receptions\CreditReceptionMapper;
 use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\Models\Contacts\ContactIdentifier;
 use Piggy\Api\Models\Loyalty\Unit;
@@ -54,6 +57,16 @@ class CreditReception
 
     /** @var Unit */
     protected $unit;
+
+    /**
+     * @var string
+     */
+    protected static $resourceUri = "/api/v3/oauth/clients/credit-receptions";
+
+    /**
+     * @var string
+     */
+    protected static $mapper = CreditReceptionMapper::class;
 
     /**
      * @param string $type
@@ -149,5 +162,31 @@ class CreditReception
     public function getUnit(): ?Unit
     {
         return $this->unit;
+    }
+
+    /**
+     * @param array $body
+     * @return CreditReception
+     * @throws PiggyRequestException
+     */
+    public static function create(array $body): CreditReception
+    {
+        $response = Environment::post(self::$resourceUri, $body);
+
+        $mapper = new self::$mapper;
+
+        return $mapper->map($response->getData());
+    }
+
+    /**
+     * @param array $params
+     * @return int
+     * @throws PiggyRequestException
+     */
+    public static function calculate(array $params): int
+    {
+        $response = Environment::get(self::$resourceUri . "/calculate", $params);
+
+        return (int)$response->getData()->credits;
     }
 }

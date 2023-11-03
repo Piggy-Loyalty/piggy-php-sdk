@@ -2,6 +2,11 @@
 
 namespace Piggy\Api\Models\Loyalty;
 
+use Piggy\Api\Environment;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\Mappers\Units\UnitMapper;
+use Piggy\Api\Mappers\Units\UnitsMapper;
+
 /**
  * Class Unit
  * @package Piggy\Api\Models\Loyalty
@@ -20,6 +25,13 @@ class Unit
 
     /** @var bool|null */
     protected $isDefault;
+
+    /**
+     * @var string
+     */
+    protected static $resourceUri = "/api/v3/oauth/clients/units";
+
+    protected static $mapper = UnitMapper::class;
 
     /**
      * @param string $name
@@ -53,5 +65,23 @@ class Unit
     public function getIsDefault(): ?bool
     {
         return $this->isDefault;
+    }
+
+    public static function list(array $params = []): array
+    {
+        $response = Environment::get(self::$resourceUri, $params);
+
+        $mapper = new UnitsMapper();
+
+        return $mapper->map($response->getData());
+    }
+
+    public static function create(array $body): Unit
+    {
+        $response = Environment::post(self::$resourceUri, $body);
+
+        $mapper = new self::$mapper;
+
+        return $mapper->map($response->getData());
     }
 }

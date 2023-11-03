@@ -3,6 +3,10 @@
 namespace Piggy\Api\Models\Loyalty\Rewards;
 
 use DateTime;
+use Piggy\Api\Environment;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\Mappers\Loyalty\Rewards\RewardMapper;
+use Piggy\Api\Mappers\Loyalty\Rewards\RewardsMapper;
 use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\Models\Loyalty\Media;
 
@@ -58,7 +62,20 @@ class Reward
      */
     protected $expiresAt;
 
+    /**
+     * @var bool|null
+     */
     protected $hasBeenCollected;
+
+    /**w
+     * @var string
+     */
+    protected static $mapper = RewardMapper::class;
+
+    /**
+     * @var string
+     */
+    protected static $resourceUri = "/api/v3/oauth/clients/rewards";
 
     /**
      * @param string $uuid
@@ -72,7 +89,6 @@ class Reward
      * @param Contact|null $contact
      * @param DateTime|null $expiresAt
      * @param bool $hasBeenCollected
-
      */
     public function __construct(string $uuid, ?string $title = '', ?int $requiredCredits = null, ?Media $media = null, ?string $description = "", ?bool $active = true, ?string $rewardType = null, array $attributes = [], ?Contact $contact = null, ?DateTime $expiresAt = null, ?bool $hasBeenCollected = false)
     {
@@ -173,8 +189,40 @@ class Reward
         $this->attributes[$name] = $value;
     }
 
+    /**
+     * @return Contact
+     */
     public function getContact(): Contact
     {
         return $this->contact;
+    }
+
+    /**
+     * @param array $params
+     * @return array
+     * @throws PiggyRequestException
+     */
+    public static function get(array $params = []): array
+    {
+        $response = Environment::get(self::$resourceUri, $params);
+
+        $mapper = new RewardsMapper();
+
+        return $mapper->map($response->getData());
+    }
+
+    /**
+     * @param $rewardUuid
+     * @param array $body
+     * @return Reward
+     * @throws PiggyRequestException
+     */
+    public function update($rewardUuid, array $body): Reward
+    {
+        $response = Environment::put(self::$resourceUri . "/$rewardUuid", $body);
+
+        $mapper = new self::$mapper;
+
+        return $mapper->map($response->getData());
     }
 }

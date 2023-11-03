@@ -2,6 +2,11 @@
 
 namespace Piggy\Api\Models\Loyalty\RewardAttributes;
 
+use Piggy\Api\Environment;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\Mappers\Loyalty\RewardAttributes\RewardAttributeMapper;
+use Piggy\Api\Mappers\Loyalty\RewardAttributes\RewardAttributesMapper;
+
 /**
  * Class RewardAttribute
  * @package Piggy\Api\Models\Loyalty\RewardAttributes
@@ -55,6 +60,17 @@ class RewardAttribute
      * @var string|null
      */
     public $placeholder;
+
+    /**
+     * @var string
+     */
+    protected static $mapper = RewardAttributeMapper::class;
+
+
+    /**
+     * @var string
+     */
+    protected static $resourceUri = "/api/v3/oauth/clients/reward-attributes";
 
     public function __construct(string $name, string $label, string $description, string $dataType, ?string $fieldType, ?bool $isSoftReadOnly = null, ?bool $isHardReadOnly = null, ?bool $isPiggyDefined = null, ?array $options = null, ?string $placeholder = null)
     {
@@ -204,6 +220,7 @@ class RewardAttribute
     {
         $this->isPiggyDefined = $isPiggyDefined;
     }
+
     /**
      * @return array | null
      */
@@ -235,5 +252,33 @@ class RewardAttribute
     public function setPlaceholder(?string $placeholder): void
     {
         $this->placeholder = $placeholder;
+    }
+
+    /**
+     * @param array $params
+     * @return array
+     * @throws PiggyRequestException
+     */
+    public static function list(array $params = []): array
+    {
+        $response = Environment::get(self::$resourceUri, $params);
+
+        $mapper = new RewardAttributesMapper();
+
+        return $mapper->map((array)$response->getData());
+    }
+
+    /**
+     * @param array $body
+     * @return RewardAttribute
+     * @throws PiggyRequestException
+     */
+    public static function create(array $body): RewardAttribute
+    {
+        $response = Environment::post(self::$resourceUri, $body);
+
+        $mapper = new self::$mapper;
+
+        return $mapper->map($response->getData());
     }
 }

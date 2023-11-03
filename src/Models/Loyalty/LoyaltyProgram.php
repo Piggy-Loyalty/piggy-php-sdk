@@ -2,6 +2,9 @@
 
 namespace Piggy\Api\Models\Loyalty;
 
+use Piggy\Api\Environment;
+use Piggy\Api\Mappers\Loyalty\LoyaltyProgramMapper;
+
 /**
  * Class LoyaltyProgram
  * @package Piggy\Api\Models\Loyalty
@@ -25,6 +28,16 @@ class LoyaltyProgram
      * @var int|null
      */
     private $maxAmount;
+
+    /**
+     * @var string
+     */
+    protected static $resourceUri = "/api/v3/register/loyalty-program";
+
+    /**
+     * @var string
+     */
+    protected static $mapper = LoyaltyProgramMapper::class;
 
     /**
      * @param int $id
@@ -70,5 +83,14 @@ class LoyaltyProgram
     public function getMaxAmount(): ?int
     {
         return $this->maxAmount;
+    }
+
+    public static function get(array $params = []): LoyaltyProgram
+    {
+        $response = Environment::get(self::$resourceUri, $params);
+
+        $mapper = new self::$mapper;
+
+        return $mapper->map($response->getData());
     }
 }
