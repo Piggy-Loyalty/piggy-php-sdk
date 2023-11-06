@@ -163,7 +163,7 @@ class WebhookSubscription
     {
         $response = Environment::put(self::$resourceUri . "/{$webhookUuid}", $body);
 
-        $mapper = new self::$mapper();
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }
@@ -189,7 +189,7 @@ class WebhookSubscription
     {
         $response = Environment::post(self::$resourceUri, $body);
 
-        $mapper = new self::$mapper();
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }
@@ -204,7 +204,7 @@ class WebhookSubscription
     {
         $response = Environment::get(self::$resourceUri . "/$webhookUuid", $params);
 
-        $mapper = new self::$mapper();
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }

@@ -97,7 +97,7 @@ class ContactIdentifier
     {
         $response = Environment::get(self::$resourceUri . "/find", $params);
 
-        $mapper = new self::$mapper();
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }
@@ -111,7 +111,7 @@ class ContactIdentifier
     {
         $response = Environment::post(self::$resourceUri, $body);
 
-        $mapper = new self::$mapper();
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }
@@ -125,7 +125,7 @@ class ContactIdentifier
     {
         $response = Environment::put(self::$resourceUri . "/link", $body);
 
-        $mapper = new self::$mapper();
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }

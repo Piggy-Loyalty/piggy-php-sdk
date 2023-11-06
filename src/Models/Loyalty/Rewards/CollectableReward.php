@@ -55,6 +55,8 @@ class CollectableReward
      */
     protected static $resourceUri = "/api/v3/oauth/clients/collectable-rewards";
 
+    protected static $mapper = CollectableRewardMapper::class;
+
 
     /**
      * @param Contact $contact
@@ -162,9 +164,9 @@ class CollectableReward
      */
     public static function collect(string $loyaltyTransactionUuid, array $body = []): CollectableReward
     {
-        $response = Environment::put(self::$resourceUri . "/collect/" . $loyaltyTransactionUuid, $body);
+        $response = Environment::put(self::$resourceUri . "/collect/$loyaltyTransactionUuid", $body);
 
-        $mapper = new CollectableRewardMapper();
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }

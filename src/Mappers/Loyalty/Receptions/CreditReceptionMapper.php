@@ -22,35 +22,36 @@ class CreditReceptionMapper extends BaseMapper
      */
     public function map(stdClass $data): CreditReception
     {
-        $contactMapper = new ContactMapper();
-        $shopMapper = new ShopMapper();
-        $unitMapper = new UnitMapper();
-        $contactIdentifierMapper = new ContactIdentifierMapper();
-        $contact = $contactMapper->map($data->contact);
-        $shop = $shopMapper->map($data->shop);
+        if (isset($data->contact)) {
+            $contactMapper = new ContactMapper();
+            $contact = $contactMapper->map($data->contact);
+        }
+
+        if (isset($data->shop)) {
+            $shopMapper = new ShopMapper();
+            $shop = $shopMapper->map($data->shop);
+        }
 
         if (isset($data->unit)) {
+            $unitMapper = new UnitMapper();
             $unit = $unitMapper->map($data->unit);
-        } else {
-            $unit = null;
         }
 
         if (isset($data->contact_identifier)) {
+            $contactIdentifierMapper = new ContactIdentifierMapper();
             $contactIdentifier = $contactIdentifierMapper->map($data->contact_identifier);
-        } else {
-            $contactIdentifier = null;
         }
 
         return new CreditReception(
             $data->type,
             $data->credits ?? null,
             $data->uuid,
-            $contact,
-            $shop,
-            $contactIdentifier,
+            $contact ?? null,
+            $shop ?? null,
+            $contactIdentifier ?? null,
             $this->parseDate($data->created_at),
             $data->unit_value ?? null,
-            $unit
+            $unit ?? null
         );
     }
 }

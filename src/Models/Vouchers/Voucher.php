@@ -214,7 +214,7 @@ class Voucher
     {
         $response = Environment::post(self::$resourceUri, $body);
 
-        $mapper = new self::$mapper();
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }
@@ -254,7 +254,7 @@ class Voucher
     {
         $response = Environment::get(self::$resourceUri . "/find", $params);
 
-        $mapper = new self::$mapper();
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }
@@ -268,7 +268,7 @@ class Voucher
     {
         $response = Environment::post(self::$resourceUri . "/redeem", $body);
 
-        $mapper = new self::$mapper();
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }

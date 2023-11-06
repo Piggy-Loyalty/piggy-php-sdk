@@ -55,7 +55,7 @@ class ContactsPortalAuthUrl
     {
         $response = Environment::get(self::$resourceUri . "/auth-url", $params);
 
-        $mapper = new self::$mapper();
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }

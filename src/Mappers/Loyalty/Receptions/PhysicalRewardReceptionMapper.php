@@ -47,7 +47,7 @@ class PhysicalRewardReceptionMapper extends BaseMapper
             $this->parseDate($data->created_at),
             $data->title,
             $physicalReward,
-            $this->parseDate($data->expires_at),
+            isset($data->expiration_date) ? $this->parseDate($data->expiration_date) : null,
             $data->has_been_collected
         );
     }

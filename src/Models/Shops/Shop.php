@@ -99,7 +99,7 @@ class Shop
     {
         $response = Environment::get(self::$resourceUri . "/$shopUuid", $params);
 
-        $mapper = new self::$mapper();
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }

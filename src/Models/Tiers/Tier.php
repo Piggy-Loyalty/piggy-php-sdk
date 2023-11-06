@@ -130,7 +130,7 @@ class Tier
     {
         $response = Environment::get("/api/v3/oauth/clients/contacts" . "/$contactUuid/tier", $params);
 
-        $mapper = new self::$mapper();
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }

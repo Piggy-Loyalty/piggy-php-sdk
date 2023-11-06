@@ -31,6 +31,16 @@ class PiggyRequestException extends Exception
      */
     public function __construct(string $message, int $code, int $statusCode, ?ErrorBag $errorBag = null, Throwable $previous = null)
     {
+        var_dump("error");
+        var_dump("error");
+        var_dump("error");
+        var_dump("error");
+        var_dump(json_encode($message));
+        var_dump("error");
+        var_dump("error");
+        var_dump("error");
+        var_dump("error");
+
         $this->statusCode = $statusCode;
         $this->errorBag = $errorBag;
 

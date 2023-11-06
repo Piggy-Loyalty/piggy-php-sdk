@@ -19,16 +19,16 @@ class RewardReceptionMapper
      */
     public function map(stdClass $data)
     {
-        $physicalRewardReceptionMapper = new PhysicalRewardReceptionMapper();
-        $digitalRewardReceptionMapper = new DigitalRewardReceptionMapper();
-
         $rewardReception = null;
 
         if ($data->type === LoyaltyTransactionType::PHYSICAL_REWARD_RECEPTION) {
+            $physicalRewardReceptionMapper = new PhysicalRewardReceptionMapper();
+
             $rewardReception = $physicalRewardReceptionMapper->map($data);
         }
 
         if ($data->type === LoyaltyTransactionType::DIGITAL_REWARD_RECEPTION) {
+            $digitalRewardReceptionMapper = new DigitalRewardReceptionMapper();
             $rewardReception = $digitalRewardReceptionMapper->map($data);
         }
 

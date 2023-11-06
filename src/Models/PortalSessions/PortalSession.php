@@ -130,7 +130,7 @@ class PortalSession
     {
         $response = Environment::get(self::$resourceUri . "/$uuid", $params);
 
-        $mapper = new self::$mapper();
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }

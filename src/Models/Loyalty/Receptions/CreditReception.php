@@ -173,6 +173,7 @@ class CreditReception
     {
         $response = Environment::post(self::$resourceUri, $body);
 
+//        $mapper = new CreditReceptionMapper();
         $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
@@ -183,10 +184,10 @@ class CreditReception
      * @return int
      * @throws PiggyRequestException
      */
-    public static function calculate(array $params): int
+    public static function calculate(array $params): \stdClass
     {
         $response = Environment::get(self::$resourceUri . "/calculate", $params);
 
-        return (int)$response->getData()->credits;
+        return $response->getData();
     }
 }

@@ -105,7 +105,7 @@ class Form
     {
         $response = Environment::get(self::$resourceUri, $params);
 
-        $mapper = new self::$mapper();
+        $mapper = new self::$mapper;
 
         return $mapper->map((array)$response->getData());
     }

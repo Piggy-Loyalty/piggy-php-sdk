@@ -186,7 +186,7 @@ class LoyaltyTransactionAttribute
     {
         $response = Environment::post(self::$resourceUri, $body);
 
-        $mapper = new self::$mapper();
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }

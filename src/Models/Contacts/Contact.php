@@ -193,7 +193,7 @@ class Contact
     {
         $response = Environment::get(self::$staticResourceUri . '/' . $contactUuid, $params);
 
-        $mapper = new self::$mapper();
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }
@@ -207,7 +207,7 @@ class Contact
     {
         $response = Environment::get(self::$staticResourceUri . "/find-or-create", $params);
 
-        $mapper = new self::$mapper();
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }
@@ -221,7 +221,7 @@ class Contact
     {
         $response = Environment::get(self::$staticResourceUri . "/find-one-by", $params);
 
-        $mapper = new self::$mapper();
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }
@@ -278,7 +278,7 @@ class Contact
     {
         $response = Environment::get(self::$staticResourceUri . "/find-or-create/async", $params);
 
-        $mapper = new self::$mapper();;
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }
@@ -292,7 +292,7 @@ class Contact
     {
         $response = Environment::post(self::$staticResourceUri, $body);
 
-        $mapper = new self::$mapper();
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }
@@ -306,7 +306,7 @@ class Contact
     {
         $response = Environment::post(self::$staticResourceUri . "/anonymous", $body);
 
-        $mapper = new self::$mapper();;
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }
@@ -321,7 +321,7 @@ class Contact
     {
         $response = Environment::put(self::$staticResourceUri . "/" . $contactUuid, $body);
 
-        $mapper = new self::$mapper();;
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }
@@ -335,12 +335,11 @@ class Contact
     {
         $response = Environment::post(self::$staticResourceUri . "/async", $body);
 
-        $mapper = new self::$mapper();;
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }
 
-    // todo werkt niet
 
     /**
      * @param string $contactUuid
@@ -365,7 +364,7 @@ class Contact
     {
         $response = Environment::put(self::$staticResourceUri . "/" . $contactUuid . '/claim', $body);
 
-        $mapper = new self::$mapper();
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }

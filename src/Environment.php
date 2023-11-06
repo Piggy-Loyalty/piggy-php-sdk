@@ -85,6 +85,8 @@ class Environment
      */
     private static function parseResponse($response): Response
     {
+//        var_dump($response);
+//        die;
         try {
             $content = json_decode($response->getBody()->getContents());
         } catch (Throwable $exception) {
@@ -133,7 +135,7 @@ class Environment
      * @param string $url
      * @param array $body
      * @return Response
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function post(string $url, array $body): Response
     {

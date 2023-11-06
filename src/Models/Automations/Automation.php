@@ -112,7 +112,7 @@ class Automation
     {
         $response = Environment::get(self::$resourceUri, []);
 
-        $mapper = new self::$mapper();;
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }
@@ -126,7 +126,7 @@ class Automation
     {
         $response = Environment::post(self::$resourceUri . '/' . 'runs', $params);
 
-        $mapper = new self::$mapper();;
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }

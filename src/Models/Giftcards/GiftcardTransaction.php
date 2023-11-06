@@ -7,6 +7,7 @@ use Piggy\Api\Environment;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Giftcards\GiftcardTransactionMapper;
 use Piggy\Api\Mappers\Giftcards\GiftcardTransactionsMapper;
+use Piggy\Api\Models\PortalSessions\PortalSession;
 
 /**
  * Class GiftcardTransaction
@@ -64,12 +65,10 @@ class GiftcardTransaction
      */
     protected static $resourceUri = "/api/v3/oauth/clients/giftcard-transactions";
 
-
     /**
      * @var string
      */
     protected static $mapper = GiftcardTransactionMapper::class;
-
 
     /**
      * @param string $uuid

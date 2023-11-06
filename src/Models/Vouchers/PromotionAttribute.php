@@ -167,7 +167,7 @@ class PromotionAttribute
     {
         $response = Environment::get(self::$resourceUri . "/$promotionAttributeId", $params);
 
-        $mapper = new self::$mapper();
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }
@@ -181,7 +181,7 @@ class PromotionAttribute
     {
         $response = Environment::post(self::$resourceUri, $body);
 
-        $mapper = new self::$mapper();
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }
@@ -196,7 +196,7 @@ class PromotionAttribute
     {
         $response = Environment::put(self::$resourceUri . "/$promotionAttributeId", $body);
 
-        $mapper = new self::$mapper();
+        $mapper = new self::$mapper;
 
         return $mapper->map($response->getData());
     }
