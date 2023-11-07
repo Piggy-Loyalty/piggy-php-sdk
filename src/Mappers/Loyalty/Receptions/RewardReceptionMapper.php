@@ -23,7 +23,6 @@ class RewardReceptionMapper
 
         if ($data->type === LoyaltyTransactionType::PHYSICAL_REWARD_RECEPTION) {
             $physicalRewardReceptionMapper = new PhysicalRewardReceptionMapper();
-
             $rewardReception = $physicalRewardReceptionMapper->map($data);
         }
 
