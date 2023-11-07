@@ -85,8 +85,6 @@ class Environment
      */
     private static function parseResponse($response): Response
     {
-//        var_dump($response);
-//        die;
         try {
             $content = json_decode($response->getBody()->getContents());
         } catch (Throwable $exception) {

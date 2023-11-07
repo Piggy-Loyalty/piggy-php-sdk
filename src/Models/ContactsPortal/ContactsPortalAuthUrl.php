@@ -2,6 +2,7 @@
 
 namespace Piggy\Api\Models\ContactsPortal;
 
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Environment;
 use Piggy\Api\Mappers\ContactsPortal\ContactsPortalAuthUrlMapper;
 
@@ -49,7 +50,7 @@ class ContactsPortalAuthUrl
     /**
      * @param array $params
      * @return ContactsPortalAuthUrl
-     * @throws \Piggy\Api\Exceptions\PiggyRequestException
+     * @throws GuzzleException
      */
     public static function get(array $params): ContactsPortalAuthUrl
     {

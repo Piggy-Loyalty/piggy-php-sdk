@@ -58,7 +58,7 @@ abstract class StaticBaseClient
      * @param string $endpoint
      * @param array $queryOptions
      * @return Response
-     * @throws PiggyRequestException|Exception
+     * @throws PiggyRequestException|Exception|GuzzleException
      */
     public static function request(string $method, string $endpoint, $queryOptions = []): Response
     {
@@ -207,7 +207,7 @@ abstract class StaticBaseClient
             }
 
             $request = self::$httpClient->createRequest($method, $url, $options);
-            return  self::$httpClient->send($request);
+            return self::$httpClient->send($request);
         }
 
         return self::$httpClient->request($method, $url, $options);

@@ -3,12 +3,15 @@
 namespace Piggy\Api\Models\PortalSessions;
 
 use DateTime;
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Environment;
-use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\PortalSessions\PortalSessionMapper;
 use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\Models\Shops\Shop;
 
+/**
+ *
+ */
 class PortalSession
 {
     /**
@@ -42,7 +45,6 @@ class PortalSession
      * @var string
      */
     protected static $resourceUri = "/api/v3/oauth/clients/portal-sessions";
-
 
     /**
      * @param string $url
@@ -109,7 +111,7 @@ class PortalSession
     /**
      * @param array $body
      * @return PortalSession
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function create(array $body): PortalSession
     {
@@ -124,7 +126,7 @@ class PortalSession
      * @param string $uuid
      * @param array $params
      * @return PortalSession
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function get(string $uuid, array $params = []): PortalSession
     {

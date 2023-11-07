@@ -2,8 +2,8 @@
 
 namespace Piggy\Api\Models\Giftcards;
 
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Environment;
-use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Giftcards\GiftcardProgramsMapper;
 
 class GiftcardProgram
@@ -11,17 +11,17 @@ class GiftcardProgram
     /**
      * @var string
      */
-    public $uuid;
+    protected $uuid;
 
     /**
      * @var string
      */
-    public $name;
+    protected $name;
 
     /**
      * @var bool
      */
-    public $active;
+    protected $active;
 
     protected static $resourceUri = "/api/v3/oauth/clients/giftcard-programs";
 
@@ -39,7 +39,6 @@ class GiftcardProgram
         $this->name = $name;
         $this->active = $active;
     }
-
 
     /**
      * @return string
@@ -67,7 +66,7 @@ class GiftcardProgram
 
     /**
      * @return array
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function list(): array
     {

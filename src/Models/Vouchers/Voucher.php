@@ -3,8 +3,8 @@
 namespace Piggy\Api\Models\Vouchers;
 
 use DateTime;
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Environment;
-use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Vouchers\VoucherLockMapper;
 use Piggy\Api\Mappers\Vouchers\VoucherMapper;
 use Piggy\Api\Mappers\Vouchers\VouchersMapper;
@@ -208,7 +208,7 @@ class Voucher
     /**
      * @param array $body
      * @return Voucher
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function create(array $body): Voucher
     {
@@ -222,7 +222,7 @@ class Voucher
     /**
      * @param array $body
      * @return string
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function batch(array $body): string
     {
@@ -234,7 +234,7 @@ class Voucher
     /**
      * @param array $params
      * @return array
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function list(array $params = []): array
     {
@@ -248,7 +248,7 @@ class Voucher
     /**
      * @param array $params
      * @return Voucher
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function findByCode(array $params): Voucher
     {
@@ -262,7 +262,7 @@ class Voucher
     /**
      * @param array $body
      * @return Voucher
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function redeem(array $body): Voucher
     {
@@ -277,7 +277,7 @@ class Voucher
      * @param string $voucherUuid
      * @param array $body
      * @return VoucherLock
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function lock(string $voucherUuid, array $body = []): VoucherLock
     {
@@ -292,7 +292,7 @@ class Voucher
      * @param string $voucherUuid
      * @param array $body
      * @return VoucherLock
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function release(string $voucherUuid, array $body): VoucherLock
     {

@@ -42,9 +42,6 @@ class RewardReceptionsResourceTest extends OAuthTestCase
 
         $rewardReception = $this->mockedClient->rewardReceptions->create('123-123', '123-312', '123-lol');
 
-//        var_dump($rewardReception);
-//        die;
-
         $this->assertEquals("reward_reception", $rewardReception->getType());
         $this->assertEquals(-40, $rewardReception->getCredits());
         $this->assertEquals("123-lol", $rewardReception->getUuid());

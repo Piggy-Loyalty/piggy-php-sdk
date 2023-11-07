@@ -2,8 +2,8 @@
 
 namespace Piggy\Api\Models\Vouchers;
 
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Environment;
-use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Vouchers\PromotionMapper;
 use Piggy\Api\Mappers\Vouchers\PromotionsMapper;
 
@@ -34,7 +34,6 @@ class Promotion
      */
     protected $expiration_duration;
 
-
     /**
      * @var string
      */
@@ -57,9 +56,9 @@ class Promotion
         string $uuid,
         string $name,
         string $description,
-        ?int $voucher_limit = null,
-        ?int $limit_per_contact = null,
-        ?int $expiration_duration = null
+        ?int   $voucher_limit = null,
+        ?int   $limit_per_contact = null,
+        ?int   $expiration_duration = null
     )
     {
         $this->uuid = $uuid;
@@ -118,11 +117,10 @@ class Promotion
         return $this->uuid;
     }
 
-
     /**
      * @param array $body
      * @return Promotion
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function create(array $body): Promotion
     {
@@ -136,7 +134,7 @@ class Promotion
     /**
      * @param array $params
      * @return array
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function list(array $params = []): array
     {

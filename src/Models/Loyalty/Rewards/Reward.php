@@ -3,6 +3,7 @@
 namespace Piggy\Api\Models\Loyalty\Rewards;
 
 use DateTime;
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Environment;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Loyalty\Rewards\RewardMapper;
@@ -10,6 +11,9 @@ use Piggy\Api\Mappers\Loyalty\Rewards\RewardsMapper;
 use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\Models\Loyalty\Media;
 
+/**
+ *
+ */
 class Reward
 {
     /**
@@ -200,7 +204,7 @@ class Reward
     /**
      * @param array $params
      * @return array
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function list(array $params = []): array
     {

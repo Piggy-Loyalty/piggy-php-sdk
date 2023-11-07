@@ -2,8 +2,8 @@
 
 namespace Piggy\Api\Models\Forms;
 
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Environment;
-use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Forms\FormsMapper;
 
 /**
@@ -99,7 +99,7 @@ class Form
 
     /**
      * @return array[]
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function list(array $params = []): array
     {

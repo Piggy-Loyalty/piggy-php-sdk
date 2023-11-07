@@ -2,8 +2,8 @@
 
 namespace Piggy\Api\Models\Shops;
 
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Environment;
-use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Shops\ShopMapper;
 use Piggy\Api\Mappers\Shops\ShopsMapper;
 
@@ -78,11 +78,11 @@ class Shop
     /**
      * @param array $params
      * @return array
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function list(array $params = []): array
     {
-        $response = Environment::get(self::$resourceUri, []);
+        $response = Environment::get(self::$resourceUri, $params);
 
         $mapper = new ShopsMapper();
 
@@ -93,7 +93,7 @@ class Shop
      * @param string $shopUuid
      * @param array $params
      * @return Shop
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function get(string $shopUuid, array $params = []): Shop
     {

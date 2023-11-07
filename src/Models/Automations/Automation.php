@@ -3,8 +3,8 @@
 namespace Piggy\Api\Models\Automations;
 
 use DateTime;
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Environment;
-use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Automations\AutomationsMapper;
 
 /**
@@ -106,7 +106,7 @@ class Automation
 
     /**
      * @return array
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function list(): array
     {
@@ -120,7 +120,7 @@ class Automation
     /**
      * @param $params
      * @return array
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function create($params): array
     {

@@ -3,11 +3,10 @@
 namespace Piggy\Api\Models\Giftcards;
 
 use DateTime;
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Environment;
-use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Giftcards\GiftcardTransactionMapper;
 use Piggy\Api\Mappers\Giftcards\GiftcardTransactionsMapper;
-use Piggy\Api\Models\PortalSessions\PortalSession;
 
 /**
  * Class GiftcardTransaction
@@ -180,7 +179,7 @@ class GiftcardTransaction
      * @param string $giftcardTransactionUuid
      * @param array $params
      * @return GiftcardTransaction
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function get(string $giftcardTransactionUuid, array $params = []): GiftcardTransaction
     {
@@ -194,7 +193,7 @@ class GiftcardTransaction
     /**
      * @param array $body
      * @return GiftcardTransaction
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function create(array $body): GiftcardTransaction
     {
@@ -209,7 +208,7 @@ class GiftcardTransaction
      * @param string $giftcardTransactionUuid
      * @param array $body
      * @return GiftcardTransaction
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function correct(string $giftcardTransactionUuid, array $body = []): GiftcardTransaction
     {
@@ -223,7 +222,7 @@ class GiftcardTransaction
     /**
      * @param array $params
      * @return array
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function list(array $params): array
     {

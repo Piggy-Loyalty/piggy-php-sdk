@@ -2,6 +2,7 @@
 
 namespace Piggy\Api\Models\Contacts;
 
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Environment;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\ContactIdentifiers\ContactIdentifierMapper;
@@ -91,7 +92,7 @@ class ContactIdentifier
     /**
      * @param array $params
      * @return ContactIdentifier
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function get(array $params = []): ContactIdentifier
     {
@@ -105,7 +106,7 @@ class ContactIdentifier
     /**
      * @param array $body
      * @return ContactIdentifier
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function create(array $body): ContactIdentifier
     {
@@ -119,7 +120,7 @@ class ContactIdentifier
     /**
      * @param array $body
      * @return ContactIdentifier
-     * @throws PiggyRequestException
+     * @throws GuzzleException|PiggyRequestException
      */
     public static function link(array $body): ContactIdentifier
     {

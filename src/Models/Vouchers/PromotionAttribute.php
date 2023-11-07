@@ -2,6 +2,7 @@
 
 namespace Piggy\Api\Models\Vouchers;
 
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Environment;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Vouchers\PromotionAttributeMapper;
@@ -13,7 +14,6 @@ use Piggy\Api\Mappers\Vouchers\PromotionAttributesMapper;
  */
 class PromotionAttribute
 {
-
     /**
      * @var string
      */
@@ -146,7 +146,7 @@ class PromotionAttribute
     /**
      * @param array $params
      * @return array
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function list(array $params = []): array
     {
@@ -161,7 +161,7 @@ class PromotionAttribute
      * @param $promotionAttributeId
      * @param array $params
      * @return PromotionAttribute
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function get($promotionAttributeId, array $params = []): PromotionAttribute
     {
@@ -175,7 +175,7 @@ class PromotionAttribute
     /**
      * @param array $body
      * @return PromotionAttribute
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function create(array $body): PromotionAttribute
     {

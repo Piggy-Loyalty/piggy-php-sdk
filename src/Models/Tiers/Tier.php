@@ -2,8 +2,8 @@
 
 namespace Piggy\Api\Models\Tiers;
 
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Environment;
-use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Tiers\TierMapper;
 use Piggy\Api\Mappers\Tiers\TiersMapper;
 
@@ -109,7 +109,7 @@ class Tier
     /**
      * @param array $params
      * @return array
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function list(array $params = []): array
     {
@@ -124,7 +124,7 @@ class Tier
      * @param string $contactUuid
      * @param array $params
      * @return Tier
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function getTierForContact(string $contactUuid, array $params = []): Tier
     {

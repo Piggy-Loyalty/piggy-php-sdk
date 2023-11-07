@@ -19,7 +19,6 @@ class TiersResource extends BaseResource
      */
     protected $resourceUri = "/api/v3/oauth/clients/tiers";
 
-
     /**
      * @return array
      * @throws PiggyRequestException

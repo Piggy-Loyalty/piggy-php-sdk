@@ -2,8 +2,8 @@
 
 namespace Piggy\Api\Models\Loyalty;
 
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Environment;
-use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Units\UnitMapper;
 use Piggy\Api\Mappers\Units\UnitsMapper;
 
@@ -36,12 +36,16 @@ class Unit
      */
     protected static $resourceUri = "/api/v3/oauth/clients/units";
 
+    /**
+     * @var string
+     */
     protected static $mapper = UnitMapper::class;
 
     /**
      * @param string $name
      * @param string|null $label
      * @param bool|null $isDefault
+     * @param string|null $prefix
      */
     public function __construct(string $name, ?string $label, ?bool $isDefault, ?string $prefix)
     {
@@ -73,11 +77,19 @@ class Unit
         return $this->isDefault;
     }
 
+    /**
+     * @return string|null
+     */
     public function getPrefix(): ?string
     {
         return $this->prefix;
     }
 
+    /**
+     * @param array $params
+     * @return array
+     * @throws GuzzleException
+     */
     public static function list(array $params = []): array
     {
         $response = Environment::get(self::$resourceUri, $params);
@@ -87,6 +99,11 @@ class Unit
         return $mapper->map($response->getData());
     }
 
+    /**
+     * @param array $body
+     * @return Unit
+     * @throws GuzzleException
+     */
     public static function create(array $body): Unit
     {
         $response = Environment::post(self::$resourceUri, $body);

@@ -2,6 +2,7 @@
 
 namespace Piggy\Api\Models\Loyalty;
 
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Environment;
 use Piggy\Api\Mappers\Loyalty\LoyaltyProgramMapper;
 
@@ -85,6 +86,11 @@ class LoyaltyProgram
         return $this->maxAmount;
     }
 
+    /**
+     * @param array $params
+     * @return LoyaltyProgram
+     * @throws GuzzleException
+     */
     public static function get(array $params = []): LoyaltyProgram
     {
         $response = Environment::get(self::$resourceUri, $params);

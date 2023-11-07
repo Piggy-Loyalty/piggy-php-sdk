@@ -2,6 +2,7 @@
 
 namespace Piggy\Api\Models\Contacts;
 
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Environment;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Contacts\SubscriptionMapper;
@@ -103,7 +104,7 @@ class Subscription
      * @param string $contactUuid
      * @param array $params
      * @return array
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function list(string $contactUuid, array $params = []): array
     {

@@ -2,8 +2,9 @@
 
 namespace Piggy\Api\Models\Contacts;
 
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Environment;
-use Piggy\Api\Exceptions\PiggyRequestException;
+use stdClass;
 
 /**
  * Class Contact
@@ -18,10 +19,10 @@ class ContactVerification
 
     /**
      * @param array $body
-     * @return \stdClass
-     * @throws PiggyRequestException
+     * @return stdClass
+     * @throws GuzzleException
      */
-    public static function sendVerificationMail(array $body): \stdClass
+    public static function sendVerificationMail(array $body): stdClass
     {
         $response = Environment::post(self::$resourceUri . "/send", $body);
 
@@ -30,10 +31,10 @@ class ContactVerification
 
     /**
      * @param array $body
-     * @return \stdClass
-     * @throws PiggyRequestException
+     * @return stdClass
+     * @throws GuzzleException
      */
-    public static function verifyLoginCode(array $body): \stdClass
+    public static function verifyLoginCode(array $body): stdClass
     {
         $response = Environment::post(self::$resourceUri . "/verify", $body);
 
@@ -44,7 +45,7 @@ class ContactVerification
      * @param string $contactUuid
      * @param array $params
      * @return string
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function getAuthToken(string $contactUuid, array $params = []): string
     {

@@ -3,8 +3,8 @@
 namespace Piggy\Api\Models\Giftcards;
 
 use DateTime;
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Environment;
-use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Giftcards\GiftcardMapper;
 
 /**
@@ -13,10 +13,6 @@ use Piggy\Api\Mappers\Giftcards\GiftcardMapper;
  */
 class Giftcard
 {
-    protected $dependencies = [
-        "giftcard_program" => GiftcardProgram::class
-    ];
-
     /**
      * @var int
      */
@@ -168,7 +164,7 @@ class Giftcard
     /**
      * @param array $params
      * @return Giftcard
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function findOneBy(array $params): Giftcard
     {
@@ -182,7 +178,7 @@ class Giftcard
     /**
      * @param array $body
      * @return Giftcard
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function create(array $body): Giftcard
     {

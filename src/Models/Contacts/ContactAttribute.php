@@ -2,7 +2,7 @@
 
 namespace Piggy\Api\Models\Contacts;
 
-use Piggy\Api\Enum\CustomAttributeTypes;
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Environment;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Contacts\AttributeMapper;
@@ -66,7 +66,7 @@ class ContactAttribute
     /**
      * @param array $params
      * @return array
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function list(array $params = []): array
     {
@@ -80,7 +80,7 @@ class ContactAttribute
     /**
      * @param array $body
      * @return Attribute
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function create(array $body): Attribute
     {

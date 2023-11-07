@@ -2,8 +2,8 @@
 
 namespace Piggy\Api\Models\Loyalty\RewardAttributes;
 
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Environment;
-use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Loyalty\RewardAttributes\RewardAttributeMapper;
 use Piggy\Api\Mappers\Loyalty\RewardAttributes\RewardAttributesMapper;
 
@@ -14,52 +14,52 @@ use Piggy\Api\Mappers\Loyalty\RewardAttributes\RewardAttributesMapper;
 class RewardAttribute
 {
     /** @var string */
-    public $name;
+    protected $name;
 
     /**
      * @var string
      */
-    public $label;
+    protected $label;
 
     /**
      * @var string
      */
-    public $description;
+    protected $description;
 
     /**
      * @var string
      */
-    public $dataType;
+    protected $dataType;
 
     /**
      * @var string|null
      */
-    public $fieldType;
+    protected $fieldType;
 
     /**
      * @var boolean|null
      */
-    public $isSoftReadOnly;
+    protected $isSoftReadOnly;
 
     /**
      * @var boolean|null
      */
-    public $isHardReadOnly;
+    protected $isHardReadOnly;
 
     /**
      * @var boolean|null
      */
-    public $isPiggyDefined;
+    protected $isPiggyDefined;
 
     /**
      * @var array|null
      */
-    public $options;
+    protected $options;
 
     /**
      * @var string|null
      */
-    public $placeholder;
+    protected $placeholder;
 
     /**
      * @var string
@@ -72,6 +72,18 @@ class RewardAttribute
      */
     protected static $resourceUri = "/api/v3/oauth/clients/reward-attributes";
 
+    /**
+     * @param string $name
+     * @param string $label
+     * @param string $description
+     * @param string $dataType
+     * @param string|null $fieldType
+     * @param bool|null $isSoftReadOnly
+     * @param bool|null $isHardReadOnly
+     * @param bool|null $isPiggyDefined
+     * @param array|null $options
+     * @param string|null $placeholder
+     */
     public function __construct(string $name, string $label, string $description, string $dataType, ?string $fieldType, ?bool $isSoftReadOnly = null, ?bool $isHardReadOnly = null, ?bool $isPiggyDefined = null, ?array $options = null, ?string $placeholder = null)
     {
         $this->name = $name;
@@ -257,7 +269,7 @@ class RewardAttribute
     /**
      * @param array $params
      * @return array
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function list(array $params = []): array
     {
@@ -271,7 +283,7 @@ class RewardAttribute
     /**
      * @param array $body
      * @return RewardAttribute
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function create(array $body): RewardAttribute
     {

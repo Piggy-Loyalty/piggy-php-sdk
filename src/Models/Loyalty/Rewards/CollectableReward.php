@@ -3,6 +3,7 @@
 namespace Piggy\Api\Models\Loyalty\Rewards;
 
 use DateTime;
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Environment;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Loyalty\Rewards\CollectableRewardMapper;
@@ -56,7 +57,6 @@ class CollectableReward
     protected static $resourceUri = "/api/v3/oauth/clients/collectable-rewards";
 
     protected static $mapper = CollectableRewardMapper::class;
-
 
     /**
      * @param Contact $contact
@@ -145,7 +145,7 @@ class CollectableReward
     /**
      * @param array $params
      * @return array
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function list(array $params = []): array
     {

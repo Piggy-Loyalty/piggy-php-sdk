@@ -3,6 +3,7 @@
 namespace Piggy\Api\Models\Prepaid;
 
 use DateTime;
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Environment;
 use Piggy\Api\Mappers\Prepaid\PrepaidTransactionMapper;
 
@@ -37,7 +38,9 @@ class PrepaidTransaction
      */
     protected static $resourceUri = "/api/v3/register/prepaid-transactions";
 
-
+    /**
+     * @var string
+     */
     protected static $mapper = PrepaidTransactionMapper::class;
 
     /**
@@ -86,6 +89,11 @@ class PrepaidTransaction
         return $this->createdAt;
     }
 
+    /**
+     * @param array $body
+     * @return PrepaidTransaction
+     * @throws GuzzleException
+     */
     public static function create(array $body): PrepaidTransaction
     {
         $response = Environment::post(self::$resourceUri, $body);

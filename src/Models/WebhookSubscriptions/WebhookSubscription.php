@@ -3,6 +3,7 @@
 namespace Piggy\Api\Models\WebhookSubscriptions;
 
 use DateTime;
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Environment;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\WebhookSubscriptions\WebhookSubscriptionMapper;
@@ -169,7 +170,9 @@ class WebhookSubscription
     }
 
     /**
-     * @throws PiggyRequestException
+     * @param array $params
+     * @return array
+     * @throws GuzzleException
      */
     public static function list(array $params = []): array
     {
@@ -183,7 +186,7 @@ class WebhookSubscription
     /**
      * @param array $body
      * @return WebhookSubscription
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function create(array $body): WebhookSubscription
     {
@@ -198,7 +201,7 @@ class WebhookSubscription
      * @param string $webhookUuid
      * @param array $params
      * @return WebhookSubscription
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function get(string $webhookUuid, array $params = []): WebhookSubscription
     {
@@ -209,12 +212,11 @@ class WebhookSubscription
         return $mapper->map($response->getData());
     }
 
-
     /**
      * @param string $webhookUuid
      * @param array $body
      * @return string
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function destroy(string $webhookUuid, array $body = []): string
     {
