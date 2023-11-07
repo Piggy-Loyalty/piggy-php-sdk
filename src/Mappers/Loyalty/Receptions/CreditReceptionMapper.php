@@ -41,6 +41,15 @@ class CreditReceptionMapper extends BaseMapper
             $contactIdentifier = null;
         }
 
+        $attributes = [];
+
+        foreach ($data as $propertyName => $value) {
+            if (in_array($propertyName, ['type', 'credits', 'uuid', 'contact', 'shop', 'contact_identifier', 'created_at', 'unit_value', 'unit'])) {
+                continue;
+            }
+            $attributes[$propertyName] = $value;
+        }
+
         return new CreditReception(
             $data->type,
             $data->credits ?? null,
@@ -50,7 +59,8 @@ class CreditReceptionMapper extends BaseMapper
             $contactIdentifier,
             $this->parseDate($data->created_at),
             $data->unit_value ?? null,
-            $unit
+            $unit,
+            $attributes
         );
     }
 }
