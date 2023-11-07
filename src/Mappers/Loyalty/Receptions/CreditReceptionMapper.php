@@ -51,6 +51,15 @@ class CreditReceptionMapper extends BaseMapper
             $attributes[$propertyName] = $value;
         }
 
+        $attributes = [];
+
+        foreach ($data as $propertyName => $value) {
+            if (in_array($propertyName, ['type', 'credits', 'uuid', 'contact', 'shop', 'contact_identifier', 'created_at', 'unit_value', 'unit'])) {
+                continue;
+            }
+            $attributes[$propertyName] = $value;
+        }
+
         return new CreditReception(
             $data->type,
             $data->credits ?? null,
