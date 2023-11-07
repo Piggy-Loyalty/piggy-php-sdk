@@ -27,6 +27,11 @@ class Unit
     protected $isDefault;
 
     /**
+     * @var string|null
+     */
+    protected $prefix;
+
+    /**
      * @var string
      */
     protected static $resourceUri = "/api/v3/oauth/clients/units";
@@ -38,11 +43,12 @@ class Unit
      * @param string|null $label
      * @param bool|null $isDefault
      */
-    public function __construct(string $name, ?string $label, ?bool $isDefault)
+    public function __construct(string $name, ?string $label, ?bool $isDefault, ?string $prefix)
     {
         $this->name = $name;
         $this->label = $label;
         $this->isDefault = $isDefault;
+        $this->prefix = $prefix;
     }
 
     /**
@@ -65,6 +71,11 @@ class Unit
     public function getIsDefault(): ?bool
     {
         return $this->isDefault;
+    }
+
+    public function getPrefix(): ?string
+    {
+        return $this->prefix;
     }
 
     public static function list(array $params = []): array

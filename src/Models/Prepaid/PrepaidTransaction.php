@@ -86,7 +86,7 @@ class PrepaidTransaction
         return $this->createdAt;
     }
 
-    public function create(array $body): PrepaidTransaction
+    public static function create(array $body): PrepaidTransaction
     {
         $response = Environment::post(self::$resourceUri, $body);
 

@@ -107,7 +107,7 @@ class Subscription
      */
     public static function list(string $contactUuid, array $params = []): array
     {
-        $response = Environment::get(self::$resourceUri/$contactUuid, $params);
+        $response = Environment::get(self::$resourceUri . "/$contactUuid", $params);
 
         $mapper = new SubscriptionsMapper();
 

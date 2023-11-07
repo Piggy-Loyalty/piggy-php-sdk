@@ -159,7 +159,7 @@ class Environment
      * @param array $params
      *
      * @return Response
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function get(string $url, array $params = []): Response
     {
@@ -177,7 +177,7 @@ class Environment
      * @param array $params
      *
      * @return Response
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function destroy(string $url, array $body = []): Response
     {

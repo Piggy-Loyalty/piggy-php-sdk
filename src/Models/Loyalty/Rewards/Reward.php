@@ -202,7 +202,7 @@ class Reward
      * @return array
      * @throws PiggyRequestException
      */
-    public static function get(array $params = []): array
+    public static function list(array $params = []): array
     {
         $response = Environment::get(self::$resourceUri, $params);
 
@@ -217,7 +217,7 @@ class Reward
      * @return Reward
      * @throws PiggyRequestException
      */
-    public function update($rewardUuid, array $body): Reward
+    public static function update($rewardUuid, array $body): Reward
     {
         $response = Environment::put(self::$resourceUri . "/$rewardUuid", $body);
 

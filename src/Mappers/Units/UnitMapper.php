@@ -20,7 +20,8 @@ class UnitMapper
         return new Unit(
             $data->name,
             $data->label ?? null,
-            $data->is_default ?? null
+            $data->is_default ?? null,
+            $data->prefix ?? null
         );
     }
 }
