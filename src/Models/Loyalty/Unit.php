@@ -3,7 +3,7 @@
 namespace Piggy\Api\Models\Loyalty;
 
 use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\Environment;
+use Piggy\Api\ApiClient;
 use Piggy\Api\Mappers\Units\UnitMapper;
 use Piggy\Api\Mappers\Units\UnitsMapper;
 
@@ -92,7 +92,7 @@ class Unit
      */
     public static function list(array $params = []): array
     {
-        $response = Environment::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::$resourceUri, $params);
 
         $mapper = new UnitsMapper();
 
@@ -106,7 +106,7 @@ class Unit
      */
     public static function create(array $body): Unit
     {
-        $response = Environment::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         $mapper = new self::$mapper;
 

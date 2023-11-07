@@ -4,7 +4,7 @@ namespace Piggy\Api\Models\Giftcards;
 
 use DateTime;
 use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\Environment;
+use Piggy\Api\ApiClient;
 use Piggy\Api\Mappers\Giftcards\GiftcardMapper;
 
 /**
@@ -168,7 +168,7 @@ class Giftcard
      */
     public static function findOneBy(array $params): Giftcard
     {
-        $response = Environment::get(self::$resourceUri . "/find-one-by", $params);
+        $response = ApiClient::get(self::$resourceUri . "/find-one-by", $params);
 
         $mapper = new self::$mapper;
 
@@ -182,7 +182,7 @@ class Giftcard
      */
     public static function create(array $body): Giftcard
     {
-        $response = Environment::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         $mapper = new self::$mapper;
 

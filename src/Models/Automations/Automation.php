@@ -4,7 +4,7 @@ namespace Piggy\Api\Models\Automations;
 
 use DateTime;
 use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\Environment;
+use Piggy\Api\ApiClient;
 use Piggy\Api\Mappers\Automations\AutomationsMapper;
 
 /**
@@ -110,7 +110,7 @@ class Automation
      */
     public static function list(): array
     {
-        $response = Environment::get(self::$resourceUri, []);
+        $response = ApiClient::get(self::$resourceUri, []);
 
         $mapper = new self::$mapper;
 
@@ -124,7 +124,7 @@ class Automation
      */
     public static function create($params): array
     {
-        $response = Environment::post(self::$resourceUri . '/' . 'runs', $params);
+        $response = ApiClient::post(self::$resourceUri . '/' . 'runs', $params);
 
         $mapper = new self::$mapper;
 

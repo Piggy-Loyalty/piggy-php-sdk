@@ -4,7 +4,7 @@ namespace Piggy\Api\Models\Giftcards;
 
 use DateTime;
 use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\Environment;
+use Piggy\Api\ApiClient;
 use Piggy\Api\Mappers\Giftcards\GiftcardTransactionMapper;
 use Piggy\Api\Mappers\Giftcards\GiftcardTransactionsMapper;
 
@@ -183,7 +183,7 @@ class GiftcardTransaction
      */
     public static function get(string $giftcardTransactionUuid, array $params = []): GiftcardTransaction
     {
-        $response = Environment::get(self::$resourceUri . "/$giftcardTransactionUuid", $params);
+        $response = ApiClient::get(self::$resourceUri . "/$giftcardTransactionUuid", $params);
 
         $mapper = new self::$mapper;
 
@@ -197,7 +197,7 @@ class GiftcardTransaction
      */
     public static function create(array $body): GiftcardTransaction
     {
-        $response = Environment::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         $mapper = new self::$mapper;
 
@@ -212,7 +212,7 @@ class GiftcardTransaction
      */
     public static function correct(string $giftcardTransactionUuid, array $body = []): GiftcardTransaction
     {
-        $response = Environment::post(self::$resourceUri . "/$giftcardTransactionUuid/correct", $body);
+        $response = ApiClient::post(self::$resourceUri . "/$giftcardTransactionUuid/correct", $body);
 
         $mapper = new self::$mapper;
 
@@ -226,7 +226,7 @@ class GiftcardTransaction
      */
     public static function list(array $params): array
     {
-        $response = Environment::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::$resourceUri, $params);
 
         $mapper = new GiftcardTransactionsMapper();
 

@@ -7,16 +7,21 @@ use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\ExceptionMapper;
 use Piggy\Api\Exceptions\MalformedResponseException;
-use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Http\Responses\Response;
 use Piggy\Api\Http\Traits\SetsOAuthResources as OAuthResources;
 use Psr\Http\Message\ResponseInterface;
 use Throwable;
 
-class Environment
+/**
+ *
+ */
+class ApiClient
 {
     use OAuthResources;
 
+    /**
+     * @var
+     */
     private static $httpClient;
 
     /**
@@ -31,19 +36,35 @@ class Environment
         'Accept' => 'application/json',
     ];
 
+    /**
+     * @var
+     */
     private $apiKey;
 
+    /**
+     * @param string $apiKey
+     * @param string $baseUrl
+     */
     public function __construct(string $apiKey, string $baseUrl)
     {
         self::setApiKey($apiKey);
         self::setBaseUrl($baseUrl);
     }
 
+    /**
+     * @param $apiKey
+     * @param $baseUrl
+     * @return void
+     */
     public static function configure($apiKey, $baseUrl)
     {
         new self($apiKey, $baseUrl);
     }
 
+    /**
+     * @param string $apiKey
+     * @return void
+     */
     public static function setApiKey(string $apiKey)
     {
         self::addHeader("Authorization", "Bearer $apiKey");
@@ -56,7 +77,7 @@ class Environment
      * @return Response
      * @throws Exception|GuzzleException
      */
-    public static function request(string $method, string $endpoint, $queryOptions = []): Response
+    public static function request(string $method, string $endpoint, array $queryOptions = []): Response
     {
         if (!array_key_exists('Authorization', self::$headers)) {
             throw new Exception('Authorization not set yet.');
@@ -79,7 +100,6 @@ class Environment
 
     /**
      * @param $response
-     *
      * @return Response
      * @throws MalformedResponseException
      */
@@ -111,11 +131,20 @@ class Environment
         return self::$baseUrl;
     }
 
+    /**
+     * @param $baseUrl
+     * @return void
+     */
     public static function setBaseUrl($baseUrl): void
     {
         self::$baseUrl = $baseUrl;
     }
 
+    /**
+     * @param $key
+     * @param $value
+     * @return void
+     */
     public static function addHeader($key, $value): void
     {
         self::$headers[$key] = $value;
@@ -143,9 +172,8 @@ class Environment
     /**
      * @param string $url
      * @param array $body
-     *
      * @return Response
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function put(string $url, array $body): Response
     {
@@ -155,7 +183,6 @@ class Environment
     /**
      * @param string $url
      * @param array $params
-     *
      * @return Response
      * @throws GuzzleException
      */
@@ -172,8 +199,7 @@ class Environment
 
     /**
      * @param string $url
-     * @param array $params
-     *
+     * @param array $body
      * @return Response
      * @throws GuzzleException
      */

@@ -59,3 +59,39 @@ try {
     // Handle any other exceptions 
 }
 ```
+
+**Example with OAuth Client Using API Key**
+```
+$apiKey = 'xxxxxxxx';
+$someBaseUrl = "https://yourcompany.com/";
+$client = new OAuthClientApiKey($apiKey);
+$client->setBaseUrl($someBaseUrl);
+
+try {
+    $contact = $client->contacts->findOneBy('test@domain.com'); // Example call to find a Contact by e-mail address
+} catch(Piggy\Api\Exceptions\MaintenanceModeException $e) {
+    // Catch maintenance mode specific.
+} catch(Piggy\Api\Exceptions\PiggyRequestException $e) {
+    // If no Contact is found, you'd know that from this exception
+} catch(\Exception $) {
+    // Handle any other exceptions 
+}
+```
+
+**Example with Static Functions using API Key**
+```
+$apiKey = 'xxxxxxxx';
+$someBaseUrl = "https://yourcompany.com/";
+
+ApiClient::configure($apiKey, $someBaseUrl);
+
+try {
+    $contact = Contact::update("1234ab-7890-asdf-1234-a1b2c3d4", ["attributes" => ["firstname" => "henk", "housenumber" => 10]]); // Example call to update a Contact by uuid
+} catch(Piggy\Api\Exceptions\MaintenanceModeException $e) {
+    // Catch maintenance mode specific.
+} catch(GuzzleHttp\Exception\GuzzleException $e) {
+    // If no Contact is found, you'd know that from this exception
+} catch(\Exception $) {
+    // Handle any other exceptions 
+}
+```

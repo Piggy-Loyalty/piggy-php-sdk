@@ -3,7 +3,7 @@
 namespace Piggy\Api\Models\Contacts;
 
 use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\Environment;
+use Piggy\Api\ApiClient;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Contacts\AttributeMapper;
 use Piggy\Api\Mappers\Contacts\AttributesMapper;
@@ -70,7 +70,7 @@ class ContactAttribute
      */
     public static function list(array $params = []): array
     {
-        $response = Environment::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::$resourceUri, $params);
 
         $mapper = new AttributesMapper();
 
@@ -84,7 +84,7 @@ class ContactAttribute
      */
     public static function create(array $body): Attribute
     {
-        $response = Environment::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         $mapper = new AttributeMapper();
 

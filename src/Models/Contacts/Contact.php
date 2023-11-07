@@ -3,7 +3,7 @@
 namespace Piggy\Api\Models\Contacts;
 
 use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\Environment;
+use Piggy\Api\ApiClient;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Contacts\ContactMapper;
 use Piggy\Api\Mappers\Contacts\ContactsMapper;
@@ -204,7 +204,7 @@ class Contact
      */
     public static function get(string $contactUuid, array $params = []): Contact
     {
-        $response = Environment::get(self::$resourceUri . '/' . $contactUuid, $params);
+        $response = ApiClient::get(self::$resourceUri . '/' . $contactUuid, $params);
 
         $mapper = new self::$mapper;
 
@@ -218,7 +218,7 @@ class Contact
      */
     public static function findOrCreate(array $params): Contact
     {
-        $response = Environment::get(self::$resourceUri . "/find-or-create", $params);
+        $response = ApiClient::get(self::$resourceUri . "/find-or-create", $params);
 
         $mapper = new self::$mapper;
 
@@ -232,7 +232,7 @@ class Contact
      */
     public static function findOneBy(array $params): Contact
     {
-        $response = Environment::get(self::$resourceUri . "/find-one-by", $params);
+        $response = ApiClient::get(self::$resourceUri . "/find-one-by", $params);
 
         $mapper = new self::$mapper;
 
@@ -246,7 +246,7 @@ class Contact
      */
     public static function list(array $params = []): array
     {
-        $response = Environment::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::$resourceUri, $params);
 
         $mapper = new ContactsMapper();
 
@@ -261,7 +261,7 @@ class Contact
      */
     public static function showPrepaidBalance(string $contactUuid, array $params = []): PrepaidBalance
     {
-        $response = Environment::get(self::$resourceUri . "/" . $contactUuid . '/prepaid-balance');
+        $response = ApiClient::get(self::$resourceUri . "/" . $contactUuid . '/prepaid-balance');
 
         $mapper = new PrepaidBalanceMapper();
 
@@ -276,7 +276,7 @@ class Contact
      */
     public static function showCreditBalance(string $contactUuid, array $params = []): CreditBalance
     {
-        $response = Environment::get(self::$resourceUri . "/" . $contactUuid . '/credit-balance', $params);
+        $response = ApiClient::get(self::$resourceUri . "/" . $contactUuid . '/credit-balance', $params);
 
         $mapper = new CreditBalanceMapper();
 
@@ -290,7 +290,7 @@ class Contact
      */
     public static function findOrCreateAsync(array $params): Contact
     {
-        $response = Environment::get(self::$resourceUri . "/find-or-create/async", $params);
+        $response = ApiClient::get(self::$resourceUri . "/find-or-create/async", $params);
 
         $mapper = new self::$mapper;
 
@@ -304,7 +304,7 @@ class Contact
      */
     public static function create(array $body): Contact
     {
-        $response = Environment::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         $mapper = new self::$mapper;
 
@@ -318,7 +318,7 @@ class Contact
      */
     public static function createAnonymously(array $body = []): Contact
     {
-        $response = Environment::post(self::$resourceUri . "/anonymous", $body);
+        $response = ApiClient::post(self::$resourceUri . "/anonymous", $body);
 
         $mapper = new self::$mapper;
 
@@ -329,11 +329,11 @@ class Contact
      * @param string $contactUuid
      * @param array $body
      * @return Contact
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function update(string $contactUuid, array $body): Contact
     {
-        $response = Environment::put(self::$resourceUri . "/" . $contactUuid, $body);
+        $response = ApiClient::put(self::$resourceUri . "/" . $contactUuid, $body);
 
         $mapper = new self::$mapper;
 
@@ -347,7 +347,7 @@ class Contact
      */
     public static function createAsync(array $body): Contact
     {
-        $response = Environment::post(self::$resourceUri . "/async", $body);
+        $response = ApiClient::post(self::$resourceUri . "/async", $body);
 
         $mapper = new self::$mapper;
 
@@ -362,7 +362,7 @@ class Contact
      */
     public static function destroy(string $contactUuid, array $body = [])
     {
-        $response = Environment::post(self::$resourceUri . "/" . $contactUuid . '/delete', $body);
+        $response = ApiClient::post(self::$resourceUri . "/" . $contactUuid . '/delete', $body);
 
         return $response->getData();
     }
@@ -371,11 +371,11 @@ class Contact
      * @param string $contactUuid
      * @param array $body
      * @return mixed
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function claimAnonymousContact(string $contactUuid, array $body = [])
     {
-        $response = Environment::put(self::$resourceUri . "/" . $contactUuid . '/claim', $body);
+        $response = ApiClient::put(self::$resourceUri . "/" . $contactUuid . '/claim', $body);
 
         $mapper = new self::$mapper;
 

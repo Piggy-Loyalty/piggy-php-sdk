@@ -3,7 +3,7 @@
 namespace Piggy\Api\Models\Vouchers;
 
 use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\Environment;
+use Piggy\Api\ApiClient;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Vouchers\PromotionAttributeMapper;
 use Piggy\Api\Mappers\Vouchers\PromotionAttributesMapper;
@@ -150,7 +150,7 @@ class PromotionAttribute
      */
     public static function list(array $params = []): array
     {
-        $response = Environment::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::$resourceUri, $params);
 
         $mapper = new PromotionAttributesMapper();
 
@@ -165,7 +165,7 @@ class PromotionAttribute
      */
     public static function get($promotionAttributeId, array $params = []): PromotionAttribute
     {
-        $response = Environment::get(self::$resourceUri . "/$promotionAttributeId", $params);
+        $response = ApiClient::get(self::$resourceUri . "/$promotionAttributeId", $params);
 
         $mapper = new self::$mapper;
 
@@ -179,7 +179,7 @@ class PromotionAttribute
      */
     public static function create(array $body): PromotionAttribute
     {
-        $response = Environment::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         $mapper = new self::$mapper;
 
@@ -190,11 +190,11 @@ class PromotionAttribute
      * @param $promotionAttributeId
      * @param array $body
      * @return PromotionAttribute
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function update($promotionAttributeId, array $body): PromotionAttribute
     {
-        $response = Environment::put(self::$resourceUri . "/$promotionAttributeId", $body);
+        $response = ApiClient::put(self::$resourceUri . "/$promotionAttributeId", $body);
 
         $mapper = new self::$mapper;
 

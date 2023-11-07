@@ -3,7 +3,7 @@
 namespace Piggy\Api\Models\Vouchers;
 
 use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\Environment;
+use Piggy\Api\ApiClient;
 use Piggy\Api\Mappers\Vouchers\PromotionMapper;
 use Piggy\Api\Mappers\Vouchers\PromotionsMapper;
 
@@ -124,7 +124,7 @@ class Promotion
      */
     public static function create(array $body): Promotion
     {
-        $response = Environment::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         $mapper = new self::$mapper;
 
@@ -138,7 +138,7 @@ class Promotion
      */
     public static function list(array $params = []): array
     {
-        $response = Environment::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::$resourceUri, $params);
 
         $mapper = new PromotionsMapper();
 

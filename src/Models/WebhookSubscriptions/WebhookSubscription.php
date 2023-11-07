@@ -4,8 +4,7 @@ namespace Piggy\Api\Models\WebhookSubscriptions;
 
 use DateTime;
 use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\Environment;
-use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\ApiClient;
 use Piggy\Api\Mappers\WebhookSubscriptions\WebhookSubscriptionMapper;
 use Piggy\Api\Mappers\WebhookSubscriptions\WebhookSubscriptionsMapper;
 
@@ -158,11 +157,11 @@ class WebhookSubscription
      * @param string $webhookUuid
      * @param array $body
      * @return mixed
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function update(string $webhookUuid, array $body)
     {
-        $response = Environment::put(self::$resourceUri . "/{$webhookUuid}", $body);
+        $response = ApiClient::put(self::$resourceUri . "/{$webhookUuid}", $body);
 
         $mapper = new self::$mapper;
 
@@ -176,7 +175,7 @@ class WebhookSubscription
      */
     public static function list(array $params = []): array
     {
-        $response = Environment::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::$resourceUri, $params);
 
         $mapper = new WebhookSubscriptionsMapper();
 
@@ -190,7 +189,7 @@ class WebhookSubscription
      */
     public static function create(array $body): WebhookSubscription
     {
-        $response = Environment::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         $mapper = new self::$mapper;
 
@@ -205,7 +204,7 @@ class WebhookSubscription
      */
     public static function get(string $webhookUuid, array $params = []): WebhookSubscription
     {
-        $response = Environment::get(self::$resourceUri . "/$webhookUuid", $params);
+        $response = ApiClient::get(self::$resourceUri . "/$webhookUuid", $params);
 
         $mapper = new self::$mapper;
 
@@ -220,7 +219,7 @@ class WebhookSubscription
      */
     public static function destroy(string $webhookUuid, array $body = []): string
     {
-        Environment::destroy(self::$resourceUri . "/$webhookUuid", $body);
+        ApiClient::destroy(self::$resourceUri . "/$webhookUuid", $body);
 
         return 'Webhook deleted';
     }

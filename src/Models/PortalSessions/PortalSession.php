@@ -4,7 +4,7 @@ namespace Piggy\Api\Models\PortalSessions;
 
 use DateTime;
 use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\Environment;
+use Piggy\Api\ApiClient;
 use Piggy\Api\Mappers\PortalSessions\PortalSessionMapper;
 use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\Models\Shops\Shop;
@@ -115,7 +115,7 @@ class PortalSession
      */
     public static function create(array $body): PortalSession
     {
-        $response = Environment::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         $mapper = new self::$mapper;
 
@@ -130,7 +130,7 @@ class PortalSession
      */
     public static function get(string $uuid, array $params = []): PortalSession
     {
-        $response = Environment::get(self::$resourceUri . "/$uuid", $params);
+        $response = ApiClient::get(self::$resourceUri . "/$uuid", $params);
 
         $mapper = new self::$mapper;
 

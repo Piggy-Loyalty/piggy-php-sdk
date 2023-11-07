@@ -3,7 +3,7 @@
 namespace Piggy\Api\Models\Loyalty\Token;
 
 use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\Environment;
+use Piggy\Api\ApiClient;
 use Piggy\Api\Mappers\Loyalty\Receptions\CreditReceptionMapper;
 use Piggy\Api\Models\Loyalty\Receptions\CreditReception;
 
@@ -25,7 +25,7 @@ class LoyaltyToken
      */
     public static function create(array $body): string
     {
-        $response = Environment::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         return $response->getData();
     }
@@ -37,7 +37,7 @@ class LoyaltyToken
      */
     public static function claim(array $body): CreditReception
     {
-        $response = Environment::post(self::$resourceUri . "/claim", $body);
+        $response = ApiClient::post(self::$resourceUri . "/claim", $body);
 
         $mapper = new CreditReceptionMapper();
 

@@ -73,5 +73,4 @@ class OAuthClient extends BaseClient
 
         return $this;
     }
-
 }

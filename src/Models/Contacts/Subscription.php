@@ -3,7 +3,7 @@
 namespace Piggy\Api\Models\Contacts;
 
 use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\Environment;
+use Piggy\Api\ApiClient;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Contacts\SubscriptionMapper;
 use Piggy\Api\Mappers\Contacts\SubscriptionsMapper;
@@ -108,7 +108,7 @@ class Subscription
      */
     public static function list(string $contactUuid, array $params = []): array
     {
-        $response = Environment::get(self::$resourceUri . "/$contactUuid", $params);
+        $response = ApiClient::get(self::$resourceUri . "/$contactUuid", $params);
 
         $mapper = new SubscriptionsMapper();
 
@@ -119,11 +119,11 @@ class Subscription
      * @param string $contactUuid
      * @param array $body
      * @return Subscription
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function subscribe(string $contactUuid, array $body): Subscription
     {
-        $response = Environment::put(self::$resourceUri . "/$contactUuid/subscribe", $body);
+        $response = ApiClient::put(self::$resourceUri . "/$contactUuid/subscribe", $body);
 
         $mapper = new self::$mapper;
 
@@ -134,11 +134,11 @@ class Subscription
      * @param string $contactUuid
      * @param array $body
      * @return Subscription
-     * @throws PiggyRequestException
+     * @throws GuzzleException
      */
     public static function unsubscribe(string $contactUuid, array $body): Subscription
     {
-        $response = Environment::put(self::$resourceUri . "/$contactUuid/unsubscribe", $body);
+        $response = ApiClient::put(self::$resourceUri . "/$contactUuid/unsubscribe", $body);
 
         $mapper = new self::$mapper;
 

@@ -4,7 +4,7 @@ namespace Piggy\Api\Models\Loyalty\Receptions;
 
 use DateTime;
 use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\Environment;
+use Piggy\Api\ApiClient;
 use Piggy\Api\Mappers\Loyalty\Receptions\CreditReceptionMapper;
 use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\Models\Contacts\ContactIdentifier;
@@ -184,7 +184,7 @@ class CreditReception
      */
     public static function create(array $body): CreditReception
     {
-        $response = Environment::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         $mapper = new self::$mapper;
 
@@ -198,7 +198,7 @@ class CreditReception
      */
     public static function calculate(array $params): stdClass
     {
-        $response = Environment::get(self::$resourceUri . "/calculate", $params);
+        $response = ApiClient::get(self::$resourceUri . "/calculate", $params);
 
         return $response->getData();
     }

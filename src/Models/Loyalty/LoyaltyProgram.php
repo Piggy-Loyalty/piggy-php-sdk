@@ -3,7 +3,7 @@
 namespace Piggy\Api\Models\Loyalty;
 
 use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\Environment;
+use Piggy\Api\ApiClient;
 use Piggy\Api\Mappers\Loyalty\LoyaltyProgramMapper;
 
 /**
@@ -93,7 +93,7 @@ class LoyaltyProgram
      */
     public static function get(array $params = []): LoyaltyProgram
     {
-        $response = Environment::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::$resourceUri, $params);
 
         $mapper = new self::$mapper;
 

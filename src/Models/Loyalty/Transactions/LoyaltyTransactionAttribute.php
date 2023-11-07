@@ -3,7 +3,7 @@
 namespace Piggy\Api\Models\Loyalty\Transactions;
 
 use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\Environment;
+use Piggy\Api\ApiClient;
 use Piggy\Api\Mappers\Loyalty\LoyaltyTransactionAttributes\LoyaltyTransactionAttributeMapper;
 use Piggy\Api\Mappers\Loyalty\LoyaltyTransactionAttributes\LoyaltyTransactionAttributesMapper;
 
@@ -169,7 +169,7 @@ class LoyaltyTransactionAttribute
      */
     public static function list(array $params = []): array
     {
-        $response = Environment::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::$resourceUri, $params);
 
         $mapper = new LoyaltyTransactionAttributesMapper();
 
@@ -183,7 +183,7 @@ class LoyaltyTransactionAttribute
      */
     public static function create(array $body): LoyaltyTransactionAttribute
     {
-        $response = Environment::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         $mapper = new self::$mapper;
 

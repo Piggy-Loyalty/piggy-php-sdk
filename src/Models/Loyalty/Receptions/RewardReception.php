@@ -3,7 +3,7 @@
 namespace Piggy\Api\Models\Loyalty\Receptions;
 
 use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\Environment;
+use Piggy\Api\ApiClient;
 use Piggy\Api\Mappers\Loyalty\Receptions\RewardReceptionMapper;
 
 /**
@@ -29,7 +29,7 @@ class RewardReception
      */
     public static function create(array $body)
     {
-        $response = Environment::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         $mapper = new self::$mapper;
 

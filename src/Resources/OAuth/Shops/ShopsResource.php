@@ -34,7 +34,6 @@ class ShopsResource extends BaseResource
 
     /**
      * @param string $shopUuid
-     *
      * @return Shop
      * @throws PiggyRequestException
      */

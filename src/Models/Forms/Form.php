@@ -3,7 +3,7 @@
 namespace Piggy\Api\Models\Forms;
 
 use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\Environment;
+use Piggy\Api\ApiClient;
 use Piggy\Api\Mappers\Forms\FormsMapper;
 
 /**
@@ -103,7 +103,7 @@ class Form
      */
     public static function list(array $params = []): array
     {
-        $response = Environment::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::$resourceUri, $params);
 
         $mapper = new self::$mapper;
 

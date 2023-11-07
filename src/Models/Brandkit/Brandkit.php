@@ -2,7 +2,7 @@
 
 namespace Piggy\Api\Models\Brandkit;
 
-use Piggy\Api\Environment;
+use Piggy\Api\ApiClient;
 use Piggy\Api\Mappers\Brandkit\BrandkitMapper;
 
 /**
@@ -210,7 +210,7 @@ class Brandkit
      */
     public static function get(): Brandkit
     {
-        $response = Environment::get(self::$resourceUri);
+        $response = ApiClient::get(self::$resourceUri);
 
         $mapper = new self::$mapper;
 

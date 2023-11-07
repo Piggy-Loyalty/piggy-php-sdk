@@ -4,7 +4,7 @@ namespace Piggy\Api\Models\Vouchers;
 
 use DateTime;
 use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\Environment;
+use Piggy\Api\ApiClient;
 use Piggy\Api\Mappers\Vouchers\VoucherLockMapper;
 use Piggy\Api\Mappers\Vouchers\VoucherMapper;
 use Piggy\Api\Mappers\Vouchers\VouchersMapper;
@@ -212,7 +212,7 @@ class Voucher
      */
     public static function create(array $body): Voucher
     {
-        $response = Environment::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         $mapper = new self::$mapper;
 
@@ -226,7 +226,7 @@ class Voucher
      */
     public static function batch(array $body): string
     {
-        Environment::post(self::$resourceUri, $body);
+        ApiClient::post(self::$resourceUri, $body);
 
         return "Voucher generation successfully started in background.";
     }
@@ -238,7 +238,7 @@ class Voucher
      */
     public static function list(array $params = []): array
     {
-        $response = Environment::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::$resourceUri, $params);
 
         $mapper = new VouchersMapper();
 
@@ -252,7 +252,7 @@ class Voucher
      */
     public static function findByCode(array $params): Voucher
     {
-        $response = Environment::get(self::$resourceUri . "/find", $params);
+        $response = ApiClient::get(self::$resourceUri . "/find", $params);
 
         $mapper = new self::$mapper;
 
@@ -266,7 +266,7 @@ class Voucher
      */
     public static function redeem(array $body): Voucher
     {
-        $response = Environment::post(self::$resourceUri . "/redeem", $body);
+        $response = ApiClient::post(self::$resourceUri . "/redeem", $body);
 
         $mapper = new self::$mapper;
 
@@ -281,7 +281,7 @@ class Voucher
      */
     public static function lock(string $voucherUuid, array $body = []): VoucherLock
     {
-        $response = Environment::post(self::$resourceUri . "/$voucherUuid/lock/", $body);
+        $response = ApiClient::post(self::$resourceUri . "/$voucherUuid/lock/", $body);
 
         $mapper = new VoucherLockMapper();
 
@@ -296,7 +296,7 @@ class Voucher
      */
     public static function release(string $voucherUuid, array $body): VoucherLock
     {
-        $response = Environment::post(self::$resourceUri . "/$voucherUuid/release/", $body);
+        $response = ApiClient::post(self::$resourceUri . "/$voucherUuid/release/", $body);
 
         $mapper = new VoucherLockMapper();
 

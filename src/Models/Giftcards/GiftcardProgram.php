@@ -3,7 +3,7 @@
 namespace Piggy\Api\Models\Giftcards;
 
 use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\Environment;
+use Piggy\Api\ApiClient;
 use Piggy\Api\Mappers\Giftcards\GiftcardProgramsMapper;
 
 class GiftcardProgram
@@ -70,7 +70,7 @@ class GiftcardProgram
      */
     public static function list(): array
     {
-        $response = Environment::get(self::$resourceUri);
+        $response = ApiClient::get(self::$resourceUri);
 
         $mapper = new self::$mapper;
 

@@ -3,7 +3,7 @@
 namespace Piggy\Api\Models\Tiers;
 
 use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\Environment;
+use Piggy\Api\ApiClient;
 use Piggy\Api\Mappers\Tiers\TierMapper;
 use Piggy\Api\Mappers\Tiers\TiersMapper;
 
@@ -113,7 +113,7 @@ class Tier
      */
     public static function list(array $params = []): array
     {
-        $response = Environment::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::$resourceUri, $params);
 
         $mapper = new TiersMapper();
 
@@ -128,7 +128,7 @@ class Tier
      */
     public static function getTierForContact(string $contactUuid, array $params = []): Tier
     {
-        $response = Environment::get("/api/v3/oauth/clients/contacts" . "/$contactUuid/tier", $params);
+        $response = ApiClient::get("/api/v3/oauth/clients/contacts" . "/$contactUuid/tier", $params);
 
         $mapper = new self::$mapper;
 
