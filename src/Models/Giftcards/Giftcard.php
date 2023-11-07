@@ -40,7 +40,7 @@ class Giftcard
     /**
      * @var DateTime|null
      */
-    public $expiration_date;
+    public $expirationDate;
 
     /**
      * @var bool
@@ -55,12 +55,12 @@ class Giftcard
     /**
      * @var GiftcardProgram
      */
-    public $giftcard_program;
+    public $giftcardProgram;
 
     /**
      * @var int
      */
-    public $amount_in_cents;
+    public $amountInCents;
 
     /**
      * @var string
@@ -84,7 +84,7 @@ class Giftcard
     {
         $this->uuid = $uuid;
         $this->hash = $hash;
-        $this->amount_in_cents = $amountInCents;
+        $this->amountInCents = $amountInCents;
         $this->type = $type;
         $this->active = $active;
         $this->upgradeable = $upgradeable;
@@ -154,7 +154,7 @@ class Giftcard
      */
     public function getAmountInCents(): int
     {
-        return $this->amount_in_cents;
+        return $this->amountInCents;
     }
 
     /**
