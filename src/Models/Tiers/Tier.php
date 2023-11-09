@@ -4,8 +4,10 @@ namespace Piggy\Api\Models\Tiers;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
-use Piggy\Api\Mappers\Tiers\TierMapper;
-use Piggy\Api\Mappers\Tiers\TiersMapper;
+use Piggy\Api\Exceptions\MaintenanceModeException;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\StaticMappers\Tiers\TierMapper;
+use Piggy\Api\StaticMappers\Tiers\TiersMapper;
 
 /**
  * Class Tier
@@ -33,11 +35,6 @@ class Tier
      * @var int
      */
     protected $position;
-
-    /**
-     * @var string
-     */
-    protected static $mapper = TierMapper::class;
 
     /**
      * @var string
@@ -109,29 +106,25 @@ class Tier
     /**
      * @param array $params
      * @return array
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function list(array $params = []): array
     {
         $response = ApiClient::get(self::$resourceUri, $params);
 
-        $mapper = new TiersMapper();
-
-        return $mapper->map((array)$response->getData());
+        return TiersMapper::map((array)$response->getData());
     }
 
     /**
      * @param string $contactUuid
      * @param array $params
      * @return Tier
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function getTierForContact(string $contactUuid, array $params = []): Tier
     {
         $response = ApiClient::get("/api/v3/oauth/clients/contacts" . "/$contactUuid/tier", $params);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return TierMapper::map($response->getData());
     }
 }

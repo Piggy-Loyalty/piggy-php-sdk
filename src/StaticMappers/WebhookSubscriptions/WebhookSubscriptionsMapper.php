@@ -12,15 +12,14 @@ class WebhookSubscriptionsMapper
      * @param $data
      * @return array
      */
-    public function map($data): array
+    public static function map($data): array
     {
-        $mapper = new WebhookSubscriptionMapper();
+        $webhookSubscriptions = [];
 
-        $WebhookSubscriptions = [];
         foreach ($data as $item) {
-            $WebhookSubscriptions[] = $mapper->map($item);
+            $webhookSubscriptions[] = WebhookSubscriptionMapper::map($item);
         }
 
-        return $WebhookSubscriptions;
+        return $webhookSubscriptions;
     }
 }

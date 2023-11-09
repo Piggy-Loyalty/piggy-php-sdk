@@ -8,13 +8,12 @@ class PromotionAttributesMapper
      * @param $data
      * @return array
      */
-    public function map($data): array
+    public static function map($data): array
     {
-        $promotionAttributeMapper = new PromotionAttributeMapper();
-
         $attributes = [];
+
         foreach ($data as $item) {
-            $attributes[] = $promotionAttributeMapper->map($item);
+            $attributes[] = PromotionAttributeMapper::map($item);
         }
 
         return $attributes;

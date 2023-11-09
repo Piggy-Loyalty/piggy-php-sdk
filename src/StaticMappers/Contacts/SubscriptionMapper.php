@@ -11,10 +11,9 @@ class SubscriptionMapper
      * @param stdClass $data
      * @return Subscription
      */
-    public function map(stdClass $data): Subscription
+    public static function map(stdClass $data): Subscription
     {
-        $subscriptionTypeMapper = new SubscriptionTypeMapper();
-        $subscriptionType = $subscriptionTypeMapper->map($data->subscription_type);
+        $subscriptionType = SubscriptionTypeMapper::map($data->subscription_type);
 
         return new Subscription(
             $subscriptionType,

@@ -3,8 +3,10 @@
 namespace Piggy\Api\Models\Loyalty;
 
 use GuzzleHttp\Exception\GuzzleException;
+use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\ApiClient;
-use Piggy\Api\Mappers\Loyalty\LoyaltyProgramMapper;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\StaticMappers\Loyalty\LoyaltyProgramMapper;
 
 /**
  * Class LoyaltyProgram
@@ -34,11 +36,6 @@ class LoyaltyProgram
      * @var string
      */
     protected static $resourceUri = "/api/v3/register/loyalty-program";
-
-    /**
-     * @var string
-     */
-    protected static $mapper = LoyaltyProgramMapper::class;
 
     /**
      * @param int $id
@@ -89,14 +86,12 @@ class LoyaltyProgram
     /**
      * @param array $params
      * @return LoyaltyProgram
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function get(array $params = []): LoyaltyProgram
     {
         $response = ApiClient::get(self::$resourceUri, $params);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return LoyaltyProgramMapper::map($response->getData());
     }
 }

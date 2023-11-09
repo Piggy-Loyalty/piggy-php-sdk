@@ -14,7 +14,7 @@ class DigitalRewardCodeMapper
      * @param $data
      * @return DigitalRewardCode
      */
-    public function map($data): DigitalRewardCode
+    public static function map($data): DigitalRewardCode
     {
         return new DigitalRewardCode(
             $data->code

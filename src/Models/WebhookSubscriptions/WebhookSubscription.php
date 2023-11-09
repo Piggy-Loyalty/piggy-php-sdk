@@ -4,9 +4,11 @@ namespace Piggy\Api\Models\WebhookSubscriptions;
 
 use DateTime;
 use GuzzleHttp\Exception\GuzzleException;
+use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\ApiClient;
-use Piggy\Api\Mappers\WebhookSubscriptions\WebhookSubscriptionMapper;
-use Piggy\Api\Mappers\WebhookSubscriptions\WebhookSubscriptionsMapper;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\StaticMappers\WebhookSubscriptions\WebhookSubscriptionMapper;
+use Piggy\Api\StaticMappers\WebhookSubscriptions\WebhookSubscriptionsMapper;
 
 /**
  * Class WebhookSubscription
@@ -52,11 +54,6 @@ class WebhookSubscription
      * @var string
      */
     protected static $resourceUri = "/api/v3/oauth/clients/webhook-subscriptions";
-
-    /**
-     * @var string
-     */
-    protected static $mapper = WebhookSubscriptionMapper::class;
 
     /**
      * @param string $uuid
@@ -157,65 +154,57 @@ class WebhookSubscription
      * @param string $webhookUuid
      * @param array $body
      * @return mixed
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function update(string $webhookUuid, array $body)
+    public static function update(string $webhookUuid, array $body): WebhookSubscription
     {
         $response = ApiClient::put(self::$resourceUri . "/{$webhookUuid}", $body);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return WebhookSubscriptionMapper::map($response->getData());
     }
 
     /**
      * @param array $params
      * @return array
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function list(array $params = []): array
     {
         $response = ApiClient::get(self::$resourceUri, $params);
 
-        $mapper = new WebhookSubscriptionsMapper();
-
-        return $mapper->map((array)$response->getData());
+        return WebhookSubscriptionsMapper::map((array)$response->getData());
     }
 
     /**
      * @param array $body
      * @return WebhookSubscription
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function create(array $body): WebhookSubscription
     {
         $response = ApiClient::post(self::$resourceUri, $body);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return WebhookSubscriptionMapper::map($response->getData());
     }
 
     /**
      * @param string $webhookUuid
      * @param array $params
      * @return WebhookSubscription
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function get(string $webhookUuid, array $params = []): WebhookSubscription
     {
         $response = ApiClient::get(self::$resourceUri . "/$webhookUuid", $params);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return WebhookSubscriptionMapper::map($response->getData());
     }
 
     /**
      * @param string $webhookUuid
      * @param array $body
      * @return string
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function destroy(string $webhookUuid, array $body = []): string
     {

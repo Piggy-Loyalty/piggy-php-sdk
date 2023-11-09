@@ -3,9 +3,11 @@
 namespace Piggy\Api\Models\Loyalty\Transactions;
 
 use GuzzleHttp\Exception\GuzzleException;
+use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\ApiClient;
-use Piggy\Api\Mappers\Loyalty\LoyaltyTransactionAttributes\LoyaltyTransactionAttributeMapper;
-use Piggy\Api\Mappers\Loyalty\LoyaltyTransactionAttributes\LoyaltyTransactionAttributesMapper;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\StaticMappers\Loyalty\LoyaltyTransactionAttributes\LoyaltyTransactionAttributeMapper;
+use Piggy\Api\StaticMappers\Loyalty\LoyaltyTransactionAttributes\LoyaltyTransactionAttributesMapper;
 
 class LoyaltyTransactionAttribute
 {
@@ -45,11 +47,6 @@ class LoyaltyTransactionAttribute
      * @var bool
      */
     protected $is_hard_read_only;
-
-    /**
-     * @var string
-     */
-    protected static $mapper = LoyaltyTransactionAttributeMapper::class;
 
     /**
      * @var string
@@ -165,28 +162,24 @@ class LoyaltyTransactionAttribute
     /**
      * @param array $params
      * @return array
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function list(array $params = []): array
     {
         $response = ApiClient::get(self::$resourceUri, $params);
 
-        $mapper = new LoyaltyTransactionAttributesMapper();
-
-        return $mapper->map((array)$response->getData());
+        return LoyaltyTransactionAttributesMapper::map((array)$response->getData());
     }
 
     /**
      * @param array $body
      * @return LoyaltyTransactionAttribute
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function create(array $body): LoyaltyTransactionAttribute
     {
         $response = ApiClient::post(self::$resourceUri, $body);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return LoyaltyTransactionAttributeMapper::map($response->getData());
     }
 }

@@ -15,7 +15,7 @@ class LoyaltyProgramMapper
      * @param stdClass $data
      * @return LoyaltyProgram
      */
-    public function map(stdClass $data): LoyaltyProgram
+    public static function map(stdClass $data): LoyaltyProgram
     {
         return new LoyaltyProgram(
             $data->id,

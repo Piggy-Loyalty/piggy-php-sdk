@@ -15,7 +15,7 @@ class CreditBalanceMapper
      * @param stdClass $data
      * @return CreditBalance
      */
-    public function map(stdClass $data): CreditBalance
+    public static function map(stdClass $data): CreditBalance
     {
         return new CreditBalance($data->balance);
     }

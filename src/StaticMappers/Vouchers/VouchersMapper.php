@@ -14,14 +14,12 @@ class VouchersMapper
      * @param $data
      * @return array
      */
-    public function map($data): array
+    public static function map($data): array
     {
-        $mapper = new VoucherMapper();
-
         $vouchers = [];
 
         foreach ($data as $item) {
-            $vouchers[] = $mapper->map($item);
+            $vouchers[] = VoucherMapper::map($item);
         }
 
         return $vouchers;

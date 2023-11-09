@@ -25,7 +25,7 @@ class Response
     public function __construct($data, $meta)
     {
         $this->data = $data;
-        $this->meta = $meta ?? new stdClass();
+        $this->meta = $meta;
     }
 
     public function getData()

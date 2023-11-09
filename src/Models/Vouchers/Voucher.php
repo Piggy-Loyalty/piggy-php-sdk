@@ -5,10 +5,12 @@ namespace Piggy\Api\Models\Vouchers;
 use DateTime;
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
-use Piggy\Api\Mappers\Vouchers\VoucherLockMapper;
-use Piggy\Api\Mappers\Vouchers\VoucherMapper;
-use Piggy\Api\Mappers\Vouchers\VouchersMapper;
+use Piggy\Api\Exceptions\MaintenanceModeException;
+use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Models\Contacts\Contact;
+use Piggy\Api\StaticMappers\Vouchers\VoucherLockMapper;
+use Piggy\Api\StaticMappers\Vouchers\VoucherMapper;
+use Piggy\Api\StaticMappers\Vouchers\VouchersMapper;
 
 class Voucher
 {
@@ -71,11 +73,6 @@ class Voucher
      * @var string
      */
     protected static $resourceUri = "/api/v3/oauth/clients/vouchers";
-
-    /**
-     * @var string
-     */
-    protected static $mapper = VoucherMapper::class;
 
     /**
      * @param string $uuid
@@ -208,21 +205,19 @@ class Voucher
     /**
      * @param array $body
      * @return Voucher
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function create(array $body): Voucher
     {
         $response = ApiClient::post(self::$resourceUri, $body);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return VoucherMapper::map($response->getData());
     }
 
     /**
      * @param array $body
      * @return string
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function batch(array $body): string
     {
@@ -234,72 +229,62 @@ class Voucher
     /**
      * @param array $params
      * @return array
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function list(array $params = []): array
     {
         $response = ApiClient::get(self::$resourceUri, $params);
 
-        $mapper = new VouchersMapper();
-
-        return $mapper->map((array)$response->getData());
+        return VouchersMapper::map((array)$response->getData());
     }
 
     /**
      * @param array $params
      * @return Voucher
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function findByCode(array $params): Voucher
     {
         $response = ApiClient::get(self::$resourceUri . "/find", $params);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return VoucherMapper::map($response->getData());
     }
 
     /**
      * @param array $body
      * @return Voucher
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function redeem(array $body): Voucher
     {
         $response = ApiClient::post(self::$resourceUri . "/redeem", $body);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return VoucherMapper::map($response->getData());
     }
 
     /**
      * @param string $voucherUuid
      * @param array $body
      * @return VoucherLock
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function lock(string $voucherUuid, array $body = []): VoucherLock
     {
         $response = ApiClient::post(self::$resourceUri . "/$voucherUuid/lock/", $body);
 
-        $mapper = new VoucherLockMapper();
-
-        return $mapper->map($response->getData());
+        return VoucherLockMapper::map($response->getData());
     }
 
     /**
      * @param string $voucherUuid
      * @param array $body
      * @return VoucherLock
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function release(string $voucherUuid, array $body): VoucherLock
     {
         $response = ApiClient::post(self::$resourceUri . "/$voucherUuid/release/", $body);
 
-        $mapper = new VoucherLockMapper();
-
-        return $mapper->map($response->getData());
+        return VoucherLockMapper::map($response->getData());
     }
 }

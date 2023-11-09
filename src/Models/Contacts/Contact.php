@@ -4,13 +4,15 @@ namespace Piggy\Api\Models\Contacts;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
+use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\Mappers\Contacts\ContactMapper;
-use Piggy\Api\Mappers\Contacts\ContactsMapper;
-use Piggy\Api\Mappers\Loyalty\CreditBalanceMapper;
-use Piggy\Api\Mappers\Prepaid\PrepaidBalanceMapper;
 use Piggy\Api\Models\Loyalty\CreditBalance;
 use Piggy\Api\Models\Prepaid\PrepaidBalance;
+use Piggy\Api\StaticMappers\Contacts\ContactMapper;
+use Piggy\Api\StaticMappers\Contacts\ContactsMapper;
+use Piggy\Api\StaticMappers\Loyalty\CreditBalanceMapper;
+use Piggy\Api\StaticMappers\Prepaid\PrepaidBalanceMapper;
+use stdClass;
 
 /**
  * Class Contact
@@ -57,11 +59,6 @@ class Contact
      * @var string
      */
     protected static $resourceUri = "/api/v3/oauth/clients/contacts";
-
-    /**
-     * @var string
-     */
-    protected static $mapper = ContactMapper::class;
 
     /**
      * @param $uuid
@@ -200,169 +197,134 @@ class Contact
      * @param string $contactUuid
      * @param array $params
      * @return Contact
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function get(string $contactUuid, array $params = []): Contact
     {
         $response = ApiClient::get(self::$resourceUri . '/' . $contactUuid, $params);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return ContactMapper::map($response->getData());
     }
 
     /**
      * @param array $params
      * @return Contact
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function findOrCreate(array $params): Contact
     {
         $response = ApiClient::get(self::$resourceUri . "/find-or-create", $params);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return ContactMapper::map($response->getData());
     }
 
     /**
      * @param array $params
      * @return Contact
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function findOneBy(array $params): Contact
     {
         $response = ApiClient::get(self::$resourceUri . "/find-one-by", $params);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return ContactMapper::map($response->getData());
     }
 
     /**
      * @param array $params
      * @return array
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function list(array $params = []): array
     {
         $response = ApiClient::get(self::$resourceUri, $params);
 
-        $mapper = new ContactsMapper();
-
-        return $mapper->map($response->getData());
+        return ContactsMapper::map($response->getData());
     }
 
     /**
      * @param string $contactUuid
      * @param array $params
      * @return PrepaidBalance
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function showPrepaidBalance(string $contactUuid, array $params = []): PrepaidBalance
     {
         $response = ApiClient::get(self::$resourceUri . "/" . $contactUuid . '/prepaid-balance');
 
-        $mapper = new PrepaidBalanceMapper();
-
-        return $mapper->map($response->getData());
+        return PrepaidBalanceMapper::map($response->getData());
     }
 
     /**
      * @param string $contactUuid
      * @param array $params
      * @return CreditBalance
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function showCreditBalance(string $contactUuid, array $params = []): CreditBalance
     {
         $response = ApiClient::get(self::$resourceUri . "/" . $contactUuid . '/credit-balance', $params);
 
-        $mapper = new CreditBalanceMapper();
-
-        return $mapper->map($response->getData());
+        return CreditBalanceMapper::map($response->getData());
     }
 
     /**
      * @param array $params
      * @return Contact
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function findOrCreateAsync(array $params): Contact
     {
         $response = ApiClient::get(self::$resourceUri . "/find-or-create/async", $params);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return ContactMapper::map($response->getData());
     }
 
     /**
      * @param array $body
      * @return Contact
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function create(array $body): Contact
     {
         $response = ApiClient::post(self::$resourceUri, $body);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return ContactMapper::map($response->getData());
     }
 
     /**
      * @param array $body
-     * @return Contact
-     * @throws GuzzleException
+     * @return stdClass
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function createAnonymously(array $body = []): Contact
+    public static function createAnonymously(array $body = []): stdClass
     {
         $response = ApiClient::post(self::$resourceUri . "/anonymous", $body);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return $response->getData();
     }
 
     /**
      * @param string $contactUuid
      * @param array $body
      * @return Contact
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function update(string $contactUuid, array $body): Contact
     {
         $response = ApiClient::put(self::$resourceUri . "/" . $contactUuid, $body);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return ContactMapper::map($response->getData());
     }
 
     /**
      * @param array $body
-     * @return Contact
-     * @throws GuzzleException
+     * @return stdClass
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function createAsync(array $body): Contact
+    public static function createAsync(array $body): stdClass
     {
         $response = ApiClient::post(self::$resourceUri . "/async", $body);
-
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
-    }
-
-    /**
-     * @param string $contactUuid
-     * @param array $body
-     * @return mixed
-     * @throws GuzzleException
-     */
-    public static function destroy(string $contactUuid, array $body = [])
-    {
-        $response = ApiClient::post(self::$resourceUri . "/" . $contactUuid . '/delete', $body);
 
         return $response->getData();
     }
@@ -371,14 +333,23 @@ class Contact
      * @param string $contactUuid
      * @param array $body
      * @return mixed
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function claimAnonymousContact(string $contactUuid, array $body = [])
+    public static function destroy(string $contactUuid, array $body = []): stdClass
+    {
+        return ApiClient::post(self::$resourceUri . "/" . $contactUuid . '/delete', $body);
+    }
+
+    /**
+     * @param string $contactUuid
+     * @param array $body
+     * @return mixed
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
+     */
+    public static function claimAnonymousContact(string $contactUuid, array $body = []): Contact
     {
         $response = ApiClient::put(self::$resourceUri . "/" . $contactUuid . '/claim', $body);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return ContactMapper::map($response->getData());
     }
 }

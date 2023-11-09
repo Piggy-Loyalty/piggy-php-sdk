@@ -8,13 +8,12 @@ class SubscriptionTypesMapper
      * @param $data
      * @return array
      */
-    public function map($data): array
+    public static function map($data): array
     {
-        $mapper = new SubscriptionTypeMapper();
         $subscriptionTypes = [];
 
         foreach ($data as $item) {
-            $subscriptionTypes[] = $mapper->map($item);
+            $subscriptionTypes[] = SubscriptionTypeMapper::map($item);
         }
 
         return $subscriptionTypes;

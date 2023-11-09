@@ -15,7 +15,7 @@ class GiftcardProgramMapper
      * @param stdClass $data
      * @return GiftcardProgram
      */
-    public function map(stdClass $data): GiftcardProgram
+    public static function map(stdClass $data): GiftcardProgram
     {
         return new GiftcardProgram(
             $data->uuid,

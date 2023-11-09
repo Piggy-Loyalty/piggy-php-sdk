@@ -14,7 +14,7 @@ class ContactsPortalAuthUrlMapper
      * @param $data
      * @return ContactsPortalAuthUrl
      */
-    public function map($data): ContactsPortalAuthUrl
+    public static function map($data): ContactsPortalAuthUrl
     {
         return new ContactsPortalAuthUrl(
             $data->url

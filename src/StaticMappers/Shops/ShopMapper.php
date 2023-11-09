@@ -14,7 +14,7 @@ class ShopMapper
      * @param $data
      * @return Shop
      */
-    public function map($data): Shop
+    public static function map($data): Shop
     {
         return new Shop(
             $data->uuid,

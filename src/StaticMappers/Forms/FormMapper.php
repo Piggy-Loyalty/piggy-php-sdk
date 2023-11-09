@@ -14,7 +14,7 @@ class FormMapper
      * @param $data
      * @return Form
      */
-    public function map($data): Form
+    public static function map($data): Form
     {
         return new Form(
             $data->name,

@@ -3,9 +3,11 @@
 namespace Piggy\Api\Models\Loyalty;
 
 use GuzzleHttp\Exception\GuzzleException;
+use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\ApiClient;
-use Piggy\Api\Mappers\Units\UnitMapper;
-use Piggy\Api\Mappers\Units\UnitsMapper;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\StaticMappers\Units\UnitMapper;
+use Piggy\Api\StaticMappers\Units\UnitsMapper;
 
 /**
  * Class Unit
@@ -35,11 +37,6 @@ class Unit
      * @var string
      */
     protected static $resourceUri = "/api/v3/oauth/clients/units";
-
-    /**
-     * @var string
-     */
-    protected static $mapper = UnitMapper::class;
 
     /**
      * @param string $name
@@ -88,28 +85,24 @@ class Unit
     /**
      * @param array $params
      * @return array
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function list(array $params = []): array
     {
         $response = ApiClient::get(self::$resourceUri, $params);
 
-        $mapper = new UnitsMapper();
-
-        return $mapper->map($response->getData());
+        return UnitsMapper::map($response->getData());
     }
 
     /**
      * @param array $body
      * @return Unit
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function create(array $body): Unit
     {
         $response = ApiClient::post(self::$resourceUri, $body);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return UnitMapper::map($response->getData());
     }
 }

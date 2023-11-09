@@ -5,7 +5,9 @@ namespace Piggy\Api\Models\Giftcards;
 use DateTime;
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
-use Piggy\Api\Mappers\Giftcards\GiftcardMapper;
+use Piggy\Api\Exceptions\MaintenanceModeException;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\StaticMappers\Giftcards\GiftcardMapper;
 
 /**
  * Class Giftcard
@@ -62,8 +64,6 @@ class Giftcard
      * @var string
      */
     protected static $resourceUri = "/api/v3/oauth/clients/giftcards";
-
-    protected static $mapper = GiftcardMapper::class;
 
     /**
      * @param string $uuid
@@ -164,28 +164,24 @@ class Giftcard
     /**
      * @param array $params
      * @return Giftcard
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function findOneBy(array $params): Giftcard
     {
         $response = ApiClient::get(self::$resourceUri . "/find-one-by", $params);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return GiftcardMapper::map($response->getData());
     }
 
     /**
      * @param array $body
      * @return Giftcard
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function create(array $body): Giftcard
     {
         $response = ApiClient::post(self::$resourceUri, $body);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return GiftcardMapper::map($response->getData());
     }
 }

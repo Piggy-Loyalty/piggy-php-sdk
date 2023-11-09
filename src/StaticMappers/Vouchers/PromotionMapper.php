@@ -14,7 +14,7 @@ class PromotionMapper
      * @param $data
      * @return Promotion
      */
-    public function map($data): Promotion
+    public static function map($data): Promotion
     {
         return new Promotion(
             $data->uuid,

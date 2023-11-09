@@ -4,7 +4,9 @@ namespace Piggy\Api\Models\Giftcards;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
-use Piggy\Api\Mappers\Giftcards\GiftcardProgramsMapper;
+use Piggy\Api\Exceptions\MaintenanceModeException;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\StaticMappers\Giftcards\GiftcardProgramsMapper;
 
 class GiftcardProgram
 {
@@ -24,8 +26,6 @@ class GiftcardProgram
     protected $active;
 
     protected static $resourceUri = "/api/v3/oauth/clients/giftcard-programs";
-
-    protected static $mapper = GiftcardProgramsMapper::class;
 
     /**
      * GiftcardProgram constructor.
@@ -66,14 +66,12 @@ class GiftcardProgram
 
     /**
      * @return array
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function list(): array
     {
         $response = ApiClient::get(self::$resourceUri);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return GiftcardProgramsMapper::map($response->getData());
     }
 }

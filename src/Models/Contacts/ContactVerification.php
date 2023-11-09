@@ -4,6 +4,8 @@ namespace Piggy\Api\Models\Contacts;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
+use Piggy\Api\Exceptions\MaintenanceModeException;
+use Piggy\Api\Exceptions\PiggyRequestException;
 use stdClass;
 
 /**
@@ -20,7 +22,7 @@ class ContactVerification
     /**
      * @param array $body
      * @return stdClass
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function sendVerificationMail(array $body): stdClass
     {
@@ -32,7 +34,7 @@ class ContactVerification
     /**
      * @param array $body
      * @return stdClass
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function verifyLoginCode(array $body): stdClass
     {
@@ -45,7 +47,7 @@ class ContactVerification
      * @param string $contactUuid
      * @param array $params
      * @return string
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function getAuthToken(string $contactUuid, array $params = []): string
     {

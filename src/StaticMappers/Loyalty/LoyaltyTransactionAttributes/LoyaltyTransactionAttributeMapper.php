@@ -14,7 +14,7 @@ class LoyaltyTransactionAttributeMapper
      * @param $data
      * @return LoyaltyTransactionAttribute
      */
-    public function map($data): LoyaltyTransactionAttribute
+    public static function map($data): LoyaltyTransactionAttribute
     {
         return new LoyaltyTransactionAttribute(
             $data->name,

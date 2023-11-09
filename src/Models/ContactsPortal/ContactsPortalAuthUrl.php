@@ -4,7 +4,9 @@ namespace Piggy\Api\Models\ContactsPortal;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
-use Piggy\Api\Mappers\ContactsPortal\ContactsPortalAuthUrlMapper;
+use Piggy\Api\Exceptions\MaintenanceModeException;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\StaticMappers\ContactsPortal\ContactsPortalAuthUrlMapper;
 
 /**
  * Class Shop
@@ -27,11 +29,6 @@ class ContactsPortalAuthUrl
     protected static $resourceUri = "/api/v3/oauth/clients/contacts-portal";
 
     /**
-     * @var string
-     */
-    protected static $mapper = ContactsPortalAuthUrlMapper::class;
-
-    /**
      * @param string $url
      */
     public function __construct(string $url)
@@ -50,14 +47,12 @@ class ContactsPortalAuthUrl
     /**
      * @param array $params
      * @return ContactsPortalAuthUrl
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function get(array $params): ContactsPortalAuthUrl
     {
         $response = ApiClient::get(self::$resourceUri . "/auth-url", $params);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return ContactsPortalAuthUrlMapper::map($response->getData());
     }
 }

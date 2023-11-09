@@ -3,11 +3,13 @@
 namespace Piggy\Api\Models\Loyalty\Rewards;
 
 use DateTime;
+use Exception;
 use GuzzleHttp\Exception\GuzzleException;
+use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\ApiClient;
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\Mappers\Loyalty\Rewards\CollectableRewardMapper;
-use Piggy\Api\Mappers\Loyalty\Rewards\CollectableRewardsMapper;
+use Piggy\Api\StaticMappers\Loyalty\Rewards\CollectableRewardMapper;
+use Piggy\Api\StaticMappers\Loyalty\Rewards\CollectableRewardsMapper;
 use Piggy\Api\Models\Contacts\Contact;
 
 /**
@@ -55,8 +57,6 @@ class CollectableReward
      * @var string
      */
     protected static $resourceUri = "/api/v3/oauth/clients/collectable-rewards";
-
-    protected static $mapper = CollectableRewardMapper::class;
 
     /**
      * @param Contact $contact
@@ -145,29 +145,26 @@ class CollectableReward
     /**
      * @param array $params
      * @return array
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function list(array $params = []): array
     {
         $response = ApiClient::get(self::$resourceUri, $params);
 
-        $mapper = new CollectableRewardsMapper();
-
-        return $mapper->map($response->getData());
+        return CollectableRewardsMapper::map($response->getData());
     }
 
     /**
      * @param string $loyaltyTransactionUuid
      * @param array $body
      * @return CollectableReward
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
+     * @throws Exception
      */
     public static function collect(string $loyaltyTransactionUuid, array $body = []): CollectableReward
     {
         $response = ApiClient::put(self::$resourceUri . "/collect/$loyaltyTransactionUuid", $body);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return CollectableRewardMapper::map($response->getData());
     }
 }

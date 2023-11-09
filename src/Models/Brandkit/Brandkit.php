@@ -2,7 +2,9 @@
 
 namespace Piggy\Api\Models\Brandkit;
 
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
+use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\StaticMappers\Brandkit\BrandkitMapper;
 
@@ -61,12 +63,6 @@ class Brandkit
      * @var string
      */
     protected static $resourceUri = "/api/v3/oauth/clients/brand-kit";
-
-    /**
-     * @var string
-     */
-    protected static $mapper = BrandkitMapper::class;
-
 
     /**
      * @param string|null $small_logo_url
@@ -207,7 +203,7 @@ class Brandkit
 
     /**
      * @return Brandkit
-     * @throws PiggyRequestException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function get(): Brandkit
     {

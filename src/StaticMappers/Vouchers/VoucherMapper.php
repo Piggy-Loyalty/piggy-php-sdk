@@ -16,16 +16,14 @@ class VoucherMapper extends BaseMapper
      * @param $data
      * @return Voucher
      */
-    public function map($data): Voucher
+    public static function map($data): Voucher
     {
         if (isset($data->promotion)) {
-            $promotionMapper = new PromotionMapper();
-            $promotion = $promotionMapper->map($data->promotion);
+            $promotion = PromotionMapper::map($data->promotion);
         }
 
         if (isset($data->contact)) {
-            $contactMapper = new ContactMapper();
-            $contact = $contactMapper->map($data->contact);
+            $contact = ContactMapper::map($data->contact);
         }
 
         return new Voucher(
@@ -36,10 +34,10 @@ class VoucherMapper extends BaseMapper
             $data->description ?? null,
             $promotion ?? null,
             $contact ?? null,
-            isset($data->redeemed_at) ? $this->parseDate($data->redeemed_at) : null,
+            isset($data->redeemed_at) ? self::parseDate($data->redeemed_at) : null,
             $data->is_redeemed ?? null,
-            isset($data->activation_date) ? $this->parseDate($data->activation_date) : null,
-            isset($data->expiration_date) ? $this->parseDate($data->expiration_date) : null
+            isset($data->activation_date) ? self::parseDate($data->activation_date) : null,
+            isset($data->expiration_date) ? self::parseDate($data->expiration_date) : null
         );
     }
 }

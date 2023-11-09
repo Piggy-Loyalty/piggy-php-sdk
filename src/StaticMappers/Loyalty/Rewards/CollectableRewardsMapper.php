@@ -15,13 +15,11 @@ class CollectableRewardsMapper
      * @return array
      * @throws Exception
      */
-    public function map($data): array
+    public static function map($data): array
     {
-        $mapper = new CollectableRewardMapper();
-
         $collectableRewards = [];
         foreach ($data as $item) {
-            $collectableRewards[] = $mapper->map($item);
+            $collectableRewards[] = CollectableRewardMapper::map($item);
         }
         return $collectableRewards;
     }

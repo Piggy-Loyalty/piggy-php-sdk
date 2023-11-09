@@ -5,8 +5,10 @@ namespace Piggy\Api\Models\Giftcards;
 use DateTime;
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
-use Piggy\Api\Mappers\Giftcards\GiftcardTransactionMapper;
-use Piggy\Api\Mappers\Giftcards\GiftcardTransactionsMapper;
+use Piggy\Api\Exceptions\MaintenanceModeException;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\StaticMappers\Giftcards\GiftcardTransactionMapper;
+use Piggy\Api\StaticMappers\Giftcards\GiftcardTransactionsMapper;
 
 /**
  * Class GiftcardTransaction
@@ -63,11 +65,6 @@ class GiftcardTransaction
      * @var string
      */
     protected static $resourceUri = "/api/v3/oauth/clients/giftcard-transactions";
-
-    /**
-     * @var string
-     */
-    protected static $mapper = GiftcardTransactionMapper::class;
 
     /**
      * @param string $uuid
@@ -179,57 +176,49 @@ class GiftcardTransaction
      * @param string $giftcardTransactionUuid
      * @param array $params
      * @return GiftcardTransaction
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function get(string $giftcardTransactionUuid, array $params = []): GiftcardTransaction
     {
         $response = ApiClient::get(self::$resourceUri . "/$giftcardTransactionUuid", $params);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return GiftcardTransactionMapper::map($response->getData());
     }
 
     /**
      * @param array $body
      * @return GiftcardTransaction
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function create(array $body): GiftcardTransaction
     {
         $response = ApiClient::post(self::$resourceUri, $body);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return GiftcardTransactionMapper::map($response->getData());
     }
 
     /**
      * @param string $giftcardTransactionUuid
      * @param array $body
      * @return GiftcardTransaction
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function correct(string $giftcardTransactionUuid, array $body = []): GiftcardTransaction
     {
         $response = ApiClient::post(self::$resourceUri . "/$giftcardTransactionUuid/correct", $body);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return GiftcardTransactionMapper::map($response->getData());
     }
 
     /**
      * @param array $params
      * @return array
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function list(array $params): array
     {
         $response = ApiClient::get(self::$resourceUri, $params);
 
-        $mapper = new GiftcardTransactionsMapper();
-
-        return $mapper->map((array)$response->getData());
+        return GiftcardTransactionsMapper::map((array)$response->getData());
     }
 }

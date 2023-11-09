@@ -16,19 +16,16 @@ class RewardMapper
      * @return DigitalReward|PhysicalReward
      * @throws Exception
      */
-    public function map(stdClass $data): Reward
+    public static function map(stdClass $data): Reward
     {
-        $physicalMapper = new PhysicalRewardMapper();
-        $digitalMapper = new DigitalRewardMapper();
-
         $reward = null;
 
         if ($data->reward_type === RewardType::PHYSICAL) {
-            $reward = $physicalMapper->map($data);
+            $reward = PhysicalRewardMapper::map($data);
         }
 
         if ($data->reward_type === RewardType::DIGITAL) {
-            $reward = $digitalMapper->map($data);
+            $reward = DigitalRewardMapper::map($data);
         }
 
         if ($reward === null) {

@@ -20,26 +20,22 @@ class CreditReceptionMapper extends BaseMapper
      * @param stdClass $data
      * @return CreditReception
      */
-    public function map(stdClass $data): CreditReception
+    public static function map(stdClass $data): CreditReception
     {
         if (isset($data->contact)) {
-            $contactMapper = new ContactMapper();
-            $contact = $contactMapper->map($data->contact);
+            $contact = ContactMapper::map($data->contact);
         }
 
         if (isset($data->shop)) {
-            $shopMapper = new ShopMapper();
-            $shop = $shopMapper->map($data->shop);
+            $shop = ShopMapper::map($data->shop);
         }
 
         if (isset($data->unit)) {
-            $unitMapper = new UnitMapper();
-            $unit = $unitMapper->map($data->unit);
+            $unit = UnitMapper::map($data->unit);
         }
 
         if (isset($data->contact_identifier)) {
-            $contactIdentifierMapper = new ContactIdentifierMapper();
-            $contactIdentifier = $contactIdentifierMapper->map($data->contact_identifier);
+            $contactIdentifier = ContactIdentifierMapper::map($data->contact_identifier);
         }
 
         $attributes = [];
@@ -67,7 +63,7 @@ class CreditReceptionMapper extends BaseMapper
             $contact ?? null,
             $shop ?? null,
             $contactIdentifier ?? null,
-            $this->parseDate($data->created_at),
+            self::parseDate($data->created_at),
             $data->unit_value ?? null,
             $unit ?? null,
             $attributes

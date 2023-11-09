@@ -12,14 +12,12 @@ class PromotionsMapper
      * @param $data
      * @return array
      */
-    public function map($data): array
+    public static function map($data): array
     {
-        $mapper = new PromotionMapper();
-
         $promotions = [];
 
         foreach ($data as $item) {
-            $promotions[] = $mapper->map($item);
+            $promotions[] = PromotionMapper::map($item);
         }
 
         return $promotions;

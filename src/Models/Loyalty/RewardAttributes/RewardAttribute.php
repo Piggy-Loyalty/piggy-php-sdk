@@ -3,9 +3,11 @@
 namespace Piggy\Api\Models\Loyalty\RewardAttributes;
 
 use GuzzleHttp\Exception\GuzzleException;
+use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\ApiClient;
-use Piggy\Api\Mappers\Loyalty\RewardAttributes\RewardAttributeMapper;
-use Piggy\Api\Mappers\Loyalty\RewardAttributes\RewardAttributesMapper;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\StaticMappers\Loyalty\RewardAttributes\RewardAttributeMapper;
+use Piggy\Api\StaticMappers\Loyalty\RewardAttributes\RewardAttributesMapper;
 
 /**
  * Class RewardAttribute
@@ -60,12 +62,6 @@ class RewardAttribute
      * @var string|null
      */
     protected $placeholder;
-
-    /**
-     * @var string
-     */
-    protected static $mapper = RewardAttributeMapper::class;
-
 
     /**
      * @var string
@@ -269,28 +265,24 @@ class RewardAttribute
     /**
      * @param array $params
      * @return array
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function list(array $params = []): array
     {
         $response = ApiClient::get(self::$resourceUri, $params);
 
-        $mapper = new RewardAttributesMapper();
-
-        return $mapper->map((array)$response->getData());
+        return RewardAttributesMapper::map((array)$response->getData());
     }
 
     /**
      * @param array $body
      * @return RewardAttribute
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function create(array $body): RewardAttribute
     {
         $response = ApiClient::post(self::$resourceUri, $body);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return RewardAttributeMapper::map($response->getData());
     }
 }

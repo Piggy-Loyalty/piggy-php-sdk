@@ -15,7 +15,7 @@ class WebhookSubscriptionMapper extends BaseMapper
      * @param $data
      * @return WebhookSubscription
      */
-    public function map($data): WebhookSubscription
+    public static function map($data): WebhookSubscription
     {
         return new WebhookSubscription(
             $data->uuid,
@@ -25,7 +25,7 @@ class WebhookSubscriptionMapper extends BaseMapper
             $data->properties ?? [],
             $data->status,
             $data->version,
-            $this->parseDate($data->created_at)
+            self::parseDate($data->created_at)
         );
     }
 }

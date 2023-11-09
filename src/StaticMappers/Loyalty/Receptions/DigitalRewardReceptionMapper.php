@@ -21,21 +21,15 @@ class DigitalRewardReceptionMapper extends BaseMapper
      * @param stdClass $data
      * @return DigitalRewardReception
      */
-    public function map(stdClass $data): DigitalRewardReception
+    public static function map(stdClass $data): DigitalRewardReception
     {
-        $contactMapper = new ContactMapper();
-        $shopMapper = new ShopMapper();
-        $digitalRewardMapper = new DigitalRewardMapper();
-        $contactIdentifierMapper = new ContactIdentifierMapper();
-        $digitalRewardCodeMapper = new DigitalRewardCodeMapper();
-
-        $contact = $contactMapper->map($data->contact);
-        $shop = $shopMapper->map($data->shop);
-        $digitalReward = $digitalRewardMapper->map($data->digital_reward);
-        $digitalRewardCode = $digitalRewardCodeMapper->map($data->digital_reward_code);
+        $contact = ContactMapper::map($data->contact);
+        $shop = ShopMapper::map($data->shop);
+        $digitalReward = DigitalRewardMapper::map($data->digital_reward);
+        $digitalRewardCode = DigitalRewardCodeMapper::map($data->digital_reward_code);
 
         if (isset($data->contact_identifier)) {
-            $contactIdentifier = $contactIdentifierMapper->map($data->contact_identifier);
+            $contactIdentifier = ContactIdentifierMapper::map($data->contact_identifier);
         } else {
             $contactIdentifier = null;
         }
@@ -47,7 +41,7 @@ class DigitalRewardReceptionMapper extends BaseMapper
             $contact,
             $shop,
             $contactIdentifier,
-            $this->parseDate($data->created_at),
+            self::parseDate($data->created_at),
             $data->title,
             $digitalReward,
             $digitalRewardCode

@@ -12,7 +12,7 @@ class SubscriptionTypeMapper
      * @param stdClass $data
      * @return SubscriptionType
      */
-    public function map(stdClass $data): SubscriptionType
+    public static function map(stdClass $data): SubscriptionType
     {
         return new SubscriptionType(
             $data->uuid ?? "",

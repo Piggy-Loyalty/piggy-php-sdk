@@ -6,6 +6,7 @@ use Exception;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\ExceptionMapper;
+use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\MalformedResponseException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Http\Responses\Response;
@@ -13,9 +14,6 @@ use Piggy\Api\Http\Traits\SetsOAuthResources as OAuthResources;
 use Psr\Http\Message\ResponseInterface;
 use Throwable;
 
-/**
- *
- */
 class ApiClient
 {
     use OAuthResources;
@@ -166,7 +164,9 @@ class ApiClient
      * @param string $url
      * @param array $body
      * @return Response
+     * @throws MaintenanceModeException
      * @throws GuzzleException
+     * @throws PiggyRequestException
      */
     public static function post(string $url, array $body): Response
     {
@@ -177,7 +177,10 @@ class ApiClient
      * @param string $url
      * @param array $body
      * @return Response
+     * @throws MaintenanceModeException
      * @throws GuzzleException
+     * @throws PiggyRequestException
+     *
      */
     public static function put(string $url, array $body): Response
     {
@@ -188,6 +191,8 @@ class ApiClient
      * @param string $url
      * @param array $params
      * @return Response
+     * @throws MaintenanceModeException
+     * @throws GuzzleException
      * @throws PiggyRequestException
      */
     public static function get(string $url, array $params = []): Response
@@ -205,6 +210,9 @@ class ApiClient
      * @param string $url
      * @param array $body
      * @return Response
+     * @throws MaintenanceModeException
+     * @throws GuzzleException
+     * @throws PiggyRequestException
      */
     public static function destroy(string $url, array $body = []): Response
     {

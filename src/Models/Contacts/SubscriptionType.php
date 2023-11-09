@@ -4,7 +4,9 @@ namespace Piggy\Api\Models\Contacts;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
-use Piggy\Api\Mappers\Contacts\SubscriptionTypesMapper;
+use Piggy\Api\Exceptions\MaintenanceModeException;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\StaticMappers\Contacts\SubscriptionTypesMapper;
 
 /**
  * Class SubscriptionType
@@ -133,14 +135,12 @@ class SubscriptionType
     /**
      * @param array $params
      * @return array
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public function list(array $params = []): array
     {
         $response = ApiClient::get(self::$resourceUri);
 
-        $mapper = new SubscriptionTypesMapper();
-
-        return $mapper->map($response->getData());
+        return SubscriptionTypesMapper::map($response->getData());
     }
 }

@@ -15,7 +15,7 @@ class MediaMapper
      * @param stdClass $data
      * @return Media
      */
-    public function map(stdClass $data): Media
+    public static function map(stdClass $data): Media
     {
         return new Media(
             $data->type,

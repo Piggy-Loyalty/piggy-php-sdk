@@ -8,14 +8,12 @@ class GiftcardProgramsMapper
      * @param $data
      * @return array
      */
-    public function map($data): array
+    public static function map($data): array
     {
-        $mapper = new GiftcardProgramMapper();
-
         $giftcardPrograms = [];
 
         foreach ($data as $item) {
-            $giftcardPrograms[] = $mapper->map($item);
+            $giftcardPrograms[] = GiftcardProgramMapper::map($item);
         }
 
         return $giftcardPrograms;

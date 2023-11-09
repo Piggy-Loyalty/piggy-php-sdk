@@ -4,9 +4,10 @@ namespace Piggy\Api\Models\Vouchers;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
+use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\Mappers\Vouchers\PromotionAttributeMapper;
-use Piggy\Api\Mappers\Vouchers\PromotionAttributesMapper;
+use Piggy\Api\StaticMappers\Vouchers\PromotionAttributeMapper;
+use Piggy\Api\StaticMappers\Vouchers\PromotionAttributesMapper;
 
 /**
  * Class PromotionAttribute
@@ -48,11 +49,6 @@ class PromotionAttribute
      * @var ?string
      */
     protected $placeholder;
-
-    /**
-     * @var string
-     */
-    protected static $mapper = PromotionAttributeMapper::class;
 
     /**
      * @var string
@@ -146,59 +142,51 @@ class PromotionAttribute
     /**
      * @param array $params
      * @return array
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function list(array $params = []): array
     {
         $response = ApiClient::get(self::$resourceUri, $params);
 
-        $mapper = new PromotionAttributesMapper();
-
-        return $mapper->map($response->getData());
+        return PromotionAttributesMapper::map($response->getData());
     }
 
     /**
      * @param $promotionAttributeId
      * @param array $params
      * @return PromotionAttribute
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function get($promotionAttributeId, array $params = []): PromotionAttribute
     {
         $response = ApiClient::get(self::$resourceUri . "/$promotionAttributeId", $params);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return PromotionAttributeMapper::map($response->getData());
     }
 
     /**
      * @param array $body
      * @return PromotionAttribute
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function create(array $body): PromotionAttribute
     {
         $response = ApiClient::post(self::$resourceUri, $body);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return PromotionAttributeMapper::map($response->getData());
     }
 
     /**
      * @param $promotionAttributeId
      * @param array $body
      * @return PromotionAttribute
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function update($promotionAttributeId, array $body): PromotionAttribute
     {
         $response = ApiClient::put(self::$resourceUri . "/$promotionAttributeId", $body);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return PromotionAttributeMapper::map($response->getData());
     }
 }
 

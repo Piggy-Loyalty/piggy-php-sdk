@@ -5,7 +5,9 @@ namespace Piggy\Api\Models\Prepaid;
 use DateTime;
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
-use Piggy\Api\Mappers\Prepaid\PrepaidTransactionMapper;
+use Piggy\Api\Exceptions\MaintenanceModeException;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\StaticMappers\Prepaid\PrepaidTransactionMapper;
 
 /**
  * Class PrepaidTransaction
@@ -37,11 +39,6 @@ class PrepaidTransaction
      * @var string
      */
     protected static $resourceUri = "/api/v3/register/prepaid-transactions";
-
-    /**
-     * @var string
-     */
-    protected static $mapper = PrepaidTransactionMapper::class;
 
     /**
      * @param int $amountInCents
@@ -92,14 +89,12 @@ class PrepaidTransaction
     /**
      * @param array $body
      * @return PrepaidTransaction
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function create(array $body): PrepaidTransaction
     {
         $response = ApiClient::post(self::$resourceUri, $body);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return PrepaidTransactionMapper::map($response->getData());
     }
 }

@@ -12,15 +12,14 @@ class LoyaltyTransactionAttributesMapper
      * @param $data
      * @return array
      */
-    public function map($data): array
+    public static function map($data): array
     {
-        $mapper = new LoyaltyTransactionAttributeMapper();
+        $loyaltyTransactionAttributes = [];
 
-        $LoyaltyTransactionAttributes = [];
         foreach ($data as $item) {
-            $LoyaltyTransactionAttributes[] = $mapper->map($item);
+            $loyaltyTransactionAttributes[] = LoyaltyTransactionAttributeMapper::map($item);
         }
 
-        return $LoyaltyTransactionAttributes;
+        return $loyaltyTransactionAttributes;
     }
 }

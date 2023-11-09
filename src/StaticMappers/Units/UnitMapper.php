@@ -15,7 +15,7 @@ class UnitMapper
      * @param stdClass $data
      * @return Unit
      */
-    public function map(stdClass $data): Unit
+    public static function map(stdClass $data): Unit
     {
         return new Unit(
             $data->name,

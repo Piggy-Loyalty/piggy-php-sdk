@@ -12,7 +12,7 @@ class RewardAttributeMapper
      * @param stdClass $rewardAttribute
      * @return RewardAttribute
      */
-    public function map(stdClass $rewardAttribute): RewardAttribute
+    public static function map(stdClass $rewardAttribute): RewardAttribute
     {
         $fieldType = $rewardAttribute->type;
 

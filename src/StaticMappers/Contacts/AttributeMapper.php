@@ -12,7 +12,7 @@ class AttributeMapper extends BaseMapper
      * @param stdClass $data
      * @return Attribute
      */
-    public function map(stdClass $data): Attribute
+    public static function map(stdClass $data): Attribute
     {
         $fieldType = $data->type;
         $isSoftReadOnly = property_exists($data, 'is_soft_read_only') && $data->is_soft_read_only;

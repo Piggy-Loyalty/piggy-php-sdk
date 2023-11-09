@@ -14,7 +14,7 @@ class OAuthTokenMapper
      * @param object $data
      * @return OAuthToken
      */
-    public function map(object $data): OAuthToken
+    public static function map(object $data): OAuthToken
     {
         $token = new OAuthToken();
 

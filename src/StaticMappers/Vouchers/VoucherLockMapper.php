@@ -14,13 +14,10 @@ class VoucherLockMapper
      * @param $data
      * @return VoucherLock
      */
-    public function map($data): VoucherLock
+    public static function map($data): VoucherLock
     {
-        $voucherMapper = new VoucherMapper();
-        $voucher = $voucherMapper->map($data->voucher);
-
-        $lockMapper = new LockMapper();
-        $lock = $lockMapper->map($data->lock);
+        $voucher = VoucherMapper::map($data->voucher);
+        $lock = LockMapper::map($data->lock);
 
         return new VoucherLock(
             $voucher,

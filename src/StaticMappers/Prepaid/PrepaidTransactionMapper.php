@@ -16,17 +16,15 @@ class PrepaidTransactionMapper extends BaseMapper
      * @param stdClass $data
      * @return PrepaidTransaction
      */
-    public function map(stdClass $data): PrepaidTransaction
+    public static function map(stdClass $data): PrepaidTransaction
     {
-        $prepaidBalanceMapper = new PrepaidBalanceMapper();
-
-        $prepaidBalance = $prepaidBalanceMapper->map($data->prepaid_balance);
+        $prepaidBalance = PrepaidBalanceMapper::map($data->prepaid_balance);
 
         return new PrepaidTransaction(
             $data->amount_in_cents,
             $prepaidBalance,
             $data->uuid,
-            $this->parseDate($data->created_at)
+            self::parseDate($data->created_at)
         );
     }
 }

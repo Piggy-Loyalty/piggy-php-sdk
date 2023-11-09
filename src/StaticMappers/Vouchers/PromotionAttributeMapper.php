@@ -10,7 +10,7 @@ class PromotionAttributeMapper
      * @param $data
      * @return PromotionAttribute
      */
-    public function map($data): PromotionAttribute
+    public static function map($data): PromotionAttribute
     {
         $options = [];
 

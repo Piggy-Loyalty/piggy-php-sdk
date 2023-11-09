@@ -5,6 +5,8 @@ namespace Piggy\Api\Models\Automations;
 use DateTime;
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
+use Piggy\Api\Exceptions\MaintenanceModeException;
+use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\StaticMappers\Automations\AutomationsMapper;
 
 /**
@@ -42,11 +44,6 @@ class Automation
      * @var string
      */
     protected static $resourceUri = "/api/v3/oauth/clients/automations";
-
-    /**
-     * @var string
-     */
-    protected static $mapper = AutomationsMapper::class;
 
     /**
      * @param string $name
@@ -106,7 +103,7 @@ class Automation
 
     /**
      * @return array
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function list(): array
     {
@@ -118,7 +115,7 @@ class Automation
     /**
      * @param $params
      * @return array
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function create($params): array
     {

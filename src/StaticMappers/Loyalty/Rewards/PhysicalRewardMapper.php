@@ -17,13 +17,9 @@ class PhysicalRewardMapper
      * @param $data
      * @return PhysicalReward
      */
-    public function map($data): PhysicalReward
+    public static function map($data): PhysicalReward
     {
-        $mediaMapper = new MediaMapper();
-
-        if (isset($data->media)) {
-            $media = $mediaMapper->map($data->media);
-        }
+        $media = isset($data->media) ? MediaMapper::map($data->media) : null;
 
         $active = property_exists($data, 'active') ? $data->active : true;
 
@@ -31,8 +27,7 @@ class PhysicalRewardMapper
         $attributes = array_diff_key(get_object_vars($data), array_flip($attributesNamesToDelete));
 
         if (property_exists($data, 'attributes')) {
-            $attributesMapper = new RewardAttributesMapper();
-            $attributes = $attributesMapper->map($data->$attributes);
+            $attributes = RewardAttributesMapper::map($data->$attributes);
         }
 
         return new PhysicalReward(

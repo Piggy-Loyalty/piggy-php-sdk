@@ -15,7 +15,7 @@ class GiftcardTransactionSettlementMapper
      * @param stdClass $data
      * @return GiftcardTransactionSettlement
      */
-    public function map(stdClass $data): GiftcardTransactionSettlement
+    public static function map(stdClass $data): GiftcardTransactionSettlement
     {
         return new GiftcardTransactionSettlement(
             $data->id ?? null

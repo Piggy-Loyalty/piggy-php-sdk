@@ -4,7 +4,9 @@ namespace Piggy\Api\Models\Forms;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
-use Piggy\Api\Mappers\Forms\FormsMapper;
+use Piggy\Api\Exceptions\MaintenanceModeException;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\StaticMappers\Forms\FormsMapper;
 
 /**
  * Class Form
@@ -38,8 +40,6 @@ class Form
     public $type;
 
     protected static $resourceUri = "/api/v3/oauth/clients/forms";
-
-    protected static $mapper = FormsMapper::class;
 
     /**
      * @param string $uuid
@@ -99,14 +99,12 @@ class Form
 
     /**
      * @return array[]
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function list(array $params = []): array
     {
         $response = ApiClient::get(self::$resourceUri, $params);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map((array)$response->getData());
+        return FormsMapper::map((array)$response->getData());
     }
 }

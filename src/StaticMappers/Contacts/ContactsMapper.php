@@ -8,13 +8,11 @@ class ContactsMapper
      * @param $data
      * @return array
      */
-    public function map($data): array
+    public static function map($data): array
     {
-        $contactMapper = new ContactMapper;
-
         $contacts = [];
         foreach ($data as $item) {
-            $contacts[] = $contactMapper->map($item);
+            $contacts[] = ContactMapper::map($item);
         }
 
         return $contacts;

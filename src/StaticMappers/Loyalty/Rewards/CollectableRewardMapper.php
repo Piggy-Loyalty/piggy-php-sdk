@@ -19,25 +19,23 @@ class CollectableRewardMapper extends BaseMapper
      * @return CollectableReward
      * @throws Exception
      */
-    public function map(stdClass $data): CollectableReward
+    public static function map(stdClass $data): CollectableReward
     {
         if (property_exists($data, 'contact')) {
-            $contactMapper = new ContactMapper();
-            $contact = $contactMapper->map($data->contact);
+            $contact = ContactMapper::map($data->contact);
         }
 
         if (property_exists($data, 'reward')) {
-            $rewardMapper = new RewardMapper();
-            $reward = $rewardMapper->map($data->reward);
+            $reward = RewardMapper::map($data->reward);
         }
 
         return new CollectableReward(
             $contact,
-            $this->parseDate($data->created_at),
+            self::parseDate($data->created_at),
             $data->uuid,
             $data->title,
             $reward,
-            $this->parseDate($data->expires_at),
+            self::parseDate($data->expires_at),
             $data->has_been_collected
         );
     }

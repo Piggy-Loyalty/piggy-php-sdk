@@ -20,19 +20,14 @@ class PhysicalRewardReceptionMapper extends BaseMapper
      * @param stdClass $data
      * @return PhysicalRewardReception
      */
-    public function map(stdClass $data): PhysicalRewardReception
+    public static function map(stdClass $data): PhysicalRewardReception
     {
-        $contactMapper = new ContactMapper();
-        $physicalRewardMapper = new PhysicalRewardMapper();
-        $shopMapper = new ShopMapper();
-        $contactIdentifierMapper = new ContactIdentifierMapper();
-
-        $contact = $contactMapper->map($data->contact);
-        $shop = $shopMapper->map($data->shop);
-        $physicalReward = $physicalRewardMapper->map($data->reward);
+        $contact = ContactMapper::map($data->contact);
+        $shop = ShopMapper::map($data->shop);
+        $physicalReward = PhysicalRewardMapper::map($data->reward);
 
         if (isset($data->contact_identifier)) {
-            $contactIdentifier = $contactIdentifierMapper->map($data->contact_identifier);
+            $contactIdentifier = ContactIdentifierMapper::map($data->contact_identifier);
         } else {
             $contactIdentifier = null;
         }
@@ -44,10 +39,10 @@ class PhysicalRewardReceptionMapper extends BaseMapper
             $contact,
             $shop,
             $contactIdentifier,
-            $this->parseDate($data->created_at),
+            self::parseDate($data->created_at),
             $data->title,
             $physicalReward,
-            isset($data->expiration_date) ? $this->parseDate($data->expiration_date) : null,
+            isset($data->expiration_date) ? self::parseDate($data->expiration_date) : null,
             $data->has_been_collected
         );
     }

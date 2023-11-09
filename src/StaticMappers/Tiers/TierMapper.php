@@ -14,7 +14,7 @@ class TierMapper
      * @param $data
      * @return Tier
      */
-    public function map($data): Tier
+    public static function map($data): Tier
     {
         return new Tier(
             $data->name,

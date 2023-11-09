@@ -19,7 +19,7 @@ class LoyaltyTransactionMapper
      * @return LoyaltyTransaction[]
      * @throws Exception
      */
-    public function map($data): array
+    public static function map($data): array
     {
         $creditReceptionMapper = new CreditReceptionMapper();
         $rewardReceptionMapper = new RewardReceptionMapper();

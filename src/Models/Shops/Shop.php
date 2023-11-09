@@ -4,8 +4,10 @@ namespace Piggy\Api\Models\Shops;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
-use Piggy\Api\Mappers\Shops\ShopMapper;
-use Piggy\Api\Mappers\Shops\ShopsMapper;
+use Piggy\Api\Exceptions\MaintenanceModeException;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\StaticMappers\Shops\ShopMapper;
+use Piggy\Api\StaticMappers\Shops\ShopsMapper;
 
 /**
  * Class Shop
@@ -27,11 +29,6 @@ class Shop
      * @var null|int
      */
     protected $id;
-
-    /**
-     * @var string
-     */
-    protected static $mapper = ShopMapper::class;
 
     /**
      * @var string
@@ -78,29 +75,25 @@ class Shop
     /**
      * @param array $params
      * @return array
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function list(array $params = []): array
     {
         $response = ApiClient::get(self::$resourceUri, $params);
 
-        $mapper = new ShopsMapper();
-
-        return $mapper->map($response->getData());
+        return ShopsMapper::map($response->getData());
     }
 
     /**
      * @param string $shopUuid
      * @param array $params
      * @return Shop
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function get(string $shopUuid, array $params = []): Shop
     {
         $response = ApiClient::get(self::$resourceUri . "/$shopUuid", $params);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return ShopMapper::map($response->getData());
     }
 }

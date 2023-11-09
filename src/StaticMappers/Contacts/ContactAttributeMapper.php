@@ -11,12 +11,12 @@ class ContactAttributeMapper
      * @param stdClass $data
      * @return ContactAttribute
      */
-    public function map(stdClass $data): ContactAttribute
+    public static function map(stdClass $data): ContactAttribute
     {
         $attribute = null;
+
         if (property_exists($data,'attribute')) {
-            $attributeMapper = new AttributeMapper();
-            $attribute = $attributeMapper->map($data->attribute);
+            $attribute = AttributeMapper::map($data->attribute);
         }
 
         return new ContactAttribute(

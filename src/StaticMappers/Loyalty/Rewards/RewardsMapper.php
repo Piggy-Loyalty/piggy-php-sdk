@@ -15,13 +15,11 @@ class RewardsMapper
      * @return array
      * @throws Exception
      */
-    public function map($data): array
+    public static function map($data): array
     {
-        $mapper = new RewardMapper();
-
         $rewards = [];
         foreach ($data as $rewardData) {
-            $rewards[] = $mapper->map($rewardData);
+            $rewards[] = RewardMapper::map($rewardData);
         }
 
         return $rewards;

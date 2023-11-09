@@ -12,13 +12,11 @@ class TiersMapper
      * @param $data
      * @return array
      */
-    public function map($data): array
+    public static function map($data): array
     {
-        $mapper = new TierMapper();
-
         $tiers = [];
         foreach ($data as $item) {
-            $tiers[] = $mapper->map($item);
+            $tiers[] = TierMapper::map($item);
         }
 
         return $tiers;

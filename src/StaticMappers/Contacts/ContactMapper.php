@@ -14,24 +14,21 @@ class ContactMapper
      * @param stdClass $data
      * @return Contact
      */
-    public function map(stdClass $data): Contact
+    public static function map(stdClass $data): Contact
     {
         $prepaidBalance = null;
-        if (property_exists($data, 'prepaid_balance')) {
-            $prepaidBalanceMapper = new PrepaidBalanceMapper();
-            $prepaidBalance = $prepaidBalanceMapper->map($data->prepaid_balance);
+        if (property_exists($data, 'prepaid_balance') && $data->prepaid_balance !== null) {
+            $prepaidBalance = PrepaidBalanceMapper::map($data->prepaid_balance);
         }
 
         $creditBalance = null;
         if (property_exists($data, 'credit_balance')) {
-            $creditBalanceMapper = new CreditBalanceMapper();
-            $creditBalance = $creditBalanceMapper->map($data->credit_balance);
+            $creditBalance = CreditBalanceMapper::map($data->credit_balance);
         }
 
         $attributes = null;
         if (property_exists($data, 'attributes')) {
-            $attributesMapper = new ContactAttributesMapper();
-            $attributes = $attributesMapper->map($data->attributes);
+            $attributes = ContactAttributesMapper::map($data->attributes);
         }
 
         $currentValues = [];
@@ -39,10 +36,8 @@ class ContactMapper
             $currentValues = get_object_vars($data->current_values);
         }
 
-        $subscriptionMapper = new SubscriptionsMapper();
-
         if (isset($data->subscriptions)) {
-            $subscriptions = $subscriptionMapper->map($data->subscriptions);
+            $subscriptions = SubscriptionsMapper::map($data->subscriptions);
         } else {
             $subscriptions = null;
         }

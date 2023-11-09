@@ -8,13 +8,11 @@ class AttributesMapper
      * @param $data
      * @return array
      */
-    public function map($data): array
+    public static function map($data): array
     {
-        $attributeMapper = new AttributeMapper;
-
         $attributes = [];
         foreach ($data as $item) {
-            $attributes[] = $attributeMapper->map($item);
+            $attributes[] = AttributeMapper::map($item);
         }
 
         return $attributes;

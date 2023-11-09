@@ -4,8 +4,10 @@ namespace Piggy\Api\Models\Vouchers;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
-use Piggy\Api\Mappers\Vouchers\PromotionMapper;
-use Piggy\Api\Mappers\Vouchers\PromotionsMapper;
+use Piggy\Api\Exceptions\MaintenanceModeException;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\StaticMappers\Vouchers\PromotionMapper;
+use Piggy\Api\StaticMappers\Vouchers\PromotionsMapper;
 
 class Promotion
 {
@@ -38,11 +40,6 @@ class Promotion
      * @var string
      */
     protected static $resourceUri = "/api/v3/oauth/clients/promotions";
-
-    /**
-     * @var string
-     */
-    protected static $mapper = PromotionMapper::class;
 
     /**
      * @param string $uuid
@@ -120,29 +117,25 @@ class Promotion
     /**
      * @param array $body
      * @return Promotion
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function create(array $body): Promotion
     {
         $response = ApiClient::post(self::$resourceUri, $body);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return PromotionMapper::map($response->getData());
     }
 
     /**
      * @param array $params
      * @return array
-     * @throws GuzzleException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function list(array $params = []): array
     {
         $response = ApiClient::get(self::$resourceUri, $params);
 
-        $mapper = new PromotionsMapper();
-
-        return $mapper->map((array)$response->getData());
+        return PromotionsMapper::map((array)$response->getData());
     }
 }
 

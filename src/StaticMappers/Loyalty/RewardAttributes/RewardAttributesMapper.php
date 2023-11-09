@@ -8,14 +8,12 @@ class RewardAttributesMapper
      * @param array $data
      * @return array
      */
-    public function map(array $data): array
+    public static function map(array $data): array
     {
-        $rewardAttributeMapper = new RewardAttributeMapper;
-
         $rewardAttributes = [];
 
         foreach ($data as $item) {
-            $rewardAttributes[] = $rewardAttributeMapper->map($item);
+            $rewardAttributes[] = RewardAttributeMapper::map($item);
         }
 
         return $rewardAttributes;

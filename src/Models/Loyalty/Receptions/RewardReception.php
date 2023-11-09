@@ -3,8 +3,10 @@
 namespace Piggy\Api\Models\Loyalty\Receptions;
 
 use GuzzleHttp\Exception\GuzzleException;
+use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\ApiClient;
-use Piggy\Api\Mappers\Loyalty\Receptions\RewardReceptionMapper;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\StaticMappers\Loyalty\Receptions\RewardReceptionMapper;
 
 /**
  * Class RewardReception
@@ -18,21 +20,14 @@ class RewardReception
     protected static $resourceUri = "/api/v3/oauth/clients/reward-receptions";
 
     /**
-     * @var string
-     */
-    protected static $mapper = RewardReceptionMapper::class;
-
-    /**
      * @param array $body
-     * @return mixed
-     * @throws GuzzleException
+     * @return DigitalRewardReception|PhysicalRewardReception|null
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function create(array $body)
     {
         $response = ApiClient::post(self::$resourceUri, $body);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return RewardReceptionMapper::map($response->getData());
     }
 }

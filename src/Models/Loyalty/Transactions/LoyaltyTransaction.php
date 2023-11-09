@@ -3,9 +3,12 @@
 namespace Piggy\Api\Models\Loyalty\Transactions;
 
 use DateTime;
+use Exception;
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
+use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\Mappers\Loyalty\LoyaltyTransactionMapper;
+use Piggy\Api\StaticMappers\Loyalty\LoyaltyTransactionMapper;
 use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\Models\Contacts\ContactIdentifier;
 use Piggy\Api\Models\Loyalty\Rewards\Reward;
@@ -66,11 +69,6 @@ class LoyaltyTransaction
      * @var string
      */
     protected static $resourceUri = "/api/v3/oauth/clients/loyalty-transactions";
-
-    /**
-     * @var string
-     */
-    protected static $mapper = LoyaltyTransactionMapper::class;
 
     /**
      * @param string $type
@@ -171,14 +169,12 @@ class LoyaltyTransaction
     /**
      * @param array $params
      * @return array
-     * @throws PiggyRequestException
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException|Exception
      */
     public static function list(array $params = []): array
     {
         $response = ApiClient::get(self::$resourceUri, $params);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return LoyaltyTransactionMapper::map($response->getData());
     }
 }

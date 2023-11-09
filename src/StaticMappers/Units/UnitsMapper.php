@@ -12,13 +12,11 @@ class UnitsMapper
      * @param $data
      * @return array
      */
-    public function map($data): array
+    public static function map($data): array
     {
-        $mapper = new UnitMapper();
-
         $units = [];
         foreach ($data as $item) {
-            $units[] = $mapper->map($item);
+            $units[] = UnitMapper::map($item);
         }
 
         return $units;
