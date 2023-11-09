@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Piggy\Api\Mappers;
+namespace Piggy\Api\StaticMappers;
 
 use DateTime;
 use DateTimeInterface;
@@ -10,7 +10,7 @@ use DateTimeInterface;
  * Class BaseMapper
  * @package Piggy\Api\Mappers
  */
-abstract class StaticBaseMapper
+abstract class BaseMapper
 {
     /**
      * @param string $date

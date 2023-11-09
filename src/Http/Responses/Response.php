@@ -10,12 +10,12 @@ use stdClass;
  */
 class Response
 {
-    private $data;
+    protected $data;
 
     /**
      * @var stdClass
      */
-    private $meta;
+    protected $meta;
 
     /**
      * Response constructor.
@@ -25,7 +25,7 @@ class Response
     public function __construct($data, $meta)
     {
         $this->data = $data;
-        $this->meta = $meta;
+        $this->meta = $meta ?? new stdClass();
     }
 
     public function getData()
@@ -33,9 +33,6 @@ class Response
         return $this->data;
     }
 
-    /**
-     * @return stdClass
-     */
     public function getMeta()
     {
         return $this->meta;

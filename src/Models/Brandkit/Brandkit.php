@@ -3,7 +3,8 @@
 namespace Piggy\Api\Models\Brandkit;
 
 use Piggy\Api\ApiClient;
-use Piggy\Api\Mappers\Brandkit\BrandkitMapper;
+use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\StaticMappers\Brandkit\BrandkitMapper;
 
 /**
  * Class Brandkit
@@ -206,14 +207,12 @@ class Brandkit
 
     /**
      * @return Brandkit
-     * @throws \Piggy\Api\Exceptions\PiggyRequestException
+     * @throws PiggyRequestException
      */
     public static function get(): Brandkit
     {
         $response = ApiClient::get(self::$resourceUri);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return BrandkitMapper::map($response->getData());
     }
 }

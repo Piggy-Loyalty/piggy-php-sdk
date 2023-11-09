@@ -5,7 +5,7 @@ namespace Piggy\Api\Models\Contacts;
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\Mappers\ContactIdentifiers\ContactIdentifierMapper;
+use Piggy\Api\StaticMappers\ContactIdentifiers\ContactIdentifierMapper;
 
 /**
  * Class ContactIdentifier
@@ -98,9 +98,7 @@ class ContactIdentifier
     {
         $response = ApiClient::get(self::$resourceUri . "/find", $params);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return ContactIdentifierMapper::map($response->getData());
     }
 
     /**

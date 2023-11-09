@@ -7,6 +7,7 @@ use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\ExceptionMapper;
 use Piggy\Api\Exceptions\MalformedResponseException;
+use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Http\Responses\Response;
 use Piggy\Api\Http\Traits\SetsOAuthResources as OAuthResources;
 use Psr\Http\Message\ResponseInterface;
@@ -187,7 +188,7 @@ class ApiClient
      * @param string $url
      * @param array $params
      * @return Response
-     * @throws GuzzleException
+     * @throws PiggyRequestException
      */
     public static function get(string $url, array $params = []): Response
     {
@@ -204,7 +205,6 @@ class ApiClient
      * @param string $url
      * @param array $body
      * @return Response
-     * @throws GuzzleException
      */
     public static function destroy(string $url, array $body = []): Response
     {
@@ -220,11 +220,11 @@ class ApiClient
     /**
      * @param $method
      * @param $url
-     * @param $options
+     * @param array $options
      * @return ResponseInterface
      * @throws GuzzleException
      */
-    private static function getResponse($method, $url, $options = []): ResponseInterface
+    private static function getResponse($method, $url, array $options = []): ResponseInterface
     {
         return self::$httpClient->request($method, $url, $options);
     }

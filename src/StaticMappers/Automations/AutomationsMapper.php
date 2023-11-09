@@ -1,6 +1,6 @@
 <?php
 
-namespace Piggy\Api\Mappers\Automations2;
+namespace Piggy\Api\StaticMappers\Automations;
 
 use Piggy\Api\Http\Responses\Response;
 
