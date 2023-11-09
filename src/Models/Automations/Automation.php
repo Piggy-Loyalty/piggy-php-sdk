@@ -5,7 +5,7 @@ namespace Piggy\Api\Models\Automations;
 use DateTime;
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
-use Piggy\Api\Mappers\Automations\AutomationsMapper;
+use Piggy\Api\Mappers\Automations2\AutomationsMapper;
 
 /**
  * Class Automation
@@ -112,9 +112,7 @@ class Automation
     {
         $response = ApiClient::get(self::$resourceUri, []);
 
-        $mapper = new self::$mapper;
-
-        return $mapper->map($response->getData());
+        return AutomationsMapper::map($response);
     }
 
     /**

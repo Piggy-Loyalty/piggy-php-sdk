@@ -49,6 +49,7 @@ class ApiClient
     {
         self::setApiKey($apiKey);
         self::setBaseUrl($baseUrl);
+        self::$httpClient = new GuzzleClient();
     }
 
     /**
@@ -75,7 +76,9 @@ class ApiClient
      * @param string $endpoint
      * @param array $queryOptions
      * @return Response
-     * @throws Exception|GuzzleException
+     * @throws Exceptions\MaintenanceModeException
+     * @throws Exceptions\PiggyRequestException
+     * @throws GuzzleException
      */
     public static function request(string $method, string $endpoint, array $queryOptions = []): Response
     {
@@ -215,24 +218,14 @@ class ApiClient
     }
 
     /**
+     * @param $method
+     * @param $url
+     * @param $options
+     * @return ResponseInterface
      * @throws GuzzleException
      */
     private static function getResponse($method, $url, $options = []): ResponseInterface
     {
-        if (hasGuzzle5()) {
-            // v5 does not have form_params, so we need to apply a trick.
-            if (isset($options['form_params'])) {
-                $options['body'] = http_build_query($options['form_params']);
-                unset($options['form_params']);
-
-                $options['headers']['Content-Type'] = 'application/x-www-form-urlencoded';
-            }
-
-            $request = self::$httpClient->createRequest($method, $url, $options);
-            return self::$httpClient->send($request);
-        }
-
-        $client = new GuzzleClient();
-        return $client->request($method, $url, $options);
+        return self::$httpClient->request($method, $url, $options);
     }
 }
