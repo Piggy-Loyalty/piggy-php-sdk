@@ -152,13 +152,13 @@ class WebhookSubscription
 
     /**
      * @param string $webhookUuid
-     * @param array $body
+     * @param array $params
      * @return mixed
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function update(string $webhookUuid, array $body): WebhookSubscription
+    public static function update(string $webhookUuid, array $params): WebhookSubscription
     {
-        $response = ApiClient::put(self::$resourceUri . "/{$webhookUuid}", $body);
+        $response = ApiClient::put(self::$resourceUri . "/{$webhookUuid}", $params);
 
         return WebhookSubscriptionMapper::map($response->getData());
     }
@@ -176,13 +176,13 @@ class WebhookSubscription
     }
 
     /**
-     * @param array $body
+     * @param array $params
      * @return WebhookSubscription
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $body): WebhookSubscription
+    public static function create(array $params): WebhookSubscription
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $params);
 
         return WebhookSubscriptionMapper::map($response->getData());
     }
@@ -202,13 +202,13 @@ class WebhookSubscription
 
     /**
      * @param string $webhookUuid
-     * @param array $body
+     * @param array $params
      * @return string
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function destroy(string $webhookUuid, array $body = []): string
+    public static function destroy(string $webhookUuid, array $params = []): string
     {
-        ApiClient::destroy(self::$resourceUri . "/$webhookUuid", $body);
+        ApiClient::destroy(self::$resourceUri . "/$webhookUuid", $params);
 
         return 'Webhook deleted';
     }

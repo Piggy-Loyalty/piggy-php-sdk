@@ -87,13 +87,13 @@ class PrepaidTransaction
     }
 
     /**
-     * @param array $body
+     * @param array $params
      * @return PrepaidTransaction
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $body): PrepaidTransaction
+    public static function create(array $params): PrepaidTransaction
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $params);
 
         return PrepaidTransactionMapper::map($response->getData());
     }

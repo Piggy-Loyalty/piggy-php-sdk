@@ -174,13 +174,13 @@ class Giftcard
     }
 
     /**
-     * @param array $body
+     * @param array $params
      * @return Giftcard
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $body): Giftcard
+    public static function create(array $params): Giftcard
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $params);
 
         return GiftcardMapper::map($response->getData());
     }

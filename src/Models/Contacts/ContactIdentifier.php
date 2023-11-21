@@ -98,25 +98,25 @@ class ContactIdentifier
     }
 
     /**
-     * @param array $body
+     * @param array $params
      * @return ContactIdentifier
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $body): ContactIdentifier
+    public static function create(array $params): ContactIdentifier
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $params);
 
         return ContactIdentifierMapper::map($response->getData());
     }
 
     /**
-     * @param array $body
+     * @param array $params
      * @return ContactIdentifier
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException|PiggyRequestException
      */
-    public static function link(array $body): ContactIdentifier
+    public static function link(array $params): ContactIdentifier
     {
-        $response = ApiClient::put(self::$resourceUri . "/link", $body);
+        $response = ApiClient::put(self::$resourceUri . "/link", $params);
 
         return ContactIdentifierMapper::map($response->getData());
     }

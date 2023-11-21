@@ -176,13 +176,13 @@ class CreditReception
     }
 
     /**
-     * @param array $body
+     * @param array $params
      * @return CreditReception
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $body): CreditReception
+    public static function create(array $params): CreditReception
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $params);
 
         return CreditReceptionMapper::map($response->getData());
     }

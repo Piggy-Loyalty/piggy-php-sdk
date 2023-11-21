@@ -156,14 +156,14 @@ class CollectableReward
 
     /**
      * @param string $loyaltyTransactionUuid
-     * @param array $body
+     * @param array $params
      * @return CollectableReward
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      * @throws Exception
      */
-    public static function collect(string $loyaltyTransactionUuid, array $body = []): CollectableReward
+    public static function collect(string $loyaltyTransactionUuid, array $params = []): CollectableReward
     {
-        $response = ApiClient::put(self::$resourceUri . "/collect/$loyaltyTransactionUuid", $body);
+        $response = ApiClient::put(self::$resourceUri . "/collect/$loyaltyTransactionUuid", $params);
 
         return CollectableRewardMapper::map($response->getData());
     }

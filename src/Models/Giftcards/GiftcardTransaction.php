@@ -186,26 +186,26 @@ class GiftcardTransaction
     }
 
     /**
-     * @param array $body
+     * @param array $params
      * @return GiftcardTransaction
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $body): GiftcardTransaction
+    public static function create(array $params): GiftcardTransaction
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $params);
 
         return GiftcardTransactionMapper::map($response->getData());
     }
 
     /**
      * @param string $giftcardTransactionUuid
-     * @param array $body
+     * @param array $params
      * @return GiftcardTransaction
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function correct(string $giftcardTransactionUuid, array $body = []): GiftcardTransaction
+    public static function correct(string $giftcardTransactionUuid, array $params = []): GiftcardTransaction
     {
-        $response = ApiClient::post(self::$resourceUri . "/$giftcardTransactionUuid/correct", $body);
+        $response = ApiClient::post(self::$resourceUri . "/$giftcardTransactionUuid/correct", $params);
 
         return GiftcardTransactionMapper::map($response->getData());
     }

@@ -8,10 +8,12 @@ use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Models\Loyalty\CreditBalance;
 use Piggy\Api\Models\Prepaid\PrepaidBalance;
+use Piggy\Api\Models\Tiers\Tier;
 use Piggy\Api\StaticMappers\Contacts\ContactMapper;
 use Piggy\Api\StaticMappers\Contacts\ContactsMapper;
 use Piggy\Api\StaticMappers\Loyalty\CreditBalanceMapper;
 use Piggy\Api\StaticMappers\Prepaid\PrepaidBalanceMapper;
+use Piggy\Api\StaticMappers\Tiers\TierMapper;
 use stdClass;
 
 /**
@@ -91,11 +93,6 @@ class Contact
     /**
      * @param string $uuid
      */
-    public function setUuid(string $uuid): void
-    {
-        $this->uuid = $uuid;
-    }
-
     /**
      * @return string|null
      */
@@ -104,78 +101,45 @@ class Contact
         return $this->email;
     }
 
-    /**
-     * @param string|null $email
-     */
-    public function setEmail(?string $email): void
-    {
-        $this->email = $email;
-    }
+//    /**
+//     * @return PrepaidBalance
+//     */
+//    public function getPrepaidBalance(): ?PrepaidBalance
+//    {
+//        return $this->prepaidBalance;
+//    }
 
-    /**
-     * @return PrepaidBalance
-     */
-    public function getPrepaidBalance(): ?PrepaidBalance
-    {
-        return $this->prepaidBalance;
-    }
+//    /**
+//     * @return CreditBalance
+//     */
+//    public function getCreditBalance(): ?CreditBalance
+//    {
+//        return $this->creditBalance;
+//    }
 
-    /**
-     * @return CreditBalance
-     */
-    public function getCreditBalance(): ?CreditBalance
-    {
-        return $this->creditBalance;
-    }
+//    /**
+//     * @param CreditBalance|null $creditBalance
+//     */
+//    public function setCreditBalance(?CreditBalance $creditBalance): void
+//    {
+//        $this->creditBalance = $creditBalance;
+//    }
 
-    /**
-     * @param CreditBalance|null $creditBalance
-     */
-    public function setCreditBalance(?CreditBalance $creditBalance): void
-    {
-        $this->creditBalance = $creditBalance;
-    }
+//    /**
+//     * @return array|null
+//     */
+//    public function getAttributes(): ?array
+//    {
+//        return $this->attributes;
+//    }
 
-    /**
-     * @param PrepaidBalance|null $prepaidBalance
-     */
-    public function setPrepaidBalance(?PrepaidBalance $prepaidBalance): void
-    {
-        $this->prepaidBalance = $prepaidBalance;
-    }
-
-    /**
-     * @return array|null
-     */
-    public function getAttributes(): ?array
-    {
-        return $this->attributes;
-    }
-
-    /**
-     * @param array|null $attributes
-     * @return void
-     */
-    public function setAttributes(?array $attributes): void
-    {
-        $this->attributes = $attributes;
-    }
-
-    /**
-     * @return array
-     */
-    public function getSubscriptions(): array
-    {
-        return $this->subscriptions;
-    }
-
-    /**
-     * @param array $subscriptions
-     */
-    public function setSubscriptions(array $subscriptions): void
-    {
-        $this->subscriptions = $subscriptions;
-    }
+//    /**
+//     * @return array
+//     */
+//    public function getSubscriptions(): array
+//    {
+//        return $this->subscriptions;
+//    }
 
     /**
      * @return array|null
@@ -186,14 +150,6 @@ class Contact
     }
 
     /**
-     * @param array $currentValues
-     */
-    public function setCurrentValues(array $currentValues): void
-    {
-        $this->currentValues = $currentValues;
-    }
-
-    /**
      * @param string $contactUuid
      * @param array $params
      * @return Contact
@@ -201,7 +157,7 @@ class Contact
      */
     public static function get(string $contactUuid, array $params = []): Contact
     {
-        $response = ApiClient::get(self::$resourceUri . '/' . $contactUuid, $params);
+        $response = ApiClient::get(self::$resourceUri . "/$contactUuid", $params);
 
         return ContactMapper::map($response->getData());
     }
@@ -223,7 +179,7 @@ class Contact
      * @return Contact
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function findOneBy(array $params): Contact
+    public static function find(array $params): Contact
     {
         $response = ApiClient::get(self::$resourceUri . "/find-one-by", $params);
 
@@ -243,53 +199,26 @@ class Contact
     }
 
     /**
-     * @param string $contactUuid
      * @param array $params
-     * @return PrepaidBalance
+     * @return stdClass
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function showPrepaidBalance(string $contactUuid, array $params = []): PrepaidBalance
-    {
-        $response = ApiClient::get(self::$resourceUri . "/" . $contactUuid . '/prepaid-balance');
-
-        return PrepaidBalanceMapper::map($response->getData());
-    }
-
-    /**
-     * @param string $contactUuid
-     * @param array $params
-     * @return CreditBalance
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function showCreditBalance(string $contactUuid, array $params = []): CreditBalance
-    {
-        $response = ApiClient::get(self::$resourceUri . "/" . $contactUuid . '/credit-balance', $params);
-
-        return CreditBalanceMapper::map($response->getData());
-    }
-
-    /**
-     * @param array $params
-     * @return Contact
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function findOrCreateAsync(array $params): Contact
+    public static function findOrCreateAsync(array $params): stdClass
     {
         $response = ApiClient::get(self::$resourceUri . "/find-or-create/async", $params);
 
-        return ContactMapper::map($response->getData());
+        return $response->getData();
     }
 
     /**
      * @param array $body
-     * @return Contact
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $body): Contact
+    public static function create(array $body): stdClass
     {
         $response = ApiClient::post(self::$resourceUri, $body);
 
-        return ContactMapper::map($response->getData());
+        return $response->getData();
     }
 
     /**
@@ -312,7 +241,7 @@ class Contact
      */
     public static function update(string $contactUuid, array $body): Contact
     {
-        $response = ApiClient::put(self::$resourceUri . "/" . $contactUuid, $body);
+        $response = ApiClient::put(self::$resourceUri . "/$contactUuid", $body);
 
         return ContactMapper::map($response->getData());
     }
@@ -335,9 +264,9 @@ class Contact
      * @return mixed
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function destroy(string $contactUuid, array $body = []): stdClass
+    public static function delete(string $contactUuid, array $body = []): stdClass
     {
-        return ApiClient::post(self::$resourceUri . "/" . $contactUuid . '/delete', $body);
+        return ApiClient::post(self::$resourceUri . "/$contactUuid/delete", $body);
     }
 
     /**
@@ -348,8 +277,47 @@ class Contact
      */
     public static function claimAnonymousContact(string $contactUuid, array $body = []): Contact
     {
-        $response = ApiClient::put(self::$resourceUri . "/" . $contactUuid . '/claim', $body);
+        $response = ApiClient::put(self::$resourceUri . "/$contactUuid/claim", $body);
 
         return ContactMapper::map($response->getData());
+    }
+
+    /**
+     * @param string $contactUuid
+     * @param array $params
+     * @return CreditBalance
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
+     */
+    public static function getCreditBalance(string $contactUuid, array $params = []): CreditBalance
+    {
+        $response = ApiClient::get(self::$resourceUri . "/$contactUuid/credit-balance", $params);
+
+        return CreditBalanceMapper::map($response->getData());
+    }
+
+    /**
+     * @param string $contactUuid
+     * @param array $params
+     * @return PrepaidBalance
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
+     */
+    public static function getPrepaidBalance(string $contactUuid, array $params = []): PrepaidBalance
+    {
+        $response = ApiClient::get(self::$resourceUri . "/$contactUuid/prepaid-balance", $params);
+
+        return PrepaidBalanceMapper::map($response->getData());
+    }
+
+    /**
+     * @param string $contactUuid
+     * @param array $params
+     * @return Tier
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
+     */
+    public static function getTier(string $contactUuid, array $params = []): Tier
+    {
+        $response = ApiClient::get(self::$resourceUri . "/$contactUuid/tier", $params);
+
+        return TierMapper::map($response->getData());
     }
 }

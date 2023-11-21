@@ -275,13 +275,13 @@ class RewardAttribute
     }
 
     /**
-     * @param array $body
+     * @param array $params
      * @return RewardAttribute
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $body): RewardAttribute
+    public static function create(array $params): RewardAttribute
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $params);
 
         return RewardAttributeMapper::map($response->getData());
     }

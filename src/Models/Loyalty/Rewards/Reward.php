@@ -213,14 +213,14 @@ class Reward
 
     /**
      * @param $rewardUuid
-     * @param array $body
+     * @param array $params
      * @return Reward
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      * @throws Exception
      */
-    public static function update($rewardUuid, array $body): Reward
+    public static function update($rewardUuid, array $params): Reward
     {
-        $response = ApiClient::put(self::$resourceUri . "/$rewardUuid", $body);
+        $response = ApiClient::put(self::$resourceUri . "/$rewardUuid", $params);
 
         return RewardMapper::map($response->getData());
     }

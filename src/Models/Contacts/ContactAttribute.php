@@ -77,13 +77,13 @@ class ContactAttribute
     }
 
     /**
-     * @param array $body
+     * @param array $params
      * @return Attribute
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $body): Attribute
+    public static function create(array $params): Attribute
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $params);
 
         return AttributeMapper::map($response->getData());
     }

@@ -43,7 +43,7 @@ class Subscription
     public function __construct(SubscriptionType $subscriptionType, bool $isSubscribed, string $status)
     {
         $this->subscriptionType = $subscriptionType;
-        $this->isSubscribed = $isSubscribed;
+        $this->is_subscribed = $isSubscribed;
         $this->status = $status;
     }
 
@@ -111,26 +111,26 @@ class Subscription
 
     /**
      * @param string $contactUuid
-     * @param array $body
+     * @param array $params
      * @return Subscription
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function subscribe(string $contactUuid, array $body): Subscription
+    public static function subscribe(string $contactUuid, array $params): Subscription
     {
-        $response = ApiClient::put(self::$resourceUri . "/$contactUuid/subscribe", $body);
+        $response = ApiClient::put(self::$resourceUri . "/$contactUuid/subscribe", $params);
 
         return SubscriptionMapper::map($response->getData());
     }
 
     /**
      * @param string $contactUuid
-     * @param array $body
+     * @param array $params
      * @return Subscription
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function unsubscribe(string $contactUuid, array $body): Subscription
+    public static function unsubscribe(string $contactUuid, array $params): Subscription
     {
-        $response = ApiClient::put(self::$resourceUri . "/$contactUuid/unsubscribe", $body);
+        $response = ApiClient::put(self::$resourceUri . "/$contactUuid/unsubscribe", $params);
 
         return SubscriptionMapper::map($response->getData());
     }

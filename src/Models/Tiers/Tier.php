@@ -114,17 +114,4 @@ class Tier
 
         return TiersMapper::map((array)$response->getData());
     }
-
-    /**
-     * @param string $contactUuid
-     * @param array $params
-     * @return Tier
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function getTierForContact(string $contactUuid, array $params = []): Tier
-    {
-        $response = ApiClient::get("/api/v3/oauth/clients/contacts" . "/$contactUuid/tier", $params);
-
-        return TierMapper::map($response->getData());
-    }
 }

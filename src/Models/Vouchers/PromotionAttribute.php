@@ -165,26 +165,26 @@ class PromotionAttribute
     }
 
     /**
-     * @param array $body
+     * @param array $params
      * @return PromotionAttribute
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $body): PromotionAttribute
+    public static function create(array $params): PromotionAttribute
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $params);
 
         return PromotionAttributeMapper::map($response->getData());
     }
 
     /**
      * @param $promotionAttributeId
-     * @param array $body
+     * @param array $params
      * @return PromotionAttribute
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function update($promotionAttributeId, array $body): PromotionAttribute
+    public static function update($promotionAttributeId, array $params): PromotionAttribute
     {
-        $response = ApiClient::put(self::$resourceUri . "/$promotionAttributeId", $body);
+        $response = ApiClient::put(self::$resourceUri . "/$promotionAttributeId", $params);
 
         return PromotionAttributeMapper::map($response->getData());
     }

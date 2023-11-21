@@ -20,25 +20,25 @@ class ContactVerification
     protected static $resourceUri = "/api/v3/oauth/clients/contact-verification";
 
     /**
-     * @param array $body
+     * @param array $params
      * @return stdClass
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function sendVerificationMail(array $body): stdClass
+    public static function sendVerificationMail(array $params): stdClass
     {
-        $response = ApiClient::post(self::$resourceUri . "/send", $body);
+        $response = ApiClient::post(self::$resourceUri . "/send", $params);
 
         return $response->getData();
     }
 
     /**
-     * @param array $body
+     * @param array $params
      * @return stdClass
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function verifyLoginCode(array $body): stdClass
+    public static function verifyLoginCode(array $params): stdClass
     {
-        $response = ApiClient::post(self::$resourceUri . "/verify", $body);
+        $response = ApiClient::post(self::$resourceUri . "/verify", $params);
 
         return $response->getData();
     }

@@ -18,14 +18,17 @@ class RewardMapper
      */
     public static function map(stdClass $data): Reward
     {
+        $physicalMapper = new PhysicalRewardMapper();
+        $digitalMapper = new DigitalRewardMapper();
+
         $reward = null;
 
         if ($data->reward_type === RewardType::PHYSICAL) {
-            $reward = PhysicalRewardMapper::map($data);
+            $reward = $physicalMapper->map($data);
         }
 
         if ($data->reward_type === RewardType::DIGITAL) {
-            $reward = DigitalRewardMapper::map($data);
+            $reward = $digitalMapper->map($data);
         }
 
         if ($reward === null) {

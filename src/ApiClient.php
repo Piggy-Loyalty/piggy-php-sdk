@@ -87,6 +87,7 @@ class ApiClient
 
         $url = self::$baseUrl . $endpoint;
 
+
         try {
             $rawResponse = self::getResponse($method, $url, [
                 "headers" => self::$headers,
@@ -96,7 +97,8 @@ class ApiClient
             return self::parseResponse($rawResponse);
         } catch (Exception $e) {
             $exceptionMapper = new ExceptionMapper();
-            throw $exceptionMapper->map($e);
+            $exception = $exceptionMapper->map($e);
+            throw $exception;
         }
     }
 

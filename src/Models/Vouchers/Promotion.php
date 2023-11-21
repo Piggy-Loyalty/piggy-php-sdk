@@ -115,13 +115,13 @@ class Promotion
     }
 
     /**
-     * @param array $body
+     * @param array $params
      * @return Promotion
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $body): Promotion
+    public static function create(array $params): Promotion
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $params);
 
         return PromotionMapper::map($response->getData());
     }

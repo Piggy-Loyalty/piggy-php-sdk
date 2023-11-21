@@ -20,13 +20,13 @@ class RewardReception
     protected static $resourceUri = "/api/v3/oauth/clients/reward-receptions";
 
     /**
-     * @param array $body
+     * @param array $params
      * @return DigitalRewardReception|PhysicalRewardReception|null
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $body)
+    public static function create(array $params)
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $params);
 
         return RewardReceptionMapper::map($response->getData());
     }

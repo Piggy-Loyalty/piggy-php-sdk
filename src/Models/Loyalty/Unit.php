@@ -95,13 +95,13 @@ class Unit
     }
 
     /**
-     * @param array $body
+     * @param array $params
      * @return Unit
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $body): Unit
+    public static function create(array $params): Unit
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $params);
 
         return UnitMapper::map($response->getData());
     }

@@ -172,13 +172,13 @@ class LoyaltyTransactionAttribute
     }
 
     /**
-     * @param array $body
+     * @param array $params
      * @return LoyaltyTransactionAttribute
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $body): LoyaltyTransactionAttribute
+    public static function create(array $params): LoyaltyTransactionAttribute
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::$resourceUri, $params);
 
         return LoyaltyTransactionAttributeMapper::map($response->getData());
     }

@@ -23,18 +23,17 @@ class ExceptionMapper
         if (method_exists($exception, 'hasResponse') && method_exists($exception, 'getResponse')) {
 
             if ($exception->getResponse()->getStatusCode() == 503) {
-                throw new MaintenanceModeException("Piggy system is in maintenance mode.", 503);
+                $exception = new MaintenanceModeException("Piggy system is in maintenance mode.", 503);
             }
 
-            if(property_exists($exception->getResponse(), 'getBody')) {
-                $body = $exception->getResponse()->getBody();
-                $body = @json_decode($body);
+            $body = $exception->getResponse()->getBody();
+            $body = @json_decode($body);
 
-                if ($this->isPiggyException($body)) {
-                    throw $this->mapPiggyException($body, $exception);
-                }
+            if ($this->isPiggyException($body)) {
+                $exception = $this->mapPiggyException($body, $exception);
             }
         }
+
 
         return $exception;
     }

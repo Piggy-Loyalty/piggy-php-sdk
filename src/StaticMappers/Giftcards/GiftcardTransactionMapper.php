@@ -4,6 +4,7 @@ namespace Piggy\Api\StaticMappers\Giftcards;
 
 use Piggy\Api\StaticMappers\BaseMapper;
 use Piggy\Api\Models\Giftcards\GiftcardTransaction;
+use Piggy\Api\StaticMappers\Shops\ShopMapper;
 use stdClass;
 
 /**
@@ -26,10 +27,15 @@ class GiftcardTransactionMapper extends BaseMapper
 //        }
 
         if (isset($data->settlements)) {
-            $settlements = array_map(function($settlement) {
+            $settlements = array_map(function ($settlement) {
                 return GiftcardTransactionSettlementMapper::map($settlement);
             }, $data->settlements);
         }
+
+        if (isset($data->shop)) {
+            $shop = ShopMapper::map($data->shop);
+        }
+
 
         return new GiftcardTransaction(
             $data->uuid,
@@ -38,7 +44,7 @@ class GiftcardTransactionMapper extends BaseMapper
             $data->type ?? null,
             $data->settled ?? null,
             $data->card_id ?? null,
-            $data->shop_id ?? null,
+            $shop ?? null,
             $settlements ?? [],
             $data->id ?? null
         );
