@@ -35,7 +35,7 @@ class LoyaltyProgram
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/register/loyalty-program";
+    protected static $resourceUri = "/api/v3/oauth/clients/loyalty-program";
 
     /**
      * @param int $id

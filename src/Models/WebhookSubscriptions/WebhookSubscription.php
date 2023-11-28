@@ -206,9 +206,9 @@ class WebhookSubscription
      * @return string
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function destroy(string $webhookUuid, array $params = []): string
+    public static function delete(string $webhookUuid, array $params = []): string
     {
-        ApiClient::destroy(self::$resourceUri . "/$webhookUuid", $params);
+        ApiClient::delete(self::$resourceUri . "/$webhookUuid", $params);
 
         return 'Webhook deleted';
     }

@@ -11,6 +11,7 @@ use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\StaticMappers\Vouchers\VoucherLockMapper;
 use Piggy\Api\StaticMappers\Vouchers\VoucherMapper;
 use Piggy\Api\StaticMappers\Vouchers\VouchersMapper;
+use stdClass;
 
 class Voucher
 {
@@ -216,14 +217,15 @@ class Voucher
 
     /**
      * @param array $params
-     * @return string
+     * @return stdClass
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function batch(array $params): string
+    public static function batch(array $params): stdClass
     {
-        ApiClient::post(self::$resourceUri, $params);
+        $response = ApiClient::post(self::$resourceUri . "/batch", $params);
+        var_dump(json_encode($response->getData()));
 
-        return "Voucher generation successfully started in background.";
+        return $response->getData();
     }
 
     /**
@@ -243,7 +245,7 @@ class Voucher
      * @return Voucher
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function findByCode(array $params): Voucher
+    public static function find(array $params): Voucher
     {
         $response = ApiClient::get(self::$resourceUri . "/find", $params);
 
@@ -264,39 +266,39 @@ class Voucher
 
     /**
      * @param string $voucherUuid
-     * @param array $params
+     * @param array $body
      * @return VoucherLock
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function lock(string $voucherUuid, array $params = []): VoucherLock
+    public static function lock(string $voucherUuid, array $body = []): VoucherLock
     {
-        $response = ApiClient::post(self::$resourceUri . "/$voucherUuid/lock/", $params);
+        $response = ApiClient::post(self::$resourceUri . "/$voucherUuid/lock/", $body);
 
         return VoucherLockMapper::map($response->getData());
     }
 
     /**
      * @param string $voucherUuid
-     * @param array $params
+     * @param array $body
      * @return VoucherLock
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function release(string $voucherUuid, array $params): VoucherLock
+    public static function release(string $voucherUuid, array $body): VoucherLock
     {
-        $response = ApiClient::post(self::$resourceUri . "/$voucherUuid/release/", $params);
+        $response = ApiClient::post(self::$resourceUri . "/$voucherUuid/release/", $body);
 
         return VoucherLockMapper::map($response->getData());
     }
 
     /**
      * @param string $voucherUuid
-     * @param array $params
+     * @param array $body
      * @return Voucher
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function update(string $voucherUuid, array $params): Voucher
+    public static function update(string $voucherUuid, array $body): Voucher
     {
-        $response = ApiClient::put(self::$resourceUri . "/$voucherUuid", $params);
+        $response = ApiClient::put(self::$resourceUri . "/$voucherUuid", $body);
 
         return VoucherMapper::map($response->getData());
     }

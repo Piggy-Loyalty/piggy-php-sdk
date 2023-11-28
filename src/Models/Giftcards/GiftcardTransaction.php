@@ -7,8 +7,10 @@ use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
 use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\Models\Shops\Shop;
 use Piggy\Api\StaticMappers\Giftcards\GiftcardTransactionMapper;
 use Piggy\Api\StaticMappers\Giftcards\GiftcardTransactionsMapper;
+use stdClass;
 
 /**
  * Class GiftcardTransaction
@@ -62,6 +64,16 @@ class GiftcardTransaction
     protected $id;
 
     /**
+     * @var Shop|null
+     */
+    protected $shop;
+
+    /**
+     * @var stdClass|null
+     */
+    protected $card;
+
+    /**
      * @var string
      */
     protected static $resourceUri = "/api/v3/oauth/clients/giftcard-transactions";
@@ -76,6 +88,8 @@ class GiftcardTransaction
      * @param int|null $shopId
      * @param array $settlements
      * @param int|null $id
+     * @param Shop|null $shop
+     * @param stdClass|null $card
      */
     public function __construct(
         string   $uuid,
@@ -86,7 +100,9 @@ class GiftcardTransaction
         ?int     $cardId = null,
         ?int     $shopId = null,
         array    $settlements = [],
-        ?int     $id = null
+        ?int     $id = null,
+        ?Shop    $shop = null,
+        stdClass $card = null
     )
     {
         $this->uuid = $uuid;
@@ -98,6 +114,8 @@ class GiftcardTransaction
         $this->shop_id = $shopId;
         $this->settlements = $settlements;
         $this->id = $id;
+        $this->shop = $shop;
+        $this->card = $card;
     }
 
     /**
@@ -140,6 +158,11 @@ class GiftcardTransaction
         return $this->shop_id;
     }
 
+    public function getShop(): ?Shop
+    {
+        return $this->shop;
+    }
+
     /**
      * @return string
      */
@@ -170,6 +193,11 @@ class GiftcardTransaction
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getCard(): ?stdClass
+    {
+        return $this->card;
     }
 
     /**

@@ -166,7 +166,7 @@ class Giftcard
      * @return Giftcard
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function findOneBy(array $params): Giftcard
+    public static function find(array $params): Giftcard
     {
         $response = ApiClient::get(self::$resourceUri . "/find-one-by", $params);
 

@@ -216,7 +216,7 @@ class ApiClient
      * @throws GuzzleException
      * @throws PiggyRequestException
      */
-    public static function destroy(string $url, array $body = []): Response
+    public static function delete(string $url, array $body = []): Response
     {
         $query = http_build_query($body);
 

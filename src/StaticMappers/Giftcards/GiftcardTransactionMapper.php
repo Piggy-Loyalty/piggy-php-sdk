@@ -19,12 +19,6 @@ class GiftcardTransactionMapper extends BaseMapper
      */
     public static function map(stdClass $data): GiftcardTransaction
     {
-//        if (isset($data->settlements)) {
-//            $giftcardTransactionSettlementMapper = new GiftcardTransactionSettlementMapper();
-//            $settlements = array_map(function($settlement) use ($giftcardTransactionSettlementMapper) {
-//                return $giftcardTransactionSettlementMapper->map($settlement);
-//            }, $data->settlements);
-//        }
 
         if (isset($data->settlements)) {
             $settlements = array_map(function ($settlement) {
@@ -32,10 +26,17 @@ class GiftcardTransactionMapper extends BaseMapper
             }, $data->settlements);
         }
 
+        $shop = null;
         if (isset($data->shop)) {
             $shop = ShopMapper::map($data->shop);
         }
 
+        $card = null;
+        if (isset($data->card)) {
+            $card = new stdClass();
+            $card->id = $data->card->id ?? null;
+            $card->uuid =$data->card->uuid ?? null;
+        }
 
         return new GiftcardTransaction(
             $data->uuid,
@@ -43,10 +44,12 @@ class GiftcardTransactionMapper extends BaseMapper
             self::parseDate($data->created_at),
             $data->type ?? null,
             $data->settled ?? null,
-            $data->card_id ?? null,
-            $shop ?? null,
+            $card->id ?? null,
+            $shop->getId() ?? null,
             $settlements ?? [],
-            $data->id ?? null
+            $data->id ?? null,
+            $shop,
+            $card
         );
     }
 }

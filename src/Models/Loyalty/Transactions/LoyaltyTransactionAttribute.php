@@ -32,7 +32,7 @@ class LoyaltyTransactionAttribute
      */
     protected $field_type;
     /**
-     * @var array
+     * @var array|null
      */
     protected $options;
     /**
@@ -59,7 +59,7 @@ class LoyaltyTransactionAttribute
      * @param string $type
      * @param string $field_type
      * @param string|null $placeholder
-     * @param array $options
+     * @param array|null $options
      * @param bool $is_piggy_defined
      * @param bool $is_soft_read_only
      * @param bool $is_hard_read_only

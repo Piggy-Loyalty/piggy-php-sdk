@@ -38,7 +38,7 @@ class PrepaidTransaction
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/register/prepaid-transactions";
+    protected static $resourceUri = "/api/v3/oauth/clients/prepaid-transactions";
 
     /**
      * @param int $amountInCents

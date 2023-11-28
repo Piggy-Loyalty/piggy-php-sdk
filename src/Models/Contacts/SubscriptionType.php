@@ -137,7 +137,7 @@ class SubscriptionType
      * @return array
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public function list(array $params = []): array
+    public static function list(array $params = []): array
     {
         $response = ApiClient::get(self::$resourceUri);
 
