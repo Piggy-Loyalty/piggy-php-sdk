@@ -99,9 +99,9 @@ class Unit
      * @return Unit
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $params): Unit
+    public static function create(array $body): Unit
     {
-        $response = ApiClient::post(self::$resourceUri, $params);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         return UnitMapper::map($response->getData());
     }

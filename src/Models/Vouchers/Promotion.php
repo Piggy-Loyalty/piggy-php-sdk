@@ -119,9 +119,9 @@ class Promotion
      * @return Promotion
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $params): Promotion
+    public static function create(array $body): Promotion
     {
-        $response = ApiClient::post(self::$resourceUri, $params);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         return PromotionMapper::map($response->getData());
     }

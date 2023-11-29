@@ -356,9 +356,9 @@ class CustomAttribute
      * @return CustomAttribute
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $params): CustomAttribute
+    public static function create(array $body): CustomAttribute
     {
-        $response = ApiClient::post(self::$resourceUri, $params);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         return CustomAttributeMapper::map($response->getData());
     }

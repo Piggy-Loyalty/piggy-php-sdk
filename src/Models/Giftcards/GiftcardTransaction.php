@@ -218,9 +218,9 @@ class GiftcardTransaction
      * @return GiftcardTransaction
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $params): GiftcardTransaction
+    public static function create(array $body): GiftcardTransaction
     {
-        $response = ApiClient::post(self::$resourceUri, $params);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         return GiftcardTransactionMapper::map($response->getData());
     }

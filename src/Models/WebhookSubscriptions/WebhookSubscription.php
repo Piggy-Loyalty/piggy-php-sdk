@@ -180,9 +180,9 @@ class WebhookSubscription
      * @return WebhookSubscription
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $params): WebhookSubscription
+    public static function create(array $body): WebhookSubscription
     {
-        $response = ApiClient::post(self::$resourceUri, $params);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         return WebhookSubscriptionMapper::map($response->getData());
     }

@@ -12,6 +12,7 @@ use Piggy\Api\StaticMappers\Loyalty\Rewards\RewardMapper;
 use Piggy\Api\StaticMappers\Loyalty\Rewards\RewardsMapper;
 use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\Models\Loyalty\Media;
+use stdClass;
 
 /**
  *
@@ -223,5 +224,19 @@ class Reward
         $response = ApiClient::put(self::$resourceUri . "/$rewardUuid", $params);
 
         return RewardMapper::map($response->getData());
+    }
+
+    /**
+     * @param $rewardUuid
+     * @param array $params
+     * @return stdClass
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
+     * @throws Exception
+     */
+    public static function newUpdate($rewardUuid, array $params): stdClass
+    {
+        $response = ApiClient::put(self::$resourceUri . "/$rewardUuid", $params);
+
+        return $response->getData();
     }
 }

@@ -113,13 +113,13 @@ class Automation
     }
 
     /**
-     * @param $params
+     * @param $body
      * @return array
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create($params): array
+    public static function create($body): array
     {
-        $response = ApiClient::post(self::$resourceUri . '/' . 'runs', $params);
+        $response = ApiClient::post(self::$resourceUri . '/' . 'runs', $body);
 
         return AutomationsMapper::map($response);
     }
