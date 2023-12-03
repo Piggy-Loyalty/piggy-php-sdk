@@ -35,7 +35,6 @@ class Shop
      */
     protected static $resourceUri = "/api/v3/oauth/clients/shops";
 
-
     /**
      * @param string $uuid
      * @param string $name
@@ -72,28 +71,33 @@ class Shop
         return $this->id;
     }
 
-    /**
-     * @param array $params
-     * @return array
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function list(array $params = []): array
-    {
-        $response = ApiClient::get(self::$resourceUri, $params);
+//    private function get(string $type)
+//    {
+//        return $this->response1[$type];
+//    }
 
-        return ShopsMapper::map($response->getData());
-    }
-
-    /**
-     * @param string $shopUuid
-     * @param array $params
-     * @return Shop
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function get(string $shopUuid, array $params = []): Shop
-    {
-        $response = ApiClient::get(self::$resourceUri . "/$shopUuid", $params);
-
-        return ShopMapper::map($response->getData());
-    }
+//    /**
+//     * @param array $params
+//     * @return array
+//     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
+//     */
+//    public static function list(array $params = []): array
+//    {
+//        $response = ApiClient::get(self::$resourceUri, $params);
+//
+//        return ShopsMapper::map($response->getData());
+//    }
+//
+//    /**
+//     * @param string $shopUuid
+//     * @param array $params
+//     * @return Shop
+//     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
+//     */
+//    public static function get(string $shopUuid, array $params = []): Shop
+//    {
+//        $response = ApiClient::get(self::$resourceUri . "/$shopUuid", $params);
+//
+//        return ShopMapper::map($response->getData());
+//    }
 }

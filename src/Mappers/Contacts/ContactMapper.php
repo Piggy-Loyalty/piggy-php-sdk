@@ -55,6 +55,7 @@ class ContactMapper
             $attributes,
             $subscriptions,
             $currentValues
+
         );
     }
 }

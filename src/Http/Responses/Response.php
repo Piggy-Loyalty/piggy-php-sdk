@@ -2,6 +2,7 @@
 
 namespace Piggy\Api\Http\Responses;
 
+use Piggy\Api\Models\Shop;
 use stdClass;
 
 /**
@@ -37,4 +38,33 @@ class Response
     {
         return $this->meta;
     }
+
+    public function getUuid()
+    {
+        return $this->getData()->uuid;
+    }
+
+    public function shop()
+    {
+        $shop = $this->get();
+        return $shop;
+    }
+
+    public function voucher()
+    {
+        $voucher = $this->get();
+
+        return $voucher;
+    }
+
+    public function get(?string $type = null, ?string $model = null)
+    {
+        $data = array($this->getData());
+//        $data["shop"] = $data[0];
+        $data["voucher"] = $data[0];
+        unset($data[0]);
+
+//        return $this->data[$type] = new $model($this->data[$type]);
+    }
+
 }

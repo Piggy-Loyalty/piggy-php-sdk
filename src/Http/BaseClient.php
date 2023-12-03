@@ -86,7 +86,6 @@ abstract class BaseClient
 
     /**
      * @param $response
-     *
      * @return Response
      * @throws MalformedResponseException
      */
@@ -181,7 +180,6 @@ abstract class BaseClient
     /**
      * @param string $url
      * @param array $body
-     *
      * @return Response
      * @throws PiggyRequestException
      */
@@ -211,7 +209,6 @@ abstract class BaseClient
     /**
      * @param string $url
      * @param array $params
-     *
      * @return Response
      * @throws PiggyRequestException
      */
