@@ -24,9 +24,9 @@ class RewardReception
      * @return DigitalRewardReception|PhysicalRewardReception|null
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $params)
+    public static function create(array $body)
     {
-        $response = ApiClient::post(self::$resourceUri, $params);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         return RewardReceptionMapper::map($response->getData());
     }

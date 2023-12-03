@@ -180,9 +180,9 @@ class CreditReception
      * @return CreditReception
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $params): CreditReception
+    public static function create(array $body): CreditReception
     {
-        $response = ApiClient::post(self::$resourceUri, $params);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         return CreditReceptionMapper::map($response->getData());
     }

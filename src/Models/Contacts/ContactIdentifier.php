@@ -102,9 +102,9 @@ class ContactIdentifier
      * @return ContactIdentifier
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $params): ContactIdentifier
+    public static function create(array $body): ContactIdentifier
     {
-        $response = ApiClient::post(self::$resourceUri, $params);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         return ContactIdentifierMapper::map($response->getData());
     }

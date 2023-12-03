@@ -10,7 +10,6 @@ use Piggy\Api\StaticMappers\Forms\FormsMapper;
 
 /**
  * Class Form
- * @package Piggy\Api\Models\Forms
  */
 class Form
 {

@@ -218,22 +218,22 @@ class GiftcardTransaction
      * @return GiftcardTransaction
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $params): GiftcardTransaction
+    public static function create(array $body): GiftcardTransaction
     {
-        $response = ApiClient::post(self::$resourceUri, $params);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         return GiftcardTransactionMapper::map($response->getData());
     }
 
     /**
      * @param string $giftcardTransactionUuid
-     * @param array $params
+     * @param array $body
      * @return GiftcardTransaction
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function correct(string $giftcardTransactionUuid, array $params = []): GiftcardTransaction
+    public static function correct(string $giftcardTransactionUuid, array $body = []): GiftcardTransaction
     {
-        $response = ApiClient::post(self::$resourceUri . "/$giftcardTransactionUuid/correct", $params);
+        $response = ApiClient::post(self::$resourceUri . "/$giftcardTransactionUuid/correct", $body);
 
         return GiftcardTransactionMapper::map($response->getData());
     }

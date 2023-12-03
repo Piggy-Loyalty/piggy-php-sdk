@@ -81,9 +81,9 @@ class ContactAttribute
      * @return Attribute
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $params): Attribute
+    public static function create(array $body): Attribute
     {
-        $response = ApiClient::post(self::$resourceUri, $params);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         return AttributeMapper::map($response->getData());
     }

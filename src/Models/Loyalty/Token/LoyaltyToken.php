@@ -21,25 +21,25 @@ class LoyaltyToken
     protected static $resourceUri = "/api/v3/oauth/clients/loyalty-tokens";
 
     /**
-     * @param array $params
+     * @param array $body
      * @return string
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $params): string
+    public static function create(array $body): string
     {
-        $response = ApiClient::post(self::$resourceUri, $params);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         return $response->getData();
     }
 
     /**
-     * @param array $params
+     * @param array $body
      * @return CreditReception
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function claim(array $params): CreditReception
+    public static function claim(array $body): CreditReception
     {
-        $response = ApiClient::post(self::$resourceUri . "/claim", $params);
+        $response = ApiClient::post(self::$resourceUri . "/claim", $body);
 
         return CreditReceptionMapper::map($response->getData());
     }

@@ -110,9 +110,9 @@ class PortalSession
      * @return PortalSession
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $params): PortalSession
+    public static function create(array $body): PortalSession
     {
-        $response = ApiClient::post(self::$resourceUri, $params);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         return PortalSessionMapper::map($response->getData());
     }

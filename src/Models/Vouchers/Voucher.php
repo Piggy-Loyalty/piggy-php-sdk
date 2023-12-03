@@ -208,21 +208,21 @@ class Voucher
      * @return Voucher
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $params): Voucher
+    public static function create(array $body): Voucher
     {
-        $response = ApiClient::post(self::$resourceUri, $params);
+        $response = ApiClient::post(self::$resourceUri, $body);
 
         return VoucherMapper::map($response->getData());
     }
 
     /**
-     * @param array $params
+     * @param array $body
      * @return stdClass
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function batch(array $params): stdClass
+    public static function batch(array $body): stdClass
     {
-        $response = ApiClient::post(self::$resourceUri . "/batch", $params);
+        $response = ApiClient::post(self::$resourceUri . "/batch", $body);
         var_dump(json_encode($response->getData()));
 
         return $response->getData();
@@ -253,13 +253,13 @@ class Voucher
     }
 
     /**
-     * @param array $params
+     * @param array $body
      * @return Voucher
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function redeem(array $params): Voucher
+    public static function redeem(array $body): Voucher
     {
-        $response = ApiClient::post(self::$resourceUri . "/redeem", $params);
+        $response = ApiClient::post(self::$resourceUri . "/redeem", $body);
 
         return VoucherMapper::map($response->getData());
     }
