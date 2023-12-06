@@ -165,9 +165,11 @@ class PromotionAttribute
     }
 
     /**
-     * @param array $params
+     * @param array $body
      * @return PromotionAttribute
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
+     * @throws GuzzleException
+     * @throws MaintenanceModeException
+     * @throws PiggyRequestException
      */
     public static function create(array $body): PromotionAttribute
     {

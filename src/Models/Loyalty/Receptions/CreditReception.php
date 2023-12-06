@@ -81,7 +81,7 @@ class CreditReception
      * @param Unit|null $unit
      * @param array $attributes
      */
-    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, ?float $unitValue = null, ?Unit $unit = null, $attributes = [])
+    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, ?float $unitValue = null, ?Unit $unit = null, array $attributes = [])
     {
         $this->type = $type;
         $this->credits = $credits;

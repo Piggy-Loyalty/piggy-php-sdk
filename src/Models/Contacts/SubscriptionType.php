@@ -139,7 +139,7 @@ class SubscriptionType
      */
     public static function list(array $params = []): array
     {
-        $response = ApiClient::get(self::$resourceUri);
+        $response = ApiClient::get(self::$resourceUri, $params);
 
         return SubscriptionTypesMapper::map($response->getData());
     }

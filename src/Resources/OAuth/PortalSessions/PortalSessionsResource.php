@@ -11,6 +11,7 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class PortalSessionsResource
  * @package Piggy\Api\Resources\OAuth\PortalSessions
+ * @deprecated
  */
 class PortalSessionsResource extends BaseResource
 {

@@ -11,6 +11,7 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class UnitsResource
  * @package Piggy\Api\Resources\OAuth\Units
+ * @deprecated
  */
 class UnitsResource extends BaseResource
 {

@@ -2,7 +2,10 @@
 
 namespace Piggy\Api\Models\Referrals;
 
+use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
+use Piggy\Api\Exceptions\MaintenanceModeException;
+use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\StaticMappers\Referrals\ReferralsMapper;
 
 class Referral
@@ -46,6 +49,11 @@ class Referral
         return $this->status;
     }
 
+    /**
+     * @throws GuzzleException
+     * @throws MaintenanceModeException
+     * @throws PiggyRequestException
+     */
     public static function list(array $params = []): array
     {
         $response = ApiClient::get(self::$resourceUri, $params);

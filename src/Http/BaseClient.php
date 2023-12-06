@@ -20,6 +20,7 @@ use function Piggy\Api\hasGuzzle5;
 /**
  * Class BaseClient
  * @package Piggy\Api\Http
+ * @deprecated
  */
 abstract class BaseClient
 {
@@ -105,9 +106,9 @@ abstract class BaseClient
             throw new MalformedResponseException("Invalid response given. Data property was missing from response.");
         }
 
-        if (!property_exists($content, "meta")) {
-            throw new MalformedResponseException("Invalid response given. Meta property was missing from response.");
-        }
+//        if (!property_exists($content, "meta")) {
+//            throw new MalformedResponseException("Invalid response given. Meta property was missing from response.");
+//        }
 
         return new Response($content->data, $content->meta);
     }

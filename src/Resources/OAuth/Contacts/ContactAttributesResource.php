@@ -12,6 +12,7 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class ContactAttributesResource
  * @package Piggy\Api\Resources\OAuth
+ * @deprecated
  */
 class ContactAttributesResource extends BaseResource
 {
@@ -21,6 +22,7 @@ class ContactAttributesResource extends BaseResource
     protected $resourceUri = "/api/v3/oauth/clients/contact-attributes";
 
     /**
+     * @param array $params
      * @return array
      * @throws PiggyRequestException
      */

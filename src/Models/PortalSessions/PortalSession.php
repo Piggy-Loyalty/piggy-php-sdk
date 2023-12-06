@@ -106,9 +106,11 @@ class PortalSession
     }
 
     /**
-     * @param array $params
+     * @param array $body
      * @return PortalSession
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
+     * @throws GuzzleException
+     * @throws MaintenanceModeException
+     * @throws PiggyRequestException
      */
     public static function create(array $body): PortalSession
     {

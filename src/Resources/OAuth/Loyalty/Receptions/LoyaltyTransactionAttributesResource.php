@@ -11,6 +11,7 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class LoyaltyTransactionAttributesResource
  * @package Piggy\Api\Resources\OAuth\Loyalty\Receptions
+ * @deprecated
  */
 class LoyaltyTransactionAttributesResource extends BaseResource
 {
@@ -20,10 +21,11 @@ class LoyaltyTransactionAttributesResource extends BaseResource
     protected $resourceUri = "/api/v3/oauth/clients/loyalty-transaction-attributes";
 
     /**
+     * @param array $params
      * @return array
      * @throws PiggyRequestException
      */
-    public function list($params = []): array
+    public function list(array $params = []): array
     {
         $response = $this->client->get($this->resourceUri, $params);
 

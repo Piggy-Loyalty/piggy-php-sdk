@@ -14,6 +14,7 @@ use DateTime;
 /**
  * Class VoucherResource
  * @package Piggy\Api\Resources\OAuth\Vouchers
+ * @deprecated
  */
 class VouchersResource extends BaseResource
 {
@@ -48,11 +49,11 @@ class VouchersResource extends BaseResource
 
     /**
      * @param string $promotionUuid
-     * @param DateTime|null $code
+     * @param string $quantity
      * @param string|null $contactUuid
      * @param DateTime|null $activationDate
      * @param DateTime|null $expirationDate
-     * @return Voucher
+     * @return string
      * @throws PiggyRequestException
      */
     public function batch(string $promotionUuid, string $quantity, ?string $contactUuid = null, ?DateTime $activationDate = null, ?DateTime $expirationDate = null): string
@@ -69,6 +70,8 @@ class VouchersResource extends BaseResource
     }
 
     /**
+     * @param int $page
+     * @param int $limit
      * @return array
      * @throws PiggyRequestException
      */
@@ -101,10 +104,9 @@ class VouchersResource extends BaseResource
     }
 
     /**
-     * @param string $code
+     * @param string|null $code
      * @param string|null $contactUuid
      * @param string|null $releaseKey
-
      * @return Voucher
      * @throws PiggyRequestException
      */
@@ -137,6 +139,7 @@ class VouchersResource extends BaseResource
 
     /**
      * @param string $voucherUuid
+     * @param string $releaseKey
      * @return VoucherLock
      * @throws PiggyRequestException
      */

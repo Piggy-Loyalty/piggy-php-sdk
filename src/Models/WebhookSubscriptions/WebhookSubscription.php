@@ -105,7 +105,7 @@ class WebhookSubscription
     /**
      * @return string
      */
-    public function getEventType()
+    public function getEventType(): string
     {
         return $this->event_type;
     }

@@ -11,6 +11,7 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class Tiers
  * @package Piggy\Api\Resources\OAuth\Tiers
+ * @deprecated
  */
 class TiersResource extends BaseResource
 {
@@ -20,10 +21,11 @@ class TiersResource extends BaseResource
     protected $resourceUri = "/api/v3/oauth/clients/tiers";
 
     /**
+     * @param array $params
      * @return array
      * @throws PiggyRequestException
      */
-    public function list($params = []): array
+    public function list(array $params = []): array
     {
         $response = $this->client->get($this->resourceUri, $params);
 

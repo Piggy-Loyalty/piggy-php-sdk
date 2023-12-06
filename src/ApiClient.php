@@ -119,9 +119,9 @@ class ApiClient
             throw new MalformedResponseException("Invalid response given. Data property was missing from response.");
         }
 
-        if (!property_exists($content, "meta")) {
-            throw new MalformedResponseException("Invalid response given. Meta property was missing from response.");
-        }
+//        if (!property_exists($content, "meta")) {
+//            throw new MalformedResponseException("Invalid response given. Meta property was missing from response.");
+//        }
 
         return new Response($content->data, $content->meta);
     }

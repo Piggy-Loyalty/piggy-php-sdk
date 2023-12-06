@@ -2,10 +2,9 @@
 
 namespace Piggy\Api\StaticMappers\Contacts;
 
+use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\StaticMappers\Loyalty\CreditBalanceMapper;
 use Piggy\Api\StaticMappers\Prepaid\PrepaidBalanceMapper;
-use Piggy\Api\StaticMappers\Tiers\TierMapper;
-use Piggy\Api\Models\Contacts\Contact;
 use stdClass;
 
 class ContactMapper

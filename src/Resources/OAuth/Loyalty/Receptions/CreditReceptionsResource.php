@@ -10,6 +10,7 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class CreditReceptionsResource
  * @package Piggy\Api\Resources\OAuth\Loyalty\Receptions
+ * @deprecated
  */
 class CreditReceptionsResource extends BaseResource
 {

@@ -102,10 +102,13 @@ class Automation
     }
 
     /**
+     * @param array $params
      * @return array
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
+     * @throws GuzzleException
+     * @throws MaintenanceModeException
+     * @throws PiggyRequestException
      */
-    public static function list($params = []): array
+    public static function list(array $params = []): array
     {
         $response = ApiClient::get(self::$resourceUri, $params);
 

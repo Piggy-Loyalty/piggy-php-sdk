@@ -9,6 +9,7 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class SubscriptionTypesResource
  * @package Piggy\Api\Resources\OAuth
+ * @deprecated
  */
 class SubscriptionTypesResource extends BaseResource
 {

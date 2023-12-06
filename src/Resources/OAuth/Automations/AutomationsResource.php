@@ -9,6 +9,7 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class AutomationsResource
  * @package Piggy\Api\Resources\OAuth\Automations
+ * @deprecated
  */
 class AutomationsResource extends BaseResource
 {
@@ -18,6 +19,7 @@ class AutomationsResource extends BaseResource
     protected $resourceUri = "/api/v3/oauth/clients/automations";
 
     /**
+     * @param array $params
      * @return array
      * @throws PiggyRequestException
      */

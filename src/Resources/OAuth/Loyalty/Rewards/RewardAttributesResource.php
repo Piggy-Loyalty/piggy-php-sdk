@@ -12,6 +12,7 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class RewardAttributesResource
  * @package Piggy\Api\Resources\OAuth\Rewards
+ * @deprecated
  */
 class RewardAttributesResource extends BaseResource
 {

@@ -11,6 +11,7 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class ContactAttributesResource
  * @package Piggy\Api\Resources\OAuth\Vouchers
+ * @deprecated
  */
 class PromotionAttributesResource extends BaseResource
 {
@@ -20,6 +21,7 @@ class PromotionAttributesResource extends BaseResource
     protected $resourceUri = "/api/v3/oauth/clients/promotion-attributes";
 
     /**
+     * @param array $params
      * @return array
      * @throws PiggyRequestException
      */

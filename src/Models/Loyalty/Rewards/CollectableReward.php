@@ -146,6 +146,7 @@ class CollectableReward
      * @param array $params
      * @return array
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
+     * @throws Exception
      */
     public static function list(array $params = []): array
     {

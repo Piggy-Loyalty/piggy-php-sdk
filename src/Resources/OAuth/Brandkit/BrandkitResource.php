@@ -11,6 +11,7 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class GiftcardProgramResource
  * @package Piggy\Api\Resources\OAuth
+ * @deprecated
  */
 class BrandkitResource extends BaseResource
 {

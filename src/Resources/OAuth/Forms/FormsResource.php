@@ -5,12 +5,12 @@ namespace Piggy\Api\Resources\OAuth\Forms;
 
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Forms\FormsMapper;
-use Piggy\Api\Models\Forms\Form;
 use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class FormsResource
  * @package Piggy\Api\Resources\OAuth\Forms
+ * @deprecated
  */
 class FormsResource extends BaseResource
 {

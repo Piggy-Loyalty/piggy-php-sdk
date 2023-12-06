@@ -10,6 +10,7 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class GiftcardsResource
  * @package Piggy\Api\Resources\OAuth\Giftcards
+ * @deprecated
  */
 class GiftcardsResource extends BaseResource
 {
@@ -36,9 +37,8 @@ class GiftcardsResource extends BaseResource
     }
 
     /**
-     * @param string $giftcardProgramUuide
+     * @param string $giftcardProgramUuid
      * @param int $type
-     *
      * @return Giftcard
      * @throws PiggyRequestException
      */

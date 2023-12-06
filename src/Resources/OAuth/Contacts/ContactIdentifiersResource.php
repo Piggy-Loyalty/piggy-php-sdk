@@ -10,6 +10,7 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class ContactIdentifiersResource
  * @package Piggy\Api\Resources\OAuth\Contacts
+ * @deprecated
  */
 class ContactIdentifiersResource extends BaseResource
 {

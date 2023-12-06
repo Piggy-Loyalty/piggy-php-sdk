@@ -11,6 +11,7 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class ShopsResource
  * @package Piggy\Api\Resources\OAuth\Shops
+ * @deprecated
  */
 class ShopsResource extends BaseResource
 {
@@ -20,10 +21,11 @@ class ShopsResource extends BaseResource
     protected $resourceUri = "/api/v3/oauth/clients/shops";
 
     /**
+     * @param array $params
      * @return array
      * @throws PiggyRequestException
      */
-    public function all($params = []): array
+    public function all(array $params = []): array
     {
         $response = $this->client->get($this->resourceUri, $params);
 
@@ -34,10 +36,11 @@ class ShopsResource extends BaseResource
 
     /**
      * @param string $shopUuid
+     * @param array $params
      * @return Shop
      * @throws PiggyRequestException
      */
-    public function get(string $shopUuid, $params = []): Shop
+    public function get(string $shopUuid, array $params = []): Shop
     {
         $response = $this->client->get("$this->resourceUri/$shopUuid", $params);
 

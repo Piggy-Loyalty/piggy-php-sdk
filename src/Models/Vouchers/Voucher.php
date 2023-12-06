@@ -204,9 +204,11 @@ class Voucher
     }
 
     /**
-     * @param array $params
+     * @param array $body
      * @return Voucher
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
+     * @throws GuzzleException
+     * @throws MaintenanceModeException
+     * @throws PiggyRequestException
      */
     public static function create(array $body): Voucher
     {

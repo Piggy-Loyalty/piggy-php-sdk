@@ -2,8 +2,6 @@
 
 namespace Piggy\Api\StaticMappers\CustomAttributes;
 
-use Piggy\Api\StaticMappers\CustomAttributes\CustomAttributeMapper;
-
 class CustomAttributesMapper
 {
     /**

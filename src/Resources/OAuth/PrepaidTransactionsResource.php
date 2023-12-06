@@ -10,6 +10,7 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class PrepaidTransactionsResource
  * @package Piggy\Api\Resources\OAuth
+ * @deprecated
  */
 class PrepaidTransactionsResource extends BaseResource
 {

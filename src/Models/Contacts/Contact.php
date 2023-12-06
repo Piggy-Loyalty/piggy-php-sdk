@@ -8,12 +8,8 @@ use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Models\Loyalty\CreditBalance;
 use Piggy\Api\Models\Prepaid\PrepaidBalance;
-use Piggy\Api\Models\Tiers\Tier;
 use Piggy\Api\StaticMappers\Contacts\ContactMapper;
 use Piggy\Api\StaticMappers\Contacts\ContactsMapper;
-use Piggy\Api\StaticMappers\Loyalty\CreditBalanceMapper;
-use Piggy\Api\StaticMappers\Prepaid\PrepaidBalanceMapper;
-use Piggy\Api\StaticMappers\Tiers\TierMapper;
 use stdClass;
 
 /**

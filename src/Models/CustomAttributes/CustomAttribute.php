@@ -6,9 +6,8 @@ use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
 use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\Models\Contacts\Attribute;
-use Piggy\Api\StaticMappers\CustomAttributes\CustomAttributesMapper;
 use Piggy\Api\StaticMappers\CustomAttributes\CustomAttributeMapper;
+use Piggy\Api\StaticMappers\CustomAttributes\CustomAttributesMapper;
 
 /**
  * Class CustomAttribute

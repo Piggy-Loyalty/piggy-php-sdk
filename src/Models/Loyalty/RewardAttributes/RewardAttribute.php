@@ -275,7 +275,7 @@ class RewardAttribute
     }
 
     /**
-     * @param array $params
+     * @param array $body
      * @return RewardAttribute
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */

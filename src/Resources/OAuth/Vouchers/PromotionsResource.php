@@ -11,6 +11,7 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class PromotionsResource
  * @package Piggy\Api\Resources\OAuth\Vouchers
+ * @deprecated
  */
 class PromotionsResource extends BaseResource
 {
@@ -33,6 +34,8 @@ class PromotionsResource extends BaseResource
     }
 
     /**
+     * @param int $page
+     * @param int $limit
      * @return array
      * @throws PiggyRequestException
      */

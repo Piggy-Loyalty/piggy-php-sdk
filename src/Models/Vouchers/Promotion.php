@@ -115,7 +115,7 @@ class Promotion
     }
 
     /**
-     * @param array $params
+     * @param array $body
      * @return Promotion
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */

@@ -15,6 +15,7 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class ContactsResource
  * @package Piggy\Api\Resources\OAuth\Contacts
+ * @deprecated
  */
 class ContactsResource extends BaseResource
 {
@@ -213,9 +214,10 @@ class ContactsResource extends BaseResource
     /**
      * @param string $contactUuid
      * @param string $email
+     * @return Contact
      * @throws PiggyRequestException
      */
-    public function claimAnonymousContact(string $contactUuid, string $email)
+    public function claimAnonymousContact(string $contactUuid, string $email): Contact
     {
         $response = $this->client->put("$this->resourceUri/$contactUuid/claim", [
             "email" => $email

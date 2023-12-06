@@ -2,8 +2,6 @@
 
 namespace Piggy\Api\Mappers\Vouchers;
 
-use Piggy\Api\Models\Vouchers\Voucher;
-
 /**
  * Class PromotionsMapper
  * @package Piggy\Api\Mappers\Vouchers
