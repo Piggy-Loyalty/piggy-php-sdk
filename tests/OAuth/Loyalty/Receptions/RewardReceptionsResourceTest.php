@@ -36,6 +36,7 @@ class RewardReceptionsResourceTest extends OAuthTestCase
                 "reward_type" => "PHYSICAL",
                 "uuid" => '332-3232'
             ],
+            "expires_at" => "2022-06-30T15:11:57+00:00",
             "has_been_collected" => false
         ]);
 
@@ -52,6 +53,7 @@ class RewardReceptionsResourceTest extends OAuthTestCase
         $this->assertEquals("reward title", $rewardReception->getTitle());
         $this->assertEquals("PHYSICAL", $rewardReception->getReward()->getRewardType());
         $this->assertEquals('332-3232', $rewardReception->getReward()->getUuid());
+        $this->assertEquals("2022-06-30T15:11:57+00:00", $rewardReception->getExpiresAt()->format('c'));
         $this->assertEquals(false, $rewardReception->getHasBeenCollected());
     }
 

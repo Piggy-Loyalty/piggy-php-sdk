@@ -21,7 +21,6 @@ class PrepaidBalance
 
     protected static $contactsResourceUri = "/api/v3/oauth/clients/contacts";
 
-
     /**
      * @param int $balanceInCents
      */

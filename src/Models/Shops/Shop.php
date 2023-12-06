@@ -35,7 +35,6 @@ class Shop
      */
     protected static $resourceUri = "/api/v3/oauth/clients/shops";
 
-
     /**
      * @param string $uuid
      * @param string $name
