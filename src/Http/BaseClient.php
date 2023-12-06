@@ -7,6 +7,7 @@ use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\ExceptionMapper;
+use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\MalformedResponseException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Http\Responses\AuthenticationResponse;
@@ -61,7 +62,9 @@ abstract class BaseClient
      * @param string $endpoint
      * @param array $queryOptions
      * @return Response
-     * @throws PiggyRequestException|Exception
+     * @throws GuzzleException
+     * @throws MaintenanceModeException
+     * @throws PiggyRequestException
      */
     public function request(string $method, string $endpoint, $queryOptions = []): Response
     {
@@ -113,7 +116,9 @@ abstract class BaseClient
      * @param string $endpoint
      * @param array $queryOptions
      * @return AuthenticationResponse
-     * @throws PiggyRequestException|Exception
+     * @throws GuzzleException
+     * @throws PiggyRequestException
+     * @throws MaintenanceModeException
      */
     public function authenticationRequest(string $endpoint, $queryOptions = []): AuthenticationResponse
     {

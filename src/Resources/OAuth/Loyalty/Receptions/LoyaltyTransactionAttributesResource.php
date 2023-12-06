@@ -23,9 +23,9 @@ class LoyaltyTransactionAttributesResource extends BaseResource
      * @return array
      * @throws PiggyRequestException
      */
-    public function list(): array
+    public function list($params = []): array
     {
-        $response = $this->client->get($this->resourceUri, []);
+        $response = $this->client->get($this->resourceUri, $params);
 
         $mapper = new LoyaltyTransactionAttributesMapper();
 
@@ -45,7 +45,7 @@ class LoyaltyTransactionAttributesResource extends BaseResource
             "options" => $options,
         ];
 
-        $response = $this->client->post($this->resourceUri, $loyaltyTransactionAttributes, []);
+        $response = $this->client->post($this->resourceUri, $loyaltyTransactionAttributes);
 
         $mapper = new LoyaltyTransactionAttributeMapper();
 

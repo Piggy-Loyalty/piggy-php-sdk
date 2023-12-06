@@ -3,6 +3,7 @@
 namespace Piggy\Api\Tests\OAuth\Loyalty\Rewards;
 
 use GuzzleHttp\Exception\GuzzleException;
+use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
 
@@ -102,7 +103,9 @@ class CollectableRewardsResourceTest extends OAuthTestCase
 
     /**
      * @test
+     * @throws GuzzleException
      * @throws PiggyRequestException
+     * @throws MaintenanceModeException
      */
     public function it_shows_a_collected_reward()
     {

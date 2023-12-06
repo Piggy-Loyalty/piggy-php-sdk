@@ -20,9 +20,11 @@ class RewardReception
     protected static $resourceUri = "/api/v3/oauth/clients/reward-receptions";
 
     /**
-     * @param array $params
+     * @param array $body
      * @return DigitalRewardReception|PhysicalRewardReception|null
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
+     * @throws GuzzleException
+     * @throws MaintenanceModeException
+     * @throws PiggyRequestException
      */
     public static function create(array $body)
     {

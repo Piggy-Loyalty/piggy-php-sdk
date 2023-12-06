@@ -23,9 +23,9 @@ class ShopsResource extends BaseResource
      * @return array
      * @throws PiggyRequestException
      */
-    public function all(): array
+    public function all($params = []): array
     {
-        $response = $this->client->get($this->resourceUri, []);
+        $response = $this->client->get($this->resourceUri, $params);
 
         $mapper = new ShopsMapper();
 
@@ -37,9 +37,9 @@ class ShopsResource extends BaseResource
      * @return Shop
      * @throws PiggyRequestException
      */
-    public function get(string $shopUuid): Shop
+    public function get(string $shopUuid, $params = []): Shop
     {
-        $response = $this->client->get("$this->resourceUri/$shopUuid", []);
+        $response = $this->client->get("$this->resourceUri/$shopUuid", $params);
 
         $mapper = new ShopMapper();
 

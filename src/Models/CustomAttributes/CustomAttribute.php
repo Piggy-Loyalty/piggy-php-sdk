@@ -352,7 +352,7 @@ class CustomAttribute
     }
 
     /**
-     * @param array $params
+     * @param array $body
      * @return CustomAttribute
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */

@@ -23,9 +23,9 @@ class PromotionAttributesResource extends BaseResource
      * @return array
      * @throws PiggyRequestException
      */
-    public function list(): array
+    public function list(array $params = []): array
     {
-        $response = $this->client->get($this->resourceUri, []);
+        $response = $this->client->get($this->resourceUri, $params);
 
         $mapper = new PromotionAttributesMapper();
 
@@ -72,7 +72,7 @@ class PromotionAttributesResource extends BaseResource
     /**
      * @throws PiggyRequestException
      */
-    public function update($promotionAttributeId, ?string $name, ?string $label, ?string $description, ?string $placeholder, ?string $type, ?array $options): PromotionAttribute
+    public function update($promotionAttributeId, ?string $name, ?string $label, ?string $description, ?string $placeholder, ?string $type, ?array $options = null): PromotionAttribute
     {
         $response = $this->client->put("$this->resourceUri/$promotionAttributeId", [
             "name" => $name,

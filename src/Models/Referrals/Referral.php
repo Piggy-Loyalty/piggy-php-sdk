@@ -48,7 +48,7 @@ class Referral
 
     public static function list(array $params = []): array
     {
-        $response = ApiClient::get(self::$resourceUri, []);
+        $response = ApiClient::get(self::$resourceUri, $params);
 
         return ReferralsMapper::map($response->getData());
     }

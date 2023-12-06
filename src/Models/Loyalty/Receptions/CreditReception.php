@@ -176,7 +176,7 @@ class CreditReception
     }
 
     /**
-     * @param array $params
+     * @param array $body
      * @return CreditReception
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */

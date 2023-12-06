@@ -29,7 +29,7 @@ class WebhookSubscriptionsResource extends BaseResource
      * @return WebhookSubscription
      * @throws PiggyRequestException
      */
-    public function update(string $webhookUuid, ?string $name, ?string $url, ?array $attributes, ?string $status)
+    public function update(string $webhookUuid, ?string $name, ?string $url, ?array $attributes, ?string $status): WebhookSubscription
     {
         $response = $this->client->put("$this->resourceUri/{$webhookUuid}", [
             "name" => $name,
@@ -87,11 +87,13 @@ class WebhookSubscriptionsResource extends BaseResource
 
     /**
      * @param string $webhookUuid
+     * @param array $params
+     * @return string
      * @throws PiggyRequestException
      */
-    public function destroy(string $webhookUuid): string
+    public function destroy(string $webhookUuid, array $params = []): string
     {
-        $this->client->destroy("$this->resourceUri/$webhookUuid", []);
+        $this->client->destroy("$this->resourceUri/$webhookUuid", $params);
 
         return 'Webhook deleted';
     }

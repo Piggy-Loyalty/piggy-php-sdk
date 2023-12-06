@@ -176,7 +176,7 @@ class WebhookSubscription
     }
 
     /**
-     * @param array $params
+     * @param array $body
      * @return WebhookSubscription
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */

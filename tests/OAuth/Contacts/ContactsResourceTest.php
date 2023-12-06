@@ -3,6 +3,7 @@
 namespace Piggy\Api\Tests\OAuth\Contacts;
 
 use GuzzleHttp\Exception\GuzzleException;
+use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
 
@@ -16,6 +17,7 @@ class ContactsResourceTest extends OAuthTestCase
      * @test
      * @throws GuzzleException
      * @throws PiggyRequestException
+     * @throws MaintenanceModeException
      */
     public function it_gets_a_contact()
     {

@@ -214,7 +214,7 @@ class GiftcardTransaction
     }
 
     /**
-     * @param array $params
+     * @param array $body
      * @return GiftcardTransaction
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */

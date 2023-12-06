@@ -63,7 +63,7 @@ class RewardAttributesResource extends BaseResource
             throw new \Exception("DataType {$dataType} invalid");
         }
 
-        $response = $this->client->post($this->resourceUri, $rewardAttributes, []);
+        $response = $this->client->post($this->resourceUri, $rewardAttributes);
 
         $mapper = new RewardAttributeMapper();
 

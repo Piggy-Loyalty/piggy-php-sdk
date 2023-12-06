@@ -36,7 +36,7 @@ class ApiClient
     ];
 
     /**
-     * @var
+     * @var string
      */
     private $apiKey;
 

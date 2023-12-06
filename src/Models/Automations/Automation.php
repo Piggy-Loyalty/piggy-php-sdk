@@ -105,9 +105,9 @@ class Automation
      * @return array
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function list(): array
+    public static function list($params = []): array
     {
-        $response = ApiClient::get(self::$resourceUri, []);
+        $response = ApiClient::get(self::$resourceUri, $params);
 
         return AutomationsMapper::map($response);
     }

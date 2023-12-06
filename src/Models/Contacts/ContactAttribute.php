@@ -77,7 +77,7 @@ class ContactAttribute
     }
 
     /**
-     * @param array $params
+     * @param array $body
      * @return Attribute
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */

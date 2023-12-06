@@ -87,7 +87,7 @@ class PrepaidTransaction
     }
 
     /**
-     * @param array $params
+     * @param array $body
      * @return PrepaidTransaction
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */

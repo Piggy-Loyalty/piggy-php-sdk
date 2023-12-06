@@ -95,7 +95,7 @@ class Unit
     }
 
     /**
-     * @param array $params
+     * @param array $body
      * @return Unit
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */

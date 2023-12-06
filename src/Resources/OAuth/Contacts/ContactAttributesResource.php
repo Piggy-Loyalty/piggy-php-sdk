@@ -24,9 +24,9 @@ class ContactAttributesResource extends BaseResource
      * @return array
      * @throws PiggyRequestException
      */
-    public function list(): array
+    public function list(array $params = []): array
     {
-        $response = $this->client->get($this->resourceUri, []);
+        $response = $this->client->get($this->resourceUri, $params);
 
         $mapper = new AttributesMapper();
 

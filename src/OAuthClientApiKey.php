@@ -37,4 +37,9 @@ class OAuthClientApiKey extends BaseClient
 
         return $this;
     }
+
+    public function getApiKey(): string
+    {
+        return $this->apiKey;
+    }
 }

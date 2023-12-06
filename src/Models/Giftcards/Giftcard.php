@@ -174,7 +174,7 @@ class Giftcard
     }
 
     /**
-     * @param array $params
+     * @param array $body
      * @return Giftcard
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */

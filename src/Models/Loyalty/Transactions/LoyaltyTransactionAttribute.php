@@ -172,7 +172,7 @@ class LoyaltyTransactionAttribute
     }
 
     /**
-     * @param array $params
+     * @param array $body
      * @return LoyaltyTransactionAttribute
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
