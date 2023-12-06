@@ -13,12 +13,6 @@ class PromotionsResourceTest extends OAuthTestCase
 {
     /**
      * @test
-     * @throws PiggyRequestException
-     */
-
-    /**
-     * @test
-     * @throws PiggyRequestException
      */
     public function it_returns_promotion_after_creation()
     {
