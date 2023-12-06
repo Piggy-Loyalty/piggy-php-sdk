@@ -15,7 +15,6 @@ class SubscriptionMapper
     {
         $subscriptionTypeMapper = new SubscriptionTypeMapper();
         $subscriptionType = $subscriptionTypeMapper->map($data->subscription_type);
-
         return new Subscription(
             $subscriptionType,
             $data->is_subscribed,

@@ -44,7 +44,6 @@ class ContactSubscriptionResourceTest extends OAuthTestCase
         ]);
 
         $data = $this->mockedClient->contactSubscriptions->list("1");
-
         $this->assertEquals(true, $data[0]->isSubscribed());
         $this->assertEquals(false, $data[1]->isSubscribed());
         $this->assertEquals(0, $data[0]->getStatus());

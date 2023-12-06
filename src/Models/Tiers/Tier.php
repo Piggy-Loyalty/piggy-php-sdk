@@ -42,6 +42,12 @@ class Tier
     protected static $resourceUri = "/api/v3/oauth/clients/tiers";
 
     /**
+     * @var string
+     */
+    protected static $contactsResourceUri = "/api/v3/oauth/clients/contacts";
+
+
+    /**
      * @param string $name
      * @param int $position
      * @param string|null $uuid
@@ -113,5 +119,18 @@ class Tier
         $response = ApiClient::get(self::$resourceUri, $params);
 
         return TiersMapper::map((array)$response->getData());
+    }
+
+    /**
+     * @param string $contactUuid
+     * @param array $params
+     * @return Tier
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
+     */
+    public static function findBy(string $contactUuid, array $params = []): Tier
+    {
+        $response = ApiClient::get(self::$contactsResourceUri . "/$contactUuid/tier", $params);
+
+        return TierMapper::map($response->getData());
     }
 }

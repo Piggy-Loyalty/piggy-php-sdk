@@ -43,7 +43,7 @@ class Subscription
     public function __construct(SubscriptionType $subscriptionType, bool $isSubscribed, string $status)
     {
         $this->subscriptionType = $subscriptionType;
-        $this->is_subscribed = $isSubscribed;
+        $this->isSubscribed = $isSubscribed;
         $this->status = $status;
     }
 

@@ -34,6 +34,7 @@ class ExceptionMapper
             }
         }
 
+
         return $exception;
     }
 
