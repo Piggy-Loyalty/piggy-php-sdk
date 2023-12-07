@@ -4,7 +4,7 @@ namespace Piggy\Api\Resources\OAuth\ContactsPortal;
 
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\ContactsPortal\ContactsPortalAuthUrlMapper;
-use Piggy\Api\Models\ContactsPortal\ContactsPortal;
+use Piggy\Api\Models\ContactsPortal\ContactsPortalAuthUrl;
 use Piggy\Api\Resources\BaseResource;
 
 /**
@@ -21,10 +21,10 @@ class ContactsPortalAuthUrlResource extends BaseResource
 
     /**
      * @param string $contactUuid
-     * @return ContactsPortal
+     * @return ContactsPortalAuthUrl
      * @throws PiggyRequestException
      */
-    public function get(string $contactUuid): ContactsPortal
+    public function get(string $contactUuid): ContactsPortalAuthUrl
     {
         $response = $this->client->get("$this->resourceUri/auth-url", [
             "contact_uuid" => $contactUuid

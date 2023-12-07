@@ -6,22 +6,18 @@ use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
 use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\StaticMappers\ContactsPortal\ContactsPortalMapper;
+use Piggy\Api\StaticMappers\ContactsPortal\ContactsPortalAuthUrlMapper;
 
 /**
  * Class Shop
  * @package Piggy\Api\Models\Shops
  */
-class ContactsPortal
+class ContactsPortalAuthUrl
 {
     /**
      * @var string
      */
     protected $url;
-
-    /**
-     * @param string $url
-     */
 
     /**
      * @var string
@@ -46,13 +42,13 @@ class ContactsPortal
 
     /**
      * @param array $params
-     * @return ContactsPortal
+     * @return ContactsPortalAuthUrl
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function getAuthUrl(array $params): ContactsPortal
+    public static function getAuthUrl(array $params): ContactsPortalAuthUrl
     {
         $response = ApiClient::get(self::$resourceUri . "/auth-url", $params);
 
-        return ContactsPortalMapper::map($response->getData());
+        return ContactsPortalAuthUrlMapper::map($response->getData());
     }
 }
