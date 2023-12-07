@@ -2,21 +2,21 @@
 
 namespace Piggy\Api\StaticMappers\ContactsPortal;
 
-use Piggy\Api\Models\ContactsPortal\ContactsPortalAuthUrl;
+use Piggy\Api\Models\ContactsPortal\ContactsPortal;
 
 /**
  * Class ContactsPortalAuthUrlMapper
  * @package Piggy\Api\Mappers\ContactsPortal
  */
-class ContactsPortalAuthUrlMapper
+class ContactsPortalMapper
 {
     /**
      * @param $data
-     * @return ContactsPortalAuthUrl
+     * @return ContactsPortal
      */
-    public static function map($data): ContactsPortalAuthUrl
+    public static function map($data): ContactsPortal
     {
-        return new ContactsPortalAuthUrl(
+        return new ContactsPortal(
             $data->url
         );
     }
