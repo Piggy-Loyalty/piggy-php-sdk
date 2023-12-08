@@ -23,5 +23,6 @@ abstract class BaseResource
     public function __construct(BaseClient $client)
     {
         $this->client = $client;
+
     }
 }

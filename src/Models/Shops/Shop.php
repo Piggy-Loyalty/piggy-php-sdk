@@ -33,7 +33,7 @@ class Shop
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/shops";
+    const resourceUri = "/api/v3/oauth/clients/shops";
 
     /**
      * @param string $uuid
@@ -78,7 +78,7 @@ class Shop
      */
     public static function list(array $params = []): array
     {
-        $response = ApiClient::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::resourceUri, $params);
 
         return ShopsMapper::map($response->getData());
     }
@@ -91,7 +91,7 @@ class Shop
      */
     public static function get(string $shopUuid, array $params = []): Shop
     {
-        $response = ApiClient::get(self::$resourceUri . "/$shopUuid", $params);
+        $response = ApiClient::get(self::resourceUri . "/$shopUuid", $params);
 
         return ShopMapper::map($response->getData());
     }

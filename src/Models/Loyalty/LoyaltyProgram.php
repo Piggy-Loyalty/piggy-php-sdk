@@ -35,7 +35,7 @@ class LoyaltyProgram
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/loyalty-program";
+    const resourceUri = "/api/v3/oauth/clients/loyalty-program";
 
     /**
      * @param int $id
@@ -90,7 +90,7 @@ class LoyaltyProgram
      */
     public static function get(array $params = []): LoyaltyProgram
     {
-        $response = ApiClient::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::resourceUri, $params);
 
         return LoyaltyProgramMapper::map($response->getData());
     }

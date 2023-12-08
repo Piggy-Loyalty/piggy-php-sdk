@@ -19,7 +19,7 @@ class Referral
 
     protected $status;
 
-    protected static $resourceUri = "/api/v3/oauth/clients/referrals";
+    const resourceUri = "/api/v3/oauth/clients/referrals";
 
     public function __construct($uuid, $referredContact, $referringContact, $status)
     {
@@ -56,7 +56,7 @@ class Referral
      */
     public static function list(array $params = []): array
     {
-        $response = ApiClient::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::resourceUri, $params);
 
         return ReferralsMapper::map($response->getData());
     }

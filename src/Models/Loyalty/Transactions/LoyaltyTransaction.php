@@ -68,7 +68,7 @@ class LoyaltyTransaction
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/loyalty-transactions";
+    const resourceUri = "/api/v3/oauth/clients/loyalty-transactions";
 
     /**
      * @param string $type
@@ -173,7 +173,7 @@ class LoyaltyTransaction
      */
     public static function list(array $params = []): array
     {
-        $response = ApiClient::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::resourceUri, $params);
 
         return LoyaltyTransactionMapper::map($response->getData());
     }

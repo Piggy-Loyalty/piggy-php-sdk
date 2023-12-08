@@ -51,7 +51,7 @@ class LoyaltyTransactionAttribute
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/loyalty-transaction-attributes";
+    const resourceUri = "/api/v3/oauth/clients/loyalty-transaction-attributes";
 
     /**
      * @param string $name
@@ -166,7 +166,7 @@ class LoyaltyTransactionAttribute
      */
     public static function list(array $params = []): array
     {
-        $response = ApiClient::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::resourceUri, $params);
 
         return LoyaltyTransactionAttributesMapper::map((array)$response->getData());
     }
@@ -178,7 +178,7 @@ class LoyaltyTransactionAttribute
      */
     public static function create(array $body): LoyaltyTransactionAttribute
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::resourceUri, $body);
 
         return LoyaltyTransactionAttributeMapper::map($response->getData());
     }

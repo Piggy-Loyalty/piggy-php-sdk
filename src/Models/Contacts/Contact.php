@@ -56,7 +56,7 @@ class Contact
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/contacts";
+    const resourceUri = "/api/v3/oauth/clients/contacts";
 
     /**
      * @param $uuid
@@ -153,7 +153,7 @@ class Contact
      */
     public static function get(string $contactUuid, array $params = []): Contact
     {
-        $response = ApiClient::get(self::$resourceUri . "/$contactUuid", $params);
+        $response = ApiClient::get(self::resourceUri . "/$contactUuid", $params);
 
         return ContactMapper::map($response->getData());
     }
@@ -165,7 +165,7 @@ class Contact
      */
     public static function findOrCreate(array $params): Contact
     {
-        $response = ApiClient::get(self::$resourceUri . "/find-or-create", $params);
+        $response = ApiClient::get(self::resourceUri . "/find-or-create", $params);
 
         return ContactMapper::map($response->getData());
     }
@@ -177,7 +177,7 @@ class Contact
      */
     public static function findOneBy(array $params): Contact
     {
-        $response = ApiClient::get(self::$resourceUri . "/find-one-by", $params);
+        $response = ApiClient::get(self::resourceUri . "/find-one-by", $params);
 
         return ContactMapper::map($response->getData());
     }
@@ -189,7 +189,7 @@ class Contact
      */
     public static function list(array $params = []): array
     {
-        $response = ApiClient::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::resourceUri, $params);
 
         return ContactsMapper::map($response->getData());
     }
@@ -201,7 +201,7 @@ class Contact
      */
     public static function findOrCreateAsync(array $params): stdClass
     {
-        $response = ApiClient::get(self::$resourceUri . "/find-or-create/async", $params);
+        $response = ApiClient::get(self::resourceUri . "/find-or-create/async", $params);
 
         return $response->getData();
     }
@@ -212,7 +212,7 @@ class Contact
      */
     public static function create(array $body): stdClass
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::resourceUri, $body);
 
         return $response->getData();
     }
@@ -224,7 +224,7 @@ class Contact
      */
     public static function createAnonymously(array $body = []): stdClass
     {
-        $response = ApiClient::post(self::$resourceUri . "/anonymous", $body);
+        $response = ApiClient::post(self::resourceUri . "/anonymous", $body);
 
         return $response->getData();
     }
@@ -237,7 +237,7 @@ class Contact
      */
     public static function update(string $contactUuid, array $body): Contact
     {
-        $response = ApiClient::put(self::$resourceUri . "/$contactUuid", $body);
+        $response = ApiClient::put(self::resourceUri . "/$contactUuid", $body);
 
         return ContactMapper::map($response->getData());
     }
@@ -249,7 +249,7 @@ class Contact
      */
     public static function createAsync(array $body): stdClass
     {
-        $response = ApiClient::post(self::$resourceUri . "/async", $body);
+        $response = ApiClient::post(self::resourceUri . "/async", $body);
 
         return $response->getData();
     }
@@ -262,7 +262,7 @@ class Contact
      */
     public static function delete(string $contactUuid, array $body = []): stdClass
     {
-        return ApiClient::post(self::$resourceUri . "/$contactUuid/delete", $body);
+        return ApiClient::post(self::resourceUri . "/$contactUuid/delete", $body);
     }
 
     /**
@@ -273,7 +273,7 @@ class Contact
      */
     public static function claimAnonymousContact(string $contactUuid, array $body = []): Contact
     {
-        $response = ApiClient::put(self::$resourceUri . "/$contactUuid/claim", $body);
+        $response = ApiClient::put(self::resourceUri . "/$contactUuid/claim", $body);
 
         return ContactMapper::map($response->getData());
     }

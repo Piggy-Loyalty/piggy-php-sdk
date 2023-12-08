@@ -45,7 +45,7 @@ class Promotion
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/promotions";
+    const resourceUri = "/api/v3/oauth/clients/promotions";
 
     /**
      * @param string $uuid
@@ -135,7 +135,7 @@ class Promotion
      */
     public static function create(array $body): Promotion
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::resourceUri, $body);
 
         return PromotionMapper::map($response->getData());
     }
@@ -147,7 +147,7 @@ class Promotion
      */
     public static function list(array $params = []): array
     {
-        $response = ApiClient::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::resourceUri, $params);
 
         return PromotionsMapper::map((array)$response->getData());
     }

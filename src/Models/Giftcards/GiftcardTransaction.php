@@ -76,7 +76,7 @@ class GiftcardTransaction
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/giftcard-transactions";
+    const resourceUri = "/api/v3/oauth/clients/giftcard-transactions";
 
     /**
      * @param string $uuid
@@ -208,7 +208,7 @@ class GiftcardTransaction
      */
     public static function get(string $giftcardTransactionUuid, array $params = []): GiftcardTransaction
     {
-        $response = ApiClient::get(self::$resourceUri . "/$giftcardTransactionUuid", $params);
+        $response = ApiClient::get(self::resourceUri . "/$giftcardTransactionUuid", $params);
 
         return GiftcardTransactionMapper::map($response->getData());
     }
@@ -220,7 +220,7 @@ class GiftcardTransaction
      */
     public static function create(array $body): GiftcardTransaction
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::resourceUri, $body);
 
         return GiftcardTransactionMapper::map($response->getData());
     }
@@ -233,7 +233,7 @@ class GiftcardTransaction
      */
     public static function correct(string $giftcardTransactionUuid, array $body = []): GiftcardTransaction
     {
-        $response = ApiClient::post(self::$resourceUri . "/$giftcardTransactionUuid/correct", $body);
+        $response = ApiClient::post(self::resourceUri . "/$giftcardTransactionUuid/correct", $body);
 
         return GiftcardTransactionMapper::map($response->getData());
     }
@@ -245,7 +245,7 @@ class GiftcardTransaction
      */
     public static function list(array $params): array
     {
-        $response = ApiClient::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::resourceUri, $params);
 
         return GiftcardTransactionsMapper::map((array)$response->getData());
     }

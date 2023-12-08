@@ -66,7 +66,7 @@ class RewardAttribute
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/reward-attributes";
+    const resourceUri = "/api/v3/oauth/clients/reward-attributes";
 
     /**
      * @param string $name
@@ -269,7 +269,7 @@ class RewardAttribute
      */
     public static function list(array $params = []): array
     {
-        $response = ApiClient::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::resourceUri, $params);
 
         return RewardAttributesMapper::map((array)$response->getData());
     }
@@ -281,7 +281,7 @@ class RewardAttribute
      */
     public static function create(array $body): RewardAttribute
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::resourceUri, $body);
 
         return RewardAttributeMapper::map($response->getData());
     }

@@ -33,7 +33,7 @@ class Subscription
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/contact-subscriptions";
+    const resourceUri = "/api/v3/oauth/clients/contact-subscriptions";
 
     /**
      * @param SubscriptionType $subscriptionType
@@ -104,7 +104,7 @@ class Subscription
      */
     public static function list(string $contactUuid, array $params = []): array
     {
-        $response = ApiClient::get(self::$resourceUri . "/$contactUuid", $params);
+        $response = ApiClient::get(self::resourceUri . "/$contactUuid", $params);
 
         return SubscriptionsMapper::map($response->getData());
     }
@@ -117,7 +117,7 @@ class Subscription
      */
     public static function subscribe(string $contactUuid, array $params): Subscription
     {
-        $response = ApiClient::put(self::$resourceUri . "/$contactUuid/subscribe", $params);
+        $response = ApiClient::put(self::resourceUri . "/$contactUuid/subscribe", $params);
 
         return SubscriptionMapper::map($response->getData());
     }
@@ -130,7 +130,7 @@ class Subscription
      */
     public static function unsubscribe(string $contactUuid, array $params): Subscription
     {
-        $response = ApiClient::put(self::$resourceUri . "/$contactUuid/unsubscribe", $params);
+        $response = ApiClient::put(self::resourceUri . "/$contactUuid/unsubscribe", $params);
 
         return SubscriptionMapper::map($response->getData());
     }

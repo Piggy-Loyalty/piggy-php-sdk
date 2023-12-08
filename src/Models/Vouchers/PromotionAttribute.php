@@ -53,7 +53,7 @@ class PromotionAttribute
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/promotion-attributes";
+    const resourceUri = "/api/v3/oauth/clients/promotion-attributes";
 
     /**
      * @param string $name
@@ -146,7 +146,7 @@ class PromotionAttribute
      */
     public static function list(array $params = []): array
     {
-        $response = ApiClient::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::resourceUri, $params);
 
         return PromotionAttributesMapper::map($response->getData());
     }
@@ -159,7 +159,7 @@ class PromotionAttribute
      */
     public static function get($promotionAttributeId, array $params = []): PromotionAttribute
     {
-        $response = ApiClient::get(self::$resourceUri . "/$promotionAttributeId", $params);
+        $response = ApiClient::get(self::resourceUri . "/$promotionAttributeId", $params);
 
         return PromotionAttributeMapper::map($response->getData());
     }
@@ -173,7 +173,7 @@ class PromotionAttribute
      */
     public static function create(array $body): PromotionAttribute
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::resourceUri, $body);
 
         return PromotionAttributeMapper::map($response->getData());
     }
@@ -186,7 +186,7 @@ class PromotionAttribute
      */
     public static function update($promotionAttributeId, array $params): PromotionAttribute
     {
-        $response = ApiClient::put(self::$resourceUri . "/$promotionAttributeId", $params);
+        $response = ApiClient::put(self::resourceUri . "/$promotionAttributeId", $params);
 
         return PromotionAttributeMapper::map($response->getData());
     }

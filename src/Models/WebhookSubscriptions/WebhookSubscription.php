@@ -53,7 +53,7 @@ class WebhookSubscription
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/webhook-subscriptions";
+    const resourceUri = "/api/v3/oauth/clients/webhook-subscriptions";
 
     /**
      * @param string $uuid
@@ -158,7 +158,7 @@ class WebhookSubscription
      */
     public static function update(string $webhookUuid, array $params): WebhookSubscription
     {
-        $response = ApiClient::put(self::$resourceUri . "/{$webhookUuid}", $params);
+        $response = ApiClient::put(self::resourceUri . "/{$webhookUuid}", $params);
 
         return WebhookSubscriptionMapper::map($response->getData());
     }
@@ -170,7 +170,7 @@ class WebhookSubscription
      */
     public static function list(array $params = []): array
     {
-        $response = ApiClient::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::resourceUri, $params);
 
         return WebhookSubscriptionsMapper::map((array)$response->getData());
     }
@@ -182,7 +182,7 @@ class WebhookSubscription
      */
     public static function create(array $body): WebhookSubscription
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::resourceUri, $body);
 
         return WebhookSubscriptionMapper::map($response->getData());
     }
@@ -195,7 +195,7 @@ class WebhookSubscription
      */
     public static function get(string $webhookUuid, array $params = []): WebhookSubscription
     {
-        $response = ApiClient::get(self::$resourceUri . "/$webhookUuid", $params);
+        $response = ApiClient::get(self::resourceUri . "/$webhookUuid", $params);
 
         return WebhookSubscriptionMapper::map($response->getData());
     }
@@ -208,7 +208,7 @@ class WebhookSubscription
      */
     public static function delete(string $webhookUuid, array $params = []): string
     {
-        ApiClient::delete(self::$resourceUri . "/$webhookUuid", $params);
+        ApiClient::delete(self::resourceUri . "/$webhookUuid", $params);
 
         return 'Webhook deleted';
     }

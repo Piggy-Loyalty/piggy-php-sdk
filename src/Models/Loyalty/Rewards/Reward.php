@@ -76,7 +76,7 @@ class Reward
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/rewards";
+    const resourceUri = "/api/v3/oauth/clients/rewards";
 
     /**
      * @param string $uuid
@@ -206,7 +206,7 @@ class Reward
      */
     public static function list(array $params = []): array
     {
-        $response = ApiClient::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::resourceUri, $params);
 
         return RewardsMapper::map($response->getData());
     }
@@ -220,7 +220,7 @@ class Reward
      */
     public static function update($rewardUuid, array $params): Reward
     {
-        $response = ApiClient::put(self::$resourceUri . "/$rewardUuid", $params);
+        $response = ApiClient::put(self::resourceUri . "/$rewardUuid", $params);
 
         return RewardMapper::map($response->getData());
     }

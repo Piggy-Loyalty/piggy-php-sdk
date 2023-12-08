@@ -3,6 +3,7 @@
 namespace Piggy\Api\Resources\OAuth\Automations;
 
 use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\Http\BaseClient;
 use Piggy\Api\Mappers\Automations\AutomationsMapper;
 use Piggy\Api\Resources\BaseResource;
 
@@ -17,6 +18,12 @@ class AutomationsResource extends BaseResource
      * @var string
      */
     protected $resourceUri = "/api/v3/oauth/clients/automations";
+
+    public function __construct(BaseClient $client)
+    {
+        parent::__construct($client);
+
+    }
 
     /**
      * @param array $params

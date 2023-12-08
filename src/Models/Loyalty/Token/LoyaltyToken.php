@@ -18,7 +18,7 @@ class LoyaltyToken
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/loyalty-tokens";
+    const resourceUri = "/api/v3/oauth/clients/loyalty-tokens";
 
     /**
      * @param array $body
@@ -27,7 +27,7 @@ class LoyaltyToken
      */
     public static function create(array $body): string
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::resourceUri, $body);
 
         return $response->getData();
     }
@@ -39,7 +39,7 @@ class LoyaltyToken
      */
     public static function claim(array $body): CreditReception
     {
-        $response = ApiClient::post(self::$resourceUri . "/claim", $body);
+        $response = ApiClient::post(self::resourceUri . "/claim", $body);
 
         return CreditReceptionMapper::map($response->getData());
     }

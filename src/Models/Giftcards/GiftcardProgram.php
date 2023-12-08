@@ -25,7 +25,7 @@ class GiftcardProgram
      */
     protected $active;
 
-    protected static $resourceUri = "/api/v3/oauth/clients/giftcard-programs";
+    const resourceUri = "/api/v3/oauth/clients/giftcard-programs";
 
     /**
      * GiftcardProgram constructor.
@@ -70,7 +70,7 @@ class GiftcardProgram
      */
     public static function list(): array
     {
-        $response = ApiClient::get(self::$resourceUri);
+        $response = ApiClient::get(self::resourceUri);
 
         return GiftcardProgramsMapper::map($response->getData());
     }

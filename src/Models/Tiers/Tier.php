@@ -39,7 +39,7 @@ class Tier
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/tiers";
+    const resourceUri = "/api/v3/oauth/clients/tiers";
 
     /**
      * @var string
@@ -116,7 +116,7 @@ class Tier
      */
     public static function list(array $params = []): array
     {
-        $response = ApiClient::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::resourceUri, $params);
 
         return TiersMapper::map((array)$response->getData());
     }

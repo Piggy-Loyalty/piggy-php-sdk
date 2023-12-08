@@ -62,7 +62,7 @@ class Brandkit
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/brand-kit";
+    const resourceUri = "/api/v3/oauth/clients/brand-kit";
 
     /**
      * @param string|null $small_logo_url
@@ -207,7 +207,7 @@ class Brandkit
      */
     public static function get(): Brandkit
     {
-        $response = ApiClient::get(self::$resourceUri);
+        $response = ApiClient::get(self::resourceUri);
 
         return BrandkitMapper::map($response->getData());
     }

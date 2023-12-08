@@ -56,7 +56,7 @@ class CollectableReward
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/collectable-rewards";
+    const resourceUri = "/api/v3/oauth/clients/collectable-rewards";
 
     /**
      * @param Contact $contact
@@ -150,7 +150,7 @@ class CollectableReward
      */
     public static function list(array $params = []): array
     {
-        $response = ApiClient::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::resourceUri, $params);
 
         return CollectableRewardsMapper::map($response->getData());
     }
@@ -164,7 +164,7 @@ class CollectableReward
      */
     public static function collect(string $loyaltyTransactionUuid, array $params = []): CollectableReward
     {
-        $response = ApiClient::put(self::$resourceUri . "/collect/$loyaltyTransactionUuid", $params);
+        $response = ApiClient::put(self::resourceUri . "/collect/$loyaltyTransactionUuid", $params);
 
         return CollectableRewardMapper::map($response->getData());
     }

@@ -118,7 +118,7 @@ class CustomAttribute
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/custom-attributes";
+    const resourceUri = "/api/v3/oauth/clients/custom-attributes";
 
     /**
      * @param int $id
@@ -345,7 +345,7 @@ class CustomAttribute
      */
     public static function list(array $params = []): array
     {
-        $response = ApiClient::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::resourceUri, $params);
 
         return CustomAttributesMapper::map($response->getData());
     }
@@ -357,7 +357,7 @@ class CustomAttribute
      */
     public static function create(array $body): CustomAttribute
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::resourceUri, $body);
 
         return CustomAttributeMapper::map($response->getData());
     }

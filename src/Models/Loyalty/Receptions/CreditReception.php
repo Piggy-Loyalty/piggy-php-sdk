@@ -67,7 +67,7 @@ class CreditReception
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/credit-receptions";
+    const resourceUri = "/api/v3/oauth/clients/credit-receptions";
 
     /**
      * @param string $type
@@ -182,7 +182,7 @@ class CreditReception
      */
     public static function create(array $body): CreditReception
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::resourceUri, $body);
 
         return CreditReceptionMapper::map($response->getData());
     }
@@ -194,7 +194,7 @@ class CreditReception
      */
     public static function calculate(array $params): stdClass
     {
-        $response = ApiClient::get(self::$resourceUri . "/calculate", $params);
+        $response = ApiClient::get(self::resourceUri . "/calculate", $params);
 
         return $response->getData();
     }

@@ -22,7 +22,7 @@ class ContactsPortal
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/contacts-portal";
+    const resourceUri = "/api/v3/oauth/clients/contacts-portal";
 
     /**
      * @param string $url
@@ -47,7 +47,7 @@ class ContactsPortal
      */
     public static function getAuthUrl(array $params): ContactsPortal
     {
-        $response = ApiClient::get(self::$resourceUri . "/auth-url", $params);
+        $response = ApiClient::get(self::resourceUri . "/auth-url", $params);
 
         return ContactsPortalMapper::map($response->getData());
     }

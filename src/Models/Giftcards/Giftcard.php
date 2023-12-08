@@ -63,7 +63,7 @@ class Giftcard
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/giftcards";
+    const resourceUri = "/api/v3/oauth/clients/giftcards";
 
     /**
      * @param string $uuid
@@ -168,7 +168,7 @@ class Giftcard
      */
     public static function findOneBy(array $params): Giftcard
     {
-        $response = ApiClient::get(self::$resourceUri . "/find-one-by", $params);
+        $response = ApiClient::get(self::resourceUri . "/find-one-by", $params);
 
         return GiftcardMapper::map($response->getData());
     }
@@ -180,7 +180,7 @@ class Giftcard
      */
     public static function create(array $body): Giftcard
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::resourceUri, $body);
 
         return GiftcardMapper::map($response->getData());
     }

@@ -38,7 +38,7 @@ class Form
      */
     public $type;
 
-    protected static $resourceUri = "/api/v3/oauth/clients/forms";
+    const resourceUri = "/api/v3/oauth/clients/forms";
 
     /**
      * @param string $uuid
@@ -102,7 +102,7 @@ class Form
      */
     public static function list(array $params = []): array
     {
-        $response = ApiClient::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::resourceUri, $params);
 
         return FormsMapper::map((array)$response->getData());
     }

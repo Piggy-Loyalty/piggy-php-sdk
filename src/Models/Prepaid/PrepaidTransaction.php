@@ -38,7 +38,7 @@ class PrepaidTransaction
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/prepaid-transactions";
+    const resourceUri = "/api/v3/oauth/clients/prepaid-transactions";
 
     /**
      * @param int $amountInCents
@@ -93,7 +93,7 @@ class PrepaidTransaction
      */
     public static function create(array $body): PrepaidTransaction
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::resourceUri, $body);
 
         return PrepaidTransactionMapper::map($response->getData());
     }

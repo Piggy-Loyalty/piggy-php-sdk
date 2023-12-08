@@ -37,7 +37,7 @@ class ContactIdentifier
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/contact-identifiers";
+    const resourceUri = "/api/v3/oauth/clients/contact-identifiers";
 
     /**
      * @param string $value
@@ -92,7 +92,7 @@ class ContactIdentifier
      */
     public static function get(array $params = []): ContactIdentifier
     {
-        $response = ApiClient::get(self::$resourceUri . "/find", $params);
+        $response = ApiClient::get(self::resourceUri . "/find", $params);
 
         return ContactIdentifierMapper::map($response->getData());
     }
@@ -104,7 +104,7 @@ class ContactIdentifier
      */
     public static function create(array $body): ContactIdentifier
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::resourceUri, $body);
 
         return ContactIdentifierMapper::map($response->getData());
     }
@@ -116,7 +116,7 @@ class ContactIdentifier
      */
     public static function link(array $params): ContactIdentifier
     {
-        $response = ApiClient::put(self::$resourceUri . "/link", $params);
+        $response = ApiClient::put(self::resourceUri . "/link", $params);
 
         return ContactIdentifierMapper::map($response->getData());
     }

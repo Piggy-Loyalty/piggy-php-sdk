@@ -24,7 +24,7 @@ class ContactAttribute
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/contact-attributes";
+    const resourceUri = "/api/v3/oauth/clients/contact-attributes";
 
     public function __construct($value, $attribute)
     {
@@ -71,7 +71,7 @@ class ContactAttribute
      */
     public static function list(array $params = []): array
     {
-        $response = ApiClient::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::resourceUri, $params);
 
         return AttributesMapper::map($response->getData());
     }
@@ -83,7 +83,7 @@ class ContactAttribute
      */
     public static function create(array $body): Attribute
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::resourceUri, $body);
 
         return AttributeMapper::map($response->getData());
     }

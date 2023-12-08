@@ -73,7 +73,7 @@ class Voucher
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/vouchers";
+    const resourceUri = "/api/v3/oauth/clients/vouchers";
 
     /**
      * @param string $uuid
@@ -212,7 +212,7 @@ class Voucher
      */
     public static function create(array $body): Voucher
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::resourceUri, $body);
 
         return VoucherMapper::map($response->getData());
     }
@@ -224,7 +224,7 @@ class Voucher
      */
     public static function batch(array $body): stdClass
     {
-        $response = ApiClient::post(self::$resourceUri . "/batch", $body);
+        $response = ApiClient::post(self::resourceUri . "/batch", $body);
         var_dump(json_encode($response->getData()));
 
         return $response->getData();
@@ -237,7 +237,7 @@ class Voucher
      */
     public static function list(array $params = []): array
     {
-        $response = ApiClient::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::resourceUri, $params);
 
         return VouchersMapper::map((array)$response->getData());
     }
@@ -249,7 +249,7 @@ class Voucher
      */
     public static function find(array $params): Voucher
     {
-        $response = ApiClient::get(self::$resourceUri . "/find", $params);
+        $response = ApiClient::get(self::resourceUri . "/find", $params);
 
         return VoucherMapper::map($response->getData());
     }
@@ -261,7 +261,7 @@ class Voucher
      */
     public static function redeem(array $body): Voucher
     {
-        $response = ApiClient::post(self::$resourceUri . "/redeem", $body);
+        $response = ApiClient::post(self::resourceUri . "/redeem", $body);
 
         return VoucherMapper::map($response->getData());
     }
@@ -274,7 +274,7 @@ class Voucher
      */
     public static function lock(string $voucherUuid, array $body = []): VoucherLock
     {
-        $response = ApiClient::post(self::$resourceUri . "/$voucherUuid/lock/", $body);
+        $response = ApiClient::post(self::resourceUri . "/$voucherUuid/lock/", $body);
 
         return VoucherLockMapper::map($response->getData());
     }
@@ -287,7 +287,7 @@ class Voucher
      */
     public static function release(string $voucherUuid, array $body): VoucherLock
     {
-        $response = ApiClient::post(self::$resourceUri . "/$voucherUuid/release/", $body);
+        $response = ApiClient::post(self::resourceUri . "/$voucherUuid/release/", $body);
 
         return VoucherLockMapper::map($response->getData());
     }
@@ -300,7 +300,7 @@ class Voucher
      */
     public static function update(string $voucherUuid, array $body): Voucher
     {
-        $response = ApiClient::put(self::$resourceUri . "/$voucherUuid", $body);
+        $response = ApiClient::put(self::resourceUri . "/$voucherUuid", $body);
 
         return VoucherMapper::map($response->getData());
     }

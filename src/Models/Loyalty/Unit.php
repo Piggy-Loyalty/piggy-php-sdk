@@ -36,7 +36,7 @@ class Unit
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/units";
+    const resourceUri = "/api/v3/oauth/clients/units";
 
     /**
      * @param string $name
@@ -89,7 +89,7 @@ class Unit
      */
     public static function list(array $params = []): array
     {
-        $response = ApiClient::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::resourceUri, $params);
 
         return UnitsMapper::map($response->getData());
     }
@@ -101,7 +101,7 @@ class Unit
      */
     public static function create(array $body): Unit
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::resourceUri, $body);
 
         return UnitMapper::map($response->getData());
     }

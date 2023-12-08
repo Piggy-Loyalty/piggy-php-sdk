@@ -43,7 +43,7 @@ class Automation
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/automations";
+    const resourceUri = "/api/v3/oauth/clients/automations";
 
     /**
      * @param string $name
@@ -110,7 +110,7 @@ class Automation
      */
     public static function list(array $params = []): array
     {
-        $response = ApiClient::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::resourceUri, $params);
 
         return AutomationsMapper::map($response);
     }
@@ -122,7 +122,7 @@ class Automation
      */
     public static function create($body): array
     {
-        $response = ApiClient::post(self::$resourceUri . '/' . 'runs', $body);
+        $response = ApiClient::post(self::resourceUri . '/' . 'runs', $body);
 
         return AutomationsMapper::map($response);
     }

@@ -41,7 +41,7 @@ class PortalSession
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/portal-sessions";
+    const resourceUri = "/api/v3/oauth/clients/portal-sessions";
 
     /**
      * @param string $url
@@ -114,7 +114,7 @@ class PortalSession
      */
     public static function create(array $body): PortalSession
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::resourceUri, $body);
 
         return PortalSessionMapper::map($response->getData());
     }
@@ -127,7 +127,7 @@ class PortalSession
      */
     public static function get(string $uuid, array $params = []): PortalSession
     {
-        $response = ApiClient::get(self::$resourceUri . "/$uuid", $params);
+        $response = ApiClient::get(self::resourceUri . "/$uuid", $params);
 
         return PortalSessionMapper::map($response->getData());
     }

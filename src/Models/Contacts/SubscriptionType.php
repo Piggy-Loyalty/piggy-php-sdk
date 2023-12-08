@@ -42,7 +42,7 @@ class SubscriptionType
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/subscription-types";
+    const resourceUri = "/api/v3/oauth/clients/subscription-types";
 
     /**
      * @param string $uuid
@@ -139,7 +139,7 @@ class SubscriptionType
      */
     public static function list(array $params = []): array
     {
-        $response = ApiClient::get(self::$resourceUri, $params);
+        $response = ApiClient::get(self::resourceUri, $params);
 
         return SubscriptionTypesMapper::map($response->getData());
     }

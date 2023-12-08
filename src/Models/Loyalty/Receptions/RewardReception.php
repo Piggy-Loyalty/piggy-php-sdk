@@ -17,7 +17,7 @@ class RewardReception
     /**
      * @var string
      */
-    protected static $resourceUri = "/api/v3/oauth/clients/reward-receptions";
+    const resourceUri = "/api/v3/oauth/clients/reward-receptions";
 
     /**
      * @param array $body
@@ -28,7 +28,7 @@ class RewardReception
      */
     public static function create(array $body)
     {
-        $response = ApiClient::post(self::$resourceUri, $body);
+        $response = ApiClient::post(self::resourceUri, $body);
 
         return RewardReceptionMapper::map($response->getData());
     }
