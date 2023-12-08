@@ -16,7 +16,7 @@ class ContactIdentifierMapper
     {
         $contact = null;
 
-        if (property_exists($data, 'contact') && $data->contact != null) {
+        if (isset($data->contact)) {
             $contact = ContactMapper::map($data->contact);
         }
 
@@ -24,7 +24,7 @@ class ContactIdentifierMapper
             $data->value,
             $data->active ?? null,
             $data->name ?? null,
-            $contact
+            $data->contact ?? null
         );
     }
 }

@@ -18,7 +18,7 @@ class LoyaltyTransactionAttributeMapper
     {
         $options = [];
 
-        if (property_exists($data, 'options') && $data->options != null) {
+        if (!empty($data->options)) {
             foreach ($data->options as $item) {
                 $options[] = get_object_vars($item);
             }

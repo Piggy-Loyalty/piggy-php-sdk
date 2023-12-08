@@ -19,8 +19,7 @@ class GiftcardTransactionMapper extends BaseMapper
      */
     public static function map(stdClass $data): GiftcardTransaction
     {
-
-        if (isset($data->settlements)) {
+        if (!empty($data->settlements)) {
             $settlements = array_map(function ($settlement) {
                 return GiftcardTransactionSettlementMapper::map($settlement);
             }, $data->settlements);
@@ -35,7 +34,7 @@ class GiftcardTransactionMapper extends BaseMapper
         if (isset($data->card)) {
             $card = new stdClass();
             $card->id = $data->card->id ?? null;
-            $card->uuid =$data->card->uuid ?? null;
+            $card->uuid = $data->card->uuid ?? null;
         }
 
         return new GiftcardTransaction(

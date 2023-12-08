@@ -14,7 +14,7 @@ class PromotionAttributeMapper
     {
         $options = [];
 
-        if (property_exists($data, 'options') && $data->options != null) {
+        if (isset($data->options)) {
             foreach ($data->options as $item) {
                 $options[] = get_object_vars($item);
             }

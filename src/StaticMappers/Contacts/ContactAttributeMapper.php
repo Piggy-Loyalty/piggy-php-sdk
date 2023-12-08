@@ -15,7 +15,7 @@ class ContactAttributeMapper
     {
         $attribute = null;
 
-        if (property_exists($data,'attribute')) {
+        if (isset($data->attribute)) {
             $attribute = AttributeMapper::map($data->attribute);
         }
 

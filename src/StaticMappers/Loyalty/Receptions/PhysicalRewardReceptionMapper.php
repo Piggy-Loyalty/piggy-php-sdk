@@ -26,10 +26,9 @@ class PhysicalRewardReceptionMapper extends BaseMapper
         $shop = ShopMapper::map($data->shop);
         $physicalReward = PhysicalRewardMapper::map($data->reward);
 
+        $contactIdentifier = null;
         if (isset($data->contact_identifier)) {
             $contactIdentifier = ContactIdentifierMapper::map($data->contact_identifier);
-        } else {
-            $contactIdentifier = null;
         }
 
         return new PhysicalRewardReception(

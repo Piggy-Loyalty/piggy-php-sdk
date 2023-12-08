@@ -8,6 +8,7 @@ use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\StaticMappers\Vouchers\PromotionMapper;
 use Piggy\Api\StaticMappers\Vouchers\PromotionsMapper;
+use stdClass;
 
 class Promotion
 {
@@ -37,6 +38,11 @@ class Promotion
     protected $expiration_duration;
 
     /**
+     * @var stdClass|null
+     */
+    protected $attributes;
+
+    /**
      * @var string
      */
     protected static $resourceUri = "/api/v3/oauth/clients/promotions";
@@ -48,6 +54,7 @@ class Promotion
      * @param int|null $voucher_limit
      * @param int|null $limit_per_contact
      * @param int|null $expiration_duration
+     * @param stdClass|null $attributes
      */
     public function __construct(
         string $uuid,
@@ -55,7 +62,8 @@ class Promotion
         string $description,
         ?int   $voucher_limit = null,
         ?int   $limit_per_contact = null,
-        ?int   $expiration_duration = null
+        ?int   $expiration_duration = null,
+        ?stdClass $attributes = null
     )
     {
         $this->uuid = $uuid;
@@ -64,6 +72,7 @@ class Promotion
         $this->voucher_limit = $voucher_limit;
         $this->limit_per_contact = $limit_per_contact;
         $this->expiration_duration = $expiration_duration;
+        $this->attributes = $attributes;
     }
 
     /**
@@ -112,6 +121,11 @@ class Promotion
     public function getUuid(): string
     {
         return $this->uuid;
+    }
+
+    public function getAttributes(): ?stdClass
+    {
+        return $this->attributes;
     }
 
     /**

@@ -22,7 +22,7 @@ class RewardAttributeMapper
 
         $options = [];
 
-        if (property_exists($rewardAttribute, 'options') && $rewardAttribute->options != null) {
+        if (isset($rewardAttribute->options)) {
             foreach ($rewardAttribute->options as $item) {
                 $options[] = get_object_vars($item);
             }

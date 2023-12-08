@@ -22,7 +22,8 @@ class PromotionMapper
             $data->description,
             $data->voucher_limit ?? null,
             $data->limit_per_contact ?? null,
-            $data->expiration_duration ?? null
+            $data->expiration_duration ?? null,
+            $data->attributes ?? null
         );
     }
 }

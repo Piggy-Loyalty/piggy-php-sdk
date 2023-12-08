@@ -21,12 +21,12 @@ class AttributeMapper extends BaseMapper
 
         $options = [];
 
-        if (property_exists($data, 'options') && $data->options != null) {
+        if (isset($data->options)) {
             foreach ($data->options as $item) {
                 $options[] = get_object_vars($item);
             }
         }
-        
+
         return new Attribute(
             $data->name,
             $data->label,
