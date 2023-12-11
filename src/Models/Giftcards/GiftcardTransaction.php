@@ -102,7 +102,7 @@ class GiftcardTransaction
         array    $settlements = [],
         ?int     $id = null,
         ?Shop    $shop = null,
-        stdClass $card = null
+        ?stdClass $card = null
     )
     {
         $this->uuid = $uuid;
