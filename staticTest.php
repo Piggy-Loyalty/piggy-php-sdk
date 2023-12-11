@@ -216,7 +216,7 @@ ApiClient::configure("gyxeH4GzVYhqWseTVJUGe9GWF23NjB8rXi5QomLq", "http://127.0.0
 /**
  * STATIC GIFTCARD CALLS
  */
-//$result = Giftcard::find(["hash" => "41651"]);
+//$result = Giftcard::find(["hash" => "41656"]);
 //var_dump("findOneBy giftcard", $result);
 
 //$result = Giftcard::create(["giftcard_program_uuid" => "8fb59dcf-fb5b-4cee-88d8-35e361e55a12", "type" => 1]);
@@ -411,7 +411,8 @@ ApiClient::configure("gyxeH4GzVYhqWseTVJUGe9GWF23NjB8rXi5QomLq", "http://127.0.0
 //var_dump("list vouchers", $result);
 
 $result = Voucher::find(["code" => "VGUZFKYXS"]);
-//var_dump($result);
+var_dump($result);
+var_dump($result->getCode());
 
 //var_dump("find voucher by code", $result);
 

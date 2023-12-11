@@ -11,50 +11,17 @@ use Piggy\Api\Models\Promotion;
 
 class Voucher extends Model
 {
-    /**
-     * @var string
-     */
-    protected $uuid;
-
-    /**
-     * @var string
-     */
-    protected $code;
-
-    /**
-     * @var string
-     */
-    protected $status;
-
-    /**
-     * @var string
-     */
-    protected $name;
-
-    /**
-     * @var string
-     */
-    protected $description;
-
-    /**
-     * @var DateTime
-     */
-    protected $expiration_date;
-
-    /**
-     * @var DateTime|null
-     */
-    protected $activation_date;
-
-    /**
-     * @var DateTime|null
-     */
-    protected $redeemed_at;
-
-    /**
-     * @var bool
-     */
-    protected $is_redeemed;
+    protected $allowed = [
+        'uuid',
+        'code',
+        'status',
+        'name',
+        'description',
+        'expiration_date',
+        'activation_date',
+        'redeemed_at',
+        'is_redeemed'
+    ];
 
     /**
      * @var Promotion
@@ -69,27 +36,82 @@ class Voucher extends Model
 
     protected static $resourceUri = "/api/v3/oauth/clients/vouchers";
 
+    /**
+     * @return string|null
+     */
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    /**
+     * @return DateTime|null
+     */
+    public function getExpirationDate(): ?DateTime
+    {
+        return $this->expiration_date;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getActivationDate(): ?string
+    {
+        return $this->activation_date;
+    }
+
+    /**
+     * @return DateTime|null
+     */
+    public function getRedeemedAt(): ?DateTime
+    {
+        return $this->redeemed_at;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function isRedeemed(): ?bool
+    {
+        return $this->is_redeemed;
+    }
+
+
     public static function create(array $body): Response
     {
         return ApiClient::post(self::$resourceUri, $body);
     }
 
-    public static function find(array $params): Voucher
+    public static function find(array $params)
     {
         $response = ApiClient::get(self::$resourceUri . "/find", $params);
 
-        $voucher = Model::createTypedClassFromStdClass($response->getData(), self::class, Promotion::class);
-
-
-//        var_dump($voucher);
-
-
-//        $promotionStdClass = $responseData->promotion;
-//        $promotion = Model::createFromStdClass($promotionStdClass, Promotion::class);
-
-//        return Promotion::createFromStdClass($promotionStdClass);
-        return $voucher;
+        return Voucher::createTypedClassFromStdClass($response->getData(), self::class, Promotion::class);
     }
+
+
+//    public static function find(array $params): Voucher
+//    {
+//        $response = ApiClient::get(self::$resourceUri . "/find", $params);
+//
+//        $voucher = Model::createTypedClassFromStdClass($response->getData(), self::class, Promotion::class);
+//
+////        var_dump($voucher->activation_date);
+////        die;
+////        $promotionStdClass = $responseData->promotion;
+////        $promotion = Model::createFromStdClass($promotionStdClass, Promotion::class);
+//
+////        return Promotion::createFromStdClass($promotionStdClass);
+//        return $voucher;
+//    }
 
 //    private function _get($type, $class, $subTypes = array(), $dependantTypes = array())
 //    {

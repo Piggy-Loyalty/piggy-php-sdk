@@ -248,6 +248,11 @@ class Voucher
     {
         $response = ApiClient::get(self::$resourceUri . "/find", $params);
 
+        $voucher = VoucherMapper::map($response->getData());
+
+//        var_dump(gettype($voucher));
+//        die;
+
         return VoucherMapper::map($response->getData());
     }
 
