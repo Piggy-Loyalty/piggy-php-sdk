@@ -24,7 +24,7 @@ class ContactIdentifierMapper
             $data->value,
             $data->active ?? null,
             $data->name ?? null,
-            $data->contact ?? null
+            $contact ?? null
         );
     }
 }

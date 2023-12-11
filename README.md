@@ -35,13 +35,13 @@ try {
     // Catch maintenance mode specific.
 } catch(Piggy\Api\Exceptions\PiggyRequestException $e) {
     // If no Contact is found, you'd know that from this exception
-} catch(\Exception $) {
+} catch(\Exception $e) {
     // Handle any other exceptions 
 }
 
 ```
 
-**Example with OAuth Client**  
+**Example with OAuth Client (DEPRECATED!)**  
 ```
 $clientId = 'xxxx';
 $clientSecret = 'xxx-xxxxxxx';    
@@ -55,12 +55,12 @@ try {
     // Catch maintenance mode specific.
 } catch(Piggy\Api\Exceptions\PiggyRequestException $e) {
     // If no Contact is found, you'd know that from this exception
-} catch(\Exception $) {
+} catch(\Exception $e) {
     // Handle any other exceptions 
 }
 ```
 
-**Example with OAuth Client Using API Key**
+**Example with OAuth Client Using API Key (DEPRECATED!)**
 ```
 $apiKey = 'xxxxxxxx';
 $someBaseUrl = "https://yourcompany.com/";
@@ -73,12 +73,12 @@ try {
     // Catch maintenance mode specific.
 } catch(Piggy\Api\Exceptions\PiggyRequestException $e) {
     // If no Contact is found, you'd know that from this exception
-} catch(\Exception $) {
+} catch(\Exception $e) {
     // Handle any other exceptions 
 }
 ```
 
-**Example with Static Functions using API Key**
+**Example with Static Functions using API Key (NEW!)**
 ```
 $apiKey = 'xxxxxxxx';
 $someBaseUrl = "https://yourcompany.com/";
@@ -86,12 +86,13 @@ $someBaseUrl = "https://yourcompany.com/";
 ApiClient::configure($apiKey, $someBaseUrl);
 
 try {
-    $contact = Contact::update("1234ab-7890-asdf-1234-a1b2c3d4", ["attributes" => ["firstname" => "henk", "housenumber" => 10]]); // Example call to update a Contact by uuid
+    // Example call to update a Contact by UUID
+    Contact::update("1234ab-7890-asdf-1234-a1b2c3d4", ["attributes" => ["firstname" => "henk", "housenumber" => 10]]);
 } catch(Piggy\Api\Exceptions\MaintenanceModeException $e) {
     // Catch maintenance mode specific.
 } catch(GuzzleHttp\Exception\GuzzleException $e) {
     // If no Contact is found, you'd know that from this exception
-} catch(\Exception $) {
+} catch(\Exception $e) {
     // Handle any other exceptions 
 }
 ```
