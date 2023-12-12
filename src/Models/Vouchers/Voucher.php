@@ -225,7 +225,6 @@ class Voucher
     public static function batch(array $body): stdClass
     {
         $response = ApiClient::post(self::resourceUri . "/batch", $body);
-        var_dump(json_encode($response->getData()));
 
         return $response->getData();
     }
