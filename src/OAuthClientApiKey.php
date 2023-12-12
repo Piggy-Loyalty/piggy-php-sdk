@@ -38,5 +38,4 @@ class OAuthClientApiKey extends BaseClient
 
         return $this;
     }
-
 }
