@@ -10,7 +10,9 @@ class Model
 {
     protected static $allowedNestedModels = [
         "promotion",
-//        "contact",
+        "contact",
+//        "prepaidBalance",
+//        "prepaid_balance",
     ];
 
     protected $values;
@@ -92,11 +94,17 @@ class Model
     {
         $instance = new $class();
 
-        foreach ($stdClass as $property => $value) {
+        foreach ($stdClass as $property => $value)  {
+//            if ($value === null) {
+//                continue;
+//            }
+
             if (in_array($property, self::$allowedNestedModels)) {
+                var_dump($property, $value);
                 $nestedInstance = self::createTypedClassFromStdClass($value, $nestedClass);
                 $instance->$property = $nestedInstance;
             }
+
             else {
                 $instance->$property = $value;
             }

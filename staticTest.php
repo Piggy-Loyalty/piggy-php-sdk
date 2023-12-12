@@ -7,7 +7,10 @@ use Piggy\Api\ApiClient;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Models\Automations\Automation;
 use Piggy\Api\Models\Brandkit\Brandkit;
-use Piggy\Api\Models\Contacts\Contact;
+
+use Piggy\Api\Models\Contact;
+//use Piggy\Api\Models\Contacts\Contact;
+
 use Piggy\Api\Models\Contacts\ContactAttribute;
 use Piggy\Api\Models\Contacts\ContactIdentifier;
 use Piggy\Api\Models\Contacts\ContactVerification;
@@ -410,9 +413,13 @@ ApiClient::configure("gyxeH4GzVYhqWseTVJUGe9GWF23NjB8rXi5QomLq", "http://127.0.0
 //$result = Voucher::list(["promotion_uuid" => "123", "limit" => "30", "page" => "1"]);
 //var_dump("list vouchers", $result);
 
+//$result = Contact::newGet('123');
+//var_dump($result);
+//var_dump("get contact: " . $result->getEmail());
+
 $result = Voucher::find(["code" => "VGUZFKYXS"]);
 var_dump($result);
-var_dump($result->getCode());
+//var_dump($result->getCode());
 
 //var_dump("find voucher by code", $result);
 

@@ -1,11 +1,13 @@
 <?php
 
-namespace Piggy\Api\Models\Contacts;
+namespace Piggy\Api\Models;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
 use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\Model;
+use Piggy\Api\Models\Contacts\Subscription;
 use Piggy\Api\Models\Loyalty\CreditBalance;
 use Piggy\Api\Models\Prepaid\PrepaidBalance;
 use Piggy\Api\Models\Tiers\Tier;
@@ -20,7 +22,7 @@ use stdClass;
  * Class Contact
  * @package Piggy\Api\Models\Contacts
  */
-class Contact
+class Contact extends Model
 {
     /**
      * @var string
@@ -61,7 +63,6 @@ class Contact
      * @var string
      */
     protected static $resourceUri = "/api/v3/oauth/clients/contacts";
-
 
     /**
      * @return string
@@ -141,6 +142,19 @@ class Contact
         $response = ApiClient::get(self::$resourceUri . "/$contactUuid", $params);
 
         return ContactMapper::map($response->getData());
+    }
+
+    /**
+     * @param string $contactUuid
+     * @param array $params
+     * @return Contact
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
+     */
+    public static function newGet(string $contactUuid, array $params = []): Model
+    {
+        $response = ApiClient::get(self::$resourceUri . "/$contactUuid", $params);
+
+        return Contact::createTypedClassFromStdClass($response->getData(), self::class, Tier::class);
     }
 
     /**

@@ -11,17 +11,17 @@ use Piggy\Api\Models\Promotion;
 
 class Voucher extends Model
 {
-    protected $allowed = [
-        'uuid',
-        'code',
-        'status',
-        'name',
-        'description',
-        'expiration_date',
-        'activation_date',
-        'redeemed_at',
-        'is_redeemed'
-    ];
+//    protected $allowed = [
+//        'uuid',
+//        'code',
+//        'status',
+//        'name',
+//        'description',
+//        'expiration_date',
+//        'activation_date',
+//        'redeemed_at',
+//        'is_redeemed'
+//    ];
 
     /**
      * @var Promotion
