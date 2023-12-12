@@ -198,13 +198,11 @@ class WebhookSubscriptionsResourceTest extends OAuthTestCase
     public function it_can_delete_a_webhook()
     {
         $this->addExpectedResponse(
-            [
-                'Webhook deleted'
-            ]
+            []
         );
 
         $responseMessage = $this->mockedClient->webhookSubscriptions->destroy('someWebhookSubscription');
 
-        $this->assertEquals('Webhook deleted', $responseMessage);
+        $this->assertEquals([], $responseMessage);
     }
 }
