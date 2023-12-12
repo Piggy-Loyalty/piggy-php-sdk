@@ -20,7 +20,6 @@ class AttributeMapper extends BaseMapper
         $isPiggyDefined = property_exists($data, 'is_piggy_defined') && $data->is_piggy_defined;
 
         $options = [];
-
         if (isset($data->options)) {
             foreach ($data->options as $item) {
                 $options[] = get_object_vars($item);

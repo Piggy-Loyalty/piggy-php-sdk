@@ -41,44 +41,7 @@ try {
 
 ```
 
-**Example with OAuth Client (DEPRECATED!)**  
-```
-$clientId = 'xxxx';
-$clientSecret = 'xxx-xxxxxxx';    
-$client = new Piggy\Api\OAuthClient($clientId, $clientSecret);  
-$access_token = $client->getAccessToken();      
-$client->setAccessToken($access_token);
-
-try {
-    $contact = $client->contacts->findOneBy('test@domain.com'); // Example call to find a Contact by e-mail address
-} catch(Piggy\Api\Exceptions\MaintenanceModeException $e) {
-    // Catch maintenance mode specific.
-} catch(Piggy\Api\Exceptions\PiggyRequestException $e) {
-    // If no Contact is found, you'd know that from this exception
-} catch(\Exception $e) {
-    // Handle any other exceptions 
-}
-```
-
-**Example with OAuth Client Using API Key (DEPRECATED!)**
-```
-$apiKey = 'xxxxxxxx';
-$someBaseUrl = "https://yourcompany.com/";
-$client = new OAuthClientApiKey($apiKey);
-$client->setBaseUrl($someBaseUrl);
-
-try {
-    $contact = $client->contacts->findOneBy('test@domain.com'); // Example call to find a Contact by e-mail address
-} catch(Piggy\Api\Exceptions\MaintenanceModeException $e) {
-    // Catch maintenance mode specific.
-} catch(Piggy\Api\Exceptions\PiggyRequestException $e) {
-    // If no Contact is found, you'd know that from this exception
-} catch(\Exception $e) {
-    // Handle any other exceptions 
-}
-```
-
-**Example with Static Functions using API Key (NEW!)**
+**Example with Static Functions using API Key**
 ```
 $apiKey = 'xxxxxxxx';
 $someBaseUrl = "https://yourcompany.com/";

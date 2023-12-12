@@ -24,7 +24,7 @@ class GiftcardMapper extends BaseMapper
             $giftcardProgram = $giftcardProgramMapper->map($data->giftcard_program);
         }
 
-        if (isset($data->expiration_date) && !empty($data->expiration_date)) {
+        if (isset($data->expiration_date)) {
             $expirationDate = self::parseDate($data->expiration_date);
         }
 
