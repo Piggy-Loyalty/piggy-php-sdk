@@ -89,13 +89,12 @@ class WebhookSubscriptionsResource extends BaseResource
     /**
      * @param string $webhookUuid
      * @param array $params
-     * @return string
      * @throws PiggyRequestException
      */
-    public function destroy(string $webhookUuid, array $params = []): string
+    public function destroy(string $webhookUuid, array $params = []): array
     {
-        $this->client->destroy("$this->resourceUri/$webhookUuid", $params);
+        $response = $this->client->destroy("$this->resourceUri/$webhookUuid", $params);
 
-        return 'Webhook deleted';
+        return $response->getData();
     }
 }

@@ -203,13 +203,13 @@ class WebhookSubscription
     /**
      * @param string $webhookUuid
      * @param array $params
-     * @return string
+     * @return array
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function delete(string $webhookUuid, array $params = []): string
+    public static function delete(string $webhookUuid, array $params = []): array
     {
-        ApiClient::delete(self::resourceUri . "/$webhookUuid", $params);
+        $response = ApiClient::delete(self::resourceUri . "/$webhookUuid", $params);
 
-        return 'Webhook deleted';
+        return $response->getData();
     }
 }
