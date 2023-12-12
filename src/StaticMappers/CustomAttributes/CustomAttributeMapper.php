@@ -11,7 +11,6 @@ class CustomAttributeMapper
      * @param stdClass $data
      * @return CustomAttribute
      */
-
     public static function map(stdClass $data): CustomAttribute
     {
         $group = null;
