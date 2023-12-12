@@ -19,7 +19,7 @@ class PrepaidBalance
      */
     protected $balanceInCents;
 
-    protected static $contactsResourceUri = "/api/v3/oauth/clients/contacts";
+    const contactsResourceUri = "/api/v3/oauth/clients/contacts";
 
     /**
      * @param int $balanceInCents
@@ -45,7 +45,7 @@ class PrepaidBalance
      */
     public static function findBy(string $contactUuid, array $params = []): PrepaidBalance
     {
-        $response = ApiClient::get(self::$contactsResourceUri . "/$contactUuid/prepaid-balance", $params);
+        $response = ApiClient::get(self::contactsResourceUri . "/$contactUuid/prepaid-balance", $params);
 
         return PrepaidBalanceMapper::map($response->getData());
     }

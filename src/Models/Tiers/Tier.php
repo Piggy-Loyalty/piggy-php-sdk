@@ -44,8 +44,7 @@ class Tier
     /**
      * @var string
      */
-    protected static $contactsResourceUri = "/api/v3/oauth/clients/contacts";
-
+    const contactsResourceUri = "/api/v3/oauth/clients/contacts";
 
     /**
      * @param string $name
@@ -129,7 +128,7 @@ class Tier
      */
     public static function findBy(string $contactUuid, array $params = []): Tier
     {
-        $response = ApiClient::get(self::$contactsResourceUri . "/$contactUuid/tier", $params);
+        $response = ApiClient::get(self::contactsResourceUri . "/$contactUuid/tier", $params);
 
         return TierMapper::map($response->getData());
     }

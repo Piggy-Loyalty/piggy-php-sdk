@@ -22,7 +22,7 @@ class CreditBalance
     /**
      * @var string
      */
-    protected static $contactsResourceUri = "/api/v3/oauth/clients/contacts";
+    const contactsResourceUri = "/api/v3/oauth/clients/contacts";
 
     /**
      * @param int $balance
@@ -48,7 +48,7 @@ class CreditBalance
      */
     public static function findBy(string $contactUuid, array $params = []): CreditBalance
     {
-        $response = ApiClient::get(self::$contactsResourceUri . "/$contactUuid/credit-balance", $params);
+        $response = ApiClient::get(self::contactsResourceUri . "/$contactUuid/credit-balance", $params);
 
         return CreditBalanceMapper::map($response->getData());
     }}
