@@ -21,7 +21,7 @@ class TierMapper
             $data->position,
             $data->uuid ?? null,
             $data->description ?? null,
-            $data->media ?? null
+            $data->media ? get_object_vars($data->media) :  null
         );
     }
 }
