@@ -51,14 +51,14 @@ class Tier
      * @param int $position
      * @param string|null $uuid
      * @param string|null $description
-     * @param \stdClass|null $media
+     * @param array|null $media
      */
     public function __construct(
         string  $name,
         int     $position,
         ?string $uuid = null,
         ?string $description = null,
-        ?\stdClass  $media = null
+        ?array  $media = null
     )
     {
         $this->uuid = $uuid;
@@ -93,9 +93,9 @@ class Tier
     }
 
     /**
-     * @return \stdClass|null
+     * @return array|null
      */
-    public function getMedia(): ?\stdClass
+    public function getMedia(): ?array
     {
         return $this->media;
     }
