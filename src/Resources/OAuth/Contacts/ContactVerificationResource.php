@@ -9,7 +9,6 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class ContactVerificationResource
  * @package Piggy\Api\Resources\OAuth
- * @deprecated
  */
 class ContactVerificationResource extends BaseResource
 {

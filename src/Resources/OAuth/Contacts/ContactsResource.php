@@ -15,7 +15,6 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class ContactsResource
  * @package Piggy\Api\Resources\OAuth\Contacts
- * @deprecated
  */
 class ContactsResource extends BaseResource
 {

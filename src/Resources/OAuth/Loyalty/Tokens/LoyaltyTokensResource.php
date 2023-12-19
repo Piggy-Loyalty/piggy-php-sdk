@@ -10,7 +10,6 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class LoyaltyTokenResource
  * @package Piggy\Api\Resources\OAuth\Loyalty\Tokens
- * @deprecated
  */
 class LoyaltyTokensResource extends BaseResource
 {

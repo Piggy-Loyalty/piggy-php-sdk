@@ -10,7 +10,6 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class ContactsPortalAuthUrlResource
  * @package Piggy\Api\Resources\OAuth\ContactsPortal
- * @deprecated
  */
 class ContactsPortalAuthUrlResource extends BaseResource
 {

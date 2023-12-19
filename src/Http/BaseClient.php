@@ -20,7 +20,6 @@ use function Piggy\Api\hasGuzzle5;
 /**
  * Class BaseClient
  * @package Piggy\Api\Http
- * @deprecated
  */
 abstract class BaseClient
 {

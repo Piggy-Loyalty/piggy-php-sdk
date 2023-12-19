@@ -11,7 +11,6 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class LoyaltyTransactionAttributesResource
  * @package Piggy\Api\Resources\OAuth\Loyalty\Receptions
- * @deprecated
  */
 class LoyaltyTransactionAttributesResource extends BaseResource
 {

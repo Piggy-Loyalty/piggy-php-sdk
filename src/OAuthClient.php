@@ -12,7 +12,6 @@ use Piggy\Api\Http\Traits\SetsOAuthResources as OAuthResources;
 /**
  * Class OAuthClient
  * @package Piggy\Api
- * @deprecated
  */
 class OAuthClient extends BaseClient
 {

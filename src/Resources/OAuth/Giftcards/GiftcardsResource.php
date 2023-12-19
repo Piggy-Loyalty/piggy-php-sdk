@@ -10,7 +10,6 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class GiftcardsResource
  * @package Piggy\Api\Resources\OAuth\Giftcards
- * @deprecated
  */
 class GiftcardsResource extends BaseResource
 {

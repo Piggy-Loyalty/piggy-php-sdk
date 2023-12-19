@@ -10,7 +10,6 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class FormsResource
  * @package Piggy\Api\Resources\OAuth\Forms
- * @deprecated
  */
 class FormsResource extends BaseResource
 {

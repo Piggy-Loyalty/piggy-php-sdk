@@ -7,7 +7,6 @@ use Piggy\Api\Http\BaseClient;
 /**
  * Class BaseResource
  * @package Piggy\Api\Resources
- * @deprecated
  */
 abstract class BaseResource
 {
