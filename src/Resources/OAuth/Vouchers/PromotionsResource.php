@@ -11,7 +11,6 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class PromotionsResource
  * @package Piggy\Api\Resources\OAuth\Vouchers
- * @deprecated
  */
 class PromotionsResource extends BaseResource
 {

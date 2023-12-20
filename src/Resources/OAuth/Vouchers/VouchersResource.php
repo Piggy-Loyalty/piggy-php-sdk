@@ -14,7 +14,6 @@ use DateTime;
 /**
  * Class VoucherResource
  * @package Piggy\Api\Resources\OAuth\Vouchers
- * @deprecated
  */
 class VouchersResource extends BaseResource
 {

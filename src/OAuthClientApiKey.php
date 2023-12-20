@@ -7,7 +7,6 @@ use Piggy\Api\Http\BaseClient;
 /**
  * Class OAuthClient
  * @package Piggy\Api
- * @deprecated
  */
 class OAuthClientApiKey extends BaseClient
 {

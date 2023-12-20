@@ -11,7 +11,6 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class Tiers
  * @package Piggy\Api\Resources\OAuth\Tiers
- * @deprecated
  */
 class TiersResource extends BaseResource
 {

@@ -11,7 +11,6 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class WebhookSubscriptionsResource
  * @package Piggy\Api\Resources\OAuth\WebhookSubscriptions
- * @deprecated
  */
 class WebhookSubscriptionsResource extends BaseResource
 {

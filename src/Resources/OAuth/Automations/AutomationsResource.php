@@ -10,7 +10,6 @@ use Piggy\Api\Resources\BaseResource;
 /**
  * Class AutomationsResource
  * @package Piggy\Api\Resources\OAuth\Automations
- * @deprecated
  */
 class AutomationsResource extends BaseResource
 {
