@@ -109,7 +109,7 @@ abstract class BaseClient
 //            throw new MalformedResponseException("Invalid response given. Meta property was missing from response.");
 //        }
 
-        return new Response($content->data, $content->meta);
+        return new Response($content->data, $content->meta ?? []);
     }
 
     /**
