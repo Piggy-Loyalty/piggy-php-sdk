@@ -23,7 +23,7 @@ class PromotionMapper
             $data->voucher_limit ?? null,
             $data->limit_per_contact ?? null,
             $data->expiration_duration ?? null,
-            $data->attributes ? get_object_vars($data->attributes) : [],
+            isset($data->attributes) ? get_object_vars($data->attributes) : [],
         );
     }
 }
