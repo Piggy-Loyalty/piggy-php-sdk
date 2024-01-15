@@ -63,7 +63,7 @@ class Promotion
         ?int   $voucher_limit = null,
         ?int   $limit_per_contact = null,
         ?int   $expiration_duration = null,
-        array  $attributes,
+        array  $attributes = []
     )
     {
         $this->uuid = $uuid;

@@ -103,7 +103,7 @@ class Voucher
         ?bool      $isRedeemed,
         ?DateTime  $activationDate,
         ?DateTime  $expirationDate,
-        array  $attributes
+        array  $attributes = []
     )
     {
         $this->uuid = $uuid;
