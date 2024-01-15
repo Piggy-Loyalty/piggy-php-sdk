@@ -38,7 +38,7 @@ class Promotion
     protected $expiration_duration;
 
     /**
-     * @var stdClass|null
+     * @var array
      */
     protected $attributes;
 
@@ -63,7 +63,7 @@ class Promotion
         ?int   $voucher_limit = null,
         ?int   $limit_per_contact = null,
         ?int   $expiration_duration = null,
-        ?stdClass $attributes = null
+        array  $attributes,
     )
     {
         $this->uuid = $uuid;
@@ -123,7 +123,7 @@ class Promotion
         return $this->uuid;
     }
 
-    public function getAttributes(): ?stdClass
+    public function getAttributes(): array
     {
         return $this->attributes;
     }

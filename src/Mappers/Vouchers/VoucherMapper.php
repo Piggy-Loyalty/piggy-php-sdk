@@ -39,7 +39,8 @@ class VoucherMapper extends BaseMapper
             isset($data->redeemed_at) ? $this->parseDate($data->redeemed_at) : null,
             $data->is_redeemed ?? null,
             isset($data->activation_date) ? $this->parseDate($data->activation_date) : null,
-            isset($data->expiration_date) ? $this->parseDate($data->expiration_date) : null
+            isset($data->expiration_date) ? $this->parseDate($data->expiration_date) : null,
+            $data->attributes ? get_object_vars($data->attributes) : []
         );
     }
 }

@@ -70,6 +70,9 @@ class Voucher
      */
     protected $contact;
 
+    /** @var array  */
+    protected $attributes;
+
     /**
      * @var string
      */
@@ -99,7 +102,8 @@ class Voucher
         ?DateTime  $redeemedAt,
         ?bool      $isRedeemed,
         ?DateTime  $activationDate,
-        ?DateTime  $expirationDate
+        ?DateTime  $expirationDate,
+        array  $attributes
     )
     {
         $this->uuid = $uuid;
@@ -113,6 +117,7 @@ class Voucher
         $this->is_redeemed = $isRedeemed;
         $this->activation_date = $activationDate;
         $this->expiration_date = $expirationDate;
+        $this->attributes = $attributes;
     }
 
     /**
@@ -201,6 +206,14 @@ class Voucher
     public function getContact(): ?Contact
     {
         return $this->contact;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAttributes(): array
+    {
+        return $this->attributes;
     }
 
     /**
