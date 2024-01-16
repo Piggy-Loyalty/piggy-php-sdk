@@ -74,11 +74,14 @@ class VouchersResource extends BaseResource
      * @return array
      * @throws PiggyRequestException
      */
-    public function list(int $page = 1, int $limit = 30): array
+    public function list(int $page = 1, int $limit = 30, ?string $promotionUuid = null, ?string $contactUuid = null, ?string $status = null): array
     {
         $response = $this->client->get($this->resourceUri, [
             "page" => $page,
             "limit" => $limit,
+            "promotion_uuid" => $promotionUuid,
+            "contact_uuid" => $contactUuid,
+            "status" => $status
         ]);
 
         $mapper = new VouchersMapper();
