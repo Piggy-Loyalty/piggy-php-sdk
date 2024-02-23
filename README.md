@@ -44,9 +44,9 @@ try {
 **Example with Static Functions using API Key**
 ```
 $apiKey = 'xxxxxxxx';
-$someBaseUrl = "https://yourcompany.com/";
+$baseUrl = "https://api.piggy.eu";
 
-ApiClient::configure($apiKey, $someBaseUrl);
+ApiClient::configure($apiKey, $baseUrl);
 
 try {
     // Example call to update a Contact by UUID
