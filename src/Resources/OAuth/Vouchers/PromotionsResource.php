@@ -15,19 +15,6 @@ class PromotionsResource extends BaseResource
      */
     protected $resourceUri = '/api/v3/oauth/clients/promotions';
 
-    public function create(string $uuid, string $name, string $description): Promotion
-    {
-        $response = $this->client->post($this->resourceUri, [
-            'uuid' => $uuid,
-            'name' => $name,
-            'description' => $description,
-        ]);
-
-        $mapper = new PromotionMapper();
-
-        return $mapper->map($response->getData());
-    }
-
     /**
      * @return Promotion[]
      *
@@ -43,5 +30,27 @@ class PromotionsResource extends BaseResource
         $mapper = new PromotionsMapper();
 
         return $mapper->map((array) $response->getData());
+    }
+
+    public function create(string $uuid, string $name, string $description): Promotion
+    {
+        $response = $this->client->post($this->resourceUri, [
+            'uuid' => $uuid,
+            'name' => $name,
+            'description' => $description,
+        ]);
+
+        $mapper = new PromotionMapper();
+
+        return $mapper->map($response->getData());
+    }
+
+    public function findBy(string $promotionUuid): Promotion
+    {
+        $response = $this->client->get("$this->resourceUri/$promotionUuid");
+
+        $mapper = new PromotionMapper();
+
+        return $mapper->map($response->getData());
     }
 }

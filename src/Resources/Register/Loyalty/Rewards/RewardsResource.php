@@ -17,6 +17,20 @@ class RewardsResource extends BaseResource
     protected $resourceUri = '/api/v3/register/rewards';
 
     /**
+     * @return Reward[]
+     *
+     * @throws PiggyRequestException
+     */
+    public function list(): array
+    {
+        $response = $this->client->get($this->resourceUri);
+
+        $mapper = new RewardsMapper();
+
+        return $mapper->map($response->getData());
+    }
+
+    /**
      * @return array<Reward>
      *
      * @throws PiggyRequestException
@@ -28,6 +42,15 @@ class RewardsResource extends BaseResource
             'contact_uuid' => $contactUuid,
         ]);
         $mapper = new RewardsMapper();
+
+        return $mapper->map($response->getData());
+    }
+
+    public function findBy(string $rewardUuid): Reward
+    {
+        $response = $this->client->get("$this->resourceUri/$rewardUuid");
+
+        $mapper = new RewardMapper();
 
         return $mapper->map($response->getData());
     }
