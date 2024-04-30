@@ -10,13 +10,10 @@ use stdClass;
 
 /**
  * Class CollectableRewardMapper
- * @package Piggy\Api\Mappers\Loyalty\Rewards
  */
 class CollectableRewardMapper extends BaseMapper
 {
     /**
-     * @param stdClass $data
-     * @return CollectableReward
      * @throws Exception
      */
     public function map(stdClass $data): CollectableReward

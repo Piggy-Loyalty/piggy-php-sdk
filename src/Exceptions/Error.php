@@ -4,9 +4,6 @@ namespace Piggy\Api\Exceptions;
 
 class Error
 {
-    /**
-     * @var
-     */
     protected $key;
 
     /**
@@ -16,8 +13,6 @@ class Error
 
     /**
      * Error constructor.
-     * @param $key
-     * @param $errors
      */
     public function __construct($key, $errors)
     {
@@ -33,9 +28,6 @@ class Error
         return $this->key;
     }
 
-    /**
-     * @return array
-     */
     public function getErrors(): array
     {
         return $this->errors;

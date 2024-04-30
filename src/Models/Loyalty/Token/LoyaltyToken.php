@@ -11,18 +11,15 @@ use Piggy\Api\StaticMappers\Loyalty\Receptions\CreditReceptionMapper;
 
 /**
  * Class LoyaltyToken
- * @package Piggy\Api\Models\Loyalty\Receptions
  */
 class LoyaltyToken
 {
     /**
      * @var string
      */
-    const resourceUri = "/api/v3/oauth/clients/loyalty-tokens";
+    const resourceUri = '/api/v3/oauth/clients/loyalty-tokens';
 
     /**
-     * @param array $body
-     * @return string
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function create(array $body): string
@@ -33,13 +30,11 @@ class LoyaltyToken
     }
 
     /**
-     * @param array $body
-     * @return CreditReception
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function claim(array $body): CreditReception
     {
-        $response = ApiClient::post(self::resourceUri . "/claim", $body);
+        $response = ApiClient::post(self::resourceUri.'/claim', $body);
 
         return CreditReceptionMapper::map($response->getData());
     }

@@ -11,25 +11,22 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class RewardsResource
- * @package Piggy\Api\Resources\Register\Loyalty\Rewards
  */
 class RewardsResource extends BaseResource
 {
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/register/rewards";
+    protected $resourceUri = '/api/v3/register/rewards';
 
     /**
-     * @param string $contactUuid
-     * @return array
      * @throws PiggyRequestException
      * @throws Exception
      */
     public function get(string $contactUuid): array
     {
         $response = $this->client->get($this->resourceUri, [
-            "contact_uuid" => $contactUuid,
+            'contact_uuid' => $contactUuid,
         ]);
         $mapper = new RewardsMapper();
 
@@ -37,9 +34,6 @@ class RewardsResource extends BaseResource
     }
 
     /**
-     * @param Reward $reward
-     *
-     * @return Reward
      * @throws PiggyRequestException
      */
     public function update(Reward $reward): Reward

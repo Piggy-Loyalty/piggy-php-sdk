@@ -8,10 +8,6 @@ use stdClass;
 
 class ContactIdentifierMapper
 {
-    /**
-     * @param stdClass $data
-     * @return ContactIdentifier
-     */
     public function map(stdClass $data): ContactIdentifier
     {
         $contact = null;

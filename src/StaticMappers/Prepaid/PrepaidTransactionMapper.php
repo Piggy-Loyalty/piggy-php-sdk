@@ -2,20 +2,15 @@
 
 namespace Piggy\Api\StaticMappers\Prepaid;
 
-use Piggy\Api\StaticMappers\BaseMapper;
 use Piggy\Api\Models\Prepaid\PrepaidTransaction;
+use Piggy\Api\StaticMappers\BaseMapper;
 use stdClass;
 
 /**
  * Class PrepaidTransactionMapper
- * @package Piggy\Api\Mappers\Prepaid
  */
 class PrepaidTransactionMapper extends BaseMapper
 {
-    /**
-     * @param stdClass $data
-     * @return PrepaidTransaction
-     */
     public static function map(stdClass $data): PrepaidTransaction
     {
         $prepaidBalance = PrepaidBalanceMapper::map($data->prepaid_balance);

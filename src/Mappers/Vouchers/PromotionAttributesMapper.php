@@ -4,10 +4,6 @@ namespace Piggy\Api\Mappers\Vouchers;
 
 class PromotionAttributesMapper
 {
-    /**
-     * @param $data
-     * @return array
-     */
     public function map($data): array
     {
         $promotionAttributeMapper = new PromotionAttributeMapper();
@@ -19,5 +15,4 @@ class PromotionAttributesMapper
 
         return $attributes;
     }
-
 }

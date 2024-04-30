@@ -4,14 +4,9 @@ namespace Piggy\Api\Mappers\Forms;
 
 /**
  * Class FormsMapper
- * @package Piggy\Api\Mappers\Forms
  */
 class FormsMapper
 {
-    /**
-     * @param $data
-     * @return array
-     */
     public function map($data): array
     {
         $mapper = new FormMapper();

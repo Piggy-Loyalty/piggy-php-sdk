@@ -6,10 +6,6 @@ use Piggy\Api\Models\Vouchers\PromotionAttribute;
 
 class PromotionAttributeMapper
 {
-    /**
-     * @param $data
-     * @return PromotionAttribute
-     */
     public function map($data): PromotionAttribute
     {
         $options = [];

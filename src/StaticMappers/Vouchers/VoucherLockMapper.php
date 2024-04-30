@@ -6,14 +6,9 @@ use Piggy\Api\Models\Vouchers\VoucherLock;
 
 /**
  * Class VoucherLockMapper
- * @package Piggy\Api\Mappers\Vouchers
  */
 class VoucherLockMapper
 {
-    /**
-     * @param $data
-     * @return VoucherLock
-     */
     public static function map($data): VoucherLock
     {
         $voucher = VoucherMapper::map($data->voucher);

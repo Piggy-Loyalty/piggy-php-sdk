@@ -9,10 +9,6 @@ use stdClass;
 
 class ContactMapper
 {
-    /**
-     * @param stdClass $data
-     * @return Contact
-     */
     public static function map(stdClass $data): Contact
     {
         $prepaidBalance = null;
@@ -30,7 +26,6 @@ class ContactMapper
             $attributes = ContactAttributesMapper::map($data->attributes);
         }
 
-
         $subscriptions = [];
         if (isset($data->subscriptions)) {
             $subscriptions = SubscriptionsMapper::map($data->subscriptions);
@@ -43,7 +38,7 @@ class ContactMapper
 
         return new Contact(
             $data->uuid,
-            $data->email ?? "",
+            $data->email ?? '',
             $prepaidBalance,
             $creditBalance,
             $attributes,

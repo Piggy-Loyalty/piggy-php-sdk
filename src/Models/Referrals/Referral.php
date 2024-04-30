@@ -10,7 +10,6 @@ use Piggy\Api\StaticMappers\Referrals\ReferralsMapper;
 
 class Referral
 {
-
     protected $uuid;
 
     protected $referring_contact;
@@ -19,7 +18,7 @@ class Referral
 
     protected $status;
 
-    const resourceUri = "/api/v3/oauth/clients/referrals";
+    const resourceUri = '/api/v3/oauth/clients/referrals';
 
     public function __construct($uuid, $referredContact, $referringContact, $status)
     {

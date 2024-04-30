@@ -2,24 +2,19 @@
 
 namespace Piggy\Api\StaticMappers\Loyalty\Receptions;
 
+use Piggy\Api\Models\Loyalty\Receptions\CreditReception;
 use Piggy\Api\StaticMappers\BaseMapper;
 use Piggy\Api\StaticMappers\ContactIdentifiers\ContactIdentifierMapper;
 use Piggy\Api\StaticMappers\Contacts\ContactMapper;
 use Piggy\Api\StaticMappers\Shops\ShopMapper;
 use Piggy\Api\StaticMappers\Units\UnitMapper;
-use Piggy\Api\Models\Loyalty\Receptions\CreditReception;
 use stdClass;
 
 /**
  * Class CreditReceptionMapper
- * @package Piggy\Api\Mappers\Loyalty
  */
 class CreditReceptionMapper extends BaseMapper
 {
-    /**
-     * @param stdClass $data
-     * @return CreditReception
-     */
     public static function map(stdClass $data): CreditReception
     {
         if (isset($data->contact)) {

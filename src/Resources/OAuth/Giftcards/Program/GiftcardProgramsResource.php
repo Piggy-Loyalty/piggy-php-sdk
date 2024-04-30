@@ -8,17 +8,15 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class GiftcardProgramResource
- * @package Piggy\Api\Resources\OAuth\Giftcards\Program
  */
 class GiftcardProgramsResource extends BaseResource
 {
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/oauth/clients/giftcard-programs";
+    protected $resourceUri = '/api/v3/oauth/clients/giftcard-programs';
 
     /**
-     * @return array
      * @throws PiggyRequestException
      */
     public function list(): array

@@ -2,16 +2,12 @@
 
 namespace Piggy\Api\StaticMappers\ContactIdentifiers;
 
-use Piggy\Api\StaticMappers\Contacts\ContactMapper;
 use Piggy\Api\Models\Contacts\ContactIdentifier;
+use Piggy\Api\StaticMappers\Contacts\ContactMapper;
 use stdClass;
 
 class ContactIdentifierMapper
 {
-    /**
-     * @param stdClass $data
-     * @return ContactIdentifier
-     */
     public static function map(stdClass $data): ContactIdentifier
     {
         $contact = null;

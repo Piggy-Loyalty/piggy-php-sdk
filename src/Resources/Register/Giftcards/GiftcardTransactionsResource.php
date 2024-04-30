@@ -9,18 +9,15 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class GiftcardTransactionsResource
- * @package Piggy\Api\Resources\OAuth\Giftcards
  */
 class GiftcardTransactionsResource extends BaseResource
 {
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/register/giftcard-transactions";
+    protected $resourceUri = '/api/v3/register/giftcard-transactions';
 
     /**
-     * @param string $giftcardTransactionUuid
-     * @return GiftcardTransaction
      * @throws PiggyRequestException
      */
     public function get(string $giftcardTransactionUuid): GiftcardTransaction
@@ -34,17 +31,13 @@ class GiftcardTransactionsResource extends BaseResource
     }
 
     /**
-     * @param string $giftcardUuid
-     * @param int $amountInCents
-     *
-     * @return GiftcardTransaction
      * @throws PiggyRequestException
      */
     public function create(string $giftcardUuid, int $amountInCents): GiftcardTransaction
     {
         $response = $this->client->post($this->resourceUri, [
-            "giftcard_uuid" => $giftcardUuid,
-            "amount_in_cents" => $amountInCents,
+            'giftcard_uuid' => $giftcardUuid,
+            'amount_in_cents' => $amountInCents,
         ]);
 
         $mapper = new GiftcardTransactionMapper();
@@ -53,8 +46,6 @@ class GiftcardTransactionsResource extends BaseResource
     }
 
     /**
-     * @param string $giftcardTransactionUuid
-     * @return GiftcardTransaction
      * @throws PiggyRequestException
      */
     public function correct(string $giftcardTransactionUuid): GiftcardTransaction

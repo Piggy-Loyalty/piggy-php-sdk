@@ -4,7 +4,6 @@ namespace Piggy\Api\Models\Loyalty;
 
 /**
  * Class Media
- * @package Piggy\Api\Models\Loyalty
  */
 class Media
 {
@@ -18,27 +17,17 @@ class Media
      */
     protected $value;
 
-    /**
-     * @param string $type
-     * @param string $value
-     */
     public function __construct(string $type, string $value)
     {
         $this->type = $type;
         $this->value = $value;
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @return string
-     */
     public function getValue(): string
     {
         return $this->value;

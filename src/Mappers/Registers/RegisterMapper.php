@@ -7,14 +7,9 @@ use Piggy\Api\Models\Registers\Register;
 
 /**
  * Class RegisterMapper
- * @package Piggy\Api\Mappers\Registers
  */
 class RegisterMapper
 {
-    /**
-     * @param $response
-     * @return Register
-     */
     public function map($response): Register
     {
         $register = new Register();

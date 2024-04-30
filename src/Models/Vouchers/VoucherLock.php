@@ -14,17 +14,11 @@ class VoucherLock
         $this->lock = $lock;
     }
 
-    /**
-     * @return Voucher
-     */
     public function getVoucher(): Voucher
     {
         return $this->voucher;
     }
 
-    /**
-     * @return Lock
-     */
     public function getLock(): Lock
     {
         return $this->lock;

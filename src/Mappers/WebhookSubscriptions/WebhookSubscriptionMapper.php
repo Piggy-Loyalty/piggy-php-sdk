@@ -7,14 +7,9 @@ use Piggy\Api\Models\WebhookSubscriptions\WebhookSubscription;
 
 /**
  * Class WebhookSubscriptionMapper
- * @package Piggy\Api\Mappers\WebhookSubscriptions
  */
 class WebhookSubscriptionMapper extends BaseMapper
 {
-    /**
-     * @param $data
-     * @return WebhookSubscription
-     */
     public function map($data): WebhookSubscription
     {
         return new WebhookSubscription(
@@ -29,4 +24,3 @@ class WebhookSubscriptionMapper extends BaseMapper
         );
     }
 }
-

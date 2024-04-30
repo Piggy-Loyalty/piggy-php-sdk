@@ -18,15 +18,12 @@ class ApiClient
 {
     use OAuthResources;
 
-    /**
-     * @var
-     */
     private static $httpClient;
 
     /**
      * @var string
      */
-    private static $baseUrl = "https://api.piggy.nl";
+    private static $baseUrl = 'https://api.piggy.nl';
 
     /**
      * @var array
@@ -40,10 +37,6 @@ class ApiClient
      */
     private $apiKey;
 
-    /**
-     * @param string $apiKey
-     * @param string $baseUrl
-     */
     public function __construct(string $apiKey, string $baseUrl)
     {
         self::setApiKey($apiKey);
@@ -52,8 +45,6 @@ class ApiClient
     }
 
     /**
-     * @param $apiKey
-     * @param $baseUrl
      * @return void
      */
     public static function configure($apiKey, $baseUrl)
@@ -62,36 +53,30 @@ class ApiClient
     }
 
     /**
-     * @param string $apiKey
      * @return void
      */
     public static function setApiKey(string $apiKey)
     {
-        self::addHeader("Authorization", "Bearer $apiKey");
+        self::addHeader('Authorization', "Bearer $apiKey");
     }
 
     /**
-     * @param string $method
-     * @param string $endpoint
-     * @param array $queryOptions
-     * @return Response
      * @throws Exceptions\MaintenanceModeException
      * @throws Exceptions\PiggyRequestException
      * @throws GuzzleException
      */
     public static function request(string $method, string $endpoint, array $queryOptions = []): Response
     {
-        if (!array_key_exists('Authorization', self::$headers)) {
+        if (! array_key_exists('Authorization', self::$headers)) {
             throw new Exception('Authorization not set yet.');
         }
 
-        $url = self::$baseUrl . $endpoint;
-
+        $url = self::$baseUrl.$endpoint;
 
         try {
             $rawResponse = self::getResponse($method, $url, [
-                "headers" => self::$headers,
-                "form_params" => $queryOptions,
+                'headers' => self::$headers,
+                'form_params' => $queryOptions,
             ]);
 
             return self::parseResponse($rawResponse);
@@ -103,8 +88,6 @@ class ApiClient
     }
 
     /**
-     * @param $response
-     * @return Response
      * @throws MalformedResponseException
      */
     private static function parseResponse($response): Response
@@ -112,60 +95,42 @@ class ApiClient
         try {
             $content = json_decode($response->getBody()->getContents());
         } catch (Throwable $exception) {
-            throw new MalformedResponseException("Could not decode response");
+            throw new MalformedResponseException('Could not decode response');
         }
 
-        if (!property_exists($content, "data")) {
-            throw new MalformedResponseException("Invalid response given. Data property was missing from response.");
+        if (! property_exists($content, 'data')) {
+            throw new MalformedResponseException('Invalid response given. Data property was missing from response.');
         }
 
-//        if (!property_exists($content, "meta")) {
-//            throw new MalformedResponseException("Invalid response given. Meta property was missing from response.");
-//        }
+        //        if (!property_exists($content, "meta")) {
+        //            throw new MalformedResponseException("Invalid response given. Meta property was missing from response.");
+        //        }
 
         return new Response($content->data, $content->meta);
     }
 
-    /**
-     * @return string
-     */
     public static function getBaseUrl(): string
     {
 
         return self::$baseUrl;
     }
 
-    /**
-     * @param $baseUrl
-     * @return void
-     */
     public static function setBaseUrl($baseUrl): void
     {
         self::$baseUrl = $baseUrl;
     }
 
-    /**
-     * @param $key
-     * @param $value
-     * @return void
-     */
     public static function addHeader($key, $value): void
     {
         self::$headers[$key] = $value;
     }
 
-    /**
-     * @return array
-     */
     public static function getHeaders(): array
     {
         return self::$headers;
     }
 
     /**
-     * @param string $url
-     * @param array $body
-     * @return Response
      * @throws MaintenanceModeException
      * @throws GuzzleException
      * @throws PiggyRequestException
@@ -176,13 +141,9 @@ class ApiClient
     }
 
     /**
-     * @param string $url
-     * @param array $body
-     * @return Response
      * @throws MaintenanceModeException
      * @throws GuzzleException
      * @throws PiggyRequestException
-     *
      */
     public static function put(string $url, array $body): Response
     {
@@ -190,9 +151,6 @@ class ApiClient
     }
 
     /**
-     * @param string $url
-     * @param array $params
-     * @return Response
      * @throws MaintenanceModeException
      * @throws GuzzleException
      * @throws PiggyRequestException
@@ -209,9 +167,6 @@ class ApiClient
     }
 
     /**
-     * @param string $url
-     * @param array $body
-     * @return Response
      * @throws MaintenanceModeException
      * @throws GuzzleException
      * @throws PiggyRequestException
@@ -228,15 +183,10 @@ class ApiClient
     }
 
     /**
-     * @param $method
-     * @param $url
-     * @param array $options
-     * @return ResponseInterface
      * @throws GuzzleException
      */
     private static function getResponse($method, $url, array $options = []): ResponseInterface
     {
         return self::$httpClient->request($method, $url, $options);
     }
-    
 }

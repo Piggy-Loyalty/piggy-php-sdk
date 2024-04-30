@@ -11,25 +11,22 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class CollectableRewardsResource
- * @package Piggy\Api\Resources\OAuth\Loyalty\Rewards
  */
 class CollectableRewardsResource extends BaseResource
 {
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/oauth/clients/collectable-rewards";
+    protected $resourceUri = '/api/v3/oauth/clients/collectable-rewards';
 
     /**
-     * @param string $contactUuid
-     * @return array
      * @throws PiggyRequestException
      * @throws Exception
      */
     public function list(string $contactUuid): array
     {
         $response = $this->client->get($this->resourceUri, [
-            "contact_uuid" => $contactUuid,
+            'contact_uuid' => $contactUuid,
         ]);
 
         $mapper = new CollectableRewardsMapper();
@@ -38,8 +35,6 @@ class CollectableRewardsResource extends BaseResource
     }
 
     /**
-     * @param string $loyaltyTransactionUuid
-     * @return CollectableReward
      * @throws PiggyRequestException
      */
     public function collect(string $loyaltyTransactionUuid): CollectableReward

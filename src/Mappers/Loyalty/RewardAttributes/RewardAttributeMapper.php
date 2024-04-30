@@ -5,13 +5,8 @@ namespace Piggy\Api\Mappers\Loyalty\RewardAttributes;
 use Piggy\Api\Models\Loyalty\RewardAttributes\RewardAttribute;
 use stdClass;
 
-
 class RewardAttributeMapper
 {
-    /**
-     * @param stdClass $rewardAttribute
-     * @return RewardAttribute
-     */
     public function map(stdClass $rewardAttribute): RewardAttribute
     {
         $fieldType = $rewardAttribute->type;

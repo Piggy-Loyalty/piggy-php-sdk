@@ -3,20 +3,15 @@
 namespace Piggy\Api\StaticMappers\Loyalty\Rewards;
 
 use Piggy\Api\Enum\RewardType;
+use Piggy\Api\Models\Loyalty\Rewards\DigitalReward;
 use Piggy\Api\StaticMappers\Loyalty\MediaMapper;
 use Piggy\Api\StaticMappers\Loyalty\RewardAttributes\RewardAttributesMapper;
-use Piggy\Api\Models\Loyalty\Rewards\DigitalReward;
 
 /**
  * Class DigitalRewardMapper
- * @package Piggy\Api\Mappers\Loyalty\Rewards
  */
 class DigitalRewardMapper
 {
-    /**
-     * @param $data
-     * @return DigitalReward
-     */
     public static function map($data): DigitalReward
     {
         $mediaMapper = new MediaMapper();
@@ -41,7 +36,7 @@ class DigitalRewardMapper
             $data->title ?? '',
             $data->required_credits ?? null,
             $media ?? null,
-            $data->description ?? "",
+            $data->description ?? '',
             $active,
             RewardType::byName($data->reward_type)->getValue() ?? null,
             $attributes

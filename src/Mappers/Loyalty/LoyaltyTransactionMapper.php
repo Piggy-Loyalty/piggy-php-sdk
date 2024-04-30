@@ -10,13 +10,12 @@ use Piggy\Api\Models\Loyalty\Transactions\LoyaltyTransaction;
 
 /**
  * Class LoyaltyTransactionMapper
- * @package Piggy\Api\Mappers\Loyalty
  */
 class LoyaltyTransactionMapper
 {
     /**
-     * @param $data
      * @return LoyaltyTransaction[]
+     *
      * @throws Exception
      */
     public function map($data): array

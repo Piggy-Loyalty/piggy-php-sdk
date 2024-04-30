@@ -7,18 +7,16 @@ use Piggy\Api\Http\Traits\SetsRegisterResources as RegisterResources;
 
 /**
  * Class RegisterClient
- * @package Piggy\Api
  */
 class RegisterClient extends BaseClient
 {
     use RegisterResources;
 
-    /** @var string $apiKey */
+    /** @var string */
     public $apiKey;
 
     /**
      * RegisterClient constructor.
-     * @param string $apiKey
      */
     public function __construct(string $apiKey)
     {
@@ -29,13 +27,10 @@ class RegisterClient extends BaseClient
         $this->setResources($this);
     }
 
-    /**
-     * @param string $apiKey
-     * @return RegisterClient
-     */
     public function setApiKey(string $apiKey): self
     {
-        $this->addHeader("Authorization", "Bearer $apiKey");
+        $this->addHeader('Authorization', "Bearer $apiKey");
+
         return $this;
     }
 }

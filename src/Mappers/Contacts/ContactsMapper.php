@@ -4,10 +4,6 @@ namespace Piggy\Api\Mappers\Contacts;
 
 class ContactsMapper
 {
-    /**
-     * @param $data
-     * @return array
-     */
     public function map($data): array
     {
         $contactMapper = new ContactMapper;
