@@ -1,26 +1,32 @@
-name: Run PHPStan
+name: "🔍 Check PHPStan"
+
 on:
   push:
-  pull_request:
-jobs:
-  tests:
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: true
-      matrix:
-        php: [ 7.2, 7.3, 7.4, 8.0, 8.1 ]
-    name: PHP - ${{ matrix.php }}
-    steps:
-      - name: Checkout code
-      - uses: actions/checkout@v4
+    paths:
+      - '**.php'
+      - 'phpstan.neon'
+      - 'phpstan-baseline.neon'
+      - '.github/workflows/phpstan.yml'
 
-      - name: Setup PHP
+jobs:
+  phpstan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: "📥 Checkout"
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: "🐘 Setup PHP"
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php }}
-          coverage: none
+          php-version: '8.1'
+          extensions: dom, curl, libxml, mbstring, zip
+          coverage: xdebug
 
-      - name: Install Composer dependencies
+      - name: "📦 Install Composer dependencies"
         uses: ramsey/composer-install@v3
 
       - name: Run PHPStan
