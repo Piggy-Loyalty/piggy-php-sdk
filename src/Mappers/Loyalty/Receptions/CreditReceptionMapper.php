@@ -12,14 +12,9 @@ use stdClass;
 
 /**
  * Class CreditReceptionMapper
- * @package Piggy\Api\Mappers\Loyalty
  */
 class CreditReceptionMapper extends BaseMapper
 {
-    /**
-     * @param stdClass $data
-     * @return CreditReception
-     */
     public function map(stdClass $data): CreditReception
     {
         if (isset($data->contact)) {

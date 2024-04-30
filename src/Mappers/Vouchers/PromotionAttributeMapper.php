@@ -3,14 +3,11 @@
 namespace Piggy\Api\Mappers\Vouchers;
 
 use Piggy\Api\Models\Vouchers\PromotionAttribute;
+use stdClass;
 
 class PromotionAttributeMapper
 {
-    /**
-     * @param $data
-     * @return PromotionAttribute
-     */
-    public function map($data): PromotionAttribute
+    public function map(stdClass $data): PromotionAttribute
     {
         $options = [];
 

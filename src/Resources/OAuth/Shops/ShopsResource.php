@@ -10,18 +10,18 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class ShopsResource
- * @package Piggy\Api\Resources\OAuth\Shops
  */
 class ShopsResource extends BaseResource
 {
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/oauth/clients/shops";
+    protected $resourceUri = '/api/v3/oauth/clients/shops';
 
     /**
-     * @param array $params
-     * @return array
+     * @param  mixed[]  $params
+     * @return Shop[]
+     *
      * @throws PiggyRequestException
      */
     public function all(array $params = []): array
@@ -34,9 +34,8 @@ class ShopsResource extends BaseResource
     }
 
     /**
-     * @param string $shopUuid
-     * @param array $params
-     * @return Shop
+     * @param  mixed[]  $params
+     *
      * @throws PiggyRequestException
      */
     public function get(string $shopUuid, array $params = []): Shop

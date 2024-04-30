@@ -9,25 +9,15 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class CreditReceptionsResource
- * @package Piggy\Api\Resources\Register\Loyalty\Receptions
  */
 class CreditReceptionsResource extends BaseResource
 {
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/register/credit-receptions";
+    protected $resourceUri = '/api/v3/register/credit-receptions';
 
     /**
-     * @param string $contactUuid
-     * @param float|null $unitValue
-     * @param int|null $credits
-     * @param string|null $contactIdentifierValue
-     * @param string|null $unitName
-     * @param string|null $posTransactionUuid
-     * @param array|null $attributes
-     *
-     * @return CreditReception
      * @throws PiggyRequestException
      */
     public function create(
@@ -36,18 +26,16 @@ class CreditReceptionsResource extends BaseResource
         ?int $credits = null,
         ?string $contactIdentifierValue = null,
         ?string $unitName = null,
-        ?string $posTransactionUuid = null,
-        ?array $attributes = []
+        ?string $posTransactionUuid = null
     ): CreditReception {
-
         $data = [
-            "contact_uuid" => $contactUuid,
-            "unit_value" => $unitValue,
-            "credits" => $credits,
-            "contact_identifier_value" => $contactIdentifierValue,
-            "unit_name" => $unitName,
-            "pos_transaction_id" => $posTransactionUuid,
-        ] + $attributes;
+            'contact_uuid' => $contactUuid,
+            'unit_value' => $unitValue,
+            'credits' => $credits,
+            'contact_identifier_value' => $contactIdentifierValue,
+            'unit_name' => $unitName,
+            'pos_transaction_id' => $posTransactionUuid,
+        ];
 
         $response = $this->client->post($this->resourceUri, $data);
 
@@ -56,24 +44,20 @@ class CreditReceptionsResource extends BaseResource
         return $mapper->map($response->getData());
     }
 
-    public function calculate(string $contactUuid, string $shopUuid, array $unitValue, string $accountUuid) : CreditReception
+    /**
+     * @throws PiggyRequestException
+     */
+    public function calculate(?string $contactUuid, string $shopUuid, string $unitValue, ?string $accountUuid = null): int
     {
+        $data = [
+            'contact_uuid' => $contactUuid,
+            'shop_uuid' => $shopUuid,
+            'unit_value' => $unitValue,
+            'account_uuid' => $accountUuid,
+        ];
 
-        $inputValues = [
+        $response = $this->client->get($this->resourceUri.'/calculate', $data);
 
-                "contact_uuid" => $contactUuid,
-                "shop_uuid" => $shopUuid,
-                "unit_value" => $unitValue,
-                "account_uuid" => $accountUuid,
-
-            ];
-
-        $response = $this->client->get($this->resourceUri, $inputValues);
-
-        $mapper = new CreditReceptionMapper();
-
-        return $mapper->map($response->getData());
-
+        return (int) $response->getData()->credits;
     }
-
 }

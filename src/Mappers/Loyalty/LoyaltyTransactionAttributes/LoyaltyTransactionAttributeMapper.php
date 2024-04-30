@@ -3,22 +3,18 @@
 namespace Piggy\Api\Mappers\Loyalty\LoyaltyTransactionAttributes;
 
 use Piggy\Api\Models\Loyalty\Transactions\LoyaltyTransactionAttribute;
+use stdClass;
 
 /**
  * Class LoyaltyTransactionAttributeMapper
- * @package Piggy\Api\Mappers\LoyaltyTransactionAttributes
  */
 class LoyaltyTransactionAttributeMapper
 {
-    /**
-     * @param $data
-     * @return LoyaltyTransactionAttribute
-     */
-    public function map($data): LoyaltyTransactionAttribute
+    public function map(stdClass $data): LoyaltyTransactionAttribute
     {
         $options = [];
 
-        if (!empty($data->options)) {
+        if (! empty($data->options)) {
             foreach ($data->options as $item) {
                 $options[] = get_object_vars($item);
             }
@@ -37,4 +33,3 @@ class LoyaltyTransactionAttributeMapper
         );
     }
 }
-

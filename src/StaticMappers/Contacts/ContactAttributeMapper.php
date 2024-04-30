@@ -7,10 +7,6 @@ use stdClass;
 
 class ContactAttributeMapper
 {
-    /**
-     * @param stdClass $data
-     * @return ContactAttribute
-     */
     public static function map(stdClass $data): ContactAttribute
     {
         $attribute = null;

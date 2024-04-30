@@ -3,18 +3,14 @@
 namespace Piggy\Api\Mappers\Tiers;
 
 use Piggy\Api\Models\Tiers\Tier;
+use stdClass;
 
 /**
  * Class TierMapper
- * @package Piggy\Api\Mappers\Tiers
  */
 class TierMapper
 {
-    /**
-     * @param $data
-     * @return Tier
-     */
-    public function map($data): Tier
+    public function map(stdClass $data): Tier
     {
         return new Tier(
             $data->name,

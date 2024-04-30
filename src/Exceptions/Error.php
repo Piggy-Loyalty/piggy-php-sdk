@@ -5,36 +5,31 @@ namespace Piggy\Api\Exceptions;
 class Error
 {
     /**
-     * @var
+     * @var string
      */
     protected $key;
 
     /**
-     * @var array
+     * @var mixed[]
      */
     protected $errors;
 
     /**
-     * Error constructor.
-     * @param $key
-     * @param $errors
+     * @param  mixed[]  $errors
      */
-    public function __construct($key, $errors)
+    public function __construct(string $key, array $errors)
     {
         $this->key = $key;
         $this->errors = $errors;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getKey()
+    public function getKey(): string
     {
         return $this->key;
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
     public function getErrors(): array
     {

@@ -11,7 +11,6 @@ use Piggy\Api\StaticMappers\Vouchers\PromotionAttributesMapper;
 
 /**
  * Class PromotionAttribute
- * @package Piggy\Api\Models\Voucherse
  */
 class PromotionAttribute
 {
@@ -36,7 +35,7 @@ class PromotionAttribute
     protected $type;
 
     /**
-     * @var array
+     * @var mixed[]
      */
     protected $options;
 
@@ -53,27 +52,20 @@ class PromotionAttribute
     /**
      * @var string
      */
-    const resourceUri = "/api/v3/oauth/clients/promotion-attributes";
+    const resourceUri = '/api/v3/oauth/clients/promotion-attributes';
 
     /**
-     * @param string $name
-     * @param string $description
-     * @param string $label
-     * @param string $type
-     * @param array $options
-     * @param int|null $id
-     * @param string|null $placeholder
+     * @param  mixed[]  $options
      */
     public function __construct(
-        string  $name,
-        string  $description,
-        string  $label,
-        string  $type,
-        array   $options,
-        ?int    $id = null,
+        string $name,
+        string $description,
+        string $label,
+        string $type,
+        array $options,
+        ?int $id = null,
         ?string $placeholder = null
-    )
-    {
+    ) {
         $this->name = $name;
         $this->description = $description;
         $this->label = $label;
@@ -83,56 +75,38 @@ class PromotionAttribute
         $this->placeholder = $placeholder;
     }
 
-    /**
-     * @return int
-     */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @return string|null
-     */
     public function getPlaceholder(): ?string
     {
         return $this->placeholder;
     }
 
-    /**
-     * @return string
-     */
     public function getDescription(): string
     {
         return $this->description;
     }
 
-    /**
-     * @return string
-     */
     public function getLabel(): string
     {
         return $this->label;
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
     public function getOptions(): array
     {
@@ -140,8 +114,9 @@ class PromotionAttribute
     }
 
     /**
-     * @param array $params
-     * @return array
+     * @param  mixed[]  $params
+     * @return PromotionAttribute[]
+     *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function list(array $params = []): array
@@ -152,21 +127,20 @@ class PromotionAttribute
     }
 
     /**
-     * @param $promotionAttributeId
-     * @param array $params
-     * @return PromotionAttribute
+     * @param  mixed[]  $params
+     *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function get($promotionAttributeId, array $params = []): PromotionAttribute
+    public static function get(string $promotionAttributeId, array $params = []): PromotionAttribute
     {
-        $response = ApiClient::get(self::resourceUri . "/$promotionAttributeId", $params);
+        $response = ApiClient::get(self::resourceUri."/$promotionAttributeId", $params);
 
         return PromotionAttributeMapper::map($response->getData());
     }
 
     /**
-     * @param array $body
-     * @return PromotionAttribute
+     * @param  mixed[]  $body
+     *
      * @throws GuzzleException
      * @throws MaintenanceModeException
      * @throws PiggyRequestException
@@ -179,16 +153,14 @@ class PromotionAttribute
     }
 
     /**
-     * @param $promotionAttributeId
-     * @param array $params
-     * @return PromotionAttribute
+     * @param  mixed[]  $params
+     *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function update($promotionAttributeId, array $params): PromotionAttribute
+    public static function update(string $promotionAttributeId, array $params): PromotionAttribute
     {
-        $response = ApiClient::put(self::resourceUri . "/$promotionAttributeId", $params);
+        $response = ApiClient::put(self::resourceUri."/$promotionAttributeId", $params);
 
         return PromotionAttributeMapper::map($response->getData());
     }
 }
-

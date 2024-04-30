@@ -2,17 +2,19 @@
 
 namespace Piggy\Api\Mappers\Vouchers;
 
+use Piggy\Api\Models\Vouchers\Promotion;
+use stdClass;
+
 /**
  * Class PromotionsMapper
- * @package Piggy\Api\Mappers\Vouchers
  */
 class PromotionsMapper
 {
     /**
-     * @param $data
-     * @return array
+     * @param  stdClass[]  $data
+     * @return Promotion[]
      */
-    public function map($data): array
+    public function map(array $data): array
     {
         $mapper = new PromotionMapper();
 

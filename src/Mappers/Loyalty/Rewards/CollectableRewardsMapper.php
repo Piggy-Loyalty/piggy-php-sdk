@@ -3,19 +3,20 @@
 namespace Piggy\Api\Mappers\Loyalty\Rewards;
 
 use Exception;
+use Piggy\Api\Models\Loyalty\Rewards\CollectableReward;
 
 /**
  * Class CollectableRewardsMapper
- * @package Piggy\Api\Mappers\CollectableRewards
  */
 class CollectableRewardsMapper
 {
     /**
-     * @param $data
-     * @return array
+     * @param  mixed[]  $data
+     * @return CollectableReward[]
+     *
      * @throws Exception
      */
-    public function map($data): array
+    public function map(array $data): array
     {
         $mapper = new CollectableRewardMapper();
 
@@ -23,6 +24,7 @@ class CollectableRewardsMapper
         foreach ($data as $item) {
             $collectableRewards[] = $mapper->map($item);
         }
+
         return $collectableRewards;
     }
 }

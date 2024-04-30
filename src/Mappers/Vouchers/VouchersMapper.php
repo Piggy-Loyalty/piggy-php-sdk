@@ -2,17 +2,19 @@
 
 namespace Piggy\Api\Mappers\Vouchers;
 
+use Piggy\Api\Models\Vouchers\Voucher;
+use stdClass;
+
 /**
  * Class PromotionsMapper
- * @package Piggy\Api\Mappers\Vouchers
  */
 class VouchersMapper
 {
     /**
-     * @param $data
-     * @return array
+     * @param  stdClass[]  $data
+     * @return Voucher[]
      */
-    public function map($data): array
+    public function map(array $data): array
     {
         $mapper = new VoucherMapper();
 

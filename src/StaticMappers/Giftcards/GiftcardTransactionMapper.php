@@ -2,24 +2,19 @@
 
 namespace Piggy\Api\StaticMappers\Giftcards;
 
-use Piggy\Api\StaticMappers\BaseMapper;
 use Piggy\Api\Models\Giftcards\GiftcardTransaction;
+use Piggy\Api\StaticMappers\BaseMapper;
 use Piggy\Api\StaticMappers\Shops\ShopMapper;
 use stdClass;
 
 /**
  * Class GiftcardTransactionMapper
- * @package Piggy\Api\Mappers\Giftcards
  */
 class GiftcardTransactionMapper extends BaseMapper
 {
-    /**
-     * @param stdClass $data
-     * @return GiftcardTransaction
-     */
     public static function map(stdClass $data): GiftcardTransaction
     {
-        if (!empty($data->settlements)) {
+        if (! empty($data->settlements)) {
             $settlements = array_map(function ($settlement) {
                 return GiftcardTransactionSettlementMapper::map($settlement);
             }, $data->settlements);

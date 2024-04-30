@@ -3,18 +3,14 @@
 namespace Piggy\Api\Mappers\Vouchers;
 
 use Piggy\Api\Models\Vouchers\Promotion;
+use stdClass;
 
 /**
  * Class PromotionMapper
- * @package Piggy\Api\Mappers\Voucher
  */
 class PromotionMapper
 {
-    /**
-     * @param $data
-     * @return Promotion
-     */
-    public function map($data): Promotion
+    public function map(stdClass $data): Promotion
     {
         return new Promotion(
             $data->uuid,
@@ -23,7 +19,7 @@ class PromotionMapper
             $data->voucher_limit ?? null,
             $data->limit_per_contact ?? null,
             $data->expiration_duration ?? null,
-            isset($data->attributes) ? get_object_vars($data->attributes) : []
+            is_object($data->attributes) ? get_object_vars($data->attributes) : []
         );
     }
 }

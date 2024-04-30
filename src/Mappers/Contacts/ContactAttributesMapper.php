@@ -2,11 +2,14 @@
 
 namespace Piggy\Api\Mappers\Contacts;
 
+use Piggy\Api\Models\Contacts\ContactAttribute;
+use stdClass;
+
 class ContactAttributesMapper
 {
     /**
-     * @param array $data
-     * @return array
+     * @param  stdClass[]  $data
+     * @return ContactAttribute[]
      */
     public function map(array $data): array
     {

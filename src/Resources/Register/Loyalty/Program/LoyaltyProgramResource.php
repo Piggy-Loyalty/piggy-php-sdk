@@ -12,10 +12,9 @@ class LoyaltyProgramResource extends BaseResource
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/register/loyalty-program";
+    protected $resourceUri = '/api/v3/register/loyalty-program';
 
     /**
-     * @return LoyaltyProgram
      * @throws PiggyRequestException
      */
     public function get(): LoyaltyProgram

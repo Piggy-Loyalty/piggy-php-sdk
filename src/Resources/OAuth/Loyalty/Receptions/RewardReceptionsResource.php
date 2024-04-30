@@ -10,29 +10,25 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class RewardReceptionsResource
- * @package Piggy\Api\Resources\OAuth\Loyalty\Receptions
  */
 class RewardReceptionsResource extends BaseResource
 {
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/oauth/clients/reward-receptions";
+    protected $resourceUri = '/api/v3/oauth/clients/reward-receptions';
 
     /**
-     * @param string $contactUuid
-     * @param string $shopUuid
-     * @param string $rewardUuid
-     *
      * @return DigitalRewardReception|PhysicalRewardReception|null
+     *
      * @throws PiggyRequestException
      */
     public function create(string $contactUuid, string $shopUuid, string $rewardUuid)
     {
         $response = $this->client->post($this->resourceUri, [
-            "contact_uuid" => $contactUuid,
-            "reward_uuid" => $rewardUuid,
-            "shop_uuid" => $shopUuid,
+            'contact_uuid' => $contactUuid,
+            'reward_uuid' => $rewardUuid,
+            'shop_uuid' => $shopUuid,
         ]);
 
         $mapper = new RewardReceptionMapper();

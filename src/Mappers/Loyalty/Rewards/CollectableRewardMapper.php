@@ -10,26 +10,19 @@ use stdClass;
 
 /**
  * Class CollectableRewardMapper
- * @package Piggy\Api\Mappers\Loyalty\Rewards
  */
 class CollectableRewardMapper extends BaseMapper
 {
     /**
-     * @param stdClass $data
-     * @return CollectableReward
      * @throws Exception
      */
     public function map(stdClass $data): CollectableReward
     {
-        if (property_exists($data, 'contact')) {
-            $contactMapper = new ContactMapper();
-            $contact = $contactMapper->map($data->contact);
-        }
+        $contactMapper = new ContactMapper();
+        $contact = $contactMapper->map($data->contact);
 
-        if (property_exists($data, 'reward')) {
-            $rewardMapper = new RewardMapper();
-            $reward = $rewardMapper->map($data->reward);
-        }
+        $rewardMapper = new RewardMapper();
+        $reward = $rewardMapper->map($data->reward);
 
         return new CollectableReward(
             $contact,
@@ -37,7 +30,7 @@ class CollectableRewardMapper extends BaseMapper
             $data->uuid,
             $data->title,
             $reward,
-            $this->parseDate($data->expires_at),
+            $data->expires_at ? $this->parseDate($data->expires_at) : null,
             $data->has_been_collected
         );
     }

@@ -25,13 +25,10 @@ class GiftcardProgram
      */
     protected $active;
 
-    const resourceUri = "/api/v3/oauth/clients/giftcard-programs";
+    const resourceUri = '/api/v3/oauth/clients/giftcard-programs';
 
     /**
      * GiftcardProgram constructor.
-     * @param string $uuid
-     * @param string $name
-     * @param bool $active
      */
     public function __construct(string $uuid, string $name, bool $active)
     {
@@ -40,32 +37,24 @@ class GiftcardProgram
         $this->active = $active;
     }
 
-    /**
-     * @return string
-     */
     public function getUuid(): string
     {
         return $this->uuid;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @return bool
-     */
     public function isActive(): bool
     {
         return $this->active;
     }
 
     /**
-     * @return array
+     * @return GiftcardProgram[]
+     *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function list(): array

@@ -4,11 +4,9 @@ namespace Piggy\Api\Models\Contacts;
 
 /**
  * Class Attribute
- * @package Piggy\Api\Models\Contacts
  */
 class Attribute
 {
-
     /** @var string */
     protected $name;
 
@@ -33,25 +31,28 @@ class Attribute
     protected $description;
 
     /**
-     * @var boolean|null
+     * @var bool|null
      */
     protected $isSoftReadOnly;
 
     /**
-     * @var boolean|null
+     * @var bool|null
      */
     protected $isHardReadOnly;
 
     /**
-     * @var boolean|null
+     * @var bool|null
      */
     protected $isPiggyDefined;
 
     /**
-     * @var array|null
+     * @var mixed[]|null
      */
     protected $options;
 
+    /**
+     * @param  mixed[]|null  $options
+     */
     public function __construct(string $name, string $label, string $type, ?string $fieldType, ?string $description = null, ?bool $isSoftReadOnly = null, ?bool $isHardReadOnly = null, ?bool $isPiggyDefined = null, ?array $options = null)
     {
         $this->name = $name;
@@ -65,142 +66,88 @@ class Attribute
         $this->options = $options;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $name
-     * @return void
-     */
     public function setName(string $name): void
     {
         $this->name = $name;
     }
 
-    /**
-     * @return string
-     */
     public function getLabel(): string
     {
         return $this->label;
     }
 
-    /**
-     * @param string $label
-     * @return void
-     */
     public function setLabel(string $label): void
     {
         $this->label = $label;
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @param string $type
-     * @return void
-     */
     public function setType(string $type): void
     {
         $this->type = $type;
     }
 
-    /**
-     * @return string|null
-     */
     public function getFieldType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * @param string $type
-     * @return void
-     */
     public function setFieldType(string $type): void
     {
         $this->type = $type;
     }
 
-    /**
-     * @return string|null
-     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    /**
-     * @param string $description
-     * @return void
-     */
     public function setDescription(string $description): void
     {
         $this->description = $description;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getIsSoftReadOnly(): ?bool
     {
         return $this->isSoftReadOnly;
     }
 
-    /**
-     * @param bool $isSoftReadOnly
-     * @return void
-     */
     public function setIsSoftReadOnly(bool $isSoftReadOnly): void
     {
         $this->isSoftReadOnly = $isSoftReadOnly;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getIsHardReadOnly(): ?bool
     {
         return $this->isHardReadOnly;
     }
 
-    /**
-     * @param bool $isHardReadOnly
-     * @return void
-     */
     public function setIsHardReadOnly(bool $isHardReadOnly): void
     {
         $this->isHardReadOnly = $isHardReadOnly;
     }
 
-    /**
-     * @return bool | null
-     */
     public function getIsPiggyDefined(): ?bool
     {
         return $this->isPiggyDefined;
     }
 
-    /**
-     * @param bool $isPiggyDefined
-     */
     public function setIsPiggyDefined(bool $isPiggyDefined): void
     {
         $this->isPiggyDefined = $isPiggyDefined;
     }
+
     /**
-     * @return array | null
+     * @return mixed[]|null
      */
     public function getOptions(): ?array
     {
@@ -208,7 +155,7 @@ class Attribute
     }
 
     /**
-     * @param array | null $options
+     * @param  mixed[]|null  $options
      */
     public function setOptions(?array $options): void
     {

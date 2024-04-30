@@ -2,11 +2,14 @@
 
 namespace Piggy\Api\Mappers\Loyalty\RewardAttributes;
 
+use Piggy\Api\Models\Loyalty\RewardAttributes\RewardAttribute;
+use stdClass;
+
 class RewardAttributesMapper
 {
     /**
-     * @param array $data
-     * @return array
+     * @param  stdClass[]  $data
+     * @return RewardAttribute[]
      */
     public function map(array $data): array
     {

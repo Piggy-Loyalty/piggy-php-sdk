@@ -9,29 +9,23 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class PrepaidTransactionsResource
- * @package Piggy\Api\Resources\OAuth
  */
 class PrepaidTransactionsResource extends BaseResource
 {
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/oauth/clients/prepaid-transactions";
+    protected $resourceUri = '/api/v3/oauth/clients/prepaid-transactions';
 
     /**
-     * @param string $contactUuid
-     * @param int $amountInCents
-     * @param string $shopUuid
-     *
-     * @return PrepaidTransaction
      * @throws PiggyRequestException
      */
     public function create(string $contactUuid, int $amountInCents, string $shopUuid): PrepaidTransaction
     {
         $response = $this->client->post("$this->resourceUri", [
-            "contact_uuid" => $contactUuid,
-            "amount_in_cents" => $amountInCents,
-            "shop_uuid" => $shopUuid
+            'contact_uuid' => $contactUuid,
+            'amount_in_cents' => $amountInCents,
+            'shop_uuid' => $shopUuid,
         ]);
 
         $mapper = new PrepaidTransactionMapper();

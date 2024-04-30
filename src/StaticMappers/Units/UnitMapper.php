@@ -7,14 +7,9 @@ use stdClass;
 
 /**
  * Class UnitMapper
- * @package Piggy\Api\Mappers\Units
  */
 class UnitMapper
 {
-    /**
-     * @param stdClass $data
-     * @return Unit
-     */
     public static function map(stdClass $data): Unit
     {
         return new Unit(

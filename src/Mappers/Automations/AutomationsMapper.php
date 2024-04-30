@@ -2,17 +2,19 @@
 
 namespace Piggy\Api\Mappers\Automations;
 
+use Piggy\Api\Models\Automations\Automation;
+use stdClass;
+
 /**
  * Class AutomationsMapper
- * @package Piggy\Api\Mappers\Shops
  */
 class AutomationsMapper
 {
     /**
-     * @param $data
-     * @return array
+     * @param  stdClass[]  $data
+     * @return Automation[]
      */
-    public function map($data): array
+    public function map(array $data): array
     {
         $mapper = new AutomationMapper();
 

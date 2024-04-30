@@ -7,14 +7,9 @@ use stdClass;
 
 /**
  * Class GiftcardProgramMapper
- * @package Piggy\Api\Mappers\Giftcards
  */
 class GiftcardProgramMapper
 {
-    /**
-     * @param stdClass $data
-     * @return GiftcardProgram
-     */
     public static function map(stdClass $data): GiftcardProgram
     {
         return new GiftcardProgram(
@@ -23,5 +18,4 @@ class GiftcardProgramMapper
             $data->active ?? true
         );
     }
-
 }

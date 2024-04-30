@@ -1,0 +1,46 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Property Piggy\\\\Api\\\\Http\\\\BaseClient\\:\\:\\$contactIdentifiers \\(Piggy\\\\Api\\\\Resources\\\\OAuth\\\\Contacts\\\\ContactIdentifiersResource\\) does not accept Piggy\\\\Api\\\\Resources\\\\Register\\\\ContactIdentifiersResource\\.$#"
+			count: 1
+			path: src/RegisterClient.php
+
+		-
+			message: "#^Property Piggy\\\\Api\\\\Http\\\\BaseClient\\:\\:\\$contacts \\(Piggy\\\\Api\\\\Resources\\\\OAuth\\\\Contacts\\\\ContactsResource\\) does not accept Piggy\\\\Api\\\\Resources\\\\Register\\\\Contacts\\\\ContactsResource\\.$#"
+			count: 1
+			path: src/RegisterClient.php
+
+		-
+			message: "#^Property Piggy\\\\Api\\\\Http\\\\BaseClient\\:\\:\\$creditReceptions \\(Piggy\\\\Api\\\\Resources\\\\OAuth\\\\Loyalty\\\\Receptions\\\\CreditReceptionsResource\\) does not accept Piggy\\\\Api\\\\Resources\\\\Register\\\\Loyalty\\\\Receptions\\\\CreditReceptionsResource\\.$#"
+			count: 1
+			path: src/RegisterClient.php
+
+		-
+			message: "#^Property Piggy\\\\Api\\\\Http\\\\BaseClient\\:\\:\\$giftcardTransactions \\(Piggy\\\\Api\\\\Resources\\\\OAuth\\\\Giftcards\\\\GiftcardTransactionsResource\\) does not accept Piggy\\\\Api\\\\Resources\\\\Register\\\\Giftcards\\\\GiftcardTransactionsResource\\.$#"
+			count: 1
+			path: src/RegisterClient.php
+
+		-
+			message: "#^Property Piggy\\\\Api\\\\Http\\\\BaseClient\\:\\:\\$giftcards \\(Piggy\\\\Api\\\\Resources\\\\OAuth\\\\Giftcards\\\\GiftcardsResource\\) does not accept Piggy\\\\Api\\\\Resources\\\\Register\\\\Giftcards\\\\GiftcardsResource\\.$#"
+			count: 1
+			path: src/RegisterClient.php
+
+		-
+			message: "#^Property Piggy\\\\Api\\\\Http\\\\BaseClient\\:\\:\\$loyaltyProgram \\(Piggy\\\\Api\\\\Resources\\\\OAuth\\\\Loyalty\\\\Program\\\\LoyaltyProgramsResource\\) does not accept Piggy\\\\Api\\\\Resources\\\\Register\\\\Loyalty\\\\Program\\\\LoyaltyProgramResource\\.$#"
+			count: 1
+			path: src/RegisterClient.php
+
+		-
+			message: "#^Property Piggy\\\\Api\\\\Http\\\\BaseClient\\:\\:\\$prepaidTransactions \\(Piggy\\\\Api\\\\Resources\\\\OAuth\\\\PrepaidTransactionsResource\\) does not accept Piggy\\\\Api\\\\Resources\\\\Register\\\\PrepaidTransactionResource\\.$#"
+			count: 1
+			path: src/RegisterClient.php
+
+		-
+			message: "#^Property Piggy\\\\Api\\\\Http\\\\BaseClient\\:\\:\\$rewardReceptions \\(Piggy\\\\Api\\\\Resources\\\\OAuth\\\\Loyalty\\\\Receptions\\\\RewardReceptionsResource\\) does not accept Piggy\\\\Api\\\\Resources\\\\Register\\\\Loyalty\\\\Receptions\\\\RewardReceptionsResource\\.$#"
+			count: 1
+			path: src/RegisterClient.php
+
+		-
+			message: "#^Property Piggy\\\\Api\\\\Http\\\\BaseClient\\:\\:\\$rewards \\(Piggy\\\\Api\\\\Resources\\\\OAuth\\\\Loyalty\\\\Rewards\\\\RewardsResource\\) does not accept Piggy\\\\Api\\\\Resources\\\\Register\\\\Loyalty\\\\Rewards\\\\RewardsResource\\.$#"
+			count: 1
+			path: src/RegisterClient.php

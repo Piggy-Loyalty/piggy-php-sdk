@@ -11,7 +11,6 @@ use Piggy\Api\StaticMappers\Shops\ShopsMapper;
 
 /**
  * Class Shop
- * @package Piggy\Api\Models\Shops
  */
 class Shop
 {
@@ -33,13 +32,8 @@ class Shop
     /**
      * @var string
      */
-    const resourceUri = "/api/v3/oauth/clients/shops";
+    const resourceUri = '/api/v3/oauth/clients/shops';
 
-    /**
-     * @param string $uuid
-     * @param string $name
-     * @param int | null $id
-     */
     public function __construct(string $uuid, string $name, ?int $id)
     {
         $this->uuid = $uuid;
@@ -47,17 +41,11 @@ class Shop
         $this->id = $id;
     }
 
-    /**
-     * @return string
-     */
     public function getUuid(): string
     {
         return $this->uuid;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
@@ -72,8 +60,9 @@ class Shop
     }
 
     /**
-     * @param array $params
-     * @return array
+     * @param  mixed[]  $params
+     * @return Shop[]
+     *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function list(array $params = []): array
@@ -84,14 +73,13 @@ class Shop
     }
 
     /**
-     * @param string $shopUuid
-     * @param array $params
-     * @return Shop
+     * @param  mixed[]  $params
+     *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function get(string $shopUuid, array $params = []): Shop
     {
-        $response = ApiClient::get(self::resourceUri . "/$shopUuid", $params);
+        $response = ApiClient::get(self::resourceUri."/$shopUuid", $params);
 
         return ShopMapper::map($response->getData());
     }

@@ -14,7 +14,6 @@ use stdClass;
 
 /**
  * Class GiftcardTransaction
- * @package Piggy\Api\Models\Giftcards
  */
 class GiftcardTransaction
 {
@@ -34,22 +33,22 @@ class GiftcardTransaction
     protected $created_at;
 
     /**
-     * @var Giftcard
+     * @var ?int
      */
     protected $card_id;
 
     /**
-     * @var int
+     * @var ?int
      */
     protected $shop_id;
 
     /**
-     * @var bool
+     * @var ?bool
      */
     protected $settled;
 
     /**
-     * @var string
+     * @var ?string
      */
     protected $type;
 
@@ -76,35 +75,24 @@ class GiftcardTransaction
     /**
      * @var string
      */
-    const resourceUri = "/api/v3/oauth/clients/giftcard-transactions";
+    const resourceUri = '/api/v3/oauth/clients/giftcard-transactions';
 
     /**
-     * @param string $uuid
-     * @param int $amountInCents
-     * @param DateTime $createdAt
-     * @param string|null $type
-     * @param bool|null $settled
-     * @param int|null $cardId
-     * @param int|null $shopId
-     * @param array $settlements
-     * @param int|null $id
-     * @param Shop|null $shop
-     * @param stdClass|null $card
+     * @param  GiftcardTransactionSettlement[]  $settlements
      */
     public function __construct(
-        string   $uuid,
-        int      $amountInCents,
+        string $uuid,
+        int $amountInCents,
         DateTime $createdAt,
-        ?string  $type = null,
-        ?bool    $settled = null,
-        ?int     $cardId = null,
-        ?int     $shopId = null,
-        array    $settlements = [],
-        ?int     $id = null,
-        ?Shop    $shop = null,
+        ?string $type = null,
+        ?bool $settled = null,
+        ?int $cardId = null,
+        ?int $shopId = null,
+        array $settlements = [],
+        ?int $id = null,
+        ?Shop $shop = null,
         ?stdClass $card = null
-    )
-    {
+    ) {
         $this->uuid = $uuid;
         $this->amount_in_cents = $amountInCents;
         $this->created_at = $createdAt;
@@ -118,42 +106,27 @@ class GiftcardTransaction
         $this->card = $card;
     }
 
-    /**
-     * @return string
-     */
     public function getUuid(): string
     {
         return $this->uuid;
     }
 
-    /**
-     * @return int
-     */
     public function getAmountInCents(): int
     {
         return $this->amount_in_cents;
     }
 
-    /**
-     * @return DateTime
-     */
     public function getCreatedAt(): DateTime
     {
         return $this->created_at;
     }
 
-    /**
-     * @return int
-     */
-    public function getGiftcardId(): int
+    public function getGiftcardId(): ?int
     {
         return $this->card_id;
     }
 
-    /**
-     * @return int
-     */
-    public function getShopId(): int
+    public function getShopId(): ?int
     {
         return $this->shop_id;
     }
@@ -163,33 +136,24 @@ class GiftcardTransaction
         return $this->shop;
     }
 
-    /**
-     * @return string
-     */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    /**
-     * @return bool
-     */
-    public function isSettled(): bool
+    public function isSettled(): ?bool
     {
         return $this->settled;
     }
 
     /**
-     * @return array
+     * @return GiftcardTransactionSettlement[]
      */
     public function getSettlements(): array
     {
         return $this->settlements;
     }
 
-    /**
-     * @return int | null
-     */
     public function getId(): ?int
     {
         return $this->id;
@@ -201,21 +165,20 @@ class GiftcardTransaction
     }
 
     /**
-     * @param string $giftcardTransactionUuid
-     * @param array $params
-     * @return GiftcardTransaction
+     * @param  mixed[]  $params
+     *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function get(string $giftcardTransactionUuid, array $params = []): GiftcardTransaction
     {
-        $response = ApiClient::get(self::resourceUri . "/$giftcardTransactionUuid", $params);
+        $response = ApiClient::get(self::resourceUri."/$giftcardTransactionUuid", $params);
 
         return GiftcardTransactionMapper::map($response->getData());
     }
 
     /**
-     * @param array $body
-     * @return GiftcardTransaction
+     * @param  mixed[]  $body
+     *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function create(array $body): GiftcardTransaction
@@ -226,27 +189,27 @@ class GiftcardTransaction
     }
 
     /**
-     * @param string $giftcardTransactionUuid
-     * @param array $body
-     * @return GiftcardTransaction
+     * @param  mixed[]  $body
+     *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function correct(string $giftcardTransactionUuid, array $body = []): GiftcardTransaction
     {
-        $response = ApiClient::post(self::resourceUri . "/$giftcardTransactionUuid/correct", $body);
+        $response = ApiClient::post(self::resourceUri."/$giftcardTransactionUuid/correct", $body);
 
         return GiftcardTransactionMapper::map($response->getData());
     }
 
     /**
-     * @param array $params
-     * @return array
+     * @param  mixed[]  $params
+     * @return GiftcardTransaction[]
+     *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function list(array $params): array
     {
         $response = ApiClient::get(self::resourceUri, $params);
 
-        return GiftcardTransactionsMapper::map((array)$response->getData());
+        return GiftcardTransactionsMapper::map((array) $response->getData());
     }
 }

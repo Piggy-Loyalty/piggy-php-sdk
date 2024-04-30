@@ -16,7 +16,6 @@ use Piggy\Api\Resources\Register\Registers\RegisterResource;
 
 /**
  * Trait SetsRegisterResources
- * @package Piggy\Api\Http\Traits
  */
 trait SetsRegisterResources
 {
@@ -68,11 +67,7 @@ trait SetsRegisterResources
     /** @var LoyaltyProgramResource */
     public $loyaltyProgram;
 
-
-    /**
-     * @param BaseClient $client
-     */
-    protected function setResources(BaseClient $client)
+    protected function setResources(BaseClient $client): void
     {
         $this->registers = new RegisterResource($client);
         $this->contacts = new ContactsResource($client);

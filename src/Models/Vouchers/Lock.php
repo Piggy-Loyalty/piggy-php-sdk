@@ -1,6 +1,7 @@
 <?php
 
 namespace Piggy\Api\Models\Vouchers;
+
 use DateTime;
 
 class Lock

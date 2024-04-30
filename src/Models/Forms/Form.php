@@ -34,19 +34,12 @@ class Form
     protected $uuid;
 
     /**
-     * @var int
+     * @var string
      */
     public $type;
 
-    const resourceUri = "/api/v3/oauth/clients/forms";
+    const resourceUri = '/api/v3/oauth/clients/forms';
 
-    /**
-     * @param string $uuid
-     * @param string $name
-     * @param string $status
-     * @param string $type
-     * @param string $url
-     */
     public function __construct(string $name, string $status, string $url, string $uuid, string $type)
     {
         $this->name = $name;
@@ -56,54 +49,41 @@ class Form
         $this->type = $type;
     }
 
-    /**
-     * @return string
-     */
     public function getUuid(): string
     {
         return $this->uuid;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @return string
-     */
     public function getStatus(): string
     {
         return $this->status;
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @return string
-     */
     public function getUrl(): string
     {
         return $this->url;
     }
 
     /**
-     * @return array[]
+     * @param  mixed[]  $params
+     * @return Form[]
+     *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function list(array $params = []): array
     {
         $response = ApiClient::get(self::resourceUri, $params);
 
-        return FormsMapper::map((array)$response->getData());
+        return FormsMapper::map((array) $response->getData());
     }
 }

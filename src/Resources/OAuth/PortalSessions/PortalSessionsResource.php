@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Piggy\Api\Resources\OAuth\PortalSessions;
 
 use Piggy\Api\Exceptions\PiggyRequestException;
@@ -10,26 +9,22 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class PortalSessionsResource
- * @package Piggy\Api\Resources\OAuth\PortalSessions
  */
 class PortalSessionsResource extends BaseResource
 {
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/oauth/clients/portal-sessions";
+    protected $resourceUri = '/api/v3/oauth/clients/portal-sessions';
 
     /**
-     * @param string $shopUuid
-     * @param string|null $contactUuid
-     * @return PortalSession
      * @throws PiggyRequestException
      */
     public function create(string $shopUuid, ?string $contactUuid = null): PortalSession
     {
         $response = $this->client->post($this->resourceUri, [
-            "shop_uuid" => $shopUuid,
-            "contact_uuid" => $contactUuid,
+            'shop_uuid' => $shopUuid,
+            'contact_uuid' => $contactUuid,
         ]);
 
         $mapper = new PortalSessionMapper();
@@ -38,8 +33,6 @@ class PortalSessionsResource extends BaseResource
     }
 
     /**
-     * @param string $uuid
-     * @return PortalSession
      * @throws PiggyRequestException
      */
     public function get(string $uuid): PortalSession

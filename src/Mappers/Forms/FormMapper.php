@@ -3,18 +3,14 @@
 namespace Piggy\Api\Mappers\Forms;
 
 use Piggy\Api\Models\Forms\Form;
+use stdClass;
 
 /**
  * Class FormMapper
- * @package Piggy\Api\Mappers\Forms
  */
 class FormMapper
 {
-    /**
-     * @param $data
-     * @return Form
-     */
-    public function map($data): Form
+    public function map(stdClass $data): Form
     {
         return new Form(
             $data->name,

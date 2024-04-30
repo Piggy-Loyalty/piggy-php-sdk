@@ -8,14 +8,9 @@ use stdClass;
 
 /**
  * Class AutomationMapper
- * @package Piggy\Api\Mappers\Automations
  */
 class AutomationMapper extends BaseMapper
 {
-    /**
-     * @param stdClass $data
-     * @return Automation
-     */
     public function map(stdClass $data): Automation
     {
         return new Automation(

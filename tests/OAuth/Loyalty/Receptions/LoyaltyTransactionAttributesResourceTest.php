@@ -14,27 +14,27 @@ class LoyaltyTransactionAttributesResourceTest extends OAuthTestCase
     {
         $this->addExpectedResponse([
             [
-                "name" => "someAttribute",
-                "label" => "Some Attribute",
-                "placeholder" => null,
-                "type" => "text",
-                "field_type" => "text",
-                "options" => [],
-                "is_piggy_defined" => false,
-                "is_soft_read_only" => false,
-                "is_hard_read_only" => false
+                'name' => 'someAttribute',
+                'label' => 'Some Attribute',
+                'placeholder' => null,
+                'type' => 'text',
+                'field_type' => 'text',
+                'options' => [],
+                'is_piggy_defined' => false,
+                'is_soft_read_only' => false,
+                'is_hard_read_only' => false,
             ],
             [
-                "name" => "someAttribute2",
-                "label" => "Some Attribute 2",
-                "placeholder" => null,
-                "type" => "text",
-                "field_type" => "text",
-                "options" => [],
-                "is_piggy_defined" => false,
-                "is_soft_read_only" => false,
-                "is_hard_read_only" => false
-            ]
+                'name' => 'someAttribute2',
+                'label' => 'Some Attribute 2',
+                'placeholder' => null,
+                'type' => 'text',
+                'field_type' => 'text',
+                'options' => [],
+                'is_piggy_defined' => false,
+                'is_soft_read_only' => false,
+                'is_hard_read_only' => false,
+            ],
         ]);
 
         $loyaltyTransactionAttributes = $this->mockedClient->loyaltyTransactionAttributes->list();
@@ -66,15 +66,15 @@ class LoyaltyTransactionAttributesResourceTest extends OAuthTestCase
     public function it_creates_a_loyalty_transaction_attribute()
     {
         $this->addExpectedResponse([
-            "name" => "someAttribute",
-            "label" => "Some Attribute",
-            "placeholder" => null,
-            "type" => "text",
-            "field_type" => "text",
-            "options" => [],
-            "is_piggy_defined" => false,
-            "is_soft_read_only" => false,
-            "is_hard_read_only" => false
+            'name' => 'someAttribute',
+            'label' => 'Some Attribute',
+            'placeholder' => null,
+            'type' => 'text',
+            'field_type' => 'text',
+            'options' => [],
+            'is_piggy_defined' => false,
+            'is_soft_read_only' => false,
+            'is_hard_read_only' => false,
         ]);
 
         $loyaltyTransactionAttributes = $this->mockedClient->loyaltyTransactionAttributes->create('someAttribute', 'text');
@@ -89,5 +89,4 @@ class LoyaltyTransactionAttributesResourceTest extends OAuthTestCase
         $this->assertFalse($loyaltyTransactionAttributes->isSoftReadOnly());
         $this->assertFalse($loyaltyTransactionAttributes->isHardReadOnly());
     }
-
 }

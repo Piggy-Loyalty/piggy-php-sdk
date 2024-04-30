@@ -16,7 +16,7 @@ function hasGuzzle5(): bool
     if (defined('GuzzleHttp\ClientInterface::VERSION')) {
         if (ClientInterface::VERSION < 6) {
             return true;
-        } 
+        }
     }
 
     return false;

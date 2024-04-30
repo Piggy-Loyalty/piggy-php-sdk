@@ -4,18 +4,14 @@ namespace Piggy\Api\Mappers\WebhookSubscriptions;
 
 use Piggy\Api\Mappers\BaseMapper;
 use Piggy\Api\Models\WebhookSubscriptions\WebhookSubscription;
+use stdClass;
 
 /**
  * Class WebhookSubscriptionMapper
- * @package Piggy\Api\Mappers\WebhookSubscriptions
  */
 class WebhookSubscriptionMapper extends BaseMapper
 {
-    /**
-     * @param $data
-     * @return WebhookSubscription
-     */
-    public function map($data): WebhookSubscription
+    public function map(stdClass $data): WebhookSubscription
     {
         return new WebhookSubscription(
             $data->uuid,
@@ -29,4 +25,3 @@ class WebhookSubscriptionMapper extends BaseMapper
         );
     }
 }
-

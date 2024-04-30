@@ -2,11 +2,14 @@
 
 namespace Piggy\Api\Mappers\Giftcards;
 
+use Piggy\Api\Models\Giftcards\GiftcardTransaction;
+use stdClass;
+
 class GiftcardTransactionsMapper
 {
     /**
-     * @param array $data
-     * @return array
+     * @param  stdClass[]  $data
+     * @return GiftcardTransaction[]
      */
     public function map(array $data): array
     {

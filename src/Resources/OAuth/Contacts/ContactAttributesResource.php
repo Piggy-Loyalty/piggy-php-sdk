@@ -2,6 +2,7 @@
 
 namespace Piggy\Api\Resources\OAuth\Contacts;
 
+use Exception;
 use Piggy\Api\Enum\CustomAttributeTypes;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Contacts\AttributeMapper;
@@ -11,18 +12,18 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class ContactAttributesResource
- * @package Piggy\Api\Resources\OAuth
  */
 class ContactAttributesResource extends BaseResource
 {
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/oauth/clients/contact-attributes";
+    protected $resourceUri = '/api/v3/oauth/clients/contact-attributes';
 
     /**
-     * @param array $params
-     * @return array
+     * @param  mixed[]  $params
+     * @return Attribute[]
+     *
      * @throws PiggyRequestException
      */
     public function list(array $params = []): array
@@ -35,27 +36,23 @@ class ContactAttributesResource extends BaseResource
     }
 
     /**
-     * @param string $name
-     * @param string $label
-     * @param string $type
-     * @param null|string $description
-     * @param array|null $options
-     * @return Attribute
+     * @param  mixed[]|null  $options
+     *
      * @throws PiggyRequestException
-     * @throws \Exception
+     * @throws Exception
      */
     public function create(string $name, string $label, string $type, ?string $description = null, ?array $options = null): Attribute
     {
         $contactAttributes = [
-            "name" => $name,
-            "label" => $label,
-            "data_type" => $type,
-            "description" => $description,
-            "options" => $options
+            'name' => $name,
+            'label' => $label,
+            'data_type' => $type,
+            'description' => $description,
+            'options' => $options,
         ];
 
-        if (!CustomAttributeTypes::has($type)) {
-            throw new \Exception("type {$type} invalid");
+        if (! CustomAttributeTypes::has($type)) {
+            throw new Exception("type {$type} invalid");
         }
 
         $response = $this->client->post($this->resourceUri, $contactAttributes);

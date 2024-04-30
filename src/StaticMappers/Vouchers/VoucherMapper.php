@@ -2,20 +2,15 @@
 
 namespace Piggy\Api\StaticMappers\Vouchers;
 
+use Piggy\Api\Models\Vouchers\Voucher;
 use Piggy\Api\StaticMappers\BaseMapper;
 use Piggy\Api\StaticMappers\Contacts\ContactMapper;
-use Piggy\Api\Models\Vouchers\Voucher;
 
 /**
  * Class VoucherMapper
- * @package Piggy\Api\Mappers\Vouchers
  */
 class VoucherMapper extends BaseMapper
 {
-    /**
-     * @param $data
-     * @return Voucher
-     */
     public static function map($data): Voucher
     {
         if (isset($data->promotion)) {

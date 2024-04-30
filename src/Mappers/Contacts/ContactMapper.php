@@ -9,10 +9,6 @@ use stdClass;
 
 class ContactMapper
 {
-    /**
-     * @param stdClass $data
-     * @return Contact
-     */
     public function map(stdClass $data): Contact
     {
         $prepaidBalance = null;
@@ -48,7 +44,7 @@ class ContactMapper
 
         return new Contact(
             $data->uuid,
-            $data->email ?? "",
+            $data->email ?? '',
             $prepaidBalance,
             $creditBalance,
             $attributes,

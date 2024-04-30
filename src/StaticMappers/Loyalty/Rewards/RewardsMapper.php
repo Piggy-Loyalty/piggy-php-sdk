@@ -6,13 +6,10 @@ use Exception;
 
 /**
  * Class RewardsMapper
- * @package Piggy\Api\Mappers\Loyalty\Rewards
  */
 class RewardsMapper
 {
     /**
-     * @param $data
-     * @return array
      * @throws Exception
      */
     public static function map($data): array

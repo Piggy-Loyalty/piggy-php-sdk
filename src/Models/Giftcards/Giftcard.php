@@ -11,12 +11,11 @@ use Piggy\Api\StaticMappers\Giftcards\GiftcardMapper;
 
 /**
  * Class Giftcard
- * @package Piggy\Api\Models\Giftcards
  */
 class Giftcard
 {
     /**
-     * @var int
+     * @var ?int
      */
     public $id;
 
@@ -51,7 +50,7 @@ class Giftcard
     public $upgradeable;
 
     /**
-     * @var GiftcardProgram
+     * @var ?GiftcardProgram
      */
     public $giftcardProgram;
 
@@ -63,19 +62,8 @@ class Giftcard
     /**
      * @var string
      */
-    const resourceUri = "/api/v3/oauth/clients/giftcards";
+    const resourceUri = '/api/v3/oauth/clients/giftcards';
 
-    /**
-     * @param string $uuid
-     * @param string $hash
-     * @param int $amountInCents
-     * @param int $type
-     * @param bool $active
-     * @param bool $upgradeable
-     * @param GiftcardProgram|null $giftcardProgram
-     * @param DateTime|null $expirationDate
-     * @param int|null $id
-     */
     public function __construct(string $uuid, string $hash, int $amountInCents, int $type, bool $active, bool $upgradeable, ?GiftcardProgram $giftcardProgram, ?DateTime $expirationDate, ?int $id)
     {
         $this->uuid = $uuid;
@@ -89,93 +77,66 @@ class Giftcard
         $this->id = $id;
     }
 
-    /**
-     * @return string
-     */
     public function getUuid(): string
     {
         return $this->uuid;
     }
 
-    /**
-     * @return int
-     */
     public function getType(): int
     {
         return $this->type;
     }
 
-    /**
-     * @return string
-     */
     public function getHash(): string
     {
         return $this->hash;
     }
 
-    /**
-     * @return DateTime|null
-     */
     public function getExpirationDate(): ?DateTime
     {
         return $this->expirationDate;
     }
 
-    /**
-     * @return bool
-     */
     public function isActive(): bool
     {
         return $this->active;
     }
 
-    /**
-     * @return bool
-     */
     public function isUpgradeable(): bool
     {
         return $this->upgradeable;
     }
 
-    /**
-     * @return GiftcardProgram|null
-     */
     public function getGiftcardProgram(): ?GiftcardProgram
     {
         return $this->giftcardProgram;
     }
 
-    /**
-     * @return int
-     */
     public function getAmountInCents(): int
     {
         return $this->amountInCents;
     }
 
-    /**
-     * @return int
-     */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @param array $params
-     * @return Giftcard
+     * @param  mixed[]  $params
+     *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function findOneBy(array $params): Giftcard
     {
-        $response = ApiClient::get(self::resourceUri . "/find-one-by", $params);
+        $response = ApiClient::get(self::resourceUri.'/find-one-by', $params);
 
         return GiftcardMapper::map($response->getData());
     }
 
     /**
-     * @param array $body
-     * @return Giftcard
+     * @param  mixed[]  $body
+     *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function create(array $body): Giftcard

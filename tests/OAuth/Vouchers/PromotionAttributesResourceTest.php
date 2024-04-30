@@ -5,7 +5,6 @@ namespace Piggy\Api\Tests\OAuth\Vouchers;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
 
-
 class PromotionAttributesResourceTest extends OAuthTestCase
 {
     /** @test
@@ -15,18 +14,18 @@ class PromotionAttributesResourceTest extends OAuthTestCase
     {
         $this->addExpectedResponse(
             [
-                "name" => "someName",
-                "description" => "someDescription",
-                "label" => "someLabel",
-                "type" => "text",
+                'name' => 'someName',
+                'description' => 'someDescription',
+                'label' => 'someLabel',
+                'type' => 'text',
             ]
         );
 
-        $promotionAttribute = $this->mockedClient->promotionAttributes->create("someName", "someDescription", "someLabel", "text", []);
-        $this->assertEquals("someName", $promotionAttribute->getName());
-        $this->assertEquals("someDescription", $promotionAttribute->getDescription());
-        $this->assertEquals("someLabel", $promotionAttribute->getLabel());
-        $this->assertEquals("text", $promotionAttribute->getType());
+        $promotionAttribute = $this->mockedClient->promotionAttributes->create('someName', 'someDescription', 'someLabel', 'text', []);
+        $this->assertEquals('someName', $promotionAttribute->getName());
+        $this->assertEquals('someDescription', $promotionAttribute->getDescription());
+        $this->assertEquals('someLabel', $promotionAttribute->getLabel());
+        $this->assertEquals('text', $promotionAttribute->getType());
     }
 
     /** @test
@@ -36,29 +35,29 @@ class PromotionAttributesResourceTest extends OAuthTestCase
     {
         $this->addExpectedResponse(
             [
-                "name" => "someName",
-                "description" => "someDescription",
-                "label" => "someLabel",
-                "type" => "select",
-                "options" => [
-                    ["label" => "Noord-Holland", "value" => 'noord_holland'],
-                    ["label" => "Zuid-Holland", "value" => "zuid_holland"],
+                'name' => 'someName',
+                'description' => 'someDescription',
+                'label' => 'someLabel',
+                'type' => 'select',
+                'options' => [
+                    ['label' => 'Noord-Holland', 'value' => 'noord_holland'],
+                    ['label' => 'Zuid-Holland', 'value' => 'zuid_holland'],
                 ],
             ]
         );
 
-        $promotionAttribute = $this->mockedClient->promotionAttributes->create("someName", "someDescription", "someLabel", "text",
+        $promotionAttribute = $this->mockedClient->promotionAttributes->create('someName', 'someDescription', 'someLabel', 'text',
             [
-                ["label" => "Noord-Holland", "value" => 'noord_holland'],
-                ["label" => "Zuid-Holland", "value" => "zuid_holland"]
+                ['label' => 'Noord-Holland', 'value' => 'noord_holland'],
+                ['label' => 'Zuid-Holland', 'value' => 'zuid_holland'],
             ]
         );
 
-        $this->assertEquals("someName", $promotionAttribute->getName());
-        $this->assertEquals("someDescription", $promotionAttribute->getDescription());
-        $this->assertEquals("someLabel", $promotionAttribute->getLabel());
-        $this->assertEquals("select", $promotionAttribute->getType());
-        $this->assertEquals([["label" => "Noord-Holland", "value" => 'noord_holland'], ["label" => "Zuid-Holland", "value" => "zuid_holland"]], $promotionAttribute->getOptions());
+        $this->assertEquals('someName', $promotionAttribute->getName());
+        $this->assertEquals('someDescription', $promotionAttribute->getDescription());
+        $this->assertEquals('someLabel', $promotionAttribute->getLabel());
+        $this->assertEquals('select', $promotionAttribute->getType());
+        $this->assertEquals([['label' => 'Noord-Holland', 'value' => 'noord_holland'], ['label' => 'Zuid-Holland', 'value' => 'zuid_holland']], $promotionAttribute->getOptions());
     }
 
     /** @test
@@ -69,40 +68,40 @@ class PromotionAttributesResourceTest extends OAuthTestCase
         $this->addExpectedResponse(
             [
                 [
-                    "name" => "someName",
-                    "description" => "someDescription",
-                    "label" => "someLabel",
-                    "type" => "select",
-                    "options" => [
-                        ["label" => "Noord-Holland", "value" => 'noord_holland'],
-                        ["label" => "Zuid-Holland", "value" => "zuid_holland"],
+                    'name' => 'someName',
+                    'description' => 'someDescription',
+                    'label' => 'someLabel',
+                    'type' => 'select',
+                    'options' => [
+                        ['label' => 'Noord-Holland', 'value' => 'noord_holland'],
+                        ['label' => 'Zuid-Holland', 'value' => 'zuid_holland'],
                     ],
                 ],
                 [
-                    "name" => "someName2",
-                    "description" => "someDescription2",
-                    "label" => "someLabel2",
-                    "type" => "select",
-                    "options" => [
-                        ["label" => "Nederland", "value" => 'nl'],
-                        ["label" => "België", "value" => "be"],
+                    'name' => 'someName2',
+                    'description' => 'someDescription2',
+                    'label' => 'someLabel2',
+                    'type' => 'select',
+                    'options' => [
+                        ['label' => 'Nederland', 'value' => 'nl'],
+                        ['label' => 'België', 'value' => 'be'],
                     ],
-                ]
+                ],
             ]);
 
         $promotionAttributes = $this->mockedClient->promotionAttributes->list();
 
-        $this->assertEquals("someName", $promotionAttributes[0]->getName());
-        $this->assertEquals("someDescription", $promotionAttributes[0]->getDescription());
-        $this->assertEquals("someLabel", $promotionAttributes[0]->getLabel());
-        $this->assertEquals("select", $promotionAttributes[0]->getType());
-        $this->assertEquals([["label" => "Noord-Holland", "value" => 'noord_holland'], ["label" => "Zuid-Holland", "value" => "zuid_holland"]], $promotionAttributes[0]->getOptions());
+        $this->assertEquals('someName', $promotionAttributes[0]->getName());
+        $this->assertEquals('someDescription', $promotionAttributes[0]->getDescription());
+        $this->assertEquals('someLabel', $promotionAttributes[0]->getLabel());
+        $this->assertEquals('select', $promotionAttributes[0]->getType());
+        $this->assertEquals([['label' => 'Noord-Holland', 'value' => 'noord_holland'], ['label' => 'Zuid-Holland', 'value' => 'zuid_holland']], $promotionAttributes[0]->getOptions());
 
-        $this->assertEquals("someName2", $promotionAttributes[1]->getName());
-        $this->assertEquals("someDescription2", $promotionAttributes[1]->getDescription());
-        $this->assertEquals("someLabel2", $promotionAttributes[1]->getLabel());
-        $this->assertEquals("select", $promotionAttributes[1]->getType());
-        $this->assertEquals([["label" => "Nederland", "value" => 'nl'], ["label" => "België", "value" => "be"]], $promotionAttributes[1]->getOptions());
+        $this->assertEquals('someName2', $promotionAttributes[1]->getName());
+        $this->assertEquals('someDescription2', $promotionAttributes[1]->getDescription());
+        $this->assertEquals('someLabel2', $promotionAttributes[1]->getLabel());
+        $this->assertEquals('select', $promotionAttributes[1]->getType());
+        $this->assertEquals([['label' => 'Nederland', 'value' => 'nl'], ['label' => 'België', 'value' => 'be']], $promotionAttributes[1]->getOptions());
 
     }
 
@@ -112,25 +111,25 @@ class PromotionAttributesResourceTest extends OAuthTestCase
     {
         $this->addExpectedResponse(
             [
-                "name" => "someName",
-                "description" => "someDescription",
-                "label" => "someLabel",
-                "type" => "select",
-                "options" => [
-                    ["label" => "Noord-Holland", "value" => 'noord_holland'],
-                    ["label" => "Zuid-Holland", "value" => "zuid_holland"],
+                'name' => 'someName',
+                'description' => 'someDescription',
+                'label' => 'someLabel',
+                'type' => 'select',
+                'options' => [
+                    ['label' => 'Noord-Holland', 'value' => 'noord_holland'],
+                    ['label' => 'Zuid-Holland', 'value' => 'zuid_holland'],
                 ],
-                "id" => 1
+                'id' => 1,
             ]
         );
 
         $promotionAttribute = $this->mockedClient->promotionAttributes->get(1);
 
-        $this->assertEquals("someName", $promotionAttribute->getName());
-        $this->assertEquals("someDescription", $promotionAttribute->getDescription());
-        $this->assertEquals("someLabel", $promotionAttribute->getLabel());
-        $this->assertEquals("select", $promotionAttribute->getType());
-        $this->assertEquals([["label" => "Noord-Holland", "value" => 'noord_holland'], ["label" => "Zuid-Holland", "value" => "zuid_holland"]], $promotionAttribute->getOptions());
-        $this->assertEquals("1", $promotionAttribute->getId());
+        $this->assertEquals('someName', $promotionAttribute->getName());
+        $this->assertEquals('someDescription', $promotionAttribute->getDescription());
+        $this->assertEquals('someLabel', $promotionAttribute->getLabel());
+        $this->assertEquals('select', $promotionAttribute->getType());
+        $this->assertEquals([['label' => 'Noord-Holland', 'value' => 'noord_holland'], ['label' => 'Zuid-Holland', 'value' => 'zuid_holland']], $promotionAttribute->getOptions());
+        $this->assertEquals('1', $promotionAttribute->getId());
     }
 }

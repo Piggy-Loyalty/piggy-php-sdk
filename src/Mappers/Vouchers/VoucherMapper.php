@@ -5,18 +5,14 @@ namespace Piggy\Api\Mappers\Vouchers;
 use Piggy\Api\Mappers\BaseMapper;
 use Piggy\Api\Mappers\Contacts\ContactMapper;
 use Piggy\Api\Models\Vouchers\Voucher;
+use stdClass;
 
 /**
  * Class VoucherMapper
- * @package Piggy\Api\Mappers\Vouchers
  */
 class VoucherMapper extends BaseMapper
 {
-    /**
-     * @param $data
-     * @return Voucher
-     */
-    public function map($data): Voucher
+    public function map(stdClass $data): Voucher
     {
         if (isset($data->promotion)) {
             $promotionMapper = new PromotionMapper();
@@ -40,7 +36,7 @@ class VoucherMapper extends BaseMapper
             $data->is_redeemed ?? null,
             isset($data->activation_date) ? $this->parseDate($data->activation_date) : null,
             isset($data->expiration_date) ? $this->parseDate($data->expiration_date) : null,
-            isset($data->attributes) ? get_object_vars($data->attributes) : []
+            is_object($data->attributes) ? get_object_vars($data->attributes) : []
         );
     }
 }
