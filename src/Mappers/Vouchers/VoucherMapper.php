@@ -21,6 +21,10 @@ class VoucherMapper extends BaseMapper
             $contact = $contactMapper->map($data->contact);
         }
 
+        if (isset($data->attributes) && is_object($data->attributes)) {
+            $attributes = get_object_vars($data->attributes);
+        }
+
         return new Voucher(
             $data->uuid,
             $data->status,
@@ -33,7 +37,7 @@ class VoucherMapper extends BaseMapper
             $data->is_redeemed ?? null,
             isset($data->activation_date) ? $this->parseDate($data->activation_date) : null,
             isset($data->expiration_date) ? $this->parseDate($data->expiration_date) : null,
-            is_object($data->attributes) ? get_object_vars($data->attributes) : []
+            $attributes ?? []
         );
     }
 }
