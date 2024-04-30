@@ -32,4 +32,3 @@ class CustomAttributeTypes extends Enum
     const MULTI_SELECT = "multi_select";
     const LICENSE_PLATE = "license_plate";
 }
-
