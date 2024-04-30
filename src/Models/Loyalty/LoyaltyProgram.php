@@ -2,12 +2,6 @@
 
 namespace Piggy\Api\Models\Loyalty;
 
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\StaticMappers\Loyalty\LoyaltyProgramMapper;
-
 /**
  * Class LoyaltyProgram
  */
@@ -64,15 +58,5 @@ class LoyaltyProgram
     public function getMaxAmount(): ?int
     {
         return $this->maxAmount;
-    }
-
-    /**
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function get(array $params = []): LoyaltyProgram
-    {
-        $response = ApiClient::get(self::resourceUri, $params);
-
-        return LoyaltyProgramMapper::map($response->getData());
     }
 }

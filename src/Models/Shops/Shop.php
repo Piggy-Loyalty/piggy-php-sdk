@@ -2,13 +2,6 @@
 
 namespace Piggy\Api\Models\Shops;
 
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\StaticMappers\Shops\ShopMapper;
-use Piggy\Api\StaticMappers\Shops\ShopsMapper;
-
 /**
  * Class Shop
  */
@@ -57,25 +50,5 @@ class Shop
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    /**
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function list(array $params = []): array
-    {
-        $response = ApiClient::get(self::resourceUri, $params);
-
-        return ShopsMapper::map($response->getData());
-    }
-
-    /**
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function get(string $shopUuid, array $params = []): Shop
-    {
-        $response = ApiClient::get(self::resourceUri."/$shopUuid", $params);
-
-        return ShopMapper::map($response->getData());
     }
 }

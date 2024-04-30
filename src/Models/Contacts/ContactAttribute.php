@@ -2,13 +2,6 @@
 
 namespace Piggy\Api\Models\Contacts;
 
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\StaticMappers\Contacts\AttributeMapper;
-use Piggy\Api\StaticMappers\Contacts\AttributesMapper;
-
 /**
  * Class ContactAttribute
  */
@@ -49,25 +42,5 @@ class ContactAttribute
     public function setAttribute(Attribute $attribute): void
     {
         $this->attribute = $attribute;
-    }
-
-    /**
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function list(array $params = []): array
-    {
-        $response = ApiClient::get(self::resourceUri, $params);
-
-        return AttributesMapper::map($response->getData());
-    }
-
-    /**
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function create(array $body): Attribute
-    {
-        $response = ApiClient::post(self::resourceUri, $body);
-
-        return AttributeMapper::map($response->getData());
     }
 }

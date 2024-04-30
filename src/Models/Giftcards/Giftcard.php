@@ -3,11 +3,6 @@
 namespace Piggy\Api\Models\Giftcards;
 
 use DateTime;
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\StaticMappers\Giftcards\GiftcardMapper;
 
 /**
  * Class Giftcard
@@ -120,25 +115,5 @@ class Giftcard
     public function getId(): int
     {
         return $this->id;
-    }
-
-    /**
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function findOneBy(array $params): Giftcard
-    {
-        $response = ApiClient::get(self::resourceUri.'/find-one-by', $params);
-
-        return GiftcardMapper::map($response->getData());
-    }
-
-    /**
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function create(array $body): Giftcard
-    {
-        $response = ApiClient::post(self::resourceUri, $body);
-
-        return GiftcardMapper::map($response->getData());
     }
 }

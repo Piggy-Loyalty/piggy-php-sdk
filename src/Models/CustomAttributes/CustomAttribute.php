@@ -2,13 +2,6 @@
 
 namespace Piggy\Api\Models\CustomAttributes;
 
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\StaticMappers\CustomAttributes\CustomAttributeMapper;
-use Piggy\Api\StaticMappers\CustomAttributes\CustomAttributesMapper;
-
 /**
  * Class CustomAttribute
  */
@@ -259,25 +252,5 @@ class CustomAttribute
     public function getCreatedByUser(): ?string
     {
         return $this->createdByUser;
-    }
-
-    /**
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function list(array $params = []): array
-    {
-        $response = ApiClient::get(self::resourceUri, $params);
-
-        return CustomAttributesMapper::map($response->getData());
-    }
-
-    /**
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function create(array $body): CustomAttribute
-    {
-        $response = ApiClient::post(self::resourceUri, $body);
-
-        return CustomAttributeMapper::map($response->getData());
     }
 }

@@ -3,15 +3,8 @@
 namespace Piggy\Api\Models\Loyalty\Rewards;
 
 use DateTime;
-use Exception;
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\Models\Loyalty\Media;
-use Piggy\Api\StaticMappers\Loyalty\Rewards\RewardMapper;
-use Piggy\Api\StaticMappers\Loyalty\Rewards\RewardsMapper;
 
 class Reward
 {
@@ -146,27 +139,5 @@ class Reward
     public function getContact(): Contact
     {
         return $this->contact;
-    }
-
-    /**
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     * @throws Exception
-     */
-    public static function list(array $params = []): array
-    {
-        $response = ApiClient::get(self::resourceUri, $params);
-
-        return RewardsMapper::map($response->getData());
-    }
-
-    /**
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     * @throws Exception
-     */
-    public static function update($rewardUuid, array $params): Reward
-    {
-        $response = ApiClient::put(self::resourceUri."/$rewardUuid", $params);
-
-        return RewardMapper::map($response->getData());
     }
 }

@@ -2,12 +2,6 @@
 
 namespace Piggy\Api\Models\Giftcards;
 
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\StaticMappers\Giftcards\GiftcardProgramsMapper;
-
 class GiftcardProgram
 {
     /**
@@ -50,15 +44,5 @@ class GiftcardProgram
     public function isActive(): bool
     {
         return $this->active;
-    }
-
-    /**
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function list(): array
-    {
-        $response = ApiClient::get(self::resourceUri);
-
-        return GiftcardProgramsMapper::map($response->getData());
     }
 }

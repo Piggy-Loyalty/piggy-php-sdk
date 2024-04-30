@@ -3,11 +3,6 @@
 namespace Piggy\Api\Models\Automations;
 
 use DateTime;
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\StaticMappers\Automations\AutomationsMapper;
 
 /**
  * Class Automation
@@ -76,27 +71,5 @@ class Automation
     public function getUpdatedAt(): DateTime
     {
         return $this->updatedAt;
-    }
-
-    /**
-     * @throws GuzzleException
-     * @throws MaintenanceModeException
-     * @throws PiggyRequestException
-     */
-    public static function list(array $params = []): array
-    {
-        $response = ApiClient::get(self::resourceUri, $params);
-
-        return AutomationsMapper::map($response);
-    }
-
-    /**
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function create($body): array
-    {
-        $response = ApiClient::post(self::resourceUri.'/'.'runs', $body);
-
-        return AutomationsMapper::map($response);
     }
 }

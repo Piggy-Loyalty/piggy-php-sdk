@@ -2,12 +2,6 @@
 
 namespace Piggy\Api\Models\Vouchers;
 
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\StaticMappers\Vouchers\PromotionMapper;
-use Piggy\Api\StaticMappers\Vouchers\PromotionsMapper;
 use stdClass;
 
 class Promotion
@@ -106,25 +100,5 @@ class Promotion
     public function getAttributes(): array
     {
         return $this->attributes;
-    }
-
-    /**
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function create(array $body): Promotion
-    {
-        $response = ApiClient::post(self::resourceUri, $body);
-
-        return PromotionMapper::map($response->getData());
-    }
-
-    /**
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function list(array $params = []): array
-    {
-        $response = ApiClient::get(self::resourceUri, $params);
-
-        return PromotionsMapper::map((array) $response->getData());
     }
 }

@@ -2,13 +2,6 @@
 
 namespace Piggy\Api\Models\Contacts;
 
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\StaticMappers\Contacts\SubscriptionMapper;
-use Piggy\Api\StaticMappers\Contacts\SubscriptionsMapper;
-
 /**
  * Class Subscription
  */
@@ -69,35 +62,5 @@ class Subscription
     public function setStatus(string $status): void
     {
         $this->status = $status;
-    }
-
-    /**
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function list(string $contactUuid, array $params = []): array
-    {
-        $response = ApiClient::get(self::resourceUri."/$contactUuid", $params);
-
-        return SubscriptionsMapper::map($response->getData());
-    }
-
-    /**
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function subscribe(string $contactUuid, array $params): Subscription
-    {
-        $response = ApiClient::put(self::resourceUri."/$contactUuid/subscribe", $params);
-
-        return SubscriptionMapper::map($response->getData());
-    }
-
-    /**
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function unsubscribe(string $contactUuid, array $params): Subscription
-    {
-        $response = ApiClient::put(self::resourceUri."/$contactUuid/unsubscribe", $params);
-
-        return SubscriptionMapper::map($response->getData());
     }
 }

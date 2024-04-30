@@ -2,12 +2,6 @@
 
 namespace Piggy\Api\Models\Contacts;
 
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\StaticMappers\Contacts\SubscriptionTypesMapper;
-
 /**
  * Class SubscriptionType
  */
@@ -95,15 +89,5 @@ class SubscriptionType
     public function setStrategy(string $strategy): void
     {
         $this->strategy = $strategy;
-    }
-
-    /**
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function list(array $params = []): array
-    {
-        $response = ApiClient::get(self::resourceUri, $params);
-
-        return SubscriptionTypesMapper::map($response->getData());
     }
 }
