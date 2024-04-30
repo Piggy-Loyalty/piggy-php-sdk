@@ -1,11 +1,11 @@
 <?php
 
-
 namespace Piggy\Api\Tests;
 
 class MockHandlerAdapter
 {
     private $results = [];
+
     private $idx = 0;
 
     public function append($res)

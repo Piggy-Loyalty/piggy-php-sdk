@@ -15,18 +15,15 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class ContactsResource
- * @package Piggy\Api\Resources\Register\Contacts
  */
 class ContactsResource extends BaseResource
 {
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/register/contacts";
+    protected $resourceUri = '/api/v3/register/contacts';
 
     /**
-     * @param string $contactUuid
-     * @return Contact
      * @throws PiggyRequestException
      */
     public function get(string $contactUuid): Contact
@@ -39,14 +36,12 @@ class ContactsResource extends BaseResource
     }
 
     /**
-     * @param string $email
-     * @return Contact
      * @throws PiggyRequestException
      */
     public function findOneBy(string $email): Contact
     {
         $response = $this->client->get("$this->resourceUri/find-one-by", [
-            "email" => $email,
+            'email' => $email,
         ]);
 
         $mapper = new ContactMapper();
@@ -55,14 +50,12 @@ class ContactsResource extends BaseResource
     }
 
     /**
-     * @param string $email
-     * @return Contact
      * @throws PiggyRequestException
      */
     public function findOrCreate(string $email): Contact
     {
         $response = $this->client->get("$this->resourceUri/find-or-create", [
-            "email" => $email,
+            'email' => $email,
         ]);
 
         $mapper = new ContactMapper();
@@ -71,14 +64,12 @@ class ContactsResource extends BaseResource
     }
 
     /**
-     * @param string $email
-     * @return Contact
      * @throws PiggyRequestException
      */
     public function create(string $email): Contact
     {
         $response = $this->client->post("$this->resourceUri", [
-            "email" => $email,
+            'email' => $email,
         ]);
 
         $mapper = new ContactMapper();
@@ -87,14 +78,12 @@ class ContactsResource extends BaseResource
     }
 
     /**
-     * @param string|null $contactIdentifierValue
-     * @return Contact
      * @throws PiggyRequestException
      */
     public function createAnonymously(?string $contactIdentifierValue = null): Contact
     {
         $response = $this->client->post("$this->resourceUri/anonymous", [
-            "contact_identifier_value" => $contactIdentifierValue,
+            'contact_identifier_value' => $contactIdentifierValue,
         ]);
 
         $mapper = new ContactMapper();
@@ -103,15 +92,12 @@ class ContactsResource extends BaseResource
     }
 
     /**
-     * @param string $contactUuid
-     * @param array $attributes
-     * @return Contact
      * @throws PiggyRequestException
      */
     public function update(string $contactUuid, array $attributes): Contact
     {
         $response = $this->client->put("$this->resourceUri/$contactUuid", [
-            'attributes' => $attributes
+            'attributes' => $attributes,
         ]);
 
         $mapper = new ContactMapper();
@@ -120,8 +106,6 @@ class ContactsResource extends BaseResource
     }
 
     /**
-     * @param $contactUuid
-     * @return PrepaidBalance
      * @throws PiggyRequestException
      */
     public function getPrepaidBalance($contactUuid): PrepaidBalance
@@ -134,9 +118,6 @@ class ContactsResource extends BaseResource
     }
 
     /**
-     * @param $contactUuid
-     *
-     * @return CreditBalance
      * @throws PiggyRequestException
      */
     public function getCreditBalance($contactUuid): CreditBalance
@@ -149,22 +130,16 @@ class ContactsResource extends BaseResource
     }
 
     /**
-     * @param string $contactUuid
-     * @param int $page
-     * @param string|null $shopUuid
-     * @param string|null $type
-     * @param int $limit
-     * @return array
      * @throws PiggyRequestException
      * @throws Exception
      */
     public function getTransactions(string $contactUuid, int $page = 1, ?string $shopUuid = null, ?string $type = null, int $limit = 30): array
     {
         $response = $this->client->get("$this->resourceUri/$contactUuid/loyalty-transactions", [
-            "limit" => $limit,
-            "page" => $page,
-            "shop_uuid" => $shopUuid,
-            "type" => $type,
+            'limit' => $limit,
+            'page' => $page,
+            'shop_uuid' => $shopUuid,
+            'type' => $type,
         ]);
 
         $mapper = new LoyaltyTransactionMapper();

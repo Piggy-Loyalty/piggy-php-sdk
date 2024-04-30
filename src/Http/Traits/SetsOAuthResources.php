@@ -37,7 +37,6 @@ use Piggy\Api\Resources\OAuth\WebhookSubscriptions\WebhookSubscriptionsResource;
 
 /**
  * Trait SetsOAuthResources
- * @package Piggy\Api\Http\Traits
  */
 trait SetsOAuthResources
 {
@@ -119,7 +118,6 @@ trait SetsOAuthResources
     /** @var LoyaltyProgramsResource */
     public $loyaltyProgram;
 
-
     /** @var GiftcardProgramsResource */
     public $giftcardProgram;
 
@@ -192,9 +190,8 @@ trait SetsOAuthResources
      * @var CollectableRewardsResource
      */
     public $collectableRewards;
+
     /**
-     * @param BaseClient $client
-     *
      * @return void
      */
     protected function setResources(BaseClient $client)

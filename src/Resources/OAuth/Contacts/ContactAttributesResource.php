@@ -11,18 +11,15 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class ContactAttributesResource
- * @package Piggy\Api\Resources\OAuth
  */
 class ContactAttributesResource extends BaseResource
 {
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/oauth/clients/contact-attributes";
+    protected $resourceUri = '/api/v3/oauth/clients/contact-attributes';
 
     /**
-     * @param array $params
-     * @return array
      * @throws PiggyRequestException
      */
     public function list(array $params = []): array
@@ -35,26 +32,20 @@ class ContactAttributesResource extends BaseResource
     }
 
     /**
-     * @param string $name
-     * @param string $label
-     * @param string $type
-     * @param null|string $description
-     * @param array|null $options
-     * @return Attribute
      * @throws PiggyRequestException
      * @throws \Exception
      */
     public function create(string $name, string $label, string $type, ?string $description = null, ?array $options = null): Attribute
     {
         $contactAttributes = [
-            "name" => $name,
-            "label" => $label,
-            "data_type" => $type,
-            "description" => $description,
-            "options" => $options
+            'name' => $name,
+            'label' => $label,
+            'data_type' => $type,
+            'description' => $description,
+            'options' => $options,
         ];
 
-        if (!CustomAttributeTypes::has($type)) {
+        if (! CustomAttributeTypes::has($type)) {
             throw new \Exception("type {$type} invalid");
         }
 

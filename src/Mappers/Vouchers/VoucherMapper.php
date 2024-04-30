@@ -8,14 +8,9 @@ use Piggy\Api\Models\Vouchers\Voucher;
 
 /**
  * Class VoucherMapper
- * @package Piggy\Api\Mappers\Vouchers
  */
 class VoucherMapper extends BaseMapper
 {
-    /**
-     * @param $data
-     * @return Voucher
-     */
     public function map($data): Voucher
     {
         if (isset($data->promotion)) {

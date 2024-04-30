@@ -7,14 +7,9 @@ use Piggy\Api\Models\Vouchers\Lock;
 
 /**
  * Class LockMapper
- * @package Piggy\Api\Mappers\Lock
  */
 class LockMapper extends BaseMapper
 {
-    /**
-     * @param $data
-     * @return Lock
-     */
     public function map($data): Lock
     {
         return new Lock(
@@ -25,4 +20,3 @@ class LockMapper extends BaseMapper
         );
     }
 }
-

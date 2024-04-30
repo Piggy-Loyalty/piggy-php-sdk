@@ -6,7 +6,6 @@ use stdClass;
 
 /**
  * Class Response
- * @package Piggy\Api\Http
  */
 class Response
 {
@@ -19,8 +18,6 @@ class Response
 
     /**
      * Response constructor.
-     * @param $data
-     * @param $meta
      */
     public function __construct($data, $meta)
     {

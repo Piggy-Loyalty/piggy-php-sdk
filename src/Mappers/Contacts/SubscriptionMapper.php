@@ -7,10 +7,6 @@ use stdClass;
 
 class SubscriptionMapper
 {
-    /**
-     * @param stdClass $data
-     * @return Subscription
-     */
     public function map(stdClass $data): Subscription
     {
         $subscriptionTypeMapper = new SubscriptionTypeMapper();

@@ -4,10 +4,6 @@ namespace Piggy\Api\Mappers\Giftcards;
 
 class GiftcardTransactionsMapper
 {
-    /**
-     * @param array $data
-     * @return array
-     */
     public function map(array $data): array
     {
         $giftcardTransactionsMapper = new GiftcardTransactionMapper;

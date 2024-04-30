@@ -10,21 +10,20 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class PromotionsResource
- * @package Piggy\Api\Resources\OAuth\Vouchers
  */
 class PromotionsResource extends BaseResource
 {
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/oauth/clients/promotions";
+    protected $resourceUri = '/api/v3/oauth/clients/promotions';
 
     public function create($uuid, $name, $description): Promotion
     {
         $response = $this->client->post($this->resourceUri, [
-            "uuid" => $uuid,
-            "name" => $name,
-            "description" => $description
+            'uuid' => $uuid,
+            'name' => $name,
+            'description' => $description,
         ]);
 
         $mapper = new PromotionMapper();
@@ -33,20 +32,17 @@ class PromotionsResource extends BaseResource
     }
 
     /**
-     * @param int $page
-     * @param int $limit
-     * @return array
      * @throws PiggyRequestException
      */
     public function list(int $page = 1, int $limit = 30): array
     {
         $response = $this->client->get($this->resourceUri, [
-            "page" => $page,
-            "limit" => $limit,
+            'page' => $page,
+            'limit' => $limit,
         ]);
 
         $mapper = new PromotionsMapper();
 
-        return $mapper->map((array)$response->getData());
+        return $mapper->map((array) $response->getData());
     }
 }

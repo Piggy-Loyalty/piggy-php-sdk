@@ -4,14 +4,9 @@ namespace Piggy\Api\Mappers\Shops;
 
 /**
  * Class ShopsMapper
- * @package Piggy\Api\Mappers\Shops
  */
 class ShopsMapper
 {
-    /**
-     * @param $data
-     * @return array
-     */
     public function map($data): array
     {
         $mapper = new ShopMapper();

@@ -11,7 +11,6 @@ use Piggy\Api\Http\Traits\SetsOAuthResources as OAuthResources;
 
 /**
  * Class OAuthClient
- * @package Piggy\Api
  */
 class OAuthClient extends BaseClient
 {
@@ -29,9 +28,6 @@ class OAuthClient extends BaseClient
 
     /**
      * OAuthClient constructor.
-     * @param int $clientId
-     * @param string $clientSecret
-     * @param ClientInterface|null $client
      */
     public function __construct(int $clientId, string $clientSecret, ?ClientInterface $client = null)
     {
@@ -44,37 +40,36 @@ class OAuthClient extends BaseClient
 
     /**
      * @return Http\Responses\Response
+     *
      * @throws Exceptions\PiggyRequestException
      */
     public function ping()
     {
-        return $this->get("/api/v2/oauth/clients");
+        return $this->get('/api/v2/oauth/clients');
     }
 
     /**
-     * @return string
      * @throws MaintenanceModeException
      * @throws PiggyRequestException
      * @throws GuzzleException
      */
     public function getAccessToken(): string
     {
-        $response = $this->authenticationRequest("/oauth/token", [
-            "grant_type" => "client_credentials",
-            "client_id" => $this->clientId,
-            "client_secret" => $this->clientSecret
+        $response = $this->authenticationRequest('/oauth/token', [
+            'grant_type' => 'client_credentials',
+            'client_id' => $this->clientId,
+            'client_secret' => $this->clientSecret,
         ]);
 
         return $response->getAccessToken();
     }
 
     /**
-     * @param string $accessToken
      * @return $this
      */
     public function setAccessToken(string $accessToken): self
     {
-        $this->addHeader("Authorization", "Bearer $accessToken");
+        $this->addHeader('Authorization', "Bearer $accessToken");
 
         return $this;
     }

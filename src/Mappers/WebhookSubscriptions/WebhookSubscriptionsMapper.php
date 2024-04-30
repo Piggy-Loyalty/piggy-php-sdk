@@ -4,14 +4,9 @@ namespace Piggy\Api\Mappers\WebhookSubscriptions;
 
 /**
  * Class WebhookSubscriptionsMapper
- * @package Piggy\Api\Mappers\WebhookSubscriptions
  */
 class WebhookSubscriptionsMapper
 {
-    /**
-     * @param $data
-     * @return array
-     */
     public function map($data): array
     {
         $mapper = new WebhookSubscriptionMapper();

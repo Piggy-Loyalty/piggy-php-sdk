@@ -9,14 +9,9 @@ use Piggy\Api\Models\Loyalty\Rewards\PhysicalReward;
 
 /**
  * Class PhysicalRewardMapper
- * @package Piggy\Api\Mappers\Loyalty\Rewards
  */
 class PhysicalRewardMapper
 {
-    /**
-     * @param $data
-     * @return PhysicalReward
-     */
     public function map($data): PhysicalReward
     {
         $mediaMapper = new MediaMapper();
@@ -40,7 +35,7 @@ class PhysicalRewardMapper
             $data->title ?? '',
             $data->required_credits ?? null,
             $media ?? null,
-            $data->description ?? "",
+            $data->description ?? '',
             $active,
             RewardType::byName($data->reward_type)->getValue() ?? null,
             $attributes

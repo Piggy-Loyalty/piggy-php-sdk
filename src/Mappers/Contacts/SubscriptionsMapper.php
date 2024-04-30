@@ -4,10 +4,6 @@ namespace Piggy\Api\Mappers\Contacts;
 
 class SubscriptionsMapper
 {
-    /**
-     * @param $data
-     * @return array
-     */
     public function map($data): array
     {
         $mapper = new SubscriptionMapper();

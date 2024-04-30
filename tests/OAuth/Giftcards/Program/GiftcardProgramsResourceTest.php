@@ -14,25 +14,25 @@ class GiftcardProgramsResourceTest extends OAuthTestCase
     {
         $this->addExpectedResponse([
             [
-                "name" => "My Giftcard Program Test",
-                "active" => true,
-                "uuid" => "123123"
+                'name' => 'My Giftcard Program Test',
+                'active' => true,
+                'uuid' => '123123',
             ],
             [
-                "name" => "My Old Giftcard Program Test",
-                "active" => false,
-                "uuid" => "321321"
-            ]
+                'name' => 'My Old Giftcard Program Test',
+                'active' => false,
+                'uuid' => '321321',
+            ],
         ]);
 
         $giftcardPrograms = $this->mockedClient->giftcardProgram->list();
 
         $this->assertEquals('My Giftcard Program Test', $giftcardPrograms[0]->getName());
         $this->assertEquals(true, $giftcardPrograms[0]->isActive());
-        $this->assertEquals("123123", $giftcardPrograms[0]->getUuid());
+        $this->assertEquals('123123', $giftcardPrograms[0]->getUuid());
 
         $this->assertEquals('My Old Giftcard Program Test', $giftcardPrograms[1]->getName());
         $this->assertEquals(false, $giftcardPrograms[1]->isActive());
-        $this->assertEquals("321321", $giftcardPrograms[1]->getUuid());
+        $this->assertEquals('321321', $giftcardPrograms[1]->getUuid());
     }
 }

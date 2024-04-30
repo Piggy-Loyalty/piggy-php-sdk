@@ -6,7 +6,6 @@ use Piggy\Api\Http\BaseClient;
 
 /**
  * Class OAuthClient
- * @package Piggy\Api
  */
 class OAuthClientApiKey extends BaseClient
 {
@@ -28,12 +27,11 @@ class OAuthClientApiKey extends BaseClient
     }
 
     /**
-     * @param string $apiKey
      * @return $this
      */
     public function setApiKey(string $apiKey): self
     {
-        $this->addHeader("Authorization", "Bearer $apiKey");
+        $this->addHeader('Authorization', "Bearer $apiKey");
 
         return $this;
     }

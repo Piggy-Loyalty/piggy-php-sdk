@@ -9,25 +9,15 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class CreditReceptionsResource
- * @package Piggy\Api\Resources\Register\Loyalty\Receptions
  */
 class CreditReceptionsResource extends BaseResource
 {
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/register/credit-receptions";
+    protected $resourceUri = '/api/v3/register/credit-receptions';
 
     /**
-     * @param string $contactUuid
-     * @param float|null $unitValue
-     * @param int|null $credits
-     * @param string|null $contactIdentifierValue
-     * @param string|null $unitName
-     * @param string|null $posTransactionUuid
-     * @param array|null $attributes
-     *
-     * @return CreditReception
      * @throws PiggyRequestException
      */
     public function create(
@@ -41,12 +31,12 @@ class CreditReceptionsResource extends BaseResource
     ): CreditReception {
 
         $data = [
-            "contact_uuid" => $contactUuid,
-            "unit_value" => $unitValue,
-            "credits" => $credits,
-            "contact_identifier_value" => $contactIdentifierValue,
-            "unit_name" => $unitName,
-            "pos_transaction_id" => $posTransactionUuid,
+            'contact_uuid' => $contactUuid,
+            'unit_value' => $unitValue,
+            'credits' => $credits,
+            'contact_identifier_value' => $contactIdentifierValue,
+            'unit_name' => $unitName,
+            'pos_transaction_id' => $posTransactionUuid,
         ] + $attributes;
 
         $response = $this->client->post($this->resourceUri, $data);
@@ -56,17 +46,17 @@ class CreditReceptionsResource extends BaseResource
         return $mapper->map($response->getData());
     }
 
-    public function calculate(string $contactUuid, string $shopUuid, array $unitValue, string $accountUuid) : CreditReception
+    public function calculate(string $contactUuid, string $shopUuid, array $unitValue, string $accountUuid): CreditReception
     {
 
         $inputValues = [
 
-                "contact_uuid" => $contactUuid,
-                "shop_uuid" => $shopUuid,
-                "unit_value" => $unitValue,
-                "account_uuid" => $accountUuid,
+            'contact_uuid' => $contactUuid,
+            'shop_uuid' => $shopUuid,
+            'unit_value' => $unitValue,
+            'account_uuid' => $accountUuid,
 
-            ];
+        ];
 
         $response = $this->client->get($this->resourceUri, $inputValues);
 
@@ -75,5 +65,4 @@ class CreditReceptionsResource extends BaseResource
         return $mapper->map($response->getData());
 
     }
-
 }

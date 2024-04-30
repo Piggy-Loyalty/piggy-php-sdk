@@ -9,14 +9,9 @@ use Piggy\Api\Models\Loyalty\Rewards\DigitalReward;
 
 /**
  * Class DigitalRewardMapper
- * @package Piggy\Api\Mappers\Loyalty\Rewards
  */
 class DigitalRewardMapper
 {
-    /**
-     * @param $data
-     * @return DigitalReward
-     */
     public function map($data): DigitalReward
     {
         $mediaMapper = new MediaMapper();
@@ -40,7 +35,7 @@ class DigitalRewardMapper
             $data->title ?? '',
             $data->required_credits ?? null,
             $media ?? null,
-            $data->description ?? "",
+            $data->description ?? '',
             $active,
             RewardType::byName($data->reward_type)->getValue() ?? null,
             $attributes

@@ -9,25 +9,21 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class GiftcardsResource
- * @package Piggy\Api\Resources\OAuth\Giftcards
  */
 class GiftcardsResource extends BaseResource
 {
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/oauth/clients/giftcards";
+    protected $resourceUri = '/api/v3/oauth/clients/giftcards';
 
     /**
-     * @param string $hash
-     *
-     * @return Giftcard
      * @throws PiggyRequestException
      */
     public function findOneBy(string $hash): Giftcard
     {
         $response = $this->client->get("$this->resourceUri/find-one-by", [
-            "hash" => $hash,
+            'hash' => $hash,
         ]);
 
         $mapper = new GiftcardMapper();
@@ -36,21 +32,17 @@ class GiftcardsResource extends BaseResource
     }
 
     /**
-     * @param string $giftcardProgramUuid
-     * @param int $type
-     * @return Giftcard
      * @throws PiggyRequestException
      */
     public function create(string $giftcardProgramUuid, int $type): Giftcard
     {
         $response = $this->client->post($this->resourceUri, [
-            "giftcard_program_uuid" => $giftcardProgramUuid,
-            "type" => $type
+            'giftcard_program_uuid' => $giftcardProgramUuid,
+            'type' => $type,
         ]);
 
         $mapper = new GiftcardMapper();
 
         return $mapper->map($response->getData());
     }
-
 }

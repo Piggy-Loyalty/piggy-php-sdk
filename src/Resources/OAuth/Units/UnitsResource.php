@@ -10,18 +10,15 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class UnitsResource
- * @package Piggy\Api\Resources\OAuth\Units
  */
 class UnitsResource extends BaseResource
 {
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/oauth/clients/units";
+    protected $resourceUri = '/api/v3/oauth/clients/units';
 
     /**
-     * @param array $params
-     * @return array
      * @throws PiggyRequestException
      */
     public function list(array $params = []): array
@@ -34,18 +31,14 @@ class UnitsResource extends BaseResource
     }
 
     /**
-     * @param string $name
-     * @param string $label
-     * @param bool|null $isDefault
-     * @return Unit
      * @throws PiggyRequestException
      */
     public function create(string $name, string $label, ?bool $isDefault = false): Unit
     {
         $response = $this->client->post($this->resourceUri, [
-            "name" => $name,
-            "label" => $label,
-            "is_default" => $isDefault
+            'name' => $name,
+            'label' => $label,
+            'is_default' => $isDefault,
         ]);
 
         $mapper = new UnitMapper();

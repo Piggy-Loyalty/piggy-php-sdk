@@ -8,17 +8,15 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class SubscriptionTypesResource
- * @package Piggy\Api\Resources\OAuth
  */
 class SubscriptionTypesResource extends BaseResource
 {
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/oauth/clients/subscription-types";
+    protected $resourceUri = '/api/v3/oauth/clients/subscription-types';
 
     /**
-     * @return array
      * @throws PiggyRequestException
      */
     public function list(): array

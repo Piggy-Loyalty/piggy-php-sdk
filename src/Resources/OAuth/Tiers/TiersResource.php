@@ -10,18 +10,15 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class Tiers
- * @package Piggy\Api\Resources\OAuth\Tiers
  */
 class TiersResource extends BaseResource
 {
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/oauth/clients/tiers";
+    protected $resourceUri = '/api/v3/oauth/clients/tiers';
 
     /**
-     * @param array $params
-     * @return array
      * @throws PiggyRequestException
      */
     public function list(array $params = []): array
@@ -30,17 +27,15 @@ class TiersResource extends BaseResource
 
         $mapper = new TiersMapper();
 
-        return $mapper->map((array)$response->getData());
+        return $mapper->map((array) $response->getData());
     }
 
     /**
-     * @param string $contactUuid
-     * @return Tier
      * @throws PiggyRequestException
      */
     public function getTierForContact(string $contactUuid): Tier
     {
-        $resourceUri =  "/api/v3/oauth/clients/contacts";
+        $resourceUri = '/api/v3/oauth/clients/contacts';
 
         $response = $this->client->get("$resourceUri/$contactUuid/tier");
 

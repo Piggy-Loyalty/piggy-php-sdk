@@ -8,10 +8,6 @@ use stdClass;
 
 class AttributeMapper extends BaseMapper
 {
-    /**
-     * @param stdClass $data
-     * @return Attribute
-     */
     public function map(stdClass $data): Attribute
     {
         $fieldType = $data->type;
@@ -26,7 +22,7 @@ class AttributeMapper extends BaseMapper
                 $options[] = get_object_vars($item);
             }
         }
-        
+
         return new Attribute(
             $data->name,
             $data->label,

@@ -9,17 +9,15 @@ use Piggy\Api\Resources\BaseResource;
 
 /**
  * Class RegisterResource
- * @package Piggy\Api\Resources\Register\Registers
  */
 class RegisterResource extends BaseResource
 {
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/register";
+    protected $resourceUri = '/api/v3/register';
 
     /**
-     * @return Register
      * @throws PiggyRequestException
      */
     public function get(): Register

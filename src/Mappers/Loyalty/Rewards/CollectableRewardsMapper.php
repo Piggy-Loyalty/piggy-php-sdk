@@ -6,13 +6,10 @@ use Exception;
 
 /**
  * Class CollectableRewardsMapper
- * @package Piggy\Api\Mappers\CollectableRewards
  */
 class CollectableRewardsMapper
 {
     /**
-     * @param $data
-     * @return array
      * @throws Exception
      */
     public function map($data): array
@@ -23,6 +20,7 @@ class CollectableRewardsMapper
         foreach ($data as $item) {
             $collectableRewards[] = $mapper->map($item);
         }
+
         return $collectableRewards;
     }
 }
