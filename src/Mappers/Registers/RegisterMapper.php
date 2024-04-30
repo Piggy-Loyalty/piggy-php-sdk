@@ -6,9 +6,6 @@ use Piggy\Api\Mappers\Shops\ShopMapper;
 use Piggy\Api\Models\Registers\Register;
 use stdClass;
 
-/**
- * Class RegisterMapper
- */
 class RegisterMapper
 {
     public function map(stdClass $response): Register

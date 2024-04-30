@@ -9,9 +9,6 @@ use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Http\BaseClient;
 use Piggy\Api\Http\Traits\SetsOAuthResources as OAuthResources;
 
-/**
- * Class OAuthClient
- */
 class OAuthClient extends BaseClient
 {
     use OAuthResources;

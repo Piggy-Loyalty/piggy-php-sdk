@@ -8,9 +8,6 @@ use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\StaticMappers\Loyalty\Receptions\RewardReceptionMapper;
 
-/**
- * Class RewardReception
- */
 class RewardReception extends BaseReception
 {
     /**

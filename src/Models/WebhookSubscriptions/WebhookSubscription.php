@@ -10,9 +10,6 @@ use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\StaticMappers\WebhookSubscriptions\WebhookSubscriptionMapper;
 use Piggy\Api\StaticMappers\WebhookSubscriptions\WebhookSubscriptionsMapper;
 
-/**
- * Class WebhookSubscription
- */
 class WebhookSubscription
 {
     /**

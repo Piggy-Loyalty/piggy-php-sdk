@@ -7,9 +7,6 @@ use Piggy\Api\Mappers\Contacts\ContactMapper;
 use Piggy\Api\Models\Vouchers\Voucher;
 use stdClass;
 
-/**
- * Class VoucherMapper
- */
 class VoucherMapper extends BaseMapper
 {
     public function map(stdClass $data): Voucher

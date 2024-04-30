@@ -7,9 +7,6 @@ use Piggy\Api\Mappers\Loyalty\LoyaltyTransactionMapper;
 use Piggy\Api\Models\Loyalty\Receptions\BaseReception;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class LoyaltyTransactionsResource
- */
 class LoyaltyTransactionsResource extends BaseResource
 {
     /**

@@ -8,9 +8,6 @@ use Piggy\Api\Mappers\Loyalty\RewardAttributes\RewardAttributesMapper;
 use Piggy\Api\Models\Loyalty\Rewards\PhysicalReward;
 use stdClass;
 
-/**
- * Class PhysicalRewardMapper
- */
 class PhysicalRewardMapper
 {
     public function map(stdClass $data): PhysicalReward

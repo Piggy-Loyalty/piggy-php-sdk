@@ -6,9 +6,6 @@ use Piggy\Api\Mappers\BaseMapper;
 use Piggy\Api\Models\WebhookSubscriptions\WebhookSubscription;
 use stdClass;
 
-/**
- * Class WebhookSubscriptionMapper
- */
 class WebhookSubscriptionMapper extends BaseMapper
 {
     public function map(stdClass $data): WebhookSubscription

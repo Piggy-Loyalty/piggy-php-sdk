@@ -15,9 +15,6 @@ use Piggy\Api\Models\Loyalty\Rewards\Reward;
 use Piggy\Api\Models\Shops\Shop;
 use Piggy\Api\StaticMappers\Loyalty\LoyaltyTransactionMapper;
 
-/**
- * Class LoyaltyTransaction
- */
 class LoyaltyTransaction
 {
     /**

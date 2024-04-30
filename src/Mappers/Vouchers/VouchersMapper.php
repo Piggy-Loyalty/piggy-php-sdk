@@ -5,9 +5,6 @@ namespace Piggy\Api\Mappers\Vouchers;
 use Piggy\Api\Models\Vouchers\Voucher;
 use stdClass;
 
-/**
- * Class PromotionsMapper
- */
 class VouchersMapper
 {
     /**

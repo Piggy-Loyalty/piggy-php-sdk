@@ -9,9 +9,6 @@ use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\StaticMappers\Contacts\AttributeMapper;
 use Piggy\Api\StaticMappers\Contacts\AttributesMapper;
 
-/**
- * Class ContactAttribute
- */
 class ContactAttribute
 {
     /** @var string */

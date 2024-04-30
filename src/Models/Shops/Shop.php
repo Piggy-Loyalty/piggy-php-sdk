@@ -9,9 +9,6 @@ use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\StaticMappers\Shops\ShopMapper;
 use Piggy\Api\StaticMappers\Shops\ShopsMapper;
 
-/**
- * Class Shop
- */
 class Shop
 {
     /**

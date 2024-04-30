@@ -6,9 +6,6 @@ use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Models\Contacts\SubscriptionType;
 use Piggy\Api\Tests\OAuthTestCase;
 
-/**
- * Class ContactSubscriptionResourceTest
- */
 class ContactSubscriptionResourceTest extends OAuthTestCase
 {
     /**

@@ -11,9 +11,6 @@ use Piggy\Api\Models\Vouchers\Voucher;
 use Piggy\Api\Models\Vouchers\VoucherLock;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class VoucherResource
- */
 class VouchersResource extends BaseResource
 {
     /**

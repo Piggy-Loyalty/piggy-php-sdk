@@ -10,9 +10,6 @@ use Piggy\Api\StaticMappers\Shops\ShopMapper;
 use Piggy\Api\StaticMappers\Units\UnitMapper;
 use stdClass;
 
-/**
- * Class CreditReceptionMapper
- */
 class CreditReceptionMapper extends BaseMapper
 {
     public static function map(stdClass $data): CreditReception

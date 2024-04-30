@@ -5,9 +5,6 @@ namespace Piggy\Api\Tests\OAuth\Vouchers;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
 
-/**
- * Class GiftcardTransactionsResourceTest
- */
 class PromotionsResourceTest extends OAuthTestCase
 {
     /**

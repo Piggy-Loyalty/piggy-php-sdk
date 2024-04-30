@@ -8,9 +8,6 @@ use Piggy\Api\Mappers\Vouchers\PromotionsMapper;
 use Piggy\Api\Models\Vouchers\Promotion;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class PromotionsResource
- */
 class PromotionsResource extends BaseResource
 {
     /**

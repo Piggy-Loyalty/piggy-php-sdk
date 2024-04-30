@@ -2,9 +2,6 @@
 
 namespace Piggy\Api\StaticMappers\Forms;
 
-/**
- * Class FormsMapper
- */
 class FormsMapper
 {
     public static function map($data): array

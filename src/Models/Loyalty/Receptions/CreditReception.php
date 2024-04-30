@@ -14,9 +14,6 @@ use Piggy\Api\Models\Shops\Shop;
 use Piggy\Api\StaticMappers\Loyalty\Receptions\CreditReceptionMapper;
 use stdClass;
 
-/**
- * Class CreditReception
- */
 class CreditReception extends BaseReception
 {
     /**

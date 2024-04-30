@@ -6,9 +6,6 @@ use Piggy\Api\Mappers\BaseMapper;
 use Piggy\Api\Models\Vouchers\Lock;
 use stdClass;
 
-/**
- * Class LockMapper
- */
 class LockMapper extends BaseMapper
 {
     public function map(stdClass $data): Lock

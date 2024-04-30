@@ -14,9 +14,6 @@ use Piggy\Api\Models\Loyalty\Receptions\BaseReception;
 use Piggy\Api\Models\Prepaid\PrepaidBalance;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class ContactsResource
- */
 class ContactsResource extends BaseResource
 {
     /**

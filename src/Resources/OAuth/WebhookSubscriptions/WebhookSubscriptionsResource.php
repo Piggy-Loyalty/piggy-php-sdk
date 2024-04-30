@@ -8,9 +8,6 @@ use Piggy\Api\Mappers\WebhookSubscriptions\WebhookSubscriptionsMapper;
 use Piggy\Api\Models\WebhookSubscriptions\WebhookSubscription;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class WebhookSubscriptionsResource
- */
 class WebhookSubscriptionsResource extends BaseResource
 {
     /**

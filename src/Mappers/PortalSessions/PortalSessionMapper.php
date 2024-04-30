@@ -8,9 +8,6 @@ use Piggy\Api\Mappers\Shops\ShopMapper;
 use Piggy\Api\Models\PortalSessions\PortalSession;
 use stdClass;
 
-/**
- * Class PortalSessionMapper
- */
 class PortalSessionMapper extends BaseMapper
 {
     public function map(stdClass $data): PortalSession

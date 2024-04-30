@@ -7,9 +7,6 @@ use Piggy\Api\Mappers\Contacts\SubscriptionTypesMapper;
 use Piggy\Api\Models\Contacts\SubscriptionType;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class SubscriptionTypesResource
- */
 class SubscriptionTypesResource extends BaseResource
 {
     /**

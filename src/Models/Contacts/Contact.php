@@ -13,9 +13,6 @@ use Piggy\Api\StaticMappers\Contacts\ContactMapper;
 use Piggy\Api\StaticMappers\Contacts\ContactsMapper;
 use stdClass;
 
-/**
- * Class Contact
- */
 class Contact
 {
     /**

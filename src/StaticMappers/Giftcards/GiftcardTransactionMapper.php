@@ -7,9 +7,6 @@ use Piggy\Api\StaticMappers\BaseMapper;
 use Piggy\Api\StaticMappers\Shops\ShopMapper;
 use stdClass;
 
-/**
- * Class GiftcardTransactionMapper
- */
 class GiftcardTransactionMapper extends BaseMapper
 {
     public static function map(stdClass $data): GiftcardTransaction

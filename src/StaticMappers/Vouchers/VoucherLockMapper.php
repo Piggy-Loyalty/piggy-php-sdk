@@ -4,9 +4,6 @@ namespace Piggy\Api\StaticMappers\Vouchers;
 
 use Piggy\Api\Models\Vouchers\VoucherLock;
 
-/**
- * Class VoucherLockMapper
- */
 class VoucherLockMapper
 {
     public static function map($data): VoucherLock

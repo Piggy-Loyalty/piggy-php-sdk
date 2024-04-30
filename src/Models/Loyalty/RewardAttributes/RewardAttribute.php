@@ -9,9 +9,6 @@ use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\StaticMappers\Loyalty\RewardAttributes\RewardAttributeMapper;
 use Piggy\Api\StaticMappers\Loyalty\RewardAttributes\RewardAttributesMapper;
 
-/**
- * Class RewardAttribute
- */
 class RewardAttribute
 {
     /** @var string */

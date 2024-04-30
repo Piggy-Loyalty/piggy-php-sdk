@@ -8,9 +8,6 @@ use Piggy\Api\Mappers\Units\UnitsMapper;
 use Piggy\Api\Models\Loyalty\Unit;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class UnitsResource
- */
 class UnitsResource extends BaseResource
 {
     /**

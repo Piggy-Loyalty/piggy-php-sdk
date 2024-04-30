@@ -5,9 +5,6 @@ namespace Piggy\Api\StaticMappers\Vouchers;
 use Piggy\Api\Models\Vouchers\Lock;
 use Piggy\Api\StaticMappers\BaseMapper;
 
-/**
- * Class LockMapper
- */
 class LockMapper extends BaseMapper
 {
     public static function map($data): Lock

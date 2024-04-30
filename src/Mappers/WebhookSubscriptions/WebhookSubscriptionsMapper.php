@@ -5,9 +5,6 @@ namespace Piggy\Api\Mappers\WebhookSubscriptions;
 use Piggy\Api\Models\WebhookSubscriptions\WebhookSubscription;
 use stdClass;
 
-/**
- * Class WebhookSubscriptionsMapper
- */
 class WebhookSubscriptionsMapper
 {
     /**

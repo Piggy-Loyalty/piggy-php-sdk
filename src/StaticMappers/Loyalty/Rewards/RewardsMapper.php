@@ -4,9 +4,6 @@ namespace Piggy\Api\StaticMappers\Loyalty\Rewards;
 
 use Exception;
 
-/**
- * Class RewardsMapper
- */
 class RewardsMapper
 {
     /**

@@ -9,9 +9,6 @@ use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\StaticMappers\Vouchers\PromotionAttributeMapper;
 use Piggy\Api\StaticMappers\Vouchers\PromotionAttributesMapper;
 
-/**
- * Class PromotionAttribute
- */
 class PromotionAttribute
 {
     /**

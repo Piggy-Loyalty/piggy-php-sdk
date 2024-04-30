@@ -6,9 +6,6 @@ use Piggy\Api\Enum\GiftcardType;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
 
-/**
- * Class GiftcardsResourceTest
- */
 class GiftcardsResourceTest extends OAuthTestCase
 {
     /**

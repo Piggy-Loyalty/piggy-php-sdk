@@ -2,9 +2,6 @@
 
 namespace Piggy\Api\StaticMappers\Units;
 
-/**
- * Class UnitsMapper
- */
 class UnitsMapper
 {
     public static function map($data): array

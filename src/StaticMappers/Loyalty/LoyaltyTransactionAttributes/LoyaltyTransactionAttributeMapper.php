@@ -4,9 +4,6 @@ namespace Piggy\Api\StaticMappers\Loyalty\LoyaltyTransactionAttributes;
 
 use Piggy\Api\Models\Loyalty\Transactions\LoyaltyTransactionAttribute;
 
-/**
- * Class LoyaltyTransactionAttributeMapper
- */
 class LoyaltyTransactionAttributeMapper
 {
     public static function map($data): LoyaltyTransactionAttribute

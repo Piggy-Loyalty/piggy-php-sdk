@@ -7,9 +7,6 @@ use Piggy\Api\Mappers\Prepaid\PrepaidTransactionMapper;
 use Piggy\Api\Models\Prepaid\PrepaidTransaction;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class PrepaidTransactionsResource
- */
 class PrepaidTransactionsResource extends BaseResource
 {
     /**

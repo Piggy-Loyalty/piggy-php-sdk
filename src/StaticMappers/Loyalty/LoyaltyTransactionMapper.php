@@ -8,9 +8,6 @@ use Piggy\Api\Models\Loyalty\Receptions\BaseReception as BaseReceptionModel;
 use Piggy\Api\StaticMappers\Loyalty\Receptions\CreditReceptionMapper;
 use Piggy\Api\StaticMappers\Loyalty\Receptions\RewardReceptionMapper;
 
-/**
- * Class LoyaltyTransactionMapper
- */
 class LoyaltyTransactionMapper
 {
     /**

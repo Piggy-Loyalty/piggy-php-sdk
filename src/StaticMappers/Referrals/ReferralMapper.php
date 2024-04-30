@@ -4,9 +4,6 @@ namespace Piggy\Api\StaticMappers\Referrals;
 
 use Piggy\Api\Models\Referrals\Referral;
 
-/**
- * Class ReferralMapper
- */
 class ReferralMapper
 {
     public static function map($data): Referral

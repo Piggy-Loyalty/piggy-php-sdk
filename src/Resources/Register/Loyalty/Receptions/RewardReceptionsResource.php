@@ -8,9 +8,6 @@ use Piggy\Api\Models\Loyalty\Receptions\DigitalRewardReception;
 use Piggy\Api\Models\Loyalty\Receptions\PhysicalRewardReception;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class RewardReceptionsResource
- */
 class RewardReceptionsResource extends BaseResource
 {
     /**

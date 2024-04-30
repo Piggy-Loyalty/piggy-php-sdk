@@ -7,9 +7,6 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Response;
 use Throwable;
 
-/**
- * Class RequestException
- */
 class RequestException extends Exception
 {
     /**

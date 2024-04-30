@@ -6,9 +6,6 @@ use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
 
-/**
- * Class RewardsResourceTest
- */
 class RewardsResourceTest extends OAuthTestCase
 {
     /**

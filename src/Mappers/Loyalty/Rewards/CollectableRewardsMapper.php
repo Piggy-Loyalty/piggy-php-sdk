@@ -5,9 +5,6 @@ namespace Piggy\Api\Mappers\Loyalty\Rewards;
 use Exception;
 use Piggy\Api\Models\Loyalty\Rewards\CollectableReward;
 
-/**
- * Class CollectableRewardsMapper
- */
 class CollectableRewardsMapper
 {
     /**

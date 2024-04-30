@@ -10,9 +10,6 @@ use Piggy\Api\Mappers\Contacts\AttributesMapper;
 use Piggy\Api\Models\Contacts\Attribute;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class ContactAttributesResource
- */
 class ContactAttributesResource extends BaseResource
 {
     /**

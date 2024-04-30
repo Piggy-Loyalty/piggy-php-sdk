@@ -2,9 +2,6 @@
 
 namespace Piggy\Api\Models\Contacts;
 
-/**
- * Class Attribute
- */
 class Attribute
 {
     /** @var string */

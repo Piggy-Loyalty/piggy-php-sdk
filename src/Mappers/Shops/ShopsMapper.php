@@ -5,9 +5,6 @@ namespace Piggy\Api\Mappers\Shops;
 use Piggy\Api\Models\Shops\Shop;
 use stdClass;
 
-/**
- * Class ShopsMapper
- */
 class ShopsMapper
 {
     /**

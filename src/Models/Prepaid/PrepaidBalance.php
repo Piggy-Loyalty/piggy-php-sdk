@@ -8,9 +8,6 @@ use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\StaticMappers\Prepaid\PrepaidBalanceMapper;
 
-/**
- * Class PrepaidBalance
- */
 class PrepaidBalance
 {
     /**

@@ -4,9 +4,6 @@ namespace Piggy\Api\StaticMappers\Shops;
 
 use Piggy\Api\Models\Shops\Shop;
 
-/**
- * Class ShopMapper
- */
 class ShopMapper
 {
     public static function map($data): Shop

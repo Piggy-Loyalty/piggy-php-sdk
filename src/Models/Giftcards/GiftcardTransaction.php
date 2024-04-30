@@ -12,9 +12,6 @@ use Piggy\Api\StaticMappers\Giftcards\GiftcardTransactionMapper;
 use Piggy\Api\StaticMappers\Giftcards\GiftcardTransactionsMapper;
 use stdClass;
 
-/**
- * Class GiftcardTransaction
- */
 class GiftcardTransaction
 {
     /**

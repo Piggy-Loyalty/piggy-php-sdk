@@ -4,9 +4,6 @@ namespace Piggy\Api\Enum;
 
 use MabeEnum\Enum;
 
-/**
- * Class RewardAttributeDataTypes
- */
 class RewardAttributeDataTypes extends Enum
 {
     const URL = 'url';

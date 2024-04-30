@@ -9,9 +9,6 @@ use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Models\Loyalty\Receptions\CreditReception;
 use Piggy\Api\StaticMappers\Loyalty\Receptions\CreditReceptionMapper;
 
-/**
- * Class LoyaltyToken
- */
 class LoyaltyToken
 {
     /**

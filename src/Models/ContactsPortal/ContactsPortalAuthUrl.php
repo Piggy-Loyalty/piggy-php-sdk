@@ -2,9 +2,6 @@
 
 namespace Piggy\Api\Models\ContactsPortal;
 
-/**
- * Class Shop
- */
 class ContactsPortalAuthUrl
 {
     /**

@@ -7,9 +7,6 @@ use Piggy\Api\Models\Giftcards\Giftcard;
 use Piggy\Api\StaticMappers\BaseMapper;
 use stdClass;
 
-/**
- * Class GiftcardMapper
- */
 class GiftcardMapper extends BaseMapper
 {
     public static function map(stdClass $data): Giftcard

@@ -4,9 +4,6 @@ namespace Piggy\Api\StaticMappers\Automations;
 
 use Piggy\Api\Http\Responses\Response;
 
-/**
- * Class AutomationsMapper
- */
 class AutomationsMapper
 {
     public static function map(Response $response): array

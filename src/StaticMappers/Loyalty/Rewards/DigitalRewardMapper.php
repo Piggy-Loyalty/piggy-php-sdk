@@ -7,9 +7,6 @@ use Piggy\Api\Models\Loyalty\Rewards\DigitalReward;
 use Piggy\Api\StaticMappers\Loyalty\MediaMapper;
 use Piggy\Api\StaticMappers\Loyalty\RewardAttributes\RewardAttributesMapper;
 
-/**
- * Class DigitalRewardMapper
- */
 class DigitalRewardMapper
 {
     public static function map($data): DigitalReward

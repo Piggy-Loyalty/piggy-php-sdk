@@ -8,9 +8,6 @@ use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\StaticMappers\Contacts\SubscriptionTypesMapper;
 
-/**
- * Class SubscriptionType
- */
 class SubscriptionType
 {
     /**

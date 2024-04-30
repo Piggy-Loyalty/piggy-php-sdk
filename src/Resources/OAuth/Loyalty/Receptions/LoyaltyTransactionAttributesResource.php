@@ -8,9 +8,6 @@ use Piggy\Api\Mappers\Loyalty\LoyaltyTransactionAttributes\LoyaltyTransactionAtt
 use Piggy\Api\Models\Loyalty\Transactions\LoyaltyTransactionAttribute;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class LoyaltyTransactionAttributesResource
- */
 class LoyaltyTransactionAttributesResource extends BaseResource
 {
     /**

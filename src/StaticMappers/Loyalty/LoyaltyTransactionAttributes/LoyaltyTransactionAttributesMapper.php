@@ -2,9 +2,6 @@
 
 namespace Piggy\Api\StaticMappers\Loyalty\LoyaltyTransactionAttributes;
 
-/**
- * Class LoyaltyTransactionAttributesMapper
- */
 class LoyaltyTransactionAttributesMapper
 {
     public static function map($data): array

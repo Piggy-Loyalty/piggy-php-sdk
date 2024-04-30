@@ -9,9 +9,6 @@ use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\StaticMappers\Tiers\TierMapper;
 use Piggy\Api\StaticMappers\Tiers\TiersMapper;
 
-/**
- * Class Tier
- */
 class Tier
 {
     /**

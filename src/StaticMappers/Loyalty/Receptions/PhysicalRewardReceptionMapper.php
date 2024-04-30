@@ -10,9 +10,6 @@ use Piggy\Api\StaticMappers\Loyalty\Rewards\PhysicalRewardMapper;
 use Piggy\Api\StaticMappers\Shops\ShopMapper;
 use stdClass;
 
-/**
- * Class PhysicalRewardReceptionMapper
- */
 class PhysicalRewardReceptionMapper extends BaseMapper
 {
     public static function map(stdClass $data): PhysicalRewardReception

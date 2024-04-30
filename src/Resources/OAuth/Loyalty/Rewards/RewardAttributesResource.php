@@ -10,9 +10,6 @@ use Piggy\Api\Mappers\Loyalty\RewardAttributes\RewardAttributesMapper;
 use Piggy\Api\Models\Loyalty\RewardAttributes\RewardAttribute;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class RewardAttributesResource
- */
 class RewardAttributesResource extends BaseResource
 {
     /**

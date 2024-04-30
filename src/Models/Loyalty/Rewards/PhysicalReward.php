@@ -6,9 +6,6 @@ use DateTime;
 use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\Models\Loyalty\Media;
 
-/**
- * Class PhysicalReward
- */
 class PhysicalReward extends Reward
 {
     /**

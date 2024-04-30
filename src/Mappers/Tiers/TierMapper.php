@@ -5,9 +5,6 @@ namespace Piggy\Api\Mappers\Tiers;
 use Piggy\Api\Models\Tiers\Tier;
 use stdClass;
 
-/**
- * Class TierMapper
- */
 class TierMapper
 {
     public function map(stdClass $data): Tier

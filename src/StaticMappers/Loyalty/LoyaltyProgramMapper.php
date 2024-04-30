@@ -5,9 +5,6 @@ namespace Piggy\Api\StaticMappers\Loyalty;
 use Piggy\Api\Models\Loyalty\LoyaltyProgram;
 use stdClass;
 
-/**
- * Class LoyaltyProgramMapper
- */
 class LoyaltyProgramMapper
 {
     public static function map(stdClass $data): LoyaltyProgram

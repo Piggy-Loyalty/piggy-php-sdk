@@ -2,9 +2,6 @@
 
 namespace Piggy\Api\StaticMappers\Vouchers;
 
-/**
- * Class PromotionsMapper
- */
 class PromotionsMapper
 {
     public static function map($data): array

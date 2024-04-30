@@ -2,9 +2,6 @@
 
 namespace Piggy\Api\StaticMappers\Tiers;
 
-/**
- * Class TiersMapper
- */
 class TiersMapper
 {
     public static function map($data): array

@@ -4,9 +4,6 @@ namespace Piggy\Api\Http\Responses;
 
 use stdClass;
 
-/**
- * Class Response
- */
 class Response
 {
     /**

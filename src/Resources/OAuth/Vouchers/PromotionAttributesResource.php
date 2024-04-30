@@ -9,9 +9,6 @@ use Piggy\Api\Mappers\Vouchers\PromotionAttributesMapper;
 use Piggy\Api\Models\Vouchers\PromotionAttribute;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class ContactAttributesResource
- */
 class PromotionAttributesResource extends BaseResource
 {
     /**

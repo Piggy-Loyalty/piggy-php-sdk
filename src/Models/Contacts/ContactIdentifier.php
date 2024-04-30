@@ -8,9 +8,6 @@ use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\StaticMappers\ContactIdentifiers\ContactIdentifierMapper;
 
-/**
- * Class ContactIdentifier
- */
 class ContactIdentifier
 {
     /**

@@ -8,9 +8,6 @@ use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\StaticMappers\Forms\FormsMapper;
 
-/**
- * Class Form
- */
 class Form
 {
     /**

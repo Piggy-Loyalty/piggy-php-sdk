@@ -8,9 +8,6 @@ use Piggy\Api\Models\Contacts\ContactIdentifier;
 use Piggy\Api\Models\Loyalty\Rewards\Reward;
 use Piggy\Api\Models\Shops\Shop;
 
-/**
- * Class PhysicalRewardReception
- */
 class PhysicalRewardReception extends BaseReception
 {
     /**

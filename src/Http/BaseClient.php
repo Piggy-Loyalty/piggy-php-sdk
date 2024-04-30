@@ -19,9 +19,6 @@ use Throwable;
 
 use function Piggy\Api\hasGuzzle5;
 
-/**
- * Class BaseClient
- */
 abstract class BaseClient
 {
     use OAuthResources;

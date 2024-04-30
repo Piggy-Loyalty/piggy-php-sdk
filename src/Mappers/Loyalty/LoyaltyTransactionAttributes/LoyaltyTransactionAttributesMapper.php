@@ -5,9 +5,6 @@ namespace Piggy\Api\Mappers\Loyalty\LoyaltyTransactionAttributes;
 use Piggy\Api\Models\Loyalty\Transactions\LoyaltyTransactionAttribute;
 use stdClass;
 
-/**
- * Class LoyaltyTransactionAttributesMapper
- */
 class LoyaltyTransactionAttributesMapper
 {
     /**

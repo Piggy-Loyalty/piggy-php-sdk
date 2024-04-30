@@ -6,9 +6,6 @@ use Piggy\Api\Models\Prepaid\PrepaidTransaction;
 use Piggy\Api\StaticMappers\BaseMapper;
 use stdClass;
 
-/**
- * Class PrepaidTransactionMapper
- */
 class PrepaidTransactionMapper extends BaseMapper
 {
     public static function map(stdClass $data): PrepaidTransaction

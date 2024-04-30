@@ -5,9 +5,6 @@ namespace Piggy\Api\StaticMappers;
 use DateTime;
 use DateTimeInterface;
 
-/**
- * Class BaseMapper
- */
 abstract class BaseMapper
 {
     /**

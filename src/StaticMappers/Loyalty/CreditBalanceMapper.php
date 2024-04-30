@@ -5,9 +5,6 @@ namespace Piggy\Api\StaticMappers\Loyalty;
 use Piggy\Api\Models\Loyalty\CreditBalance;
 use stdClass;
 
-/**
- * Class CreditBalanceMapper
- */
 class CreditBalanceMapper
 {
     public static function map(stdClass $data): CreditBalance

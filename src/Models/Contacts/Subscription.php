@@ -9,9 +9,6 @@ use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\StaticMappers\Contacts\SubscriptionMapper;
 use Piggy\Api\StaticMappers\Contacts\SubscriptionsMapper;
 
-/**
- * Class Subscription
- */
 class Subscription
 {
     /**

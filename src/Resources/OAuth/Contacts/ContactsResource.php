@@ -12,9 +12,6 @@ use Piggy\Api\Models\Loyalty\CreditBalance;
 use Piggy\Api\Models\Prepaid\PrepaidBalance;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class ContactsResource
- */
 class ContactsResource extends BaseResource
 {
     /**

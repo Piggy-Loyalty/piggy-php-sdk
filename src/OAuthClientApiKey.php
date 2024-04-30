@@ -4,9 +4,6 @@ namespace Piggy\Api;
 
 use Piggy\Api\Http\BaseClient;
 
-/**
- * Class OAuthClient
- */
 class OAuthClientApiKey extends BaseClient
 {
     /**

@@ -5,9 +5,6 @@ namespace Piggy\Api\Mappers\Forms;
 use Piggy\Api\Models\Forms\Form;
 use stdClass;
 
-/**
- * Class FormsMapper
- */
 class FormsMapper
 {
     /**

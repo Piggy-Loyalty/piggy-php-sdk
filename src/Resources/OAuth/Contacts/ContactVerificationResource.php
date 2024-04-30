@@ -6,9 +6,6 @@ use Exception;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class ContactVerificationResource
- */
 class ContactVerificationResource extends BaseResource
 {
     /**

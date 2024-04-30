@@ -4,9 +4,6 @@ namespace Piggy\Api\Models\Loyalty\Rewards;
 
 use Piggy\Api\Models\Loyalty\Media;
 
-/**
- * Class DigitalReward
- */
 class DigitalReward extends Reward
 {
     /**

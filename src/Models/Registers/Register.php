@@ -4,9 +4,6 @@ namespace Piggy\Api\Models\Registers;
 
 use Piggy\Api\Models\Shops\Shop;
 
-/**
- * Class Register
- */
 class Register
 {
     /**

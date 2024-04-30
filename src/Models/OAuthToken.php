@@ -2,9 +2,6 @@
 
 namespace Piggy\Api\Models;
 
-/**
- * Class OAuthToken
- */
 class OAuthToken
 {
     /**

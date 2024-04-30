@@ -8,9 +8,6 @@ use Piggy\Api\Mappers\Automations\AutomationsMapper;
 use Piggy\Api\Models\Automations\Automation;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class AutomationsResource
- */
 class AutomationsResource extends BaseResource
 {
     /**

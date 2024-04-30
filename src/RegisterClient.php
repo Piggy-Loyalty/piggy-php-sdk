@@ -5,9 +5,6 @@ namespace Piggy\Api;
 use Piggy\Api\Http\BaseClient;
 use Piggy\Api\Http\Traits\SetsRegisterResources as RegisterResources;
 
-/**
- * Class RegisterClient
- */
 class RegisterClient extends BaseClient
 {
     use RegisterResources;

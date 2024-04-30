@@ -8,9 +8,6 @@ use Piggy\Api\Mappers\Tiers\TiersMapper;
 use Piggy\Api\Models\Tiers\Tier;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class Tiers
- */
 class TiersResource extends BaseResource
 {
     /**

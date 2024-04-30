@@ -5,9 +5,6 @@ namespace Piggy\Api\StaticMappers\Loyalty;
 use Piggy\Api\Models\Loyalty\Media;
 use stdClass;
 
-/**
- * Class MediaMapper
- */
 class MediaMapper
 {
     public static function map(stdClass $data): Media

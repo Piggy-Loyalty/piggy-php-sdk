@@ -9,9 +9,6 @@ use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\StaticMappers\Prepaid\PrepaidTransactionMapper;
 
-/**
- * Class PrepaidTransaction
- */
 class PrepaidTransaction
 {
     /**

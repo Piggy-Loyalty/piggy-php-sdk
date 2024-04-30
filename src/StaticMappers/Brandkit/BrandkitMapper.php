@@ -4,9 +4,6 @@ namespace Piggy\Api\StaticMappers\Brandkit;
 
 use Piggy\Api\Models\Brandkit\Brandkit;
 
-/**
- * Class BrandkitMapper
- */
 class BrandkitMapper
 {
     public static function map($data): Brandkit

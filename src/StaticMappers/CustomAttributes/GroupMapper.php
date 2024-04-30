@@ -5,9 +5,6 @@ namespace Piggy\Api\StaticMappers\CustomAttributes;
 use Piggy\Api\Models\CustomAttributes\Group;
 use stdClass;
 
-/**
- * Class MediaMapper
- */
 class GroupMapper
 {
     public static function map(stdClass $data): Group

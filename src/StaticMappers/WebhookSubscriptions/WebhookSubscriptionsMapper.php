@@ -2,9 +2,6 @@
 
 namespace Piggy\Api\StaticMappers\WebhookSubscriptions;
 
-/**
- * Class WebhookSubscriptionsMapper
- */
 class WebhookSubscriptionsMapper
 {
     public static function map($data): array

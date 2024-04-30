@@ -2,9 +2,6 @@
 
 namespace Piggy\Api\Models\Loyalty;
 
-/**
- * Class Media
- */
 class Media
 {
     /**

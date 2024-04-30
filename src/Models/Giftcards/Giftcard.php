@@ -9,9 +9,6 @@ use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\StaticMappers\Giftcards\GiftcardMapper;
 
-/**
- * Class Giftcard
- */
 class Giftcard
 {
     /**

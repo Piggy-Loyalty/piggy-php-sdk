@@ -8,9 +8,6 @@ use Piggy\Api\Mappers\Shops\ShopsMapper;
 use Piggy\Api\Models\Shops\Shop;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class ShopsResource
- */
 class ShopsResource extends BaseResource
 {
     /**

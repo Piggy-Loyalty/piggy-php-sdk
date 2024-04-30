@@ -9,9 +9,6 @@ use Piggy\Api\Models\Loyalty\Rewards\DigitalReward;
 use Piggy\Api\Models\Loyalty\Rewards\DigitalRewardCode;
 use Piggy\Api\Models\Shops\Shop;
 
-/**
- * Class DigitalRewardReception
- */
 class DigitalRewardReception extends BaseReception
 {
     /**

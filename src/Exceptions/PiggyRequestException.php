@@ -5,9 +5,6 @@ namespace Piggy\Api\Exceptions;
 use Exception;
 use Throwable;
 
-/**
- * Class PiggyRequestException
- */
 class PiggyRequestException extends Exception
 {
     /**

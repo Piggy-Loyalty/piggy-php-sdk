@@ -5,9 +5,6 @@ namespace Piggy\Api\Mappers\Automations;
 use Piggy\Api\Models\Automations\Automation;
 use stdClass;
 
-/**
- * Class AutomationsMapper
- */
 class AutomationsMapper
 {
     /**

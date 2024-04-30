@@ -7,9 +7,6 @@ use Piggy\Api\Mappers\PortalSessions\PortalSessionMapper;
 use Piggy\Api\Models\PortalSessions\PortalSession;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class PortalSessionsResource
- */
 class PortalSessionsResource extends BaseResource
 {
     /**

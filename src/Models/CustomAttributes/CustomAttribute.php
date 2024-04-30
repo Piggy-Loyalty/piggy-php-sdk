@@ -9,9 +9,6 @@ use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\StaticMappers\CustomAttributes\CustomAttributeMapper;
 use Piggy\Api\StaticMappers\CustomAttributes\CustomAttributesMapper;
 
-/**
- * Class CustomAttribute
- */
 class CustomAttribute
 {
     /**

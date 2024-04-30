@@ -7,9 +7,6 @@ use Piggy\Api\StaticMappers\BaseMapper;
 use Piggy\Api\StaticMappers\Contacts\ContactMapper;
 use Piggy\Api\StaticMappers\Shops\ShopMapper;
 
-/**
- * Class PortalSessionMapper
- */
 class PortalSessionMapper extends BaseMapper
 {
     public static function map($data): PortalSession

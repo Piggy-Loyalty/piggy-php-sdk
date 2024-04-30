@@ -7,9 +7,6 @@ use Piggy\Api\Mappers\Forms\FormsMapper;
 use Piggy\Api\Models\Forms\Form;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class FormsResource
- */
 class FormsResource extends BaseResource
 {
     /**

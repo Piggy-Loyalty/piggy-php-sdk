@@ -4,9 +4,6 @@ namespace Piggy\Api\StaticMappers\Forms;
 
 use Piggy\Api\Models\Forms\Form;
 
-/**
- * Class FormMapper
- */
 class FormMapper
 {
     public static function map($data): Form

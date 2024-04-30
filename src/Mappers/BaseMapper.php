@@ -5,9 +5,6 @@ namespace Piggy\Api\Mappers;
 use DateTime;
 use DateTimeInterface;
 
-/**
- * Class BaseMapper
- */
 abstract class BaseMapper
 {
     public function parseDate(string $date): DateTime

@@ -9,9 +9,6 @@ use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\StaticMappers\Automations\AutomationsMapper;
 
-/**
- * Class Automation
- */
 class Automation
 {
     /**

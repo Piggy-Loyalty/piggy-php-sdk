@@ -12,9 +12,6 @@ use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\StaticMappers\Loyalty\Rewards\CollectableRewardMapper;
 use Piggy\Api\StaticMappers\Loyalty\Rewards\CollectableRewardsMapper;
 
-/**
- * Class CollectableReward
- */
 class CollectableReward
 {
     /**

@@ -9,9 +9,6 @@ use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\StaticMappers\Units\UnitMapper;
 use Piggy\Api\StaticMappers\Units\UnitsMapper;
 
-/**
- * Class Unit
- */
 class Unit
 {
     /**

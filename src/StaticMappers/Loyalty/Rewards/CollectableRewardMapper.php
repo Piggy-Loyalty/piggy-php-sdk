@@ -8,9 +8,6 @@ use Piggy\Api\StaticMappers\BaseMapper;
 use Piggy\Api\StaticMappers\Contacts\ContactMapper;
 use stdClass;
 
-/**
- * Class CollectableRewardMapper
- */
 class CollectableRewardMapper extends BaseMapper
 {
     /**

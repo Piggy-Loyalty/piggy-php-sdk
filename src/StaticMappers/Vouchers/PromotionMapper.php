@@ -4,9 +4,6 @@ namespace Piggy\Api\StaticMappers\Vouchers;
 
 use Piggy\Api\Models\Vouchers\Promotion;
 
-/**
- * Class PromotionMapper
- */
 class PromotionMapper
 {
     public static function map($data): Promotion

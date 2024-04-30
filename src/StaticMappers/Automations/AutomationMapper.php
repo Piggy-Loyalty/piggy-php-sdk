@@ -6,9 +6,6 @@ use Piggy\Api\Models\Automations\Automation;
 use Piggy\Api\StaticMappers\BaseMapper;
 use stdClass;
 
-/**
- * Class AutomationMapper
- */
 class AutomationMapper extends BaseMapper
 {
     public static function map(stdClass $data): Automation

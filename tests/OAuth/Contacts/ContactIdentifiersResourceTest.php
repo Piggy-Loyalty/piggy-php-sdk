@@ -5,9 +5,6 @@ namespace Piggy\Api\Tests\OAuth\Contacts;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
 
-/**
- * Class ContactIdentifiersResourceTest
- */
 class ContactIdentifiersResourceTest extends OAuthTestCase
 {
     /**
