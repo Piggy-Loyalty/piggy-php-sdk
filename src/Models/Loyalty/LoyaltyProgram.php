@@ -2,15 +2,8 @@
 
 namespace Piggy\Api\Models\Loyalty;
 
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\StaticMappers\Loyalty\LoyaltyProgramMapper;
-
 /**
  * Class LoyaltyProgram
- * @package Piggy\Api\Models\Loyalty
  */
 class LoyaltyProgram
 {
@@ -23,10 +16,12 @@ class LoyaltyProgram
      * @var string
      */
     protected $name;
+
     /**
      * @var string
      */
     private $customCreditName;
+
     /**
      * @var int|null
      */
@@ -35,15 +30,9 @@ class LoyaltyProgram
     /**
      * @var string
      */
-    const resourceUri = "/api/v3/oauth/clients/loyalty-program";
+    const resourceUri = '/api/v3/oauth/clients/loyalty-program';
 
-    /**
-     * @param int $id
-     * @param string $name
-     * @param int|null $maxAmount
-     * @param string $customCreditName
-     */
-    public function __construct(int $id, string $name, ?int $maxAmount = null, string $customCreditName = "")
+    public function __construct(int $id, string $name, ?int $maxAmount = null, string $customCreditName = '')
     {
         $this->id = $id;
         $this->name = $name;
@@ -51,47 +40,23 @@ class LoyaltyProgram
         $this->maxAmount = $maxAmount;
     }
 
-    /**
-     * @return int
-     */
     public function getId(): int
     {
         return $this->id;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @return string
-     */
     public function getCustomCreditName(): string
     {
         return $this->customCreditName;
     }
 
-    /**
-     * @return int|null
-     */
     public function getMaxAmount(): ?int
     {
         return $this->maxAmount;
-    }
-
-    /**
-     * @param array $params
-     * @return LoyaltyProgram
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function get(array $params = []): LoyaltyProgram
-    {
-        $response = ApiClient::get(self::resourceUri, $params);
-
-        return LoyaltyProgramMapper::map($response->getData());
     }
 }

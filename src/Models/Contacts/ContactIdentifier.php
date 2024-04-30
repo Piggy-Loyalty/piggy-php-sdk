@@ -2,15 +2,8 @@
 
 namespace Piggy\Api\Models\Contacts;
 
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\StaticMappers\ContactIdentifiers\ContactIdentifierMapper;
-
 /**
  * Class ContactIdentifier
- * @package Piggy\Api\Models\Contacts
  */
 class ContactIdentifier
 {
@@ -37,14 +30,8 @@ class ContactIdentifier
     /**
      * @var string
      */
-    const resourceUri = "/api/v3/oauth/clients/contact-identifiers";
+    const resourceUri = '/api/v3/oauth/clients/contact-identifiers';
 
-    /**
-     * @param string $value
-     * @param bool $active
-     * @param string|null $name
-     * @param Contact|null $contact
-     */
     public function __construct(string $value, bool $active, ?string $name = '', ?Contact $contact = null)
     {
         $this->value = $value;
@@ -53,71 +40,23 @@ class ContactIdentifier
         $this->contact = $contact;
     }
 
-    /**
-     * @return string
-     */
     public function getValue(): string
     {
         return $this->value;
     }
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @return bool|null
-     */
     public function isActive(): ?bool
     {
         return $this->active;
     }
 
-    /**
-     * @return Contact|null
-     */
     public function getContact(): ?Contact
     {
         return $this->contact;
-    }
-
-    /**
-     * @param array $params
-     * @return ContactIdentifier
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function get(array $params = []): ContactIdentifier
-    {
-        $response = ApiClient::get(self::resourceUri . "/find", $params);
-
-        return ContactIdentifierMapper::map($response->getData());
-    }
-
-    /**
-     * @param array $body
-     * @return ContactIdentifier
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function create(array $body): ContactIdentifier
-    {
-        $response = ApiClient::post(self::resourceUri, $body);
-
-        return ContactIdentifierMapper::map($response->getData());
-    }
-
-    /**
-     * @param array $params
-     * @return ContactIdentifier
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException|PiggyRequestException
-     */
-    public static function link(array $params): ContactIdentifier
-    {
-        $response = ApiClient::put(self::resourceUri . "/link", $params);
-
-        return ContactIdentifierMapper::map($response->getData());
     }
 }
