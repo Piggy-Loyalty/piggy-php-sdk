@@ -5,9 +5,6 @@ namespace Piggy\Api\Models\Loyalty\Rewards;
 use DateTime;
 use Piggy\Api\Models\Contacts\Contact;
 
-/**
- * Class CollectableReward
- */
 class CollectableReward
 {
     /**
@@ -36,7 +33,7 @@ class CollectableReward
     protected $reward;
 
     /**
-     * @var DateTime
+     * @var DateTime|null
      */
     protected $expiresAt;
 
@@ -56,7 +53,7 @@ class CollectableReward
         string $uuid,
         string $title,
         Reward $reward,
-        DateTime $expiresAt,
+        ?DateTime $expiresAt,
         bool $hasBeenCollected
     ) {
         $this->contact = $contact;
@@ -93,7 +90,7 @@ class CollectableReward
         return $this->reward;
     }
 
-    public function getExpiresAt(): DateTime
+    public function getExpiresAt(): ?DateTime
     {
         return $this->expiresAt;
     }

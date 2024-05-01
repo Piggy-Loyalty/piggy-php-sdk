@@ -2,9 +2,8 @@
 
 namespace Piggy\Api\Http\Responses;
 
-/**
- * Class AuthenticationResponse
- */
+use stdClass;
+
 class AuthenticationResponse
 {
     /**
@@ -13,7 +12,7 @@ class AuthenticationResponse
     private $tokenType;
 
     /**
-     * @var string
+     * @var int
      */
     private $expiresIn;
 
@@ -25,7 +24,7 @@ class AuthenticationResponse
     /**
      * AuthenticationResponse constructor.
      */
-    public function __construct(object $data)
+    public function __construct(stdClass $data)
     {
         $this->tokenType = $data->token_type;
         $this->expiresIn = $data->expires_in;

@@ -8,10 +8,7 @@ use Piggy\Api\Models\Contacts\ContactIdentifier;
 use Piggy\Api\Models\Loyalty\Unit;
 use Piggy\Api\Models\Shops\Shop;
 
-/**
- * Class CreditReception
- */
-class CreditReception
+class CreditReception extends BaseReception
 {
     /**
      * @var string
@@ -29,12 +26,12 @@ class CreditReception
     protected $uuid;
 
     /**
-     * @var Contact
+     * @var ?Contact
      */
     private $contact;
 
     /**
-     * @var Shop
+     * @var ?Shop
      */
     private $shop;
 
@@ -48,13 +45,13 @@ class CreditReception
      */
     protected $createdAt;
 
-    /** @var int */
+    /** @var ?float */
     protected $unitValue;
 
-    /** @var Unit */
+    /** @var ?Unit */
     protected $unit;
 
-    /** @var array */
+    /** @var mixed[] */
     protected $attributes;
 
     /**
@@ -62,7 +59,10 @@ class CreditReception
      */
     const resourceUri = '/api/v3/oauth/clients/credit-receptions';
 
-    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, ?float $unitValue = null, ?Unit $unit = null, array $attributes = [])
+    /**
+     * @param  mixed[]  $attributes
+     */
+    public function __construct(string $type, int $credits, string $uuid, ?Contact $contact, ?Shop $shop, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, ?float $unitValue = null, ?Unit $unit = null, array $attributes = [])
     {
         $this->type = $type;
         $this->credits = $credits;
@@ -91,17 +91,17 @@ class CreditReception
         return $this->uuid;
     }
 
-    public function getContact(): Contact
+    public function getContact(): ?Contact
     {
         return $this->contact;
     }
 
-    public function getShop(): Shop
+    public function getShop(): ?Shop
     {
         return $this->shop;
     }
 
-    public function getContactIdentifier(): ContactIdentifier
+    public function getContactIdentifier(): ?ContactIdentifier
     {
         return $this->contactIdentifier;
     }
@@ -121,6 +121,9 @@ class CreditReception
         return $this->unit;
     }
 
+    /**
+     * @return mixed[]
+     */
     public function getAttributes(): array
     {
         return $this->attributes;

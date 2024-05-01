@@ -2,9 +2,16 @@
 
 namespace Piggy\Api\Mappers\Contacts;
 
+use Piggy\Api\Models\Contacts\Contact;
+use stdClass;
+
 class ContactsMapper
 {
-    public function map($data): array
+    /**
+     * @param  stdClass[]  $data
+     * @return Contact[]
+     */
+    public function map(array $data): array
     {
         $contactMapper = new ContactMapper;
 

@@ -2,14 +2,11 @@
 
 namespace Piggy\Api\Resources\OAuth\Loyalty\Receptions;
 
-use Exception;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Loyalty\LoyaltyTransactionMapper;
+use Piggy\Api\Models\Loyalty\Receptions\BaseReception;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class LoyaltyTransactionsResource
- */
 class LoyaltyTransactionsResource extends BaseResource
 {
     /**
@@ -18,8 +15,9 @@ class LoyaltyTransactionsResource extends BaseResource
     protected $resourceUri = '/api/v3/oauth/clients/loyalty-transactions';
 
     /**
+     * @return array<int, BaseReception|null>
+     *
      * @throws PiggyRequestException
-     * @throws Exception
      */
     public function list(int $page = 1, ?string $contactUuid = null, ?string $type = null, ?string $shopUuid = null, int $limit = 10): array
     {

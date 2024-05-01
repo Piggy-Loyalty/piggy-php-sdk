@@ -2,9 +2,6 @@
 
 namespace Piggy\Api\Models\CustomAttributes;
 
-/**
- * Class CustomAttribute
- */
 class CustomAttribute
 {
     /**
@@ -33,17 +30,17 @@ class CustomAttribute
     protected $type;
 
     /**
-     * @var array
+     * @var mixed[]
      */
     protected $meta;
 
     /**
-     * @var string
+     * @var ?string
      */
     protected $groupName;
 
     /**
-     * @var Group
+     * @var ?Group
      */
     protected $group;
 
@@ -78,7 +75,7 @@ class CustomAttribute
     protected $description;
 
     /**
-     * @var array|null
+     * @var mixed[]
      */
     protected $options;
 
@@ -112,6 +109,10 @@ class CustomAttribute
      */
     const resourceUri = '/api/v3/oauth/clients/custom-attributes';
 
+    /**
+     * @param  mixed[]  $options
+     * @param  mixed[]  $meta
+     */
     public function __construct(
         int $id,
         string $entity,
@@ -191,17 +192,17 @@ class CustomAttribute
         return $this->group;
     }
 
-    public function getIsPiggyDefined(): bool
+    public function getIsPiggyDefined(): ?bool
     {
         return $this->isPiggyDefined;
     }
 
-    public function getIsSoftReadOnly(): bool
+    public function getIsSoftReadOnly(): ?bool
     {
         return $this->isSoftReadOnly;
     }
 
-    public function getIsHardReadOnly(): bool
+    public function getIsHardReadOnly(): ?bool
     {
         return $this->isHardReadOnly;
     }
@@ -216,7 +217,7 @@ class CustomAttribute
         return $this->hasUniqueValue;
     }
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }

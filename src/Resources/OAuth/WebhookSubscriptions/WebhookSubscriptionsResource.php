@@ -8,9 +8,6 @@ use Piggy\Api\Mappers\WebhookSubscriptions\WebhookSubscriptionsMapper;
 use Piggy\Api\Models\WebhookSubscriptions\WebhookSubscription;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class WebhookSubscriptionsResource
- */
 class WebhookSubscriptionsResource extends BaseResource
 {
     /**
@@ -19,6 +16,8 @@ class WebhookSubscriptionsResource extends BaseResource
     protected $resourceUri = '/api/v3/oauth/clients/webhook-subscriptions';
 
     /**
+     * @param  mixed[]|null  $attributes
+     *
      * @throws PiggyRequestException
      */
     public function update(string $webhookUuid, ?string $name, ?string $url, ?array $attributes, ?string $status): WebhookSubscription
@@ -36,6 +35,8 @@ class WebhookSubscriptionsResource extends BaseResource
     }
 
     /**
+     * @return array<string, WebhookSubscription>
+     *
      * @throws PiggyRequestException
      */
     public function list(?string $eventType = null, ?string $status = null): array
@@ -76,6 +77,9 @@ class WebhookSubscriptionsResource extends BaseResource
     }
 
     /**
+     * @param  mixed[]  $params
+     * @return mixed[]
+     *
      * @throws PiggyRequestException
      */
     public function destroy(string $webhookUuid, array $params = []): array

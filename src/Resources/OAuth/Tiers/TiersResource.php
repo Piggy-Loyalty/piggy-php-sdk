@@ -8,9 +8,6 @@ use Piggy\Api\Mappers\Tiers\TiersMapper;
 use Piggy\Api\Models\Tiers\Tier;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class Tiers
- */
 class TiersResource extends BaseResource
 {
     /**
@@ -19,6 +16,9 @@ class TiersResource extends BaseResource
     protected $resourceUri = '/api/v3/oauth/clients/tiers';
 
     /**
+     * @param  mixed[]  $params
+     * @return Tier[]
+     *
      * @throws PiggyRequestException
      */
     public function list(array $params = []): array

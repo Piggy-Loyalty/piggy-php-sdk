@@ -2,15 +2,12 @@
 
 namespace Piggy\Api\Models\Contacts;
 
-/**
- * Class ContactAttribute
- */
 class ContactAttribute
 {
     /** @var string */
     protected $value;
 
-    /** @var Attribute */
+    /** @var ?Attribute */
     protected $attribute;
 
     /**
@@ -18,7 +15,7 @@ class ContactAttribute
      */
     const resourceUri = '/api/v3/oauth/clients/contact-attributes';
 
-    public function __construct($value, $attribute)
+    public function __construct(string $value, ?Attribute $attribute)
     {
         $this->value = $value;
         $this->attribute = $attribute;
@@ -34,7 +31,7 @@ class ContactAttribute
         $this->value = $value;
     }
 
-    public function getAttribute(): Attribute
+    public function getAttribute(): ?Attribute
     {
         return $this->attribute;
     }

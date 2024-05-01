@@ -4,9 +4,6 @@ namespace Piggy\Api\Resources;
 
 use Piggy\Api\Http\BaseClient;
 
-/**
- * Class BaseResource
- */
 abstract class BaseResource
 {
     /**

@@ -62,7 +62,7 @@ class PortalSession
         return $this->url;
     }
 
-    public function getContact(): Contact
+    public function getContact(): ?Contact
     {
         return $this->contact;
     }

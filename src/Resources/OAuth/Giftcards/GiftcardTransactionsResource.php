@@ -8,9 +8,6 @@ use Piggy\Api\Mappers\Giftcards\GiftcardTransactionsMapper;
 use Piggy\Api\Models\Giftcards\GiftcardTransaction;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class GiftcardTransactionsResource
- */
 class GiftcardTransactionsResource extends BaseResource
 {
     /**
@@ -59,18 +56,17 @@ class GiftcardTransactionsResource extends BaseResource
     }
 
     /**
+     * @return GiftcardTransaction[]
+     *
      * @throws PiggyRequestException
      */
     public function list(?string $giftcardProgramUuid = null, int $page = 1, int $limit = 30): array
     {
         $params = [
+            'giftcard_program_uuid' => $giftcardProgramUuid,
             'page' => $page,
             'limit' => $limit,
         ];
-
-        if ($giftcardProgramUuid !== null) {
-            $params['giftcard_program__uuid'] = $giftcardProgramUuid;
-        }
 
         $response = $this->client->get($this->resourceUri, $params);
 

@@ -7,9 +7,6 @@ use Piggy\Api\Mappers\ContactsPortal\ContactsPortalAuthUrlMapper;
 use Piggy\Api\Models\ContactsPortal\ContactsPortalAuthUrl;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class ContactsPortalAuthUrlResource
- */
 class ContactsPortalAuthUrlResource extends BaseResource
 {
     /**

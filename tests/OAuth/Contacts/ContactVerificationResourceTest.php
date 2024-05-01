@@ -4,9 +4,6 @@ namespace Piggy\Api\Tests\OAuth\Contacts;
 
 use Piggy\Api\Tests\OAuthTestCase;
 
-/**
- * Class ContactVerificationResourceTest
- */
 class ContactVerificationResourceTest extends OAuthTestCase
 {
     /**

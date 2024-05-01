@@ -4,9 +4,6 @@ namespace Piggy\Api\Tests\OAuth\Brandkit;
 
 use Piggy\Api\Tests\OAuthTestCase;
 
-/**
- * Class ContactsResourceTest
- */
 class BrandkitResourceTest extends OAuthTestCase
 {
     /**

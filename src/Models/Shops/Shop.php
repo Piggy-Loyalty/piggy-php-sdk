@@ -2,9 +2,6 @@
 
 namespace Piggy\Api\Models\Shops;
 
-/**
- * Class Shop
- */
 class Shop
 {
     /**

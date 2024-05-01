@@ -3,13 +3,11 @@
 namespace Piggy\Api\Mappers\Loyalty\LoyaltyTransactionAttributes;
 
 use Piggy\Api\Models\Loyalty\Transactions\LoyaltyTransactionAttribute;
+use stdClass;
 
-/**
- * Class LoyaltyTransactionAttributeMapper
- */
 class LoyaltyTransactionAttributeMapper
 {
-    public function map($data): LoyaltyTransactionAttribute
+    public function map(stdClass $data): LoyaltyTransactionAttribute
     {
         $options = [];
 

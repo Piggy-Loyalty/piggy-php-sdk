@@ -2,16 +2,12 @@
 
 namespace Piggy\Api\Resources\OAuth\Loyalty\Rewards;
 
-use Exception;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Loyalty\Rewards\CollectableRewardMapper;
 use Piggy\Api\Mappers\Loyalty\Rewards\CollectableRewardsMapper;
 use Piggy\Api\Models\Loyalty\Rewards\CollectableReward;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class CollectableRewardsResource
- */
 class CollectableRewardsResource extends BaseResource
 {
     /**
@@ -20,8 +16,9 @@ class CollectableRewardsResource extends BaseResource
     protected $resourceUri = '/api/v3/oauth/clients/collectable-rewards';
 
     /**
+     * @return CollectableReward[]
+     *
      * @throws PiggyRequestException
-     * @throws Exception
      */
     public function list(string $contactUuid): array
     {

@@ -4,12 +4,24 @@ namespace Piggy\Api\Models\CustomAttributes;
 
 class Group
 {
+    /**
+     * @var int
+     */
     protected $id;
 
+    /**
+     * @var string
+     */
     protected $name;
 
+    /**
+     * @var int
+     */
     protected $position;
 
+    /**
+     * @var string|null
+     */
     protected $createdByUser;
 
     public function __construct(int $id, string $name, int $position, ?string $createdByUser)
@@ -20,7 +32,7 @@ class Group
         $this->createdByUser = $createdByUser;
     }
 
-    public function getId(): string
+    public function getId(): int
     {
         return $this->id;
     }

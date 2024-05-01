@@ -5,9 +5,6 @@ namespace Piggy\Api\Tests\OAuth\Loyalty\Program;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
 
-/**
- * Class LoyaltyProgramResourceTest
- */
 class LoyaltyProgramResourceTest extends OAuthTestCase
 {
     /**

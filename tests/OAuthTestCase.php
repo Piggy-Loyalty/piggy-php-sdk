@@ -6,9 +6,6 @@ use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\OAuthClient;
 
-/**
- * Class OAuthTestCase
- */
 class OAuthTestCase extends BaseTestCase
 {
     /**

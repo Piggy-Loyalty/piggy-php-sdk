@@ -5,9 +5,6 @@ namespace Piggy\Api\Tests\OAuth;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
 
-/**
- * Class PrepaidTransactionResourceTest
- */
 class PrepaidTransactionResourceTest extends OAuthTestCase
 {
     /**

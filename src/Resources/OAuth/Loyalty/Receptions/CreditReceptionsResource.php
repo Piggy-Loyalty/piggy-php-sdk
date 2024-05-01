@@ -7,9 +7,6 @@ use Piggy\Api\Mappers\Loyalty\Receptions\CreditReceptionMapper;
 use Piggy\Api\Models\Loyalty\Receptions\CreditReception;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class CreditReceptionsResource
- */
 class CreditReceptionsResource extends BaseResource
 {
     /**
@@ -18,6 +15,8 @@ class CreditReceptionsResource extends BaseResource
     protected $resourceUri = '/api/v3/oauth/clients/credit-receptions';
 
     /**
+     * @param  mixed[]|null  $attributes
+     *
      * @throws PiggyRequestException
      */
     public function create(

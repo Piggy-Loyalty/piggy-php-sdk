@@ -6,9 +6,6 @@ use DateTime;
 use Piggy\Api\Models\Shops\Shop;
 use stdClass;
 
-/**
- * Class GiftcardTransaction
- */
 class GiftcardTransaction
 {
     /**
@@ -27,22 +24,22 @@ class GiftcardTransaction
     protected $created_at;
 
     /**
-     * @var Giftcard
+     * @var ?int
      */
     protected $card_id;
 
     /**
-     * @var int
+     * @var ?int
      */
     protected $shop_id;
 
     /**
-     * @var bool
+     * @var ?bool
      */
     protected $settled;
 
     /**
-     * @var string
+     * @var ?string
      */
     protected $type;
 
@@ -71,6 +68,9 @@ class GiftcardTransaction
      */
     const resourceUri = '/api/v3/oauth/clients/giftcard-transactions';
 
+    /**
+     * @param  GiftcardTransactionSettlement[]  $settlements
+     */
     public function __construct(
         string $uuid,
         int $amountInCents,
@@ -112,12 +112,12 @@ class GiftcardTransaction
         return $this->created_at;
     }
 
-    public function getGiftcardId(): int
+    public function getGiftcardId(): ?int
     {
         return $this->card_id;
     }
 
-    public function getShopId(): int
+    public function getShopId(): ?int
     {
         return $this->shop_id;
     }
@@ -127,16 +127,19 @@ class GiftcardTransaction
         return $this->shop;
     }
 
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    public function isSettled(): bool
+    public function isSettled(): ?bool
     {
         return $this->settled;
     }
 
+    /**
+     * @return GiftcardTransactionSettlement[]
+     */
     public function getSettlements(): array
     {
         return $this->settlements;

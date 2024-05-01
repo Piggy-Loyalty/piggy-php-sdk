@@ -2,9 +2,6 @@
 
 namespace Piggy\Api\Models\Forms;
 
-/**
- * Class Form
- */
 class Form
 {
     /**
@@ -28,7 +25,7 @@ class Form
     protected $uuid;
 
     /**
-     * @var int
+     * @var string
      */
     public $type;
 

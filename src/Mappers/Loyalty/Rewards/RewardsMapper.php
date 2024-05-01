@@ -3,16 +3,17 @@
 namespace Piggy\Api\Mappers\Loyalty\Rewards;
 
 use Exception;
+use Piggy\Api\Models\Loyalty\Rewards\Reward;
 
-/**
- * Class RewardsMapper
- */
 class RewardsMapper
 {
     /**
+     * @param  mixed[]  $data
+     * @return Reward[]
+     *
      * @throws Exception
      */
-    public function map($data): array
+    public function map(array $data): array
     {
         $mapper = new RewardMapper();
 

@@ -5,9 +5,6 @@ namespace Piggy\Api\Tests\OAuth\Automations;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
 
-/**
- * Class AutomationsResourceTest
- */
 class AutomationsResourceTest extends OAuthTestCase
 {
     /**

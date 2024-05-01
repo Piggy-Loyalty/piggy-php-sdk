@@ -11,9 +11,6 @@ use Piggy\Api\Models\Vouchers\Voucher;
 use Piggy\Api\Models\Vouchers\VoucherLock;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class VoucherResource
- */
 class VouchersResource extends BaseResource
 {
     /**
@@ -56,6 +53,8 @@ class VouchersResource extends BaseResource
     }
 
     /**
+     * @return Voucher[]
+     *
      * @throws PiggyRequestException
      */
     public function list(int $page = 1, int $limit = 30, ?string $promotionUuid = null, ?string $contactUuid = null, ?string $status = null): array

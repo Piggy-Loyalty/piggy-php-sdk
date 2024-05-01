@@ -13,7 +13,7 @@ class Voucher
     protected $uuid;
 
     /**
-     * @var string
+     * @var ?string
      */
     protected $code;
 
@@ -23,17 +23,17 @@ class Voucher
     protected $status;
 
     /**
-     * @var string
+     * @var ?string
      */
     protected $name;
 
     /**
-     * @var string
+     * @var ?string
      */
     protected $description;
 
     /**
-     * @var DateTime
+     * @var DateTime|null
      */
     protected $expiration_date;
 
@@ -48,12 +48,12 @@ class Voucher
     protected $redeemed_at;
 
     /**
-     * @var bool
+     * @var ?bool
      */
     protected $is_redeemed;
 
     /**
-     * @var Promotion
+     * @var ?Promotion
      */
     protected $promotion;
 
@@ -62,7 +62,9 @@ class Voucher
      */
     protected $contact;
 
-    /** @var array */
+    /**
+     * @var mixed[]
+     */
     protected $attributes;
 
     /**
@@ -70,6 +72,9 @@ class Voucher
      */
     const resourceUri = '/api/v3/oauth/clients/vouchers';
 
+    /**
+     * @param  mixed[]  $attributes
+     */
     public function __construct(
         string $uuid,
         string $status,
@@ -153,6 +158,9 @@ class Voucher
         return $this->contact;
     }
 
+    /**
+     * @return mixed[]
+     */
     public function getAttributes(): array
     {
         return $this->attributes;

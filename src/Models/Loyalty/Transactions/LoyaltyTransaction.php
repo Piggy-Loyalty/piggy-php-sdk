@@ -8,9 +8,6 @@ use Piggy\Api\Models\Contacts\ContactIdentifier;
 use Piggy\Api\Models\Loyalty\Rewards\Reward;
 use Piggy\Api\Models\Shops\Shop;
 
-/**
- * Class LoyaltyTransaction
- */
 class LoyaltyTransaction
 {
     /**
@@ -43,7 +40,7 @@ class LoyaltyTransaction
      */
     protected $contactIdentifier;
 
-    /**s
+    /**
      * @var DateTime
      */
     protected $createdAt;
@@ -63,7 +60,7 @@ class LoyaltyTransaction
      */
     const resourceUri = '/api/v3/oauth/clients/loyalty-transactions';
 
-    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, string $createdAt, Reward $reward, bool $hasBeenCollected)
+    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, Reward $reward, bool $hasBeenCollected)
     {
         $this->type = $type;
         $this->credits = $credits;
@@ -101,7 +98,7 @@ class LoyaltyTransaction
         return $this->shop;
     }
 
-    public function getContactIdentifier(): ContactIdentifier
+    public function getContactIdentifier(): ?ContactIdentifier
     {
         return $this->contactIdentifier;
     }

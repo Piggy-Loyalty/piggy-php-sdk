@@ -5,9 +5,6 @@ namespace Piggy\Api\Tests\OAuth\Vouchers;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
 
-/**
- * Class GiftcardTransactionsResourceTest
- */
 class PromotionsResourceTest extends OAuthTestCase
 {
     /**
@@ -66,5 +63,23 @@ class PromotionsResourceTest extends OAuthTestCase
         $this->assertEquals('Extra mozzarella', $promotions[1]->getName());
         $this->assertEquals('Get an extra layer of cheese on your pizza!', $promotions[1]->getDescription());
         $this->assertEquals(0, $promotions[1]->getVoucherLimit());
+    }
+
+    /**
+     * @test
+     */
+    public function it_can_find_a_promotion_by_uuid()
+    {
+        $this->addExpectedResponse([
+            'uuid' => '1234-abcd-5678-efgh',
+            'name' => 'Free Pizza',
+            'description' => 'Get your free pizza slice!',
+        ]);
+
+        $promotion = $this->mockedClient->promotion->findBy('1234-abcd-5678-efgh');
+
+        $this->assertEquals('1234-abcd-5678-efgh', $promotion->getUuid());
+        $this->assertEquals('Free Pizza', $promotion->getName());
+        $this->assertEquals('Get your free pizza slice!', $promotion->getDescription());
     }
 }

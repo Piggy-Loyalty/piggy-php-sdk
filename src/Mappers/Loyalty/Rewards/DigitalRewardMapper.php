@@ -6,13 +6,11 @@ use Piggy\Api\Enum\RewardType;
 use Piggy\Api\Mappers\Loyalty\MediaMapper;
 use Piggy\Api\Mappers\Loyalty\RewardAttributes\RewardAttributesMapper;
 use Piggy\Api\Models\Loyalty\Rewards\DigitalReward;
+use stdClass;
 
-/**
- * Class DigitalRewardMapper
- */
 class DigitalRewardMapper
 {
-    public function map($data): DigitalReward
+    public function map(stdClass $data): DigitalReward
     {
         $mediaMapper = new MediaMapper();
 

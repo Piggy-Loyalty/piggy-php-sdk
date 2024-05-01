@@ -7,9 +7,6 @@ use Piggy\Api\Mappers\Registers\RegisterMapper;
 use Piggy\Api\Models\Registers\Register;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class RegisterResource
- */
 class RegisterResource extends BaseResource
 {
     /**

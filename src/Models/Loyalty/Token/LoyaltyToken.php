@@ -2,9 +2,6 @@
 
 namespace Piggy\Api\Models\Loyalty\Token;
 
-/**
- * Class LoyaltyToken
- */
 class LoyaltyToken
 {
     /**

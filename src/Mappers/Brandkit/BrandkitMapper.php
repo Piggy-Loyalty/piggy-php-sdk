@@ -3,13 +3,11 @@
 namespace Piggy\Api\Mappers\Brandkit;
 
 use Piggy\Api\Models\Brandkit\Brandkit;
+use stdClass;
 
-/**
- * Class BrandkitMapper
- */
 class BrandkitMapper
 {
-    public function map($data): Brandkit
+    public function map(stdClass $data): Brandkit
     {
         return new Brandkit(
             $data->small_logo_url ?? null,

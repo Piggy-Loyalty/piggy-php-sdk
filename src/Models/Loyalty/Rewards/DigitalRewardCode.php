@@ -2,9 +2,6 @@
 
 namespace Piggy\Api\Models\Loyalty\Rewards;
 
-/**
- * Class DigitalRewardCode
- */
 class DigitalRewardCode
 {
     /**

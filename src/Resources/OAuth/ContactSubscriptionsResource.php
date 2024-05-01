@@ -8,9 +8,6 @@ use Piggy\Api\Mappers\Contacts\SubscriptionsMapper;
 use Piggy\Api\Models\Contacts\Subscription;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class ContactSubscriptionsResource
- */
 class ContactSubscriptionsResource extends BaseResource
 {
     /**
@@ -19,6 +16,8 @@ class ContactSubscriptionsResource extends BaseResource
     protected $resourceUri = '/api/v3/oauth/clients/contact-subscriptions';
 
     /**
+     * @return Subscription[]
+     *
      * @throws PiggyRequestException
      */
     public function list(string $contactUuid): array

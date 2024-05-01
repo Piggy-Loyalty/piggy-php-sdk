@@ -6,9 +6,6 @@ use Exception;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
 
-/**
- * Class CreditReceptionsResourceTest
- */
 class RewardReceptionsResourceTest extends OAuthTestCase
 {
     /**

@@ -2,10 +2,7 @@
 
 namespace Piggy\Api\Models\Loyalty\Receptions;
 
-/**
- * Class RewardReception
- */
-class RewardReception
+class RewardReception extends BaseReception
 {
     /**
      * @var string

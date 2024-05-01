@@ -4,20 +4,23 @@ namespace Piggy\Api\Http\Responses;
 
 use stdClass;
 
-/**
- * Class Response
- */
 class Response
 {
+    /**
+     * @var stdClass|array<mixed, mixed>|mixed
+     */
     protected $data;
 
     /**
-     * @var stdClass
+     * @var stdClass|array<mixed, mixed>|mixed
      */
     protected $meta;
 
     /**
      * Response constructor.
+     *
+     * @param  stdClass|array<mixed, mixed>|mixed  $data
+     * @param  stdClass|array<mixed, mixed>|mixed  $meta
      */
     public function __construct($data, $meta)
     {
@@ -25,11 +28,17 @@ class Response
         $this->meta = $meta;
     }
 
+    /**
+     * @return stdClass|array<mixed, mixed>|mixed
+     */
     public function getData()
     {
         return $this->data;
     }
 
+    /**
+     * @return stdClass|array<mixed, mixed>|mixed
+     */
     public function getMeta()
     {
         return $this->meta;

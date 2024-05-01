@@ -2,12 +2,16 @@
 
 namespace Piggy\Api\Mappers\Units;
 
-/**
- * Class UnitsMapper
- */
+use Piggy\Api\Models\Loyalty\Unit;
+use stdClass;
+
 class UnitsMapper
 {
-    public function map($data): array
+    /**
+     * @param  stdClass[]  $data
+     * @return Unit[]
+     */
+    public function map(array $data): array
     {
         $mapper = new UnitMapper();
 

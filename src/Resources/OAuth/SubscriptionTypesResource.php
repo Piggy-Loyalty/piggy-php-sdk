@@ -4,11 +4,9 @@ namespace Piggy\Api\Resources\OAuth;
 
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Contacts\SubscriptionTypesMapper;
+use Piggy\Api\Models\Contacts\SubscriptionType;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class SubscriptionTypesResource
- */
 class SubscriptionTypesResource extends BaseResource
 {
     /**
@@ -17,6 +15,8 @@ class SubscriptionTypesResource extends BaseResource
     protected $resourceUri = '/api/v3/oauth/clients/subscription-types';
 
     /**
+     * @return SubscriptionType[]
+     *
      * @throws PiggyRequestException
      */
     public function list(): array

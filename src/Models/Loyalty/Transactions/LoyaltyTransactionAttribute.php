@@ -30,7 +30,7 @@ class LoyaltyTransactionAttribute
     protected $field_type;
 
     /**
-     * @var array|null
+     * @var mixed[]
      */
     protected $options;
 
@@ -55,7 +55,7 @@ class LoyaltyTransactionAttribute
     const resourceUri = '/api/v3/oauth/clients/loyalty-transaction-attributes';
 
     /**
-     * @param  array|null  $options
+     * @param  mixed[]  $options
      */
     public function __construct(
         string $name,
@@ -104,6 +104,9 @@ class LoyaltyTransactionAttribute
         return $this->field_type;
     }
 
+    /**
+     * @return mixed[]
+     */
     public function getOptions(): array
     {
         return $this->options;

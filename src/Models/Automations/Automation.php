@@ -4,9 +4,6 @@ namespace Piggy\Api\Models\Automations;
 
 use DateTime;
 
-/**
- * Class Automation
- */
 class Automation
 {
     /**

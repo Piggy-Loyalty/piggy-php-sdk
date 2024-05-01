@@ -2,9 +2,6 @@
 
 namespace Piggy\Api\Models\Vouchers;
 
-/**
- * Class PromotionAttribute
- */
 class PromotionAttribute
 {
     /**
@@ -28,7 +25,7 @@ class PromotionAttribute
     protected $type;
 
     /**
-     * @var array
+     * @var mixed[]
      */
     protected $options;
 
@@ -47,6 +44,9 @@ class PromotionAttribute
      */
     const resourceUri = '/api/v3/oauth/clients/promotion-attributes';
 
+    /**
+     * @param  mixed[]  $options
+     */
     public function __construct(
         string $name,
         string $description,
@@ -65,7 +65,7 @@ class PromotionAttribute
         $this->placeholder = $placeholder;
     }
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -95,6 +95,9 @@ class PromotionAttribute
         return $this->type;
     }
 
+    /**
+     * @return mixed[]
+     */
     public function getOptions(): array
     {
         return $this->options;

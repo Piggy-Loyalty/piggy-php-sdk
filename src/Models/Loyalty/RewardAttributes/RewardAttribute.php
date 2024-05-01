@@ -2,9 +2,6 @@
 
 namespace Piggy\Api\Models\Loyalty\RewardAttributes;
 
-/**
- * Class RewardAttribute
- */
 class RewardAttribute
 {
     /** @var string */
@@ -46,7 +43,7 @@ class RewardAttribute
     protected $isPiggyDefined;
 
     /**
-     * @var array|null
+     * @var mixed[]|null
      */
     protected $options;
 
@@ -60,6 +57,9 @@ class RewardAttribute
      */
     const resourceUri = '/api/v3/oauth/clients/reward-attributes';
 
+    /**
+     * @param  mixed[]|null  $options
+     */
     public function __construct(string $name, string $label, string $description, string $dataType, ?string $fieldType, ?bool $isSoftReadOnly = null, ?bool $isHardReadOnly = null, ?bool $isPiggyDefined = null, ?array $options = null, ?string $placeholder = null)
     {
         $this->name = $name;
@@ -154,11 +154,17 @@ class RewardAttribute
         $this->isPiggyDefined = $isPiggyDefined;
     }
 
+    /**
+     * @return mixed[]|null
+     */
     public function getOptions(): ?array
     {
         return $this->options;
     }
 
+    /**
+     * @param  mixed[]|null  $options
+     */
     public function setOptions(?array $options): void
     {
         $this->options = $options;

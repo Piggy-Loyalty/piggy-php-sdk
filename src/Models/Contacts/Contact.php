@@ -5,9 +5,6 @@ namespace Piggy\Api\Models\Contacts;
 use Piggy\Api\Models\Loyalty\CreditBalance;
 use Piggy\Api\Models\Prepaid\PrepaidBalance;
 
-/**
- * Class Contact
- */
 class Contact
 {
     /**
@@ -31,17 +28,17 @@ class Contact
     protected $creditBalance;
 
     /**
-     * @var array
+     * @var ?Subscription[]
      */
     protected $subscriptions;
 
     /**
-     * @var array|null
+     * @var ContactAttribute[]|null
      */
     protected $attributes;
 
     /**
-     * @var array|null
+     * @var mixed[]|null
      */
     protected $currentValues;
 
@@ -50,13 +47,18 @@ class Contact
      */
     const resourceUri = '/api/v3/oauth/clients/contacts';
 
-    public function __construct($uuid, ?string $email, ?PrepaidBalance $prepaidBalance, ?CreditBalance $creditBalance, ?array $attributes, ?array $subscriptions, ?array $currentValues = null)
+    /**
+     * @param  ContactAttribute[]|null  $attributes
+     * @param  Subscription[]|null  $subscriptions
+     * @param  mixed[]|null  $currentValues
+     */
+    public function __construct(string $uuid, ?string $email, ?PrepaidBalance $prepaidBalance, ?CreditBalance $creditBalance, ?array $attributes, ?array $subscriptions = null, ?array $currentValues = null)
     {
         $this->uuid = $uuid;
         $this->email = $email;
         $this->prepaidBalance = $prepaidBalance;
         $this->creditBalance = $creditBalance;
-        $this->subscriptions = $subscriptions ?? [];
+        $this->subscriptions = $subscriptions;
         $this->attributes = $attributes;
         $this->currentValues = $currentValues;
     }
@@ -66,9 +68,6 @@ class Contact
         return $this->uuid;
     }
 
-    /**
-     * @param  string  $uuid
-     */
     public function getEmail(): ?string
     {
         return $this->email;
@@ -89,16 +88,25 @@ class Contact
         $this->creditBalance = $creditBalance;
     }
 
+    /**
+     * @return ContactAttribute[]|null
+     */
     public function getAttributes(): ?array
     {
         return $this->attributes;
     }
 
-    public function getSubscriptions(): array
+    /**
+     * @return ?Subscription[]
+     */
+    public function getSubscriptions(): ?array
     {
         return $this->subscriptions;
     }
 
+    /**
+     * @return mixed[]|null
+     */
     public function getCurrentValues(): ?array
     {
         return $this->currentValues;

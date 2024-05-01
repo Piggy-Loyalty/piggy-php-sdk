@@ -4,9 +4,6 @@ namespace Piggy\Api\Enum;
 
 use MabeEnum\Enum;
 
-/**
- * Class CustomAttributeTypes
- */
 class CustomAttributeTypes extends Enum
 {
     const URL = 'url';

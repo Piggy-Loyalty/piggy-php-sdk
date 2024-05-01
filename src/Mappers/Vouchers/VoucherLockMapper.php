@@ -3,13 +3,11 @@
 namespace Piggy\Api\Mappers\Vouchers;
 
 use Piggy\Api\Models\Vouchers\VoucherLock;
+use stdClass;
 
-/**
- * Class VoucherLockMapper
- */
 class VoucherLockMapper
 {
-    public function map($data): VoucherLock
+    public function map(stdClass $data): VoucherLock
     {
         $voucherMapper = new VoucherMapper();
         $voucher = $voucherMapper->map($data->voucher);

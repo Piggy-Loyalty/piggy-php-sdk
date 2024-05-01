@@ -10,12 +10,10 @@ use Piggy\Api\Mappers\Loyalty\LoyaltyTransactionMapper;
 use Piggy\Api\Mappers\Prepaid\PrepaidBalanceMapper;
 use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\Models\Loyalty\CreditBalance;
+use Piggy\Api\Models\Loyalty\Receptions\BaseReception;
 use Piggy\Api\Models\Prepaid\PrepaidBalance;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class ContactsResource
- */
 class ContactsResource extends BaseResource
 {
     /**
@@ -92,6 +90,8 @@ class ContactsResource extends BaseResource
     }
 
     /**
+     * @param  mixed[]  $attributes
+     *
      * @throws PiggyRequestException
      */
     public function update(string $contactUuid, array $attributes): Contact
@@ -108,7 +108,7 @@ class ContactsResource extends BaseResource
     /**
      * @throws PiggyRequestException
      */
-    public function getPrepaidBalance($contactUuid): PrepaidBalance
+    public function getPrepaidBalance(string $contactUuid): PrepaidBalance
     {
         $response = $this->client->get("$this->resourceUri/$contactUuid/prepaid-balance");
 
@@ -120,7 +120,7 @@ class ContactsResource extends BaseResource
     /**
      * @throws PiggyRequestException
      */
-    public function getCreditBalance($contactUuid): CreditBalance
+    public function getCreditBalance(string $contactUuid): CreditBalance
     {
         $response = $this->client->get("$this->resourceUri/$contactUuid/credit-balance");
 
@@ -130,10 +130,12 @@ class ContactsResource extends BaseResource
     }
 
     /**
+     * @return array<int, BaseReception|null>
+     *
      * @throws PiggyRequestException
      * @throws Exception
      */
-    public function getTransactions(string $contactUuid, int $page = 1, ?string $shopUuid = null, ?string $type = null, int $limit = 30): array
+    public function getTransactions(string $contactUuid, int $page = 1, ?string $shopUuid = null, ?string $type = null, int $limit = 30): ?array
     {
         $response = $this->client->get("$this->resourceUri/$contactUuid/loyalty-transactions", [
             'limit' => $limit,

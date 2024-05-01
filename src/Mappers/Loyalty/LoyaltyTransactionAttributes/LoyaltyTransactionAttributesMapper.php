@@ -2,12 +2,16 @@
 
 namespace Piggy\Api\Mappers\Loyalty\LoyaltyTransactionAttributes;
 
-/**
- * Class LoyaltyTransactionAttributesMapper
- */
+use Piggy\Api\Models\Loyalty\Transactions\LoyaltyTransactionAttribute;
+use stdClass;
+
 class LoyaltyTransactionAttributesMapper
 {
-    public function map($data): array
+    /**
+     * @param  stdClass[]  $data
+     * @return LoyaltyTransactionAttribute[]
+     */
+    public function map(array $data): array
     {
         $mapper = new LoyaltyTransactionAttributeMapper();
 

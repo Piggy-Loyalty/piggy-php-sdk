@@ -2,15 +2,13 @@
 
 namespace Piggy\Api\Resources\OAuth\Vouchers;
 
+use Exception;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Vouchers\PromotionAttributeMapper;
 use Piggy\Api\Mappers\Vouchers\PromotionAttributesMapper;
 use Piggy\Api\Models\Vouchers\PromotionAttribute;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class ContactAttributesResource
- */
 class PromotionAttributesResource extends BaseResource
 {
     /**
@@ -19,6 +17,9 @@ class PromotionAttributesResource extends BaseResource
     protected $resourceUri = '/api/v3/oauth/clients/promotion-attributes';
 
     /**
+     * @param  mixed[]  $params
+     * @return PromotionAttribute[]
+     *
      * @throws PiggyRequestException
      */
     public function list(array $params = []): array
@@ -31,12 +32,12 @@ class PromotionAttributesResource extends BaseResource
     }
 
     /**
-     * @param  null|string  $description
+     * @param  mixed[]  $options
      *
      * @throws PiggyRequestException
-     * @throws \Exception
+     * @throws Exception
      */
-    public function create(string $name, string $description, string $label, string $type, array $options): PromotionAttribute
+    public function create(string $name, ?string $description, string $label, string $type, array $options): PromotionAttribute
     {
         $promotionAttribute = [
             'name' => $name,
@@ -53,7 +54,7 @@ class PromotionAttributesResource extends BaseResource
         return $mapper->map($response->getData());
     }
 
-    public function get($promotionAttributeId): PromotionAttribute
+    public function get(string $promotionAttributeId): PromotionAttribute
     {
         $response = $this->client->get("$this->resourceUri/$promotionAttributeId");
 
@@ -63,9 +64,11 @@ class PromotionAttributesResource extends BaseResource
     }
 
     /**
+     * @param  mixed[]  $options
+     *
      * @throws PiggyRequestException
      */
-    public function update($promotionAttributeId, ?string $name, ?string $label, ?string $description, ?string $placeholder, ?string $type, ?array $options = null): PromotionAttribute
+    public function update(string $promotionAttributeId, ?string $name, ?string $label, ?string $description, ?string $placeholder, ?string $type, ?array $options = null): PromotionAttribute
     {
         $response = $this->client->put("$this->resourceUri/$promotionAttributeId", [
             'name' => $name,

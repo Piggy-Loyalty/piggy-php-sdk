@@ -17,7 +17,7 @@ class ContactAttributeMapper
 
         return new ContactAttribute(
             $data->value,
-            $attribute ?? []
+            $attribute ?? null
         );
     }
 }

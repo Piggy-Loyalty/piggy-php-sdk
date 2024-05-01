@@ -4,13 +4,11 @@ namespace Piggy\Api\Mappers\Registers;
 
 use Piggy\Api\Mappers\Shops\ShopMapper;
 use Piggy\Api\Models\Registers\Register;
+use stdClass;
 
-/**
- * Class RegisterMapper
- */
 class RegisterMapper
 {
-    public function map($response): Register
+    public function map(stdClass $response): Register
     {
         $register = new Register();
         $shopMapper = new ShopMapper();

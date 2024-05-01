@@ -6,9 +6,6 @@ use Exception;
 use stdClass;
 use Throwable;
 
-/**
- * Class ExceptionMapper
- */
 class ExceptionMapper
 {
     /**

@@ -7,9 +7,6 @@ use Piggy\Api\Mappers\Giftcards\GiftcardMapper;
 use Piggy\Api\Models\Giftcards\Giftcard;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class GiftcardsResource
- */
 class GiftcardsResource extends BaseResource
 {
     /**

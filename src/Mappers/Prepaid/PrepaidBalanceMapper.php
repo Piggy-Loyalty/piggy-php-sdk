@@ -7,7 +7,7 @@ use stdClass;
 
 class PrepaidBalanceMapper
 {
-    public function map(stdClass $data): ?PrepaidBalance
+    public function map(stdClass $data): PrepaidBalance
     {
         return new PrepaidBalance($data->balance_in_cents);
     }

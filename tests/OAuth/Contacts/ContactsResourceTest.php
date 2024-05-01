@@ -7,9 +7,6 @@ use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
 
-/**
- * Class ContactsResourceTest
- */
 class ContactsResourceTest extends OAuthTestCase
 {
     /**

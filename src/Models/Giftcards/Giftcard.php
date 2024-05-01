@@ -4,13 +4,10 @@ namespace Piggy\Api\Models\Giftcards;
 
 use DateTime;
 
-/**
- * Class Giftcard
- */
 class Giftcard
 {
     /**
-     * @var int
+     * @var ?int
      */
     public $id;
 
@@ -45,7 +42,7 @@ class Giftcard
     public $upgradeable;
 
     /**
-     * @var GiftcardProgram
+     * @var ?GiftcardProgram
      */
     public $giftcardProgram;
 
@@ -112,7 +109,7 @@ class Giftcard
         return $this->amountInCents;
     }
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }

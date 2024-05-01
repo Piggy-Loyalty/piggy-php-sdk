@@ -7,9 +7,6 @@ use Piggy\Api\Mappers\Brandkit\BrandkitMapper;
 use Piggy\Api\Models\Brandkit\Brandkit;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class GiftcardProgramResource
- */
 class BrandkitResource extends BaseResource
 {
     /**

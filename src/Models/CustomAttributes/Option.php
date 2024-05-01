@@ -4,12 +4,24 @@ namespace Piggy\Api\Models\CustomAttributes;
 
 class Option
 {
+    /**
+     * @var string
+     */
     protected $value;
 
+    /**
+     * @var string
+     */
     protected $label;
 
+    /**
+     * @var string|null
+     */
     protected $description;
 
+    /**
+     * @var string|null
+     */
     protected $media;
 
     public function __construct(string $value, string $label, ?string $description, ?string $media)
@@ -30,7 +42,7 @@ class Option
         return $this->label;
     }
 
-    public function getDescription(): int
+    public function getDescription(): ?string
     {
         return $this->description;
     }

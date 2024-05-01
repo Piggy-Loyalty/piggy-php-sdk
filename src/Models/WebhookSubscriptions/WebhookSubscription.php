@@ -4,9 +4,6 @@ namespace Piggy\Api\Models\WebhookSubscriptions;
 
 use DateTime;
 
-/**
- * Class WebhookSubscription
- */
 class WebhookSubscription
 {
     /**
@@ -30,7 +27,7 @@ class WebhookSubscription
     protected $url;
 
     /**
-     * @var array
+     * @var mixed[]|null
      */
     protected $properties;
 
@@ -54,12 +51,15 @@ class WebhookSubscription
      */
     const resourceUri = '/api/v3/oauth/clients/webhook-subscriptions';
 
+    /**
+     * @param  mixed[]|null  $properties
+     */
     public function __construct(
         string $uuid,
         string $name,
         string $eventType,
         string $url,
-        array $properties,
+        ?array $properties,
         string $status,
         string $version,
         DateTime $createdAt
@@ -94,6 +94,9 @@ class WebhookSubscription
         return $this->url;
     }
 
+    /**
+     * @return mixed[]|null
+     */
     public function getProperties(): ?array
     {
         return $this->properties;

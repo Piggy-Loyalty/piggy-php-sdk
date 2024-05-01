@@ -2,6 +2,7 @@
 
 namespace Piggy\Api\Resources\OAuth\Contacts;
 
+use Exception;
 use Piggy\Api\Enum\CustomAttributeTypes;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Contacts\AttributeMapper;
@@ -9,9 +10,6 @@ use Piggy\Api\Mappers\Contacts\AttributesMapper;
 use Piggy\Api\Models\Contacts\Attribute;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class ContactAttributesResource
- */
 class ContactAttributesResource extends BaseResource
 {
     /**
@@ -20,6 +18,9 @@ class ContactAttributesResource extends BaseResource
     protected $resourceUri = '/api/v3/oauth/clients/contact-attributes';
 
     /**
+     * @param  mixed[]  $params
+     * @return Attribute[]
+     *
      * @throws PiggyRequestException
      */
     public function list(array $params = []): array
@@ -32,8 +33,10 @@ class ContactAttributesResource extends BaseResource
     }
 
     /**
+     * @param  mixed[]|null  $options
+     *
      * @throws PiggyRequestException
-     * @throws \Exception
+     * @throws Exception
      */
     public function create(string $name, string $label, string $type, ?string $description = null, ?array $options = null): Attribute
     {
@@ -46,7 +49,7 @@ class ContactAttributesResource extends BaseResource
         ];
 
         if (! CustomAttributeTypes::has($type)) {
-            throw new \Exception("type {$type} invalid");
+            throw new Exception("type {$type} invalid");
         }
 
         $response = $this->client->post($this->resourceUri, $contactAttributes);

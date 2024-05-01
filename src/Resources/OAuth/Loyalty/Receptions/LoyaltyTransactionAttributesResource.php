@@ -8,9 +8,6 @@ use Piggy\Api\Mappers\Loyalty\LoyaltyTransactionAttributes\LoyaltyTransactionAtt
 use Piggy\Api\Models\Loyalty\Transactions\LoyaltyTransactionAttribute;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class LoyaltyTransactionAttributesResource
- */
 class LoyaltyTransactionAttributesResource extends BaseResource
 {
     /**
@@ -19,6 +16,9 @@ class LoyaltyTransactionAttributesResource extends BaseResource
     protected $resourceUri = '/api/v3/oauth/clients/loyalty-transaction-attributes';
 
     /**
+     * @param  mixed[]  $params
+     * @return LoyaltyTransactionAttribute[]
+     *
      * @throws PiggyRequestException
      */
     public function list(array $params = []): array
@@ -31,6 +31,8 @@ class LoyaltyTransactionAttributesResource extends BaseResource
     }
 
     /**
+     * @param  mixed[]|null  $options
+     *
      * @throws PiggyRequestException
      */
     public function create(string $name, string $dataType, ?string $label = null, ?string $description = null, ?array $options = null): LoyaltyTransactionAttribute

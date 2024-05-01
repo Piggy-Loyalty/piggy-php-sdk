@@ -4,9 +4,6 @@ namespace Piggy\Api\Models\Prepaid;
 
 use DateTime;
 
-/**
- * Class PrepaidTransaction
- */
 class PrepaidTransaction
 {
     /**
@@ -25,7 +22,7 @@ class PrepaidTransaction
     protected $uuid;
 
     /**
-     * @var string
+     * @var DateTime
      */
     protected $createdAt;
 

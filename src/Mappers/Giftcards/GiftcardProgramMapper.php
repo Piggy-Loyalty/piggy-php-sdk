@@ -5,9 +5,6 @@ namespace Piggy\Api\Mappers\Giftcards;
 use Piggy\Api\Models\Giftcards\GiftcardProgram;
 use stdClass;
 
-/**
- * Class GiftcardProgramMapper
- */
 class GiftcardProgramMapper
 {
     public function map(stdClass $data): GiftcardProgram

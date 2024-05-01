@@ -9,9 +9,6 @@ use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Http\BaseClient;
 use Piggy\Api\Http\Traits\SetsOAuthResources as OAuthResources;
 
-/**
- * Class OAuthClient
- */
 class OAuthClient extends BaseClient
 {
     use OAuthResources;
@@ -64,9 +61,6 @@ class OAuthClient extends BaseClient
         return $response->getAccessToken();
     }
 
-    /**
-     * @return $this
-     */
     public function setAccessToken(string $accessToken): self
     {
         $this->addHeader('Authorization', "Bearer $accessToken");

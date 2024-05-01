@@ -2,12 +2,16 @@
 
 namespace Piggy\Api\Mappers\Tiers;
 
-/**
- * Class TiersMapper
- */
+use Piggy\Api\Models\Tiers\Tier;
+use stdClass;
+
 class TiersMapper
 {
-    public function map($data): array
+    /**
+     * @param  stdClass[]  $data
+     * @return Tier[]
+     */
+    public function map(array $data): array
     {
         $mapper = new TierMapper();
 

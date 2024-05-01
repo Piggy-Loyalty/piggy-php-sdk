@@ -12,9 +12,6 @@ use Piggy\Api\Models\Loyalty\CreditBalance;
 use Piggy\Api\Models\Prepaid\PrepaidBalance;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class ContactsResource
- */
 class ContactsResource extends BaseResource
 {
     /**
@@ -78,6 +75,8 @@ class ContactsResource extends BaseResource
     }
 
     /**
+     * @return Contact[]
+     *
      * @throws PiggyRequestException
      */
     public function list(?int $page = 1, ?int $limit = 30): array
@@ -107,6 +106,8 @@ class ContactsResource extends BaseResource
     }
 
     /**
+     * @param  mixed[]  $contactAttributes
+     *
      * @throws PiggyRequestException
      */
     public function update(string $contactUuid, array $contactAttributes): Contact
@@ -123,7 +124,7 @@ class ContactsResource extends BaseResource
     /**
      * @throws PiggyRequestException
      */
-    public function getPrepaidBalance($contactUuid): PrepaidBalance
+    public function getPrepaidBalance(string $contactUuid): PrepaidBalance
     {
         $response = $this->client->get("$this->resourceUri/$contactUuid/prepaid-balance");
 
@@ -135,7 +136,7 @@ class ContactsResource extends BaseResource
     /**
      * @throws PiggyRequestException
      */
-    public function getCreditBalance($contactUuid): CreditBalance
+    public function getCreditBalance(string $contactUuid): CreditBalance
     {
         $response = $this->client->get("$this->resourceUri/$contactUuid/credit-balance");
 
@@ -147,7 +148,7 @@ class ContactsResource extends BaseResource
     /**
      * @throws PiggyRequestException
      */
-    public function createAsync($email): Contact
+    public function createAsync(string $email): Contact
     {
         $response = $this->client->post("$this->resourceUri/async", [
             'email' => $email,
@@ -161,7 +162,7 @@ class ContactsResource extends BaseResource
     /**
      * @throws PiggyRequestException
      */
-    public function findOrCreateAsync($email): Contact
+    public function findOrCreateAsync(string $email): Contact
     {
         $response = $this->client->get("$this->resourceUri/find-or-create/async", [
             'email' => $email,
@@ -173,12 +174,14 @@ class ContactsResource extends BaseResource
     }
 
     /**
+     * @return null
+     *
      * @throws PiggyRequestException
      */
     public function destroy(string $contactUuid, string $type)
     {
         $response = $this->client->post("$this->resourceUri/$contactUuid/delete", [
-            'type' => $type,
+            'type' => $type, // TODO: Refactor to enum
         ]);
 
         return $response->getData();

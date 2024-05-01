@@ -13,9 +13,6 @@ use PHPUnit\Framework\TestCase;
 
 use function Piggy\Api\hasGuzzle5;
 
-/**
- * Class BaseTestCase
- */
 class BaseTestCase extends TestCase
 {
     /**

@@ -2,9 +2,6 @@
 
 namespace Piggy\Api\Models\Tiers;
 
-/**
- * Class Tier
- */
 class Tier
 {
     /**
@@ -23,7 +20,7 @@ class Tier
     protected $description;
 
     /**
-     * @var array|null
+     * @var mixed[]|null
      */
     protected $media;
 
@@ -42,6 +39,9 @@ class Tier
      */
     const contactsResourceUri = '/api/v3/oauth/clients/contacts';
 
+    /**
+     * @param  mixed[]|null  $media
+     */
     public function __construct(
         string $name,
         int $position,
@@ -71,6 +71,9 @@ class Tier
         return $this->description;
     }
 
+    /**
+     * @return mixed[]|null
+     */
     public function getMedia(): ?array
     {
         return $this->media;

@@ -191,10 +191,7 @@ trait SetsOAuthResources
      */
     public $collectableRewards;
 
-    /**
-     * @return void
-     */
-    protected function setResources(BaseClient $client)
+    protected function setResources(BaseClient $client): void
     {
         $this->contacts = new ContactsResource($client);
         $this->contactIdentifiers = new ContactIdentifiersResource($client);

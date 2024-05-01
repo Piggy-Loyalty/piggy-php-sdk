@@ -7,9 +7,6 @@ use Piggy\Api\Mappers\Loyalty\Receptions\CreditReceptionMapper;
 use Piggy\Api\Models\Loyalty\Receptions\CreditReception;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class CreditReceptionsResource
- */
 class CreditReceptionsResource extends BaseResource
 {
     /**
@@ -26,10 +23,8 @@ class CreditReceptionsResource extends BaseResource
         ?int $credits = null,
         ?string $contactIdentifierValue = null,
         ?string $unitName = null,
-        ?string $posTransactionUuid = null,
-        ?array $attributes = []
+        ?string $posTransactionUuid = null
     ): CreditReception {
-
         $data = [
             'contact_uuid' => $contactUuid,
             'unit_value' => $unitValue,
@@ -37,7 +32,7 @@ class CreditReceptionsResource extends BaseResource
             'contact_identifier_value' => $contactIdentifierValue,
             'unit_name' => $unitName,
             'pos_transaction_id' => $posTransactionUuid,
-        ] + $attributes;
+        ];
 
         $response = $this->client->post($this->resourceUri, $data);
 
@@ -46,23 +41,20 @@ class CreditReceptionsResource extends BaseResource
         return $mapper->map($response->getData());
     }
 
-    public function calculate(string $contactUuid, string $shopUuid, array $unitValue, string $accountUuid): CreditReception
+    /**
+     * @throws PiggyRequestException
+     */
+    public function calculate(?string $contactUuid, string $shopUuid, string $unitValue, ?string $accountUuid = null): int
     {
-
-        $inputValues = [
-
+        $data = [
             'contact_uuid' => $contactUuid,
             'shop_uuid' => $shopUuid,
             'unit_value' => $unitValue,
             'account_uuid' => $accountUuid,
-
         ];
 
-        $response = $this->client->get($this->resourceUri, $inputValues);
+        $response = $this->client->get($this->resourceUri.'/calculate', $data);
 
-        $mapper = new CreditReceptionMapper();
-
-        return $mapper->map($response->getData());
-
+        return (int) $response->getData()->credits;
     }
 }

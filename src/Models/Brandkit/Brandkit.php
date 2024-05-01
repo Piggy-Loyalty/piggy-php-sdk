@@ -2,9 +2,6 @@
 
 namespace Piggy\Api\Models\Brandkit;
 
-/**
- * Class Brandkit
- */
 class Brandkit
 {
     /**

@@ -5,16 +5,16 @@ namespace Piggy\Api\Mappers;
 use DateTime;
 use DateTimeInterface;
 
-/**
- * Class BaseMapper
- */
 abstract class BaseMapper
 {
-    /**
-     * @return DateTime|false
-     */
-    public function parseDate(string $date)
+    public function parseDate(string $date): DateTime
     {
-        return DateTime::createFromFormat(DateTimeInterface::ATOM, $date);
+        $dateTime = DateTime::createFromFormat(DateTimeInterface::ATOM, $date);
+
+        if ($dateTime === false) {
+            throw new \InvalidArgumentException('Invalid date format');
+        }
+
+        return $dateTime;
     }
 }

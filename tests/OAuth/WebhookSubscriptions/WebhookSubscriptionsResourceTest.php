@@ -5,9 +5,6 @@ namespace Piggy\Api\Tests\OAuth\WebhookSubscriptions;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Tests\OAuthTestCase;
 
-/**
- * Class webhookSubscriptionsResourceTest
- */
 class WebhookSubscriptionsResourceTest extends OAuthTestCase
 {
     /**

@@ -9,10 +9,7 @@ use Piggy\Api\Models\Loyalty\Rewards\DigitalReward;
 use Piggy\Api\Models\Loyalty\Rewards\DigitalRewardCode;
 use Piggy\Api\Models\Shops\Shop;
 
-/**
- * Class DigitalRewardReception
- */
-class DigitalRewardReception
+class DigitalRewardReception extends BaseReception
 {
     /**
      * @var string
@@ -103,7 +100,7 @@ class DigitalRewardReception
         return $this->shop;
     }
 
-    public function getContactIdentifier(): ContactIdentifier
+    public function getContactIdentifier(): ?ContactIdentifier
     {
         return $this->contactIdentifier;
     }

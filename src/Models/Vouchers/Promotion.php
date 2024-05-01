@@ -2,8 +2,6 @@
 
 namespace Piggy\Api\Models\Vouchers;
 
-use stdClass;
-
 class Promotion
 {
     /**
@@ -37,7 +35,7 @@ class Promotion
     protected $expiration_duration;
 
     /**
-     * @var array
+     * @var mixed[]
      */
     protected $attributes;
 
@@ -47,7 +45,7 @@ class Promotion
     const resourceUri = '/api/v3/oauth/clients/promotions';
 
     /**
-     * @param  stdClass|null  $attributes
+     * @param  mixed[]  $attributes
      */
     public function __construct(
         string $uuid,
@@ -97,6 +95,9 @@ class Promotion
         return $this->uuid;
     }
 
+    /**
+     * @return mixed[]
+     */
     public function getAttributes(): array
     {
         return $this->attributes;

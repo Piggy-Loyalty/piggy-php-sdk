@@ -2,12 +2,9 @@
 
 namespace Piggy\Api\Models\ContactsPortal;
 
-/**
- * Class Shop
- */
 class ContactsPortalAuthUrl
 {
-    /**w
+    /**
      * @var string
      */
     protected $url;

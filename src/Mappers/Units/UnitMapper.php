@@ -5,9 +5,6 @@ namespace Piggy\Api\Mappers\Units;
 use Piggy\Api\Models\Loyalty\Unit;
 use stdClass;
 
-/**
- * Class UnitMapper
- */
 class UnitMapper
 {
     public function map(stdClass $data): Unit

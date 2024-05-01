@@ -8,9 +8,6 @@ use Piggy\Api\Mappers\Units\UnitsMapper;
 use Piggy\Api\Models\Loyalty\Unit;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class UnitsResource
- */
 class UnitsResource extends BaseResource
 {
     /**
@@ -19,6 +16,9 @@ class UnitsResource extends BaseResource
     protected $resourceUri = '/api/v3/oauth/clients/units';
 
     /**
+     * @param  mixed[]  $params
+     * @return Unit[]
+     *
      * @throws PiggyRequestException
      */
     public function list(array $params = []): array

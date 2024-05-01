@@ -2,9 +2,6 @@
 
 namespace Piggy\Api\Models;
 
-/**
- * Class OAuthToken
- */
 class OAuthToken
 {
     /**
@@ -18,7 +15,7 @@ class OAuthToken
     protected $refresh_token;
 
     /**
-     * @var string
+     * @var int
      */
     protected $expires_in;
 
@@ -27,7 +24,7 @@ class OAuthToken
         return $this->access_token;
     }
 
-    public function setAccessToken(string $access_token)
+    public function setAccessToken(string $access_token): void
     {
         $this->access_token = $access_token;
     }
@@ -37,17 +34,17 @@ class OAuthToken
         return $this->refresh_token;
     }
 
-    public function setRefreshToken(string $refresh_token)
+    public function setRefreshToken(string $refresh_token): void
     {
         $this->refresh_token = $refresh_token;
     }
 
-    public function getExpiresIn(): string
+    public function getExpiresIn(): int
     {
         return $this->expires_in;
     }
 
-    public function setExpiresIn(string $expires_in)
+    public function setExpiresIn(int $expires_in): void
     {
         $this->expires_in = $expires_in;
     }

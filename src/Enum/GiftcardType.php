@@ -4,9 +4,6 @@ namespace Piggy\Api\Enum;
 
 use MabeEnum\Enum;
 
-/**
- * Class GiftcardType
- */
 class GiftcardType extends Enum
 {
     const PHYSICAL = 0;

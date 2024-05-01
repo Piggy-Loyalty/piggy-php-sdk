@@ -2,9 +2,6 @@
 
 namespace Piggy\Api\Models\Prepaid;
 
-/**
- * Class PrepaidBalance
- */
 class PrepaidBalance
 {
     /**

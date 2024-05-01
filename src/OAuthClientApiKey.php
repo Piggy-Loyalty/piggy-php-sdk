@@ -4,23 +4,13 @@ namespace Piggy\Api;
 
 use Piggy\Api\Http\BaseClient;
 
-/**
- * Class OAuthClient
- */
 class OAuthClientApiKey extends BaseClient
 {
-    /**
-     * @var string
-     */
-    private $apiKey;
-
     /**
      * OAuthClient constructor.
      */
     public function __construct(string $apiKey)
     {
-        $this->apiKey = $apiKey;
-
         parent::__construct();
 
         $this->setApiKey($apiKey);

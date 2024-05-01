@@ -6,13 +6,11 @@ use Piggy\Api\Mappers\BaseMapper;
 use Piggy\Api\Mappers\Contacts\ContactMapper;
 use Piggy\Api\Mappers\Shops\ShopMapper;
 use Piggy\Api\Models\PortalSessions\PortalSession;
+use stdClass;
 
-/**
- * Class PortalSessionMapper
- */
 class PortalSessionMapper extends BaseMapper
 {
-    public function map($data): PortalSession
+    public function map(stdClass $data): PortalSession
     {
         $shopMapper = new ShopMapper();
         $shop = $shopMapper->map($data->shop);

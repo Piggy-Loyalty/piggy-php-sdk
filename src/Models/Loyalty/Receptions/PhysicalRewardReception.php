@@ -8,10 +8,7 @@ use Piggy\Api\Models\Contacts\ContactIdentifier;
 use Piggy\Api\Models\Loyalty\Rewards\Reward;
 use Piggy\Api\Models\Shops\Shop;
 
-/**
- * Class PhysicalRewardReception
- */
-class PhysicalRewardReception
+class PhysicalRewardReception extends BaseReception
 {
     /**
      * @var string
@@ -108,7 +105,7 @@ class PhysicalRewardReception
         return $this->shop;
     }
 
-    public function getContactIdentifier(): ContactIdentifier
+    public function getContactIdentifier(): ?ContactIdentifier
     {
         return $this->contactIdentifier;
     }

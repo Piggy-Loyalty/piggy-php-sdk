@@ -8,9 +8,6 @@ use Piggy\Api\Mappers\Shops\ShopsMapper;
 use Piggy\Api\Models\Shops\Shop;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class ShopsResource
- */
 class ShopsResource extends BaseResource
 {
     /**
@@ -19,6 +16,9 @@ class ShopsResource extends BaseResource
     protected $resourceUri = '/api/v3/oauth/clients/shops';
 
     /**
+     * @param  mixed[]  $params
+     * @return Shop[]
+     *
      * @throws PiggyRequestException
      */
     public function all(array $params = []): array
@@ -31,6 +31,8 @@ class ShopsResource extends BaseResource
     }
 
     /**
+     * @param  mixed[]  $params
+     *
      * @throws PiggyRequestException
      */
     public function get(string $shopUuid, array $params = []): Shop

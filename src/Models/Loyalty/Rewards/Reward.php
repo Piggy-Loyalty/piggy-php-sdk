@@ -39,22 +39,22 @@ class Reward
     protected $active;
 
     /**
-     * @var string
+     * @var ?string
      */
     protected $rewardType;
 
     /**
-     * @var array
+     * @var mixed[]
      */
     protected $attributes = [];
 
     /**
-     * @var Contact
+     * @var ?Contact
      */
     protected $contact;
 
     /**
-     * @var DateTime
+     * @var ?DateTime
      */
     protected $expiresAt;
 
@@ -68,6 +68,9 @@ class Reward
      */
     const resourceUri = '/api/v3/oauth/clients/rewards';
 
+    /**
+     * @param  mixed[]  $attributes
+     */
     public function __construct(string $uuid, ?string $title = '', ?int $requiredCredits = null, ?Media $media = null, ?string $description = '', ?bool $active = true, ?string $rewardType = null, array $attributes = [], ?Contact $contact = null, ?DateTime $expiresAt = null, ?bool $hasBeenCollected = false)
     {
         $this->uuid = $uuid;
@@ -123,20 +126,20 @@ class Reward
         return $this->rewardType;
     }
 
+    /**
+     * @return mixed[]
+     */
     public function getAttributes(): array
     {
         return $this->attributes;
     }
 
-    /**
-     * @return void
-     */
-    public function setAttribute(string $name, $value)
+    public function setAttribute(string $name, string $value): void
     {
         $this->attributes[$name] = $value;
     }
 
-    public function getContact(): Contact
+    public function getContact(): ?Contact
     {
         return $this->contact;
     }

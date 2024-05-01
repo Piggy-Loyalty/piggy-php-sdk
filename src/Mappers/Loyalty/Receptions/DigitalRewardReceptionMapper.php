@@ -11,9 +11,6 @@ use Piggy\Api\Mappers\Shops\ShopMapper;
 use Piggy\Api\Models\Loyalty\Receptions\DigitalRewardReception;
 use stdClass;
 
-/**
- * Class DigitalRewardReceptionMapper
- */
 class DigitalRewardReceptionMapper extends BaseMapper
 {
     public function map(stdClass $data): DigitalRewardReception

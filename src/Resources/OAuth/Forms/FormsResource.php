@@ -4,11 +4,9 @@ namespace Piggy\Api\Resources\OAuth\Forms;
 
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Forms\FormsMapper;
+use Piggy\Api\Models\Forms\Form;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class FormsResource
- */
 class FormsResource extends BaseResource
 {
     /**
@@ -17,7 +15,7 @@ class FormsResource extends BaseResource
     protected $resourceUri = '/api/v3/oauth/clients/forms';
 
     /**
-     * @return array[]
+     * @return Form[]
      *
      * @throws PiggyRequestException
      */

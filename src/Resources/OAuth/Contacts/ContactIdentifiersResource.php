@@ -7,9 +7,6 @@ use Piggy\Api\Mappers\ContactIdentifiers\ContactIdentifierMapper;
 use Piggy\Api\Models\Contacts\ContactIdentifier;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class ContactIdentifiersResource
- */
 class ContactIdentifiersResource extends BaseResource
 {
     /**

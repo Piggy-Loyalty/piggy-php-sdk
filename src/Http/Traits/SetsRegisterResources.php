@@ -67,7 +67,7 @@ trait SetsRegisterResources
     /** @var LoyaltyProgramResource */
     public $loyaltyProgram;
 
-    protected function setResources(BaseClient $client)
+    protected function setResources(BaseClient $client): void
     {
         $this->registers = new RegisterResource($client);
         $this->contacts = new ContactsResource($client);
