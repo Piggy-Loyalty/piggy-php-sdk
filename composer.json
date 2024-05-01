@@ -31,7 +31,7 @@
     }
   },
   "require": {
-    "php": ">=7.2",
+    "php": "^8.2",
     "ext-json": "*",
     "guzzlehttp/guzzle": "~5.3 || ~6.0 || ^7.0",
     "marc-mabe/php-enum": "^4.7"
