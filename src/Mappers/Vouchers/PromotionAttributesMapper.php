@@ -2,13 +2,16 @@
 
 namespace Piggy\Api\Mappers\Vouchers;
 
+use Piggy\Api\Models\Vouchers\PromotionAttribute;
+use stdClass;
+
 class PromotionAttributesMapper
 {
     /**
-     * @param $data
-     * @return array
+     * @param  stdClass[]  $data
+     * @return PromotionAttribute[]
      */
-    public function map($data): array
+    public function map(array $data): array
     {
         $promotionAttributeMapper = new PromotionAttributeMapper();
 
@@ -19,5 +22,4 @@ class PromotionAttributesMapper
 
         return $attributes;
     }
-
 }

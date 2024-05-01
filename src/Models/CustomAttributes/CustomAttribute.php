@@ -9,10 +9,6 @@ use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\StaticMappers\CustomAttributes\CustomAttributeMapper;
 use Piggy\Api\StaticMappers\CustomAttributes\CustomAttributesMapper;
 
-/**
- * Class CustomAttribute
- * @package Piggy\Api\Models\Customs
- */
 class CustomAttribute
 {
     /**
@@ -41,32 +37,32 @@ class CustomAttribute
     protected $type;
 
     /**
-     * @var array
+     * @var mixed[]
      */
     protected $meta;
 
     /**
-     * @var string
+     * @var ?string
      */
     protected $groupName;
 
     /**
-     * @var Group
+     * @var ?Group
      */
     protected $group;
 
     /**
-     * @var boolean|null
+     * @var bool|null
      */
     protected $isPiggyDefined;
 
     /**
-     * @var boolean|null
+     * @var bool|null
      */
     protected $isSoftReadOnly;
 
     /**
-     * @var boolean|null
+     * @var bool|null
      */
     protected $isHardReadOnly;
 
@@ -86,7 +82,7 @@ class CustomAttribute
     protected $description;
 
     /**
-     * @var array|null
+     * @var mixed[]
      */
     protected $options;
 
@@ -118,29 +114,11 @@ class CustomAttribute
     /**
      * @var string
      */
-    const resourceUri = "/api/v3/oauth/clients/custom-attributes";
+    const resourceUri = '/api/v3/oauth/clients/custom-attributes';
 
     /**
-     * @param int $id
-     * @param string $entity
-     * @param string $name
-     * @param string $label
-     * @param string $type
-     * @param bool $isPiggyDefined
-     * @param bool $isSoftReadOnly
-     * @param bool $isHardReadOnly
-     * @param bool $hasUniqueValue
-     * @param string $description
-     * @param array $options
-     * @param int $position
-     * @param string $createdAt
-     * @param bool $canBeDeleted
-     * @param array $meta
-     * @param string|null $groupName
-     * @param Group|null $group
-     * @param string|null $fieldType
-     * @param string|null $lastUsedDate
-     * @param string|null $createdByUser
+     * @param  mixed[]  $options
+     * @param  mixed[]  $meta
      */
     public function __construct(
         int $id,
@@ -148,10 +126,10 @@ class CustomAttribute
         string $name,
         string $label,
         string $type,
-        bool $isPiggyDefined, 
-        bool $isSoftReadOnly, 
+        bool $isPiggyDefined,
+        bool $isSoftReadOnly,
         bool $isHardReadOnly,
-        bool $hasUniqueValue, 
+        bool $hasUniqueValue,
         string $description,
         array $options,
         int $position,
@@ -186,106 +164,67 @@ class CustomAttribute
         $this->createdByUser = $createdByUser;
     }
 
-    /**
-     * @return int
-     */
     public function getId(): int
     {
         return $this->id;
     }
 
-    /**
-     * @return string
-     */
     public function getEntity(): string
     {
         return $this->entity;
     }
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @return string
-     */
     public function getLabel(): string
     {
         return $this->label;
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @return string|null
-     */
     public function getGroupName(): ?string
     {
         return $this->groupName;
     }
 
-    /**
-     * @return Group|null
-     */
     public function getGroup(): ?Group
     {
         return $this->group;
     }
 
-    /**
-     * @return bool
-     */
-    public function getIsPiggyDefined(): bool
+    public function getIsPiggyDefined(): ?bool
     {
         return $this->isPiggyDefined;
     }
 
-    /**
-     * @return bool
-     */
-    public function getIsSoftReadOnly(): bool
+    public function getIsSoftReadOnly(): ?bool
     {
         return $this->isSoftReadOnly;
     }
 
-    /**
-     * @return bool
-     */
-    public function getIsHardReadOnly(): bool
+    public function getIsHardReadOnly(): ?bool
     {
         return $this->isHardReadOnly;
     }
 
-    /**
-     * @return string|null
-     */
     public function getFieldType(): ?string
     {
         return $this->fieldType;
     }
 
-    /**
-     * @return bool
-     */
     public function getHasUniqueValue(): bool
     {
         return $this->hasUniqueValue;
     }
 
-    /**
-     * @return string
-     */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -298,49 +237,35 @@ class CustomAttribute
         return $this->options;
     }
 
-    /**
-     * @return int
-     */
     public function getPosition(): int
     {
         return $this->position;
     }
 
-    /**
-     * @return string
-     */
     public function getCreatedAt(): string
     {
         return $this->createdAt;
     }
 
-    /**
-     * @return bool
-     */
     public function getCanBeDeleted(): bool
     {
         return $this->canBeDeleted;
     }
 
-    /**
-     * @return string|null
-     */
     public function getLastUsedDate(): ?string
     {
         return $this->lastUsedDate;
     }
 
-    /**
-     * @return string|null
-     */
     public function getCreatedByUser(): ?string
     {
         return $this->createdByUser;
     }
 
     /**
-     * @param array $params
-     * @return array
+     * @param  mixed[]  $params
+     * @return CustomAttribute[]
+     *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function list(array $params = []): array
@@ -351,8 +276,8 @@ class CustomAttribute
     }
 
     /**
-     * @param array $body
-     * @return CustomAttribute
+     * @param  mixed[]  $body
+     *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function create(array $body): CustomAttribute
@@ -361,5 +286,4 @@ class CustomAttribute
 
         return CustomAttributeMapper::map($response->getData());
     }
-
 }

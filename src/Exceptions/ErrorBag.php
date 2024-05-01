@@ -11,7 +11,8 @@ class ErrorBag
 
     /**
      * ErrorBag constructor.
-     * @param Error[] $errors
+     *
+     * @param  Error[]  $errors
      */
     public function __construct(array $errors)
     {
@@ -20,7 +21,6 @@ class ErrorBag
 
     /**
      * Get the first error
-     * @return Error|null
      */
     public function first(): ?Error
     {
@@ -33,6 +33,7 @@ class ErrorBag
 
     /**
      * Get all errors
+     *
      * @return Error[]
      */
     public function all(): array
@@ -42,13 +43,9 @@ class ErrorBag
 
     /**
      * Get error by key
-     * @param string $key
-     * @return Error
      */
     public function get(string $key): ?Error
     {
         return $this->errors[$key] ?? null;
     }
-
-
 }

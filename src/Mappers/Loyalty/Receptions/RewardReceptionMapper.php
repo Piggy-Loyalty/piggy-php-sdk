@@ -7,14 +7,9 @@ use Piggy\Api\Models\Loyalty\Receptions\DigitalRewardReception;
 use Piggy\Api\Models\Loyalty\Receptions\PhysicalRewardReception;
 use stdClass;
 
-/**
- * Class RewardReceptionMapper
- * @package Piggy\Api\Mappers\Loyalty
- */
 class RewardReceptionMapper
 {
     /**
-     * @param stdClass $data
      * @return DigitalRewardReception|PhysicalRewardReception|null
      */
     public function map(stdClass $data)

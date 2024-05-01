@@ -7,21 +7,17 @@ use stdClass;
 
 class ContactAttributeMapper
 {
-    /**
-     * @param stdClass $data
-     * @return ContactAttribute
-     */
     public function map(stdClass $data): ContactAttribute
     {
         $attribute = null;
-        if (property_exists($data,'attribute')) {
+        if (property_exists($data, 'attribute')) {
             $attributeMapper = new AttributeMapper();
             $attribute = $attributeMapper->map($data->attribute);
         }
 
         return new ContactAttribute(
             $data->value,
-            $attribute ?? []
+            $attribute ?? null
         );
     }
 }

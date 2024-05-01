@@ -4,10 +4,6 @@ namespace Piggy\Api\StaticMappers\Vouchers;
 
 class PromotionAttributesMapper
 {
-    /**
-     * @param $data
-     * @return array
-     */
     public static function map($data): array
     {
         $attributes = [];
@@ -18,5 +14,4 @@ class PromotionAttributesMapper
 
         return $attributes;
     }
-
 }

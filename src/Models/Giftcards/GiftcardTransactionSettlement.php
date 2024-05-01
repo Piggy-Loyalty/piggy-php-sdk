@@ -19,4 +19,3 @@ class GiftcardTransactionSettlement
         return $this->id;
     }
 }
-

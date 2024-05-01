@@ -19,31 +19,22 @@ class ApiClient
     use OAuthResources;
 
     /**
-     * @var
+     * @var GuzzleClient
      */
     private static $httpClient;
 
     /**
      * @var string
      */
-    private static $baseUrl = "https://api.piggy.nl";
+    private static $baseUrl = 'https://api.piggy.nl';
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     private static $headers = [
         'Accept' => 'application/json',
     ];
 
-    /**
-     * @var string
-     */
-    private $apiKey;
-
-    /**
-     * @param string $apiKey
-     * @param string $baseUrl
-     */
     public function __construct(string $apiKey, string $baseUrl)
     {
         self::setApiKey($apiKey);
@@ -51,111 +42,81 @@ class ApiClient
         self::$httpClient = new GuzzleClient();
     }
 
-    /**
-     * @param $apiKey
-     * @param $baseUrl
-     * @return void
-     */
-    public static function configure($apiKey, $baseUrl)
+    public static function configure(string $apiKey, string $baseUrl): void
     {
         new self($apiKey, $baseUrl);
     }
 
-    /**
-     * @param string $apiKey
-     * @return void
-     */
-    public static function setApiKey(string $apiKey)
+    public static function setApiKey(string $apiKey): void
     {
-        self::addHeader("Authorization", "Bearer $apiKey");
+        self::addHeader('Authorization', "Bearer $apiKey");
     }
 
     /**
-     * @param string $method
-     * @param string $endpoint
-     * @param array $queryOptions
-     * @return Response
+     * @param  mixed[]  $queryOptions
+     *
      * @throws Exceptions\MaintenanceModeException
      * @throws Exceptions\PiggyRequestException
      * @throws GuzzleException
      */
     public static function request(string $method, string $endpoint, array $queryOptions = []): Response
     {
-        if (!array_key_exists('Authorization', self::$headers)) {
+        if (! array_key_exists('Authorization', self::$headers)) {
             throw new Exception('Authorization not set yet.');
         }
 
-        $url = self::$baseUrl . $endpoint;
-
+        $url = self::$baseUrl.$endpoint;
 
         try {
             $rawResponse = self::getResponse($method, $url, [
-                "headers" => self::$headers,
-                "form_params" => $queryOptions,
+                'headers' => self::$headers,
+                'form_params' => $queryOptions,
             ]);
 
             return self::parseResponse($rawResponse);
         } catch (Exception $e) {
             $exceptionMapper = new ExceptionMapper();
-            $exception = $exceptionMapper->map($e);
-            throw $exception;
+
+            throw $exceptionMapper->map($e);
         }
     }
 
     /**
-     * @param $response
-     * @return Response
      * @throws MalformedResponseException
      */
-    private static function parseResponse($response): Response
+    private static function parseResponse(ResponseInterface $response): Response
     {
         try {
             $content = json_decode($response->getBody()->getContents());
         } catch (Throwable $exception) {
-            throw new MalformedResponseException("Could not decode response");
+            throw new MalformedResponseException('Could not decode response');
         }
 
-        if (!property_exists($content, "data")) {
-            throw new MalformedResponseException("Invalid response given. Data property was missing from response.");
+        if (! property_exists($content, 'data')) {
+            throw new MalformedResponseException('Invalid response given. Data property was missing from response.');
         }
 
-//        if (!property_exists($content, "meta")) {
-//            throw new MalformedResponseException("Invalid response given. Meta property was missing from response.");
-//        }
-
-        return new Response($content->data, $content->meta);
+        return new Response($content->data, $content->meta ?? []);
     }
 
-    /**
-     * @return string
-     */
     public static function getBaseUrl(): string
     {
 
         return self::$baseUrl;
     }
 
-    /**
-     * @param $baseUrl
-     * @return void
-     */
-    public static function setBaseUrl($baseUrl): void
+    public static function setBaseUrl(string $baseUrl): void
     {
         self::$baseUrl = $baseUrl;
     }
 
-    /**
-     * @param $key
-     * @param $value
-     * @return void
-     */
-    public static function addHeader($key, $value): void
+    public static function addHeader(string $key, string $value): void
     {
         self::$headers[$key] = $value;
     }
 
     /**
-     * @return array
+     * @return string[]
      */
     public static function getHeaders(): array
     {
@@ -163,9 +124,8 @@ class ApiClient
     }
 
     /**
-     * @param string $url
-     * @param array $body
-     * @return Response
+     * @param  mixed[]  $body
+     *
      * @throws MaintenanceModeException
      * @throws GuzzleException
      * @throws PiggyRequestException
@@ -176,13 +136,11 @@ class ApiClient
     }
 
     /**
-     * @param string $url
-     * @param array $body
-     * @return Response
+     * @param  mixed[]  $body
+     *
      * @throws MaintenanceModeException
      * @throws GuzzleException
      * @throws PiggyRequestException
-     *
      */
     public static function put(string $url, array $body): Response
     {
@@ -190,9 +148,8 @@ class ApiClient
     }
 
     /**
-     * @param string $url
-     * @param array $params
-     * @return Response
+     * @param  mixed[]  $params
+     *
      * @throws MaintenanceModeException
      * @throws GuzzleException
      * @throws PiggyRequestException
@@ -209,9 +166,8 @@ class ApiClient
     }
 
     /**
-     * @param string $url
-     * @param array $body
-     * @return Response
+     * @param  mixed[]  $body
+     *
      * @throws MaintenanceModeException
      * @throws GuzzleException
      * @throws PiggyRequestException
@@ -228,15 +184,12 @@ class ApiClient
     }
 
     /**
-     * @param $method
-     * @param $url
-     * @param array $options
-     * @return ResponseInterface
+     * @param  mixed[]  $options
+     *
      * @throws GuzzleException
      */
-    private static function getResponse($method, $url, array $options = []): ResponseInterface
+    private static function getResponse(string $method, string $url, array $options = []): ResponseInterface
     {
         return self::$httpClient->request($method, $url, $options);
     }
-    
 }

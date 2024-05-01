@@ -4,16 +4,8 @@ namespace Piggy\Api\StaticMappers\Automations;
 
 use Piggy\Api\Http\Responses\Response;
 
-/**
- * Class AutomationsMapper
- * @package Piggy\Api\Mappers\Shops
- */
 class AutomationsMapper
 {
-    /**
-     * @param Response $response
-     * @return array
-     */
     public static function map(Response $response): array
     {
         $automations = [];

@@ -14,13 +14,11 @@ use Piggy\Api\Http\Responses\AuthenticationResponse;
 use Piggy\Api\Http\Responses\Response;
 use Piggy\Api\Http\Traits\SetsOAuthResources as OAuthResources;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\UriInterface;
 use Throwable;
+
 use function Piggy\Api\hasGuzzle5;
 
-/**
- * Class BaseClient
- * @package Piggy\Api\Http
- */
 abstract class BaseClient
 {
     use OAuthResources;
@@ -33,10 +31,10 @@ abstract class BaseClient
     /**
      * @var string
      */
-    private $baseUrl = "https://api.piggy.nl";
+    private $baseUrl = 'https://api.piggy.nl';
 
     /**
-     * @var array
+     * @var array<string, string>
      */
     protected $headers = [
         'Accept' => 'application/json',
@@ -44,7 +42,6 @@ abstract class BaseClient
 
     /**
      * BaseClient constructor.
-     * @param ClientInterface|null $client
      */
     public function __construct(?ClientInterface $client = null)
     {
@@ -58,26 +55,24 @@ abstract class BaseClient
     }
 
     /**
-     * @param string $method
-     * @param string $endpoint
-     * @param array $queryOptions
-     * @return Response
+     * @param  array<string, string>  $queryOptions
+     *
      * @throws GuzzleException
      * @throws MaintenanceModeException
      * @throws PiggyRequestException
      */
-    public function request(string $method, string $endpoint, $queryOptions = []): Response
+    public function request(string $method, string $endpoint, array $queryOptions = []): Response
     {
-        if (!array_key_exists('Authorization', $this->headers)) {
+        if (! array_key_exists('Authorization', $this->headers)) {
             throw new Exception('Authorization not set yet.');
         }
 
-        $url = $this->baseUrl . $endpoint;
+        $url = $this->baseUrl.$endpoint;
 
         try {
             $rawResponse = $this->getResponse($method, $url, [
-                "headers" => $this->headers,
-                "form_params" => $queryOptions,
+                'headers' => $this->headers,
+                'form_params' => $queryOptions,
             ]);
 
             return $this->parseResponse($rawResponse);
@@ -88,46 +83,38 @@ abstract class BaseClient
     }
 
     /**
-     * @param $response
-     *
-     * @return Response
      * @throws MalformedResponseException
      */
-    private function parseResponse($response): Response
+    private function parseResponse(ResponseInterface $response): Response
     {
         try {
             $content = json_decode($response->getBody()->getContents());
         } catch (Throwable $exception) {
-            throw new MalformedResponseException("Could not decode response");
+            throw new MalformedResponseException('Could not decode response');
         }
 
-        if (!property_exists($content, "data")) {
-            throw new MalformedResponseException("Invalid response given. Data property was missing from response.");
+        if (! property_exists($content, 'data')) {
+            throw new MalformedResponseException('Invalid response given. Data property was missing from response.');
         }
-
-//        if (!property_exists($content, "meta")) {
-//            throw new MalformedResponseException("Invalid response given. Meta property was missing from response.");
-//        }
 
         return new Response($content->data, $content->meta ?? []);
     }
 
     /**
-     * @param string $endpoint
-     * @param array $queryOptions
-     * @return AuthenticationResponse
+     * @param  array<string, string|int>  $queryOptions
+     *
      * @throws GuzzleException
      * @throws PiggyRequestException
      * @throws MaintenanceModeException
      */
-    public function authenticationRequest(string $endpoint, $queryOptions = []): AuthenticationResponse
+    public function authenticationRequest(string $endpoint, array $queryOptions = []): AuthenticationResponse
     {
-        $url = $this->baseUrl . $endpoint;
+        $url = $this->baseUrl.$endpoint;
 
         try {
-            $rawResponse = $this->getResponse("POST", $url, [
-                "headers" => $this->headers,
-                "form_params" => $queryOptions,
+            $rawResponse = $this->getResponse('POST', $url, [
+                'headers' => $this->headers,
+                'form_params' => $queryOptions,
             ]);
 
             $content = json_decode($rawResponse->getBody()->getContents());
@@ -139,33 +126,23 @@ abstract class BaseClient
         }
     }
 
-    /**
-     * @return string
-     */
     public function getBaseUrl(): string
     {
         return $this->baseUrl;
     }
 
-    /**
-     * @param mixed $baseUrl
-     */
-    public function setBaseUrl($baseUrl): void
+    public function setBaseUrl(string $baseUrl): void
     {
         $this->baseUrl = $baseUrl;
     }
 
-    /**
-     * @param $key
-     * @param $value
-     */
-    public function addHeader($key, $value): void
+    public function addHeader(string $key, string $value): void
     {
         $this->headers[$key] = $value;
     }
 
     /**
-     * @return array
+     * @return string[]
      */
     public function getHeaders(): array
     {
@@ -173,9 +150,8 @@ abstract class BaseClient
     }
 
     /**
-     * @param string $url
-     * @param array $body
-     * @return Response
+     * @param  mixed[]  $body
+     *
      * @throws PiggyRequestException
      */
     public function post(string $url, array $body): Response
@@ -184,10 +160,8 @@ abstract class BaseClient
     }
 
     /**
-     * @param string $url
-     * @param array $body
+     * @param  mixed[]  $body
      *
-     * @return Response
      * @throws PiggyRequestException
      */
     public function put(string $url, array $body): Response
@@ -196,10 +170,8 @@ abstract class BaseClient
     }
 
     /**
-     * @param string $url
-     * @param array $params
+     * @param  mixed[]  $params
      *
-     * @return Response
      * @throws PiggyRequestException
      */
     public function get(string $url, array $params = []): Response
@@ -214,10 +186,8 @@ abstract class BaseClient
     }
 
     /**
-     * @param string $url
-     * @param array $params
+     * @param  mixed[]  $params
      *
-     * @return Response
      * @throws PiggyRequestException
      */
     public function destroy(string $url, array $params = []): Response
@@ -232,9 +202,12 @@ abstract class BaseClient
     }
 
     /**
+     * @param  string|UriInterface  $url
+     * @param  mixed[]  $options
+     *
      * @throws GuzzleException
      */
-    private function getResponse($method, $url, $options = []): ResponseInterface
+    private function getResponse(string $method, $url, array $options = []): ResponseInterface
     {
         if (hasGuzzle5()) {
             // v5 does not have form_params, so we need to apply a trick.
@@ -245,7 +218,8 @@ abstract class BaseClient
                 $options['headers']['Content-Type'] = 'application/x-www-form-urlencoded';
             }
 
-            $request = $this->httpClient->createRequest($method, $url, $options);
+            $request = $this->httpClient->createRequest($method, $url, $options); // @phpstan-ignore-line
+
             return $this->httpClient->send($request);
         }
 

@@ -4,8 +4,14 @@ namespace Piggy\Api\Models\Vouchers;
 
 class VoucherLock
 {
+    /**
+     * @var Voucher
+     */
     protected $voucher;
 
+    /**
+     * @var Lock
+     */
     protected $lock;
 
     public function __construct(Voucher $voucher, Lock $lock)
@@ -14,17 +20,11 @@ class VoucherLock
         $this->lock = $lock;
     }
 
-    /**
-     * @return Voucher
-     */
     public function getVoucher(): Voucher
     {
         return $this->voucher;
     }
 
-    /**
-     * @return Lock
-     */
     public function getLock(): Lock
     {
         return $this->lock;

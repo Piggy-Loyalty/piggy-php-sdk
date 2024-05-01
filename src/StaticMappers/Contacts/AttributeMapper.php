@@ -2,16 +2,12 @@
 
 namespace Piggy\Api\StaticMappers\Contacts;
 
-use Piggy\Api\StaticMappers\BaseMapper;
 use Piggy\Api\Models\Contacts\Attribute;
+use Piggy\Api\StaticMappers\BaseMapper;
 use stdClass;
 
 class AttributeMapper extends BaseMapper
 {
-    /**
-     * @param stdClass $data
-     * @return Attribute
-     */
     public static function map(stdClass $data): Attribute
     {
         $fieldType = $data->type;

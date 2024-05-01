@@ -4,10 +4,6 @@ namespace Piggy\Api\StaticMappers\Contacts;
 
 class ContactAttributesMapper
 {
-    /**
-     * @param array $data
-     * @return array
-     */
     public static function map(array $data): array
     {
         $contactAttributes = [];

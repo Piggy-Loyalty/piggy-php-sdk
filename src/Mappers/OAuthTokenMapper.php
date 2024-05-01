@@ -2,19 +2,12 @@
 
 namespace Piggy\Api\Mappers;
 
+use Piggy\Api\Http\Responses\AuthenticationResponse;
 use Piggy\Api\Models\OAuthToken;
 
-/**
- * Class OAuthTokenMapper
- * @package Piggy\Api\Mappers
- */
 class OAuthTokenMapper
 {
-    /**
-     * @param object $data
-     * @return OAuthToken
-     */
-    public function map(object $data): OAuthToken
+    public function map(AuthenticationResponse $data): OAuthToken
     {
         $token = new OAuthToken();
 

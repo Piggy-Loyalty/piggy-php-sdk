@@ -4,21 +4,13 @@ namespace Piggy\Api\StaticMappers\Loyalty\LoyaltyTransactionAttributes;
 
 use Piggy\Api\Models\Loyalty\Transactions\LoyaltyTransactionAttribute;
 
-/**
- * Class LoyaltyTransactionAttributeMapper
- * @package Piggy\Api\Mappers\LoyaltyTransactionAttributes
- */
 class LoyaltyTransactionAttributeMapper
 {
-    /**
-     * @param $data
-     * @return LoyaltyTransactionAttribute
-     */
     public static function map($data): LoyaltyTransactionAttribute
     {
         $options = [];
 
-        if (!empty($data->options)) {
+        if (! empty($data->options)) {
             foreach ($data->options as $item) {
                 $options[] = get_object_vars($item);
             }
@@ -37,4 +29,3 @@ class LoyaltyTransactionAttributeMapper
         );
     }
 }
-

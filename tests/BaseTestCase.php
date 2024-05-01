@@ -10,12 +10,9 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\Stream;
 use PHPUnit\Framework\TestCase;
+
 use function Piggy\Api\hasGuzzle5;
 
-/**
- * Class BaseTestCase
- * @package Piggy\Api\Tests
- */
 class BaseTestCase extends TestCase
 {
     /**
@@ -28,9 +25,6 @@ class BaseTestCase extends TestCase
      */
     protected $mockHandler;
 
-    /**
-     * @return void
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -49,15 +43,13 @@ class BaseTestCase extends TestCase
     }
 
     /**
-     * @param mixed $data
-     * @param array|null $meta
-     * @param int $code
+     * @param  mixed  $data
      */
-    protected function addExpectedResponse($data, array $meta = null, int $code = 200)
+    protected function addExpectedResponse($data, ?array $meta = null, int $code = 200)
     {
         $payload = json_encode([
-            "data" => $data,
-            "meta" => $meta
+            'data' => $data,
+            'meta' => $meta,
         ]);
 
         if (hasGuzzle5()) {
@@ -75,7 +67,6 @@ class BaseTestCase extends TestCase
     }
 
     /**
-     * @param string $date
      * @return DateTime|false
      */
     public function parseDate(string $date)
@@ -83,17 +74,11 @@ class BaseTestCase extends TestCase
         return DateTime::createFromFormat(DateTimeInterface::ATOM, $date);
     }
 
-    /**
-     * @return HttpClient
-     */
     public function getHttpClient(): HttpClient
     {
         return $this->httpClient;
     }
 
-    /**
-     * @return MockHandler
-     */
     public function getMockHandler(): MockHandler
     {
         return $this->mockHandler;

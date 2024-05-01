@@ -12,8 +12,8 @@ use stdClass;
 class RewardMapper
 {
     /**
-     * @param stdClass $data
      * @return DigitalReward|PhysicalReward
+     *
      * @throws Exception
      */
     public static function map(stdClass $data): Reward
@@ -32,7 +32,7 @@ class RewardMapper
         }
 
         if ($reward === null) {
-            throw new Exception("Reward could not be mapped. No valid reward type given");
+            throw new Exception('Reward could not be mapped. No valid reward type given');
         }
 
         return $reward;

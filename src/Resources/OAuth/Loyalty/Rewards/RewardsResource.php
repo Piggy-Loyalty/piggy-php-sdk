@@ -9,39 +9,55 @@ use Piggy\Api\Mappers\Loyalty\Rewards\RewardsMapper;
 use Piggy\Api\Models\Loyalty\Rewards\Reward;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class RewardsResource
- * @package Piggy\Api\Resources\OAuth\Loyalty\Rewards
- */
 class RewardsResource extends BaseResource
 {
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/oauth/clients/rewards";
+    protected $resourceUri = '/api/v3/oauth/clients/rewards';
 
     /**
-     * @param string|null $contactUuid
-     * @param string|null $shop_uuid
-     * @return array
+     * @return Reward[]
+     *
      * @throws PiggyRequestException
-     * @throws Exception
      */
-    public function get(?string $contactUuid = null, ?string $shop_uuid = null): array
+    public function list(): array
     {
-        $response = $this->client->get($this->resourceUri, [
-            "contact_uuid" => $contactUuid,
-            "shop_uuid" => $shop_uuid
-        ]);
+        $response = $this->client->get($this->resourceUri);
+
         $mapper = new RewardsMapper();
 
         return $mapper->map($response->getData());
     }
 
     /**
-     * @param Reward $reward
+     * @return Reward[]
      *
-     * @return Reward
+     * @throws PiggyRequestException
+     * @throws Exception
+     */
+    public function get(?string $contactUuid = null, ?string $shop_uuid = null): array
+    {
+        $response = $this->client->get($this->resourceUri, [
+            'contact_uuid' => $contactUuid,
+            'shop_uuid' => $shop_uuid,
+        ]);
+
+        $mapper = new RewardsMapper();
+
+        return $mapper->map($response->getData());
+    }
+
+    public function findBy(string $rewardUuid): Reward
+    {
+        $response = $this->client->get("$this->resourceUri/$rewardUuid");
+
+        $mapper = new RewardMapper();
+
+        return $mapper->map($response->getData());
+    }
+
+    /**
      * @throws PiggyRequestException
      */
     public function update(Reward $reward): Reward

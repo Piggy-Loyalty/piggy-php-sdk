@@ -6,15 +6,9 @@ use Exception;
 use stdClass;
 use Throwable;
 
-/**
- * Class ExceptionMapper
- * @package Piggy\Api\Exceptions
- */
 class ExceptionMapper
 {
     /**
-     * @param Exception $exception
-     * @return Exception
      * @throws PiggyRequestException
      * @throws MaintenanceModeException
      */
@@ -23,7 +17,7 @@ class ExceptionMapper
         if (method_exists($exception, 'hasResponse') && method_exists($exception, 'getResponse')) {
 
             if ($exception->getResponse()->getStatusCode() == 503) {
-                throw new MaintenanceModeException("Piggy system is in maintenance mode.", 503);
+                throw new MaintenanceModeException('Piggy system is in maintenance mode.', 503);
             }
 
             $body = $exception->getResponse()->getBody();
@@ -37,31 +31,22 @@ class ExceptionMapper
         return $exception;
     }
 
-    /**
-     * @param stdClass $body
-     * @return bool
-     */
     private function isPiggyException(stdClass $body): bool
     {
-        $statusCode = property_exists($body, "status_code");
-        $code = property_exists($body, "code");
-        $message = property_exists($body, "message");
+        $statusCode = property_exists($body, 'status_code');
+        $code = property_exists($body, 'code');
+        $message = property_exists($body, 'message');
 
         return $statusCode && $code && $message;
     }
 
-    /**
-     * @param stdClass $body
-     * @param Throwable $previous
-     * @return PiggyRequestException
-     */
     private function mapPiggyException(stdClass $body, Throwable $previous): PiggyRequestException
     {
         $statusCode = $body->status_code;
         $code = $body->code;
         $message = $body->message;
 
-        if (property_exists($body, "errors")) {
+        if (property_exists($body, 'errors')) {
             $mappedErrors = [];
 
             foreach ($body->errors as $key => $errors) {

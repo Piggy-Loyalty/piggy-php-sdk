@@ -3,20 +3,12 @@
 namespace Piggy\Api\StaticMappers\Giftcards;
 
 use Piggy\Api\Enum\GiftcardType;
-use Piggy\Api\StaticMappers\BaseMapper;
 use Piggy\Api\Models\Giftcards\Giftcard;
+use Piggy\Api\StaticMappers\BaseMapper;
 use stdClass;
 
-/**
- * Class GiftcardMapper
- * @package Piggy\Api\Mappers\Giftcards
- */
 class GiftcardMapper extends BaseMapper
 {
-    /**
-     * @param stdClass $data
-     * @return Giftcard
-     */
     public static function map(stdClass $data): Giftcard
     {
         if (isset($data->giftcard_program)) {
@@ -37,7 +29,7 @@ class GiftcardMapper extends BaseMapper
             $data->upgradeable,
             $giftcardProgram ?? null,
             $expirationDate ?? null,
-            $id ?? null
+            $data->id ?? null
         );
     }
 }

@@ -6,20 +6,18 @@ use Exception;
 use Piggy\Api\Enum\LoyaltyTransactionType;
 use Piggy\Api\Mappers\Loyalty\Receptions\CreditReceptionMapper;
 use Piggy\Api\Mappers\Loyalty\Receptions\RewardReceptionMapper;
-use Piggy\Api\Models\Loyalty\Transactions\LoyaltyTransaction;
+use Piggy\Api\Models\Loyalty\Receptions\BaseReception as BaseReceptionModel;
+use stdClass;
 
-/**
- * Class LoyaltyTransactionMapper
- * @package Piggy\Api\Mappers\Loyalty
- */
 class LoyaltyTransactionMapper
 {
     /**
-     * @param $data
-     * @return LoyaltyTransaction[]
+     * @param  stdClass[]  $data
+     * @return array<int, BaseReceptionModel|null>
+     *
      * @throws Exception
      */
-    public function map($data): array
+    public function map(array $data): array
     {
         $creditReceptionMapper = new CreditReceptionMapper();
         $rewardReceptionMapper = new RewardReceptionMapper();

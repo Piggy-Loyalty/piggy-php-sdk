@@ -5,18 +5,15 @@ namespace Piggy\Api\Resources\OAuth\Automations;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Http\BaseClient;
 use Piggy\Api\Mappers\Automations\AutomationsMapper;
+use Piggy\Api\Models\Automations\Automation;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class AutomationsResource
- * @package Piggy\Api\Resources\OAuth\Automations
- */
 class AutomationsResource extends BaseResource
 {
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/oauth/clients/automations";
+    protected $resourceUri = '/api/v3/oauth/clients/automations';
 
     public function __construct(BaseClient $client)
     {
@@ -25,8 +22,9 @@ class AutomationsResource extends BaseResource
     }
 
     /**
-     * @param array $params
-     * @return array
+     * @param  mixed[]  $params
+     * @return Automation[]
+     *
      * @throws PiggyRequestException
      */
     public function list(array $params = []): array
@@ -39,20 +37,19 @@ class AutomationsResource extends BaseResource
     }
 
     /**
-     * @param string $contactUuid
-     * @param string $automationUuid
-     * @return array
+     * @param  mixed[]|null  $data
+     * @return array<null>
+     *
      * @throws PiggyRequestException
      */
-    public function create(string $contactUuid, string $automationUuid): array
+    public function create(string $contactUuid, string $automationUuid, ?array $data = null): array
     {
         $response = $this->client->post("$this->resourceUri/runs", [
-            "contact_uuid" => $contactUuid,
-            "automation_uuid" => $automationUuid
+            'contact_uuid' => $contactUuid,
+            'automation_uuid' => $automationUuid,
+            'data' => $data,
         ]);
 
-        $mapper = new AutomationsMapper();
-
-        return $mapper->map($response->getData());
+        return $response->getData();
     }
 }

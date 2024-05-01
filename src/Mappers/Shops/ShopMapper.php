@@ -3,18 +3,11 @@
 namespace Piggy\Api\Mappers\Shops;
 
 use Piggy\Api\Models\Shops\Shop;
+use stdClass;
 
-/**
- * Class ShopMapper
- * @package Piggy\Api\Mappers\Shops
- */
 class ShopMapper
 {
-    /**
-     * @param $data
-     * @return Shop
-     */
-    public function map($data): Shop
+    public function map(stdClass $data): Shop
     {
         return new Shop(
             $data->uuid,

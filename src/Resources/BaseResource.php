@@ -4,20 +4,15 @@ namespace Piggy\Api\Resources;
 
 use Piggy\Api\Http\BaseClient;
 
-/**
- * Class BaseResource
- * @package Piggy\Api\Resources
- */
 abstract class BaseResource
 {
     /**
-     * @var BaseClient $client
+     * @var BaseClient
      */
     protected $client;
 
     /**
      * BaseResource constructor.
-     * @param BaseClient $client
      */
     public function __construct(BaseClient $client)
     {

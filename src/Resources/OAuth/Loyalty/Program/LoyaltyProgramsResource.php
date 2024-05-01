@@ -7,19 +7,14 @@ use Piggy\Api\Mappers\Loyalty\LoyaltyProgramMapper;
 use Piggy\Api\Models\Loyalty\LoyaltyProgram;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class LoyaltyProgramResource
- * @package Piggy\Api\Resources\OAuth\Loyalty\Program
- */
 class LoyaltyProgramsResource extends BaseResource
 {
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/oauth/clients/loyalty-program";
+    protected $resourceUri = '/api/v3/oauth/clients/loyalty-program';
 
     /**
-     * @return LoyaltyProgram
      * @throws PiggyRequestException
      */
     public function get(): LoyaltyProgram

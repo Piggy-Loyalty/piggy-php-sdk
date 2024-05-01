@@ -6,21 +6,13 @@ use Piggy\Api\Mappers\BaseMapper;
 use Piggy\Api\Models\Giftcards\GiftcardTransaction;
 use stdClass;
 
-/**
- * Class GiftcardTransactionMapper
- * @package Piggy\Api\Mappers\Giftcards
- */
 class GiftcardTransactionMapper extends BaseMapper
 {
-    /**
-     * @param stdClass $data
-     * @return GiftcardTransaction
-     */
     public function map(stdClass $data): GiftcardTransaction
     {
         if (isset($data->settlements)) {
             $giftcardTransactionSettlementMapper = new GiftcardTransactionSettlementMapper();
-            $settlements = array_map(function($settlement) use ($giftcardTransactionSettlementMapper) {
+            $settlements = array_map(function ($settlement) use ($giftcardTransactionSettlementMapper) {
                 return $giftcardTransactionSettlementMapper->map($settlement);
             }, $data->settlements);
         }

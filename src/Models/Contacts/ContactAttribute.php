@@ -9,64 +9,49 @@ use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\StaticMappers\Contacts\AttributeMapper;
 use Piggy\Api\StaticMappers\Contacts\AttributesMapper;
 
-/**
- * Class ContactAttribute
- * @package Piggy\Api\Models\Contacts
- */
 class ContactAttribute
 {
     /** @var string */
     protected $value;
 
-    /** @var Attribute */
+    /** @var ?Attribute */
     protected $attribute;
 
     /**
      * @var string
      */
-    const resourceUri = "/api/v3/oauth/clients/contact-attributes";
+    const resourceUri = '/api/v3/oauth/clients/contact-attributes';
 
-    public function __construct($value, $attribute)
+    public function __construct(string $value, ?Attribute $attribute)
     {
         $this->value = $value;
         $this->attribute = $attribute;
     }
 
-    /**
-     * @return string
-     */
     public function getValue(): string
     {
         return $this->value;
     }
 
-    /**
-     * @param string $value
-     */
     public function setValue(string $value): void
     {
         $this->value = $value;
     }
 
-    /**
-     * @return Attribute
-     */
-    public function getAttribute(): Attribute
+    public function getAttribute(): ?Attribute
     {
         return $this->attribute;
     }
 
-    /**
-     * @param Attribute $attribute
-     */
     public function setAttribute(Attribute $attribute): void
     {
         $this->attribute = $attribute;
     }
 
     /**
-     * @param array $params
-     * @return array
+     * @param  mixed[]  $params
+     * @return Attribute[]
+     *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function list(array $params = []): array
@@ -77,8 +62,8 @@ class ContactAttribute
     }
 
     /**
-     * @param array $body
-     * @return Attribute
+     * @param  mixed[]  $body
+     *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function create(array $body): Attribute
@@ -87,5 +72,4 @@ class ContactAttribute
 
         return AttributeMapper::map($response->getData());
     }
-
 }

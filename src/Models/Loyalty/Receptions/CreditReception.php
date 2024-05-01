@@ -4,21 +4,17 @@ namespace Piggy\Api\Models\Loyalty\Receptions;
 
 use DateTime;
 use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\ApiClient;
+use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\StaticMappers\Loyalty\Receptions\CreditReceptionMapper;
 use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\Models\Contacts\ContactIdentifier;
 use Piggy\Api\Models\Loyalty\Unit;
 use Piggy\Api\Models\Shops\Shop;
+use Piggy\Api\StaticMappers\Loyalty\Receptions\CreditReceptionMapper;
 use stdClass;
 
-/**
- * Class CreditReception
- * @package Piggy\Api\Models\Loyalty\Receptions
- */
-class CreditReception
+class CreditReception extends BaseReception
 {
     /**
      * @var string
@@ -36,12 +32,12 @@ class CreditReception
     protected $uuid;
 
     /**
-     * @var Contact
+     * @var ?Contact
      */
     private $contact;
 
     /**
-     * @var Shop
+     * @var ?Shop
      */
     private $shop;
 
@@ -55,33 +51,24 @@ class CreditReception
      */
     protected $createdAt;
 
-    /** @var int */
+    /** @var ?float */
     protected $unitValue;
 
-    /** @var Unit */
+    /** @var ?Unit */
     protected $unit;
 
-    /** @var array */
+    /** @var mixed[] */
     protected $attributes;
 
     /**
      * @var string
      */
-    const resourceUri = "/api/v3/oauth/clients/credit-receptions";
+    const resourceUri = '/api/v3/oauth/clients/credit-receptions';
 
     /**
-     * @param string $type
-     * @param int $credits
-     * @param string $uuid
-     * @param Contact $contact
-     * @param Shop $shop
-     * @param ContactIdentifier|null $contactIdentifier
-     * @param DateTime $createdAt
-     * @param float|null $unitValue
-     * @param Unit|null $unit
-     * @param array $attributes
+     * @param  mixed[]  $attributes
      */
-    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, ?float $unitValue = null, ?Unit $unit = null, array $attributes = [])
+    public function __construct(string $type, int $credits, string $uuid, ?Contact $contact, ?Shop $shop, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, ?float $unitValue = null, ?Unit $unit = null, array $attributes = [])
     {
         $this->type = $type;
         $this->credits = $credits;
@@ -95,80 +82,53 @@ class CreditReception
         $this->attributes = $attributes;
     }
 
-    /**
-     * @return string
-     */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @return int
-     */
     public function getCredits(): int
     {
         return $this->credits;
     }
 
-    /**
-     * @return string
-     */
     public function getUuid(): string
     {
         return $this->uuid;
     }
 
-    /**
-     * @return Contact
-     */
-    public function getContact(): Contact
+    public function getContact(): ?Contact
     {
         return $this->contact;
     }
 
-    /**
-     * @return Shop
-     */
-    public function getShop(): Shop
+    public function getShop(): ?Shop
     {
         return $this->shop;
     }
 
-    /**
-     * @return ContactIdentifier
-     */
-    public function getContactIdentifier(): ContactIdentifier
+    public function getContactIdentifier(): ?ContactIdentifier
     {
         return $this->contactIdentifier;
     }
 
-    /**
-     * @return DateTime
-     */
     public function getCreatedAt(): DateTime
     {
         return $this->createdAt;
     }
 
-    /**
-     * @return float|null
-     */
     public function getUnitValue(): ?float
     {
         return $this->unitValue;
     }
 
-    /**
-     * @return Unit|null
-     */
     public function getUnit(): ?Unit
     {
         return $this->unit;
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
     public function getAttributes(): array
     {
@@ -176,8 +136,8 @@ class CreditReception
     }
 
     /**
-     * @param array $body
-     * @return CreditReception
+     * @param  mixed[]  $body
+     *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function create(array $body): CreditReception
@@ -188,13 +148,13 @@ class CreditReception
     }
 
     /**
-     * @param array $params
-     * @return stdClass
+     * @param  mixed[]  $params
+     *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
     public static function calculate(array $params): stdClass
     {
-        $response = ApiClient::get(self::resourceUri . "/calculate", $params);
+        $response = ApiClient::get(self::resourceUri.'/calculate', $params);
 
         return $response->getData();
     }

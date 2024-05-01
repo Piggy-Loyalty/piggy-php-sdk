@@ -3,20 +3,14 @@
 namespace Piggy\Api\StaticMappers\Loyalty\Rewards;
 
 use Exception;
+use Piggy\Api\Models\Loyalty\Rewards\CollectableReward;
 use Piggy\Api\StaticMappers\BaseMapper;
 use Piggy\Api\StaticMappers\Contacts\ContactMapper;
-use Piggy\Api\Models\Loyalty\Rewards\CollectableReward;
 use stdClass;
 
-/**
- * Class CollectableRewardMapper
- * @package Piggy\Api\Mappers\Loyalty\Rewards
- */
 class CollectableRewardMapper extends BaseMapper
 {
     /**
-     * @param stdClass $data
-     * @return CollectableReward
      * @throws Exception
      */
     public static function map(stdClass $data): CollectableReward

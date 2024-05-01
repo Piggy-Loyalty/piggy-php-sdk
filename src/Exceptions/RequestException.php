@@ -7,10 +7,6 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Psr7\Response;
 use Throwable;
 
-/**
- * Class RequestException
- * @package Piggy\Api\Exceptions
- */
 class RequestException extends Exception
 {
     /**
@@ -21,21 +17,21 @@ class RequestException extends Exception
     /**
      * HTTP-status code
      *
-     * @var integer
+     * @var int
      */
     protected $statusCode;
 
     /**
      * Piggy Internal Code. Useful for extra debugging.
      *
-     * @var integer
+     * @var ?int
      */
     protected $code;
 
     /**
      * If given, an array of errors.
      *
-     * @var array
+     * @var mixed[]|null
      */
     protected $errors;
 
@@ -47,21 +43,15 @@ class RequestException extends Exception
     protected $response;
 
     /**
-     * RequestException constructor.
-     * @param $message
-     * @param $statusCode
-     * @param $code
-     * @param array $errors
-     * @param Response|null $response
+     * @param  mixed[]|null  $errors
      */
     public function __construct(
-        $message,
-        $statusCode,
-        $code,
-        $errors = [],
-        Response $response = null
-    )
-    {
+        string $message,
+        int $statusCode,
+        ?int $code,
+        ?array $errors = [],
+        ?Response $response = null
+    ) {
         parent::__construct($message);
         $this->message = $message;
         $this->statusCode = $statusCode;
@@ -71,8 +61,8 @@ class RequestException extends Exception
     }
 
     /**
-     * @param GuzzleException $guzzleException
      * @return RequestException
+     *
      * @throws RequestException
      */
     public static function createFromGuzzleException(GuzzleException $guzzleException)
@@ -88,41 +78,28 @@ class RequestException extends Exception
     }
 
     /**
-     * @param Response $response
-     * @param Throwable|null $previous
-     * @return RequestException
      * @throws RequestException
      */
-    public static function createFromResponse(Response $response, Throwable $previous = null)
+    public static function createFromResponse(Response $response, ?Throwable $previous = null): RequestException
     {
         $body = $response->getBody();
 
-        try {
-            $object = @json_decode($body);
-        } catch (Exception $exception) {
-            throw new self("Unable to decode response: '$body'");
-        }
+        $object = json_decode($body);
 
         return new self(
             $object->message,
             $response->getStatusCode(),
             $object->code,
-            $previous
+            (array) $previous
         );
     }
 
-    /**
-     * @return Response|null
-     */
-    public function getResponse()
+    public function getResponse(): ?Response
     {
         return $this->response;
     }
 
-    /**
-     * @return bool
-     */
-    public function hasResponse()
+    public function hasResponse(): bool
     {
         return $this->response !== null;
     }

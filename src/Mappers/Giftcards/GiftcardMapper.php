@@ -7,16 +7,8 @@ use Piggy\Api\Mappers\BaseMapper;
 use Piggy\Api\Models\Giftcards\Giftcard;
 use stdClass;
 
-/**
- * Class GiftcardMapper
- * @package Piggy\Api\Mappers\Giftcards
- */
 class GiftcardMapper extends BaseMapper
 {
-    /**
-     * @param stdClass $data
-     * @return Giftcard
-     */
     public function map(stdClass $data): Giftcard
     {
         if (isset($data->giftcard_program)) {
@@ -24,7 +16,7 @@ class GiftcardMapper extends BaseMapper
             $giftcardProgram = $giftcardProgramMapper->map($data->giftcard_program);
         }
 
-        if (isset($data->expiration_date) && !empty($data->expiration_date)) {
+        if (isset($data->expiration_date) && ! empty($data->expiration_date)) {
             $expirationDate = $this->parseDate($data->expiration_date);
         }
 
@@ -37,7 +29,7 @@ class GiftcardMapper extends BaseMapper
             $data->upgradeable,
             $giftcardProgram ?? null,
             $expirationDate ?? null,
-            $id ?? null
+            $data->id ?? null
         );
     }
 }

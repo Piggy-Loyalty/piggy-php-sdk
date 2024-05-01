@@ -3,20 +3,12 @@
 namespace Piggy\Api\StaticMappers\Loyalty\Rewards;
 
 use Piggy\Api\Enum\RewardType;
+use Piggy\Api\Models\Loyalty\Rewards\PhysicalReward;
 use Piggy\Api\StaticMappers\Loyalty\MediaMapper;
 use Piggy\Api\StaticMappers\Loyalty\RewardAttributes\RewardAttributesMapper;
-use Piggy\Api\Models\Loyalty\Rewards\PhysicalReward;
 
-/**
- * Class PhysicalRewardMapper
- * @package Piggy\Api\Mappers\Loyalty\Rewards
- */
 class PhysicalRewardMapper
 {
-    /**
-     * @param $data
-     * @return PhysicalReward
-     */
     public static function map($data): PhysicalReward
     {
         $media = isset($data->media) ? MediaMapper::map($data->media) : null;
@@ -36,7 +28,7 @@ class PhysicalRewardMapper
             $data->title ?? '',
             $data->required_credits ?? null,
             $media ?? null,
-            $data->description ?? "",
+            $data->description ?? '',
             $active,
             RewardType::byName($data->reward_type)->getValue() ?? null,
             $attributes

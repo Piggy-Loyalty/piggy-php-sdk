@@ -4,16 +4,8 @@ namespace Piggy\Api\StaticMappers\Tiers;
 
 use Piggy\Api\Models\Tiers\Tier;
 
-/**
- * Class TierMapper
- * @package Piggy\Api\Mappers\Tiers
- */
 class TierMapper
 {
-    /**
-     * @param $data
-     * @return Tier
-     */
     public static function map($data): Tier
     {
         return new Tier(
@@ -21,7 +13,7 @@ class TierMapper
             $data->position,
             $data->uuid ?? null,
             $data->description ?? null,
-            $data->media ? get_object_vars($data->media) :  null
+            $data->media ? get_object_vars($data->media) : null
         );
     }
 }

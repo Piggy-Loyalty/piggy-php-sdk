@@ -2,16 +2,8 @@
 
 namespace Piggy\Api\StaticMappers\Referrals;
 
-/**
- * Class ReferralsMapper
- * @package Piggy\Api\Mappers\Referrals
- */
 class ReferralsMapper
 {
-    /**
-     * @param $data
-     * @return array
-     */
     public static function map($data): array
     {
         $referrals = [];

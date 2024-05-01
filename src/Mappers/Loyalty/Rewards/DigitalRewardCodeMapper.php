@@ -3,18 +3,11 @@
 namespace Piggy\Api\Mappers\Loyalty\Rewards;
 
 use Piggy\Api\Models\Loyalty\Rewards\DigitalRewardCode;
+use stdClass;
 
-/**
- * Class DigitalRewardCodeMapper
- * @package Piggy\Api\Mappers\Loyalty\Rewards
- */
 class DigitalRewardCodeMapper
 {
-    /**
-     * @param $data
-     * @return DigitalRewardCode
-     */
-    public function map($data): DigitalRewardCode
+    public function map(stdClass $data): DigitalRewardCode
     {
         return new DigitalRewardCode(
             $data->code

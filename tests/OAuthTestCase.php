@@ -6,10 +6,6 @@ use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\OAuthClient;
 
-/**
- * Class OAuthTestCase
- * @package Piggy\Api\Tests
- */
 class OAuthTestCase extends BaseTestCase
 {
     /**
@@ -21,8 +17,8 @@ class OAuthTestCase extends BaseTestCase
     {
         parent::setUp();
 
-        $oauthClient = new OAuthClient(1, "secret", $this->httpClient);
-        $oauthClient->addHeader("Authorization", 'Bearer token');
+        $oauthClient = new OAuthClient(1, 'secret', $this->httpClient);
+        $oauthClient->addHeader('Authorization', 'Bearer token');
 
         $this->mockedClient = $oauthClient;
     }

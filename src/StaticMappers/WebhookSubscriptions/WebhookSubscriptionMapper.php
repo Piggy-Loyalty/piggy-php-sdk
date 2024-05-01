@@ -2,19 +2,11 @@
 
 namespace Piggy\Api\StaticMappers\WebhookSubscriptions;
 
-use Piggy\Api\StaticMappers\BaseMapper;
 use Piggy\Api\Models\WebhookSubscriptions\WebhookSubscription;
+use Piggy\Api\StaticMappers\BaseMapper;
 
-/**
- * Class WebhookSubscriptionMapper
- * @package Piggy\Api\Mappers\WebhookSubscriptions
- */
 class WebhookSubscriptionMapper extends BaseMapper
 {
-    /**
-     * @param $data
-     * @return WebhookSubscription
-     */
     public static function map($data): WebhookSubscription
     {
         return new WebhookSubscription(
@@ -29,4 +21,3 @@ class WebhookSubscriptionMapper extends BaseMapper
         );
     }
 }
-

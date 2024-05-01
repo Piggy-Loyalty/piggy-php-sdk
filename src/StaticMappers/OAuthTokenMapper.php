@@ -4,16 +4,8 @@ namespace Piggy\Api\StaticMappers;
 
 use Piggy\Api\Models\OAuthToken;
 
-/**
- * Class OAuthTokenMapper
- * @package Piggy\Api\Mappers
- */
 class OAuthTokenMapper
 {
-    /**
-     * @param object $data
-     * @return OAuthToken
-     */
     public static function map(object $data): OAuthToken
     {
         $token = new OAuthToken();

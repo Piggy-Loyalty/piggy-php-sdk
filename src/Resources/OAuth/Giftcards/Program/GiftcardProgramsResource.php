@@ -4,21 +4,19 @@ namespace Piggy\Api\Resources\OAuth\Giftcards\Program;
 
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Giftcards\GiftcardProgramsMapper;
+use Piggy\Api\Models\Giftcards\GiftcardProgram;
 use Piggy\Api\Resources\BaseResource;
 
-/**
- * Class GiftcardProgramResource
- * @package Piggy\Api\Resources\OAuth\Giftcards\Program
- */
 class GiftcardProgramsResource extends BaseResource
 {
     /**
      * @var string
      */
-    protected $resourceUri = "/api/v3/oauth/clients/giftcard-programs";
+    protected $resourceUri = '/api/v3/oauth/clients/giftcard-programs';
 
     /**
-     * @return array
+     * @return GiftcardProgram[]
+     *
      * @throws PiggyRequestException
      */
     public function list(): array
