@@ -41,15 +41,6 @@
     "phpstan/phpstan": "^1.10"
   },
   "scripts": {
-    "test": "./vendor/bin/phpunit tests"
-  },
-  "repositories": {
-    "local": {
-      "type": "path",
-      "url": "./packages/*",
-      "options": {
-        "symlink": true
-      }
-    }
+    "test": "./vendor/bin/phpunit tests",
   }
 }
