@@ -24,12 +24,10 @@ class DigitalRewardReceptionMapper extends BaseMapper
         $contact = $contactMapper->map($data->contact);
         $shop = $shopMapper->map($data->shop);
 
-        $digitalReward = null;
         if (isset($data->digital_reward)) {
             $digitalReward = $digitalRewardMapper->map($data->digital_reward);
         }
 
-        $digitalRewardCode = null;
         if (isset($data->digital_reward_code)) {
             $digitalRewardCode = $digitalRewardCodeMapper->map($data->digital_reward_code);
         }
@@ -49,8 +47,8 @@ class DigitalRewardReceptionMapper extends BaseMapper
             $contactIdentifier,
             $this->parseDate($data->created_at),
             $data->title,
-            $digitalReward,
-            $digitalRewardCode
+            $digitalReward ?? null,
+            $digitalRewardCode ?? null
         );
     }
 }
