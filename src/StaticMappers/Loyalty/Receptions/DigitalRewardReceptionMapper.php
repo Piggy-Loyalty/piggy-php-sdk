@@ -17,8 +17,16 @@ class DigitalRewardReceptionMapper extends BaseMapper
     {
         $contact = ContactMapper::map($data->contact);
         $shop = ShopMapper::map($data->shop);
-        $digitalReward = DigitalRewardMapper::map($data->digital_reward);
-        $digitalRewardCode = DigitalRewardCodeMapper::map($data->digital_reward_code);
+
+        $digitalReward = null;
+        if (isset($data->digital_reward)) {
+            $digitalReward = DigitalRewardMapper::map($data->digital_reward);
+        }
+
+        $digitalRewardCode = null;
+        if (isset($data->digital_reward_code)) {
+            $digitalRewardCode = DigitalRewardCodeMapper::map($data->digital_reward_code);
+        }
 
         $contactIdentifier = null;
         if (isset($data->contact_identifier)) {

@@ -52,16 +52,16 @@ class DigitalRewardReception extends BaseReception
     protected $title;
 
     /**
-     * @var DigitalReward
+     * @var DigitalReward|null
      */
     protected $digitalReward;
 
     /**
-     * @var DigitalRewardCode
+     * @var DigitalRewardCode|null
      */
     protected $digitalRewardCode;
 
-    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, string $title, DigitalReward $digitalReward, DigitalRewardCode $digitalRewardCode)
+    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, string $title, ?DigitalReward $digitalReward, ?DigitalRewardCode $digitalRewardCode)
     {
         $this->type = $type;
         $this->credits = $credits;
@@ -115,12 +115,12 @@ class DigitalRewardReception extends BaseReception
         return $this->title;
     }
 
-    public function getDigitalReward(): DigitalReward
+    public function getDigitalReward(): ?DigitalReward
     {
         return $this->digitalReward;
     }
 
-    public function getDigitalRewardCode(): DigitalRewardCode
+    public function getDigitalRewardCode(): ?DigitalRewardCode
     {
         return $this->digitalRewardCode;
     }
