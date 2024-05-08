@@ -30,5 +30,4 @@ jobs:
           composer update --prefer-dist --no-interaction --no-progress
 
       - name: "⚙️ Execute tests"
-        if: ${{ matrix.php >= 7.1 }}
-        run: vendor/bin/phpunit --verbose
+        run: vendor/bin/phpunit

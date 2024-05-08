@@ -4,7 +4,6 @@ on:
   push:
     paths:
       - "**.php"
-  pull_request:
 
 permissions:
   contents: write
@@ -19,20 +18,10 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
-      - name: "🐘 Setup PHP"
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.2'
-          extensions: dom, curl, libxml, mbstring, zip
-          coverage: xdebug
-
-      - name: "📦 Install Composer dependencies"
-        run: composer install --no-progress --prefer-dist --optimize-autoloader
-
       - name: "🎨 Format PHP style with Pint"
-        run: composer pint
+        uses: aglipanci/laravel-pint-action@2.4
 
       - name: "📝 Auto-commit: Format PHP style with Pint"
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Auto-commit: Format PHP style with Pint"
