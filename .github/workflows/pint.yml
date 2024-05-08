@@ -1,4 +1,4 @@
-name: "Run Laravel Pint"
+name: "🎨 Run Laravel Pint"
 
 on:
   push:
@@ -10,25 +10,14 @@ jobs:
 
     steps:
       - name: "📥 Checkout code"
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
 
-      - name: "🐘 Setup PHP"
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: 8.2
-          extensions: dom, curl, libxml, mbstring, zip
-          tools: composer:v2
+      - name: "🎨 Format PHP style with Pint"
+        uses: aglipanci/laravel-pint-action@2.4
 
-      - name: "📦 Install dependencies"
-        run: |
-          composer update --prefer-dist --no-interaction --no-progress
-
-      - name: "laravel-pint"
-        uses: aglipanci/laravel-pint-action@2.0.0
-
-      - name: Commit changes
+      - name: "📝 Auto-commit: Format PHP style with Pint"
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: Fix styling
+          commit_message: "Auto-commit: Format PHP style with Pint"
