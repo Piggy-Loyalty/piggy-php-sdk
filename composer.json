@@ -41,6 +41,7 @@
     "phpstan/phpstan": "^1.10"
   },
   "scripts": {
-    "test": "./vendor/bin/phpunit tests"
+    "test": "./vendor/bin/phpunit tests",
+    "pint": "vendor/bin/pint"
   }
 }
