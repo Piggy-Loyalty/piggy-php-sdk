@@ -29,6 +29,7 @@ class PhysicalRewardReceptionMapper extends BaseMapper
             $data->uuid,
             $contact,
             $shop,
+            $data->channel,
             $contactIdentifier,
             self::parseDate($data->created_at),
             $data->title,
