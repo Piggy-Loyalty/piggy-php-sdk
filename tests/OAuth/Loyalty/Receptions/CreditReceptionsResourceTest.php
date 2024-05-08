@@ -27,6 +27,7 @@ class CreditReceptionsResourceTest extends OAuthTestCase
                 'name' => 'shopName',
                 'uuid' => '123-312',
             ],
+            'channel' => 'BUSINESS_DASHBOARD',
             'created_at' => '2022-06-30T13:42:04+00:00',
             'unit_value' => 1011,
             'unit' => [
@@ -44,6 +45,7 @@ class CreditReceptionsResourceTest extends OAuthTestCase
         $this->assertEquals('123-123', $creditReception->getContact()->getUuid());
         $this->assertEquals('123-312', $creditReception->getShop()->getUuid());
         $this->assertEquals('shopName', $creditReception->getShop()->getName());
+        $this->assertEquals('channel', $creditReception->getChannel());
         $this->assertEquals('2022-06-30T13:42:04+00:00', $creditReception->getCreatedAt()->format('c'));
         $this->assertEquals(1011, $creditReception->getUnitValue());
         $this->assertEquals('bonkers', $creditReception->getUnit()->getName());
