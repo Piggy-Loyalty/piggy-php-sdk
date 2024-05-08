@@ -54,6 +54,7 @@ class CreditReceptionMapper extends BaseMapper
             $data->uuid,
             $contact ?? null,
             $shop ?? null,
+            $data->channel,
             $contactIdentifier ?? null,
             self::parseDate($data->created_at),
             $data->unit_value ?? null,

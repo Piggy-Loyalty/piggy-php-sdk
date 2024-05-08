@@ -44,6 +44,7 @@ class DigitalRewardReceptionMapper extends BaseMapper
             $data->uuid,
             $contact,
             $shop,
+            $data->channel,
             $contactIdentifier,
             $this->parseDate($data->created_at),
             $data->title,

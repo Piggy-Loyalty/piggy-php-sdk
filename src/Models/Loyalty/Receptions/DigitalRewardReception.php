@@ -37,6 +37,11 @@ class DigitalRewardReception extends BaseReception
     protected $shop;
 
     /**
+     * @var string
+     */
+    protected $channel;
+
+    /**
      * @var ContactIdentifier|null
      */
     protected $contactIdentifier;
@@ -61,13 +66,14 @@ class DigitalRewardReception extends BaseReception
      */
     protected $digitalRewardCode;
 
-    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, string $title, ?DigitalReward $digitalReward, ?DigitalRewardCode $digitalRewardCode)
+    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, string $channel, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, string $title, ?DigitalReward $digitalReward, ?DigitalRewardCode $digitalRewardCode)
     {
         $this->type = $type;
         $this->credits = $credits;
         $this->uuid = $uuid;
         $this->contact = $contact;
         $this->shop = $shop;
+        $this->channel = $channel;
         $this->contactIdentifier = $contactIdentifier;
         $this->createdAt = $createdAt;
         $this->title = $title;
@@ -98,6 +104,11 @@ class DigitalRewardReception extends BaseReception
     public function getShop(): Shop
     {
         return $this->shop;
+    }
+
+    public function getChannel(): string
+    {
+        return $this->channel;
     }
 
     public function getContactIdentifier(): ?ContactIdentifier

@@ -27,6 +27,7 @@ class RewardReceptionsResourceTest extends OAuthTestCase
                 'name' => 'shopName',
                 'uuid' => '123-312',
             ],
+            'channel' => 'BUSINESS_DASHBOARD',
             'created_at' => '2022-06-30T13:42:04+00:00',
             'title' => 'reward title',
             'reward' => [
@@ -72,6 +73,7 @@ class RewardReceptionsResourceTest extends OAuthTestCase
                 'name' => 'shopName',
                 'uuid' => '123-312',
             ],
+            'channel' => 'BUSINESS_DASHBOARD',
             'created_at' => '2022-06-30T13:42:04+00:00',
             'title' => 'digital reward title',
         ]);
@@ -109,6 +111,7 @@ class RewardReceptionsResourceTest extends OAuthTestCase
                 'name' => 'shopName',
                 'uuid' => '123-312',
             ],
+            'channel' => 'BUSINESS_DASHBOARD',
             'created_at' => '2022-06-30T13:42:04+00:00',
             'title' => 'digital reward title',
             'digital_reward' => [
@@ -128,6 +131,7 @@ class RewardReceptionsResourceTest extends OAuthTestCase
         $this->assertEquals('123-123', $rewardReception->getContact()->getUuid());
         $this->assertEquals('123-312', $rewardReception->getShop()->getUuid());
         $this->assertEquals('shopName', $rewardReception->getShop()->getName());
+        $this->assertEquals('BUSINESS_DASHBOARD', $rewardReception->getChannel());
         $this->assertEquals('2022-06-30T13:42:04+00:00', $rewardReception->getCreatedAt()->format('c'));
         $this->assertEquals('digital reward title', $rewardReception->getTitle());
         $this->assertEquals('DIGITAL', $rewardReception->getDigitalReward()->getRewardType());

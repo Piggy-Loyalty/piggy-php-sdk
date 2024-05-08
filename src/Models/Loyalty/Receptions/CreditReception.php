@@ -42,6 +42,11 @@ class CreditReception extends BaseReception
     private $shop;
 
     /**
+     * @var string
+     */
+    private $channel;
+
+    /**
      * @var ContactIdentifier|null
      */
     private $contactIdentifier;
@@ -68,13 +73,14 @@ class CreditReception extends BaseReception
     /**
      * @param  mixed[]  $attributes
      */
-    public function __construct(string $type, int $credits, string $uuid, ?Contact $contact, ?Shop $shop, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, ?float $unitValue = null, ?Unit $unit = null, array $attributes = [])
+    public function __construct(string $type, int $credits, string $uuid, ?Contact $contact, ?Shop $shop, string $channel, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, ?float $unitValue = null, ?Unit $unit = null, array $attributes = [])
     {
         $this->type = $type;
         $this->credits = $credits;
         $this->uuid = $uuid;
         $this->contact = $contact;
         $this->shop = $shop;
+        $this->channel = $channel;
         $this->contactIdentifier = $contactIdentifier;
         $this->createdAt = $createdAt;
         $this->unitValue = $unitValue;
@@ -105,6 +111,11 @@ class CreditReception extends BaseReception
     public function getShop(): ?Shop
     {
         return $this->shop;
+    }
+
+    public function getChannel(): string
+    {
+        return $this->channel;
     }
 
     public function getContactIdentifier(): ?ContactIdentifier
