@@ -37,16 +37,7 @@ class CreditReceptionMapper extends BaseMapper
         $attributes = [];
 
         foreach ($data as $propertyName => $value) {
-            if (in_array($propertyName, ['type', 'credits', 'uuid', 'contact', 'shop', 'contact_identifier', 'created_at', 'unit_value', 'unit'])) {
-                continue;
-            }
-            $attributes[$propertyName] = $value;
-        }
-
-        $attributes = [];
-
-        foreach ($data as $propertyName => $value) {
-            if (in_array($propertyName, ['type', 'credits', 'uuid', 'contact', 'shop', 'contact_identifier', 'created_at', 'unit_value', 'unit'])) {
+            if (in_array($propertyName, ['type', 'credits', 'uuid', 'contact', 'shop', 'contact_identifier', 'created_at', 'unit_value', 'unit', 'channel'])) {
                 continue;
             }
             $attributes[$propertyName] = $value;
@@ -58,6 +49,7 @@ class CreditReceptionMapper extends BaseMapper
             $data->uuid,
             $contact ?? null,
             $shop ?? null,
+            $data->channel,
             $contactIdentifier ?? null,
             $this->parseDate($data->created_at),
             $data->unit_value ?? null,

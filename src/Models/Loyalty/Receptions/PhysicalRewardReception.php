@@ -36,6 +36,11 @@ class PhysicalRewardReception extends BaseReception
     protected $shop;
 
     /**
+     * @var string
+     */
+    protected $channel;
+
+    /**
      * @var ContactIdentifier|null
      */
     protected $contactIdentifier;
@@ -65,13 +70,14 @@ class PhysicalRewardReception extends BaseReception
      */
     protected $hasBeenCollected;
 
-    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, string $title, Reward $reward, ?DateTime $expiresAt, bool $hasBeenCollected)
+    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, string $channel, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, string $title, Reward $reward, ?DateTime $expiresAt, bool $hasBeenCollected)
     {
         $this->type = $type;
         $this->credits = $credits;
         $this->uuid = $uuid;
         $this->contact = $contact;
         $this->shop = $shop;
+        $this->channel = $channel;
         $this->contactIdentifier = $contactIdentifier;
         $this->createdAt = $createdAt;
         $this->title = $title;
@@ -103,6 +109,11 @@ class PhysicalRewardReception extends BaseReception
     public function getShop(): Shop
     {
         return $this->shop;
+    }
+
+    public function getChannel(): string
+    {
+        return $this->channel;
     }
 
     public function getContactIdentifier(): ?ContactIdentifier

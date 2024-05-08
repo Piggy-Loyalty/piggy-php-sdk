@@ -9,8 +9,6 @@ class DigitalRewardCodeMapper
 {
     public function map(stdClass $data): DigitalRewardCode
     {
-        return new DigitalRewardCode(
-            $data->code
-        );
+        return new DigitalRewardCode($data->code);
     }
 }
