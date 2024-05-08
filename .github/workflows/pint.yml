@@ -9,26 +9,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: "Checkout code"
+      - name: "📥 Checkout code"
         uses: actions/checkout@v3
         with:
           ref: ${{ github.head_ref }}
 
-      - name: "Setup PHP"
+      - name: "🐘 Setup PHP"
         uses: shivammathur/setup-php@v2
         with:
           php-version: 8.2
           extensions: dom, curl, libxml, mbstring, zip
           tools: composer:v2
 
-      - name: "Install dependencies"
+      - name: "📦 Install dependencies"
         run: |
           composer update --prefer-dist --no-interaction --no-progress
 
-      - name: "Run Pint"
+      - name: Run Pint
         run: vendor/bin/pint
 
-      - name: "Commit changes"
+      - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Fix styling
