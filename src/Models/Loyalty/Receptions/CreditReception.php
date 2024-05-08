@@ -113,6 +113,11 @@ class CreditReception extends BaseReception
         return $this->shop;
     }
 
+    public function getChannel(): string
+    {
+        return $this->channel;
+    }
+
     public function getContactIdentifier(): ?ContactIdentifier
     {
         return $this->contactIdentifier;
