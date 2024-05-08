@@ -3,12 +3,6 @@
 namespace Piggy\Api\Models\WebhookSubscriptions;
 
 use DateTime;
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\StaticMappers\WebhookSubscriptions\WebhookSubscriptionMapper;
-use Piggy\Api\StaticMappers\WebhookSubscriptions\WebhookSubscriptionsMapper;
 
 class WebhookSubscription
 {
@@ -121,67 +115,5 @@ class WebhookSubscription
     public function getCreatedAt(): DateTime
     {
         return $this->created_at;
-    }
-
-    /**
-     * @param  mixed[]  $params
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function update(string $webhookUuid, array $params): WebhookSubscription
-    {
-        $response = ApiClient::put(self::resourceUri."/{$webhookUuid}", $params);
-
-        return WebhookSubscriptionMapper::map($response->getData());
-    }
-
-    /**
-     * @param  mixed[]  $params
-     * @return WebhookSubscription[]
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function list(array $params = []): array
-    {
-        $response = ApiClient::get(self::resourceUri, $params);
-
-        return WebhookSubscriptionsMapper::map((array) $response->getData());
-    }
-
-    /**
-     * @param  mixed[]  $body
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function create(array $body): WebhookSubscription
-    {
-        $response = ApiClient::post(self::resourceUri, $body);
-
-        return WebhookSubscriptionMapper::map($response->getData());
-    }
-
-    /**
-     * @param  mixed[]  $params
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function get(string $webhookUuid, array $params = []): WebhookSubscription
-    {
-        $response = ApiClient::get(self::resourceUri."/$webhookUuid", $params);
-
-        return WebhookSubscriptionMapper::map($response->getData());
-    }
-
-    /**
-     * @param  mixed[]  $params
-     * @return mixed[]
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function delete(string $webhookUuid, array $params = []): array
-    {
-        $response = ApiClient::delete(self::resourceUri."/$webhookUuid", $params);
-
-        return $response->getData();
     }
 }

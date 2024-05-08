@@ -2,12 +2,6 @@
 
 namespace Piggy\Api\Models\Brandkit;
 
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\StaticMappers\Brandkit\BrandkitMapper;
-
 class Brandkit
 {
     /**
@@ -154,15 +148,5 @@ class Brandkit
     public function getFontFamily(): ?string
     {
         return $this->font_family;
-    }
-
-    /**
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function get(): Brandkit
-    {
-        $response = ApiClient::get(self::resourceUri);
-
-        return BrandkitMapper::map($response->getData());
     }
 }

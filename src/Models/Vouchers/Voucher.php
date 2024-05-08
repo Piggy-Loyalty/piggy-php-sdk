@@ -3,15 +3,7 @@
 namespace Piggy\Api\Models\Vouchers;
 
 use DateTime;
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Models\Contacts\Contact;
-use Piggy\Api\StaticMappers\Vouchers\VoucherLockMapper;
-use Piggy\Api\StaticMappers\Vouchers\VoucherMapper;
-use Piggy\Api\StaticMappers\Vouchers\VouchersMapper;
-use stdClass;
 
 class Voucher
 {
@@ -172,104 +164,5 @@ class Voucher
     public function getAttributes(): array
     {
         return $this->attributes;
-    }
-
-    /**
-     * @param  mixed[]  $body
-     *
-     * @throws GuzzleException
-     * @throws MaintenanceModeException
-     * @throws PiggyRequestException
-     */
-    public static function create(array $body): Voucher
-    {
-        $response = ApiClient::post(self::resourceUri, $body);
-
-        return VoucherMapper::map($response->getData());
-    }
-
-    /**
-     * @param  mixed[]  $body
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function batch(array $body): stdClass
-    {
-        $response = ApiClient::post(self::resourceUri.'/batch', $body);
-
-        return $response->getData();
-    }
-
-    /**
-     * @param  mixed[]  $params
-     * @return Voucher[]
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function list(array $params = []): array
-    {
-        $response = ApiClient::get(self::resourceUri, $params);
-
-        return VouchersMapper::map((array) $response->getData());
-    }
-
-    /**
-     * @param  mixed[]  $params
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function find(array $params): Voucher
-    {
-        $response = ApiClient::get(self::resourceUri.'/find', $params);
-
-        return VoucherMapper::map($response->getData());
-    }
-
-    /**
-     * @param  mixed[]  $body
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function redeem(array $body): Voucher
-    {
-        $response = ApiClient::post(self::resourceUri.'/redeem', $body);
-
-        return VoucherMapper::map($response->getData());
-    }
-
-    /**
-     * @param  mixed[]  $body
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function lock(string $voucherUuid, array $body = []): VoucherLock
-    {
-        $response = ApiClient::post(self::resourceUri."/$voucherUuid/lock/", $body);
-
-        return VoucherLockMapper::map($response->getData());
-    }
-
-    /**
-     * @param  mixed[]  $body
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function release(string $voucherUuid, array $body): VoucherLock
-    {
-        $response = ApiClient::post(self::resourceUri."/$voucherUuid/release/", $body);
-
-        return VoucherLockMapper::map($response->getData());
-    }
-
-    /**
-     * @param  mixed[]  $body
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function update(string $voucherUuid, array $body): Voucher
-    {
-        $response = ApiClient::put(self::resourceUri."/$voucherUuid", $body);
-
-        return VoucherMapper::map($response->getData());
     }
 }

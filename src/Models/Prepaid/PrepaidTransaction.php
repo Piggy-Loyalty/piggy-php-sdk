@@ -3,11 +3,6 @@
 namespace Piggy\Api\Models\Prepaid;
 
 use DateTime;
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\StaticMappers\Prepaid\PrepaidTransactionMapper;
 
 class PrepaidTransaction
 {
@@ -62,17 +57,5 @@ class PrepaidTransaction
     public function getCreatedAt(): DateTime
     {
         return $this->createdAt;
-    }
-
-    /**
-     * @param  mixed[]  $body
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function create(array $body): PrepaidTransaction
-    {
-        $response = ApiClient::post(self::resourceUri, $body);
-
-        return PrepaidTransactionMapper::map($response->getData());
     }
 }

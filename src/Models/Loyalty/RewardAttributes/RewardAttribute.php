@@ -2,13 +2,6 @@
 
 namespace Piggy\Api\Models\Loyalty\RewardAttributes;
 
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\StaticMappers\Loyalty\RewardAttributes\RewardAttributeMapper;
-use Piggy\Api\StaticMappers\Loyalty\RewardAttributes\RewardAttributesMapper;
-
 class RewardAttribute
 {
     /** @var string */
@@ -185,30 +178,5 @@ class RewardAttribute
     public function setPlaceholder(?string $placeholder): void
     {
         $this->placeholder = $placeholder;
-    }
-
-    /**
-     * @param  mixed[]  $params
-     * @return RewardAttribute[]
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function list(array $params = []): array
-    {
-        $response = ApiClient::get(self::resourceUri, $params);
-
-        return RewardAttributesMapper::map((array) $response->getData());
-    }
-
-    /**
-     * @param  mixed[]  $body
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function create(array $body): RewardAttribute
-    {
-        $response = ApiClient::post(self::resourceUri, $body);
-
-        return RewardAttributeMapper::map($response->getData());
     }
 }

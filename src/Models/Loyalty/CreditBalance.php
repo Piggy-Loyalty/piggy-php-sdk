@@ -2,12 +2,6 @@
 
 namespace Piggy\Api\Models\Loyalty;
 
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\StaticMappers\Loyalty\CreditBalanceMapper;
-
 class CreditBalance
 {
     /**
@@ -28,17 +22,5 @@ class CreditBalance
     public function getBalance(): int
     {
         return $this->balance;
-    }
-
-    /**
-     * @param  mixed[]  $params
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function findBy(string $contactUuid, array $params = []): CreditBalance
-    {
-        $response = ApiClient::get(self::contactsResourceUri."/$contactUuid/credit-balance", $params);
-
-        return CreditBalanceMapper::map($response->getData());
     }
 }

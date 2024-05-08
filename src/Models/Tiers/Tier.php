@@ -2,13 +2,6 @@
 
 namespace Piggy\Api\Models\Tiers;
 
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\StaticMappers\Tiers\TierMapper;
-use Piggy\Api\StaticMappers\Tiers\TiersMapper;
-
 class Tier
 {
     /**
@@ -89,30 +82,5 @@ class Tier
     public function getPosition(): int
     {
         return $this->position;
-    }
-
-    /**
-     * @param  mixed[]  $params
-     * @return Tier[]
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function list(array $params = []): array
-    {
-        $response = ApiClient::get(self::resourceUri, $params);
-
-        return TiersMapper::map((array) $response->getData());
-    }
-
-    /**
-     * @param  mixed[]  $params
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function findBy(string $contactUuid, array $params = []): Tier
-    {
-        $response = ApiClient::get(self::contactsResourceUri."/$contactUuid/tier", $params);
-
-        return TierMapper::map($response->getData());
     }
 }

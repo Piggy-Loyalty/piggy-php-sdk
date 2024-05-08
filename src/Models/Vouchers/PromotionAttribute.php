@@ -2,13 +2,6 @@
 
 namespace Piggy\Api\Models\Vouchers;
 
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\StaticMappers\Vouchers\PromotionAttributeMapper;
-use Piggy\Api\StaticMappers\Vouchers\PromotionAttributesMapper;
-
 class PromotionAttribute
 {
     /**
@@ -108,56 +101,5 @@ class PromotionAttribute
     public function getOptions(): array
     {
         return $this->options;
-    }
-
-    /**
-     * @param  mixed[]  $params
-     * @return PromotionAttribute[]
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function list(array $params = []): array
-    {
-        $response = ApiClient::get(self::resourceUri, $params);
-
-        return PromotionAttributesMapper::map($response->getData());
-    }
-
-    /**
-     * @param  mixed[]  $params
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function get(string $promotionAttributeId, array $params = []): PromotionAttribute
-    {
-        $response = ApiClient::get(self::resourceUri."/$promotionAttributeId", $params);
-
-        return PromotionAttributeMapper::map($response->getData());
-    }
-
-    /**
-     * @param  mixed[]  $body
-     *
-     * @throws GuzzleException
-     * @throws MaintenanceModeException
-     * @throws PiggyRequestException
-     */
-    public static function create(array $body): PromotionAttribute
-    {
-        $response = ApiClient::post(self::resourceUri, $body);
-
-        return PromotionAttributeMapper::map($response->getData());
-    }
-
-    /**
-     * @param  mixed[]  $params
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function update(string $promotionAttributeId, array $params): PromotionAttribute
-    {
-        $response = ApiClient::put(self::resourceUri."/$promotionAttributeId", $params);
-
-        return PromotionAttributeMapper::map($response->getData());
     }
 }
