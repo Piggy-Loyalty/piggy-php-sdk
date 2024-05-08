@@ -26,7 +26,7 @@ class ContactSubscriptionsResource extends BaseResource
             'contact_uuid' => $contactUuid,
         ]);
 
-        $mapper = new SubscriptionsMapper();return $mapper->map($response->getData());
+        $mapper = new SubscriptionsMapper(); return $mapper->map($response->getData());
     }
 
     /**
