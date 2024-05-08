@@ -3,17 +3,10 @@
 namespace Piggy\Api\Models\Loyalty\Transactions;
 
 use DateTime;
-use Exception;
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\Models\Contacts\ContactIdentifier;
-use Piggy\Api\Models\Loyalty\Receptions\BaseReception;
 use Piggy\Api\Models\Loyalty\Rewards\Reward;
 use Piggy\Api\Models\Shops\Shop;
-use Piggy\Api\StaticMappers\Loyalty\LoyaltyTransactionMapper;
 
 class LoyaltyTransaction
 {
@@ -123,18 +116,5 @@ class LoyaltyTransaction
     public function getHasBeenCollected(): bool
     {
         return $this->hasBeenCollected;
-    }
-
-    /**
-     * @param  mixed[]  $params
-     * @return BaseReception[]
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException|Exception
-     */
-    public static function list(array $params = []): array
-    {
-        $response = ApiClient::get(self::resourceUri, $params);
-
-        return LoyaltyTransactionMapper::map($response->getData());
     }
 }

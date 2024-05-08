@@ -2,13 +2,6 @@
 
 namespace Piggy\Api\Models\Loyalty;
 
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\StaticMappers\Units\UnitMapper;
-use Piggy\Api\StaticMappers\Units\UnitsMapper;
-
 class Unit
 {
     /**
@@ -60,30 +53,5 @@ class Unit
     public function getPrefix(): ?string
     {
         return $this->prefix;
-    }
-
-    /**
-     * @param  mixed[]  $params
-     * @return Unit[]
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function list(array $params = []): array
-    {
-        $response = ApiClient::get(self::resourceUri, $params);
-
-        return UnitsMapper::map($response->getData());
-    }
-
-    /**
-     * @param  mixed[]  $body
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function create(array $body): Unit
-    {
-        $response = ApiClient::post(self::resourceUri, $body);
-
-        return UnitMapper::map($response->getData());
     }
 }

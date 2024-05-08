@@ -3,13 +3,7 @@
 namespace Piggy\Api\Models\Giftcards;
 
 use DateTime;
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Models\Shops\Shop;
-use Piggy\Api\StaticMappers\Giftcards\GiftcardTransactionMapper;
-use Piggy\Api\StaticMappers\Giftcards\GiftcardTransactionsMapper;
 use stdClass;
 
 class GiftcardTransaction
@@ -159,54 +153,5 @@ class GiftcardTransaction
     public function getCard(): ?stdClass
     {
         return $this->card;
-    }
-
-    /**
-     * @param  mixed[]  $params
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function get(string $giftcardTransactionUuid, array $params = []): GiftcardTransaction
-    {
-        $response = ApiClient::get(self::resourceUri."/$giftcardTransactionUuid", $params);
-
-        return GiftcardTransactionMapper::map($response->getData());
-    }
-
-    /**
-     * @param  mixed[]  $body
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function create(array $body): GiftcardTransaction
-    {
-        $response = ApiClient::post(self::resourceUri, $body);
-
-        return GiftcardTransactionMapper::map($response->getData());
-    }
-
-    /**
-     * @param  mixed[]  $body
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function correct(string $giftcardTransactionUuid, array $body = []): GiftcardTransaction
-    {
-        $response = ApiClient::post(self::resourceUri."/$giftcardTransactionUuid/correct", $body);
-
-        return GiftcardTransactionMapper::map($response->getData());
-    }
-
-    /**
-     * @param  mixed[]  $params
-     * @return GiftcardTransaction[]
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function list(array $params): array
-    {
-        $response = ApiClient::get(self::resourceUri, $params);
-
-        return GiftcardTransactionsMapper::map((array) $response->getData());
     }
 }
