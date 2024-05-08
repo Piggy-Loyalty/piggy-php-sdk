@@ -2,7 +2,12 @@ name: "🎨 Run Laravel Pint"
 
 on:
   push:
+    paths:
+      - '**.php'
   pull_request:
+
+permissions:
+  contents: write
 
 jobs:
   pint:
