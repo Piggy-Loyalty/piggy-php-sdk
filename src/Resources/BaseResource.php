@@ -7,6 +7,11 @@ use Piggy\Api\Http\BaseClient;
 abstract class BaseResource
 {
     /**
+     * @var string
+     */
+    protected $resourceUri;
+
+    /**
      * @var BaseClient
      */
     protected $client;
@@ -17,6 +22,5 @@ abstract class BaseResource
     public function __construct(BaseClient $client)
     {
         $this->client = $client;
-
     }
 }

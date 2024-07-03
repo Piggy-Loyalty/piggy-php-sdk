@@ -31,7 +31,7 @@ class SubscriptionType
     protected $active;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $strategy;
 
@@ -52,6 +52,11 @@ class SubscriptionType
     public function getUuid(): string
     {
         return $this->uuid;
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
     }
 
     public function getName(): string
@@ -84,12 +89,12 @@ class SubscriptionType
         $this->active = $active;
     }
 
-    public function getStrategy(): string
+    public function getStrategy(): ?string
     {
         return $this->strategy;
     }
 
-    public function setStrategy(string $strategy): void
+    public function setStrategy(?string $strategy): void
     {
         $this->strategy = $strategy;
     }
