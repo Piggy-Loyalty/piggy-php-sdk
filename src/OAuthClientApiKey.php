@@ -3,9 +3,12 @@
 namespace Piggy\Api;
 
 use Piggy\Api\Http\BaseClient;
+use Piggy\Api\Http\Traits\SetsOAuthResources;
 
 class OAuthClientApiKey extends BaseClient
 {
+    use SetsOAuthResources;
+
     /**
      * OAuthClient constructor.
      */
