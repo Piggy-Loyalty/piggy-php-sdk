@@ -31,7 +31,7 @@ class SubscriptionType
     protected $active;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $strategy;
 
@@ -84,12 +84,12 @@ class SubscriptionType
         $this->active = $active;
     }
 
-    public function getStrategy(): string
+    public function getStrategy(): ?string
     {
         return $this->strategy;
     }
 
-    public function setStrategy(string $strategy): void
+    public function setStrategy(?string $strategy): void
     {
         $this->strategy = $strategy;
     }

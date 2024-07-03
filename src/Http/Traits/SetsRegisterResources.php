@@ -3,8 +3,10 @@
 namespace Piggy\Api\Http\Traits;
 
 use Piggy\Api\Http\BaseClient;
+use Piggy\Api\Resources\Register\Loyalty\Tokens\LoyaltyTokensResource;
 use Piggy\Api\Resources\Register\ContactIdentifiersResource;
 use Piggy\Api\Resources\Register\Contacts\ContactsResource;
+use Piggy\Api\Resources\Register\ContactSubscriptionsResource;
 use Piggy\Api\Resources\Register\Giftcards\GiftcardsResource;
 use Piggy\Api\Resources\Register\Giftcards\GiftcardTransactionsResource;
 use Piggy\Api\Resources\Register\Loyalty\Program\LoyaltyProgramResource;
@@ -13,6 +15,7 @@ use Piggy\Api\Resources\Register\Loyalty\Receptions\RewardReceptionsResource;
 use Piggy\Api\Resources\Register\Loyalty\Rewards\RewardsResource;
 use Piggy\Api\Resources\Register\PrepaidTransactionResource;
 use Piggy\Api\Resources\Register\Registers\RegisterResource;
+use Piggy\Api\Resources\Register\SubscriptionTypesResource;
 
 /**
  * Trait SetsRegisterResources
@@ -40,9 +43,19 @@ trait SetsRegisterResources
     public $rewards;
 
     /**
+     * @var LoyaltyTokensResource
+     */
+    public $loyaltyToken;
+
+    /**
      * @var ContactIdentifiersResource
      */
     public $contactIdentifiers;
+
+    /**
+     * @var ContactSubscriptionsResource
+     */
+    public $contactSubscriptions;
 
     /**
      * @var GiftcardTransactionsResource
@@ -64,8 +77,15 @@ trait SetsRegisterResources
      */
     public $creditReceptions;
 
-    /** @var LoyaltyProgramResource */
+    /**
+     * @var LoyaltyProgramResource
+     */
     public $loyaltyProgram;
+
+    /**
+     * @var SubscriptionTypesResource
+     */
+    public $subscriptionTypes;
 
     protected function setResources(BaseClient $client): void
     {
@@ -73,11 +93,14 @@ trait SetsRegisterResources
         $this->contacts = new ContactsResource($client);
         $this->giftcards = new GiftcardsResource($client);
         $this->rewards = new RewardsResource($client);
+        $this->loyaltyToken = new LoyaltyTokensResource($client);
         $this->contactIdentifiers = new ContactIdentifiersResource($client);
+        $this->contactSubscriptions = new ContactSubscriptionsResource($client);
         $this->giftcardTransactions = new GiftcardTransactionsResource($client);
         $this->prepaidTransactions = new PrepaidTransactionResource($client);
         $this->rewardReceptions = new RewardReceptionsResource($client);
         $this->creditReceptions = new CreditReceptionsResource($client);
         $this->loyaltyProgram = new LoyaltyProgramResource($client);
+        $this->subscriptionTypes = new SubscriptionTypesResource($client);
     }
 }
