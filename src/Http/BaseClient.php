@@ -21,8 +21,6 @@ use function Piggy\Api\hasGuzzle5;
 
 abstract class BaseClient
 {
-    use OAuthResources;
-
     /**
      * @var ClientInterface
      */
@@ -225,4 +223,6 @@ abstract class BaseClient
 
         return $this->httpClient->request($method, $url, $options);
     }
+
+    abstract protected function setResources(BaseClient $client): void;
 }
