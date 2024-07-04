@@ -10,7 +10,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [ 7.2, 7.3, 7.4, 8.0, 8.1 ]
+        php: [ 8.2, 8.3 ]
     name: PHP - ${{ matrix.php }}
     steps:
       - name: "📥 Checkout code"
@@ -30,5 +30,4 @@ jobs:
           composer update --prefer-dist --no-interaction --no-progress
 
       - name: "⚙️ Execute tests"
-        if: ${{ matrix.php >= 7.1 }}
-        run: vendor/bin/phpunit --verbose
+        run: vendor/bin/phpunit

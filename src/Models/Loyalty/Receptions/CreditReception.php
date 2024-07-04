@@ -3,16 +3,10 @@
 namespace Piggy\Api\Models\Loyalty\Receptions;
 
 use DateTime;
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Models\Contacts\Contact;
 use Piggy\Api\Models\Contacts\ContactIdentifier;
 use Piggy\Api\Models\Loyalty\Unit;
 use Piggy\Api\Models\Shops\Shop;
-use Piggy\Api\StaticMappers\Loyalty\Receptions\CreditReceptionMapper;
-use stdClass;
 
 class CreditReception extends BaseReception
 {
@@ -144,29 +138,5 @@ class CreditReception extends BaseReception
     public function getAttributes(): array
     {
         return $this->attributes;
-    }
-
-    /**
-     * @param  mixed[]  $body
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function create(array $body): CreditReception
-    {
-        $response = ApiClient::post(self::resourceUri, $body);
-
-        return CreditReceptionMapper::map($response->getData());
-    }
-
-    /**
-     * @param  mixed[]  $params
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function calculate(array $params): stdClass
-    {
-        $response = ApiClient::get(self::resourceUri.'/calculate', $params);
-
-        return $response->getData();
     }
 }

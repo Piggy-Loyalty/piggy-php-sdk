@@ -2,12 +2,6 @@
 
 namespace Piggy\Api\Models\Forms;
 
-use GuzzleHttp\Exception\GuzzleException;
-use Piggy\Api\ApiClient;
-use Piggy\Api\Exceptions\MaintenanceModeException;
-use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\StaticMappers\Forms\FormsMapper;
-
 class Form
 {
     /**
@@ -69,18 +63,5 @@ class Form
     public function getUrl(): string
     {
         return $this->url;
-    }
-
-    /**
-     * @param  mixed[]  $params
-     * @return Form[]
-     *
-     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
-     */
-    public static function list(array $params = []): array
-    {
-        $response = ApiClient::get(self::resourceUri, $params);
-
-        return FormsMapper::map((array) $response->getData());
     }
 }
