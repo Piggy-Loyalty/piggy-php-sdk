@@ -1,13 +1,13 @@
 <?php
 
-namespace Piggy\Api\Resources\OAuth\Tiers;
+namespace Piggy\Api\Resources\OAuth\Perks;
 
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\Models\Tiers\Perk;
+use Piggy\Api\Models\Perks\Perk;
 use Piggy\Api\Models\Tiers\Tier;
 use Piggy\Api\Resources\BaseResource;
-use Piggy\Api\StaticMappers\Tiers\PerkMapper;
-use Piggy\Api\StaticMappers\Tiers\PerksMapper;
+use Piggy\Api\StaticMappers\Perks\PerkMapper;
+use Piggy\Api\StaticMappers\Perks\PerksMapper;
 
 class PerksResource extends BaseResource
 {
@@ -34,7 +34,7 @@ class PerksResource extends BaseResource
     /**
      * @throws PiggyRequestException
      */
-    public function create(string $label, string $name, string $dataType): array
+    public function create(string $label, string $name, string $dataType): Perk
     {
         $response = $this->client->post($this->resourceUri, [
             'label' => $label,
@@ -42,7 +42,9 @@ class PerksResource extends BaseResource
             'dataType' => $dataType,
         ]);
 
-        return $response->getData();
+        $mapper = new PerkMapper();
+
+        return $mapper->map($response->getData());
     }
 
     /**
@@ -62,13 +64,25 @@ class PerksResource extends BaseResource
     /**
      * @throws PiggyRequestException
      */
-    public function update(string $perkUuid, string $label, string $name, string $dataType): array
+    public function update(string $perkUuid, string $label): Perk
     {
         $response = $this->client->put("$this->resourceUri/$perkUuid", [
             'label' => $label,
-            'name' => $name,
-            'dataType' => $dataType,
         ]);
+
+        $mapper = new PerkMapper();
+
+        return $mapper->map($response->getData());
+    }
+
+    /**
+     * @param mixed[] $params
+     *
+     * @throws PiggyRequestException
+     */
+    public function d(string $perkUuid, array $params = []): array
+    {
+        $response = $this->client->destroy("$this->resourceUri/$perkUuid", $params);
 
         return $response->getData();
     }

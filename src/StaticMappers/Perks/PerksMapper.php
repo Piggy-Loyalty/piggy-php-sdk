@@ -1,6 +1,6 @@
 <?php
 
-namespace Piggy\Api\StaticMappers\Tiers;
+namespace Piggy\Api\StaticMappers\Perks;
 
 class PerksMapper
 {

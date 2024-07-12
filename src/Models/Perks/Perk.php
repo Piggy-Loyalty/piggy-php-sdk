@@ -1,13 +1,13 @@
 <?php
 
-namespace Piggy\Api\Models\Tiers;
+namespace Piggy\Api\Models\Perks;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
 use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\StaticMappers\Tiers\PerkMapper;
-use Piggy\Api\StaticMappers\Tiers\PerksMapper;
+use Piggy\Api\StaticMappers\Perks\PerkMapper;
+use Piggy\Api\StaticMappers\Perks\PerksMapper;
 
 class Perk
 {
@@ -86,11 +86,11 @@ class Perk
      *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function create(array $body): array
+    public static function create(array $body): Perk
     {
         $response = ApiClient::post(self::resourceUri, $body);
 
-        return $response->getData();
+        return PerkMapper::map($response->getData());
     }
 
     /**
@@ -110,11 +110,11 @@ class Perk
      *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function update(string $perkUuid, array $body): array
+    public static function update(string $perkUuid, array $body): Perk
     {
         $response = ApiClient::put(self::resourceUri."/$perkUuid", $body);
 
-        return $response->getData();
+        return PerkMapper::map($response->getData());
     }
 
     /**
