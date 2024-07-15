@@ -120,4 +120,29 @@ class ContactIdentifier
 
         return ContactIdentifierMapper::map($response->getData());
     }
+
+
+    /**
+     * @param array $params
+     * @return ContactIdentifier
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException|PiggyRequestException
+     */
+    public static function unlink(array $params): ContactIdentifier
+    {
+        $response = ApiClient::put(self::resourceUri . "/unlink", $params);
+
+        return ContactIdentifierMapper::map($response->getData());
+    }
+
+    /**
+     * @param array $params
+     * @return ContactIdentifier
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException|PiggyRequestException
+     */
+    public static function delete(array $params): ContactIdentifier
+    {
+        $response = ApiClient::delete(self::resourceUri, $params);
+
+        return ContactIdentifierMapper::map($response->getData());
+    }
 }
