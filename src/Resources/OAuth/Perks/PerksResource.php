@@ -6,8 +6,8 @@ use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Models\Perks\Perk;
 use Piggy\Api\Models\Tiers\Tier;
 use Piggy\Api\Resources\BaseResource;
-use Piggy\Api\StaticMappers\Perks\PerkMapper;
-use Piggy\Api\StaticMappers\Perks\PerksMapper;
+use Piggy\Api\Mappers\Perks\PerkMapper;
+use Piggy\Api\Mappers\Perks\PerksMapper;
 
 class PerksResource extends BaseResource
 {
@@ -18,7 +18,7 @@ class PerksResource extends BaseResource
 
     /**
      * @param  mixed[]  $params
-     * @return Tier[]
+     * @return Perk[]
      *
      * @throws PiggyRequestException
      */
