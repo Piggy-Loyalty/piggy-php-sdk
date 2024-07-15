@@ -33,8 +33,7 @@ abstract class BaseClient
     /**
      * @var string
      */
-//    private $baseUrl = "https://api.piggy.nl";
-    private $baseUrl = "https://api.piggyloyalty.nl";
+    private $baseUrl = "https://api.piggy.nl";
 
     /**
      * @var array
