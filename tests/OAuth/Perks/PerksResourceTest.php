@@ -32,8 +32,15 @@ class PerksResourceTest extends OAuthTestCase
         $perks = $this->mockedClient->perk->list();
 
         $this->assertEquals('first-uuid', $perks[0]->getUuid());
+        $this->assertEquals('Some perk', $perks[0]->getLabel());
+        $this->assertEquals('some_perk', $perks[0]->getName());
+        $this->assertEquals('single_select', $perks[0]->getDataType());
 
         $this->assertEquals('second-uuid', $perks[1]->getUuid());
+        $this->assertEquals('Some second perk', $perks[1]->getLabel());
+        $this->assertEquals('some_second_perk', $perks[1]->getName());
+        $this->assertEquals('boolean', $perks[1]->getDataType());
+
     }
 
     /**
@@ -65,5 +72,8 @@ class PerksResourceTest extends OAuthTestCase
         $perk = $this->mockedClient->perk->get('first-uuid');
 
         $this->assertEquals('some-uuid', $perk->getUuid());
+        $this->assertEquals('Some perk', $perk->getLabel());
+        $this->assertEquals('some_perk', $perk->getName());
+        $this->assertEquals('single_select', $perk->getDataType());
     }
 }
