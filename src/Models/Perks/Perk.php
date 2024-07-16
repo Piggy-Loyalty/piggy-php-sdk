@@ -33,7 +33,7 @@ class Perk
     protected $dataType;
 
     /**
-     * @var mixed[] array
+     * @var mixed[]
      */
     protected $options = [];
 
