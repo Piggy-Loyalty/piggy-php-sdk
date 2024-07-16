@@ -1,6 +1,6 @@
 <?php
 
-namespace Piggy\Api\Resources\OAuth\Perks;
+namespace Piggy\Api\Resources\Register\Perks;
 
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Models\Perks\Perk;
@@ -13,7 +13,7 @@ class PerksResource extends BaseResource
     /**
      * @var string
      */
-    protected $resourceUri = '/api/v3/oauth/clients/perks';
+    protected $resourceUri = '/api/v3/register/perks';
 
     /**
      * @param  mixed[]  $params
