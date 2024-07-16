@@ -85,7 +85,10 @@ class ContactIdentifiersResource extends BaseResource
         return $mapper->map($response->getData());
     }
 
-
+    /**
+     * @return null
+     * @throws PiggyRequestException
+     */
     public function delete(string $contactIdentifierValue)
     {
         $response = $this->client->destroy($this->resourceUri, [
