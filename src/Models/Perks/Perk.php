@@ -6,6 +6,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use Piggy\Api\ApiClient;
 use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\Http\Responses\Response;
 use Piggy\Api\StaticMappers\Perks\PerkMapper;
 use Piggy\Api\StaticMappers\Perks\PerksMapper;
 
@@ -134,10 +135,8 @@ class Perk
      *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function delete(string $perkUuid, array $params = []): array
+    public static function delete(string $perkUuid, array $params = []): Response
     {
-        $response = ApiClient::delete(self::resourceUri."/$perkUuid", $params);
-
-        return $response->getData();
+        return ApiClient::delete(self::resourceUri."/$perkUuid", $params);
     }
 }
