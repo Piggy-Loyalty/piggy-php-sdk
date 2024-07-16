@@ -13,7 +13,8 @@ class PerkMapper
             $data->uuid,
             $data->label,
             $data->name,
-            $data->data_type
+            $data->data_type,
+            $data->options ?? []
         );
     }
 }

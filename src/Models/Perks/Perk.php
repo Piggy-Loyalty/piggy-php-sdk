@@ -32,6 +32,11 @@ class Perk
     protected $dataType;
 
     /**
+     * @var array
+     */
+    protected $options = [];
+
+    /**
      * @var string
      */
     const resourceUri = '/api/v3/oauth/clients/perks';
@@ -40,12 +45,14 @@ class Perk
         string $uuid,
         string $label,
         string $name,
-        string $dataType
+        string $dataType,
+        array $options
     ) {
         $this->uuid = $uuid;
         $this->label = $label;
         $this->name = $name;
         $this->dataType = $dataType;
+        $this->options = $options;
     }
 
     public function getUuid(): ?string
@@ -66,6 +73,11 @@ class Perk
     public function getDataType(): string
     {
         return $this->dataType;
+    }
+
+    public function getOptions(): array
+    {
+        return $this->options;
     }
 
     /**

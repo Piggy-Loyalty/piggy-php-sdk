@@ -34,12 +34,13 @@ class PerksResource extends BaseResource
     /**
      * @throws PiggyRequestException
      */
-    public function create(string $label, string $name, string $dataType): Perk
+    public function create(string $label, string $name, string $dataType, array $options): Perk
     {
         $response = $this->client->post($this->resourceUri, [
             'label' => $label,
             'name' => $name,
             'dataType' => $dataType,
+            'options' => $options,
         ]);
 
         $mapper = new PerkMapper();
@@ -80,7 +81,7 @@ class PerksResource extends BaseResource
      *
      * @throws PiggyRequestException
      */
-    public function d(string $perkUuid, array $params = []): array
+    public function delete(string $perkUuid, array $params = []): array
     {
         $response = $this->client->destroy("$this->resourceUri/$perkUuid", $params);
 
