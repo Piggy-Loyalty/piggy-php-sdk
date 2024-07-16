@@ -31,6 +31,8 @@ class PerksResource extends BaseResource
     }
 
     /**
+     * @param mixed[] $options
+     *
      * @throws PiggyRequestException
      */
     public function create(string $label, string $name, string $dataType, array $options): Perk
@@ -77,10 +79,11 @@ class PerksResource extends BaseResource
 
     /**
      * @param mixed[] $params
+     * @return null
      *
      * @throws PiggyRequestException
      */
-    public function delete(string $perkUuid, array $params = []): array
+    public function delete(string $perkUuid, array $params = [])
     {
         $response = $this->client->destroy("$this->resourceUri/$perkUuid", $params);
 

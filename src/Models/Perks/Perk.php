@@ -33,7 +33,7 @@ class Perk
     protected $dataType;
 
     /**
-     * @var array
+     * @var mixed[] array
      */
     protected $options = [];
 
@@ -42,6 +42,9 @@ class Perk
      */
     const resourceUri = '/api/v3/oauth/clients/perks';
 
+    /**
+     * @param mixed[] $options
+     */
     public function __construct(
         string $uuid,
         string $label,
@@ -76,6 +79,9 @@ class Perk
         return $this->dataType;
     }
 
+    /**
+     * @return mixed[]
+     */
     public function getOptions(): array
     {
         return $this->options;
