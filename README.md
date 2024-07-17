@@ -1,4 +1,3 @@
-
 # Piggy PHP SDK #  
 With [Piggy's](https://www.piggy.eu/) all-in-one platform you can strengthen loyalty and automate every step. From reward programs, to branded giftcards and smart email marketing - Piggy takes care of it all.
 

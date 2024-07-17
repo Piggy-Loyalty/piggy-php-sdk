@@ -24,6 +24,7 @@ use Piggy\Api\Resources\OAuth\Loyalty\Rewards\CollectableRewardsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Rewards\RewardAttributesResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Rewards\RewardsResource;
 use Piggy\Api\Resources\OAuth\Loyalty\Tokens\LoyaltyTokensResource;
+use Piggy\Api\Resources\OAuth\Perks\PerksResource;
 use Piggy\Api\Resources\OAuth\PortalSessions\PortalSessionsResource;
 use Piggy\Api\Resources\OAuth\PrepaidTransactionsResource;
 use Piggy\Api\Resources\OAuth\Shops\ShopsResource;
@@ -162,6 +163,11 @@ trait SetsOAuthResources
     public $tier;
 
     /**
+     * @var PerksResource
+     */
+    public $perk;
+
+    /**
      * @var PortalSessionsResource
      */
     public $portalSessions;
@@ -218,6 +224,7 @@ trait SetsOAuthResources
         $this->voucher = new VouchersResource($client);
         $this->brandkit = new BrandkitResource($client);
         $this->tier = new TiersResource($client);
+        $this->perk = new PerksResource($client);
         $this->portalSessions = new PortalSessionsResource($client);
         $this->forms = new FormsResource($client);
         $this->loyaltyTransactionAttributes = new LoyaltyTransactionAttributesResource($client);
