@@ -59,7 +59,7 @@ class Perk
         $this->options = $options;
     }
 
-    public function getUuid(): ?string
+    public function getUuid(): string
     {
         return $this->uuid;
     }
@@ -69,7 +69,7 @@ class Perk
         return $this->name;
     }
 
-    public function getLabel(): ?string
+    public function getLabel(): string
     {
         return $this->label;
     }
