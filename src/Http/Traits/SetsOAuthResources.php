@@ -11,6 +11,7 @@ use Piggy\Api\Resources\OAuth\Contacts\ContactsResource;
 use Piggy\Api\Resources\OAuth\Contacts\ContactVerificationResource;
 use Piggy\Api\Resources\OAuth\ContactsPortal\ContactsPortalAuthUrlResource;
 use Piggy\Api\Resources\OAuth\ContactSubscriptionsResource;
+use Piggy\Api\Resources\OAuth\CustomAttributeResource;
 use Piggy\Api\Resources\OAuth\Forms\FormsResource;
 use Piggy\Api\Resources\OAuth\Giftcards\GiftcardsResource;
 use Piggy\Api\Resources\OAuth\Giftcards\GiftcardTransactionsResource;
@@ -197,6 +198,11 @@ trait SetsOAuthResources
      */
     public $collectableRewards;
 
+    /**
+     * @var CustomAttributeResource
+     */
+    public $customAttributes;
+
     protected function setResources(BaseClient $client): void
     {
         $this->contacts = new ContactsResource($client);
@@ -231,5 +237,6 @@ trait SetsOAuthResources
         $this->webhookSubscriptions = new WebhookSubscriptionsResource($client);
         $this->contactsPortalAuthUrl = new ContactsPortalAuthUrlResource($client);
         $this->collectableRewards = new CollectableRewardsResource($client);
+        $this->customAttributes = new CustomAttributeResource($client);
     }
 }

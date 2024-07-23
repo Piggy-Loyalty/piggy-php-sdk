@@ -16,6 +16,8 @@ use Piggy\Api\Resources\Register\Loyalty\Rewards\RewardsResource;
 use Piggy\Api\Resources\Register\PrepaidTransactionResource;
 use Piggy\Api\Resources\Register\Registers\RegisterResource;
 use Piggy\Api\Resources\Register\SubscriptionTypesResource;
+use Piggy\Api\Resources\Register\Vouchers\PromotionsResource;
+use Piggy\Api\Resources\Register\Vouchers\VouchersResource;
 
 /**
  * Trait SetsRegisterResources
@@ -87,6 +89,16 @@ trait SetsRegisterResources
      */
     public $subscriptionTypes;
 
+    /**
+     * @var VouchersResource
+     */
+    public $voucher;
+
+    /**
+     * @var PromotionsResource
+     */
+    public $promotion;
+
     protected function setResources(BaseClient $client): void
     {
         $this->registers = new RegisterResource($client);
@@ -102,5 +114,7 @@ trait SetsRegisterResources
         $this->creditReceptions = new CreditReceptionsResource($client);
         $this->loyaltyProgram = new LoyaltyProgramResource($client);
         $this->subscriptionTypes = new SubscriptionTypesResource($client);
+        $this->voucher = new VouchersResource($client);
+        $this->promotion = new PromotionsResource($client);
     }
 }

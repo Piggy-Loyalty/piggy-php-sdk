@@ -1,13 +1,13 @@
 <?php
 
-namespace Piggy\Api\StaticMappers\CustomAttributes;
+namespace Piggy\Api\Mappers\CustomAttributes;
 
 use Piggy\Api\Models\CustomAttributes\Group;
 use stdClass;
 
 class GroupMapper
 {
-    public static function map(stdClass $data): Group
+    public function map(stdClass $data): Group
     {
         return new Group(
             $data->name,

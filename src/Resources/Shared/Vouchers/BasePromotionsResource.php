@@ -1,20 +1,15 @@
 <?php
 
-namespace Piggy\Api\Resources\OAuth\Vouchers;
+namespace Piggy\Api\Resources\Shared\Vouchers;
 
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Vouchers\PromotionMapper;
 use Piggy\Api\Mappers\Vouchers\PromotionsMapper;
 use Piggy\Api\Models\Vouchers\Promotion;
-use Piggy\Api\Resources\Shared\Vouchers\BasePromotionsResource;
+use Piggy\Api\Resources\BaseResource;
 
-class PromotionsResource extends BasePromotionsResource
+abstract class BasePromotionsResource extends BaseResource
 {
-    /**
-     * @var string
-     */
-    protected $resourceUri = '/api/v3/oauth/clients/promotions';
-
     /**
      * @return Promotion[]
      *

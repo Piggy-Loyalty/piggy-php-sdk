@@ -5,36 +5,25 @@ namespace Piggy\Api\Models\CustomAttributes;
 class Group
 {
     /**
-     * @var int
-     */
-    protected $id;
-
-    /**
      * @var string
      */
     protected $name;
+
+    /**
+     * @var ?string
+     */
+    protected $label;
 
     /**
      * @var int
      */
     protected $position;
 
-    /**
-     * @var string|null
-     */
-    protected $createdByUser;
-
-    public function __construct(int $id, string $name, int $position, ?string $createdByUser)
+    public function __construct(string $name, int $position, ?string $label = null)
     {
-        $this->id = $id;
         $this->name = $name;
         $this->position = $position;
-        $this->createdByUser = $createdByUser;
-    }
-
-    public function getId(): int
-    {
-        return $this->id;
+        $this->label = $label;
     }
 
     public function getName(): string
@@ -42,13 +31,13 @@ class Group
         return $this->name;
     }
 
+    public function getLabel(): ?string
+    {
+        return $this->label;
+    }
+
     public function getPosition(): int
     {
         return $this->position;
-    }
-
-    public function getCreatedByUser(): ?string
-    {
-        return $this->createdByUser;
     }
 }
