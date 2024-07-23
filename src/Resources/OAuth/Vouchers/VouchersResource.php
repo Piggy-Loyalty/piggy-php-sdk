@@ -2,6 +2,7 @@
 
 namespace Piggy\Api\Resources\OAuth\Vouchers;
 
+use DateTime;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Vouchers\VoucherLockMapper;
 use Piggy\Api\Mappers\Vouchers\VoucherMapper;
@@ -15,6 +16,22 @@ class VouchersResource extends BaseVouchersResource
      * @var string
      */
     protected $resourceUri = '/api/v3/oauth/clients/vouchers';
+
+    /**
+     * @throws PiggyRequestException
+     */
+    public function batch(string $promotionUuid, string $quantity, ?string $contactUuid = null, ?DateTime $activationDate = null, ?DateTime $expirationDate = null): string
+    {
+        $this->client->post($this->resourceUri, [
+            'promotion_uuid' => $promotionUuid,
+            'quantity' => $quantity,
+            'contact_uuid' => $contactUuid,
+            'activation_date' => $activationDate,
+            'expiration_date' => $expirationDate,
+        ]);
+
+        return 'Voucher generation successfully started in background.';
+    }
 
     /**
      * @throws PiggyRequestException

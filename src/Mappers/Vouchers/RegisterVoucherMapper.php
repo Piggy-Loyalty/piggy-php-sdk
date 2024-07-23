@@ -11,36 +11,6 @@ class RegisterVoucherMapper extends BaseMapper
 {
     public function map(stdClass $data): Voucher
     {
-        /**
-         * 'uuid' => $this->getUuid(),
-         * 'code' => $this->getCode(),
-         * 'status' => $this->getStatus(),
-         * 'name' => $this->getName(),
-         * 'description' => $this->getDescription(),
-         * 'expiration_date' => $this->getExpirationDate()?->format('c'),
-         * 'redeemed_at' => $this->getRedeemedAt()?->format('c'),
-         * 'is_redeemed' => $this->isRedeemed(),
-         * 'attributes' => $this->getCustomAttributeValues(),
-         * 'contact' => $this->getContact() ? [
-         * 'uuid' => $this->getContact()->getUuid(),
-         * 'email' => $this->getContact()->getEmail(),
-         * ] : null,
-         * 'promotion' => array_merge([
-         * 'uuid' => $promotion->getUuid(),
-         * 'name' => $promotion->getName(),
-         * 'description' => $promotion->getDescription(),
-         * 'image' => $promotion->getImage(Conversion::extraSmall()),
-         * 'voucher_limit' => $promotion->getVoucherLimit(),
-         * 'limit_per_contact' => $promotion->getLimitPerContact(),
-         * 'expiration_duration' => $promotion->getExpirationDuration(),
-         * ], $promotion->getCustomAttributeValues()),
-         */
-
-
-
-
-
-
         if (isset($data->promotion)) {
             $promotionMapper = new PromotionMapper();
             $promotion = $promotionMapper->map($data->promotion);
