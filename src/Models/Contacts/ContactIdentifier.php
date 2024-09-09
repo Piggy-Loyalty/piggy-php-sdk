@@ -100,7 +100,7 @@ class ContactIdentifier
     }
 
     /**
-     * @param array $params
+     * @param array<string, string> $params
      * @return ContactIdentifier
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException|PiggyRequestException
      */
@@ -113,7 +113,7 @@ class ContactIdentifier
     }
 
     /**
-     * @param array $params
+     * @param array<string, string> $params
      * @return ContactIdentifier
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException|PiggyRequestException
      */

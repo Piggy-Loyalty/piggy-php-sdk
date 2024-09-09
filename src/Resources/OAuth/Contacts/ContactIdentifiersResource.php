@@ -63,6 +63,11 @@ class ContactIdentifiersResource extends BaseResource
         return $mapper->map($response->getData());
     }
 
+    /**
+     * @param string $contactIdentifierValue
+     * @return ContactIdentifier
+     * @throws PiggyRequestException
+     */
     public function unlink(string $contactIdentifierValue): ContactIdentifier
     {
         $response = $this->client->put("$this->resourceUri/unlink", [
@@ -75,7 +80,8 @@ class ContactIdentifiersResource extends BaseResource
     }
 
     /**
-     * @return null
+     * @param string $contactIdentifierValue
+     * @return mixed|mixed[]|\stdClass
      * @throws PiggyRequestException
      */
     public function delete(string $contactIdentifierValue)
