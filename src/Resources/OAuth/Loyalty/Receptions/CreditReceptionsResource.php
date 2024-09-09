@@ -3,7 +3,9 @@
 namespace Piggy\Api\Resources\OAuth\Loyalty\Receptions;
 
 use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\Mappers\Giftcards\GiftcardTransactionMapper;
 use Piggy\Api\Mappers\Loyalty\Receptions\CreditReceptionMapper;
+use Piggy\Api\Models\Giftcards\GiftcardTransaction;
 use Piggy\Api\Models\Loyalty\Receptions\CreditReception;
 use Piggy\Api\Resources\BaseResource;
 
@@ -81,5 +83,33 @@ class CreditReceptionsResource extends BaseResource
         $response = $this->client->get($this->resourceUri . "/calculate", $data);
 
         return (int)$response->getData()->credits;
+    }
+
+    /**
+     * @param string $giftcardTransactionUuid
+     * @return GiftcardTransaction
+     * @throws PiggyRequestException
+     */
+    public function correct(string $giftcardTransactionUuid): GiftcardTransaction
+    {
+        $response = $this->client->post("$this->resourceUri/$giftcardTransactionUuid/correct", []);
+
+        $mapper = new GiftcardTransactionMapper();
+
+        return $mapper->map($response->getData());
+    }
+
+    /**
+     * @param string $creditReceptionUuid
+     * @return CreditReception
+     * @throws PiggyRequestException
+     */
+    public function reverse(string $creditReceptionUuid): CreditReception
+    {
+        $response = $this->client->post("$this->resourceUri/$creditReceptionUuid/reverse", []);
+
+        $mapper = new CreditReceptionMapper();
+
+        return $mapper->map($response->getData());
     }
 }

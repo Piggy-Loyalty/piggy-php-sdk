@@ -73,7 +73,19 @@ class CreditReceptionsResource extends BaseResource
         $mapper = new CreditReceptionMapper();
 
         return $mapper->map($response->getData());
-
     }
 
+    /**
+     * @param string $creditReceptionUuid
+     * @return CreditReception
+     * @throws PiggyRequestException
+     */
+    public function reverse(string $creditReceptionUuid): CreditReception
+    {
+        $response = $this->client->get("$this->resourceUri/$creditReceptionUuid/reverse");
+
+        $mapper = new CreditReceptionMapper();
+
+        return $mapper->map($response->getData());
+    }
 }

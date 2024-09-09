@@ -155,4 +155,5 @@ class VouchersResource extends BaseResource
 
         return $mapper->map($response->getData());
     }
+
 }

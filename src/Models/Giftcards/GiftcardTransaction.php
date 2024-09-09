@@ -249,4 +249,18 @@ class GiftcardTransaction
 
         return GiftcardTransactionsMapper::map((array)$response->getData());
     }
+
+    /**
+     * @param string $giftcardTransactionUuid
+     * @return GiftcardTransaction
+     * @throws GuzzleException
+     * @throws MaintenanceModeException
+     * @throws PiggyRequestException
+     */
+    public static function reverse(string $giftcardTransactionUuid): GiftcardTransaction
+    {
+        $response = ApiClient::post(self::resourceUri . "/$giftcardTransactionUuid/reverse", []);
+
+        return GiftcardTransactionMapper::map($response->getData());
+    }
 }
