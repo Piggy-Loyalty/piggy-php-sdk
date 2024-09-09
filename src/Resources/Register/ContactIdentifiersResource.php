@@ -38,7 +38,20 @@ class ContactIdentifiersResource extends BaseResource
         $mapper = new ContactIdentifierMapper();
 
         return $mapper->map($response->getData());
+    }
 
+    /**
+     * @throws PiggyRequestException
+     */
+    public function unlink(string $contactIdentifierValue): ContactIdentifier
+    {
+        $response = $this->client->put("$this->resourceUri/unlink", [
+            "contact_identifier_value" => $contactIdentifierValue,
+        ]);
+
+        $mapper = new ContactIdentifierMapper();
+
+        return $mapper->map($response->getData());
     }
 
     /**
@@ -50,6 +63,20 @@ class ContactIdentifiersResource extends BaseResource
             'contact_uuid' => $contactUuid,
             'contact_identifier_value' => $contactIdentifierValue,
             'contact_identifier_name' => $contactIdentifierName,
+        ]);
+
+        $mapper = new ContactIdentifierMapper();
+
+        return $mapper->map($response->getData());
+    }
+
+    /**
+     * @throws PiggyRequestException
+     */
+    public function delete(string $contactIdentifierValue): ContactIdentifier
+    {
+        $response = $this->client->destroy($this->resourceUri, [
+            "contact_identifier_value" => $contactIdentifierValue,
         ]);
 
         $mapper = new ContactIdentifierMapper();

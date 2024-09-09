@@ -169,4 +169,18 @@ class CreditReception extends BaseReception
 
         return $response->getData();
     }
+
+    /**
+     * @param string $creditReceptionUuid
+     * @return CreditReception
+     * @throws GuzzleException
+     * @throws MaintenanceModeException
+     * @throws PiggyRequestException
+     */
+    public static function reverse(string $creditReceptionUuid): CreditReception
+    {
+        $response = ApiClient::post(self::resourceUri . "/$creditReceptionUuid/reverse", []);
+
+        return CreditReceptionMapper::map($response->getData());
+    }
 }

@@ -120,4 +120,39 @@ class ContactIdentifiersResourceTest extends OAuthTestCase
         $this->assertEquals(true, $contactIdentifier->isActive());
         $this->assertEquals('mijn-uuid', $contactIdentifier->getContact()->getUuid());
     }
+
+    /**
+     * @test
+     * @throws PiggyRequestException
+     */
+    public function it_unlinks_an_contact_identifier()
+    {
+        $this->addExpectedResponse([
+            "value" => "hash123",
+            "name" => 'Piggy',
+            "active" => true,
+            "contact" => null
+        ]);
+
+        $contactIdentifier = $this->mockedClient->contactIdentifiers->unlink("hash123");
+
+        $this->assertEquals("Piggy", $contactIdentifier->getName());
+        $this->assertEquals("hash123", $contactIdentifier->getValue());
+        $this->assertTrue($contactIdentifier->isActive());
+        $this->assertEquals(null, $contactIdentifier->getContact());
+    }
+
+
+    /**
+     * @test
+     * @throws PiggyRequestException
+     */
+    public function it_deletes_an_contact_identifier()
+    {
+        $this->addExpectedResponse(null);
+
+        $contactIdentifier = $this->mockedClient->contactIdentifiers->delete("hash123");
+
+        $this->assertEquals(null, $contactIdentifier);
+    }
 }

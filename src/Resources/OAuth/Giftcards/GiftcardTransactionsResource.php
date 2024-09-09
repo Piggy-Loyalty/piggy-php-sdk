@@ -74,4 +74,18 @@ class GiftcardTransactionsResource extends BaseResource
 
         return $mapper->map((array) $response->getData());
     }
+
+    /**
+     * @param string $giftcardTransactionUuid
+     * @return GiftcardTransaction
+     * @throws PiggyRequestException
+     */
+    public function reverse(string $giftcardTransactionUuid): GiftcardTransaction
+    {
+        $response = $this->client->post("$this->resourceUri/$giftcardTransactionUuid/reverse", []);
+
+        $mapper = new GiftcardTransactionMapper();
+
+        return $mapper->map($response->getData());
+    }
 }
