@@ -16,11 +16,17 @@ class PhysicalRewardReceptionMapper extends BaseMapper
     {
         $contact = ContactMapper::map($data->contact);
         $shop = ShopMapper::map($data->shop);
-        $physicalReward = PhysicalRewardMapper::map($data->reward);
 
-        $contactIdentifier = null;
+        if (isset($data->reward)) {
+            $physicalReward = PhysicalRewardMapper::map($data->reward);
+        } else {
+            $physicalReward = null;
+        }
+
         if (isset($data->contact_identifier)) {
             $contactIdentifier = ContactIdentifierMapper::map($data->contact_identifier);
+        } else {
+            $contactIdentifier = null;
         }
 
         return new PhysicalRewardReception(
