@@ -61,7 +61,7 @@ class PhysicalRewardReception extends BaseReception
     protected $expiresAt;
 
     /**
-     * @var Reward
+     * @var Reward|null
      */
     protected $reward;
 
@@ -131,7 +131,7 @@ class PhysicalRewardReception extends BaseReception
         return $this->title;
     }
 
-    public function getReward(): Reward
+    public function getReward(): ?Reward
     {
         return $this->reward;
     }
