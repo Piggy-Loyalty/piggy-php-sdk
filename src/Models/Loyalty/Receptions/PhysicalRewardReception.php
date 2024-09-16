@@ -61,7 +61,7 @@ class PhysicalRewardReception extends BaseReception
     protected $expiresAt;
 
     /**
-     * @var Reward
+     * @var Reward|null
      */
     protected $reward;
 
@@ -70,7 +70,7 @@ class PhysicalRewardReception extends BaseReception
      */
     protected $hasBeenCollected;
 
-    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, string $channel, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, string $title, Reward $reward, ?DateTime $expiresAt, bool $hasBeenCollected)
+    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, string $channel, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, string $title, ?Reward $reward, ?DateTime $expiresAt, bool $hasBeenCollected)
     {
         $this->type = $type;
         $this->credits = $credits;
@@ -131,7 +131,7 @@ class PhysicalRewardReception extends BaseReception
         return $this->title;
     }
 
-    public function getReward(): Reward
+    public function getReward(): ?Reward
     {
         return $this->reward;
     }
