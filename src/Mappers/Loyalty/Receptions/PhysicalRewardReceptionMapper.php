@@ -21,7 +21,12 @@ class PhysicalRewardReceptionMapper extends BaseMapper
 
         $contact = $contactMapper->map($data->contact);
         $shop = $shopMapper->map($data->shop);
-        $physicalReward = $physicalRewardMapper->map($data->reward);
+
+        if (isset($data->reward)) {
+            $physicalReward = $physicalRewardMapper->map($data->reward);
+        } else {
+            $physicalReward = null;
+        }
 
         if (isset($data->contact_identifier)) {
             $contactIdentifier = $contactIdentifierMapper->map($data->contact_identifier);

@@ -70,7 +70,7 @@ class PhysicalRewardReception extends BaseReception
      */
     protected $hasBeenCollected;
 
-    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, string $channel, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, string $title, Reward $reward, ?DateTime $expiresAt, bool $hasBeenCollected)
+    public function __construct(string $type, int $credits, string $uuid, Contact $contact, Shop $shop, string $channel, ?ContactIdentifier $contactIdentifier, DateTime $createdAt, string $title, ?Reward $reward, ?DateTime $expiresAt, bool $hasBeenCollected)
     {
         $this->type = $type;
         $this->credits = $credits;
