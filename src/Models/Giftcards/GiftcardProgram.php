@@ -45,7 +45,7 @@ class GiftcardProgram
     /**
      * GiftcardProgram constructor.
      */
-    public function __construct(string $uuid, string $name, bool $active,, ?int $max_amount_in_cents, ?string $calculator_flow, ?int $expiration_days)
+    public function __construct(string $uuid, string $name, bool $active, ?int $max_amount_in_cents, ?string $calculator_flow, ?int $expiration_days)
     {
         $this->uuid = $uuid;
         $this->name = $name;
