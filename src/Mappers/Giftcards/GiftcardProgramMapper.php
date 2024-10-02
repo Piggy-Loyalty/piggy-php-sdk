@@ -15,7 +15,7 @@ class GiftcardProgramMapper
             $data->active ?? true,
             $data->max_amount_in_cents ?? null,
             $data->calculator_flow ?? null,
-            $data->expiration_days ?? null,
+            $data->expiration_days ?? null
         );
     }
 }
