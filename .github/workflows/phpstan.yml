@@ -7,6 +7,7 @@ on:
       - 'phpstan.neon'
       - 'phpstan-baseline.neon'
       - '.github/workflows/phpstan.yml'
+  pull_request:
 
 jobs:
   phpstan:
@@ -14,10 +15,11 @@ jobs:
     timeout-minutes: 5
 
     steps:
-      - name: "📥 Checkout"
-        uses: actions/checkout@v3
+      - name: "📥 Checkout code"
+        uses: actions/checkout@v4
         with:
-          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: "🐘 Setup PHP"
         uses: shivammathur/setup-php@v2
