@@ -25,16 +25,34 @@ class GiftcardProgram
      */
     protected $active;
 
+    /**
+     * @var ?int
+     */
+    protected $max_amount_in_cents;
+
+    /**
+     * @var ?string
+     */
+    protected $calculator_flow;
+
+    /**
+     * @var ?int
+     */
+    protected $expiration_days;
+
     const resourceUri = '/api/v3/oauth/clients/giftcard-programs';
 
     /**
      * GiftcardProgram constructor.
      */
-    public function __construct(string $uuid, string $name, bool $active)
+    public function __construct(string $uuid, string $name, bool $active, ?int $max_amount_in_cents, ?string $calculator_flow, ?int $expiration_days)
     {
         $this->uuid = $uuid;
         $this->name = $name;
         $this->active = $active;
+        $this->max_amount_in_cents = $max_amount_in_cents;
+        $this->calculator_flow = $calculator_flow;
+        $this->expiration_days = $expiration_days;
     }
 
     public function getUuid(): string
@@ -50,6 +68,21 @@ class GiftcardProgram
     public function isActive(): bool
     {
         return $this->active;
+    }
+
+    public function getMaxAmountInCents(): ?int
+    {
+        return $this->max_amount_in_cents;
+    }
+
+    public function getCalculatorFlow(): ?string
+    {
+        return $this->calculator_flow;
+    }
+
+    public function getExpirationDays(): ?int
+    {
+        return $this->expiration_days;
     }
 
     /**
