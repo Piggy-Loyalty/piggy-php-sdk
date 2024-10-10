@@ -110,6 +110,11 @@ class ApiClient
         self::$baseUrl = $baseUrl;
     }
 
+    public static function setPartnerId(string $partnerId): void
+    {
+        self::addHeader('X-Partner-ID', $partnerId);
+    }
+
     public static function addHeader(string $key, string $value): void
     {
         self::$headers[$key] = $value;

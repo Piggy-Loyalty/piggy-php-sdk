@@ -134,6 +134,11 @@ abstract class BaseClient
         $this->baseUrl = $baseUrl;
     }
 
+    public function setPartnerId(string $partnerId): void
+    {
+        $this->addHeader('X-Partner-ID', $partnerId);
+    }
+
     public function addHeader(string $key, string $value): void
     {
         $this->headers[$key] = $value;
