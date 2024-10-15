@@ -36,11 +36,30 @@ class CustomAttributeResource extends BaseResource
      */
     public function create(string $entity, string $name, string $label, string $type, ?array $options = null, ?string $description = null, ?string $groupName = null): CustomAttribute
     {
-        $response = $this->client->post("$this->resourceUri", [
+        $response = $this->client->post($this->resourceUri, [
             'entity' => $entity,
             'name' => $name,
             'label' => $label,
             'type' => $type,
+            'options' => $options,
+            'description' => $description,
+            'group_name' => $groupName,
+        ]);
+
+        $mapper = new CustomAttributeMapper();
+
+        return $mapper->map($response->getData());
+    }
+
+    /**
+     * @param  mixed[]  $options
+     * @throws PiggyRequestException
+     */
+    public function update(int $name, ?string $entity, ?string $label, ?array $options = null, ?string $description = null, ?string $groupName = null): CustomAttribute
+    {
+        $response = $this->client->put("$this->resourceUri/$name", [
+            'entity' => $entity,
+            'label' => $label,
             'options' => $options,
             'description' => $description,
             'group_name' => $groupName,

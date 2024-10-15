@@ -286,4 +286,16 @@ class CustomAttribute
 
         return CustomAttributeMapper::map($response->getData());
     }
+
+    /**
+     * @param  mixed[]  $body
+     *
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
+     */
+    public static function update(array $body): CustomAttribute
+    {
+        $response = ApiClient::put(self::resourceUri, $body);
+
+        return CustomAttributeMapper::map($response->getData());
+    }
 }
