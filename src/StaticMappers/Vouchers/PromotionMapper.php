@@ -8,6 +8,12 @@ class PromotionMapper
 {
     public static function map($data): Promotion
     {
+        if (is_array($data->attributes)) {
+            $attributes = $data->attributes;
+        } else {
+            $attributes = get_object_vars($data->attributes);
+        }
+
         return new Promotion(
             $data->uuid,
             $data->name,
@@ -15,7 +21,7 @@ class PromotionMapper
             $data->voucher_limit ?? null,
             $data->limit_per_contact ?? null,
             $data->expiration_duration ?? null,
-            isset($data->attributes) ? get_object_vars($data->attributes) : []
+            isset($data->attributes) ? $attributes : []
         );
     }
 }
