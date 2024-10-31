@@ -27,6 +27,8 @@ class VoucherResourceTest extends OAuthTestCase
                     'uuid' => '89da4cc4-1d51-4041-b829-6225fcdef11d',
                     'name' => 'Gratis Pizza',
                     'description' => 'Lekker gratis pizza',
+                    'type' => 'SINGLE_USE',
+                    'redemptions_per_voucher' => 1,
                 ],
             ]
         );
@@ -81,6 +83,8 @@ class VoucherResourceTest extends OAuthTestCase
                         'uuid' => '89da4cc4-1d51-4041-b829-6225fcdef11d',
                         'name' => 'Gratis Pizza',
                         'description' => 'Lekker gratis pizza',
+                        'type' => 'SINGLE_USE',
+                        'redemptions_per_voucher' => 1,
                     ],
                 ],
                 [
@@ -97,6 +101,8 @@ class VoucherResourceTest extends OAuthTestCase
                         'uuid' => '89da4cc4-1d51-4041-b829-6225fcdef11d',
                         'name' => 'Gratis Pizza',
                         'description' => 'Lekker gratis pizza',
+                        'type' => 'SINGLE_USE',
+                        'redemptions_per_voucher' => 1,
                     ],
                 ],
             ]
@@ -145,6 +151,8 @@ class VoucherResourceTest extends OAuthTestCase
                     'uuid' => '89da4cc4-1d51-4041-b829-6225fcdef11d',
                     'name' => 'Gratis Pizza',
                     'description' => 'Lekker gratis pizza',
+                    'type' => 'SINGLE_USE',
+                    'redemptions_per_voucher' => 1,
                 ],
             ]
         );
@@ -182,6 +190,8 @@ class VoucherResourceTest extends OAuthTestCase
                     'uuid' => '89da4cc4-1d51-4041-b829-6225fcdef11d',
                     'name' => 'Gratis Pizza',
                     'description' => 'Lekker gratis pizza',
+                    'type' => 'SINGLE_USE',
+                    'redemptions_per_voucher' => 1,
                 ],
                 'contact' => [
                     'uuid' => '123',
@@ -224,6 +234,8 @@ class VoucherResourceTest extends OAuthTestCase
                     'uuid' => '89da4cc4-1d51-4041-b829-6225fcdef11d',
                     'name' => 'Gratis Pizza',
                     'description' => 'Lekker gratis pizza',
+                    'type' => 'SINGLE_USE',
+                    'redemptions_per_voucher' => 1,
                 ],
                 'contact' => [
                     'uuid' => '123',
@@ -266,6 +278,8 @@ class VoucherResourceTest extends OAuthTestCase
                     'uuid' => '89da4cc4-1d51-4041-b829-6225fcdef11d',
                     'name' => 'Gratis Pizza',
                     'description' => 'Lekker gratis pizza',
+                    'type' => 'SINGLE_USE',
+                    'redemptions_per_voucher' => 1,
                 ],
                 'contact' => [
                     'uuid' => '456',

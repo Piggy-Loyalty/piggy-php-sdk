@@ -27,12 +27,16 @@ abstract class BasePromotionsResource extends BaseResource
         return $mapper->map((array) $response->getData());
     }
 
-    public function create(string $uuid, string $name, string $description): Promotion
+    public function create(string $name, string $description, ?string $type = null, ?int $redemptionsPerVoucher = null, ?int $voucherLimit = null, ?int $limitPerContact = null, ?int $expirationDuration = null): Promotion
     {
         $response = $this->client->post($this->resourceUri, [
-            'uuid' => $uuid,
             'name' => $name,
             'description' => $description,
+            'type' => $type,
+            'redemptions_per_voucher' => $redemptionsPerVoucher,
+            'voucher_limit' => $voucherLimit,
+            'limit_per_contact' => $limitPerContact,
+            'expiration_duration' => $expirationDuration
         ]);
 
         $mapper = new PromotionMapper();
