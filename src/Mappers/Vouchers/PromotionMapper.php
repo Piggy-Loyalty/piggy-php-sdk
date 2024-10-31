@@ -20,7 +20,9 @@ class PromotionMapper
             $data->voucher_limit ?? null,
             $data->limit_per_contact ?? null,
             $data->expiration_duration ?? null,
-            $attributes ?? []
+            $attributes ?? [],
+            $data->type,
+            $data->redemptions_per_voucher,
         );
     }
 }

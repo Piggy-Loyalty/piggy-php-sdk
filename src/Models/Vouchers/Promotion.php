@@ -27,6 +27,16 @@ class Promotion
     protected $description;
 
     /**
+     * @var string|null
+     */
+    protected $type;
+
+    /**
+     * @var int|null
+     */
+    protected $redemptions_per_voucher;
+
+    /**
      * @var int|null
      */
     protected $voucher_limit;
@@ -61,7 +71,9 @@ class Promotion
         ?int $voucher_limit = null,
         ?int $limit_per_contact = null,
         ?int $expiration_duration = null,
-        array $attributes = []
+        array $attributes = [],
+        ?string $type = null,
+        ?int $redemptions_per_voucher = null,
     ) {
         $this->uuid = $uuid;
         $this->name = $name;
@@ -70,6 +82,8 @@ class Promotion
         $this->limit_per_contact = $limit_per_contact;
         $this->expiration_duration = $expiration_duration;
         $this->attributes = $attributes;
+        $this->type = $type;
+        $this->redemptions_per_voucher = $redemptions_per_voucher;
     }
 
     public function getName(): string
@@ -80,6 +94,16 @@ class Promotion
     public function getDescription(): string
     {
         return $this->description;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function getRedemptionsPerVoucher(): ?int
+    {
+        return $this->redemptions_per_voucher;
     }
 
     public function getVoucherLimit(): ?int
