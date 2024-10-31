@@ -22,7 +22,7 @@ class PromotionMapper
             $data->expiration_duration ?? null,
             $attributes ?? [],
             $data->type,
-            $data->redemptions_per_voucher,
+            $data->redemptions_per_voucher
         );
     }
 }
