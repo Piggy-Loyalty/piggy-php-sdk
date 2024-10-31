@@ -73,7 +73,7 @@ class Promotion
         ?int $expiration_duration = null,
         array $attributes = [],
         ?string $type = null,
-        ?int $redemptions_per_voucher = null,
+        ?int $redemptions_per_voucher = null
     ) {
         $this->uuid = $uuid;
         $this->name = $name;

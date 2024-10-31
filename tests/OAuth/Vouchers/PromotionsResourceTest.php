@@ -17,7 +17,7 @@ class PromotionsResourceTest extends OAuthTestCase
             'name' => 'Free Pizza',
             'description' => 'Get your free pizza slice!',
             'type' => 'SINGLE_USE',
-            'redemptions_per_voucher' => 1,
+            'redemptions_per_voucher' => 1
         ]);
 
         $promotion = $this->mockedClient->promotion->create('Free Pizza', 'Get your free pizza slice!', 'SINGLE_USE', 1);

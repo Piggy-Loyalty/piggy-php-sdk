@@ -36,7 +36,7 @@ abstract class BasePromotionsResource extends BaseResource
             'redemptions_per_voucher' => $redemptionsPerVoucher,
             'voucher_limit' => $voucherLimit,
             'limit_per_contact' => $limitPerContact,
-            'expiration_duration' => $expirationDuration,
+            'expiration_duration' => $expirationDuration
         ]);
 
         $mapper = new PromotionMapper();
