@@ -55,7 +55,7 @@ class CustomAttributeResource extends BaseResource
      * @param  mixed[]  $options
      * @throws PiggyRequestException
      */
-    public function update(int $name, ?string $entity, ?string $label, ?array $options = null, ?string $description = null, ?string $groupName = null): CustomAttribute
+    public function update(string $name, ?string $entity, ?string $label, ?array $options = null, ?string $description = null, ?string $groupName = null): CustomAttribute
     {
         $response = $this->client->put("$this->resourceUri/$name", [
             'entity' => $entity,

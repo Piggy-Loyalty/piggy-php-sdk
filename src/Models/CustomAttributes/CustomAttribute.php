@@ -292,9 +292,9 @@ class CustomAttribute
      *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function update(array $body): CustomAttribute
+    public static function update(string $attributeName, array $body): CustomAttribute
     {
-        $response = ApiClient::put(self::resourceUri, $body);
+        $response = ApiClient::put(self::resourceUri."/$attributeName", $body);
 
         return CustomAttributeMapper::map($response->getData());
     }
