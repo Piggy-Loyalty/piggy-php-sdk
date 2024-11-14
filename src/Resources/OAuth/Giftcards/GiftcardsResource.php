@@ -17,6 +17,18 @@ class GiftcardsResource extends BaseResource
     /**
      * @throws PiggyRequestException
      */
+    public function get(string $giftcardUuid): Giftcard
+    {  
+        $response = $this->client->get("$this->resourceUri/$giftcardUuid");
+
+        $mapper = new GiftcardMapper();
+
+        return $mapper->map($response->getData());
+    }
+
+    /**
+     * @throws PiggyRequestException
+     */
     public function findOneBy(string $hash): Giftcard
     {
         $response = $this->client->get("$this->resourceUri/find-one-by", [
