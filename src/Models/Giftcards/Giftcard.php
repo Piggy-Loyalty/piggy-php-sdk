@@ -124,6 +124,18 @@ class Giftcard
      *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
+    public static function get(string $giftcardUuid, array $params = []): Giftcard
+    {
+        $response = ApiClient::get(self::resourceUri."/$giftcardUuid", $params);
+
+        return GiftcardMapper::map($response->getData());
+    }
+
+    /**
+     * @param  mixed[]  $params
+     *
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
+     */
     public static function findOneBy(array $params): Giftcard
     {
         $response = ApiClient::get(self::resourceUri.'/find-one-by', $params);
