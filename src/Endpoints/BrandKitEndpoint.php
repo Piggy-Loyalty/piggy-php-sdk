@@ -3,7 +3,7 @@
 namespace Piggy\Api\Endpoints;
 
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\Mappers\BrandKitMapper;
+use Piggy\Api\Mappers\BrandKit\BrandKitMapper;
 use Piggy\Api\Models\BrandKit;
 
 class BrandKitEndpoint extends BaseEndpoint
@@ -11,9 +11,11 @@ class BrandKitEndpoint extends BaseEndpoint
     protected string $resourceUri = 'brand-kit';
 
     /**
+     * @param mixed[] $params
+     *
      * @throws PiggyRequestException
      */
-    public function get(): BrandKit
+    public function get(array $params = []): BrandKit
     {
         $response = $this->client->get($this->resourceUri);
 

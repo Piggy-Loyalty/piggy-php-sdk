@@ -1,7 +1,8 @@
 <?php
 
-namespace Piggy\Api\Mappers;
+namespace Piggy\Api\Mappers\BrandKit;
 
+use Piggy\Api\Mappers\BaseMapper;
 use Piggy\Api\Models\BrandKit;
 use stdClass;
 

@@ -6,7 +6,10 @@ use stdClass;
 
 class Response
 {
-    protected stdClass $data;
+    /**
+     * @var stdClass|array<mixed, mixed>|string
+     */
+    protected stdClass|array|string $data;
 
     /**
      * @var stdClass|array<mixed, mixed>
@@ -16,15 +19,19 @@ class Response
     /**
      * Response constructor.
      *
+     * @param  stdClass|array<mixed, mixed>|string  $data
      * @param  stdClass|array<mixed, mixed>  $meta
      */
-    public function __construct(stdClass $data, stdClass|array $meta)
+    public function __construct(stdClass|array|string $data, stdClass|array $meta)
     {
         $this->data = $data;
         $this->meta = $meta;
     }
 
-    public function getData(): stdClass
+    /**
+     * @return stdClass|array<mixed, mixed>|string
+     */
+    public function getData(): array|stdClass|string
     {
         return $this->data;
     }
