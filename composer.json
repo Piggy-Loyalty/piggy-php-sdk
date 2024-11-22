@@ -15,6 +15,10 @@
     {
       "name": "Stefan Leenen",
       "email": "stefan@piggy.nl"
+    },
+    {
+      "name": "Diego Relyveld",
+      "email": "diego@piggy.nl"
     }
   ],
   "autoload": {
@@ -31,10 +35,9 @@
     }
   },
   "require": {
-    "php": "^8.2",
+    "php": "^8.3",
     "ext-json": "*",
-    "guzzlehttp/guzzle": "^7.8",
-    "marc-mabe/php-enum": "^4.7"
+    "guzzlehttp/guzzle": "^7.8"
   },
   "require-dev": {
     "phpunit/phpunit": "^10.5|^11.0",
