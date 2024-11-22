@@ -1,6 +1,6 @@
 <?php
 
-namespace Piggy\Api\Http\Traits;
+namespace Piggy\Api\Http;
 
 use Piggy\Api\Endpoints\BrandKitEndpoint;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Piggy\Api\Http\Responses;
+namespace Piggy\Api\Http;
 
 use stdClass;
 
