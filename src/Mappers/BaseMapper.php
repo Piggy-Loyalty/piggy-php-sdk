@@ -8,8 +8,12 @@ use InvalidArgumentException;
 
 abstract class BaseMapper
 {
-    public function parseDate(string $date): DateTime
+    public function parseDate(?string $date): ?DateTime
     {
+        if (! $date) {
+            return null;
+        }
+
         $dateTime = DateTime::createFromFormat(DateTimeInterface::ATOM, $date);
 
         if ($dateTime === false) {

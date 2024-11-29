@@ -31,8 +31,12 @@ class ExceptionMapper
         return $exception;
     }
 
-    private function isPiggyException(stdClass $body): bool
+    private function isPiggyException(?stdClass $body): bool
     {
+        if (! $body) {
+            return false;
+        }
+
         $statusCode = property_exists($body, 'status_code');
         $code = property_exists($body, 'code');
         $message = property_exists($body, 'message');
