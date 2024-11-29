@@ -39,6 +39,8 @@ class PiggyClient
     {
         $this->setPersonalAccessToken($personalAccessToken);
 
+        // TODO: Move setLeatPartner and setLeatAccount to here? Since they're required?
+
         $this->httpClient = $client;
 
         $this->initializeEndpoints();

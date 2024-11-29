@@ -2,11 +2,11 @@
 
 namespace Piggy\Api\Mappers\BrandKit;
 
-use Piggy\Api\Mappers\BaseMapper;
+use Piggy\Api\Mappers\BaseModelMapper;
 use Piggy\Api\Models\BrandKit;
 use stdClass;
 
-class BrandKitMapper extends BaseMapper
+class BrandKitMapper extends BaseModelMapper
 {
     public function map(stdClass $data): BrandKit
     {

@@ -2,7 +2,7 @@
 
 namespace Piggy\Api\Models;
 
-class BrandKit
+class BrandKit extends BaseModel
 {
     protected ?string $small_logo_url;
 

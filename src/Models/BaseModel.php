@@ -2,7 +2,7 @@
 
 namespace Piggy\Api\Models;
 
-class BaseModel
+abstract class BaseModel
 {
    //
 }

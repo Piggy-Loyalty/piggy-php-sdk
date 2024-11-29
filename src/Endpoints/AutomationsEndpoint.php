@@ -20,7 +20,7 @@ class AutomationsEndpoint extends BaseEndpoint
     {
         $response = $this->client->get($this->resourceUri, $params);
 
-        $mapper = new AutomationCollectionMapper();
+        $mapper = new AutomationCollectionMapper;
 
         return $mapper->map($response->getData());
     }

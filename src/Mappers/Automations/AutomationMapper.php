@@ -5,10 +5,11 @@ namespace Piggy\Api\Mappers\Automations;
 use Piggy\Api\Enums\AutomationEventType;
 use Piggy\Api\Enums\AutomationStatus;
 use Piggy\Api\Mappers\BaseMapper;
+use Piggy\Api\Mappers\BaseModelMapper;
 use Piggy\Api\Models\Automation;
 use stdClass;
 
-class AutomationMapper extends BaseMapper
+class AutomationMapper extends BaseModelMapper
 {
     public function map(stdClass $data): Automation
     {
