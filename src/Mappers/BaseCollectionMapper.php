@@ -10,7 +10,7 @@ use stdClass;
 abstract class BaseCollectionMapper extends BaseMapper
 {
     /**
-     * @param  stdClass|array<mixed, mixed>  $data
+     * @param  stdClass[]  $data
      * @return BaseModel[]
      */
     abstract function map(array $data): array;

@@ -6,6 +6,7 @@ use Piggy\Api\Endpoints\AutomationsEndpoint;
 use Piggy\Api\Endpoints\BookingsEndpoint;
 use Piggy\Api\Endpoints\BrandKitEndpoint;
 use Piggy\Api\Endpoints\FormsEndpoint;
+use Piggy\Api\Endpoints\ReferralsEndpoint;
 use Piggy\Api\Endpoints\TiersEndpoint;
 use Piggy\Api\Endpoints\UnitsEndpoint;
 
@@ -17,6 +18,7 @@ trait InitializesEndpoints
     public BookingsEndpoint $bookings;
     public FormsEndpoint $forms;
     public TiersEndpoint $tiers;
+    public ReferralsEndpoint $referrals;
 
     protected function initializeEndpoints(): void
     {
@@ -26,5 +28,6 @@ trait InitializesEndpoints
         $this->bookings = new BookingsEndpoint($this);
         $this->forms = new FormsEndpoint($this);
         $this->tiers = new TiersEndpoint($this);
+        $this->referrals = new ReferralsEndpoint($this);
     }
 }

@@ -1,20 +1,20 @@
 <?php
 
-namespace Piggy\Api\Mappers\Perks;
+namespace Piggy\Api\Mappers\Referrals;
 
 use Piggy\Api\Mappers\BaseCollectionMapper;
-use Piggy\Api\Models\Perk\PerkOption;
+use Piggy\Api\Models\Referral\Referral;
 use stdClass;
 
-class PerkOptionCollectionMapper extends BaseCollectionMapper
+class ReferralCollectionMapper extends BaseCollectionMapper
 {
     /**
      * @param  stdClass[]  $data
-     * @return PerkOption[]
+     * @return Referral[]
      */
     public function map(array $data): array
     {
-        $mapper = new PerkOptionMapper;
+        $mapper = new ReferralMapper;
 
         $models = [];
         foreach ($data as $item) {
