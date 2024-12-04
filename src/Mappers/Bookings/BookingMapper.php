@@ -1,6 +1,7 @@
 <?php
 
 namespace Piggy\Api\Mappers\Bookings;
+
 use Piggy\Api\Mappers\BaseModelMapper;
 use Piggy\Api\Models\Booking\Booking;
 use Piggy\Api\Models\Booking\Contact;

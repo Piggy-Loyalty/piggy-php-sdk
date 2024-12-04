@@ -22,13 +22,12 @@ class BookingsEndpoint extends BaseEndpoint
         DateTime $endsAt,
         DateTime $checkedInAt,
         string $externalId,
-        int    $numberOfPeople,
+        int $numberOfPeople,
         string $companyName,
         string $status,
-        int    $prepaidAmount,
+        int $prepaidAmount,
         string $source
-    ): Booking
-    {
+    ): Booking {
         $response = $this->client->post($this->resourceUri, [
             'contact_uuid' => $contactUuid,
             'business_profile_uuid' => $businessProfileUuid,
