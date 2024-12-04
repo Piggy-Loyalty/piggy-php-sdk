@@ -13,9 +13,9 @@ class TierMapper extends BaseModelMapper
     public function map(stdClass $data): Tier
     {
         return new Tier(
-            uuid: $data->uuid ?? null,
+            uuid: $data->uuid,
             name: $data->name,
-            description: $data->description ?? null,
+            description: $data->description,
             position: $data->position,
             media: $data->media ? (new MediaMapper)->map($data->media) : null,
             perks: (new PerkOptionCollectionMapper)->map($data->perks)

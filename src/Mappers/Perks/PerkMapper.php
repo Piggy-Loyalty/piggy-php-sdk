@@ -11,7 +11,7 @@ class PerkMapper extends BaseModelMapper
     public function map(stdClass $data): Perk
     {
         return new Perk(
-            $data->uuid ?? null,
+            $data->uuid,
             $data->label,
             $data->name
         );

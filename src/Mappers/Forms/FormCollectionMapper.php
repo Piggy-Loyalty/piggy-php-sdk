@@ -14,13 +14,9 @@ class FormCollectionMapper extends BaseCollectionMapper
      */
     public function map(array $data): array
     {
-        $mapper = new FormMapper;
-
-        $models = [];
-        foreach ($data as $item) {
-            $models[] = $mapper->map($item);
-        }
-
-        return $models;
+        return $this->mapDataToModels(
+            data: $data,
+            mapper: FormMapper::class
+        );
     }
 }

@@ -14,13 +14,9 @@ class AutomationCollectionMapper extends BaseCollectionMapper
      */
     public function map(array $data): array
     {
-        $mapper = new AutomationMapper;
-
-        $models = [];
-        foreach ($data as $item) {
-            $models[] = $mapper->map($item);
-        }
-
-        return $models;
+        return $this->mapDataToModels(
+            data: $data,
+            mapper: AutomationMapper::class
+        );
     }
 }

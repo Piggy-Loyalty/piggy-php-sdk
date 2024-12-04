@@ -13,7 +13,7 @@ class AutomationMapper extends BaseModelMapper
     public function map(stdClass $data): Automation
     {
         return new Automation(
-            $data->uuid ?? null,
+            $data->uuid,
             $data->name,
             AutomationStatus::from($data->status),
             AutomationEventType::from($data->event),
