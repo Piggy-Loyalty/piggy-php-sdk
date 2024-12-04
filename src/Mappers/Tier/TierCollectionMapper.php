@@ -14,13 +14,9 @@ class TierCollectionMapper extends BaseCollectionMapper
      */
     public function map(array $data): array
     {
-        $mapper = new TierMapper;
-
-        $models = [];
-        foreach ($data as $item) {
-            $models[] = $mapper->map($item);
-        }
-
-        return $models;
+        return $this->mapDataToModels(
+            data: $data,
+            mapper: TierMapper::class
+        );
     }
 }
