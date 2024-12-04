@@ -2,7 +2,9 @@
 
 namespace Piggy\Api\Models\Booking;
 
-class Contact
+use Piggy\Api\Models\BaseModel;
+
+readonly class Contact extends BaseModel
 {
     protected string $uuid;
 

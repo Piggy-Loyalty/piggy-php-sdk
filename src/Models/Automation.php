@@ -2,38 +2,21 @@
 
 namespace Piggy\Api\Models;
 
-use DateTime;
+use DateTimeImmutable;
 use Piggy\Api\Enums\AutomationEventType;
 use Piggy\Api\Enums\AutomationStatus;
 
-class Automation extends BaseModel
+readonly class Automation extends BaseModel
 {
-    protected ?string $uuid;
-
-    protected string $name;
-
-    protected AutomationStatus $status;
-
-    protected AutomationEventType $event;
-
-    protected DateTime $createdAt;
-
-    protected DateTime $updatedAt;
-
     public function __construct(
-        ?string $uuid,
-        string $name,
-        AutomationStatus $status,
-        AutomationEventType $event,
-        DateTime $createdAt,
-        DateTime $updatedAt
+        public ?string $uuid,
+        public string $name,
+        public AutomationStatus $status,
+        public AutomationEventType $event,
+        public DateTimeImmutable $createdAt,
+        public DateTimeImmutable $updatedAt
     ) {
-        $this->uuid = $uuid;
-        $this->name = $name;
-        $this->status = $status;
-        $this->event = $event;
-        $this->createdAt = $createdAt;
-        $this->updatedAt = $updatedAt;
+        //
     }
 
     public function getUuid(): ?string
@@ -56,12 +39,12 @@ class Automation extends BaseModel
         return $this->event;
     }
 
-    public function getCreatedAt(): DateTime
+    public function getCreatedAt(): DateTimeImmutable
     {
         return $this->createdAt;
     }
 
-    public function getUpdatedAt(): DateTime
+    public function getUpdatedAt(): DateTimeImmutable
     {
         return $this->updatedAt;
     }

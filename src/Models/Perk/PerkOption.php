@@ -2,26 +2,17 @@
 
 namespace Piggy\Api\Models\Perk;
 
-use Piggy\Api\Mappers\Perks\PerkMapper;
-use stdClass;
+use Piggy\Api\Models\BaseModel;
 
-class PerkOption
+readonly class PerkOption extends BaseModel
 {
-    protected string $label;
-    protected string $value;
-    protected bool $default;
-    protected Perk $perk;
-
     public function __construct(
-        string $label,
-        string $value,
-        bool $default,
-        stdClass $perk
+        public string $label,
+        public string $value,
+        public bool $default,
+        public Perk $perk
     ) {
-        $this->label = $label;
-        $this->value = $value;
-        $this->default = $default;
-        $this->perk = (new PerkMapper)->map($perk);
+        //
     }
 
     public function getLabel(): string

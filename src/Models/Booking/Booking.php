@@ -2,17 +2,18 @@
 
 namespace Piggy\Api\Models\Booking;
 
-use DateTime;
+use DateTimeImmutable;
+use Piggy\Api\Models\BaseModel;
 
-class Booking
+readonly class Booking extends BaseModel
 {
     protected Contact $contact;
 
-    protected ?DateTime $startsAt;
+    protected ?DateTimeImmutable $startsAt;
 
-    protected ?DateTime $endsAt;
+    protected ?DateTimeImmutable $endsAt;
 
-    protected ?DateTime $checkedInAt;
+    protected ?DateTimeImmutable $checkedInAt;
 
     protected ?string $externalId;
 
@@ -26,9 +27,9 @@ class Booking
 
     public function __construct(
         Contact $contact,
-        ?DateTime $startsAt,
-        ?DateTime $endsAt,
-        ?DateTime $checkedInAt,
+        ?DateTimeImmutable $startsAt,
+        ?DateTimeImmutable $endsAt,
+        ?DateTimeImmutable $checkedInAt,
         ?string $externalId,
         ?string $source,
         ?int $numberOfPeople,
@@ -51,17 +52,17 @@ class Booking
         return $this->contact;
     }
 
-    public function getStartsAt(): ?DateTime
+    public function getStartsAt(): ?DateTimeImmutable
     {
         return $this->startsAt;
     }
 
-    public function getEndsAt(): ?DateTime
+    public function getEndsAt(): ?DateTimeImmutable
     {
         return $this->endsAt;
     }
 
-    public function getCheckedInAt(): ?DateTime
+    public function getCheckedInAt(): ?DateTimeImmutable
     {
         return $this->checkedInAt;
     }

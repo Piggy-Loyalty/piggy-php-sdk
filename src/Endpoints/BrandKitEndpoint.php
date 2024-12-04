@@ -11,7 +11,7 @@ class BrandKitEndpoint extends BaseEndpoint
     protected string $resourceUri = 'brand-kit';
 
     /**
-     * @param mixed[] $params
+     * @param  mixed[]  $params
      *
      * @throws PiggyRequestException
      */

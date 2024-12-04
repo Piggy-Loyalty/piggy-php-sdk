@@ -10,12 +10,12 @@ use Piggy\Api\Exceptions\ExceptionMapper;
 use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\MalformedResponseException;
 use Piggy\Api\Exceptions\PiggyRequestException;
-use Piggy\Api\Http\Response;
 use Piggy\Api\Http\InitializesEndpoints;
+use Piggy\Api\Http\Response;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
-use Throwable;
 use StdClass;
+use Throwable;
 
 class PiggyClient
 {
@@ -142,7 +142,7 @@ class PiggyClient
     }
 
     /**
-     * @param array<string, string> $queryOptions
+     * @param  array<string, string>  $queryOptions
      *
      * @throws GuzzleException
      * @throws MaintenanceModeException
@@ -167,7 +167,7 @@ class PiggyClient
 
             return $this->parseResponse($rawResponse);
         } catch (Exception $e) {
-            $exceptionMapper = new ExceptionMapper();
+            $exceptionMapper = new ExceptionMapper;
             throw $exceptionMapper->map($e);
         }
     }

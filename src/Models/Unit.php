@@ -2,26 +2,15 @@
 
 namespace Piggy\Api\Models;
 
-class Unit
+readonly class Unit extends BaseModel
 {
-    protected ?string $name;
-
-    protected ?string $label;
-
-    protected string $prefix;
-
-    protected ?bool $is_default;
-
     public function __construct(
-        ?string $name,
-        ?string $label,
-        string $prefix,
-        ?bool $is_default
+        public ?string $name,
+        public ?string $label,
+        public string $prefix,
+        public ?bool $is_default
     ) {
-        $this->name = $name;
-        $this->label = $label;
-        $this->prefix = $prefix;
-        $this->is_default = $is_default;
+        //
     }
 
     public function getName(): ?string

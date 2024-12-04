@@ -2,20 +2,16 @@
 
 namespace Piggy\Api\Models\Perk;
 
-class Perk
-{
-    protected ?string $uuid;
-    protected string $label;
-    protected bool $name;
+use Piggy\Api\Models\BaseModel;
 
+readonly class Perk extends BaseModel
+{
     public function __construct(
-        ?string $uuid,
-        string $label,
-        bool $name
+        public ?string $uuid,
+        public string $label,
+        public bool $name
     ) {
-        $this->uuid = $uuid;
-        $this->label = $label;
-        $this->name = $name;
+        //
     }
 
     public function getUuid(): ?string

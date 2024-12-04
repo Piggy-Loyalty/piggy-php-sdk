@@ -3,8 +3,9 @@
 namespace Piggy\Api\Models\Referral;
 
 use Piggy\Api\Enums\ReferralStatus;
+use Piggy\Api\Models\BaseModel;
 
-class Referral
+readonly class Referral extends BaseModel
 {
     public function __construct(
         public ?string $uuid,

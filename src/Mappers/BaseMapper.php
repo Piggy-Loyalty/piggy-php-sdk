@@ -2,24 +2,15 @@
 
 namespace Piggy\Api\Mappers;
 
-use DateTime;
-use DateTimeInterface;
+use DateTimeImmutable;
 use InvalidArgumentException;
 
 abstract class BaseMapper
 {
-    public function parseDate(?string $date): ?DateTime
+    public function parseDate(?string $date): ?DateTimeImmutable
     {
-        if (! $date) {
-            return null;
-        }
-
-        $dateTime = DateTime::createFromFormat(DateTimeInterface::ATOM, $date);
-
-        if ($dateTime === false) {
-            throw new InvalidArgumentException('Invalid date format');
-        }
-
-        return $dateTime;
+        return $date
+            ? DateTimeImmutable::createFromFormat(DATE_ATOM, $date) ?: throw new InvalidArgumentException('Invalid date format')
+            : null;
     }
 }

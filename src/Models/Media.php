@@ -2,20 +2,14 @@
 
 namespace Piggy\Api\Models;
 
-class Media
+readonly class Media extends BaseModel
 {
-    protected ?string $id;
-    protected string $type;
-    protected ?string $value;
-
     public function __construct(
-        ?string $id,
-        string $type,
-        ?string $value
+        public ?string $id,
+        public string $type,
+        public ?string $value
     ) {
-        $this->id = $id;
-        $this->type = $type;
-        $this->value = $value;
+        //
     }
 
     public function getId(): ?string

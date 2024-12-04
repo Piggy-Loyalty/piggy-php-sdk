@@ -2,40 +2,22 @@
 
 namespace Piggy\Api\Models;
 
-use Piggy\Api\Mappers\Perks\PerkOptionCollectionMapper;
-use Piggy\Api\Mappers\Media\MediaMapper;
-use Piggy\Api\Mappers\Perks\PerkOptionMapper;
-use Piggy\Api\Models\Media;
-use stdClass;
+use Piggy\Api\Models\Perk\PerkOption;
 
-class Tier
+readonly class Tier extends BaseModel
 {
-    protected ?string $uuid;
-
-    protected string $name;
-
-    protected ?string $description;
-
-    protected int $position;
-
-    protected ?Media $media;
-
-    protected array $perks;
-
+    /**
+     * @param  PerkOption[]  $perks
+     */
     public function __construct(
-        ?string $uuid,
-        string $name,
-        ?string $description,
-        int $position,
-        ?stdClass $media,
-        array $perks
+        public ?string $uuid,
+        public string $name,
+        public ?string $description,
+        public int $position,
+        public ?Media $media,
+        public array $perks
     ) {
-        $this->uuid = $uuid;
-        $this->name = $name;
-        $this->description = $description;
-        $this->position = $position;
-        $this->media = $media ? (new MediaMapper)->map($media) : null;
-        $this->perks = (new PerkOptionCollectionMapper)->map($perks);
+        //
     }
 
     public function getUuid(): ?string
@@ -58,11 +40,14 @@ class Tier
         return $this->position;
     }
 
-    public function getMedia(): ?stdClass
+    public function getMedia(): ?Media
     {
         return $this->media;
     }
 
+    /**
+     * @return PerkOption[]
+     */
     public function getPerks(): array
     {
         return $this->perks;

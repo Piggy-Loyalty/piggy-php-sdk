@@ -14,7 +14,7 @@ class PerkOptionMapper extends BaseModelMapper
             $data->label,
             $data->value,
             $data->default,
-            $data->perk
+            (new PerkMapper)->map($data->perk)
         );
     }
 }

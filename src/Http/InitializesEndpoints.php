@@ -13,11 +13,17 @@ use Piggy\Api\Endpoints\UnitsEndpoint;
 trait InitializesEndpoints
 {
     public BrandKitEndpoint $brandKit;
+
     public AutomationsEndpoint $automations;
+
     public UnitsEndpoint $units;
+
     public BookingsEndpoint $bookings;
+
     public FormsEndpoint $forms;
+
     public TiersEndpoint $tiers;
+
     public ReferralsEndpoint $referrals;
 
     protected function initializeEndpoints(): void
