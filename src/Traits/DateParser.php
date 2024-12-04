@@ -1,11 +1,11 @@
 <?php
 
-namespace Piggy\Api\Mappers;
+namespace Piggy\Api\Traits;
 
 use DateTimeImmutable;
 use InvalidArgumentException;
 
-abstract class BaseMapper
+trait DateParser
 {
     public function parseDate(?string $date): ?DateTimeImmutable
     {

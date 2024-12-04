@@ -4,10 +4,13 @@ namespace Piggy\Api\Mappers;
 
 use InvalidArgumentException;
 use Piggy\Api\Models\BaseModel;
+use Piggy\Api\Traits\DateParser;
 use stdClass;
 
-abstract class BaseCollectionMapper extends BaseMapper
+abstract class BaseCollectionMapper
 {
+    use DateParser;
+
     /**
      * @param  stdClass[]  $data
      * @return BaseModel[]
