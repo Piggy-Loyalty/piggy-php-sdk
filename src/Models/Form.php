@@ -2,23 +2,26 @@
 
 namespace Piggy\Api\Models;
 
+use Piggy\Api\Enums\FormStatus;
+use Piggy\Api\Enums\FormType;
+
 class Form
 {
     protected ?string $uuid;
 
     protected string $name;
 
-    protected ?string $status;
+    protected ?FormStatus $status;
 
-    protected string $type;
+    protected FormType $type;
 
     protected string $url;
 
     public function __construct(
         ?string $uuid,
         string $name,
-        ?string $status,
-        string $type,
+        ?FormStatus $status,
+        FormType $type,
         string $url
     ) {
         $this->uuid = $uuid;
@@ -38,12 +41,12 @@ class Form
         return $this->name;
     }
 
-    public function getStatus(): ?string
+    public function getStatus(): ?FormStatus
     {
         return $this->status;
     }
 
-    public function getType(): string
+    public function getType(): FormType
     {
         return $this->type;
     }
