@@ -16,11 +16,11 @@ class FormCollectionMapper extends BaseCollectionMapper
     {
         $mapper = new FormMapper;
 
-        $forms = [];
+        $models = [];
         foreach ($data as $item) {
-            $forms[] = $mapper->map($item);
+            $models[] = $mapper->map($item);
         }
 
-        return $forms;
+        return $models;
     }
 }

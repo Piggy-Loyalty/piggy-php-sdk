@@ -16,11 +16,11 @@ class UnitCollectionMapper extends BaseCollectionMapper
     {
         $mapper = new UnitMapper;
 
-        $units = [];
+        $models = [];
         foreach ($data as $item) {
-            $units[] = $mapper->map($item);
+            $models[] = $mapper->map($item);
         }
 
-        return $units;
+        return $models;
     }
 }

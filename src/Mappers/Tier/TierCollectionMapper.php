@@ -16,11 +16,11 @@ class TierCollectionMapper extends BaseCollectionMapper
     {
         $mapper = new TierMapper;
 
-        $forms = [];
+        $models = [];
         foreach ($data as $item) {
-            $forms[] = $mapper->map($item);
+            $models[] = $mapper->map($item);
         }
 
-        return $forms;
+        return $models;
     }
 }

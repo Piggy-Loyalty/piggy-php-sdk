@@ -17,11 +17,11 @@ class PerkOptionCollectionMapper extends BaseCollectionMapper
     {
         $mapper = new PerkOptionMapper;
 
-        $perkOptions = [];
+        $models = [];
         foreach ($data as $item) {
-            $perkOptions[] = $mapper->map($item);
+            $models[] = $mapper->map($item);
         }
 
-        return $perkOptions;
+        return $models;
     }
 }

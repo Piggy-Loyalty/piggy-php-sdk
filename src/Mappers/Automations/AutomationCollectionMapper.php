@@ -16,11 +16,11 @@ class AutomationCollectionMapper extends BaseCollectionMapper
     {
         $mapper = new AutomationMapper;
 
-        $automations = [];
+        $models = [];
         foreach ($data as $item) {
-            $automations[] = $mapper->map($item);
+            $models[] = $mapper->map($item);
         }
 
-        return $automations;
+        return $models;
     }
 }
