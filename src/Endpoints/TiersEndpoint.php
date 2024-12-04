@@ -2,16 +2,18 @@
 
 namespace Piggy\Api\Endpoints;
 
+use Piggy\Api\Contracts\Endpoints\HasList;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Tier\TierCollectionMapper;
 use Piggy\Api\Models\Tier;
 
-class TiersEndpoint extends BaseEndpoint
+class TiersEndpoint extends BaseEndpoint implements HasList
 {
     protected string $resourceUri = 'tiers';
 
     /**
-     * @param  mixed[]  $params
+     * List all tiers.
+     *
      * @return Tier[]
      *
      * @throws PiggyRequestException

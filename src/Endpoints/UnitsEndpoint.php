@@ -2,17 +2,19 @@
 
 namespace Piggy\Api\Endpoints;
 
+use Piggy\Api\Contracts\Endpoints\HasList;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Units\UnitCollectionMapper;
 use Piggy\Api\Mappers\Units\UnitMapper;
 use Piggy\Api\Models\Unit;
 
-class UnitsEndpoint extends BaseEndpoint
+class UnitsEndpoint extends BaseEndpoint implements HasList
 {
     protected string $resourceUri = 'units';
 
     /**
-     * @param  mixed[]  $params
+     * List all units.
+     *
      * @return Unit[]
      *
      * @throws PiggyRequestException

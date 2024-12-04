@@ -13,6 +13,8 @@ class BookingsEndpoint extends BaseEndpoint
     protected string $resourceUri = 'bookings';
 
     /**
+     * Create a new booking.
+     *
      * @throws PiggyRequestException
      */
     public function create(

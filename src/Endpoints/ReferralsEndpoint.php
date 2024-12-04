@@ -11,7 +11,8 @@ class ReferralsEndpoint extends BaseEndpoint
     protected string $resourceUri = 'referrals';
 
     /**
-     * @param  mixed[]  $params
+     * List all referrals.
+     *
      * @return Referral[]
      *
      * @throws PiggyRequestException
