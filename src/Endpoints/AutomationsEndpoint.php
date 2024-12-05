@@ -2,12 +2,11 @@
 
 namespace Piggy\Api\Endpoints;
 
-use Piggy\Api\Contracts\Endpoints\HasList;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Automations\AutomationCollectionMapper;
 use Piggy\Api\Models\Automation;
 
-class AutomationsEndpoint extends BaseEndpoint implements HasList
+class AutomationsEndpoint extends BaseEndpoint
 {
     protected string $resourceUri = 'automations';
 

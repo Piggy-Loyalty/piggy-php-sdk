@@ -2,12 +2,11 @@
 
 namespace Piggy\Api\Endpoints;
 
-use Piggy\Api\Contracts\Endpoints\HasGet;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\BrandKit\BrandKitMapper;
 use Piggy\Api\Models\BrandKit;
 
-class BrandKitEndpoint extends BaseEndpoint implements HasGet
+class BrandKitEndpoint extends BaseEndpoint
 {
     protected string $resourceUri = 'brand-kit';
 

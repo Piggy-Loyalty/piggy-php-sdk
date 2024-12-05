@@ -2,12 +2,11 @@
 
 namespace Piggy\Api\Endpoints;
 
-use Piggy\Api\Contracts\Endpoints\HasGet;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Referrals\ReferralProgramMapper;
 use Piggy\Api\Models\Referral\ReferralProgram;
 
-class ReferralProgramEndpoint extends BaseEndpoint implements HasGet
+class ReferralProgramEndpoint extends BaseEndpoint
 {
     protected string $resourceUri = 'referral-program';
 
