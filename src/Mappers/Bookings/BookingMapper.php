@@ -12,19 +12,19 @@ class BookingMapper extends BaseModelMapper
     public function map(stdClass $data): Booking
     {
         return new Booking(
-            $data->uuid,
-            new Contact(
-                $data->contact->uuid,
-                $data->contact->email
+            uuid: $data->uuid,
+            contact: new Contact(
+                uuid: $data->contact->uuid,
+                email: $data->contact->email
             ),
-            $this->parseDate($data->starts_at),
-            $this->parseDate($data->ends_at),
-            $this->parseDate($data->checked_in_at),
-            $data->external_id,
-            $data->source,
-            $data->number_of_people,
-            $data->company_name,
-            $data->prepaid_amount
+            startsAt: $this->parseDate($data->starts_at),
+            endsAt: $this->parseDate($data->ends_at),
+            checkedInAt: $this->parseDate($data->checked_in_at),
+            externalId: $data->external_id,
+            source: $data->source,
+            numberOfPeople: $data->number_of_people,
+            companyName: $data->company_name,
+            prepaidAmount: $data->prepaid_amount
         );
     }
 }

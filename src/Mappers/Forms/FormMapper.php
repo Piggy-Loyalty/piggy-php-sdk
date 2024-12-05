@@ -13,11 +13,13 @@ class FormMapper extends BaseModelMapper
     public function map(stdClass $data): Form
     {
         return new Form(
-            $data->uuid,
-            $data->name,
-            $data->status ? FormStatus::from($data->status) : null,
-            FormType::from($data->type),
-            $data->url,
+            uuid: $data->uuid,
+            name: $data->name,
+            status: $data->status
+                ? FormStatus::from($data->status)
+                : null,
+            type: FormType::from($data->type),
+            url: $data->url,
         );
     }
 }

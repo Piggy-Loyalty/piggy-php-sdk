@@ -17,7 +17,9 @@ class TierMapper extends BaseModelMapper
             name: $data->name,
             description: $data->description,
             position: $data->position,
-            media: $data->media ? (new MediaMapper)->map($data->media) : null,
+            media: $data->media
+                ? (new MediaMapper)->map($data->media)
+                : null,
             perks: (new PerkOptionCollectionMapper)->map($data->perks)
         );
     }
