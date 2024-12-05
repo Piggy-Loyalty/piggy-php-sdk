@@ -7,6 +7,8 @@ use Piggy\Api\Models\BaseModel;
 
 readonly class Booking extends BaseModel
 {
+    protected ?string $uuid;
+
     protected Contact $contact;
 
     protected ?DateTimeImmutable $startsAt;
@@ -26,6 +28,7 @@ readonly class Booking extends BaseModel
     protected ?int $prepaidAmount;
 
     public function __construct(
+        ?string $uuid,
         Contact $contact,
         ?DateTimeImmutable $startsAt,
         ?DateTimeImmutable $endsAt,
@@ -36,6 +39,7 @@ readonly class Booking extends BaseModel
         ?string $companyName,
         ?int $prepaidAmount
     ) {
+        $this->uuid = $uuid;
         $this->contact = $contact;
         $this->startsAt = $startsAt;
         $this->endsAt = $endsAt;
@@ -45,6 +49,11 @@ readonly class Booking extends BaseModel
         $this->numberOfPeople = $numberOfPeople;
         $this->companyName = $companyName;
         $this->prepaidAmount = $prepaidAmount;
+    }
+
+    public function getUuid(): ?string
+    {
+        return $this->uuid;
     }
 
     public function getContact(): Contact

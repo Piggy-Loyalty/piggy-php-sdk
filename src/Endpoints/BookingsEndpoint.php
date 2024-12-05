@@ -48,4 +48,39 @@ class BookingsEndpoint extends BaseEndpoint
 
         return $mapper->map($response->getData());
     }
+
+    /**
+     * Update an existing booking.
+     *
+     * @throws PiggyRequestException
+     */
+    public function update(
+        string $bookingUuid,
+        DateTime $startsAt,
+        DateTime $endsAt,
+        DateTime $checkedInAt,
+        string $externalId,
+        int $numberOfPeople,
+        string $companyName,
+        string $status,
+        int $prepaidAmount,
+        string $source
+    ): Booking {
+        $response = $this->client->put("$this->resourceUri/$bookingUuid", [
+            'booking_uuid' => $bookingUuid,
+            'starts_at' => $startsAt->format(DateTimeInterface::ATOM),
+            'ends_at' => $endsAt->format(DateTimeInterface::ATOM),
+            'checked_in_at' => $checkedInAt->format(DateTimeInterface::ATOM),
+            'external_id' => $externalId,
+            'number_of_people' => $numberOfPeople,
+            'company_name' => $companyName,
+            'status' => $status,
+            'prepaid_amount' => $prepaidAmount,
+            'source' => $source,
+        ]);
+
+        $mapper = new BookingMapper;
+
+        return $mapper->map($response->getData());
+    }
 }

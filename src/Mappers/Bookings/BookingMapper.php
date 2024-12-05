@@ -12,6 +12,7 @@ class BookingMapper extends BaseModelMapper
     public function map(stdClass $data): Booking
     {
         return new Booking(
+            $data->uuid,
             new Contact(
                 $data->contact->uuid,
                 $data->contact->email
