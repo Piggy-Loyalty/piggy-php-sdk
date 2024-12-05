@@ -9,7 +9,7 @@ interface HasList
     /**
      * List all resources.
      *
-     * @param mixed[] $params
+     * @param  mixed[]  $params
      * @return BaseModel[]
      */
     public function list(array $params = []): array;

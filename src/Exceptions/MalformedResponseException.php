@@ -4,4 +4,6 @@ namespace Piggy\Api\Exceptions;
 
 use Exception;
 
-class MalformedResponseException extends Exception {}
+class MalformedResponseException extends Exception
+{
+}

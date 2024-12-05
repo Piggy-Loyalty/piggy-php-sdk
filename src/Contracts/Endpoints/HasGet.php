@@ -9,7 +9,7 @@ interface HasGet
     /**
      * Get a single resource.
      *
-     * @param mixed[] $params
+     * @param  mixed[]  $params
      */
     public function get(array $params = []): BaseModel;
 }
