@@ -21,8 +21,6 @@ class PiggyClient
 {
     use InitializesEndpoints;
 
-    private ClientInterface $httpClient;
-
     private string $baseUrl = 'https://api.piggy.nl/api/public/v4/';
 
     /**
@@ -35,13 +33,13 @@ class PiggyClient
     /**
      * BaseClient constructor.
      */
-    public function __construct(string $personalAccessToken, ?ClientInterface $client = new GuzzleClient)
-    {
+    public function __construct(
+        string $personalAccessToken,
+        private ClientInterface $httpClient = new GuzzleClient
+    ) {
         $this->setPersonalAccessToken($personalAccessToken);
 
         // TODO: Move setLeatPartner and setLeatAccount to here? Since they're required?
-
-        $this->httpClient = $client;
 
         $this->initializeEndpoints();
     }

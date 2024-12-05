@@ -3,7 +3,6 @@
 namespace Piggy\Api\Mappers;
 
 use InvalidArgumentException;
-use Piggy\Api\Models\BaseModel;
 use Piggy\Api\Traits\DateParser;
 use stdClass;
 
@@ -13,14 +12,14 @@ abstract class BaseCollectionMapper
 
     /**
      * @param  stdClass[]  $data
-     * @return BaseModel[]
+     * @return array<mixed, mixed>
      */
     abstract public function map(array $data): array;
 
     /**
      * @param  stdClass[]  $data
      * @param  class-string<BaseModelMapper>  $mapper
-     * @return BaseModel[]
+     * @return array<mixed, mixed>
      */
     protected function mapDataToModels(array $data, string $mapper): array
     {

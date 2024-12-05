@@ -7,10 +7,9 @@ use InvalidArgumentException;
 
 trait DateParser
 {
-    public function parseDate(?string $date): ?DateTimeImmutable
+    public function parseDate(string $date): DateTimeImmutable
     {
-        return $date
-            ? DateTimeImmutable::createFromFormat(DATE_ATOM, $date) ?: throw new InvalidArgumentException('Invalid date format')
-            : null;
+        return DateTimeImmutable::createFromFormat(DATE_ATOM, $date)
+            ?: throw new InvalidArgumentException('Invalid date format');
     }
 }

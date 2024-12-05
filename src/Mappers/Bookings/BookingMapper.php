@@ -17,9 +17,15 @@ class BookingMapper extends BaseModelMapper
                 uuid: $data->contact->uuid,
                 email: $data->contact->email
             ),
-            startsAt: $this->parseDate($data->starts_at),
-            endsAt: $this->parseDate($data->ends_at),
-            checkedInAt: $this->parseDate($data->checked_in_at),
+            startsAt: $data->starts_at
+                ? $this->parseDate($data->starts_at)
+                : null,
+            endsAt: $data->ends_at
+                ? $this->parseDate($data->ends_at)
+                : null,
+            checkedInAt: $data->checked_in_at
+                ? $this->parseDate($data->checked_in_at)
+                : null,
             externalId: $data->external_id,
             source: $data->source,
             numberOfPeople: $data->number_of_people,
