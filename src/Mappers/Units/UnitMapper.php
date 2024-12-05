@@ -14,7 +14,7 @@ class UnitMapper extends BaseModelMapper
             name: $data->name,
             label: $data->label,
             prefix: $data->prefix,
-            is_default: $data->is_default
+            isDefault: $data->is_default
         );
     }
 }

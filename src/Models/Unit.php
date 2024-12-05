@@ -8,7 +8,7 @@ readonly class Unit extends BaseModel
         public ?string $name,
         public ?string $label,
         public string $prefix,
-        public ?bool $is_default
+        public ?bool $isDefault
     ) {
         //
     }
@@ -30,6 +30,6 @@ readonly class Unit extends BaseModel
 
     public function getIsDefault(): ?bool
     {
-        return $this->is_default;
+        return $this->isDefault;
     }
 }
