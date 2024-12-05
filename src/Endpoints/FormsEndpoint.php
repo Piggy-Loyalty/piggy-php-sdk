@@ -2,12 +2,11 @@
 
 namespace Piggy\Api\Endpoints;
 
-use Piggy\Api\Contracts\Endpoints\HasList;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Forms\FormCollectionMapper;
 use Piggy\Api\Models\Form;
 
-class FormsEndpoint extends BaseEndpoint implements HasList
+class FormsEndpoint extends BaseEndpoint
 {
     protected string $resourceUri = 'forms';
 

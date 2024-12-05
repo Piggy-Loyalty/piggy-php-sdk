@@ -9,7 +9,7 @@ use stdClass;
 
 class ReferralIncentiveMapper
 {
-    public static function map(stdClass $data): ReferralIncentive
+    public function map(stdClass $data): ReferralIncentive
     {
         return new ReferralIncentive(
             incentive_target_type: IncentiveTargetType::from($data->incentive_target_type),
