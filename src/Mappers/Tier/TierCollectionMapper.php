@@ -12,9 +12,9 @@ class TierCollectionMapper extends BaseCollectionMapper
      * @param  stdClass[]  $data
      * @return Tier[]
      */
-    public function map(array $data): array
+    public static function map(array $data): array
     {
-        return $this->mapDataToModels(
+        return self::mapDataToModels(
             data: $data,
             mapper: TierMapper::class
         );

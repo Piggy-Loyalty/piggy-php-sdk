@@ -8,7 +8,7 @@ use stdClass;
 
 class UnitMapper extends BaseModelMapper
 {
-    public function map(stdClass $data): Unit
+    public static function map(stdClass $data): Unit
     {
         return new Unit(
             $data->name,

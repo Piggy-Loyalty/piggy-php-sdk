@@ -44,9 +44,7 @@ class BookingsEndpoint extends BaseEndpoint
             'source' => $source,
         ]);
 
-        $mapper = new BookingMapper;
-
-        return $mapper->map($response->getData());
+        return BookingMapper::map($response->getData());
     }
 
     /**
@@ -79,8 +77,6 @@ class BookingsEndpoint extends BaseEndpoint
             'source' => $source,
         ]);
 
-        $mapper = new BookingMapper;
-
-        return $mapper->map($response->getData());
+        return BookingMapper::map($response->getData());
     }
 }

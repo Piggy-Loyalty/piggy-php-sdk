@@ -19,8 +19,6 @@ class ReferralProgramEndpoint extends BaseEndpoint
     {
         $response = $this->client->get($this->resourceUri, $params);
 
-        $mapper = new ReferralProgramMapper;
-
-        return $mapper->map($response->getData());
+        return ReferralProgramMapper::map($response->getData());
     }
 }

@@ -21,8 +21,6 @@ class FormsEndpoint extends BaseEndpoint
     {
         $response = $this->client->get($this->resourceUri, $params);
 
-        $mapper = new FormCollectionMapper;
-
-        return $mapper->map($response->getData());
+        return FormCollectionMapper::map($response->getData());
     }
 }

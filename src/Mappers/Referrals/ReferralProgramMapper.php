@@ -9,16 +9,16 @@ use stdClass;
 
 class ReferralProgramMapper extends BaseModelMapper
 {
-    public function map(stdClass $data): ReferralProgram
+    public static function map(stdClass $data): ReferralProgram
     {
         return new ReferralProgram(
             completionEvent: CompletionEvent::from($data->completion_event),
             limitPerContact: $data->limit_per_contact,
             referredContactIncentive: $data->referred_contact_incentive
-                ? (new ReferralIncentiveMapper)->map($data->referred_contact_incentive)
+                ? ReferralIncentiveMapper::map($data->referred_contact_incentive)
                 : null,
             referringContactIncentive: $data->referring_contact_incentive
-                ? (new ReferralIncentiveMapper)->map($data->referring_contact_incentive)
+                ? ReferralIncentiveMapper::map($data->referring_contact_incentive)
                 : null
         );
     }

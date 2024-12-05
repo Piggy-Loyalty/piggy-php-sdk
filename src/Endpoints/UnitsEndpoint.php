@@ -22,9 +22,7 @@ class UnitsEndpoint extends BaseEndpoint
     {
         $response = $this->client->get($this->resourceUri, $params);
 
-        $mapper = new UnitCollectionMapper;
-
-        return $mapper->map($response->getData());
+        return UnitCollectionMapper::map($response->getData());
     }
 
     /**
@@ -43,8 +41,6 @@ class UnitsEndpoint extends BaseEndpoint
             'is_default' => $isDefault,
         ]);
 
-        $mapper = new UnitMapper;
-
-        return $mapper->map($response->getData());
+        return UnitMapper::map($response->getData());
     }
 }

@@ -21,8 +21,6 @@ class ReferralsEndpoint extends BaseEndpoint
     {
         $response = $this->client->get($this->resourceUri, $params);
 
-        $mapper = new ReferralCollectionMapper;
-
-        return $mapper->map($response->getData());
+        return ReferralCollectionMapper::map($response->getData());
     }
 }

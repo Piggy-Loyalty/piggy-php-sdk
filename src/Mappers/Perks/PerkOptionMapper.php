@@ -8,13 +8,13 @@ use stdClass;
 
 class PerkOptionMapper extends BaseModelMapper
 {
-    public function map(stdClass $data): PerkOption
+    public static function map(stdClass $data): PerkOption
     {
         return new PerkOption(
             $data->label,
             $data->value,
             $data->default,
-            (new PerkMapper)->map($data->perk)
+            PerkMapper::map($data->perk)
         );
     }
 }

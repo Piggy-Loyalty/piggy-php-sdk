@@ -8,7 +8,7 @@ use stdClass;
 
 class ContactMapper extends BaseModelMapper
 {
-    public function map(stdClass $data): Contact
+    public static function map(stdClass $data): Contact
     {
         return new Contact(
             $data->uuid,

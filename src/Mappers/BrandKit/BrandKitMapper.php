@@ -8,7 +8,7 @@ use stdClass;
 
 class BrandKitMapper extends BaseModelMapper
 {
-    public function map(stdClass $data): BrandKit
+    public static function map(stdClass $data): BrandKit
     {
         return new BrandKit(
             $data->small_logo_url,

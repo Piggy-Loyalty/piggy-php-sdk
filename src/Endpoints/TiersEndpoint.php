@@ -21,8 +21,6 @@ class TiersEndpoint extends BaseEndpoint
     {
         $response = $this->client->get($this->resourceUri, $params);
 
-        $mapper = new TierCollectionMapper;
-
-        return $mapper->map($response->getData());
+        return TierCollectionMapper::map($response->getData());
     }
 }

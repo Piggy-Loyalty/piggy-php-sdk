@@ -12,9 +12,9 @@ class FormCollectionMapper extends BaseCollectionMapper
      * @param  stdClass[]  $data
      * @return Form[]
      */
-    public function map(array $data): array
+    public static function map(array $data): array
     {
-        return $this->mapDataToModels(
+        return self::mapDataToModels(
             data: $data,
             mapper: FormMapper::class
         );

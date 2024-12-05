@@ -19,8 +19,6 @@ class BrandKitEndpoint extends BaseEndpoint
     {
         $response = $this->client->get($this->resourceUri);
 
-        $mapper = new BrandKitMapper;
-
-        return $mapper->map($response->getData());
+        return BrandKitMapper::map($response->getData());
     }
 }

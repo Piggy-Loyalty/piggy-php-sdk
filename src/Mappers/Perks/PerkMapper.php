@@ -8,7 +8,7 @@ use stdClass;
 
 class PerkMapper extends BaseModelMapper
 {
-    public function map(stdClass $data): Perk
+    public static function map(stdClass $data): Perk
     {
         return new Perk(
             $data->uuid,

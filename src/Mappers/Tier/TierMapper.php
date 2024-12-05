@@ -10,15 +10,17 @@ use stdClass;
 
 class TierMapper extends BaseModelMapper
 {
-    public function map(stdClass $data): Tier
+    public static function map(stdClass $data): Tier
     {
         return new Tier(
             uuid: $data->uuid,
             name: $data->name,
             description: $data->description,
             position: $data->position,
-            media: $data->media ? (new MediaMapper)->map($data->media) : null,
-            perks: (new PerkOptionCollectionMapper)->map($data->perks)
+            media: $data->media
+                ? MediaMapper::map($data->media)
+                : null,
+            perks: PerkOptionCollectionMapper::map($data->perks)
         );
     }
 }
