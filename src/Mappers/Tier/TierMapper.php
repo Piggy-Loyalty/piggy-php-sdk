@@ -8,9 +8,12 @@ use Piggy\Api\Mappers\Perks\PerkOptionCollectionMapper;
 use Piggy\Api\Models\Tier;
 use stdClass;
 
+/**
+ * @extends BaseModelMapper<Tier>
+ */
 class TierMapper extends BaseModelMapper
 {
-    public function map(stdClass $data): Tier
+    public static function map(stdClass $data): Tier
     {
         return new Tier(
             uuid: $data->uuid,
@@ -18,9 +21,9 @@ class TierMapper extends BaseModelMapper
             description: $data->description,
             position: $data->position,
             media: $data->media
-                ? (new MediaMapper)->map($data->media)
+                ? MediaMapper::map($data->media)
                 : null,
-            perks: (new PerkOptionCollectionMapper)->map($data->perks)
+            perks: PerkOptionCollectionMapper::map($data->perks)
         );
     }
 }

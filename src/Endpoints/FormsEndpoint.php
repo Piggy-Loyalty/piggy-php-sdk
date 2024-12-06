@@ -29,7 +29,6 @@ class FormsEndpoint extends BaseEndpoint
             throw new UnexpectedValueException('Expected response data to be of type array.');
         }
 
-        return (new FormCollectionMapper)
-            ->map($responseData);
+        return FormCollectionMapper::map($responseData);
     }
 }

@@ -29,7 +29,6 @@ class ReferralProgramEndpoint extends BaseEndpoint
             throw new UnexpectedValueException('Expected response data to be of type stdClass.');
         }
 
-        return (new ReferralProgramMapper)
-            ->map($responseData);
+        return ReferralProgramMapper::map($responseData);
     }
 }

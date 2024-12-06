@@ -3,30 +3,34 @@
 namespace Piggy\Api\Mappers;
 
 use InvalidArgumentException;
-use Piggy\Api\Traits\DateParser;
+use Piggy\Api\Models\BaseModel;
 use stdClass;
 
 abstract class BaseCollectionMapper
 {
-    use DateParser;
-
     /**
      * @param  stdClass[]  $data
-     * @return array<mixed, mixed>
+     * @return BaseModel[]
      */
-    abstract public function map(array $data): array;
+    abstract public static function map(array $data): array;
 
     /**
-     * @param  stdClass[]  $data
-     * @param  class-string<BaseModelMapper>  $mapper
-     * @return array<mixed, mixed>
+     * Maps an array of data objects to an array of models using a specified mapper class.
+     *
+     * @template T of BaseModel
+     *
+     * @param  stdClass[]  $data  An array of data objects to be mapped.
+     * @param  class-string<BaseModelMapper<T>>  $mapper  The fully qualified class name of a mapper that extends BaseModelMapper.
+     * @return T[] An array of models of type T, which extends BaseModel.
+     *
+     * @throws InvalidArgumentException If the provided mapper does not extend BaseModelMapper.
      */
-    protected function mapDataToModels(array $data, string $mapper): array
+    protected static function mapDataToModels(array $data, string $mapper): array
     {
         if (! is_subclass_of($mapper, BaseModelMapper::class)) {
             throw new InvalidArgumentException('Mapper must be an instance of BaseModelMapper');
         }
 
-        return array_map(fn ($item) => (new $mapper)->map($item), $data);
+        return array_map(fn ($item) => $mapper::map($item), $data);
     }
 }

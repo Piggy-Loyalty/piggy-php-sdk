@@ -52,8 +52,7 @@ class BookingsEndpoint extends BaseEndpoint
             throw new UnexpectedValueException('Expected response data to be of type stdClass.');
         }
 
-        return (new BookingMapper)
-            ->map($responseData);
+        return BookingMapper::map($responseData);
     }
 
     /**
@@ -92,7 +91,6 @@ class BookingsEndpoint extends BaseEndpoint
             throw new UnexpectedValueException('Expected response data to be of type stdClass.');
         }
 
-        return (new BookingMapper)
-            ->map($responseData);
+        return BookingMapper::map($responseData);
     }
 }

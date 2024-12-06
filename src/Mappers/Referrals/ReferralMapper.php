@@ -7,15 +7,18 @@ use Piggy\Api\Mappers\BaseModelMapper;
 use Piggy\Api\Models\Referral\Referral;
 use stdClass;
 
+/**
+ * @extends BaseModelMapper<Referral>
+ */
 class ReferralMapper extends BaseModelMapper
 {
-    public function map(stdClass $data): Referral
+    public static function map(stdClass $data): Referral
     {
         return new Referral(
             uuid: $data->uuid,
             status: ReferralStatus::from($data->status),
-            referringContact: (new ContactMapper)->map($data->referring_contact),
-            referredContact: (new ContactMapper)->map($data->referred_contact)
+            referringContact: ContactMapper::map($data->referring_contact),
+            referredContact: ContactMapper::map($data->referred_contact)
         );
     }
 }

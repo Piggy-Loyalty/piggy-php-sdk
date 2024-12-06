@@ -29,7 +29,6 @@ class TiersEndpoint extends BaseEndpoint
             throw new UnexpectedValueException('Expected response data to be of type array.');
         }
 
-        return (new TierCollectionMapper)
-            ->map($responseData);
+        return TierCollectionMapper::map($responseData);
     }
 }

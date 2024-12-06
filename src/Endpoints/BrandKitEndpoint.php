@@ -29,7 +29,6 @@ class BrandKitEndpoint extends BaseEndpoint
             throw new UnexpectedValueException('Expected response data to be of type stdClass.');
         }
 
-        return (new BrandKitMapper)
-            ->map($responseData);
+        return BrandKitMapper::map($responseData);
     }
 }

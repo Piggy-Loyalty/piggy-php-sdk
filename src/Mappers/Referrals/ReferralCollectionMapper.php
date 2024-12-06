@@ -12,9 +12,9 @@ class ReferralCollectionMapper extends BaseCollectionMapper
      * @param  stdClass[]  $data
      * @return Referral[]
      */
-    public function map(array $data): array
+    public static function map(array $data): array
     {
-        return $this->mapDataToModels(
+        return self::mapDataToModels(
             data: $data,
             mapper: ReferralMapper::class
         );

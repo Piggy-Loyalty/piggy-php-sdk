@@ -6,9 +6,12 @@ use Piggy\Api\Mappers\BaseModelMapper;
 use Piggy\Api\Models\BrandKit;
 use stdClass;
 
+/**
+ * @extends BaseModelMapper<BrandKit>
+ */
 class BrandKitMapper extends BaseModelMapper
 {
-    public function map(stdClass $data): BrandKit
+    public static function map(stdClass $data): BrandKit
     {
         return new BrandKit(
             smallLogoUrl: $data->small_logo_url,

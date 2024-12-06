@@ -8,9 +8,12 @@ use Piggy\Api\Mappers\BaseModelMapper;
 use Piggy\Api\Models\Form;
 use stdClass;
 
+/**
+ * @extends BaseModelMapper<Form>
+ */
 class FormMapper extends BaseModelMapper
 {
-    public function map(stdClass $data): Form
+    public static function map(stdClass $data): Form
     {
         return new Form(
             uuid: $data->uuid,

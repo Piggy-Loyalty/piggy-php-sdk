@@ -29,7 +29,6 @@ class ReferralsEndpoint extends BaseEndpoint
             throw new UnexpectedValueException('Expected response data to be of type array.');
         }
 
-        return (new ReferralCollectionMapper)
-            ->map($responseData);
+        return ReferralCollectionMapper::map($responseData);
     }
 }

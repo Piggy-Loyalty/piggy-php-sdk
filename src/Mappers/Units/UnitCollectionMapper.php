@@ -12,9 +12,9 @@ class UnitCollectionMapper extends BaseCollectionMapper
      * @param  stdClass[]  $data
      * @return Unit[]
      */
-    public function map(array $data): array
+    public static function map(array $data): array
     {
-        return $this->mapDataToModels(
+        return self::mapDataToModels(
             data: $data,
             mapper: UnitMapper::class
         );

@@ -29,8 +29,7 @@ class AutomationsEndpoint extends BaseEndpoint
             throw new UnexpectedValueException('Expected response data to be of type array.');
         }
 
-        return (new AutomationCollectionMapper)
-            ->map($responseData);
+        return AutomationCollectionMapper::map($responseData);
     }
 
     /**

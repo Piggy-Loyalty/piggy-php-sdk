@@ -31,8 +31,7 @@ class UnitsEndpoint extends BaseEndpoint
             throw new UnexpectedValueException('Expected response data to be of type array.');
         }
 
-        return (new UnitCollectionMapper)
-            ->map($responseData);
+        return UnitCollectionMapper::map($responseData);
     }
 
     /**
@@ -57,7 +56,6 @@ class UnitsEndpoint extends BaseEndpoint
             throw new UnexpectedValueException('Expected response data to be of type stdClass.');
         }
 
-        return (new UnitMapper)
-            ->map($responseData);
+        return UnitMapper::map($responseData);
     }
 }

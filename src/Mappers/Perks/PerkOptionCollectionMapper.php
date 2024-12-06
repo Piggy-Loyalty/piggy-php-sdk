@@ -12,9 +12,9 @@ class PerkOptionCollectionMapper extends BaseCollectionMapper
      * @param  stdClass[]  $data
      * @return PerkOption[]
      */
-    public function map(array $data): array
+    public static function map(array $data): array
     {
-        return $this->mapDataToModels(
+        return self::mapDataToModels(
             data: $data,
             mapper: PerkOptionMapper::class
         );

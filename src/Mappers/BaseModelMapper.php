@@ -2,12 +2,18 @@
 
 namespace Piggy\Api\Mappers;
 
-use Piggy\Api\Traits\DateParser;
+use Piggy\Api\Models\BaseModel;
 use stdClass;
 
+/**
+ * @template T of BaseModel
+ */
 abstract class BaseModelMapper
 {
-    use DateParser;
-
-    abstract public function map(stdClass $data): object;
+    /**
+     * Map a single data object to a model instance.
+     *
+     * @return T
+     */
+    abstract public static function map(stdClass $data): BaseModel;
 }

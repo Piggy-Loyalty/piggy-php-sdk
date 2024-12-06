@@ -1,13 +1,13 @@
 <?php
 
-namespace Piggy\Api\Traits;
+namespace Piggy\Api\Services;
 
 use DateTimeImmutable;
 use InvalidArgumentException;
 
-trait DateParser
+class DateParserService
 {
-    public function parseDate(string $date): DateTimeImmutable
+    public static function parse(string $date): DateTimeImmutable
     {
         return DateTimeImmutable::createFromFormat(DATE_ATOM, $date)
             ?: throw new InvalidArgumentException('Invalid date format');

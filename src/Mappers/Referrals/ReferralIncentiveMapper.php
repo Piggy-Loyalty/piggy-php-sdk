@@ -4,12 +4,16 @@ namespace Piggy\Api\Mappers\Referrals;
 
 use Piggy\Api\Enums\IncentiveTargetType;
 use Piggy\Api\Enums\IncentiveType;
+use Piggy\Api\Mappers\BaseModelMapper;
 use Piggy\Api\Models\Referral\ReferralIncentive;
 use stdClass;
 
-class ReferralIncentiveMapper
+/**
+ * @extends BaseModelMapper<ReferralIncentive>
+ */
+class ReferralIncentiveMapper extends BaseModelMapper
 {
-    public function map(stdClass $data): ReferralIncentive
+    public static function map(stdClass $data): ReferralIncentive
     {
         return new ReferralIncentive(
             incentiveTargetType: IncentiveTargetType::from($data->incentive_target_type),
