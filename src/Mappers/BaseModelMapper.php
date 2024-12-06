@@ -13,7 +13,6 @@ abstract class BaseModelMapper
     /**
      * Map a single data object to a model instance.
      *
-     * @param stdClass $data
      * @return T
      */
     abstract public static function map(stdClass $data): BaseModel;

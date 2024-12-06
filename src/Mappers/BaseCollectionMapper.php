@@ -18,8 +18,9 @@ abstract class BaseCollectionMapper
      * Maps an array of data objects to an array of models using a specified mapper class.
      *
      * @template T of BaseModel
-     * @param  stdClass[]  $data An array of data objects to be mapped.
-     * @param  class-string<BaseModelMapper<T>>  $mapper The fully qualified class name of a mapper that extends BaseModelMapper.
+     *
+     * @param  stdClass[]  $data  An array of data objects to be mapped.
+     * @param  class-string<BaseModelMapper<T>>  $mapper  The fully qualified class name of a mapper that extends BaseModelMapper.
      * @return T[] An array of models of type T, which extends BaseModel.
      *
      * @throws InvalidArgumentException If the provided mapper does not extend BaseModelMapper.
