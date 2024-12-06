@@ -6,6 +6,9 @@ use Piggy\Api\Mappers\BaseModelMapper;
 use Piggy\Api\Models\Media;
 use stdClass;
 
+/**
+ * @extends BaseModelMapper<Media>
+ */
 class MediaMapper extends BaseModelMapper
 {
     public static function map(stdClass $data): Media

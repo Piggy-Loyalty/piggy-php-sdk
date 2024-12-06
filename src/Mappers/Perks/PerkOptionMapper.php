@@ -6,6 +6,9 @@ use Piggy\Api\Mappers\BaseModelMapper;
 use Piggy\Api\Models\Perk\PerkOption;
 use stdClass;
 
+/**
+ * @extends BaseModelMapper<PerkOption>
+ */
 class PerkOptionMapper extends BaseModelMapper
 {
     public static function map(stdClass $data): PerkOption

@@ -9,6 +9,9 @@ use Piggy\Api\Models\Automation;
 use Piggy\Api\Services\DateParserService;
 use stdClass;
 
+/**
+ * @extends BaseModelMapper<Automation>
+ */
 class AutomationMapper extends BaseModelMapper
 {
     public static function map(stdClass $data): Automation

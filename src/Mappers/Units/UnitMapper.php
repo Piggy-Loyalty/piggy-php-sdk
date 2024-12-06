@@ -6,6 +6,9 @@ use Piggy\Api\Mappers\BaseModelMapper;
 use Piggy\Api\Models\Unit;
 use stdClass;
 
+/**
+ * @extends BaseModelMapper<Unit>
+ */
 class UnitMapper extends BaseModelMapper
 {
     public static function map(stdClass $data): Unit

@@ -8,6 +8,9 @@ use Piggy\Api\Mappers\Perks\PerkOptionCollectionMapper;
 use Piggy\Api\Models\Tier;
 use stdClass;
 
+/**
+ * @extends BaseModelMapper<Tier>
+ */
 class TierMapper extends BaseModelMapper
 {
     public static function map(stdClass $data): Tier

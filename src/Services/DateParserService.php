@@ -7,18 +7,9 @@ use InvalidArgumentException;
 
 class DateParserService
 {
-    public static function parse(?string $date): ?DateTimeImmutable
+    public static function parse(string $date): DateTimeImmutable
     {
-        if ($date === null) {
-            return null;
-        }
-
-        $parsedDate = DateTimeImmutable::createFromFormat(DATE_ATOM, $date);
-
-        if ($parsedDate === false) {
-            throw new InvalidArgumentException('Invalid date format');
-        }
-
-        return $parsedDate;
+        return DateTimeImmutable::createFromFormat(DATE_ATOM, $date)
+            ?: throw new InvalidArgumentException('Invalid date format');
     }
 }

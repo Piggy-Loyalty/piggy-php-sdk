@@ -8,6 +8,9 @@ use Piggy\Api\Models\Booking\Contact;
 use Piggy\Api\Services\DateParserService;
 use stdClass;
 
+/**
+ * @extends BaseModelMapper<Booking>
+ */
 class BookingMapper extends BaseModelMapper
 {
     public static function map(stdClass $data): Booking

@@ -7,6 +7,9 @@ use Piggy\Api\Mappers\BaseModelMapper;
 use Piggy\Api\Models\Referral\ReferralProgram;
 use stdClass;
 
+/**
+ * @extends BaseModelMapper<ReferralProgram>
+ */
 class ReferralProgramMapper extends BaseModelMapper
 {
     public static function map(stdClass $data): ReferralProgram
