@@ -5,49 +5,49 @@ namespace Piggy\Api\Models;
 readonly class BrandKit extends BaseModel
 {
     public function __construct(
-        public ?string $small_logo_url,
-        public ?string $large_logo_url,
-        public ?string $primary_color,
-        public ?string $secondary_color,
-        public ?string $tertiary_color,
-        public ?string $quaternary_color,
-        public ?string $font_family
+        public ?string $smallLogoUrl,
+        public ?string $largeLogoUrl,
+        public ?string $primaryColor,
+        public ?string $secondaryColor,
+        public ?string $tertiaryColor,
+        public ?string $quaternaryColor,
+        public ?string $fontFamily
     ) {
         //
     }
 
     public function getSmallLogoUrl(): ?string
     {
-        return $this->small_logo_url;
+        return $this->smallLogoUrl;
     }
 
     public function getLargeLogoUrl(): ?string
     {
-        return $this->large_logo_url;
+        return $this->largeLogoUrl;
     }
 
     public function getPrimaryColor(): ?string
     {
-        return $this->primary_color;
+        return $this->primaryColor;
     }
 
     public function getSecondaryColor(): ?string
     {
-        return $this->secondary_color;
+        return $this->secondaryColor;
     }
 
     public function getTertiaryColor(): ?string
     {
-        return $this->tertiary_color;
+        return $this->tertiaryColor;
     }
 
     public function getQuaternaryColor(): ?string
     {
-        return $this->quaternary_color;
+        return $this->quaternaryColor;
     }
 
     public function getFontFamily(): ?string
     {
-        return $this->font_family;
+        return $this->fontFamily;
     }
 }

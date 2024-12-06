@@ -14,12 +14,12 @@ class AutomationMapper extends BaseModelMapper
     public static function map(stdClass $data): Automation
     {
         return new Automation(
-            $data->uuid,
-            $data->name,
-            AutomationStatus::from($data->status),
-            AutomationEventType::from($data->event),
-            DateParserService::parse($data->created_at),
-            DateParserService::parse($data->updated_at)
+            uuid: $data->uuid,
+            name: $data->name,
+            status: AutomationStatus::from($data->status),
+            event: AutomationEventType::from($data->event),
+            createdAt: DateParserService::parse($data->created_at),
+            updatedAt: DateParserService::parse($data->updated_at)
         );
     }
 }

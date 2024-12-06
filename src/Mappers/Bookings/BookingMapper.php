@@ -13,19 +13,25 @@ class BookingMapper extends BaseModelMapper
     public static function map(stdClass $data): Booking
     {
         return new Booking(
-            $data->uuid,
-            new Contact(
-                $data->contact->uuid,
-                $data->contact->email
+            uuid: $data->uuid,
+            contact: new Contact(
+                uuid: $data->contact->uuid,
+                email: $data->contact->email
             ),
-            DateParserService::parse($data->starts_at),
-            DateParserService::parse($data->ends_at),
-            DateParserService::parse($data->checked_in_at),
-            $data->external_id,
-            $data->source,
-            $data->number_of_people,
-            $data->company_name,
-            $data->prepaid_amount
+            startsAt: $data->starts_at
+                ? DateParserService::parse($data->starts_at)
+                : null,
+            endsAt: $data->ends_at
+                ? DateParserService::parse($data->ends_at)
+                : null,
+            checkedInAt: $data->checked_in_at
+                ? DateParserService::parse($data->checked_in_at)
+                : null,
+            externalId: $data->external_id,
+            source: $data->source,
+            numberOfPeople: $data->number_of_people,
+            companyName: $data->company_name,
+            prepaidAmount: $data->prepaid_amount
         );
     }
 }

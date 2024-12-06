@@ -5,6 +5,7 @@ namespace Piggy\Api\Endpoints;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Automations\AutomationCollectionMapper;
 use Piggy\Api\Models\Automation;
+use UnexpectedValueException;
 
 class AutomationsEndpoint extends BaseEndpoint
 {
@@ -13,6 +14,7 @@ class AutomationsEndpoint extends BaseEndpoint
     /**
      * List all automations.
      *
+     * @param  mixed[]  $params
      * @return Automation[]
      *
      * @throws PiggyRequestException
@@ -21,7 +23,13 @@ class AutomationsEndpoint extends BaseEndpoint
     {
         $response = $this->client->get($this->resourceUri, $params);
 
-        return AutomationCollectionMapper::map($response->getData());
+        $responseData = $response->getData();
+
+        if (! is_array($responseData)) {
+            throw new UnexpectedValueException('Expected response data to be of type array.');
+        }
+
+        return AutomationCollectionMapper::map($responseData);
     }
 
     /**
@@ -39,6 +47,12 @@ class AutomationsEndpoint extends BaseEndpoint
             'data' => $data,
         ]);
 
-        return $response->getData();
+        $responseData = $response->getData();
+
+        if (! is_string($responseData)) {
+            throw new UnexpectedValueException('Expected response data to be of type string.');
+        }
+
+        return $responseData;
     }
 }

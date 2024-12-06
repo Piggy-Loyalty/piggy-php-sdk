@@ -7,9 +7,12 @@ use Piggy\Api\Enums\IncentiveType;
 
 readonly class ReferralIncentive
 {
+    /**
+     * @param  ?array<mixed, mixed>  $data
+     */
     public function __construct(
-        public IncentiveTargetType $incentive_target_type,
-        public IncentiveType $incentive_type,
+        public IncentiveTargetType $incentiveTargetType,
+        public IncentiveType $incentiveType,
         public ?array $data,
     ) {
         //

@@ -12,10 +12,10 @@ class ReferralMapper extends BaseModelMapper
     public static function map(stdClass $data): Referral
     {
         return new Referral(
-            $data->uuid,
-            ReferralStatus::from($data->status),
-            ContactMapper::map($data->referring_contact),
-            ContactMapper::map($data->referred_contact)
+            uuid: $data->uuid,
+            status: ReferralStatus::from($data->status),
+            referringContact: ContactMapper::map($data->referring_contact),
+            referredContact: ContactMapper::map($data->referred_contact)
         );
     }
 }

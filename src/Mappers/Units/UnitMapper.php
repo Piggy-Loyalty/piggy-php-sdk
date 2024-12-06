@@ -11,10 +11,10 @@ class UnitMapper extends BaseModelMapper
     public static function map(stdClass $data): Unit
     {
         return new Unit(
-            $data->name,
-            $data->label,
-            $data->prefix,
-            $data->is_default
+            name: $data->name,
+            label: $data->label,
+            prefix: $data->prefix,
+            isDefault: $data->is_default
         );
     }
 }

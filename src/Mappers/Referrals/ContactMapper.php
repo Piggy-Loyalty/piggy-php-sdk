@@ -11,8 +11,8 @@ class ContactMapper extends BaseModelMapper
     public static function map(stdClass $data): Contact
     {
         return new Contact(
-            $data->uuid,
-            $data->email,
+            uuid: $data->uuid,
+            email: $data->email,
         );
     }
 }

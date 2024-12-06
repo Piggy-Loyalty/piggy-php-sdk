@@ -11,9 +11,9 @@ class MediaMapper extends BaseModelMapper
     public static function map(stdClass $data): Media
     {
         return new Media(
-            $data->id,
-            $data->type,
-            $data->value
+            id: $data->id,
+            type: $data->type,
+            value: $data->value
         );
     }
 }

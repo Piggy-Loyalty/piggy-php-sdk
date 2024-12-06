@@ -6,6 +6,8 @@ use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Units\UnitCollectionMapper;
 use Piggy\Api\Mappers\Units\UnitMapper;
 use Piggy\Api\Models\Unit;
+use stdClass;
+use UnexpectedValueException;
 
 class UnitsEndpoint extends BaseEndpoint
 {
@@ -14,6 +16,7 @@ class UnitsEndpoint extends BaseEndpoint
     /**
      * List all units.
      *
+     * @param  mixed[]  $params
      * @return Unit[]
      *
      * @throws PiggyRequestException
@@ -22,7 +25,13 @@ class UnitsEndpoint extends BaseEndpoint
     {
         $response = $this->client->get($this->resourceUri, $params);
 
-        return UnitCollectionMapper::map($response->getData());
+        $responseData = $response->getData();
+
+        if (! is_array($responseData)) {
+            throw new UnexpectedValueException('Expected response data to be of type array.');
+        }
+
+        return UnitCollectionMapper::map($responseData);
     }
 
     /**
@@ -41,6 +50,12 @@ class UnitsEndpoint extends BaseEndpoint
             'is_default' => $isDefault,
         ]);
 
-        return UnitMapper::map($response->getData());
+        $responseData = $response->getData();
+
+        if (! $responseData instanceof stdClass) {
+            throw new UnexpectedValueException('Expected response data to be of type stdClass.');
+        }
+
+        return UnitMapper::map($responseData);
     }
 }
