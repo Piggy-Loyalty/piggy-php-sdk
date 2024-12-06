@@ -6,6 +6,9 @@ use Piggy\Api\Mappers\BaseCollectionMapper;
 use Piggy\Api\Models\Form;
 use stdClass;
 
+/**
+ * @extends BaseCollectionMapper<Form>
+ */
 class FormCollectionMapper extends BaseCollectionMapper
 {
     /**

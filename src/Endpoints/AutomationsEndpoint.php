@@ -5,10 +5,14 @@ namespace Piggy\Api\Endpoints;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Automations\AutomationCollectionMapper;
 use Piggy\Api\Models\Automation;
+use Piggy\Api\Traits\Endpoints\ResponseToModelCollectionMapper;
 use UnexpectedValueException;
 
 class AutomationsEndpoint extends BaseEndpoint
 {
+    /** @template-use ResponseToModelCollectionMapper<Automation> */
+    use ResponseToModelCollectionMapper;
+
     protected string $resourceUri = 'automations';
 
     /**
@@ -23,13 +27,10 @@ class AutomationsEndpoint extends BaseEndpoint
     {
         $response = $this->client->get($this->resourceUri, $params);
 
-        $responseData = $response->getData();
-
-        if (! is_array($responseData)) {
-            throw new UnexpectedValueException('Expected response data to be of type array.');
-        }
-
-        return AutomationCollectionMapper::map($responseData);
+        return self::mapToList(
+            response: $response,
+            mapper: AutomationCollectionMapper::class
+        );
     }
 
     /**

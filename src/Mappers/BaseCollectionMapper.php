@@ -6,18 +6,19 @@ use InvalidArgumentException;
 use Piggy\Api\Models\BaseModel;
 use stdClass;
 
+/**
+ * @template T of BaseModel
+ */
 abstract class BaseCollectionMapper
 {
     /**
      * @param  stdClass[]  $data
-     * @return BaseModel[]
+     * @return T[]
      */
     abstract public static function map(array $data): array;
 
     /**
      * Maps an array of data objects to an array of models using a specified mapper class.
-     *
-     * @template T of BaseModel
      *
      * @param  stdClass[]  $data  An array of data objects to be mapped.
      * @param  class-string<BaseModelMapper<T>>  $mapper  The fully qualified class name of a mapper that extends BaseModelMapper.

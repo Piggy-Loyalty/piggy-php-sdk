@@ -6,6 +6,9 @@ use Piggy\Api\Mappers\BaseCollectionMapper;
 use Piggy\Api\Models\Perk\PerkOption;
 use stdClass;
 
+/**
+ * @extends BaseCollectionMapper<PerkOption>
+ */
 class PerkOptionCollectionMapper extends BaseCollectionMapper
 {
     /**

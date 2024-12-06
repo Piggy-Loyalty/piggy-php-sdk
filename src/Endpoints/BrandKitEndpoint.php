@@ -5,11 +5,13 @@ namespace Piggy\Api\Endpoints;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\BrandKit\BrandKitMapper;
 use Piggy\Api\Models\BrandKit;
-use stdClass;
-use UnexpectedValueException;
+use Piggy\Api\Traits\Endpoints\ResponseToModelMapper;
 
 class BrandKitEndpoint extends BaseEndpoint
 {
+    /** @template-use ResponseToModelMapper<BrandKit> */
+    use ResponseToModelMapper;
+
     protected string $resourceUri = 'brand-kit';
 
     /**
@@ -21,14 +23,11 @@ class BrandKitEndpoint extends BaseEndpoint
      */
     public function get(array $params = []): BrandKit
     {
-        $response = $this->client->get($this->resourceUri);
+        $response = $this->client->get($this->resourceUri, $params);
 
-        $responseData = $response->getData();
-
-        if (! $responseData instanceof stdClass) {
-            throw new UnexpectedValueException('Expected response data to be of type stdClass.');
-        }
-
-        return BrandKitMapper::map($responseData);
+        return self::mapToModel(
+            response: $response,
+            mapper: BrandKitMapper::class
+        );
     }
 }

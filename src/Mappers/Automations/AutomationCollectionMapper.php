@@ -6,6 +6,9 @@ use Piggy\Api\Mappers\BaseCollectionMapper;
 use Piggy\Api\Models\Automation;
 use stdClass;
 
+/**
+ * @extends BaseCollectionMapper<Automation>
+ */
 class AutomationCollectionMapper extends BaseCollectionMapper
 {
     /**

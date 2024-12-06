@@ -5,11 +5,13 @@ namespace Piggy\Api\Endpoints;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Referrals\ReferralProgramMapper;
 use Piggy\Api\Models\Referral\ReferralProgram;
-use stdClass;
-use UnexpectedValueException;
+use Piggy\Api\Traits\Endpoints\ResponseToModelMapper;
 
 class ReferralProgramEndpoint extends BaseEndpoint
 {
+    /** @template-use ResponseToModelMapper<ReferralProgram> */
+    use ResponseToModelMapper;
+
     protected string $resourceUri = 'referral-program';
 
     /**
@@ -23,12 +25,9 @@ class ReferralProgramEndpoint extends BaseEndpoint
     {
         $response = $this->client->get($this->resourceUri, $params);
 
-        $responseData = $response->getData();
-
-        if (! $responseData instanceof stdClass) {
-            throw new UnexpectedValueException('Expected response data to be of type stdClass.');
-        }
-
-        return ReferralProgramMapper::map($responseData);
+        return self::mapToModel(
+            response: $response,
+            mapper: ReferralProgramMapper::class
+        );
     }
 }

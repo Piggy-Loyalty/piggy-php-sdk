@@ -6,11 +6,17 @@ use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Units\UnitCollectionMapper;
 use Piggy\Api\Mappers\Units\UnitMapper;
 use Piggy\Api\Models\Unit;
-use stdClass;
-use UnexpectedValueException;
+use Piggy\Api\Traits\Endpoints\ResponseToModelCollectionMapper;
+use Piggy\Api\Traits\Endpoints\ResponseToModelMapper;
 
 class UnitsEndpoint extends BaseEndpoint
 {
+    /** @template-use ResponseToModelCollectionMapper<Unit> */
+    use ResponseToModelCollectionMapper;
+
+    /** @template-use ResponseToModelMapper<Unit> */
+    use ResponseToModelMapper;
+
     protected string $resourceUri = 'units';
 
     /**
@@ -25,13 +31,10 @@ class UnitsEndpoint extends BaseEndpoint
     {
         $response = $this->client->get($this->resourceUri, $params);
 
-        $responseData = $response->getData();
-
-        if (! is_array($responseData)) {
-            throw new UnexpectedValueException('Expected response data to be of type array.');
-        }
-
-        return UnitCollectionMapper::map($responseData);
+        return self::mapToList(
+            response: $response,
+            mapper: UnitCollectionMapper::class
+        );
     }
 
     /**
@@ -50,12 +53,9 @@ class UnitsEndpoint extends BaseEndpoint
             'is_default' => $isDefault,
         ]);
 
-        $responseData = $response->getData();
-
-        if (! $responseData instanceof stdClass) {
-            throw new UnexpectedValueException('Expected response data to be of type stdClass.');
-        }
-
-        return UnitMapper::map($responseData);
+        return self::mapToModel(
+            response: $response,
+            mapper: UnitMapper::class
+        );
     }
 }

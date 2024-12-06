@@ -6,6 +6,9 @@ use Piggy\Api\Mappers\BaseCollectionMapper;
 use Piggy\Api\Models\Referral\Referral;
 use stdClass;
 
+/**
+ * @extends BaseCollectionMapper<Referral>
+ */
 class ReferralCollectionMapper extends BaseCollectionMapper
 {
     /**

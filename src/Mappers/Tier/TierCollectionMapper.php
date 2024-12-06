@@ -6,6 +6,9 @@ use Piggy\Api\Mappers\BaseCollectionMapper;
 use Piggy\Api\Models\Tier;
 use stdClass;
 
+/**
+ * @extends BaseCollectionMapper<Tier>
+ */
 class TierCollectionMapper extends BaseCollectionMapper
 {
     /**

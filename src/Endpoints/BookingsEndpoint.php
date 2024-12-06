@@ -7,11 +7,13 @@ use DateTimeInterface;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Bookings\BookingMapper;
 use Piggy\Api\Models\Booking\Booking;
-use stdClass;
-use UnexpectedValueException;
+use Piggy\Api\Traits\Endpoints\ResponseToModelMapper;
 
 class BookingsEndpoint extends BaseEndpoint
 {
+    /** @template-use ResponseToModelMapper<Booking> */
+    use ResponseToModelMapper;
+
     protected string $resourceUri = 'bookings';
 
     /**
@@ -46,13 +48,10 @@ class BookingsEndpoint extends BaseEndpoint
             'source' => $source,
         ]);
 
-        $responseData = $response->getData();
-
-        if (! $responseData instanceof stdClass) {
-            throw new UnexpectedValueException('Expected response data to be of type stdClass.');
-        }
-
-        return BookingMapper::map($responseData);
+        return self::mapToModel(
+            response: $response,
+            mapper: BookingMapper::class
+        );
     }
 
     /**
@@ -85,12 +84,9 @@ class BookingsEndpoint extends BaseEndpoint
             'source' => $source,
         ]);
 
-        $responseData = $response->getData();
-
-        if (! $responseData instanceof stdClass) {
-            throw new UnexpectedValueException('Expected response data to be of type stdClass.');
-        }
-
-        return BookingMapper::map($responseData);
+        return self::mapToModel(
+            response: $response,
+            mapper: BookingMapper::class
+        );
     }
 }

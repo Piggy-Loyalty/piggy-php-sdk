@@ -5,10 +5,14 @@ namespace Piggy\Api\Endpoints;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Tier\TierCollectionMapper;
 use Piggy\Api\Models\Tier;
+use Piggy\Api\Traits\Endpoints\ResponseToModelCollectionMapper;
 use UnexpectedValueException;
 
 class TiersEndpoint extends BaseEndpoint
 {
+    /** @template-use ResponseToModelCollectionMapper<Tier> */
+    use ResponseToModelCollectionMapper;
+
     protected string $resourceUri = 'tiers';
 
     /**

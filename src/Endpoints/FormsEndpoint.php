@@ -5,10 +5,13 @@ namespace Piggy\Api\Endpoints;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Forms\FormCollectionMapper;
 use Piggy\Api\Models\Form;
-use UnexpectedValueException;
+use Piggy\Api\Traits\Endpoints\ResponseToModelCollectionMapper;
 
 class FormsEndpoint extends BaseEndpoint
 {
+    /** @template-use ResponseToModelCollectionMapper<Form> */
+    use ResponseToModelCollectionMapper;
+
     protected string $resourceUri = 'forms';
 
     /**
@@ -23,12 +26,9 @@ class FormsEndpoint extends BaseEndpoint
     {
         $response = $this->client->get($this->resourceUri, $params);
 
-        $responseData = $response->getData();
-
-        if (! is_array($responseData)) {
-            throw new UnexpectedValueException('Expected response data to be of type array.');
-        }
-
-        return FormCollectionMapper::map($responseData);
+        return self::mapToList(
+            response: $response,
+            mapper: FormCollectionMapper::class
+        );
     }
 }

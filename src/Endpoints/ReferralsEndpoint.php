@@ -5,10 +5,13 @@ namespace Piggy\Api\Endpoints;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Referrals\ReferralCollectionMapper;
 use Piggy\Api\Models\Referral\Referral;
-use UnexpectedValueException;
+use Piggy\Api\Traits\Endpoints\ResponseToModelCollectionMapper;
 
 class ReferralsEndpoint extends BaseEndpoint
 {
+    /** @template-use ResponseToModelCollectionMapper<Referral> */
+    use ResponseToModelCollectionMapper;
+
     protected string $resourceUri = 'referrals';
 
     /**
@@ -23,12 +26,9 @@ class ReferralsEndpoint extends BaseEndpoint
     {
         $response = $this->client->get($this->resourceUri, $params);
 
-        $responseData = $response->getData();
-
-        if (! is_array($responseData)) {
-            throw new UnexpectedValueException('Expected response data to be of type array.');
-        }
-
-        return ReferralCollectionMapper::map($responseData);
+        return self::mapToList(
+            response: $response,
+            mapper: ReferralCollectionMapper::class
+        );
     }
 }
