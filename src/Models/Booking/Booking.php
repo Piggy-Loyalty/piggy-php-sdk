@@ -7,48 +7,19 @@ use Piggy\Api\Models\BaseModel;
 
 readonly class Booking extends BaseModel
 {
-    protected ?string $uuid;
-
-    protected Contact $contact;
-
-    protected ?DateTimeImmutable $startsAt;
-
-    protected ?DateTimeImmutable $endsAt;
-
-    protected ?DateTimeImmutable $checkedInAt;
-
-    protected ?string $externalId;
-
-    protected ?string $source;
-
-    protected ?int $numberOfPeople;
-
-    protected ?string $companyName;
-
-    protected ?int $prepaidAmount;
-
     public function __construct(
-        ?string $uuid,
-        Contact $contact,
-        ?DateTimeImmutable $startsAt,
-        ?DateTimeImmutable $endsAt,
-        ?DateTimeImmutable $checkedInAt,
-        ?string $externalId,
-        ?string $source,
-        ?int $numberOfPeople,
-        ?string $companyName,
-        ?int $prepaidAmount
+        public ?string $uuid,
+        public Contact $contact,
+        public ?DateTimeImmutable $startsAt,
+        public ?DateTimeImmutable $endsAt,
+        public ?DateTimeImmutable $checkedInAt,
+        public ?string $externalId,
+        public ?string $source,
+        public ?int $numberOfPeople,
+        public ?string $companyName,
+        public ?int $prepaidAmount
     ) {
-        $this->uuid = $uuid;
-        $this->contact = $contact;
-        $this->startsAt = $startsAt;
-        $this->endsAt = $endsAt;
-        $this->checkedInAt = $checkedInAt;
-        $this->externalId = $externalId;
-        $this->source = $source;
-        $this->numberOfPeople = $numberOfPeople;
-        $this->companyName = $companyName;
-        $this->prepaidAmount = $prepaidAmount;
+        //
     }
 
     public function getUuid(): ?string
