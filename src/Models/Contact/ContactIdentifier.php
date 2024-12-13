@@ -1,6 +1,6 @@
 <?php
 
-namespace Piggy\Api\Models\Contacts;
+namespace Piggy\Api\Models\Contact;
 
 use Piggy\Api\Models\BaseModel;
 

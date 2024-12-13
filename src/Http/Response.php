@@ -7,20 +7,20 @@ use stdClass;
 class Response
 {
     /**
-     * @param  stdClass|stdClass[]|array<mixed, mixed>|string  $data
+     * @param  stdClass|stdClass[]|array<mixed, mixed>|string|null  $data
      * @param  stdClass|array<mixed, mixed>  $meta
      */
     public function __construct(
-        public stdClass|array|string $data,
+        public stdClass|array|string|null $data,
         public stdClass|array $meta
     ) {
         //
     }
 
     /**
-     * @return stdClass|stdClass[]|array<mixed, mixed>|string
+     * @return stdClass|stdClass[]|array<mixed, mixed>|string|null
      */
-    public function getData(): array|stdClass|string
+    public function getData(): array|stdClass|string|null
     {
         return $this->data;
     }

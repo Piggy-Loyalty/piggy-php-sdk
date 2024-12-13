@@ -186,16 +186,16 @@ class PiggyClient
     private function parseResponse(ResponseInterface $response): Response
     {
         try {
-            /** @var stdClass $content */
+            /** @var stdClass|mixed $content */
             $content = json_decode($response->getBody()->getContents());
         } catch (Throwable) {
             throw new MalformedResponseException('Could not decode response');
         }
 
-        if (! property_exists($content, 'data')) {
+        if ($content instanceof stdClass && ! property_exists($content, 'data')) {
             throw new MalformedResponseException('Invalid response given. Data property was missing from response.');
         }
 
-        return new Response($content->data, $content->meta ?? []);
+        return new Response($content?->data, $content->meta ?? []);
     }
 }

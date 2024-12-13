@@ -4,7 +4,7 @@ namespace Piggy\Api\Models\PrepaidTransaction;
 
 use Piggy\Api\Models\BaseModel;
 use Piggy\Api\Models\BusinessProfile\BusinessProfile;
-use Piggy\Api\Models\Contacts\ContactIdentifier;
+use Piggy\Api\Models\Contact\ContactIdentifier;
 
 readonly class PrepaidTransaction extends BaseModel
 {

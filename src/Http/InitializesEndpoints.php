@@ -6,6 +6,7 @@ use Piggy\Api\Endpoints\AutomationsEndpoint;
 use Piggy\Api\Endpoints\BookingsEndpoint;
 use Piggy\Api\Endpoints\BrandKitEndpoint;
 use Piggy\Api\Endpoints\BusinessProfilesEndpoint;
+use Piggy\Api\Endpoints\ContactsEndpoint;
 use Piggy\Api\Endpoints\FormsEndpoint;
 use Piggy\Api\Endpoints\PrepaidTransactionsEndpoint;
 use Piggy\Api\Endpoints\ReferralProgramEndpoint;
@@ -35,6 +36,8 @@ trait InitializesEndpoints
 
     public PrepaidTransactionsEndpoint $prepaidTransactions;
 
+    public ContactsEndpoint $contacts;
+
     protected function initializeEndpoints(): void
     {
         $this->brandKit = new BrandKitEndpoint($this);
@@ -47,5 +50,6 @@ trait InitializesEndpoints
         $this->referralProgram = new ReferralProgramEndpoint($this);
         $this->businessProfiles = new BusinessProfilesEndpoint($this);
         $this->prepaidTransactions = new PrepaidTransactionsEndpoint($this);
+        $this->contacts = new ContactsEndpoint($this);
     }
 }

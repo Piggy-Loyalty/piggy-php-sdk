@@ -3,7 +3,7 @@
 namespace Piggy\Api\Mappers\Contacts;
 
 use Piggy\Api\Mappers\BaseModelMapper;
-use Piggy\Api\Models\Contacts\ContactIdentifier;
+use Piggy\Api\Models\Contact\ContactIdentifier;
 use stdClass;
 
 /**
