@@ -9,7 +9,9 @@ readonly class ContactIdentifier extends BaseModel
     public function __construct(
         public string $name,
         public string $value,
-        public bool $active
+        public bool $active,
+        public bool $default,
+        public ?string $contactUuid,
     ) {
         //
     }
@@ -27,5 +29,15 @@ readonly class ContactIdentifier extends BaseModel
     public function isActive(): bool
     {
         return $this->active;
+    }
+
+    public function isDefault(): bool
+    {
+        return $this->default;
+    }
+
+    public function getContactUuid(): ?string
+    {
+        return $this->contactUuid;
     }
 }

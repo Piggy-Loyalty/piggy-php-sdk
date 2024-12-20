@@ -7,6 +7,7 @@ use Piggy\Api\Endpoints\BookingsEndpoint;
 use Piggy\Api\Endpoints\BrandKitEndpoint;
 use Piggy\Api\Endpoints\BusinessProfilesEndpoint;
 use Piggy\Api\Endpoints\CollectableRewardsEndpoint;
+use Piggy\Api\Endpoints\ContactIdentifiersEndpoint;
 use Piggy\Api\Endpoints\ContactsEndpoint;
 use Piggy\Api\Endpoints\FormsEndpoint;
 use Piggy\Api\Endpoints\PrepaidTransactionsEndpoint;
@@ -39,6 +40,8 @@ trait InitializesEndpoints
 
     public ContactsEndpoint $contacts;
 
+    public ContactIdentifiersEndpoint $contactIdentifiers;
+
     public CollectableRewardsEndpoint $collectableRewards;
 
     protected function initializeEndpoints(): void
@@ -54,6 +57,7 @@ trait InitializesEndpoints
         $this->businessProfiles = new BusinessProfilesEndpoint($this);
         $this->prepaidTransactions = new PrepaidTransactionsEndpoint($this);
         $this->contacts = new ContactsEndpoint($this);
+        $this->contactIdentifiers = new ContactIdentifiersEndpoint($this);
         $this->collectableRewards = new CollectableRewardsEndpoint($this);
     }
 }

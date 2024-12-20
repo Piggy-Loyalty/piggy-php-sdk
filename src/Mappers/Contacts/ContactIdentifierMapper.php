@@ -16,7 +16,9 @@ class ContactIdentifierMapper extends BaseModelMapper
         return new ContactIdentifier(
             name: $data->name,
             value: $data->value,
-            active: $data->active
+            active: $data->active,
+            default: $data->default,
+            contactUuid: $data->contact_uuid,
         );
     }
 }
