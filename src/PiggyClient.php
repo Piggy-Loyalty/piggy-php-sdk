@@ -92,7 +92,7 @@ class PiggyClient
      *
      * @throws PiggyRequestException
      */
-    public function post(string $url, ?array $body = []): Response
+    public function post(string $url, array $body = []): Response
     {
         return $this->request('POST', $url, $body);
     }
@@ -102,7 +102,7 @@ class PiggyClient
      *
      * @throws PiggyRequestException
      */
-    public function put(string $url, array $body): Response
+    public function put(string $url, array $body = []): Response
     {
         return $this->request('PUT', $url, $body);
     }

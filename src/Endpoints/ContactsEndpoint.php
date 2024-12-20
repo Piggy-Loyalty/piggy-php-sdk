@@ -44,6 +44,8 @@ class ContactsEndpoint extends BaseEndpoint
     }
 
     /**
+     * Show a single contact
+     *
      * @throws PiggyRequestException
      */
     public function show(string $uuid): ContactSearch
@@ -57,6 +59,8 @@ class ContactsEndpoint extends BaseEndpoint
     }
 
     /**
+     * Find a contact by email
+     *
      * @throws PiggyRequestException
      */
     public function find(string $email): ?ContactSearch
@@ -89,6 +93,8 @@ class ContactsEndpoint extends BaseEndpoint
     }
 
     /**
+     * Create a new contact
+     *
      * @throws PiggyRequestException
      */
     public function create(string $email, ?string $referralCode = null): ContactSearch
@@ -121,6 +127,8 @@ class ContactsEndpoint extends BaseEndpoint
     }
 
     /**
+     * Find a contact by email, or create a new one if it doesn't exist
+     *
      * @throws PiggyRequestException
      */
     public function findOrCreate(string $email): ContactSearch
@@ -136,6 +144,8 @@ class ContactsEndpoint extends BaseEndpoint
     }
 
     /**
+     * Find a contact by email, or create a new one if it doesn't exist (async)
+     *
      * @throws PiggyRequestException
      */
     public function findOrCreateAsync(string $email): ContactSearch
@@ -151,6 +161,8 @@ class ContactsEndpoint extends BaseEndpoint
     }
 
     /**
+     * Create an anonymous contact
+     *
      * @throws PiggyRequestException
      */
     public function createAnonymously(?string $contactIdentifierValue = null): ContactSearch
@@ -166,6 +178,8 @@ class ContactsEndpoint extends BaseEndpoint
     }
 
     /**
+     * Claim an anonymous contact
+     *
      * @throws PiggyRequestException
      */
     public function claimAnonymousContact(string $uuid, string $email): ContactSearch
@@ -181,6 +195,8 @@ class ContactsEndpoint extends BaseEndpoint
     }
 
     /**
+     * Delete a contact
+     *
      * @throws PiggyRequestException
      */
     public function delete(string $uuid, DeletionType $deletionType): true
