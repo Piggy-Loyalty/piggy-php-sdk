@@ -216,7 +216,6 @@ class Voucher
 
     /**
      * @param  mixed[]  $params
-     * @return Voucher[]
      *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
