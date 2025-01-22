@@ -66,6 +66,8 @@ abstract class BasePaginatedMapper
 
     /**
      * Get the pagination links
+     *
+     * @return mixed[]
      */
     public function getLinks(): array
     {
