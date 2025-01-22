@@ -10,12 +10,12 @@ class Error
     protected $key;
 
     /**
-     * @var string|array
+     * @var string|mixed[]
      */
     protected $errors;
 
     /**
-     * @param  string|array  $errors
+     * @param  string|mixed[]  $errors
      */
     public function __construct(string $key, $errors)
     {
