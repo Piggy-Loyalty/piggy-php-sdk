@@ -144,7 +144,7 @@ class PiggyClient
      * @throws PiggyRequestException
      * @throws AuthorizationException
      * @throws Exception
-    */
+     */
     public function delete(string $url, array $params = []): Response
     {
         $query = http_build_query($params);
