@@ -10,14 +10,14 @@ class Error
     protected $key;
 
     /**
-     * @var mixed[]
+     * @var string|mixed[]
      */
     protected $errors;
 
     /**
-     * @param  mixed[]  $errors
+     * @param  string|mixed[]  $errors
      */
-    public function __construct(string $key, array $errors)
+    public function __construct(string $key, $errors)
     {
         $this->key = $key;
         $this->errors = $errors;
@@ -33,6 +33,10 @@ class Error
      */
     public function getErrors(): array
     {
+        if (is_string($this->errors)) {
+            return [$this->errors];
+        }
+
         return $this->errors;
     }
 }
