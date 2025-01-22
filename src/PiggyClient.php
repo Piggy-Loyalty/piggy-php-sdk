@@ -6,6 +6,7 @@ use Exception;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
+use Piggy\Api\Exceptions\AuthorizationException;
 use Piggy\Api\Exceptions\ExceptionMapper;
 use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\MalformedResponseException;
@@ -90,7 +91,11 @@ class PiggyClient
     /**
      * @param  mixed[]  $body
      *
+     * @throws GuzzleException
+     * @throws MaintenanceModeException
      * @throws PiggyRequestException
+     * @throws AuthorizationException
+     * @throws Exception
      */
     public function post(string $url, array $body = []): Response
     {
@@ -100,7 +105,11 @@ class PiggyClient
     /**
      * @param  mixed[]  $body
      *
+     * @throws GuzzleException
+     * @throws MaintenanceModeException
      * @throws PiggyRequestException
+     * @throws AuthorizationException
+     * @throws Exception
      */
     public function put(string $url, array $body = []): Response
     {
@@ -110,7 +119,11 @@ class PiggyClient
     /**
      * @param  mixed[]  $params
      *
+     * @throws GuzzleException
+     * @throws MaintenanceModeException
      * @throws PiggyRequestException
+     * @throws AuthorizationException
+     * @throws Exception
      */
     public function get(string $url, array $params = []): Response
     {
@@ -126,8 +139,12 @@ class PiggyClient
     /**
      * @param  mixed[]  $params
      *
+     * @throws GuzzleException
+     * @throws MaintenanceModeException
      * @throws PiggyRequestException
-     */
+     * @throws AuthorizationException
+     * @throws Exception
+    */
     public function delete(string $url, array $params = []): Response
     {
         $query = http_build_query($params);
@@ -145,6 +162,7 @@ class PiggyClient
      * @throws GuzzleException
      * @throws MaintenanceModeException
      * @throws PiggyRequestException
+     * @throws AuthorizationException
      * @throws Exception
      */
     private function request(string $method, string $endpoint, array $queryOptions = []): Response
@@ -152,7 +170,7 @@ class PiggyClient
         // TODO: Add User-Agent header
 
         if (! array_key_exists('Authorization', $this->headers)) {
-            throw new Exception('Authorization not set yet.');
+            throw new AuthorizationException('Authorization not set yet.');
         }
 
         $url = $this->baseUrl.$endpoint;
