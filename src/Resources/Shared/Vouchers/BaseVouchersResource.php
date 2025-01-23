@@ -4,6 +4,7 @@ namespace Piggy\Api\Resources\Shared\Vouchers;
 
 use DateTime;
 use Piggy\Api\Exceptions\PiggyRequestException;
+use Piggy\Api\Mappers\Vouchers\PaginatedVouchersMapper;
 use Piggy\Api\Mappers\Vouchers\VoucherLockMapper;
 use Piggy\Api\Mappers\Vouchers\VoucherMapper;
 use Piggy\Api\Mappers\Vouchers\VouchersMapper;
@@ -49,6 +50,25 @@ abstract class BaseVouchersResource extends BaseResource
         $mapper = new VouchersMapper();
 
         return $mapper->map((array) $response->getData());
+    }
+
+    /**
+     * @throws PiggyRequestException
+     */
+    public function paginatedList(int $page = 1, int $limit = 30, ?string $promotionUuid = null, ?string $contactUuid = null, ?string $status = null): PaginatedVouchersMapper
+    {
+        $response = $this->client->get($this->resourceUri, [
+            'page' => $page,
+            'limit' => $limit,
+            'promotion_uuid' => $promotionUuid,
+            'contact_uuid' => $contactUuid,
+            'status' => $status,
+        ]);
+
+        return new PaginatedVouchersMapper(
+            (array) $response->getData(),
+            (array) $response->getMeta()
+        );
     }
 
     /**

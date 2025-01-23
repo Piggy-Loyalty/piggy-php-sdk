@@ -8,6 +8,7 @@ use Piggy\Api\ApiClient;
 use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Models\Contacts\Contact;
+use Piggy\Api\Mappers\Vouchers\PaginatedVouchersMapper;
 use Piggy\Api\StaticMappers\Vouchers\VoucherLockMapper;
 use Piggy\Api\StaticMappers\Vouchers\VoucherMapper;
 use Piggy\Api\StaticMappers\Vouchers\VouchersMapper;
@@ -211,6 +212,24 @@ class Voucher
         $response = ApiClient::get(self::resourceUri, $params);
 
         return VouchersMapper::map((array) $response->getData());
+    }
+
+    /**
+     * @param  mixed[]  $params
+     *
+     * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
+     */
+    public static function paginatedList(int $page = 1, int $limit = 30, array $params = []): PaginatedVouchersMapper
+    {
+        $response = ApiClient::get(
+            self::resourceUri,
+            array_merge($params, ['page' => $page, 'limit' => $limit])
+        );
+
+        return new PaginatedVouchersMapper(
+            (array) $response->getData(),
+            (array) $response->getMeta()
+        );
     }
 
     /**
