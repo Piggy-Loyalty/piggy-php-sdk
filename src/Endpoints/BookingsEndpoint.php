@@ -2,7 +2,7 @@
 
 namespace Piggy\Api\Endpoints;
 
-use DateTime;
+use DateTimeImmutable;
 use DateTimeInterface;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Bookings\BookingMapper;
@@ -24,9 +24,9 @@ class BookingsEndpoint extends BaseEndpoint
     public function create(
         string $contactUuid,
         string $businessProfileUuid,
-        DateTime $startsAt,
-        DateTime $endsAt,
-        DateTime $checkedInAt,
+        DateTimeImmutable $startsAt,
+        DateTimeImmutable $endsAt,
+        DateTimeImmutable $checkedInAt,
         string $externalId,
         int $numberOfPeople,
         string $companyName,
@@ -61,9 +61,9 @@ class BookingsEndpoint extends BaseEndpoint
      */
     public function update(
         string $bookingUuid,
-        DateTime $startsAt,
-        DateTime $endsAt,
-        DateTime $checkedInAt,
+        DateTimeImmutable $startsAt,
+        DateTimeImmutable $endsAt,
+        DateTimeImmutable $checkedInAt,
         string $externalId,
         int $numberOfPeople,
         string $companyName,

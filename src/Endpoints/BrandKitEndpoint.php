@@ -2,6 +2,10 @@
 
 namespace Piggy\Api\Endpoints;
 
+use Exception;
+use GuzzleHttp\Exception\GuzzleException;
+use Piggy\Api\Exceptions\AuthorizationException;
+use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\BrandKit\BrandKitMapper;
 use Piggy\Api\Models\BrandKit;
@@ -19,7 +23,11 @@ class BrandKitEndpoint extends BaseEndpoint
      *
      * @param  mixed[]  $params
      *
+     * @throws GuzzleException
+     * @throws MaintenanceModeException
      * @throws PiggyRequestException
+     * @throws AuthorizationException
+     * @throws Exception
      */
     public function get(array $params = []): BrandKit
     {

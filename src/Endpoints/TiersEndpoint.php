@@ -6,7 +6,6 @@ use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Tier\TierCollectionMapper;
 use Piggy\Api\Models\Tier;
 use Piggy\Api\Traits\Endpoints\ResponseToModelCollectionMapper;
-use UnexpectedValueException;
 
 class TiersEndpoint extends BaseEndpoint
 {
@@ -27,12 +26,9 @@ class TiersEndpoint extends BaseEndpoint
     {
         $response = $this->client->get($this->resourceUri, $params);
 
-        $responseData = $response->getData();
-
-        if (! is_array($responseData)) {
-            throw new UnexpectedValueException('Expected response data to be of type array.');
-        }
-
-        return TierCollectionMapper::map($responseData);
+        return self::mapToList(
+            response: $response,
+            mapper: TierCollectionMapper::class
+        );
     }
 }

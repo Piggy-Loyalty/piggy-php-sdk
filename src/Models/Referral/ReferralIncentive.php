@@ -18,4 +18,22 @@ readonly class ReferralIncentive extends BaseModel
     ) {
         //
     }
+
+    public function getIncentiveTargetType(): IncentiveTargetType
+    {
+        return $this->incentiveTargetType;
+    }
+
+    public function getIncentiveType(): IncentiveType
+    {
+        return $this->incentiveType;
+    }
+
+    /**
+     * @return ?array<mixed, mixed>
+     */
+    public function getData(): ?array
+    {
+        return $this->data;
+    }
 }

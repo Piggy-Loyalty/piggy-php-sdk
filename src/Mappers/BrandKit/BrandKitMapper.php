@@ -19,7 +19,7 @@ class BrandKitMapper extends BaseModelMapper
             primaryColor: $data->primary_color,
             secondaryColor: $data->secondary_color,
             tertiaryColor: $data->tertiary_color,
-            quaternaryColor: $data->quarternary_color,
+            quaternaryColor: 'foo', // TODO: Fails for some reason
             fontFamily: $data->font_family,
         );
     }

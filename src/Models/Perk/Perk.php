@@ -9,7 +9,7 @@ readonly class Perk extends BaseModel
     public function __construct(
         public ?string $uuid,
         public string $label,
-        public bool $name
+        public string $name
     ) {
         //
     }
@@ -24,7 +24,7 @@ readonly class Perk extends BaseModel
         return $this->label;
     }
 
-    public function getName(): bool
+    public function getName(): string
     {
         return $this->name;
     }
