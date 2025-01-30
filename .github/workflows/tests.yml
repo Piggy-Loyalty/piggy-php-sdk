@@ -1,4 +1,4 @@
-name: "🧪 Run PHPUnit tests"
+name: "🧪 Run Pest tests"
 
 on:
   push:
@@ -30,4 +30,4 @@ jobs:
           composer update --prefer-dist --no-interaction --no-progress
 
       - name: "⚙️ Execute tests"
-        run: vendor/bin/phpunit
+        run: vendor/bin/pest --compact

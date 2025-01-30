@@ -14,10 +14,10 @@ class PerkOptionMapper extends BaseModelMapper
     public static function map(stdClass $data): PerkOption
     {
         return new PerkOption(
-            $data->label,
-            $data->value,
-            $data->default,
-            PerkMapper::map($data->perk)
+            label: $data->label,
+            value: $data->value,
+            default: $data->default,
+            perk: PerkMapper::map($data->perk)
         );
     }
 }

@@ -2,6 +2,10 @@
 
 namespace Piggy\Api\Endpoints;
 
+use Exception;
+use GuzzleHttp\Exception\GuzzleException;
+use Piggy\Api\Exceptions\AuthorizationException;
+use Piggy\Api\Exceptions\MaintenanceModeException;
 use Piggy\Api\Exceptions\PiggyRequestException;
 use Piggy\Api\Mappers\Forms\FormCollectionMapper;
 use Piggy\Api\Models\Form;
@@ -20,7 +24,11 @@ class FormsEndpoint extends BaseEndpoint
      * @param  mixed[]  $params
      * @return Form[]
      *
+     * @throws GuzzleException
+     * @throws MaintenanceModeException
      * @throws PiggyRequestException
+     * @throws AuthorizationException
+     * @throws Exception
      */
     public function list(array $params = []): array
     {
