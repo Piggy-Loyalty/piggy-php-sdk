@@ -35,15 +35,15 @@ class TiersResource extends BaseResource
 
     /**
      * @param string $contactUuid
-     * @return Tier
+     * @return ?Tier
      * @throws PiggyRequestException
      */
-    public function getTierForContact(string $contactUuid): Tier
+    public function getTierForContact(string $contactUuid): ?Tier
     {
         $resourceUri =  "/api/v3/oauth/clients/contacts";
 
         $response = $this->client->get("$resourceUri/$contactUuid/tier");
-
+        
         $mapper = new TierMapper();
 
         return $mapper->map($response->getData());
