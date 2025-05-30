@@ -8,7 +8,13 @@ class TiersMapper
     {
         $tiers = [];
         foreach ($data as $item) {
-            $tiers[] = TierMapper::map($item);
+            $tier = TierMapper::map($item);;
+
+            if (!$tier) {
+                continue;
+            }
+
+            $tiers[] = $tier;
         }
 
         return $tiers;

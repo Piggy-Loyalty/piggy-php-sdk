@@ -109,7 +109,7 @@ class Tier
      *
      * @throws MaintenanceModeException|GuzzleException|PiggyRequestException
      */
-    public static function findBy(string $contactUuid, array $params = []): Tier
+    public static function findBy(string $contactUuid, array $params = []): ?Tier
     {
         $response = ApiClient::get(self::contactsResourceUri."/$contactUuid/tier", $params);
 

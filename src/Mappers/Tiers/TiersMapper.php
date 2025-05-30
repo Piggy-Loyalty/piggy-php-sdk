@@ -17,7 +17,13 @@ class TiersMapper
 
         $tiers = [];
         foreach ($data as $item) {
-            $tiers[] = $mapper->map($item);
+            $tier = $mapper->map($item);
+
+            if (!$tier) {
+                continue;
+            }
+
+            $tiers[] = $tier;
         }
 
         return $tiers;
